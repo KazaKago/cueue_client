@@ -1,0 +1,4 @@
+enum NextSplashRoutePattern {
+  main,
+  welcome,
+}

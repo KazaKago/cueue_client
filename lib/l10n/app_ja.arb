@@ -1,0 +1,239 @@
+{
+  "@@locale": "ja",
+  "appName": "Cueue",
+  "termsOfService": "利用規約",
+  "privacyPolicy": "プライバシーポリシー",
+  "registerAndStart": "新規登録してはじめる",
+  "loginAndContinue": "アカウントをお持ちの方はログイン",
+  "cookingMenu": "こんだて",
+  "recipe": "レシピ",
+  "tag": "タグ",
+  "settings": "設定",
+  "allRecipes": "すべてのレシピ",
+  "addCookingMenu": "こんだて追加",
+  "addRecipe": "レシピ追加",
+  "addTag": "タグ追加",
+  "signUp": "新規登録",
+  "signIn": "ログイン",
+  "reAuth": "再認証",
+  "mailAddress": "メールアドレス",
+  "password": "パスワード",
+  "reInputPassword": "パスワードを再入力",
+  "signUpWithPassword": "メール/パスワードで新規登録",
+  "signInWithPassword": "メール/パスワードでログイン",
+  "reAuthWithPassword": "パスワードで再認証",
+  "forgotPassword": "パスワードを忘れた方はこちら",
+  "or": "または",
+  "withGoogleAccount": "Googleアカウントで{authPattern}",
+  "@withGoogleAccount": {
+    "placeholders": {
+      "authPattern": {
+        "type": "String"
+      }
+    }
+  },
+  "withAppleAccount": "Appleアカウントで{authPattern}",
+  "@withAppleAccount": {
+    "placeholders": {
+      "authPattern": {
+        "type": "String"
+      }
+    }
+  },
+  "auth": "認証",
+  "passwordReset": "パスワードリセット",
+  "sendEmailForPasswordReset": "パスワード再設定メールを送信",
+  "confirm": "確認",
+  "sentEmailForPasswordReset": "指定されたメールアドレスに\nパスワード再設定メールを送信しました",
+  "close": "閉じる",
+  "needReAuthToContinue": "処理の続行には再度認証が必要です",
+  "cancel": "キャンセル",
+  "doReAuth": "再認証する",
+  "updatedMailAddress": "メールアドレスを更新しました",
+  "updatedPassword": "パスワードを更新しました",
+  "google": "Google",
+  "apple": "Apple",
+  "tapToChangePassword": "タップしてパスワード変更",
+  "tapToSetPassword": "タップしてパスワードを設定",
+  "alreadySetting": "設定済み",
+  "notYetSetting": "未設定",
+  "alreadyConnect": "連携済み",
+  "notYetConnect": "未連携",
+  "tapToUnConnectWith": "{content}\nタップして連携解除",
+  "@tapToUnConnectWith": {
+    "placeholders": {
+      "content": {
+        "type": "String"
+      }
+    }
+  },
+  "info": "情報",
+  "wantToChangeMailAddress": "変更したいメールアドレス",
+  "wantToChangePassword": "設定したいパスワード",
+  "setPassword": "パスワードを設定",
+  "doSet": "設定する",
+  "tapToConnect": "タップして連携",
+  "confirmToUnConnectGoogle": "Googleとのアカウント連携を解除します。よろしいですか？",
+  "confirmToUnConnectApple": "Appleとのアカウント連携を解除します。よろしいですか？",
+  "editCookingMenu": "こんだて編集",
+  "unConnect": "連携解除",
+  "doDelete": "削除する",
+  "date": "日付",
+  "dateFormat": "yyyy/MM/dd (E)",
+  "dateTimeFormat": "yyyy/MM/dd (E) HH:mm",
+  "timeFrame": "時間帯",
+  "doSelectRecipe": "レシピを選択する",
+  "memo": "メモ",
+  "doFix": "修正する",
+  "doAdd": "追加する",
+  "doChange": "変更する",
+  "confirmDeleteCookingMenu": "こんだてを削除します。よろしいですか？",
+  "withMemo": "メモ: {content}",
+  "@withMemo": {
+    "placeholders": {
+      "content": {
+        "type": "String"
+      }
+    }
+  },
+  "breakfast": "朝ごはん",
+  "lunch": "お昼ごはん",
+  "snackTime": "おやつ",
+  "dinner": "夜ごはん",
+  "editWith": "「{content}」編集",
+  "@editWith": {
+    "placeholders": {
+      "content": {
+        "type": "String"
+      }
+    }
+  },
+  "tagName": "タグ名",
+  "confirmDeletingWith": "「{content}」を削除します。よろしいですか？",
+  "@confirmDeletingWith": {
+    "placeholders": {
+      "content": {
+        "type": "String"
+      }
+    }
+  },
+  "aboutApp": "アプリについて",
+  "versionWith": "Version {version}",
+  "@versionWith": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "webSite": "Webサイト",
+  "mail": "メール",
+  "ossLicense": "オープンソースライセンス",
+  "accountSettings": "アカウント設定",
+  "unConfirmationMail": "メールアドレスが認証されていません",
+  "tapToConfirmMail": "タップして認証メールを送信",
+  "refreshInfo": "情報を更新",
+  "sendConfirmationMail": "認証メールを送信",
+  "changeMailAddress": "メールアドレス変更",
+  "loading": "読み込み中...",
+  "errorLoading": "読み込みエラー",
+  "logout": "ログアウト",
+  "confirmLogout": "ログアウトしますか？",
+  "confirmSendingMailTo": "{email}宛に認証メールを送信します。よろしいですか？",
+  "@confirmSendingMailTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "doSend": "送信する",
+  "accountConnection": "アカウント連携",
+  "takePhoto": "写真を撮る",
+  "chooseFromLibrary": "ライブラリから選ぶ",
+  "doEdit": "編集する",
+  "referenceLink": "参考リンク",
+  "recipeName": "レシピ名",
+  "uploading": "アップロード中...",
+  "toUp": "上へ",
+  "toDown": "下へ",
+  "delete": "削除",
+  "addRecipeImage": "レシピ画像を追加する",
+  "description": "説明",
+  "recipeWith": "「{content}」のレシピ",
+  "@recipeWith": {
+    "placeholders": {
+      "content": {
+        "type": "String"
+      }
+    }
+  },
+  "editTag": "タグ編集",
+  "selectRecipes": "レシピ選択",
+  "invalidParams": "不正なリクエストパラメータです\n{message}",
+  "@invalidParams": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "invalidToken": "無効なログイントークンが使用されています\n再度ログインしてください",
+  "notFound": "データが見つかりません",
+  "conflict": "データが重複しています",
+  "upgradeRequired": "サポートされていないバージョンを使用しています\nアプリをアップデートしてください",
+  "serviceUnavailable": "サーバーが一時的に停止しています\nしばらく経ってから再度お試しください",
+  "clientError": "不正なリクエストです",
+  "serverError": "サーバーエラーが発生しました",
+  "networkTimeout": "通信がタイムアウトしました\nしばらく経ってから再度お試しください",
+  "networkCancel": "通信がキャンセルされました\nしばらく経ってから再度お試しください",
+  "networkError": "通信エラーが発生しました\n通信環境を確認の上再度お試しください",
+  "authorizationFailed": "認証に失敗しました\n再度お試しください",
+  "authorizationCanceled": "認証がキャンセルされました",
+  "invalidEmail": "正しいメールアドレスを入力してください",
+  "invalidPassword": "パスワードは6文字以上を入力して下さい",
+  "doNotMatchPassword": "再入力されたパスワードが一致しません\n再度入力してください",
+  "reauthenticateRequired": "再認証が必要です",
+  "wrongPassword": "パスワードが間違っています\n再度入力してください",
+  "tooManyRequests": "リクエストが多すぎます\nしばらく待ってから再度お試しください",
+  "userNotFound": "入力されたユーザーが見つかりません\n再度入力してください",
+  "emailAlreadyInUse": "入力されたメールアドレスはすでに使われています",
+  "credentialAlreadyInUse": "入力されたアカウント情報はすでに使われています",
+  "accountExistsWithDifferentCredential": "指定されたメールアドレスは\n\n - {existsSignInMethods}\n\nからすでに認証されています\n\nサービスの認証紐付けを行う際はすでに認証されている方法でログインした後、設定より紐付けを行って下さい",
+  "@accountExistsWithDifferentCredential": {
+    "placeholders": {
+      "existsSignInMethods": {
+        "type": "String"
+      }
+    }
+  },
+  "userTokenExpired": "ログイントークンの有効期限が切れています\n再度ログインしてください",
+  "otherException": "不明なエラーが発生しました",
+  "retry": "再試行",
+  "today": "きょう",
+  "tomorrow": "あした",
+  "dayAfterTomorrow": "あさって",
+  "lastCookingAt": "最後に作った日: {date}",
+  "@lastCookingAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "notYetCooking": "未作成",
+  "cookingHistory": "こんだて履歴（最新の5件）",
+  "cookingCount": "今までの料理回数",
+  "countWith": "{count}回",
+  "@countWith": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "recipeCreatedAt": "レシピの作成日時",
+  "recipeUpdatedAt": "レシピの更新日時",
+  "useRecipeToMenu": "このレシピでこんだてを立てる",
+  "error": "エラー"
+}

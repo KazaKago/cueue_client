@@ -1,0 +1,7 @@
+#include "Generated.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER=com.kazakago.cueue
+ASSETCATALOG_COMPILER_APPICON_NAME=AppIcon
+
+DISPLAY_NAME=Cueue
+GOOGLE_SIGN_IN_SCHEME=com.googleusercontent.apps.324675815992-t8hsrtbcc53gh55itvgf4cuol68huso7

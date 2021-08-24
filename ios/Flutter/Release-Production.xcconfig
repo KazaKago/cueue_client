@@ -1,0 +1,4 @@
+#include "Release.xcconfig"
+#include "Production.xcconfig"
+
+PROVISIONING_PROFILE_SPECIFIER=match AdHoc com.kazakago.cueue
