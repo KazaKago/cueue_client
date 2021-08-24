@@ -1,7 +1,11 @@
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
+import 'package:cueue/presentation/view/hierarchy/auth/authentication_type.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authorizer/apple_authorizer.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authorizer/google_authorizer.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/password_reset_page.dart';
+import 'package:cueue/presentation/view/hierarchy/auth/sign_in_with_apple_button.dart';
+import 'package:cueue/presentation/view/hierarchy/auth/sign_in_with_google_button.dart';
+import 'package:cueue/presentation/view/hierarchy/auth/sign_in_with_password_button.dart';
 import 'package:cueue/presentation/view/hierarchy/main/main_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/unit.dart';
@@ -9,7 +13,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class AuthenticationPage extends HookConsumerWidget {
@@ -27,6 +30,7 @@ class AuthenticationPage extends HookConsumerWidget {
     final shouldShowReauthenticationWithApple = ref.watch(authenticationViewModelProvider.select((viewModel) => viewModel.shouldShowReauthenticationWithApple));
     final isObscurePasswordText = useState(true);
     final isObscureConfirmationPasswordText = useState(true);
+    final viewModel = ref.read(authenticationViewModelProvider);
     ref
       ..listen(authenticationViewModelProvider.select((viewModel) => viewModel.isLoading), ((final bool isLoading) {
         isLoading ? EasyLoading.show() : EasyLoading.dismiss();
@@ -52,7 +56,7 @@ class AuthenticationPage extends HookConsumerWidget {
         children: <Widget>[
           if (authenticationType != AuthenticationType.reauth)
             TextField(
-              enabled: !(!shouldShowReauthenticationWithPassword && authenticationType == AuthenticationType.reauth),
+              enabled: shouldShowReauthenticationWithPassword || authenticationType != AuthenticationType.reauth,
               controller: emailEditingController,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
@@ -60,7 +64,7 @@ class AuthenticationPage extends HookConsumerWidget {
               ),
             ),
           TextField(
-            enabled: !(!shouldShowReauthenticationWithPassword && authenticationType == AuthenticationType.reauth),
+            enabled: shouldShowReauthenticationWithPassword || authenticationType != AuthenticationType.reauth,
             controller: passwordEditingController,
             keyboardType: TextInputType.visiblePassword,
             obscureText: isObscurePasswordText.value,
@@ -88,19 +92,12 @@ class AuthenticationPage extends HookConsumerWidget {
           const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
-            child: ElevatedButton.icon(
-              icon: const Icon(Icons.mail_outline),
-              label: Text(_whenType(signUp: () => AppLocalizations.of(context)!.signUpWithPassword, signIn: () => AppLocalizations.of(context)!.signInWithPassword, reauth: () => AppLocalizations.of(context)!.reAuthWithPassword)),
-              onPressed: (!shouldShowReauthenticationWithPassword && authenticationType == AuthenticationType.reauth)
-                  ? null
-                  : () {
-                      final viewModel = ref.read(authenticationViewModelProvider);
-                      return _whenType(
-                        signUp: () => viewModel.signUpWithPassword(emailEditingController.text, passwordEditingController.text, confirmationPasswordEditingController.text),
-                        signIn: () => viewModel.signInWithPassword(emailEditingController.text, passwordEditingController.text),
-                        reauth: () => viewModel.reauthorizeWithPassword(passwordEditingController.text),
-                      );
-                    },
+            child: SignInWithPasswordButton(
+              authenticationType: authenticationType,
+              enabled: shouldShowReauthenticationWithPassword || authenticationType != AuthenticationType.reauth,
+              onSignUp: () => viewModel.signUpWithPassword(emailEditingController.text, passwordEditingController.text, confirmationPasswordEditingController.text),
+              onSignIn: () => viewModel.signInWithPassword(emailEditingController.text, passwordEditingController.text),
+              onReauth: () => viewModel.reauthorizeWithPassword(passwordEditingController.text),
             ),
           ),
           if (authenticationType != AuthenticationType.signUp) const SizedBox(height: 24),
@@ -109,7 +106,7 @@ class AuthenticationPage extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
-                  onTap: (!shouldShowReauthenticationWithPassword && authenticationType == AuthenticationType.reauth) ? null : () => _goPasswordReset(context),
+                  onTap: (shouldShowReauthenticationWithPassword || authenticationType != AuthenticationType.reauth) ? () => _goPasswordReset(context) : null,
                   child: Text(AppLocalizations.of(context)!.forgotPassword, style: Theme.of(context).textTheme.caption?.copyWith(decoration: TextDecoration.underline)),
                 ),
               ],
@@ -124,43 +121,23 @@ class AuthenticationPage extends HookConsumerWidget {
           const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
-            child: ElevatedButton.icon(
-              icon: const Icon(FontAwesomeIcons.google),
-              label: Text(AppLocalizations.of(context)!.withGoogleAccount(_whenType(
-                signUp: () => AppLocalizations.of(context)!.auth,
-                signIn: () => AppLocalizations.of(context)!.auth,
-                reauth: () => AppLocalizations.of(context)!.reAuth,
-              ))),
-              onPressed: (!shouldShowReauthenticationWithGoogle && authenticationType == AuthenticationType.reauth)
-                  ? null
-                  : () {
-                      return _whenType(
-                        signUp: () => _signInWithGoogle(context, ref),
-                        signIn: () => _signInWithGoogle(context, ref),
-                        reauth: () => _reauthorizeWithGoogle(context, ref),
-                      );
-                    },
+            child: SignInWithAppleButton(
+              authenticationType: authenticationType,
+              enabled: shouldShowReauthenticationWithApple || authenticationType != AuthenticationType.reauth,
+              onSignUp: () => _signInWithApple(context, ref),
+              onSignIn: () => _signInWithApple(context, ref),
+              onReauth: () => _reauthorizeWithApple(context, ref),
             ),
           ),
           const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
-            child: ElevatedButton.icon(
-              icon: const Icon(FontAwesomeIcons.apple),
-              label: Text(AppLocalizations.of(context)!.withAppleAccount(_whenType(
-                signUp: () => AppLocalizations.of(context)!.auth,
-                signIn: () => AppLocalizations.of(context)!.auth,
-                reauth: () => AppLocalizations.of(context)!.reAuth,
-              ))),
-              onPressed: (!shouldShowReauthenticationWithApple && authenticationType == AuthenticationType.reauth)
-                  ? null
-                  : () {
-                      return _whenType(
-                        signUp: () => _signInWithApple(context, ref),
-                        signIn: () => _signInWithApple(context, ref),
-                        reauth: () => _reauthorizeWithApple(context, ref),
-                      );
-                    },
+            child: SignInWithGoogleButton(
+              authenticationType: authenticationType,
+              enabled: shouldShowReauthenticationWithGoogle || authenticationType != AuthenticationType.reauth,
+              onSignUp: () => _signInWithGoogle(context, ref),
+              onSignIn: () => _signInWithGoogle(context, ref),
+              onReauth: () => _reauthorizeWithGoogle(context, ref),
             ),
           ),
         ],
@@ -216,11 +193,7 @@ class AuthenticationPage extends HookConsumerWidget {
     await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => const PasswordResetPage()));
   }
 
-  R _whenType<R>({
-    required final R Function() signUp,
-    required final R Function() signIn,
-    required final R Function() reauth,
-  }) {
+  R _whenType<R>({required final R Function() signUp, required final R Function() signIn, required final R Function() reauth}) {
     switch (authenticationType) {
       case AuthenticationType.signUp:
         return signUp();
@@ -230,10 +203,4 @@ class AuthenticationPage extends HookConsumerWidget {
         return reauth();
     }
   }
-}
-
-enum AuthenticationType {
-  signUp,
-  signIn,
-  reauth,
 }

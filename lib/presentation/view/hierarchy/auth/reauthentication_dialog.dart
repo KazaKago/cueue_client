@@ -3,6 +3,7 @@ import 'package:cueue/domain/usecase/di/usecase_provider.dart';
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
 import 'package:cueue/presentation/view/global/modal/fried_toast.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_page.dart';
+import 'package:cueue/presentation/view/hierarchy/auth/authentication_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

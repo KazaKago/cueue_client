@@ -1,5 +1,6 @@
 import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_page.dart';
+import 'package:cueue/presentation/view/hierarchy/auth/authentication_type.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/about_page.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/privacy_policy_url.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/terms_of_service_url.dart';
