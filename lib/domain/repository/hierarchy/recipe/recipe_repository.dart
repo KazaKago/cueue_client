@@ -6,11 +6,11 @@ import 'package:cueue/domain/model/hierarchy/tag/tag_id.dart';
 import 'package:store_flowable/store_flowable_core.dart';
 
 abstract class RecipeRepository {
-  LoadingStateStream<List<RecipeSummary>> followAllData();
+  Future<LoadingStateStream<List<RecipeSummary>>> followAllData();
 
-  LoadingStateStream<List<RecipeSummary>> followTaggedData(final TagId tagId);
+  Future<LoadingStateStream<List<RecipeSummary>>> followTaggedData(final TagId tagId);
 
-  LoadingStateStream<Recipe> followData(final RecipeId recipeId);
+  Future<LoadingStateStream<Recipe>> followData(final RecipeId recipeId);
 
   Future<void> refreshAllData();
 

@@ -1,15 +1,17 @@
 import 'package:cueue/data/api/global/requester/authorized_api_requester.dart';
 import 'package:cueue/data/api/global/requester/error_classifier.dart';
+import 'package:cueue/data/api/response/user/user_response.dart';
 import 'package:dio/dio.dart';
 
-class DeleteTagApi {
-  const DeleteTagApi(this._requester);
+class GetUserApi {
+  const GetUserApi(this._requester);
 
   final AuthorizedApiRequester _requester;
 
-  Future<void> execute(final int workspaceId, final int tagId) async {
+  Future<UserResponse> execute() async {
     try {
-      await _requester.create().delete<void>('/$workspaceId/tags/$tagId');
+      final response = await _requester.create().get<Map<String, dynamic>>('/users');
+      return UserResponse.fromJson(response.data!);
     } on DioError catch (dioError) {
       throw dioError.parseException();
     }

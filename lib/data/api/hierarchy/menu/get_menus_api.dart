@@ -8,11 +8,11 @@ class GetMenusApi {
 
   final AuthorizedApiRequester _requester;
 
-  Future<List<MenuSummaryResponse>> execute({final int? afterId}) async {
+  Future<List<MenuSummaryResponse>> execute(final int workspaceId, {final int? afterId}) async {
     try {
       final queryParameters = <String, dynamic>{};
       if (afterId != null) queryParameters.addAll(<String, dynamic>{'after_id': afterId});
-      final response = await _requester.create().get<List<dynamic>>('/menus', queryParameters: queryParameters);
+      final response = await _requester.create().get<List<dynamic>>('/$workspaceId/menus', queryParameters: queryParameters);
       return response.data!.map<MenuSummaryResponse>((dynamic json) {
         return MenuSummaryResponse.fromJson(json as Map<String, dynamic>);
       }).toList();

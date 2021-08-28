@@ -6,17 +6,12 @@ import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
 class MenuDetailViewModel with ChangeNotifier {
-  MenuDetailViewModel(final FollowMenuUseCase followMenuUseCase, this._refreshMenuUseCase, this._menuId) {
-    _compositeSubscription.add(followMenuUseCase(_menuId).listen((state) {
-      this.state = state.when(
-        loading: (content) => (content != null) ? MenuDetailState.completed(content) : const MenuDetailState.loading(),
-        completed: (content, next, prev) => MenuDetailState.completed(content),
-        error: (exception) => MenuDetailState.error(exception),
-      );
-    }));
+  MenuDetailViewModel(this._followMenuUseCase, this._refreshMenuUseCase, this._menuId) {
+    _follow();
   }
 
   final MenuId _menuId;
+  final FollowMenuUseCase _followMenuUseCase;
   final RefreshMenuUseCase _refreshMenuUseCase;
   final CompositeSubscription _compositeSubscription = CompositeSubscription();
   MenuDetailState _state = const MenuDetailState.loading();
@@ -32,6 +27,17 @@ class MenuDetailViewModel with ChangeNotifier {
   set state(final MenuDetailState state) {
     _state = state;
     notifyListeners();
+  }
+
+  Future<void> _follow() async {
+    final followMenuUseCase = await _followMenuUseCase(_menuId);
+    _compositeSubscription.add(followMenuUseCase.listen((state) {
+      this.state = state.when(
+        loading: (content) => (content != null) ? MenuDetailState.completed(content) : const MenuDetailState.loading(),
+        completed: (content, next, prev) => MenuDetailState.completed(content),
+        error: (exception) => MenuDetailState.error(exception),
+      );
+    }));
   }
 
   Future<void> refresh() async {

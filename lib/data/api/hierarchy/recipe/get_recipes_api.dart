@@ -8,12 +8,12 @@ class GetRecipesApi {
 
   final AuthorizedApiRequester _requester;
 
-  Future<List<RecipeSummaryResponse>> execute({final int? afterId, final int? tagId}) async {
+  Future<List<RecipeSummaryResponse>> execute(final int workspaceId, {final int? afterId, final int? tagId}) async {
     try {
       final queryParameters = <String, dynamic>{};
       if (afterId != null) queryParameters.addAll(<String, dynamic>{'after_id': afterId});
       if (tagId != null) queryParameters.addAll(<String, dynamic>{'tag_id': tagId});
-      final response = await _requester.create().get<List<dynamic>>('/recipes', queryParameters: queryParameters);
+      final response = await _requester.create().get<List<dynamic>>('/$workspaceId/recipes', queryParameters: queryParameters);
       return response.data!.map<RecipeSummaryResponse>((dynamic json) {
         return RecipeSummaryResponse.fromJson(json as Map<String, dynamic>);
       }).toList();

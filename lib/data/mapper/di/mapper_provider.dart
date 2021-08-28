@@ -11,11 +11,13 @@ import 'package:cueue/data/mapper/hierarchy/recipe/recipe_summary_response_mappe
 import 'package:cueue/data/mapper/hierarchy/tag/tag_request_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/tag/tag_response_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/user/user_response_mapper.dart';
+import 'package:cueue/data/mapper/hierarchy/workspace/workspace_response_mapper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final contentResponseMapperProvider = Provider((ref) => const ContentResponseMapper());
 final contentRequestMapperProvider = Provider((ref) => const ContentRequestMapper());
-final userResponseMapperProvider = Provider((ref) => const UserResponseMapper());
+final userResponseMapperProvider = Provider((ref) => UserResponseMapper(ref.read(workspaceResponseMapperProvider)));
+final workspaceResponseMapperProvider = Provider((ref) => const WorkspaceResponseMapper());
 final tagResponseMapperProvider = Provider((ref) => const TagResponseMapper());
 final tagRequestMapperProvider = Provider((ref) => const TagRequestMapper());
 final recipeResponseMapperProvider = Provider((ref) => RecipeResponseMapper(ref.read(tagResponseMapperProvider), ref.read(contentResponseMapperProvider)));

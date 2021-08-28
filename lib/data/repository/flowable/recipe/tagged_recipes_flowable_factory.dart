@@ -1,15 +1,20 @@
 import 'package:cueue/data/api/hierarchy/recipe/get_recipes_api.dart';
+import 'package:cueue/data/api/hierarchy/user/get_user_api.dart';
 import 'package:cueue/data/mapper/hierarchy/recipe/recipe_summary_response_mapper.dart';
+import 'package:cueue/data/mapper/hierarchy/user/user_response_mapper.dart';
 import 'package:cueue/data/memory/hierarchy/recipe/recipe_cache.dart';
 import 'package:cueue/data/memory/hierarchy/recipe/tagged_recipes_state_manager.dart';
+import 'package:cueue/data/repository/flowable/user/user_flowable_factory.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_id.dart';
 import 'package:cueue/domain/model/hierarchy/tag/tag_id.dart';
 import 'package:store_flowable/store_flowable.dart';
 
 class TaggedRecipesFlowableFactory extends PaginationStoreFlowableFactory<TagId, List<RecipeId>> {
-  TaggedRecipesFlowableFactory(this._getRecipesApi, this._recipeSummaryResponseMapper, this._tagId) : super();
+  TaggedRecipesFlowableFactory(this._getUserApi, this._getRecipesApi, this._userResponseMapper, this._recipeSummaryResponseMapper, this._tagId) : super();
 
+  final GetUserApi _getUserApi;
   final GetRecipesApi _getRecipesApi;
+  final UserResponseMapper _userResponseMapper;
   final RecipeSummaryResponseMapper _recipeSummaryResponseMapper;
   final TagId _tagId;
 
@@ -37,7 +42,8 @@ class TaggedRecipesFlowableFactory extends PaginationStoreFlowableFactory<TagId,
 
   @override
   Future<Fetched<List<RecipeId>>> fetchDataFromOrigin() async {
-    final responses = await _getRecipesApi.execute(afterId: null, tagId: _tagId.value);
+    final user = await UserFlowableFactory(_getUserApi, _userResponseMapper).create().requireData();
+    final responses = await _getRecipesApi.execute(user.currentWorkspace.id.value, afterId: null, tagId: _tagId.value);
     final recipeIds = responses.map((response) {
       final recipe = _recipeSummaryResponseMapper.map(response);
       RecipeCache.sharedInstance.recipeSummaryMap.value[recipe.id] = recipe;
@@ -51,7 +57,8 @@ class TaggedRecipesFlowableFactory extends PaginationStoreFlowableFactory<TagId,
 
   @override
   Future<Fetched<List<RecipeId>>> fetchNextDataFromOrigin(final String nextKey) async {
-    final responses = await _getRecipesApi.execute(afterId: int.parse(nextKey), tagId: _tagId.value);
+    final user = await UserFlowableFactory(_getUserApi, _userResponseMapper).create().requireData();
+    final responses = await _getRecipesApi.execute(user.currentWorkspace.id.value, afterId: int.parse(nextKey), tagId: _tagId.value);
     final recipeIds = responses.map((response) {
       final recipe = _recipeSummaryResponseMapper.map(response);
       RecipeCache.sharedInstance.recipeSummaryMap.value[recipe.id] = recipe;

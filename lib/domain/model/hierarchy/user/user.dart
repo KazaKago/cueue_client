@@ -3,6 +3,7 @@ import 'package:cueue/domain/model/hierarchy/user/email.dart';
 import 'package:cueue/domain/model/hierarchy/user/google_provider.dart';
 import 'package:cueue/domain/model/hierarchy/user/password_provider.dart';
 import 'package:cueue/domain/model/hierarchy/user/user_id.dart';
+import 'package:cueue/domain/model/hierarchy/workspace/workspace.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user.freezed.dart';
@@ -16,6 +17,7 @@ class User with _$User {
     required final PasswordProvider? passwordProvider,
     required final GoogleProvider? googleProvider,
     required final AppleProvider? appleProvider,
+    required final List<Workspace> workspaces,
   }) = _User;
 
   const User._();
@@ -25,4 +27,6 @@ class User with _$User {
   bool isSignInWithGoogle() => googleProvider != null;
 
   bool isSignInWithApple() => appleProvider != null;
+
+  Workspace get currentWorkspace => workspaces.first;
 }

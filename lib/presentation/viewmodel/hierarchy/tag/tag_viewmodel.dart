@@ -5,16 +5,11 @@ import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
 class TagViewModel with ChangeNotifier {
-  TagViewModel(final FollowTagsUseCase followTagsUseCase, this._refreshTagsUseCase) {
-    _compositeSubscription.add(followTagsUseCase().listen((state) {
-      this.state = state.when(
-        loading: (tags) => (tags != null) ? TagState.completed(tags) : const TagState.loading(),
-        completed: (tags, next, prev) => TagState.completed(tags),
-        error: (exception) => TagState.error(exception),
-      );
-    }));
+  TagViewModel(this._followTagsUseCase, this._refreshTagsUseCase) {
+    _follow();
   }
 
+  final FollowTagsUseCase _followTagsUseCase;
   final RefreshTagsUseCase _refreshTagsUseCase;
   final CompositeSubscription _compositeSubscription = CompositeSubscription();
   TagState _state = const TagState.loading();
@@ -30,6 +25,17 @@ class TagViewModel with ChangeNotifier {
   set state(final TagState state) {
     _state = state;
     notifyListeners();
+  }
+
+  Future<void> _follow() async {
+    final followTagsUseCase = await _followTagsUseCase();
+    _compositeSubscription.add(followTagsUseCase.listen((state) {
+      this.state = state.when(
+        loading: (tags) => (tags != null) ? TagState.completed(tags) : const TagState.loading(),
+        completed: (tags, next, prev) => TagState.completed(tags),
+        error: (exception) => TagState.error(exception),
+      );
+    }));
   }
 
   Future<void> refresh() async {

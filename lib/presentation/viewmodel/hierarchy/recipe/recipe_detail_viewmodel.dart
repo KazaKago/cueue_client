@@ -6,17 +6,12 @@ import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
 class RecipeDetailViewModel with ChangeNotifier {
-  RecipeDetailViewModel(final FollowRecipeUseCase followRecipeUseCase, this._refreshRecipeUseCase, this._recipeId) {
-    _compositeSubscription.add(followRecipeUseCase(_recipeId).listen((state) {
-      this.state = state.when(
-        loading: (content) => (content != null) ? RecipeDetailState.completed(content) : const RecipeDetailState.loading(),
-        completed: (content, next, prev) => RecipeDetailState.completed(content),
-        error: (exception) => RecipeDetailState.error(exception),
-      );
-    }));
+  RecipeDetailViewModel(this._followRecipeUseCase, this._refreshRecipeUseCase, this._recipeId) {
+    _follow();
   }
 
   final RecipeId _recipeId;
+  final FollowRecipeUseCase _followRecipeUseCase;
   final RefreshRecipeUseCase _refreshRecipeUseCase;
   final CompositeSubscription _compositeSubscription = CompositeSubscription();
   RecipeDetailState _state = const RecipeDetailState.loading();
@@ -32,6 +27,17 @@ class RecipeDetailViewModel with ChangeNotifier {
   set state(final RecipeDetailState state) {
     _state = state;
     notifyListeners();
+  }
+
+  Future<void> _follow() async {
+    final followRecipeUseCase = await _followRecipeUseCase(_recipeId);
+    _compositeSubscription.add(followRecipeUseCase.listen((state) {
+      this.state = state.when(
+        loading: (content) => (content != null) ? RecipeDetailState.completed(content) : const RecipeDetailState.loading(),
+        completed: (content, next, prev) => RecipeDetailState.completed(content),
+        error: (exception) => RecipeDetailState.error(exception),
+      );
+    }));
   }
 
   Future<void> refresh() async {

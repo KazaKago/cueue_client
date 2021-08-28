@@ -6,22 +6,11 @@ import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
 class PasswordResetViewModel with ChangeNotifier {
-  PasswordResetViewModel(final FollowUserUseCase followUserUseCase, this._sendPasswordResetMailUseCase) {
-    _compositeSubscription.add(followUserUseCase().listen((state) {
-      state.when(
-        loading: (user) {
-          // do nothing.
-        },
-        completed: (user, next, prev) {
-          userEmail = user.email;
-        },
-        error: (exception) {
-          // do nothing.
-        },
-      );
-    }));
+  PasswordResetViewModel(this._followUserUseCase, this._sendPasswordResetMailUseCase) {
+    _follow();
   }
 
+  final FollowUserUseCase _followUserUseCase;
   final SendPasswordResetMailUseCase _sendPasswordResetMailUseCase;
   final CompositeSubscription _compositeSubscription = CompositeSubscription();
   Email? _userEmail;
@@ -61,6 +50,23 @@ class PasswordResetViewModel with ChangeNotifier {
   set exception(final Exception? exception) {
     _exception = exception;
     notifyListeners();
+  }
+
+  Future<void> _follow() async {
+    final followUserUseCase = await _followUserUseCase();
+    _compositeSubscription.add(followUserUseCase.listen((state) {
+      state.when(
+        loading: (user) {
+          // do nothing.
+        },
+        completed: (user, next, prev) {
+          userEmail = user.email;
+        },
+        error: (exception) {
+          // do nothing.
+        },
+      );
+    }));
   }
 
   Future<void> sendPasswordResetMail(final String emailStr) async {

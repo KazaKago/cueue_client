@@ -4,7 +4,7 @@ import 'package:cueue/domain/model/hierarchy/tag/tag_registration.dart';
 import 'package:store_flowable/store_flowable_core.dart';
 
 abstract class TagRepository {
-  LoadingStateStream<List<Tag>> follow();
+  Future<LoadingStateStream<List<Tag>>> follow();
 
   Future<void> refresh();
 

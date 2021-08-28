@@ -1,7 +1,9 @@
+import 'package:cueue/data/api/response/user/user_response.dart';
 import 'package:cueue/data/auth/hierarchy/apple/apple_provider_id.dart';
 import 'package:cueue/data/auth/hierarchy/google/google_provider_id.dart';
 import 'package:cueue/data/auth/hierarchy/password/password_provider_id.dart';
 import 'package:cueue/data/auth/hierarchy/provider_id.dart';
+import 'package:cueue/data/mapper/hierarchy/workspace/workspace_response_mapper.dart';
 import 'package:cueue/domain/model/hierarchy/user/apple_provider.dart';
 import 'package:cueue/domain/model/hierarchy/user/email.dart';
 import 'package:cueue/domain/model/hierarchy/user/google_provider.dart';
@@ -12,9 +14,11 @@ import 'package:cueue/domain/model/hierarchy/user/user_id.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 
 class UserResponseMapper {
-  const UserResponseMapper();
+  const UserResponseMapper(this._workspaceResponseMapper);
 
-  User map(final auth.User firebaseUser) {
+  final WorkspaceResponseMapper _workspaceResponseMapper;
+
+  User map(final auth.User firebaseUser, final UserResponse userResponse) {
     return User(
       id: UserId(firebaseUser.uid),
       email: Email(firebaseUser.email!),
@@ -22,6 +26,7 @@ class UserResponseMapper {
       passwordProvider: _getLoginProvider(firebaseUser, const PasswordProviderId(), (userId, displayName) => PasswordProvider(uid: userId, displayName: displayName)),
       googleProvider: _getLoginProvider(firebaseUser, const GoogleProviderId(), (userId, displayName) => GoogleProvider(uid: userId, displayName: displayName)),
       appleProvider: _getLoginProvider(firebaseUser, const AppleProviderId(), (userId, displayName) => AppleProvider(uid: userId, displayName: displayName)),
+      workspaces: userResponse.workspaces.map(_workspaceResponseMapper.map).toList(),
     );
   }
 

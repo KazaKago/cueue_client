@@ -22,7 +22,8 @@ class _$UserTearOff {
       required bool isEmailVerified,
       required PasswordProvider? passwordProvider,
       required GoogleProvider? googleProvider,
-      required AppleProvider? appleProvider}) {
+      required AppleProvider? appleProvider,
+      required List<Workspace> workspaces}) {
     return _User(
       id: id,
       email: email,
@@ -30,6 +31,7 @@ class _$UserTearOff {
       passwordProvider: passwordProvider,
       googleProvider: googleProvider,
       appleProvider: appleProvider,
+      workspaces: workspaces,
     );
   }
 }
@@ -45,6 +47,7 @@ mixin _$User {
   PasswordProvider? get passwordProvider => throw _privateConstructorUsedError;
   GoogleProvider? get googleProvider => throw _privateConstructorUsedError;
   AppleProvider? get appleProvider => throw _privateConstructorUsedError;
+  List<Workspace> get workspaces => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
@@ -60,7 +63,8 @@ abstract class $UserCopyWith<$Res> {
       bool isEmailVerified,
       PasswordProvider? passwordProvider,
       GoogleProvider? googleProvider,
-      AppleProvider? appleProvider});
+      AppleProvider? appleProvider,
+      List<Workspace> workspaces});
 
   $UserIdCopyWith<$Res> get id;
   $EmailCopyWith<$Res> get email;
@@ -85,6 +89,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? passwordProvider = freezed,
     Object? googleProvider = freezed,
     Object? appleProvider = freezed,
+    Object? workspaces = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -111,6 +116,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.appleProvider
           : appleProvider // ignore: cast_nullable_to_non_nullable
               as AppleProvider?,
+      workspaces: workspaces == freezed
+          ? _value.workspaces
+          : workspaces // ignore: cast_nullable_to_non_nullable
+              as List<Workspace>,
     ));
   }
 
@@ -173,7 +182,8 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       bool isEmailVerified,
       PasswordProvider? passwordProvider,
       GoogleProvider? googleProvider,
-      AppleProvider? appleProvider});
+      AppleProvider? appleProvider,
+      List<Workspace> workspaces});
 
   @override
   $UserIdCopyWith<$Res> get id;
@@ -204,6 +214,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? passwordProvider = freezed,
     Object? googleProvider = freezed,
     Object? appleProvider = freezed,
+    Object? workspaces = freezed,
   }) {
     return _then(_User(
       id: id == freezed
@@ -230,6 +241,10 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.appleProvider
           : appleProvider // ignore: cast_nullable_to_non_nullable
               as AppleProvider?,
+      workspaces: workspaces == freezed
+          ? _value.workspaces
+          : workspaces // ignore: cast_nullable_to_non_nullable
+              as List<Workspace>,
     ));
   }
 }
@@ -243,7 +258,8 @@ class _$_User extends _User {
       required this.isEmailVerified,
       required this.passwordProvider,
       required this.googleProvider,
-      required this.appleProvider})
+      required this.appleProvider,
+      required this.workspaces})
       : super._();
 
   @override
@@ -258,10 +274,12 @@ class _$_User extends _User {
   final GoogleProvider? googleProvider;
   @override
   final AppleProvider? appleProvider;
+  @override
+  final List<Workspace> workspaces;
 
   @override
   String toString() {
-    return 'User(id: $id, email: $email, isEmailVerified: $isEmailVerified, passwordProvider: $passwordProvider, googleProvider: $googleProvider, appleProvider: $appleProvider)';
+    return 'User(id: $id, email: $email, isEmailVerified: $isEmailVerified, passwordProvider: $passwordProvider, googleProvider: $googleProvider, appleProvider: $appleProvider, workspaces: $workspaces)';
   }
 
   @override
@@ -283,7 +301,10 @@ class _$_User extends _User {
                     .equals(other.googleProvider, googleProvider)) &&
             (identical(other.appleProvider, appleProvider) ||
                 const DeepCollectionEquality()
-                    .equals(other.appleProvider, appleProvider)));
+                    .equals(other.appleProvider, appleProvider)) &&
+            (identical(other.workspaces, workspaces) ||
+                const DeepCollectionEquality()
+                    .equals(other.workspaces, workspaces)));
   }
 
   @override
@@ -294,7 +315,8 @@ class _$_User extends _User {
       const DeepCollectionEquality().hash(isEmailVerified) ^
       const DeepCollectionEquality().hash(passwordProvider) ^
       const DeepCollectionEquality().hash(googleProvider) ^
-      const DeepCollectionEquality().hash(appleProvider);
+      const DeepCollectionEquality().hash(appleProvider) ^
+      const DeepCollectionEquality().hash(workspaces);
 
   @JsonKey(ignore: true)
   @override
@@ -309,7 +331,8 @@ abstract class _User extends User {
       required bool isEmailVerified,
       required PasswordProvider? passwordProvider,
       required GoogleProvider? googleProvider,
-      required AppleProvider? appleProvider}) = _$_User;
+      required AppleProvider? appleProvider,
+      required List<Workspace> workspaces}) = _$_User;
   const _User._() : super._();
 
   @override
@@ -324,6 +347,8 @@ abstract class _User extends User {
   GoogleProvider? get googleProvider => throw _privateConstructorUsedError;
   @override
   AppleProvider? get appleProvider => throw _privateConstructorUsedError;
+  @override
+  List<Workspace> get workspaces => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;

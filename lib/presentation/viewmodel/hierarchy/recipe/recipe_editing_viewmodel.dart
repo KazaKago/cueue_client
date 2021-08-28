@@ -17,16 +17,11 @@ import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
 class RecipeEditingViewModel with ChangeNotifier {
-  RecipeEditingViewModel(final FollowTagsUseCase followTagsUseCase, this._refreshTagsUseCase, this._createRecipeUseCase, this._updateRecipeUseCase, this._deleteRecipeUseCase, this._createContentUseCase) {
-    _compositeSubscription.add(followTagsUseCase().listen((state) {
-      this.state = state.when(
-        loading: (content) => const RecipeEditingState.loading(),
-        completed: (content, next, prev) => RecipeEditingState.completed(content),
-        error: (exception) => RecipeEditingState.error(exception),
-      );
-    }));
+  RecipeEditingViewModel(this._followTagsUseCase, this._refreshTagsUseCase, this._createRecipeUseCase, this._updateRecipeUseCase, this._deleteRecipeUseCase, this._createContentUseCase) {
+    _follow();
   }
 
+  final FollowTagsUseCase _followTagsUseCase;
   final RefreshTagsUseCase _refreshTagsUseCase;
   final CreateRecipeUseCase _createRecipeUseCase;
   final UpdateRecipeUseCase _updateRecipeUseCase;
@@ -78,6 +73,17 @@ class RecipeEditingViewModel with ChangeNotifier {
   set isCreatingImage(final bool isCreatingImage) {
     _isCreatingImage = isCreatingImage;
     notifyListeners();
+  }
+
+  Future<void> _follow() async {
+    final followTagsUseCase = await _followTagsUseCase();
+    _compositeSubscription.add(followTagsUseCase.listen((state) {
+      this.state = state.when(
+        loading: (content) => const RecipeEditingState.loading(),
+        completed: (content, next, prev) => RecipeEditingState.completed(content),
+        error: (exception) => RecipeEditingState.error(exception),
+      );
+    }));
   }
 
   Future<void> refresh() async {

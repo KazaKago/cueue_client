@@ -5,9 +5,9 @@ import 'package:cueue/domain/model/hierarchy/menu/menu_summary.dart';
 import 'package:store_flowable/store_flowable_core.dart';
 
 abstract class MenuRepository {
-  LoadingStateStream<List<MenuSummary>> followAllData();
+  Future<LoadingStateStream<List<MenuSummary>>> followAllData();
 
-  LoadingStateStream<Menu> followData(final MenuId menuId);
+  Future<LoadingStateStream<Menu>> followData(final MenuId menuId);
 
   Future<void> refreshAllData();
 

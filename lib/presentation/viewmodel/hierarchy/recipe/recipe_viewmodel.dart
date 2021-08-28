@@ -10,35 +10,13 @@ import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
 class RecipeViewModel with ChangeNotifier {
-  RecipeViewModel(final FollowAllRecipesUseCase followAllRecipesUseCase, final FollowTaggedRecipesUseCase followTaggedRecipesUseCase, this._refreshAllRecipesUseCase, this._refreshTaggedRecipesUseCase, this._requestAdditionalAllRecipesUseCase, this._requestAdditionalTaggedRecipesUseCase, this._tagId) {
-    if (_tagId != null) {
-      _compositeSubscription.add(followTaggedRecipesUseCase(_tagId!).listen((state) {
-        this.state = state.when(
-          loading: (content) => (content != null) ? RecipeState.loadingWithValue(content) : const RecipeState.loading(),
-          completed: (content, next, prev) => next.when(
-            fixed: (_) => RecipeState.completed(content),
-            loading: () => RecipeState.loadingWithValue(content),
-            error: (exception) => RecipeState.errorWithValue(content, exception),
-          ),
-          error: (exception) => RecipeState.error(exception),
-        );
-      }));
-    } else {
-      _compositeSubscription.add(followAllRecipesUseCase().listen((state) {
-        this.state = state.when(
-          loading: (content) => (content != null) ? RecipeState.loadingWithValue(content) : const RecipeState.loading(),
-          completed: (content, next, prev) => next.when(
-            fixed: (_) => RecipeState.completed(content),
-            loading: () => RecipeState.loadingWithValue(content),
-            error: (exception) => RecipeState.errorWithValue(content, exception),
-          ),
-          error: (exception) => RecipeState.error(exception),
-        );
-      }));
-    }
+  RecipeViewModel(this._followAllRecipesUseCase, this._followTaggedRecipesUseCase, this._refreshAllRecipesUseCase, this._refreshTaggedRecipesUseCase, this._requestAdditionalAllRecipesUseCase, this._requestAdditionalTaggedRecipesUseCase, this._tagId) {
+    _follow();
   }
 
   final TagId? _tagId;
+  final FollowAllRecipesUseCase _followAllRecipesUseCase;
+  final FollowTaggedRecipesUseCase _followTaggedRecipesUseCase;
   final RefreshAllRecipesUseCase _refreshAllRecipesUseCase;
   final RefreshTaggedRecipesUseCase _refreshTaggedRecipesUseCase;
   final RequestAdditionalAllRecipesUseCase _requestAdditionalAllRecipesUseCase;
@@ -57,6 +35,36 @@ class RecipeViewModel with ChangeNotifier {
   set state(final RecipeState state) {
     _state = state;
     notifyListeners();
+  }
+
+  Future<void> _follow() async {
+    if (_tagId != null) {
+      final followTaggedRecipesUseCase = await _followTaggedRecipesUseCase(_tagId!);
+      _compositeSubscription.add(followTaggedRecipesUseCase.listen((state) {
+        this.state = state.when(
+          loading: (content) => (content != null) ? RecipeState.loadingWithValue(content) : const RecipeState.loading(),
+          completed: (content, next, prev) => next.when(
+            fixed: (_) => RecipeState.completed(content),
+            loading: () => RecipeState.loadingWithValue(content),
+            error: (exception) => RecipeState.errorWithValue(content, exception),
+          ),
+          error: (exception) => RecipeState.error(exception),
+        );
+      }));
+    } else {
+      final followAllRecipesUseCase = await _followAllRecipesUseCase();
+      _compositeSubscription.add(followAllRecipesUseCase.listen((state) {
+        this.state = state.when(
+          loading: (content) => (content != null) ? RecipeState.loadingWithValue(content) : const RecipeState.loading(),
+          completed: (content, next, prev) => next.when(
+            fixed: (_) => RecipeState.completed(content),
+            loading: () => RecipeState.loadingWithValue(content),
+            error: (exception) => RecipeState.errorWithValue(content, exception),
+          ),
+          error: (exception) => RecipeState.error(exception),
+        );
+      }));
+    }
   }
 
   Future<void> refresh() async {

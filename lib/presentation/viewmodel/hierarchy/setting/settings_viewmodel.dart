@@ -18,16 +18,11 @@ import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
 class SettingsViewModel with ChangeNotifier {
-  SettingsViewModel(final FollowUserUseCase followUserUseCase, this._refreshUserUseCase, this._updateEmailUseCase, this._updatePasswordUseCase, this._linkWithGoogleUseCase, this._linkWithAppleUseCase, this._unlinkWithGoogleUseCase, this._unlinkWithAppleUseCase, this._signOutUseCase, this._sendEmailVerificationUseCase) {
-    _compositeSubscription.add(followUserUseCase().listen((state) {
-      this.state = state.when(
-        loading: (user) => (user != null) ? SettingsState.completed(user) : const SettingsState.loading(),
-        completed: (user, next, prev) => SettingsState.completed(user),
-        error: (exception) => SettingsState.error(exception),
-      );
-    }));
+  SettingsViewModel(this._followUserUseCase, this._refreshUserUseCase, this._updateEmailUseCase, this._updatePasswordUseCase, this._linkWithGoogleUseCase, this._linkWithAppleUseCase, this._unlinkWithGoogleUseCase, this._unlinkWithAppleUseCase, this._signOutUseCase, this._sendEmailVerificationUseCase) {
+    _follow();
   }
 
+  final FollowUserUseCase _followUserUseCase;
   final RefreshUserUseCase _refreshUserUseCase;
   final UpdateEmailUseCase _updateEmailUseCase;
   final UpdatePasswordUseCase _updatePasswordUseCase;
@@ -83,6 +78,17 @@ class SettingsViewModel with ChangeNotifier {
   set toast(final String? toast) {
     _toast = toast;
     notifyListeners();
+  }
+
+  Future<void> _follow() async {
+    final followUserUseCase = await _followUserUseCase();
+    _compositeSubscription.add(followUserUseCase.listen((state) {
+      this.state = state.when(
+        loading: (user) => (user != null) ? SettingsState.completed(user) : const SettingsState.loading(),
+        completed: (user, next, prev) => SettingsState.completed(user),
+        error: (exception) => SettingsState.error(exception),
+      );
+    }));
   }
 
   Future<void> updateEmail(final String email) async {

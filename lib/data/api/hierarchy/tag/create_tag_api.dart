@@ -9,9 +9,9 @@ class CreateTagApi {
 
   final AuthorizedApiRequester _requester;
 
-  Future<TagResponse> execute(final TagRequest request) async {
+  Future<TagResponse> execute(final int workspaceId, final TagRequest request) async {
     try {
-      final response = await _requester.create().post<Map<String, dynamic>>('/tags', data: request);
+      final response = await _requester.create().post<Map<String, dynamic>>('/$workspaceId/tags', data: request);
       return TagResponse.fromJson(response.data!);
     } on DioError catch (dioError) {
       throw dioError.parseException();

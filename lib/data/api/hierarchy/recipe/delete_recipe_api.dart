@@ -7,9 +7,9 @@ class DeleteRecipeApi {
 
   final AuthorizedApiRequester _requester;
 
-  Future<void> execute(final int recipeId) async {
+  Future<void> execute(final int workspaceId, final int recipeId) async {
     try {
-      await _requester.create().delete<void>('/recipes/$recipeId');
+      await _requester.create().delete<void>('/$workspaceId/recipes/$recipeId');
     } on DioError catch (dioError) {
       throw dioError.parseException();
     }

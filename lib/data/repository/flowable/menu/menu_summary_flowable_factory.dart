@@ -1,14 +1,19 @@
 import 'package:cueue/data/api/hierarchy/menu/get_menus_api.dart';
+import 'package:cueue/data/api/hierarchy/user/get_user_api.dart';
 import 'package:cueue/data/mapper/hierarchy/menu/menu_summary_response_mapper.dart';
+import 'package:cueue/data/mapper/hierarchy/user/user_response_mapper.dart';
 import 'package:cueue/data/memory/hierarchy/menu/menu_cache.dart';
 import 'package:cueue/data/memory/hierarchy/menu/menu_summary_state_manager.dart';
+import 'package:cueue/data/repository/flowable/user/user_flowable_factory.dart';
 import 'package:cueue/domain/model/hierarchy/menu/menu_summary.dart';
 import 'package:store_flowable/store_flowable.dart';
 
 class MenuSummaryFlowableFactory implements PaginationStoreFlowableFactory<void, List<MenuSummary>> {
-  MenuSummaryFlowableFactory(this._getMenusApi, this._menuResponseMapper) : super();
+  MenuSummaryFlowableFactory(this._getUserApi, this._getMenusApi, this._userResponseMapper, this._menuResponseMapper) : super();
 
+  final GetUserApi _getUserApi;
   final GetMenusApi _getMenusApi;
+  final UserResponseMapper _userResponseMapper;
   final MenuSummaryResponseMapper _menuResponseMapper;
 
   @override
@@ -35,7 +40,8 @@ class MenuSummaryFlowableFactory implements PaginationStoreFlowableFactory<void,
 
   @override
   Future<Fetched<List<MenuSummary>>> fetchDataFromOrigin() async {
-    final response = await _getMenusApi.execute(afterId: null);
+    final user = await UserFlowableFactory(_getUserApi, _userResponseMapper).create().requireData();
+    final response = await _getMenusApi.execute(user.currentWorkspace.id.value, afterId: null);
     final recipes = response.map(_menuResponseMapper.map).toList();
     return Fetched(
       data: recipes,
@@ -45,7 +51,8 @@ class MenuSummaryFlowableFactory implements PaginationStoreFlowableFactory<void,
 
   @override
   Future<Fetched<List<MenuSummary>>> fetchNextDataFromOrigin(final String nextKey) async {
-    final response = await _getMenusApi.execute(afterId: int.parse(nextKey));
+    final user = await UserFlowableFactory(_getUserApi, _userResponseMapper).create().requireData();
+    final response = await _getMenusApi.execute(user.currentWorkspace.id.value, afterId: int.parse(nextKey));
     final recipes = response.map(_menuResponseMapper.map).toList();
     return Fetched(
       data: recipes,

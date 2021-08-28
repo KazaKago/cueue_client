@@ -9,7 +9,7 @@ class FollowTagsUseCaseImpl implements FollowTagsUseCase {
   final TagRepository _tagsRepository;
 
   @override
-  LoadingStateStream<List<Tag>> call() {
+  Future<LoadingStateStream<List<Tag>>> call() {
     return _tagsRepository.follow();
   }
 }

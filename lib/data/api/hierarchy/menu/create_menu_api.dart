@@ -9,9 +9,9 @@ class CreateMenuApi {
 
   final AuthorizedApiRequester _requester;
 
-  Future<MenuResponse> execute(final MenuRequest request) async {
+  Future<MenuResponse> execute(final int workspaceId, final MenuRequest request) async {
     try {
-      final response = await _requester.create().post<Map<String, dynamic>>('/menus', data: request);
+      final response = await _requester.create().post<Map<String, dynamic>>('/$workspaceId/menus', data: request);
       return MenuResponse.fromJson(response.data!);
     } on DioError catch (dioError) {
       throw dioError.parseException();

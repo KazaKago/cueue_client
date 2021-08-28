@@ -9,7 +9,7 @@ class FollowUserUseCaseImpl implements FollowUserUseCase {
   final UserRepository _userRepository;
 
   @override
-  LoadingStateStream<User> call() {
+  Future<LoadingStateStream<User>> call() {
     return _userRepository.follow();
   }
 }

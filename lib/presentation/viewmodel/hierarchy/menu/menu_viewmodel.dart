@@ -6,20 +6,11 @@ import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
 class MenuViewModel with ChangeNotifier {
-  MenuViewModel(final FollowAllMenusUseCase followMenusUseCase, this._refreshMenusUseCase, this._requestAdditionMenusUseCase) {
-    _compositeSubscription.add(followMenusUseCase().listen((state) {
-      this.state = state.when(
-        loading: (content) => (content != null) ? MenuState.loadingWithValue(content.createDateSplit()) : const MenuState.loading(),
-        completed: (content, next, prev) => next.when(
-          fixed: (_) => MenuState.completed(content.createDateSplit()),
-          loading: () => MenuState.loadingWithValue(content.createDateSplit()),
-          error: (exception) => MenuState.errorWithValue(content.createDateSplit(), exception),
-        ),
-        error: (exception) => MenuState.error(exception),
-      );
-    }));
+  MenuViewModel(this._followMenusUseCase, this._refreshMenusUseCase, this._requestAdditionMenusUseCase) {
+    _follow();
   }
 
+  final FollowAllMenusUseCase _followMenusUseCase;
   final RefreshAllMenusUseCase _refreshMenusUseCase;
   final RequestAdditionalAllMenusUseCase _requestAdditionMenusUseCase;
   final CompositeSubscription _compositeSubscription = CompositeSubscription();
@@ -36,6 +27,21 @@ class MenuViewModel with ChangeNotifier {
   set state(final MenuState state) {
     _state = state;
     notifyListeners();
+  }
+
+  Future<void> _follow() async {
+    final followMenusUseCase = await _followMenusUseCase();
+    _compositeSubscription.add(followMenusUseCase.listen((state) {
+      this.state = state.when(
+        loading: (content) => (content != null) ? MenuState.loadingWithValue(content.createDateSplit()) : const MenuState.loading(),
+        completed: (content, next, prev) => next.when(
+          fixed: (_) => MenuState.completed(content.createDateSplit()),
+          loading: () => MenuState.loadingWithValue(content.createDateSplit()),
+          error: (exception) => MenuState.errorWithValue(content.createDateSplit(), exception),
+        ),
+        error: (exception) => MenuState.error(exception),
+      );
+    }));
   }
 
   Future<void> refresh() async {
