@@ -11,10 +11,12 @@ import 'package:cueue/presentation/view/hierarchy/auth/authorizer/apple_authoriz
 import 'package:cueue/presentation/view/hierarchy/auth/authorizer/google_authorizer.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/about_page.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/privacy_policy_url.dart';
+import 'package:cueue/presentation/view/hierarchy/setting/settings_result_extension.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/terms_of_service_url.dart';
 import 'package:cueue/presentation/view/hierarchy/welcome/welcome_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/unit.dart';
+import 'package:cueue/presentation/viewmodel/hierarchy/setting/settings_result.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -37,9 +39,9 @@ class SettingsPage extends HookConsumerWidget {
         if (exception != null) _showErrorDialog(context, ref, exception);
         ref.read(settingsViewModelProvider).exception = null;
       }))
-      ..listen(settingsViewModelProvider.select((viewModel) => viewModel.toast), ((final String? toast) {
-        if (toast != null) FriedToast(context, toast).show();
-        ref.read(settingsViewModelProvider).toast = null;
+      ..listen(settingsViewModelProvider.select((viewModel) => viewModel.completion), ((final SettingResult? result) {
+        if (result != null) FriedToast(context, result.toFormattedString(context)).show();
+        ref.read(settingsViewModelProvider).completion = null;
       }))
       ..listen(settingsViewModelProvider.select((viewModel) => viewModel.isLoading), ((final bool isLoading) {
         isLoading ? EasyLoading.show() : EasyLoading.dismiss();

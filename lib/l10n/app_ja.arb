@@ -235,5 +235,10 @@
   "recipeCreatedAt": "レシピの作成日時",
   "recipeUpdatedAt": "レシピの更新日時",
   "useRecipeToMenu": "このレシピでこんだてを立てる",
-  "error": "エラー"
+  "error": "エラー",
+  "linkedWithGoogle": "Googleと\nアカウント連携しました",
+  "linkedWithApple": "Appleと\nアカウント連携しました",
+  "unlinkedWithGoogle": "Googleとの\nアカウント連携を解除しました",
+  "unlinkedWithApple": "Appleとの\nアカウント連携を解除しました",
+  "sentEmailVerification": "入力されたアドレスへ\nへ認証メールを送信しました"
 }

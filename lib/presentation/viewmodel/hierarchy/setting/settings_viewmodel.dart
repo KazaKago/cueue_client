@@ -13,6 +13,7 @@ import 'package:cueue/domain/usecase/hierarchy/user/send_email_verification_usec
 import 'package:cueue/domain/usecase/hierarchy/user/update_email_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/update_password_usecase.dart';
 import 'package:cueue/presentation/viewmodel/global/unit.dart';
+import 'package:cueue/presentation/viewmodel/hierarchy/setting/settings_result.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/setting/settings_state.dart';
 import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
@@ -34,10 +35,10 @@ class SettingsViewModel with ChangeNotifier {
   final SendEmailVerificationUseCase _sendEmailVerificationUseCase;
   final CompositeSubscription _compositeSubscription = CompositeSubscription();
   SettingsState _state = const SettingsState.loading();
+  SettingResult? _completion;
   bool _isLoading = false;
   Unit? _replaceWelcomePage;
   Exception? _exception;
-  String? _toast;
 
   @override
   void dispose() {
@@ -49,6 +50,13 @@ class SettingsViewModel with ChangeNotifier {
 
   set state(final SettingsState state) {
     _state = state;
+    notifyListeners();
+  }
+
+  SettingResult? get completion => _completion;
+
+  set completion(final SettingResult? completion) {
+    _completion = completion;
     notifyListeners();
   }
 
@@ -73,13 +81,6 @@ class SettingsViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  String? get toast => _toast;
-
-  set toast(final String? toast) {
-    _toast = toast;
-    notifyListeners();
-  }
-
   Future<void> _follow() async {
     final followUserUseCase = await _followUserUseCase();
     _compositeSubscription.add(followUserUseCase.listen((state) {
@@ -95,7 +96,7 @@ class SettingsViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _updateEmailUseCase(Email(email));
-      toast = 'メールアドレスを更新しました';
+      completion = SettingResult.updatedEmail;
     } on Exception catch (exception) {
       this.exception = exception;
     }
@@ -106,7 +107,7 @@ class SettingsViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _updatePasswordUseCase(Password.validateMatch(password, reInputPassword));
-      toast = 'パスワードを更新しました';
+      completion = SettingResult.updatedPassword;
     } on Exception catch (exception) {
       this.exception = exception;
     }
@@ -117,7 +118,7 @@ class SettingsViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _linkWithGoogleUseCase(authInfo);
-      toast = 'Googleと\nアカウント連携しました';
+      completion = SettingResult.linkedWithGoogle;
     } on Exception catch (exception) {
       this.exception = exception;
     }
@@ -128,7 +129,7 @@ class SettingsViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _linkWithAppleUseCase(authInfo);
-      toast = 'Appleと\nアカウント連携しました';
+      completion = SettingResult.linkedWithApple;
     } on Exception catch (exception) {
       this.exception = exception;
     }
@@ -139,7 +140,7 @@ class SettingsViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _unlinkWithGoogleUseCase();
-      toast = 'Googleとの\nアカウント連携を解除しました';
+      completion = SettingResult.unlinkedWithGoogle;
     } on Exception catch (exception) {
       this.exception = exception;
     }
@@ -150,7 +151,7 @@ class SettingsViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _unlinkWithAppleUseCase();
-      toast = 'Appleとの\nアカウント連携を解除しました';
+      completion = SettingResult.unlinkedWithApple;
     } on Exception catch (exception) {
       this.exception = exception;
     }
@@ -176,7 +177,7 @@ class SettingsViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _sendEmailVerificationUseCase();
-      toast = '${email.value}\nへ認証メールを送信しました';
+      completion = SettingResult.sentEmailVerification;
     } on Exception catch (exception) {
       this.exception = exception;
     }
