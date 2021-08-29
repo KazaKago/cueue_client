@@ -7,7 +7,7 @@ import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/presentation/view/global/extension/date_time_extension.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
 import 'package:cueue/presentation/view/global/widget/loading_list_item.dart';
-import 'package:cueue/presentation/view/global/widget/styled_card_widget.dart';
+import 'package:cueue/presentation/view/global/widget/titled_card.dart';
 import 'package:cueue/presentation/view/hierarchy/menu/menu_editing_page.dart';
 import 'package:cueue/presentation/view/hierarchy/photo/photo_page.dart';
 import 'package:cueue/presentation/view/hierarchy/recipe/recipe_editing_page.dart';

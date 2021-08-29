@@ -4,7 +4,7 @@ import 'package:cueue/domain/model/hierarchy/menu/menu_summary.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_summary.dart';
 import 'package:cueue/presentation/view/global/extension/date_time_extension.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
-import 'package:cueue/presentation/view/global/widget/styled_card_widget.dart';
+import 'package:cueue/presentation/view/global/widget/titled_card.dart';
 import 'package:cueue/presentation/view/hierarchy/menu/menu_editing_page.dart';
 import 'package:cueue/presentation/view/hierarchy/menu/time_frame_extension.dart';
 import 'package:cueue/presentation/view/hierarchy/recipe/recipe_detail_page.dart';
