@@ -7,6 +7,7 @@ import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/presentation/view/global/extension/date_time_extension.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
 import 'package:cueue/presentation/view/global/widget/loading_list_item.dart';
+import 'package:cueue/presentation/view/global/widget/styled_card_widget.dart';
 import 'package:cueue/presentation/view/hierarchy/menu/menu_editing_page.dart';
 import 'package:cueue/presentation/view/hierarchy/photo/photo_page.dart';
 import 'package:cueue/presentation/view/hierarchy/recipe/recipe_editing_page.dart';
@@ -250,26 +251,13 @@ class RecipeDetailPage extends HookConsumerWidget {
     }
   }
 
-  Widget _buildDescription(final BuildContext context, final WidgetRef ref, final String description) {
-    if (description.isNotEmpty) {
-      return Padding(
-        padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-        child: Text(description),
-      );
-    } else {
-      return Container();
-    }
-  }
-
   Widget _buildTagChips(final BuildContext context, final WidgetRef ref, final List<Tag> tags) {
     if (tags.isNotEmpty) {
       return Padding(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
         child: Wrap(
           spacing: 12,
-          children: tags.map((e) {
-            return Chip(label: Text(e.name));
-          }).toList(),
+          children: tags.map((e) => Chip(label: Text(e.name))).toList(),
         ),
       );
     } else {
@@ -277,54 +265,55 @@ class RecipeDetailPage extends HookConsumerWidget {
     }
   }
 
+  Widget _buildDescription(final BuildContext context, final WidgetRef ref, final String description) {
+    return TitledCard(
+      margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
+      title: AppLocalizations.of(context)!.description,
+      child: Text(description),
+    );
+  }
+
   Widget _buildCount(final BuildContext context, final WidgetRef ref, final int cookingCount) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(AppLocalizations.of(context)!.cookingCount, style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold)),
-        Text(AppLocalizations.of(context)!.countWith(cookingCount.toString()), style: Theme.of(context).textTheme.subtitle2),
-      ]),
+    return TitledCard(
+      margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
+      title: AppLocalizations.of(context)!.cookingCount,
+      child: Text(AppLocalizations.of(context)!.countWith(cookingCount.toString())),
     );
   }
 
   Widget _buildHistory(final BuildContext context, final WidgetRef ref, final List<DateTime> cookingHistories) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-              Text(AppLocalizations.of(context)!.cookingHistory, style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold)),
-            ] +
-            cookingHistories.map((date) {
-              return Text(date.toDateString(context), style: Theme.of(context).textTheme.subtitle2);
-            }).toList(),
-      ),
-    );
+    if (cookingHistories.isNotEmpty) {
+      var index = 0;
+      return TitledCard.list(
+        margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
+        title: AppLocalizations.of(context)!.cookingHistory,
+        children: cookingHistories.map((date) {
+          index++;
+          return Text('$index. ${date.toDateString(context)}');
+        }).toList(),
+      );
+    } else {
+      return TitledCard(
+        margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
+        title: AppLocalizations.of(context)!.cookingHistory,
+        child: Text(AppLocalizations.of(context)!.notYetCooking),
+      );
+    }
   }
 
   Widget _buildCreatedAt(final BuildContext context, final WidgetRef ref, final DateTime createdAt) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(AppLocalizations.of(context)!.recipeCreatedAt, style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold)),
-          Text(createdAt.toDateTimeString(context), style: Theme.of(context).textTheme.subtitle2),
-        ],
-      ),
+    return TitledCard(
+      margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
+      title: AppLocalizations.of(context)!.recipeCreatedAt,
+      child: Text(createdAt.toDateTimeString(context)),
     );
   }
 
   Widget _buildUpdatedAt(final BuildContext context, final WidgetRef ref, final DateTime updatedAt) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(AppLocalizations.of(context)!.recipeUpdatedAt, style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold)),
-          Text(updatedAt.toDateTimeString(context), style: Theme.of(context).textTheme.subtitle2),
-        ],
-      ),
+    return TitledCard(
+      margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
+      title: AppLocalizations.of(context)!.recipeUpdatedAt,
+      child: Text(updatedAt.toDateTimeString(context)),
     );
   }
 
