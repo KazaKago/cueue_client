@@ -137,7 +137,7 @@ class RecipeDetailPage extends HookConsumerWidget {
   Widget _buildTitle(final BuildContext context, final WidgetRef ref, final String title) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-      child: Text(title, style: Theme.of(context).textTheme.headline5),
+      child: Text(title, style: Theme.of(context).textTheme.headline5!.copyWith(fontWeight: FontWeight.bold)),
     );
   }
 
@@ -281,7 +281,7 @@ class RecipeDetailPage extends HookConsumerWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(AppLocalizations.of(context)!.cookingCount, style: Theme.of(context).textTheme.subtitle1),
+        Text(AppLocalizations.of(context)!.cookingCount, style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold)),
         Text(AppLocalizations.of(context)!.countWith(cookingCount.toString()), style: Theme.of(context).textTheme.subtitle2),
       ]),
     );
@@ -293,7 +293,7 @@ class RecipeDetailPage extends HookConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-              Text(AppLocalizations.of(context)!.cookingHistory, style: Theme.of(context).textTheme.subtitle1),
+              Text(AppLocalizations.of(context)!.cookingHistory, style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold)),
             ] +
             cookingHistories.map((date) {
               return Text(date.toDateString(context), style: Theme.of(context).textTheme.subtitle2);
@@ -308,7 +308,7 @@ class RecipeDetailPage extends HookConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(AppLocalizations.of(context)!.recipeCreatedAt, style: Theme.of(context).textTheme.subtitle1),
+          Text(AppLocalizations.of(context)!.recipeCreatedAt, style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold)),
           Text(createdAt.toDateTimeString(context), style: Theme.of(context).textTheme.subtitle2),
         ],
       ),
@@ -321,7 +321,7 @@ class RecipeDetailPage extends HookConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(AppLocalizations.of(context)!.recipeUpdatedAt, style: Theme.of(context).textTheme.subtitle1),
+          Text(AppLocalizations.of(context)!.recipeUpdatedAt, style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold)),
           Text(updatedAt.toDateTimeString(context), style: Theme.of(context).textTheme.subtitle2),
         ],
       ),

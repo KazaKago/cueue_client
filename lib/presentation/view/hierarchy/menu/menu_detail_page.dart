@@ -5,6 +5,7 @@ import 'package:cueue/domain/model/hierarchy/recipe/recipe_summary.dart';
 import 'package:cueue/presentation/view/global/extension/date_time_extension.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
 import 'package:cueue/presentation/view/hierarchy/menu/menu_editing_page.dart';
+import 'package:cueue/presentation/view/hierarchy/menu/time_frame_extension.dart';
 import 'package:cueue/presentation/view/hierarchy/recipe/recipe_detail_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/editing_result.dart';
@@ -36,9 +37,11 @@ class MenuDetailPage extends HookConsumerWidget {
       body: RefreshIndicator(
         onRefresh: viewModel.refresh,
         child: ListView(
-          children: menu.recipes.map((recipe) {
-            return _buildMenuItem(context, ref, recipe);
-          }).toList(),
+          children: [
+            _buildDateItem(context, ref, menu),
+            _buildMenuItem(context, ref, menu),
+            _buildMemoItem(context, ref, menu),
+          ],
         ),
       ),
     );
@@ -60,7 +63,11 @@ class MenuDetailPage extends HookConsumerWidget {
       body: RefreshIndicator(
         onRefresh: viewModel.refresh,
         child: ListView(
-          children: menu.recipes.map((recipe) => _buildMenuItem(context, ref, recipe)).toList(),
+          children: [
+            _buildDateItem(context, ref, menu),
+            _buildMenuItem(context, ref, menu),
+            _buildMemoItem(context, ref, menu),
+          ],
         ),
       ),
     );
@@ -76,12 +83,41 @@ class MenuDetailPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildMenuItem(final BuildContext context, final WidgetRef ref, final RecipeSummary recipe) {
-    final image = recipe.image;
-    return ListTile(
-      leading: (image != null) ? CircleAvatar(backgroundImage: CachedNetworkImageProvider(image.url.toString())) : const CircleAvatar(),
-      title: Text(recipe.title),
-      onTap: () => _goRecipeDetail(context, recipe),
+  Widget _buildDateItem(final BuildContext context, final WidgetRef ref, final MenuSummary menu) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+      child: Row(children: [
+        Text(menu.date.toDateString(context), style: Theme.of(context).textTheme.subtitle1),
+        const SizedBox(width: 8),
+        Text(menu.timeFrame.toFormattedString(context), style: Theme.of(context).textTheme.subtitle1),
+      ]),
+    );
+  }
+
+  Widget _buildMenuItem(final BuildContext context, final WidgetRef ref, final MenuSummary menu) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+            ListTile(title: Text(AppLocalizations.of(context)!.cookingMenu, style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold))),
+          ] +
+          menu.recipes.map((recipe) {
+            final image = recipe.image;
+            return ListTile(
+              leading: (image != null) ? CircleAvatar(backgroundImage: CachedNetworkImageProvider(image.url.toString())) : const CircleAvatar(),
+              title: Text(recipe.title),
+              onTap: () => _goRecipeDetail(context, recipe),
+            );
+          }).toList(),
+    );
+  }
+
+  Widget _buildMemoItem(final BuildContext context, final WidgetRef ref, final MenuSummary menu) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ListTile(title: Text(AppLocalizations.of(context)!.memo, style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold))),
+        ListTile(title: Text(menu.memo)),
+      ],
     );
   }
 
