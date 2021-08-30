@@ -27,9 +27,9 @@ class RecipeEditingPage extends HookConsumerWidget {
   Widget build(final BuildContext context, final WidgetRef ref) {
     final images = useState(recipe?.images.toList() ?? []);
     final selectedTagIds = useState(recipe?.tags.map((e) => e.id).toList() ?? []);
-    final recipeTitleEditingController = useTextEditingController()..text = recipe?.title ?? '';
-    final recipeUrlEditingController = useTextEditingController()..text = recipe?.url?.toString() ?? '';
-    final recipeDescriptionEditingController = useTextEditingController()..text = recipe?.description ?? '';
+    final recipeTitleEditingController = useTextEditingController(text: recipe?.title ?? '');
+    final recipeUrlEditingController = useTextEditingController(text: recipe?.url?.toString() ?? '');
+    final recipeDescriptionEditingController = useTextEditingController(text: recipe?.description ?? '');
     ref
       ..listen(recipeEditingViewModelProvider.select((viewModel) => viewModel.isLoading), ((final bool isLoading) {
         isLoading ? EasyLoading.show() : EasyLoading.dismiss();

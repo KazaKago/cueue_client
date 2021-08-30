@@ -42,7 +42,7 @@ class MenuEditingPage extends HookConsumerWidget {
     final selectedDateTime = useState(menu?.date ?? DateTime.now());
     final selectedRecipes = useState(menu?.recipes.toList() ?? recipes ?? []);
     final selectedTimeFrame = useState(menu?.timeFrame ?? TimeFrame.dinner);
-    final menuMemoEditingController = useTextEditingController()..text = menu?.memo ?? '';
+    final menuMemoEditingController = useTextEditingController(text: menu?.memo ?? '');
     ref
       ..listen(menuEditingViewModelProvider.select((viewModel) => viewModel.completion), (final EditingResult? completion) {
         if (completion != null) Navigator.of(context).pop(completion);
