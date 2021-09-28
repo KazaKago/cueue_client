@@ -1,7 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cueue/data/auth/hierarchy/google/google_provider_id.dart';
 import 'package:cueue/data/auth/hierarchy/signaturer.dart';
 import 'package:cueue/domain/model/hierarchy/auth/google_auth_info.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class GoogleSignaturer {
   const GoogleSignaturer();

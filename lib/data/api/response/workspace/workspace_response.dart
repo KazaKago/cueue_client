@@ -6,7 +6,9 @@ part 'workspace_response.g.dart';
 @freezed
 class WorkspaceResponse with _$WorkspaceResponse {
   const factory WorkspaceResponse({
+    // ignore: invalid_annotation_target
     @JsonKey(name: 'id') required final int id,
+    // ignore: invalid_annotation_target
     @JsonKey(name: 'name') required final String name,
   }) = _WorkspaceResponse;
 

@@ -45,6 +45,8 @@ class AppleAuthorizer {
           throw const AuthorizationFailedException();
         case AuthorizationErrorCode.unknown:
           throw const AuthorizationFailedException();
+        case AuthorizationErrorCode.notInteractive:
+          throw const AuthorizationFailedException();
       }
     }
   }

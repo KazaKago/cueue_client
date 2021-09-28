@@ -6,6 +6,7 @@ part 'content_request.g.dart';
 @freezed
 class ContentRequest with _$ContentRequest {
   const factory ContentRequest({
+    // ignore: invalid_annotation_target
     @JsonKey(name: 'data') required final String data,
   }) = _ContentRequest;
 

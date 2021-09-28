@@ -1,5 +1,6 @@
 import 'package:cueue/presentation/view/hierarchy/splash/splash_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -42,11 +43,20 @@ class CueueApp extends StatelessWidget {
     final isDark = colorScheme.brightness == Brightness.dark;
     return ThemeData(
       colorScheme: colorScheme,
+      primaryColor: colorScheme.primary,
       primaryColorBrightness: isDark ? Brightness.dark : Brightness.light /* Need for AppBar title & icon color. */,
-      accentColor: colorScheme.secondary /* Need for TabBar selected color, Maybe bug of Flutter. */,
       toggleableActiveColor: colorScheme.primary /* Need for Checkbox color on dark theme, Maybe bug of Flutter. */,
       appBarTheme: AppBarTheme(
+        foregroundColor: isDark ? Colors.white : Colors.black,
         backgroundColor: isDark ? Colors.grey.shade800 : Colors.grey.shade50,
+      ),
+      tabBarTheme: TabBarTheme(
+        indicator: UnderlineTabIndicator(
+          borderSide: BorderSide(
+            width: 2,
+            color: colorScheme.primary /* Need for TabBar selected color, Maybe bug of Flutter. */,
+          ),
+        ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
