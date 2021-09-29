@@ -39,3 +39,4 @@ fastlane/report.xml
 Runner/GoogleService-Info.plist
 Runner/GoogleService-Info-Staging.plist
 Runner/GoogleService-Info-Production.plist
+build/
