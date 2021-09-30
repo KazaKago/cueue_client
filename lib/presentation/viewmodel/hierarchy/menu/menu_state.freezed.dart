@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'menu_state.dart';
 
@@ -63,6 +64,16 @@ mixin _$MenuState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<DateSplitMenuList> menus)? loadingWithValue,
+    TResult Function(List<DateSplitMenuList> menus)? completed,
+    TResult Function(Exception error)? error,
+    TResult Function(List<DateSplitMenuList> menus, Exception error)?
+        errorWithValue,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<DateSplitMenuList> menus)? loadingWithValue,
@@ -80,6 +91,15 @@ mixin _$MenuState {
     required TResult Function(_Completed value) completed,
     required TResult Function(_Error value) error,
     required TResult Function(_ErrorWithValue value) errorWithValue,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadingWithValue value)? loadingWithValue,
+    TResult Function(_Completed value)? completed,
+    TResult Function(_Error value)? error,
+    TResult Function(_ErrorWithValue value)? errorWithValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -158,6 +178,19 @@ class _$_Loading implements _Loading {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<DateSplitMenuList> menus)? loadingWithValue,
+    TResult Function(List<DateSplitMenuList> menus)? completed,
+    TResult Function(Exception error)? error,
+    TResult Function(List<DateSplitMenuList> menus, Exception error)?
+        errorWithValue,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<DateSplitMenuList> menus)? loadingWithValue,
@@ -183,6 +216,18 @@ class _$_Loading implements _Loading {
     required TResult Function(_ErrorWithValue value) errorWithValue,
   }) {
     return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadingWithValue value)? loadingWithValue,
+    TResult Function(_Completed value)? completed,
+    TResult Function(_Error value)? error,
+    TResult Function(_ErrorWithValue value)? errorWithValue,
+  }) {
+    return loading?.call(this);
   }
 
   @override
@@ -283,6 +328,19 @@ class _$_LoadingWithValue implements _LoadingWithValue {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<DateSplitMenuList> menus)? loadingWithValue,
+    TResult Function(List<DateSplitMenuList> menus)? completed,
+    TResult Function(Exception error)? error,
+    TResult Function(List<DateSplitMenuList> menus, Exception error)?
+        errorWithValue,
+  }) {
+    return loadingWithValue?.call(menus);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<DateSplitMenuList> menus)? loadingWithValue,
@@ -308,6 +366,18 @@ class _$_LoadingWithValue implements _LoadingWithValue {
     required TResult Function(_ErrorWithValue value) errorWithValue,
   }) {
     return loadingWithValue(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadingWithValue value)? loadingWithValue,
+    TResult Function(_Completed value)? completed,
+    TResult Function(_Error value)? error,
+    TResult Function(_ErrorWithValue value)? errorWithValue,
+  }) {
+    return loadingWithValue?.call(this);
   }
 
   @override
@@ -412,6 +482,19 @@ class _$_Completed implements _Completed {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<DateSplitMenuList> menus)? loadingWithValue,
+    TResult Function(List<DateSplitMenuList> menus)? completed,
+    TResult Function(Exception error)? error,
+    TResult Function(List<DateSplitMenuList> menus, Exception error)?
+        errorWithValue,
+  }) {
+    return completed?.call(menus);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<DateSplitMenuList> menus)? loadingWithValue,
@@ -437,6 +520,18 @@ class _$_Completed implements _Completed {
     required TResult Function(_ErrorWithValue value) errorWithValue,
   }) {
     return completed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadingWithValue value)? loadingWithValue,
+    TResult Function(_Completed value)? completed,
+    TResult Function(_Error value)? error,
+    TResult Function(_ErrorWithValue value)? errorWithValue,
+  }) {
+    return completed?.call(this);
   }
 
   @override
@@ -539,6 +634,19 @@ class _$_Error implements _Error {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<DateSplitMenuList> menus)? loadingWithValue,
+    TResult Function(List<DateSplitMenuList> menus)? completed,
+    TResult Function(Exception error)? error,
+    TResult Function(List<DateSplitMenuList> menus, Exception error)?
+        errorWithValue,
+  }) {
+    return error?.call(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<DateSplitMenuList> menus)? loadingWithValue,
@@ -564,6 +672,18 @@ class _$_Error implements _Error {
     required TResult Function(_ErrorWithValue value) errorWithValue,
   }) {
     return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadingWithValue value)? loadingWithValue,
+    TResult Function(_Completed value)? completed,
+    TResult Function(_Error value)? error,
+    TResult Function(_ErrorWithValue value)? errorWithValue,
+  }) {
+    return error?.call(this);
   }
 
   @override
@@ -678,6 +798,19 @@ class _$_ErrorWithValue implements _ErrorWithValue {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<DateSplitMenuList> menus)? loadingWithValue,
+    TResult Function(List<DateSplitMenuList> menus)? completed,
+    TResult Function(Exception error)? error,
+    TResult Function(List<DateSplitMenuList> menus, Exception error)?
+        errorWithValue,
+  }) {
+    return errorWithValue?.call(menus, this.error);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<DateSplitMenuList> menus)? loadingWithValue,
@@ -703,6 +836,18 @@ class _$_ErrorWithValue implements _ErrorWithValue {
     required TResult Function(_ErrorWithValue value) errorWithValue,
   }) {
     return errorWithValue(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadingWithValue value)? loadingWithValue,
+    TResult Function(_Completed value)? completed,
+    TResult Function(_Error value)? error,
+    TResult Function(_ErrorWithValue value)? errorWithValue,
+  }) {
+    return errorWithValue?.call(this);
   }
 
   @override

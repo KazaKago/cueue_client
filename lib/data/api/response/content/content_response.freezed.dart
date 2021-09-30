@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'content_response.dart';
 
@@ -39,8 +40,10 @@ const $ContentResponse = _$ContentResponseTearOff();
 
 /// @nodoc
 mixin _$ContentResponse {
+// ignore: invalid_annotation_target
   @JsonKey(name: 'key')
-  String get key => throw _privateConstructorUsedError;
+  String get key =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'url')
   String get url => throw _privateConstructorUsedError;
 
@@ -134,12 +137,12 @@ class _$_ContentResponse implements _ContentResponse {
       @JsonKey(name: 'url') required this.url});
 
   factory _$_ContentResponse.fromJson(Map<String, dynamic> json) =>
-      _$_$_ContentResponseFromJson(json);
+      _$$_ContentResponseFromJson(json);
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'key')
   final String key;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'url')
   final String url;
 
@@ -171,7 +174,7 @@ class _$_ContentResponse implements _ContentResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ContentResponseToJson(this);
+    return _$$_ContentResponseToJson(this);
   }
 }
 
@@ -183,10 +186,10 @@ abstract class _ContentResponse implements ContentResponse {
   factory _ContentResponse.fromJson(Map<String, dynamic> json) =
       _$_ContentResponse.fromJson;
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'key')
   String get key => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'url')
   String get url => throw _privateConstructorUsedError;
   @override

@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'menu_request.dart';
 
@@ -43,12 +44,16 @@ const $MenuRequest = _$MenuRequestTearOff();
 
 /// @nodoc
 mixin _$MenuRequest {
+// ignore: invalid_annotation_target
   @JsonKey(name: 'memo')
-  String get memo => throw _privateConstructorUsedError;
+  String get memo =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'date')
-  String get date => throw _privateConstructorUsedError;
+  String get date =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'time_frame')
-  String get timeFrame => throw _privateConstructorUsedError;
+  String get timeFrame =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'recipe_ids')
   List<int> get recipeIds => throw _privateConstructorUsedError;
 
@@ -168,18 +173,18 @@ class _$_MenuRequest implements _MenuRequest {
       @JsonKey(name: 'recipe_ids') required this.recipeIds});
 
   factory _$_MenuRequest.fromJson(Map<String, dynamic> json) =>
-      _$_$_MenuRequestFromJson(json);
+      _$$_MenuRequestFromJson(json);
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'memo')
   final String memo;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'date')
   final String date;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'time_frame')
   final String timeFrame;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'recipe_ids')
   final List<int> recipeIds;
 
@@ -219,7 +224,7 @@ class _$_MenuRequest implements _MenuRequest {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_MenuRequestToJson(this);
+    return _$$_MenuRequestToJson(this);
   }
 }
 
@@ -234,16 +239,16 @@ abstract class _MenuRequest implements MenuRequest {
   factory _MenuRequest.fromJson(Map<String, dynamic> json) =
       _$_MenuRequest.fromJson;
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'memo')
   String get memo => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'date')
   String get date => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'time_frame')
   String get timeFrame => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'recipe_ids')
   List<int> get recipeIds => throw _privateConstructorUsedError;
   @override

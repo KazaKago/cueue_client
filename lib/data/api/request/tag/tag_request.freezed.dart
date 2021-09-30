@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'tag_request.dart';
 
@@ -36,6 +37,7 @@ const $TagRequest = _$TagRequestTearOff();
 
 /// @nodoc
 mixin _$TagRequest {
+// ignore: invalid_annotation_target
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
 
@@ -112,9 +114,9 @@ class _$_TagRequest implements _TagRequest {
   const _$_TagRequest({@JsonKey(name: 'name') required this.name});
 
   factory _$_TagRequest.fromJson(Map<String, dynamic> json) =>
-      _$_$_TagRequestFromJson(json);
+      _$$_TagRequestFromJson(json);
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
   final String name;
 
@@ -142,7 +144,7 @@ class _$_TagRequest implements _TagRequest {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_TagRequestToJson(this);
+    return _$$_TagRequestToJson(this);
   }
 }
 
@@ -153,7 +155,7 @@ abstract class _TagRequest implements TagRequest {
   factory _TagRequest.fromJson(Map<String, dynamic> json) =
       _$_TagRequest.fromJson;
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
   @override

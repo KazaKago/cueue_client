@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'recipe_response.dart';
 
@@ -65,24 +66,34 @@ const $RecipeResponse = _$RecipeResponseTearOff();
 
 /// @nodoc
 mixin _$RecipeResponse {
+// ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
+  int get id =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'title')
-  String get title => throw _privateConstructorUsedError;
+  String get title =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'description')
-  String get description => throw _privateConstructorUsedError;
+  String get description =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'url')
-  String? get url => throw _privateConstructorUsedError;
+  String? get url =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'images')
-  List<ContentResponse> get images => throw _privateConstructorUsedError;
+  List<ContentResponse> get images =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'tags')
-  List<TagResponse> get tags => throw _privateConstructorUsedError;
+  List<TagResponse> get tags =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'cooking_histories')
-  List<String> get cookingHistories => throw _privateConstructorUsedError;
+  List<String> get cookingHistories =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'cooking_count')
-  int get cookingCount => throw _privateConstructorUsedError;
+  int get cookingCount =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'created_at')
-  String get createdAt => throw _privateConstructorUsedError;
+  String get createdAt =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'updated_at')
   String get updatedAt => throw _privateConstructorUsedError;
 
@@ -282,36 +293,36 @@ class _$_RecipeResponse implements _RecipeResponse {
       @JsonKey(name: 'updated_at') required this.updatedAt});
 
   factory _$_RecipeResponse.fromJson(Map<String, dynamic> json) =>
-      _$_$_RecipeResponseFromJson(json);
+      _$$_RecipeResponseFromJson(json);
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
   final int id;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'title')
   final String title;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'description')
   final String description;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'url')
   final String? url;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'images')
   final List<ContentResponse> images;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'tags')
   final List<TagResponse> tags;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'cooking_histories')
   final List<String> cookingHistories;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'cooking_count')
   final int cookingCount;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'created_at')
   final String createdAt;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'updated_at')
   final String updatedAt;
 
@@ -372,7 +383,7 @@ class _$_RecipeResponse implements _RecipeResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_RecipeResponseToJson(this);
+    return _$$_RecipeResponseToJson(this);
   }
 }
 
@@ -402,34 +413,34 @@ abstract class _RecipeResponse implements RecipeResponse {
   factory _RecipeResponse.fromJson(Map<String, dynamic> json) =
       _$_RecipeResponse.fromJson;
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'description')
   String get description => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'url')
   String? get url => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'images')
   List<ContentResponse> get images => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'tags')
   List<TagResponse> get tags => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'cooking_histories')
   List<String> get cookingHistories => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'cooking_count')
   int get cookingCount => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'created_at')
   String get createdAt => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'updated_at')
   String get updatedAt => throw _privateConstructorUsedError;
   @override

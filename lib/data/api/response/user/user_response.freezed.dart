@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'user_response.dart';
 
@@ -41,8 +42,10 @@ const $UserResponse = _$UserResponseTearOff();
 
 /// @nodoc
 mixin _$UserResponse {
+// ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
+  int get id =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'workspaces')
   List<WorkspaceResponse> get workspaces => throw _privateConstructorUsedError;
 
@@ -136,12 +139,12 @@ class _$_UserResponse implements _UserResponse {
       @JsonKey(name: 'workspaces') required this.workspaces});
 
   factory _$_UserResponse.fromJson(Map<String, dynamic> json) =>
-      _$_$_UserResponseFromJson(json);
+      _$$_UserResponseFromJson(json);
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
   final int id;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'workspaces')
   final List<WorkspaceResponse> workspaces;
 
@@ -174,7 +177,7 @@ class _$_UserResponse implements _UserResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_UserResponseToJson(this);
+    return _$$_UserResponseToJson(this);
   }
 }
 
@@ -188,10 +191,10 @@ abstract class _UserResponse implements UserResponse {
   factory _UserResponse.fromJson(Map<String, dynamic> json) =
       _$_UserResponse.fromJson;
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'workspaces')
   List<WorkspaceResponse> get workspaces => throw _privateConstructorUsedError;
   @override

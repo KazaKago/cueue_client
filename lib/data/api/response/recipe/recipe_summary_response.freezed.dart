@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'recipe_summary_response.dart';
 
@@ -44,12 +45,16 @@ const $RecipeSummaryResponse = _$RecipeSummaryResponseTearOff();
 
 /// @nodoc
 mixin _$RecipeSummaryResponse {
+// ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
+  int get id =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'title')
-  String get title => throw _privateConstructorUsedError;
+  String get title =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'image')
-  ContentResponse? get image => throw _privateConstructorUsedError;
+  ContentResponse? get image =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'last_cooking_at')
   String? get lastCookingAt => throw _privateConstructorUsedError;
 
@@ -187,18 +192,18 @@ class _$_RecipeSummaryResponse implements _RecipeSummaryResponse {
       @JsonKey(name: 'last_cooking_at') required this.lastCookingAt});
 
   factory _$_RecipeSummaryResponse.fromJson(Map<String, dynamic> json) =>
-      _$_$_RecipeSummaryResponseFromJson(json);
+      _$$_RecipeSummaryResponseFromJson(json);
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
   final int id;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'title')
   final String title;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'image')
   final ContentResponse? image;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'last_cooking_at')
   final String? lastCookingAt;
 
@@ -238,7 +243,7 @@ class _$_RecipeSummaryResponse implements _RecipeSummaryResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_RecipeSummaryResponseToJson(this);
+    return _$$_RecipeSummaryResponseToJson(this);
   }
 }
 
@@ -253,16 +258,16 @@ abstract class _RecipeSummaryResponse implements RecipeSummaryResponse {
   factory _RecipeSummaryResponse.fromJson(Map<String, dynamic> json) =
       _$_RecipeSummaryResponse.fromJson;
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'image')
   ContentResponse? get image => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'last_cooking_at')
   String? get lastCookingAt => throw _privateConstructorUsedError;
   @override

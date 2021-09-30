@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'menu_summary_response.dart';
 
@@ -45,14 +46,19 @@ const $MenuSummaryResponse = _$MenuSummaryResponseTearOff();
 
 /// @nodoc
 mixin _$MenuSummaryResponse {
+// ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
+  int get id =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'memo')
-  String get memo => throw _privateConstructorUsedError;
+  String get memo =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'date')
-  String get date => throw _privateConstructorUsedError;
+  String get date =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'time_frame')
-  String get timeFrame => throw _privateConstructorUsedError;
+  String get timeFrame =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'recipes')
   List<RecipeSummaryResponse> get recipes => throw _privateConstructorUsedError;
 
@@ -187,21 +193,21 @@ class _$_MenuSummaryResponse implements _MenuSummaryResponse {
       @JsonKey(name: 'recipes') required this.recipes});
 
   factory _$_MenuSummaryResponse.fromJson(Map<String, dynamic> json) =>
-      _$_$_MenuSummaryResponseFromJson(json);
+      _$$_MenuSummaryResponseFromJson(json);
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
   final int id;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'memo')
   final String memo;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'date')
   final String date;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'time_frame')
   final String timeFrame;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'recipes')
   final List<RecipeSummaryResponse> recipes;
 
@@ -244,7 +250,7 @@ class _$_MenuSummaryResponse implements _MenuSummaryResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_MenuSummaryResponseToJson(this);
+    return _$$_MenuSummaryResponseToJson(this);
   }
 }
 
@@ -265,19 +271,19 @@ abstract class _MenuSummaryResponse implements MenuSummaryResponse {
   factory _MenuSummaryResponse.fromJson(Map<String, dynamic> json) =
       _$_MenuSummaryResponse.fromJson;
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'memo')
   String get memo => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'date')
   String get date => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'time_frame')
   String get timeFrame => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'recipes')
   List<RecipeSummaryResponse> get recipes => throw _privateConstructorUsedError;
   @override

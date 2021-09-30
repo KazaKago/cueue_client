@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'text_field_dialog_event.dart';
 
@@ -56,6 +57,13 @@ mixin _$TextFieldDialogEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String currentText, String? originalText)? positive,
+    TResult Function(String currentText, String? originalText)? neutral,
+    TResult Function(String currentText, String? originalText)? negative,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String currentText, String? originalText)? positive,
     TResult Function(String currentText, String? originalText)? neutral,
@@ -68,6 +76,13 @@ mixin _$TextFieldDialogEvent {
     required TResult Function(_Positive value) positive,
     required TResult Function(_Neutral value) neutral,
     required TResult Function(_Negative value) negative,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Positive value)? positive,
+    TResult Function(_Neutral value)? neutral,
+    TResult Function(_Negative value)? negative,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -208,6 +223,16 @@ class _$_Positive implements _Positive {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String currentText, String? originalText)? positive,
+    TResult Function(String currentText, String? originalText)? neutral,
+    TResult Function(String currentText, String? originalText)? negative,
+  }) {
+    return positive?.call(currentText, originalText);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String currentText, String? originalText)? positive,
     TResult Function(String currentText, String? originalText)? neutral,
@@ -228,6 +253,16 @@ class _$_Positive implements _Positive {
     required TResult Function(_Negative value) negative,
   }) {
     return positive(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Positive value)? positive,
+    TResult Function(_Neutral value)? neutral,
+    TResult Function(_Negative value)? negative,
+  }) {
+    return positive?.call(this);
   }
 
   @override
@@ -348,6 +383,16 @@ class _$_Neutral implements _Neutral {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String currentText, String? originalText)? positive,
+    TResult Function(String currentText, String? originalText)? neutral,
+    TResult Function(String currentText, String? originalText)? negative,
+  }) {
+    return neutral?.call(currentText, originalText);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String currentText, String? originalText)? positive,
     TResult Function(String currentText, String? originalText)? neutral,
@@ -368,6 +413,16 @@ class _$_Neutral implements _Neutral {
     required TResult Function(_Negative value) negative,
   }) {
     return neutral(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Positive value)? positive,
+    TResult Function(_Neutral value)? neutral,
+    TResult Function(_Negative value)? negative,
+  }) {
+    return neutral?.call(this);
   }
 
   @override
@@ -488,6 +543,16 @@ class _$_Negative implements _Negative {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String currentText, String? originalText)? positive,
+    TResult Function(String currentText, String? originalText)? neutral,
+    TResult Function(String currentText, String? originalText)? negative,
+  }) {
+    return negative?.call(currentText, originalText);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String currentText, String? originalText)? positive,
     TResult Function(String currentText, String? originalText)? neutral,
@@ -508,6 +573,16 @@ class _$_Negative implements _Negative {
     required TResult Function(_Negative value) negative,
   }) {
     return negative(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Positive value)? positive,
+    TResult Function(_Neutral value)? neutral,
+    TResult Function(_Negative value)? negative,
+  }) {
+    return negative?.call(this);
   }
 
   @override
