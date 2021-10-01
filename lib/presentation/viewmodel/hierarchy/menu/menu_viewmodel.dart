@@ -33,11 +33,11 @@ class MenuViewModel with ChangeNotifier {
     final followMenusUseCase = await _followMenusUseCase();
     _compositeSubscription.add(followMenusUseCase.listen((state) {
       this.state = state.when(
-        loading: (content) => (content != null) ? MenuState.loadingWithValue(content.createDateSplit()) : const MenuState.loading(),
+        loading: (content) => (content != null) ? MenuState.refreshing(content.createDateSplit()) : const MenuState.loading(),
         completed: (content, next, prev) => next.when(
-          fixed: (_) => MenuState.completed(content.createDateSplit()),
-          loading: () => MenuState.loadingWithValue(content.createDateSplit()),
-          error: (exception) => MenuState.errorWithValue(content.createDateSplit(), exception),
+          fixed: (_) => (content.isNotEmpty) ? MenuState.completed(content.createDateSplit()) : const MenuState.empty(),
+          loading: () => MenuState.additionalLoading(content.createDateSplit()),
+          error: (exception) => MenuState.additionalError(content.createDateSplit(), exception),
         ),
         error: (exception) => MenuState.error(exception),
       );

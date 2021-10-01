@@ -32,7 +32,7 @@ class TagViewModel with ChangeNotifier {
     _compositeSubscription.add(followTagsUseCase.listen((state) {
       this.state = state.when(
         loading: (tags) => (tags != null) ? TagState.completed(tags) : const TagState.loading(),
-        completed: (tags, next, prev) => TagState.completed(tags),
+        completed: (tags, next, prev) => (tags.isNotEmpty) ? TagState.completed(tags) : const TagState.empty(),
         error: (exception) => TagState.error(exception),
       );
     }));

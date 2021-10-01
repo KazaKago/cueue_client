@@ -21,6 +21,10 @@ class _$TagStateTearOff {
     return const _Loading();
   }
 
+  _Empty empty() {
+    return const _Empty();
+  }
+
   _Completed completed(List<Tag> tags) {
     return _Completed(
       tags,
@@ -42,6 +46,7 @@ mixin _$TagState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
+    required TResult Function() empty,
     required TResult Function(List<Tag> tags) completed,
     required TResult Function(Exception error) error,
   }) =>
@@ -49,6 +54,7 @@ mixin _$TagState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function()? empty,
     TResult Function(List<Tag> tags)? completed,
     TResult Function(Exception error)? error,
   }) =>
@@ -56,6 +62,7 @@ mixin _$TagState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function()? empty,
     TResult Function(List<Tag> tags)? completed,
     TResult Function(Exception error)? error,
     required TResult orElse(),
@@ -64,6 +71,7 @@ mixin _$TagState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
+    required TResult Function(_Empty value) empty,
     required TResult Function(_Completed value) completed,
     required TResult Function(_Error value) error,
   }) =>
@@ -71,6 +79,7 @@ mixin _$TagState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
   }) =>
@@ -78,6 +87,7 @@ mixin _$TagState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -138,6 +148,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
+    required TResult Function() empty,
     required TResult Function(List<Tag> tags) completed,
     required TResult Function(Exception error) error,
   }) {
@@ -148,6 +159,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function()? empty,
     TResult Function(List<Tag> tags)? completed,
     TResult Function(Exception error)? error,
   }) {
@@ -158,6 +170,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function()? empty,
     TResult Function(List<Tag> tags)? completed,
     TResult Function(Exception error)? error,
     required TResult orElse(),
@@ -172,6 +185,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
+    required TResult Function(_Empty value) empty,
     required TResult Function(_Completed value) completed,
     required TResult Function(_Error value) error,
   }) {
@@ -182,6 +196,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
   }) {
@@ -192,6 +207,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -205,6 +221,119 @@ class _$_Loading implements _Loading {
 
 abstract class _Loading implements TagState {
   const factory _Loading() = _$_Loading;
+}
+
+/// @nodoc
+abstract class _$EmptyCopyWith<$Res> {
+  factory _$EmptyCopyWith(_Empty value, $Res Function(_Empty) then) =
+      __$EmptyCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$EmptyCopyWithImpl<$Res> extends _$TagStateCopyWithImpl<$Res>
+    implements _$EmptyCopyWith<$Res> {
+  __$EmptyCopyWithImpl(_Empty _value, $Res Function(_Empty) _then)
+      : super(_value, (v) => _then(v as _Empty));
+
+  @override
+  _Empty get _value => super._value as _Empty;
+}
+
+/// @nodoc
+
+class _$_Empty implements _Empty {
+  const _$_Empty();
+
+  @override
+  String toString() {
+    return 'TagState.empty()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Empty);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function() empty,
+    required TResult Function(List<Tag> tags) completed,
+    required TResult Function(Exception error) error,
+  }) {
+    return empty();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? empty,
+    TResult Function(List<Tag> tags)? completed,
+    TResult Function(Exception error)? error,
+  }) {
+    return empty?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? empty,
+    TResult Function(List<Tag> tags)? completed,
+    TResult Function(Exception error)? error,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Empty value) empty,
+    required TResult Function(_Completed value) completed,
+    required TResult Function(_Error value) error,
+  }) {
+    return empty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Empty value)? empty,
+    TResult Function(_Completed value)? completed,
+    TResult Function(_Error value)? error,
+  }) {
+    return empty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Empty value)? empty,
+    TResult Function(_Completed value)? completed,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Empty implements TagState {
+  const factory _Empty() = _$_Empty;
 }
 
 /// @nodoc
@@ -271,6 +400,7 @@ class _$_Completed implements _Completed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
+    required TResult Function() empty,
     required TResult Function(List<Tag> tags) completed,
     required TResult Function(Exception error) error,
   }) {
@@ -281,6 +411,7 @@ class _$_Completed implements _Completed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function()? empty,
     TResult Function(List<Tag> tags)? completed,
     TResult Function(Exception error)? error,
   }) {
@@ -291,6 +422,7 @@ class _$_Completed implements _Completed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function()? empty,
     TResult Function(List<Tag> tags)? completed,
     TResult Function(Exception error)? error,
     required TResult orElse(),
@@ -305,6 +437,7 @@ class _$_Completed implements _Completed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
+    required TResult Function(_Empty value) empty,
     required TResult Function(_Completed value) completed,
     required TResult Function(_Error value) error,
   }) {
@@ -315,6 +448,7 @@ class _$_Completed implements _Completed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
   }) {
@@ -325,6 +459,7 @@ class _$_Completed implements _Completed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -408,6 +543,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
+    required TResult Function() empty,
     required TResult Function(List<Tag> tags) completed,
     required TResult Function(Exception error) error,
   }) {
@@ -418,6 +554,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function()? empty,
     TResult Function(List<Tag> tags)? completed,
     TResult Function(Exception error)? error,
   }) {
@@ -428,6 +565,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function()? empty,
     TResult Function(List<Tag> tags)? completed,
     TResult Function(Exception error)? error,
     required TResult orElse(),
@@ -442,6 +580,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
+    required TResult Function(_Empty value) empty,
     required TResult Function(_Completed value) completed,
     required TResult Function(_Error value) error,
   }) {
@@ -452,6 +591,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
   }) {
@@ -462,6 +602,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
     required TResult orElse(),

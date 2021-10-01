@@ -2,6 +2,7 @@ import 'package:cueue/domain/model/hierarchy/recipe/recipe_summary.dart';
 import 'package:cueue/domain/model/hierarchy/tag/tag.dart';
 import 'package:cueue/presentation/view/global/extension/date_time_extension.dart';
 import 'package:cueue/presentation/view/global/extension/scroll_controller_extension.dart';
+import 'package:cueue/presentation/view/global/widget/empty_widget.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
 import 'package:cueue/presentation/view/global/widget/error_list_item.dart';
 import 'package:cueue/presentation/view/global/widget/loading_list_item.dart';
@@ -29,10 +30,12 @@ class RecipeListWidget extends HookConsumerWidget {
     final scrollController = useScrollController()..onReachBottomWithAutoDispose(viewModel.requestAddition);
     return state.when(
       loading: () => _buildLoading(context, ref),
-      loadingWithValue: (recipes) => _buildLoadingWithValue(context, ref, scrollController, recipes),
+      refreshing: (recipes) => _buildCompleted(context, ref, scrollController, recipes),
+      additionalLoading: (recipes) => _buildAdditionalLoading(context, ref, scrollController, recipes),
+      empty: () => _buildEmpty(context, ref),
       completed: (recipes) => _buildCompleted(context, ref, scrollController, recipes),
       error: (exception) => _buildError(context, ref, exception),
-      errorWithValue: (recipes, exception) => _buildErrorWithValue(context, ref, scrollController, recipes, exception),
+      additionalError: (recipes, exception) => _buildAdditionalError(context, ref, scrollController, recipes, exception),
     );
   }
 
@@ -45,7 +48,7 @@ class RecipeListWidget extends HookConsumerWidget {
     );
   }
 
-  Widget _buildLoadingWithValue(final BuildContext context, final WidgetRef ref, final ScrollController scrollController, final List<RecipeSummary> recipes) {
+  Widget _buildAdditionalLoading(final BuildContext context, final WidgetRef ref, final ScrollController scrollController, final List<RecipeSummary> recipes) {
     final viewModel = ref.read(recipeViewModelProvider(tag?.id));
     final recipeSelectionViewModel = ref.read(recipeSelectionViewModelProvider(selectedRecipes ?? []));
     return RefreshIndicator(
@@ -75,6 +78,10 @@ class RecipeListWidget extends HookConsumerWidget {
         ),
       ),
     );
+  }
+
+  Widget _buildEmpty(final BuildContext context, final WidgetRef ref) {
+    return EmptyWidget(AppLocalizations.of(context)!.no_recipe_message);
   }
 
   Widget _buildCompleted(final BuildContext context, final WidgetRef ref, final ScrollController scrollController, final List<RecipeSummary> recipes) {
@@ -110,7 +117,7 @@ class RecipeListWidget extends HookConsumerWidget {
     return ErrorHandlingWidget(exception, onClickRetry: viewModel.retry);
   }
 
-  Widget _buildErrorWithValue(final BuildContext context, final WidgetRef ref, final ScrollController scrollController, final List<RecipeSummary> recipes, final Exception exception) {
+  Widget _buildAdditionalError(final BuildContext context, final WidgetRef ref, final ScrollController scrollController, final List<RecipeSummary> recipes, final Exception exception) {
     final viewModel = ref.read(recipeViewModelProvider(tag?.id));
     final recipeSelectionViewModel = ref.read(recipeSelectionViewModelProvider(selectedRecipes ?? []));
     return RefreshIndicator(

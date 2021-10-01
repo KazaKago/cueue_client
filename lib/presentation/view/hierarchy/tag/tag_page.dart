@@ -1,4 +1,5 @@
 import 'package:cueue/domain/model/hierarchy/tag/tag.dart';
+import 'package:cueue/presentation/view/global/widget/empty_widget.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
 import 'package:cueue/presentation/view/global/widget/shimmer_container.dart';
 import 'package:cueue/presentation/view/hierarchy/tag/tag_editing_page.dart';
@@ -22,6 +23,7 @@ class TagPage extends HookConsumerWidget {
       ),
       body: state.when(
         loading: () => _buildLoading(context, ref),
+        empty: () => _buildEmpty(context, ref),
         completed: (tags) => _buildCompleted(context, ref, tags),
         error: (exception) => _buildError(context, ref, exception),
       ),
@@ -35,6 +37,10 @@ class TagPage extends HookConsumerWidget {
         children: List.filled(20, const TagLoadingItem()),
       ),
     );
+  }
+
+  Widget _buildEmpty(final BuildContext context, final WidgetRef ref) {
+    return EmptyWidget(AppLocalizations.of(context)!.no_tag_message);
   }
 
   Widget _buildCompleted(final BuildContext context, final WidgetRef ref, final List<Tag> tags) {

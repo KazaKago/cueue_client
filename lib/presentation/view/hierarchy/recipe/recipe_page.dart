@@ -19,6 +19,7 @@ class RecipePage extends HookConsumerWidget {
     final state = ref.watch(tagViewModelProvider.select((viewModel) => viewModel.state));
     return state.when(
       loading: () => _buildLoading(context, ref),
+      empty: () => _buildCompleted(context, ref, List.empty()),
       completed: (tags) => _buildCompleted(context, ref, tags),
       error: (exception) => _buildError(context, ref, exception),
     );

@@ -4,6 +4,7 @@ import 'package:cueue/domain/model/hierarchy/menu/date_split_menu_list.dart';
 import 'package:cueue/domain/model/hierarchy/menu/menu_summary.dart';
 import 'package:cueue/presentation/view/global/extension/date_time_extension.dart';
 import 'package:cueue/presentation/view/global/extension/scroll_controller_extension.dart';
+import 'package:cueue/presentation/view/global/widget/empty_widget.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
 import 'package:cueue/presentation/view/global/widget/error_list_item.dart';
 import 'package:cueue/presentation/view/global/widget/loading_list_item.dart';
@@ -32,10 +33,12 @@ class MenuPage extends HookConsumerWidget {
       ),
       body: state.when(
         loading: () => _buildLoading(context, ref),
-        loadingWithValue: (menu) => _buildLoadingWithValue(context, ref, scrollController, menu),
-        completed: (menu) => _buildCompleted(context, ref, scrollController, menu),
+        refreshing: (menus) => _buildCompleted(context, ref, scrollController, menus),
+        additionalLoading: (menus) => _buildAdditionalLoading(context, ref, scrollController, menus),
+        empty: () => _buildEmpty(context, ref),
+        completed: (menus) => _buildCompleted(context, ref, scrollController, menus),
         error: (exception) => _buildError(context, ref, exception),
-        errorWithValue: (menu, exception) => _buildErrorWithValue(context, ref, scrollController, menu, exception),
+        additionalError: (menus, exception) => _buildAdditionalError(context, ref, scrollController, menus, exception),
       ),
     );
   }
@@ -49,7 +52,7 @@ class MenuPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildLoadingWithValue(final BuildContext context, final WidgetRef ref, final ScrollController scrollController, final List<DateSplitMenuList> menus) {
+  Widget _buildAdditionalLoading(final BuildContext context, final WidgetRef ref, final ScrollController scrollController, final List<DateSplitMenuList> menus) {
     final viewModel = ref.read(menuViewModelProvider);
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
@@ -61,6 +64,10 @@ class MenuPage extends HookConsumerWidget {
         ),
       ),
     );
+  }
+
+  Widget _buildEmpty(final BuildContext context, final WidgetRef ref) {
+    return EmptyWidget(AppLocalizations.of(context)!.no_menu_message);
   }
 
   Widget _buildCompleted(final BuildContext context, final WidgetRef ref, final ScrollController scrollController, final List<DateSplitMenuList> menus) {
@@ -82,7 +89,7 @@ class MenuPage extends HookConsumerWidget {
     return ErrorHandlingWidget(exception, onClickRetry: viewModel.retry);
   }
 
-  Widget _buildErrorWithValue(final BuildContext context, final WidgetRef ref, final ScrollController scrollController, final List<DateSplitMenuList> menus, final Exception exception) {
+  Widget _buildAdditionalError(final BuildContext context, final WidgetRef ref, final ScrollController scrollController, final List<DateSplitMenuList> menus, final Exception exception) {
     final viewModel = ref.read(menuViewModelProvider);
     return RefreshIndicator(
       onRefresh: viewModel.refresh,

@@ -42,11 +42,11 @@ class RecipeViewModel with ChangeNotifier {
       final followTaggedRecipesUseCase = await _followTaggedRecipesUseCase(_tagId!);
       _compositeSubscription.add(followTaggedRecipesUseCase.listen((state) {
         this.state = state.when(
-          loading: (content) => (content != null) ? RecipeState.loadingWithValue(content) : const RecipeState.loading(),
+          loading: (content) => (content != null) ? RecipeState.refreshing(content) : const RecipeState.loading(),
           completed: (content, next, prev) => next.when(
-            fixed: (_) => RecipeState.completed(content),
-            loading: () => RecipeState.loadingWithValue(content),
-            error: (exception) => RecipeState.errorWithValue(content, exception),
+            fixed: (_) => (content.isNotEmpty) ? RecipeState.completed(content) : const RecipeState.empty(),
+            loading: () => RecipeState.additionalLoading(content),
+            error: (exception) => RecipeState.additionalError(content, exception),
           ),
           error: (exception) => RecipeState.error(exception),
         );
@@ -55,11 +55,11 @@ class RecipeViewModel with ChangeNotifier {
       final followAllRecipesUseCase = await _followAllRecipesUseCase();
       _compositeSubscription.add(followAllRecipesUseCase.listen((state) {
         this.state = state.when(
-          loading: (content) => (content != null) ? RecipeState.loadingWithValue(content) : const RecipeState.loading(),
+          loading: (content) => (content != null) ? RecipeState.refreshing(content) : const RecipeState.loading(),
           completed: (content, next, prev) => next.when(
-            fixed: (_) => RecipeState.completed(content),
-            loading: () => RecipeState.loadingWithValue(content),
-            error: (exception) => RecipeState.errorWithValue(content, exception),
+            fixed: (_) => (content.isNotEmpty) ? RecipeState.completed(content) : const RecipeState.empty(),
+            loading: () => RecipeState.additionalLoading(content),
+            error: (exception) => RecipeState.additionalError(content, exception),
           ),
           error: (exception) => RecipeState.error(exception),
         );

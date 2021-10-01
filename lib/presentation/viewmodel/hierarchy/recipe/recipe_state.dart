@@ -7,11 +7,15 @@ part 'recipe_state.freezed.dart';
 class RecipeState with _$RecipeState {
   const factory RecipeState.loading() = _Loading;
 
-  const factory RecipeState.loadingWithValue(final List<RecipeSummary> recipes) = _LoadingWithValue;
+  const factory RecipeState.refreshing(final List<RecipeSummary> menus) = _Refreshing;
+
+  const factory RecipeState.additionalLoading(final List<RecipeSummary> menus) = _AdditionalLoading;
+
+  const factory RecipeState.empty() = _Empty;
 
   const factory RecipeState.completed(final List<RecipeSummary> recipes) = _Completed;
 
   const factory RecipeState.error(final Exception error) = _Error;
 
-  const factory RecipeState.errorWithValue(final List<RecipeSummary> recipes, final Exception error) = _ErrorWithValue;
+  const factory RecipeState.additionalError(final List<RecipeSummary> recipes, final Exception error) = _AdditionalError;
 }

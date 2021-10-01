@@ -240,5 +240,8 @@
   "linkedWithApple": "Appleと\nアカウント連携しました",
   "unlinkedWithGoogle": "Googleとの\nアカウント連携を解除しました",
   "unlinkedWithApple": "Appleとの\nアカウント連携を解除しました",
-  "sentEmailVerification": "入力されたアドレスへ\nへ認証メールを送信しました"
+  "sentEmailVerification": "入力されたアドレスへ\nへ認証メールを送信しました",
+  "no_menu_message": "こんだての記録がまだ無いようです\n今日のこんだてを追加してみましょう！",
+  "no_recipe_message": "レシピがまだ無いようです\n作りたい料理を登録してみましょう！",
+  "no_tag_message": "タグがまだ無いようです\n「中華」「和食」など分類分けできるよう\nタグ登録をしてみましょう！"
 }

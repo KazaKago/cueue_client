@@ -21,10 +21,20 @@ class _$RecipeStateTearOff {
     return const _Loading();
   }
 
-  _LoadingWithValue loadingWithValue(List<RecipeSummary> recipes) {
-    return _LoadingWithValue(
-      recipes,
+  _Refreshing refreshing(List<RecipeSummary> menus) {
+    return _Refreshing(
+      menus,
     );
+  }
+
+  _AdditionalLoading additionalLoading(List<RecipeSummary> menus) {
+    return _AdditionalLoading(
+      menus,
+    );
+  }
+
+  _Empty empty() {
+    return const _Empty();
   }
 
   _Completed completed(List<RecipeSummary> recipes) {
@@ -39,8 +49,9 @@ class _$RecipeStateTearOff {
     );
   }
 
-  _ErrorWithValue errorWithValue(List<RecipeSummary> recipes, Exception error) {
-    return _ErrorWithValue(
+  _AdditionalError additionalError(
+      List<RecipeSummary> recipes, Exception error) {
+    return _AdditionalError(
       recipes,
       error,
     );
@@ -55,59 +66,71 @@ mixin _$RecipeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<RecipeSummary> recipes) loadingWithValue,
+    required TResult Function(List<RecipeSummary> menus) refreshing,
+    required TResult Function(List<RecipeSummary> menus) additionalLoading,
+    required TResult Function() empty,
     required TResult Function(List<RecipeSummary> recipes) completed,
     required TResult Function(Exception error) error,
     required TResult Function(List<RecipeSummary> recipes, Exception error)
-        errorWithValue,
+        additionalError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<RecipeSummary> recipes)? loadingWithValue,
+    TResult Function(List<RecipeSummary> menus)? refreshing,
+    TResult Function(List<RecipeSummary> menus)? additionalLoading,
+    TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
     TResult Function(List<RecipeSummary> recipes, Exception error)?
-        errorWithValue,
+        additionalError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<RecipeSummary> recipes)? loadingWithValue,
+    TResult Function(List<RecipeSummary> menus)? refreshing,
+    TResult Function(List<RecipeSummary> menus)? additionalLoading,
+    TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
     TResult Function(List<RecipeSummary> recipes, Exception error)?
-        errorWithValue,
+        additionalError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadingWithValue value) loadingWithValue,
+    required TResult Function(_Refreshing value) refreshing,
+    required TResult Function(_AdditionalLoading value) additionalLoading,
+    required TResult Function(_Empty value) empty,
     required TResult Function(_Completed value) completed,
     required TResult Function(_Error value) error,
-    required TResult Function(_ErrorWithValue value) errorWithValue,
+    required TResult Function(_AdditionalError value) additionalError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_LoadingWithValue value)? loadingWithValue,
+    TResult Function(_Refreshing value)? refreshing,
+    TResult Function(_AdditionalLoading value)? additionalLoading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
-    TResult Function(_ErrorWithValue value)? errorWithValue,
+    TResult Function(_AdditionalError value)? additionalError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_LoadingWithValue value)? loadingWithValue,
+    TResult Function(_Refreshing value)? refreshing,
+    TResult Function(_AdditionalLoading value)? additionalLoading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
-    TResult Function(_ErrorWithValue value)? errorWithValue,
+    TResult Function(_AdditionalError value)? additionalError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -167,11 +190,13 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<RecipeSummary> recipes) loadingWithValue,
+    required TResult Function(List<RecipeSummary> menus) refreshing,
+    required TResult Function(List<RecipeSummary> menus) additionalLoading,
+    required TResult Function() empty,
     required TResult Function(List<RecipeSummary> recipes) completed,
     required TResult Function(Exception error) error,
     required TResult Function(List<RecipeSummary> recipes, Exception error)
-        errorWithValue,
+        additionalError,
   }) {
     return loading();
   }
@@ -180,11 +205,13 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<RecipeSummary> recipes)? loadingWithValue,
+    TResult Function(List<RecipeSummary> menus)? refreshing,
+    TResult Function(List<RecipeSummary> menus)? additionalLoading,
+    TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
     TResult Function(List<RecipeSummary> recipes, Exception error)?
-        errorWithValue,
+        additionalError,
   }) {
     return loading?.call();
   }
@@ -193,11 +220,13 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<RecipeSummary> recipes)? loadingWithValue,
+    TResult Function(List<RecipeSummary> menus)? refreshing,
+    TResult Function(List<RecipeSummary> menus)? additionalLoading,
+    TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
     TResult Function(List<RecipeSummary> recipes, Exception error)?
-        errorWithValue,
+        additionalError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -210,10 +239,12 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadingWithValue value) loadingWithValue,
+    required TResult Function(_Refreshing value) refreshing,
+    required TResult Function(_AdditionalLoading value) additionalLoading,
+    required TResult Function(_Empty value) empty,
     required TResult Function(_Completed value) completed,
     required TResult Function(_Error value) error,
-    required TResult Function(_ErrorWithValue value) errorWithValue,
+    required TResult Function(_AdditionalError value) additionalError,
   }) {
     return loading(this);
   }
@@ -222,10 +253,12 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_LoadingWithValue value)? loadingWithValue,
+    TResult Function(_Refreshing value)? refreshing,
+    TResult Function(_AdditionalLoading value)? additionalLoading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
-    TResult Function(_ErrorWithValue value)? errorWithValue,
+    TResult Function(_AdditionalError value)? additionalError,
   }) {
     return loading?.call(this);
   }
@@ -234,10 +267,12 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_LoadingWithValue value)? loadingWithValue,
+    TResult Function(_Refreshing value)? refreshing,
+    TResult Function(_AdditionalLoading value)? additionalLoading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
-    TResult Function(_ErrorWithValue value)? errorWithValue,
+    TResult Function(_AdditionalError value)? additionalError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -252,32 +287,31 @@ abstract class _Loading implements RecipeState {
 }
 
 /// @nodoc
-abstract class _$LoadingWithValueCopyWith<$Res> {
-  factory _$LoadingWithValueCopyWith(
-          _LoadingWithValue value, $Res Function(_LoadingWithValue) then) =
-      __$LoadingWithValueCopyWithImpl<$Res>;
-  $Res call({List<RecipeSummary> recipes});
+abstract class _$RefreshingCopyWith<$Res> {
+  factory _$RefreshingCopyWith(
+          _Refreshing value, $Res Function(_Refreshing) then) =
+      __$RefreshingCopyWithImpl<$Res>;
+  $Res call({List<RecipeSummary> menus});
 }
 
 /// @nodoc
-class __$LoadingWithValueCopyWithImpl<$Res>
-    extends _$RecipeStateCopyWithImpl<$Res>
-    implements _$LoadingWithValueCopyWith<$Res> {
-  __$LoadingWithValueCopyWithImpl(
-      _LoadingWithValue _value, $Res Function(_LoadingWithValue) _then)
-      : super(_value, (v) => _then(v as _LoadingWithValue));
+class __$RefreshingCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$Res>
+    implements _$RefreshingCopyWith<$Res> {
+  __$RefreshingCopyWithImpl(
+      _Refreshing _value, $Res Function(_Refreshing) _then)
+      : super(_value, (v) => _then(v as _Refreshing));
 
   @override
-  _LoadingWithValue get _value => super._value as _LoadingWithValue;
+  _Refreshing get _value => super._value as _Refreshing;
 
   @override
   $Res call({
-    Object? recipes = freezed,
+    Object? menus = freezed,
   }) {
-    return _then(_LoadingWithValue(
-      recipes == freezed
-          ? _value.recipes
-          : recipes // ignore: cast_nullable_to_non_nullable
+    return _then(_Refreshing(
+      menus == freezed
+          ? _value.menus
+          : menus // ignore: cast_nullable_to_non_nullable
               as List<RecipeSummary>,
     ));
   }
@@ -285,73 +319,79 @@ class __$LoadingWithValueCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadingWithValue implements _LoadingWithValue {
-  const _$_LoadingWithValue(this.recipes);
+class _$_Refreshing implements _Refreshing {
+  const _$_Refreshing(this.menus);
 
   @override
-  final List<RecipeSummary> recipes;
+  final List<RecipeSummary> menus;
 
   @override
   String toString() {
-    return 'RecipeState.loadingWithValue(recipes: $recipes)';
+    return 'RecipeState.refreshing(menus: $menus)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _LoadingWithValue &&
-            (identical(other.recipes, recipes) ||
-                const DeepCollectionEquality().equals(other.recipes, recipes)));
+        (other is _Refreshing &&
+            (identical(other.menus, menus) ||
+                const DeepCollectionEquality().equals(other.menus, menus)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(recipes);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(menus);
 
   @JsonKey(ignore: true)
   @override
-  _$LoadingWithValueCopyWith<_LoadingWithValue> get copyWith =>
-      __$LoadingWithValueCopyWithImpl<_LoadingWithValue>(this, _$identity);
+  _$RefreshingCopyWith<_Refreshing> get copyWith =>
+      __$RefreshingCopyWithImpl<_Refreshing>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<RecipeSummary> recipes) loadingWithValue,
+    required TResult Function(List<RecipeSummary> menus) refreshing,
+    required TResult Function(List<RecipeSummary> menus) additionalLoading,
+    required TResult Function() empty,
     required TResult Function(List<RecipeSummary> recipes) completed,
     required TResult Function(Exception error) error,
     required TResult Function(List<RecipeSummary> recipes, Exception error)
-        errorWithValue,
+        additionalError,
   }) {
-    return loadingWithValue(recipes);
+    return refreshing(menus);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<RecipeSummary> recipes)? loadingWithValue,
+    TResult Function(List<RecipeSummary> menus)? refreshing,
+    TResult Function(List<RecipeSummary> menus)? additionalLoading,
+    TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
     TResult Function(List<RecipeSummary> recipes, Exception error)?
-        errorWithValue,
+        additionalError,
   }) {
-    return loadingWithValue?.call(recipes);
+    return refreshing?.call(menus);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<RecipeSummary> recipes)? loadingWithValue,
+    TResult Function(List<RecipeSummary> menus)? refreshing,
+    TResult Function(List<RecipeSummary> menus)? additionalLoading,
+    TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
     TResult Function(List<RecipeSummary> recipes, Exception error)?
-        errorWithValue,
+        additionalError,
     required TResult orElse(),
   }) {
-    if (loadingWithValue != null) {
-      return loadingWithValue(recipes);
+    if (refreshing != null) {
+      return refreshing(menus);
     }
     return orElse();
   }
@@ -360,51 +400,358 @@ class _$_LoadingWithValue implements _LoadingWithValue {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadingWithValue value) loadingWithValue,
+    required TResult Function(_Refreshing value) refreshing,
+    required TResult Function(_AdditionalLoading value) additionalLoading,
+    required TResult Function(_Empty value) empty,
     required TResult Function(_Completed value) completed,
     required TResult Function(_Error value) error,
-    required TResult Function(_ErrorWithValue value) errorWithValue,
+    required TResult Function(_AdditionalError value) additionalError,
   }) {
-    return loadingWithValue(this);
+    return refreshing(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_LoadingWithValue value)? loadingWithValue,
+    TResult Function(_Refreshing value)? refreshing,
+    TResult Function(_AdditionalLoading value)? additionalLoading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
-    TResult Function(_ErrorWithValue value)? errorWithValue,
+    TResult Function(_AdditionalError value)? additionalError,
   }) {
-    return loadingWithValue?.call(this);
+    return refreshing?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_LoadingWithValue value)? loadingWithValue,
+    TResult Function(_Refreshing value)? refreshing,
+    TResult Function(_AdditionalLoading value)? additionalLoading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
-    TResult Function(_ErrorWithValue value)? errorWithValue,
+    TResult Function(_AdditionalError value)? additionalError,
     required TResult orElse(),
   }) {
-    if (loadingWithValue != null) {
-      return loadingWithValue(this);
+    if (refreshing != null) {
+      return refreshing(this);
     }
     return orElse();
   }
 }
 
-abstract class _LoadingWithValue implements RecipeState {
-  const factory _LoadingWithValue(List<RecipeSummary> recipes) =
-      _$_LoadingWithValue;
+abstract class _Refreshing implements RecipeState {
+  const factory _Refreshing(List<RecipeSummary> menus) = _$_Refreshing;
 
-  List<RecipeSummary> get recipes => throw _privateConstructorUsedError;
+  List<RecipeSummary> get menus => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$LoadingWithValueCopyWith<_LoadingWithValue> get copyWith =>
+  _$RefreshingCopyWith<_Refreshing> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$AdditionalLoadingCopyWith<$Res> {
+  factory _$AdditionalLoadingCopyWith(
+          _AdditionalLoading value, $Res Function(_AdditionalLoading) then) =
+      __$AdditionalLoadingCopyWithImpl<$Res>;
+  $Res call({List<RecipeSummary> menus});
+}
+
+/// @nodoc
+class __$AdditionalLoadingCopyWithImpl<$Res>
+    extends _$RecipeStateCopyWithImpl<$Res>
+    implements _$AdditionalLoadingCopyWith<$Res> {
+  __$AdditionalLoadingCopyWithImpl(
+      _AdditionalLoading _value, $Res Function(_AdditionalLoading) _then)
+      : super(_value, (v) => _then(v as _AdditionalLoading));
+
+  @override
+  _AdditionalLoading get _value => super._value as _AdditionalLoading;
+
+  @override
+  $Res call({
+    Object? menus = freezed,
+  }) {
+    return _then(_AdditionalLoading(
+      menus == freezed
+          ? _value.menus
+          : menus // ignore: cast_nullable_to_non_nullable
+              as List<RecipeSummary>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AdditionalLoading implements _AdditionalLoading {
+  const _$_AdditionalLoading(this.menus);
+
+  @override
+  final List<RecipeSummary> menus;
+
+  @override
+  String toString() {
+    return 'RecipeState.additionalLoading(menus: $menus)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _AdditionalLoading &&
+            (identical(other.menus, menus) ||
+                const DeepCollectionEquality().equals(other.menus, menus)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(menus);
+
+  @JsonKey(ignore: true)
+  @override
+  _$AdditionalLoadingCopyWith<_AdditionalLoading> get copyWith =>
+      __$AdditionalLoadingCopyWithImpl<_AdditionalLoading>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<RecipeSummary> menus) refreshing,
+    required TResult Function(List<RecipeSummary> menus) additionalLoading,
+    required TResult Function() empty,
+    required TResult Function(List<RecipeSummary> recipes) completed,
+    required TResult Function(Exception error) error,
+    required TResult Function(List<RecipeSummary> recipes, Exception error)
+        additionalError,
+  }) {
+    return additionalLoading(menus);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<RecipeSummary> menus)? refreshing,
+    TResult Function(List<RecipeSummary> menus)? additionalLoading,
+    TResult Function()? empty,
+    TResult Function(List<RecipeSummary> recipes)? completed,
+    TResult Function(Exception error)? error,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
+  }) {
+    return additionalLoading?.call(menus);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<RecipeSummary> menus)? refreshing,
+    TResult Function(List<RecipeSummary> menus)? additionalLoading,
+    TResult Function()? empty,
+    TResult Function(List<RecipeSummary> recipes)? completed,
+    TResult Function(Exception error)? error,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
+    required TResult orElse(),
+  }) {
+    if (additionalLoading != null) {
+      return additionalLoading(menus);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Refreshing value) refreshing,
+    required TResult Function(_AdditionalLoading value) additionalLoading,
+    required TResult Function(_Empty value) empty,
+    required TResult Function(_Completed value) completed,
+    required TResult Function(_Error value) error,
+    required TResult Function(_AdditionalError value) additionalError,
+  }) {
+    return additionalLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Refreshing value)? refreshing,
+    TResult Function(_AdditionalLoading value)? additionalLoading,
+    TResult Function(_Empty value)? empty,
+    TResult Function(_Completed value)? completed,
+    TResult Function(_Error value)? error,
+    TResult Function(_AdditionalError value)? additionalError,
+  }) {
+    return additionalLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Refreshing value)? refreshing,
+    TResult Function(_AdditionalLoading value)? additionalLoading,
+    TResult Function(_Empty value)? empty,
+    TResult Function(_Completed value)? completed,
+    TResult Function(_Error value)? error,
+    TResult Function(_AdditionalError value)? additionalError,
+    required TResult orElse(),
+  }) {
+    if (additionalLoading != null) {
+      return additionalLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AdditionalLoading implements RecipeState {
+  const factory _AdditionalLoading(List<RecipeSummary> menus) =
+      _$_AdditionalLoading;
+
+  List<RecipeSummary> get menus => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$AdditionalLoadingCopyWith<_AdditionalLoading> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$EmptyCopyWith<$Res> {
+  factory _$EmptyCopyWith(_Empty value, $Res Function(_Empty) then) =
+      __$EmptyCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$EmptyCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$Res>
+    implements _$EmptyCopyWith<$Res> {
+  __$EmptyCopyWithImpl(_Empty _value, $Res Function(_Empty) _then)
+      : super(_value, (v) => _then(v as _Empty));
+
+  @override
+  _Empty get _value => super._value as _Empty;
+}
+
+/// @nodoc
+
+class _$_Empty implements _Empty {
+  const _$_Empty();
+
+  @override
+  String toString() {
+    return 'RecipeState.empty()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Empty);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<RecipeSummary> menus) refreshing,
+    required TResult Function(List<RecipeSummary> menus) additionalLoading,
+    required TResult Function() empty,
+    required TResult Function(List<RecipeSummary> recipes) completed,
+    required TResult Function(Exception error) error,
+    required TResult Function(List<RecipeSummary> recipes, Exception error)
+        additionalError,
+  }) {
+    return empty();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<RecipeSummary> menus)? refreshing,
+    TResult Function(List<RecipeSummary> menus)? additionalLoading,
+    TResult Function()? empty,
+    TResult Function(List<RecipeSummary> recipes)? completed,
+    TResult Function(Exception error)? error,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
+  }) {
+    return empty?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<RecipeSummary> menus)? refreshing,
+    TResult Function(List<RecipeSummary> menus)? additionalLoading,
+    TResult Function()? empty,
+    TResult Function(List<RecipeSummary> recipes)? completed,
+    TResult Function(Exception error)? error,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Refreshing value) refreshing,
+    required TResult Function(_AdditionalLoading value) additionalLoading,
+    required TResult Function(_Empty value) empty,
+    required TResult Function(_Completed value) completed,
+    required TResult Function(_Error value) error,
+    required TResult Function(_AdditionalError value) additionalError,
+  }) {
+    return empty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Refreshing value)? refreshing,
+    TResult Function(_AdditionalLoading value)? additionalLoading,
+    TResult Function(_Empty value)? empty,
+    TResult Function(_Completed value)? completed,
+    TResult Function(_Error value)? error,
+    TResult Function(_AdditionalError value)? additionalError,
+  }) {
+    return empty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Refreshing value)? refreshing,
+    TResult Function(_AdditionalLoading value)? additionalLoading,
+    TResult Function(_Empty value)? empty,
+    TResult Function(_Completed value)? completed,
+    TResult Function(_Error value)? error,
+    TResult Function(_AdditionalError value)? additionalError,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Empty implements RecipeState {
+  const factory _Empty() = _$_Empty;
 }
 
 /// @nodoc
@@ -471,11 +818,13 @@ class _$_Completed implements _Completed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<RecipeSummary> recipes) loadingWithValue,
+    required TResult Function(List<RecipeSummary> menus) refreshing,
+    required TResult Function(List<RecipeSummary> menus) additionalLoading,
+    required TResult Function() empty,
     required TResult Function(List<RecipeSummary> recipes) completed,
     required TResult Function(Exception error) error,
     required TResult Function(List<RecipeSummary> recipes, Exception error)
-        errorWithValue,
+        additionalError,
   }) {
     return completed(recipes);
   }
@@ -484,11 +833,13 @@ class _$_Completed implements _Completed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<RecipeSummary> recipes)? loadingWithValue,
+    TResult Function(List<RecipeSummary> menus)? refreshing,
+    TResult Function(List<RecipeSummary> menus)? additionalLoading,
+    TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
     TResult Function(List<RecipeSummary> recipes, Exception error)?
-        errorWithValue,
+        additionalError,
   }) {
     return completed?.call(recipes);
   }
@@ -497,11 +848,13 @@ class _$_Completed implements _Completed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<RecipeSummary> recipes)? loadingWithValue,
+    TResult Function(List<RecipeSummary> menus)? refreshing,
+    TResult Function(List<RecipeSummary> menus)? additionalLoading,
+    TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
     TResult Function(List<RecipeSummary> recipes, Exception error)?
-        errorWithValue,
+        additionalError,
     required TResult orElse(),
   }) {
     if (completed != null) {
@@ -514,10 +867,12 @@ class _$_Completed implements _Completed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadingWithValue value) loadingWithValue,
+    required TResult Function(_Refreshing value) refreshing,
+    required TResult Function(_AdditionalLoading value) additionalLoading,
+    required TResult Function(_Empty value) empty,
     required TResult Function(_Completed value) completed,
     required TResult Function(_Error value) error,
-    required TResult Function(_ErrorWithValue value) errorWithValue,
+    required TResult Function(_AdditionalError value) additionalError,
   }) {
     return completed(this);
   }
@@ -526,10 +881,12 @@ class _$_Completed implements _Completed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_LoadingWithValue value)? loadingWithValue,
+    TResult Function(_Refreshing value)? refreshing,
+    TResult Function(_AdditionalLoading value)? additionalLoading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
-    TResult Function(_ErrorWithValue value)? errorWithValue,
+    TResult Function(_AdditionalError value)? additionalError,
   }) {
     return completed?.call(this);
   }
@@ -538,10 +895,12 @@ class _$_Completed implements _Completed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_LoadingWithValue value)? loadingWithValue,
+    TResult Function(_Refreshing value)? refreshing,
+    TResult Function(_AdditionalLoading value)? additionalLoading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
-    TResult Function(_ErrorWithValue value)? errorWithValue,
+    TResult Function(_AdditionalError value)? additionalError,
     required TResult orElse(),
   }) {
     if (completed != null) {
@@ -623,11 +982,13 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<RecipeSummary> recipes) loadingWithValue,
+    required TResult Function(List<RecipeSummary> menus) refreshing,
+    required TResult Function(List<RecipeSummary> menus) additionalLoading,
+    required TResult Function() empty,
     required TResult Function(List<RecipeSummary> recipes) completed,
     required TResult Function(Exception error) error,
     required TResult Function(List<RecipeSummary> recipes, Exception error)
-        errorWithValue,
+        additionalError,
   }) {
     return error(this.error);
   }
@@ -636,11 +997,13 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<RecipeSummary> recipes)? loadingWithValue,
+    TResult Function(List<RecipeSummary> menus)? refreshing,
+    TResult Function(List<RecipeSummary> menus)? additionalLoading,
+    TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
     TResult Function(List<RecipeSummary> recipes, Exception error)?
-        errorWithValue,
+        additionalError,
   }) {
     return error?.call(this.error);
   }
@@ -649,11 +1012,13 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<RecipeSummary> recipes)? loadingWithValue,
+    TResult Function(List<RecipeSummary> menus)? refreshing,
+    TResult Function(List<RecipeSummary> menus)? additionalLoading,
+    TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
     TResult Function(List<RecipeSummary> recipes, Exception error)?
-        errorWithValue,
+        additionalError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -666,10 +1031,12 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadingWithValue value) loadingWithValue,
+    required TResult Function(_Refreshing value) refreshing,
+    required TResult Function(_AdditionalLoading value) additionalLoading,
+    required TResult Function(_Empty value) empty,
     required TResult Function(_Completed value) completed,
     required TResult Function(_Error value) error,
-    required TResult Function(_ErrorWithValue value) errorWithValue,
+    required TResult Function(_AdditionalError value) additionalError,
   }) {
     return error(this);
   }
@@ -678,10 +1045,12 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_LoadingWithValue value)? loadingWithValue,
+    TResult Function(_Refreshing value)? refreshing,
+    TResult Function(_AdditionalLoading value)? additionalLoading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
-    TResult Function(_ErrorWithValue value)? errorWithValue,
+    TResult Function(_AdditionalError value)? additionalError,
   }) {
     return error?.call(this);
   }
@@ -690,10 +1059,12 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_LoadingWithValue value)? loadingWithValue,
+    TResult Function(_Refreshing value)? refreshing,
+    TResult Function(_AdditionalLoading value)? additionalLoading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
-    TResult Function(_ErrorWithValue value)? errorWithValue,
+    TResult Function(_AdditionalError value)? additionalError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -712,30 +1083,30 @@ abstract class _Error implements RecipeState {
 }
 
 /// @nodoc
-abstract class _$ErrorWithValueCopyWith<$Res> {
-  factory _$ErrorWithValueCopyWith(
-          _ErrorWithValue value, $Res Function(_ErrorWithValue) then) =
-      __$ErrorWithValueCopyWithImpl<$Res>;
+abstract class _$AdditionalErrorCopyWith<$Res> {
+  factory _$AdditionalErrorCopyWith(
+          _AdditionalError value, $Res Function(_AdditionalError) then) =
+      __$AdditionalErrorCopyWithImpl<$Res>;
   $Res call({List<RecipeSummary> recipes, Exception error});
 }
 
 /// @nodoc
-class __$ErrorWithValueCopyWithImpl<$Res>
+class __$AdditionalErrorCopyWithImpl<$Res>
     extends _$RecipeStateCopyWithImpl<$Res>
-    implements _$ErrorWithValueCopyWith<$Res> {
-  __$ErrorWithValueCopyWithImpl(
-      _ErrorWithValue _value, $Res Function(_ErrorWithValue) _then)
-      : super(_value, (v) => _then(v as _ErrorWithValue));
+    implements _$AdditionalErrorCopyWith<$Res> {
+  __$AdditionalErrorCopyWithImpl(
+      _AdditionalError _value, $Res Function(_AdditionalError) _then)
+      : super(_value, (v) => _then(v as _AdditionalError));
 
   @override
-  _ErrorWithValue get _value => super._value as _ErrorWithValue;
+  _AdditionalError get _value => super._value as _AdditionalError;
 
   @override
   $Res call({
     Object? recipes = freezed,
     Object? error = freezed,
   }) {
-    return _then(_ErrorWithValue(
+    return _then(_AdditionalError(
       recipes == freezed
           ? _value.recipes
           : recipes // ignore: cast_nullable_to_non_nullable
@@ -750,8 +1121,8 @@ class __$ErrorWithValueCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ErrorWithValue implements _ErrorWithValue {
-  const _$_ErrorWithValue(this.recipes, this.error);
+class _$_AdditionalError implements _AdditionalError {
+  const _$_AdditionalError(this.recipes, this.error);
 
   @override
   final List<RecipeSummary> recipes;
@@ -760,13 +1131,13 @@ class _$_ErrorWithValue implements _ErrorWithValue {
 
   @override
   String toString() {
-    return 'RecipeState.errorWithValue(recipes: $recipes, error: $error)';
+    return 'RecipeState.additionalError(recipes: $recipes, error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ErrorWithValue &&
+        (other is _AdditionalError &&
             (identical(other.recipes, recipes) ||
                 const DeepCollectionEquality()
                     .equals(other.recipes, recipes)) &&
@@ -782,48 +1153,54 @@ class _$_ErrorWithValue implements _ErrorWithValue {
 
   @JsonKey(ignore: true)
   @override
-  _$ErrorWithValueCopyWith<_ErrorWithValue> get copyWith =>
-      __$ErrorWithValueCopyWithImpl<_ErrorWithValue>(this, _$identity);
+  _$AdditionalErrorCopyWith<_AdditionalError> get copyWith =>
+      __$AdditionalErrorCopyWithImpl<_AdditionalError>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<RecipeSummary> recipes) loadingWithValue,
+    required TResult Function(List<RecipeSummary> menus) refreshing,
+    required TResult Function(List<RecipeSummary> menus) additionalLoading,
+    required TResult Function() empty,
     required TResult Function(List<RecipeSummary> recipes) completed,
     required TResult Function(Exception error) error,
     required TResult Function(List<RecipeSummary> recipes, Exception error)
-        errorWithValue,
+        additionalError,
   }) {
-    return errorWithValue(recipes, this.error);
+    return additionalError(recipes, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<RecipeSummary> recipes)? loadingWithValue,
+    TResult Function(List<RecipeSummary> menus)? refreshing,
+    TResult Function(List<RecipeSummary> menus)? additionalLoading,
+    TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
     TResult Function(List<RecipeSummary> recipes, Exception error)?
-        errorWithValue,
+        additionalError,
   }) {
-    return errorWithValue?.call(recipes, this.error);
+    return additionalError?.call(recipes, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<RecipeSummary> recipes)? loadingWithValue,
+    TResult Function(List<RecipeSummary> menus)? refreshing,
+    TResult Function(List<RecipeSummary> menus)? additionalLoading,
+    TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
     TResult Function(List<RecipeSummary> recipes, Exception error)?
-        errorWithValue,
+        additionalError,
     required TResult orElse(),
   }) {
-    if (errorWithValue != null) {
-      return errorWithValue(recipes, this.error);
+    if (additionalError != null) {
+      return additionalError(recipes, this.error);
     }
     return orElse();
   }
@@ -832,50 +1209,56 @@ class _$_ErrorWithValue implements _ErrorWithValue {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadingWithValue value) loadingWithValue,
+    required TResult Function(_Refreshing value) refreshing,
+    required TResult Function(_AdditionalLoading value) additionalLoading,
+    required TResult Function(_Empty value) empty,
     required TResult Function(_Completed value) completed,
     required TResult Function(_Error value) error,
-    required TResult Function(_ErrorWithValue value) errorWithValue,
+    required TResult Function(_AdditionalError value) additionalError,
   }) {
-    return errorWithValue(this);
+    return additionalError(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_LoadingWithValue value)? loadingWithValue,
+    TResult Function(_Refreshing value)? refreshing,
+    TResult Function(_AdditionalLoading value)? additionalLoading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
-    TResult Function(_ErrorWithValue value)? errorWithValue,
+    TResult Function(_AdditionalError value)? additionalError,
   }) {
-    return errorWithValue?.call(this);
+    return additionalError?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_LoadingWithValue value)? loadingWithValue,
+    TResult Function(_Refreshing value)? refreshing,
+    TResult Function(_AdditionalLoading value)? additionalLoading,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Completed value)? completed,
     TResult Function(_Error value)? error,
-    TResult Function(_ErrorWithValue value)? errorWithValue,
+    TResult Function(_AdditionalError value)? additionalError,
     required TResult orElse(),
   }) {
-    if (errorWithValue != null) {
-      return errorWithValue(this);
+    if (additionalError != null) {
+      return additionalError(this);
     }
     return orElse();
   }
 }
 
-abstract class _ErrorWithValue implements RecipeState {
-  const factory _ErrorWithValue(List<RecipeSummary> recipes, Exception error) =
-      _$_ErrorWithValue;
+abstract class _AdditionalError implements RecipeState {
+  const factory _AdditionalError(List<RecipeSummary> recipes, Exception error) =
+      _$_AdditionalError;
 
   List<RecipeSummary> get recipes => throw _privateConstructorUsedError;
   Exception get error => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ErrorWithValueCopyWith<_ErrorWithValue> get copyWith =>
+  _$AdditionalErrorCopyWith<_AdditionalError> get copyWith =>
       throw _privateConstructorUsedError;
 }

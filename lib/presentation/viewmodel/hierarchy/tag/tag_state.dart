@@ -7,6 +7,8 @@ part 'tag_state.freezed.dart';
 class TagState with _$TagState {
   const factory TagState.loading() = _Loading;
 
+  const factory TagState.empty() = _Empty;
+
   const factory TagState.completed(final List<Tag> tags) = _Completed;
 
   const factory TagState.error(final Exception error) = _Error;
