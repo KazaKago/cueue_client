@@ -174,14 +174,14 @@ class _$_Positive implements _Positive {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Positive &&
-            (identical(other.results, results) ||
-                const DeepCollectionEquality().equals(other.results, results)));
+        (other.runtimeType == runtimeType &&
+            other is _Positive &&
+            const DeepCollectionEquality().equals(other.results, results));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(results);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(results));
 
   @JsonKey(ignore: true)
   @override
@@ -264,8 +264,7 @@ abstract class _Positive implements MultiTextFieldDialogEvent {
       _$_Positive;
 
   @override
-  List<MultiTextFieldDialogResult> get results =>
-      throw _privateConstructorUsedError;
+  List<MultiTextFieldDialogResult> get results;
   @override
   @JsonKey(ignore: true)
   _$PositiveCopyWith<_Positive> get copyWith =>
@@ -320,14 +319,14 @@ class _$_Neutral implements _Neutral {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Neutral &&
-            (identical(other.results, results) ||
-                const DeepCollectionEquality().equals(other.results, results)));
+        (other.runtimeType == runtimeType &&
+            other is _Neutral &&
+            const DeepCollectionEquality().equals(other.results, results));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(results);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(results));
 
   @JsonKey(ignore: true)
   @override
@@ -409,8 +408,7 @@ abstract class _Neutral implements MultiTextFieldDialogEvent {
   const factory _Neutral(List<MultiTextFieldDialogResult> results) = _$_Neutral;
 
   @override
-  List<MultiTextFieldDialogResult> get results =>
-      throw _privateConstructorUsedError;
+  List<MultiTextFieldDialogResult> get results;
   @override
   @JsonKey(ignore: true)
   _$NeutralCopyWith<_Neutral> get copyWith =>
@@ -465,14 +463,14 @@ class _$_Negative implements _Negative {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Negative &&
-            (identical(other.results, results) ||
-                const DeepCollectionEquality().equals(other.results, results)));
+        (other.runtimeType == runtimeType &&
+            other is _Negative &&
+            const DeepCollectionEquality().equals(other.results, results));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(results);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(results));
 
   @JsonKey(ignore: true)
   @override
@@ -555,8 +553,7 @@ abstract class _Negative implements MultiTextFieldDialogEvent {
       _$_Negative;
 
   @override
-  List<MultiTextFieldDialogResult> get results =>
-      throw _privateConstructorUsedError;
+  List<MultiTextFieldDialogResult> get results;
   @override
   @JsonKey(ignore: true)
   _$NegativeCopyWith<_Negative> get copyWith =>

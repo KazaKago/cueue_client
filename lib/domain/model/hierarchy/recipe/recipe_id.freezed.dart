@@ -110,14 +110,13 @@ class _$_RecipeId implements _RecipeId {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _RecipeId &&
-            (identical(other.value, value) ||
-                const DeepCollectionEquality().equals(other.value, value)));
+        (other.runtimeType == runtimeType &&
+            other is _RecipeId &&
+            (identical(other.value, value) || other.value == value));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(value);
+  int get hashCode => Object.hash(runtimeType, value);
 
   @JsonKey(ignore: true)
   @override
@@ -129,7 +128,7 @@ abstract class _RecipeId implements RecipeId {
   const factory _RecipeId(int value) = _$_RecipeId;
 
   @override
-  int get value => throw _privateConstructorUsedError;
+  int get value;
   @override
   @JsonKey(ignore: true)
   _$RecipeIdCopyWith<_RecipeId> get copyWith =>

@@ -32,7 +32,7 @@ class _$UserResponseTearOff {
     );
   }
 
-  UserResponse fromJson(Map<String, Object> json) {
+  UserResponse fromJson(Map<String, Object?> json) {
     return UserResponse.fromJson(json);
   }
 }
@@ -156,19 +156,16 @@ class _$_UserResponse implements _UserResponse {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _UserResponse &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.workspaces, workspaces) ||
-                const DeepCollectionEquality()
-                    .equals(other.workspaces, workspaces)));
+        (other.runtimeType == runtimeType &&
+            other is _UserResponse &&
+            (identical(other.id, id) || other.id == id) &&
+            const DeepCollectionEquality()
+                .equals(other.workspaces, workspaces));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(workspaces);
+  int get hashCode => Object.hash(
+      runtimeType, id, const DeepCollectionEquality().hash(workspaces));
 
   @JsonKey(ignore: true)
   @override
@@ -193,10 +190,10 @@ abstract class _UserResponse implements UserResponse {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'workspaces')
-  List<WorkspaceResponse> get workspaces => throw _privateConstructorUsedError;
+  List<WorkspaceResponse> get workspaces;
   @override
   @JsonKey(ignore: true)
   _$UserResponseCopyWith<_UserResponse> get copyWith =>

@@ -30,7 +30,7 @@ class _$ContentResponseTearOff {
     );
   }
 
-  ContentResponse fromJson(Map<String, Object> json) {
+  ContentResponse fromJson(Map<String, Object?> json) {
     return ContentResponse.fromJson(json);
   }
 }
@@ -154,18 +154,14 @@ class _$_ContentResponse implements _ContentResponse {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ContentResponse &&
-            (identical(other.key, key) ||
-                const DeepCollectionEquality().equals(other.key, key)) &&
-            (identical(other.url, url) ||
-                const DeepCollectionEquality().equals(other.url, url)));
+        (other.runtimeType == runtimeType &&
+            other is _ContentResponse &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.url, url) || other.url == url));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(key) ^
-      const DeepCollectionEquality().hash(url);
+  int get hashCode => Object.hash(runtimeType, key, url);
 
   @JsonKey(ignore: true)
   @override
@@ -188,10 +184,10 @@ abstract class _ContentResponse implements ContentResponse {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'key')
-  String get key => throw _privateConstructorUsedError;
+  String get key;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'url')
-  String get url => throw _privateConstructorUsedError;
+  String get url;
   @override
   @JsonKey(ignore: true)
   _$ContentResponseCopyWith<_ContentResponse> get copyWith =>

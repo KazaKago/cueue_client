@@ -123,19 +123,14 @@ class _$_AppInfo implements _AppInfo {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AppInfo &&
-            (identical(other.appName, appName) ||
-                const DeepCollectionEquality()
-                    .equals(other.appName, appName)) &&
-            (identical(other.version, version) ||
-                const DeepCollectionEquality().equals(other.version, version)));
+        (other.runtimeType == runtimeType &&
+            other is _AppInfo &&
+            (identical(other.appName, appName) || other.appName == appName) &&
+            (identical(other.version, version) || other.version == version));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(appName) ^
-      const DeepCollectionEquality().hash(version);
+  int get hashCode => Object.hash(runtimeType, appName, version);
 
   @JsonKey(ignore: true)
   @override
@@ -148,9 +143,9 @@ abstract class _AppInfo implements AppInfo {
       _$_AppInfo;
 
   @override
-  String get appName => throw _privateConstructorUsedError;
+  String get appName;
   @override
-  String get version => throw _privateConstructorUsedError;
+  String get version;
   @override
   @JsonKey(ignore: true)
   _$AppInfoCopyWith<_AppInfo> get copyWith =>

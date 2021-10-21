@@ -159,15 +159,14 @@ class _$_Positive implements _Positive {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Positive &&
-            (identical(other.menuItems, menuItems) ||
-                const DeepCollectionEquality()
-                    .equals(other.menuItems, menuItems)));
+        (other.runtimeType == runtimeType &&
+            other is _Positive &&
+            const DeepCollectionEquality().equals(other.menuItems, menuItems));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(menuItems);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(menuItems));
 
   @JsonKey(ignore: true)
   @override
@@ -241,7 +240,7 @@ abstract class _Positive implements CheckedMenuDialogEvent {
   const factory _Positive(List<CheckedMenuItem> menuItems) = _$_Positive;
 
   @override
-  List<CheckedMenuItem> get menuItems => throw _privateConstructorUsedError;
+  List<CheckedMenuItem> get menuItems;
   @override
   @JsonKey(ignore: true)
   _$PositiveCopyWith<_Positive> get copyWith =>
@@ -296,15 +295,14 @@ class _$_Negative implements _Negative {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Negative &&
-            (identical(other.menuItems, menuItems) ||
-                const DeepCollectionEquality()
-                    .equals(other.menuItems, menuItems)));
+        (other.runtimeType == runtimeType &&
+            other is _Negative &&
+            const DeepCollectionEquality().equals(other.menuItems, menuItems));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(menuItems);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(menuItems));
 
   @JsonKey(ignore: true)
   @override
@@ -378,7 +376,7 @@ abstract class _Negative implements CheckedMenuDialogEvent {
   const factory _Negative(List<CheckedMenuItem> menuItems) = _$_Negative;
 
   @override
-  List<CheckedMenuItem> get menuItems => throw _privateConstructorUsedError;
+  List<CheckedMenuItem> get menuItems;
   @override
   @JsonKey(ignore: true)
   _$NegativeCopyWith<_Negative> get copyWith =>

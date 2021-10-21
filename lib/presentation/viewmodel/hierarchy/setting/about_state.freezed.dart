@@ -119,7 +119,8 @@ class _$_Loading implements _Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Loading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Loading);
   }
 
   @override
@@ -263,20 +264,15 @@ class _$_Completed implements _Completed {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Completed &&
-            (identical(other.appInfo, appInfo) ||
-                const DeepCollectionEquality()
-                    .equals(other.appInfo, appInfo)) &&
+        (other.runtimeType == runtimeType &&
+            other is _Completed &&
+            (identical(other.appInfo, appInfo) || other.appInfo == appInfo) &&
             (identical(other.developerInfo, developerInfo) ||
-                const DeepCollectionEquality()
-                    .equals(other.developerInfo, developerInfo)));
+                other.developerInfo == developerInfo));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(appInfo) ^
-      const DeepCollectionEquality().hash(developerInfo);
+  int get hashCode => Object.hash(runtimeType, appInfo, developerInfo);
 
   @JsonKey(ignore: true)
   @override
@@ -351,8 +347,8 @@ abstract class _Completed implements AboutState {
   const factory _Completed(AppInfo appInfo, DeveloperInfo developerInfo) =
       _$_Completed;
 
-  AppInfo get appInfo => throw _privateConstructorUsedError;
-  DeveloperInfo get developerInfo => throw _privateConstructorUsedError;
+  AppInfo get appInfo;
+  DeveloperInfo get developerInfo;
   @JsonKey(ignore: true)
   _$CompletedCopyWith<_Completed> get copyWith =>
       throw _privateConstructorUsedError;

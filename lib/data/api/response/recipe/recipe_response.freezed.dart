@@ -56,7 +56,7 @@ class _$RecipeResponseTearOff {
     );
   }
 
-  RecipeResponse fromJson(Map<String, Object> json) {
+  RecipeResponse fromJson(Map<String, Object?> json) {
     return RecipeResponse.fromJson(json);
   }
 }
@@ -334,47 +334,38 @@ class _$_RecipeResponse implements _RecipeResponse {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _RecipeResponse &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
+        (other.runtimeType == runtimeType &&
+            other is _RecipeResponse &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
-            (identical(other.url, url) ||
-                const DeepCollectionEquality().equals(other.url, url)) &&
-            (identical(other.images, images) ||
-                const DeepCollectionEquality().equals(other.images, images)) &&
-            (identical(other.tags, tags) ||
-                const DeepCollectionEquality().equals(other.tags, tags)) &&
-            (identical(other.cookingHistories, cookingHistories) ||
-                const DeepCollectionEquality()
-                    .equals(other.cookingHistories, cookingHistories)) &&
+                other.description == description) &&
+            (identical(other.url, url) || other.url == url) &&
+            const DeepCollectionEquality().equals(other.images, images) &&
+            const DeepCollectionEquality().equals(other.tags, tags) &&
+            const DeepCollectionEquality()
+                .equals(other.cookingHistories, cookingHistories) &&
             (identical(other.cookingCount, cookingCount) ||
-                const DeepCollectionEquality()
-                    .equals(other.cookingCount, cookingCount)) &&
+                other.cookingCount == cookingCount) &&
             (identical(other.createdAt, createdAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)) &&
+                other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.updatedAt, updatedAt)));
+                other.updatedAt == updatedAt));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(url) ^
-      const DeepCollectionEquality().hash(images) ^
-      const DeepCollectionEquality().hash(tags) ^
-      const DeepCollectionEquality().hash(cookingHistories) ^
-      const DeepCollectionEquality().hash(cookingCount) ^
-      const DeepCollectionEquality().hash(createdAt) ^
-      const DeepCollectionEquality().hash(updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      description,
+      url,
+      const DeepCollectionEquality().hash(images),
+      const DeepCollectionEquality().hash(tags),
+      const DeepCollectionEquality().hash(cookingHistories),
+      cookingCount,
+      createdAt,
+      updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -415,34 +406,34 @@ abstract class _RecipeResponse implements RecipeResponse {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'title')
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'description')
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'url')
-  String? get url => throw _privateConstructorUsedError;
+  String? get url;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'images')
-  List<ContentResponse> get images => throw _privateConstructorUsedError;
+  List<ContentResponse> get images;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'tags')
-  List<TagResponse> get tags => throw _privateConstructorUsedError;
+  List<TagResponse> get tags;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'cooking_histories')
-  List<String> get cookingHistories => throw _privateConstructorUsedError;
+  List<String> get cookingHistories;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'cooking_count')
-  int get cookingCount => throw _privateConstructorUsedError;
+  int get cookingCount;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'created_at')
-  String get createdAt => throw _privateConstructorUsedError;
+  String get createdAt;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'updated_at')
-  String get updatedAt => throw _privateConstructorUsedError;
+  String get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$RecipeResponseCopyWith<_RecipeResponse> get copyWith =>

@@ -286,38 +286,32 @@ class _$_User extends _User {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _User &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
+        (other.runtimeType == runtimeType &&
+            other is _User &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.isEmailVerified, isEmailVerified) ||
-                const DeepCollectionEquality()
-                    .equals(other.isEmailVerified, isEmailVerified)) &&
+                other.isEmailVerified == isEmailVerified) &&
             (identical(other.passwordProvider, passwordProvider) ||
-                const DeepCollectionEquality()
-                    .equals(other.passwordProvider, passwordProvider)) &&
+                other.passwordProvider == passwordProvider) &&
             (identical(other.googleProvider, googleProvider) ||
-                const DeepCollectionEquality()
-                    .equals(other.googleProvider, googleProvider)) &&
+                other.googleProvider == googleProvider) &&
             (identical(other.appleProvider, appleProvider) ||
-                const DeepCollectionEquality()
-                    .equals(other.appleProvider, appleProvider)) &&
-            (identical(other.workspaces, workspaces) ||
-                const DeepCollectionEquality()
-                    .equals(other.workspaces, workspaces)));
+                other.appleProvider == appleProvider) &&
+            const DeepCollectionEquality()
+                .equals(other.workspaces, workspaces));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(isEmailVerified) ^
-      const DeepCollectionEquality().hash(passwordProvider) ^
-      const DeepCollectionEquality().hash(googleProvider) ^
-      const DeepCollectionEquality().hash(appleProvider) ^
-      const DeepCollectionEquality().hash(workspaces);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      email,
+      isEmailVerified,
+      passwordProvider,
+      googleProvider,
+      appleProvider,
+      const DeepCollectionEquality().hash(workspaces));
 
   @JsonKey(ignore: true)
   @override
@@ -337,19 +331,19 @@ abstract class _User extends User {
   const _User._() : super._();
 
   @override
-  UserId get id => throw _privateConstructorUsedError;
+  UserId get id;
   @override
-  Email get email => throw _privateConstructorUsedError;
+  Email get email;
   @override
-  bool get isEmailVerified => throw _privateConstructorUsedError;
+  bool get isEmailVerified;
   @override
-  PasswordProvider? get passwordProvider => throw _privateConstructorUsedError;
+  PasswordProvider? get passwordProvider;
   @override
-  GoogleProvider? get googleProvider => throw _privateConstructorUsedError;
+  GoogleProvider? get googleProvider;
   @override
-  AppleProvider? get appleProvider => throw _privateConstructorUsedError;
+  AppleProvider? get appleProvider;
   @override
-  List<Workspace> get workspaces => throw _privateConstructorUsedError;
+  List<Workspace> get workspaces;
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;

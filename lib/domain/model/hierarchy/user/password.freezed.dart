@@ -110,14 +110,13 @@ class _$_Password extends _Password {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Password &&
-            (identical(other.value, value) ||
-                const DeepCollectionEquality().equals(other.value, value)));
+        (other.runtimeType == runtimeType &&
+            other is _Password &&
+            (identical(other.value, value) || other.value == value));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(value);
+  int get hashCode => Object.hash(runtimeType, value);
 
   @JsonKey(ignore: true)
   @override
@@ -130,7 +129,7 @@ abstract class _Password extends Password {
   _Password._() : super._();
 
   @override
-  String get value => throw _privateConstructorUsedError;
+  String get value;
   @override
   @JsonKey(ignore: true)
   _$PasswordCopyWith<_Password> get copyWith =>

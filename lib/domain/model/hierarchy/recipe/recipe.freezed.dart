@@ -288,47 +288,38 @@ class _$_Recipe extends _Recipe {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Recipe &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
+        (other.runtimeType == runtimeType &&
+            other is _Recipe &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
-            (identical(other.url, url) ||
-                const DeepCollectionEquality().equals(other.url, url)) &&
-            (identical(other.images, images) ||
-                const DeepCollectionEquality().equals(other.images, images)) &&
-            (identical(other.tags, tags) ||
-                const DeepCollectionEquality().equals(other.tags, tags)) &&
-            (identical(other.cookingHistories, cookingHistories) ||
-                const DeepCollectionEquality()
-                    .equals(other.cookingHistories, cookingHistories)) &&
+                other.description == description) &&
+            (identical(other.url, url) || other.url == url) &&
+            const DeepCollectionEquality().equals(other.images, images) &&
+            const DeepCollectionEquality().equals(other.tags, tags) &&
+            const DeepCollectionEquality()
+                .equals(other.cookingHistories, cookingHistories) &&
             (identical(other.cookingCount, cookingCount) ||
-                const DeepCollectionEquality()
-                    .equals(other.cookingCount, cookingCount)) &&
+                other.cookingCount == cookingCount) &&
             (identical(other.createdAt, createdAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)) &&
+                other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.updatedAt, updatedAt)));
+                other.updatedAt == updatedAt));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(url) ^
-      const DeepCollectionEquality().hash(images) ^
-      const DeepCollectionEquality().hash(tags) ^
-      const DeepCollectionEquality().hash(cookingHistories) ^
-      const DeepCollectionEquality().hash(cookingCount) ^
-      const DeepCollectionEquality().hash(createdAt) ^
-      const DeepCollectionEquality().hash(updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      description,
+      url,
+      const DeepCollectionEquality().hash(images),
+      const DeepCollectionEquality().hash(tags),
+      const DeepCollectionEquality().hash(cookingHistories),
+      cookingCount,
+      createdAt,
+      updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -351,25 +342,25 @@ abstract class _Recipe extends Recipe {
   const _Recipe._() : super._();
 
   @override
-  RecipeId get id => throw _privateConstructorUsedError;
+  RecipeId get id;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
-  Uri? get url => throw _privateConstructorUsedError;
+  Uri? get url;
   @override
-  List<Content> get images => throw _privateConstructorUsedError;
+  List<Content> get images;
   @override
-  List<Tag> get tags => throw _privateConstructorUsedError;
+  List<Tag> get tags;
   @override
-  List<DateTime> get cookingHistories => throw _privateConstructorUsedError;
+  List<DateTime> get cookingHistories;
   @override
-  int get cookingCount => throw _privateConstructorUsedError;
+  int get cookingCount;
   @override
-  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime get createdAt;
   @override
-  DateTime get updatedAt => throw _privateConstructorUsedError;
+  DateTime get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$RecipeCopyWith<_Recipe> get copyWith => throw _privateConstructorUsedError;

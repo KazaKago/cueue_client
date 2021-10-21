@@ -179,7 +179,8 @@ class _$_Loading implements _Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Loading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Loading);
   }
 
   @override
@@ -332,14 +333,14 @@ class _$_Refreshing implements _Refreshing {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Refreshing &&
-            (identical(other.menus, menus) ||
-                const DeepCollectionEquality().equals(other.menus, menus)));
+        (other.runtimeType == runtimeType &&
+            other is _Refreshing &&
+            const DeepCollectionEquality().equals(other.menus, menus));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(menus);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(menus));
 
   @JsonKey(ignore: true)
   @override
@@ -445,7 +446,7 @@ class _$_Refreshing implements _Refreshing {
 abstract class _Refreshing implements MenuState {
   const factory _Refreshing(List<DateSplitMenuList> menus) = _$_Refreshing;
 
-  List<DateSplitMenuList> get menus => throw _privateConstructorUsedError;
+  List<DateSplitMenuList> get menus;
   @JsonKey(ignore: true)
   _$RefreshingCopyWith<_Refreshing> get copyWith =>
       throw _privateConstructorUsedError;
@@ -499,14 +500,14 @@ class _$_AdditionalLoading implements _AdditionalLoading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AdditionalLoading &&
-            (identical(other.menus, menus) ||
-                const DeepCollectionEquality().equals(other.menus, menus)));
+        (other.runtimeType == runtimeType &&
+            other is _AdditionalLoading &&
+            const DeepCollectionEquality().equals(other.menus, menus));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(menus);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(menus));
 
   @JsonKey(ignore: true)
   @override
@@ -613,7 +614,7 @@ abstract class _AdditionalLoading implements MenuState {
   const factory _AdditionalLoading(List<DateSplitMenuList> menus) =
       _$_AdditionalLoading;
 
-  List<DateSplitMenuList> get menus => throw _privateConstructorUsedError;
+  List<DateSplitMenuList> get menus;
   @JsonKey(ignore: true)
   _$AdditionalLoadingCopyWith<_AdditionalLoading> get copyWith =>
       throw _privateConstructorUsedError;
@@ -647,7 +648,8 @@ class _$_Empty implements _Empty {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Empty);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Empty);
   }
 
   @override
@@ -799,14 +801,14 @@ class _$_Completed implements _Completed {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Completed &&
-            (identical(other.menus, menus) ||
-                const DeepCollectionEquality().equals(other.menus, menus)));
+        (other.runtimeType == runtimeType &&
+            other is _Completed &&
+            const DeepCollectionEquality().equals(other.menus, menus));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(menus);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(menus));
 
   @JsonKey(ignore: true)
   @override
@@ -912,7 +914,7 @@ class _$_Completed implements _Completed {
 abstract class _Completed implements MenuState {
   const factory _Completed(List<DateSplitMenuList> menus) = _$_Completed;
 
-  List<DateSplitMenuList> get menus => throw _privateConstructorUsedError;
+  List<DateSplitMenuList> get menus;
   @JsonKey(ignore: true)
   _$CompletedCopyWith<_Completed> get copyWith =>
       throw _privateConstructorUsedError;
@@ -963,14 +965,13 @@ class _$_Error implements _Error {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Error &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is _Error &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
@@ -1076,7 +1077,7 @@ class _$_Error implements _Error {
 abstract class _Error implements MenuState {
   const factory _Error(Exception error) = _$_Error;
 
-  Exception get error => throw _privateConstructorUsedError;
+  Exception get error;
   @JsonKey(ignore: true)
   _$ErrorCopyWith<_Error> get copyWith => throw _privateConstructorUsedError;
 }
@@ -1135,18 +1136,15 @@ class _$_AdditionalError implements _AdditionalError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AdditionalError &&
-            (identical(other.menus, menus) ||
-                const DeepCollectionEquality().equals(other.menus, menus)) &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is _AdditionalError &&
+            const DeepCollectionEquality().equals(other.menus, menus) &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(menus) ^
-      const DeepCollectionEquality().hash(error);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(menus), error);
 
   @JsonKey(ignore: true)
   @override
@@ -1253,8 +1251,8 @@ abstract class _AdditionalError implements MenuState {
   const factory _AdditionalError(
       List<DateSplitMenuList> menus, Exception error) = _$_AdditionalError;
 
-  List<DateSplitMenuList> get menus => throw _privateConstructorUsedError;
-  Exception get error => throw _privateConstructorUsedError;
+  List<DateSplitMenuList> get menus;
+  Exception get error;
   @JsonKey(ignore: true)
   _$AdditionalErrorCopyWith<_AdditionalError> get copyWith =>
       throw _privateConstructorUsedError;

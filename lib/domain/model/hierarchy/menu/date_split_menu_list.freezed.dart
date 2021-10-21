@@ -131,18 +131,15 @@ class _$_DateSplitMenuList implements _DateSplitMenuList {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _DateSplitMenuList &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.menus, menus) ||
-                const DeepCollectionEquality().equals(other.menus, menus)));
+        (other.runtimeType == runtimeType &&
+            other is _DateSplitMenuList &&
+            (identical(other.date, date) || other.date == date) &&
+            const DeepCollectionEquality().equals(other.menus, menus));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(menus);
+  int get hashCode => Object.hash(
+      runtimeType, date, const DeepCollectionEquality().hash(menus));
 
   @JsonKey(ignore: true)
   @override
@@ -156,9 +153,9 @@ abstract class _DateSplitMenuList implements DateSplitMenuList {
       required List<MenuSummary> menus}) = _$_DateSplitMenuList;
 
   @override
-  DateTime get date => throw _privateConstructorUsedError;
+  DateTime get date;
   @override
-  List<MenuSummary> get menus => throw _privateConstructorUsedError;
+  List<MenuSummary> get menus;
   @override
   @JsonKey(ignore: true)
   _$DateSplitMenuListCopyWith<_DateSplitMenuList> get copyWith =>

@@ -135,18 +135,14 @@ class _$_Content implements _Content {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Content &&
-            (identical(other.key, key) ||
-                const DeepCollectionEquality().equals(other.key, key)) &&
-            (identical(other.url, url) ||
-                const DeepCollectionEquality().equals(other.url, url)));
+        (other.runtimeType == runtimeType &&
+            other is _Content &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.url, url) || other.url == url));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(key) ^
-      const DeepCollectionEquality().hash(url);
+  int get hashCode => Object.hash(runtimeType, key, url);
 
   @JsonKey(ignore: true)
   @override
@@ -159,9 +155,9 @@ abstract class _Content implements Content {
       _$_Content;
 
   @override
-  ContentKey get key => throw _privateConstructorUsedError;
+  ContentKey get key;
   @override
-  Uri get url => throw _privateConstructorUsedError;
+  Uri get url;
   @override
   @JsonKey(ignore: true)
   _$ContentCopyWith<_Content> get copyWith =>

@@ -192,29 +192,24 @@ class _$_RecipeRegistration implements _RecipeRegistration {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _RecipeRegistration &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
+        (other.runtimeType == runtimeType &&
+            other is _RecipeRegistration &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
-            (identical(other.url, url) ||
-                const DeepCollectionEquality().equals(other.url, url)) &&
-            (identical(other.imageKeys, imageKeys) ||
-                const DeepCollectionEquality()
-                    .equals(other.imageKeys, imageKeys)) &&
-            (identical(other.tagIds, tagIds) ||
-                const DeepCollectionEquality().equals(other.tagIds, tagIds)));
+                other.description == description) &&
+            (identical(other.url, url) || other.url == url) &&
+            const DeepCollectionEquality().equals(other.imageKeys, imageKeys) &&
+            const DeepCollectionEquality().equals(other.tagIds, tagIds));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(url) ^
-      const DeepCollectionEquality().hash(imageKeys) ^
-      const DeepCollectionEquality().hash(tagIds);
+  int get hashCode => Object.hash(
+      runtimeType,
+      title,
+      description,
+      url,
+      const DeepCollectionEquality().hash(imageKeys),
+      const DeepCollectionEquality().hash(tagIds));
 
   @JsonKey(ignore: true)
   @override
@@ -231,15 +226,15 @@ abstract class _RecipeRegistration implements RecipeRegistration {
       required List<TagId> tagIds}) = _$_RecipeRegistration;
 
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
-  Uri? get url => throw _privateConstructorUsedError;
+  Uri? get url;
   @override
-  List<ContentKey> get imageKeys => throw _privateConstructorUsedError;
+  List<ContentKey> get imageKeys;
   @override
-  List<TagId> get tagIds => throw _privateConstructorUsedError;
+  List<TagId> get tagIds;
   @override
   @JsonKey(ignore: true)
   _$RecipeRegistrationCopyWith<_RecipeRegistration> get copyWith =>

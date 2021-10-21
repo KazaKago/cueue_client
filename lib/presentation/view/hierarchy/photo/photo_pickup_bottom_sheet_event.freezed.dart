@@ -130,7 +130,8 @@ class _$_FromCamera implements _FromCamera {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _FromCamera);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _FromCamera);
   }
 
   @override
@@ -240,7 +241,8 @@ class _$_FromLibrary implements _FromLibrary {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _FromLibrary);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _FromLibrary);
   }
 
   @override
@@ -348,7 +350,8 @@ class _$_Cancel implements _Cancel {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Cancel);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Cancel);
   }
 
   @override

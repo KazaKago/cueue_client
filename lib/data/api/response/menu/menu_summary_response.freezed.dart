@@ -36,7 +36,7 @@ class _$MenuSummaryResponseTearOff {
     );
   }
 
-  MenuSummaryResponse fromJson(Map<String, Object> json) {
+  MenuSummaryResponse fromJson(Map<String, Object?> json) {
     return MenuSummaryResponse.fromJson(json);
   }
 }
@@ -219,28 +219,19 @@ class _$_MenuSummaryResponse implements _MenuSummaryResponse {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _MenuSummaryResponse &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.memo, memo) ||
-                const DeepCollectionEquality().equals(other.memo, memo)) &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
+        (other.runtimeType == runtimeType &&
+            other is _MenuSummaryResponse &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.memo, memo) || other.memo == memo) &&
+            (identical(other.date, date) || other.date == date) &&
             (identical(other.timeFrame, timeFrame) ||
-                const DeepCollectionEquality()
-                    .equals(other.timeFrame, timeFrame)) &&
-            (identical(other.recipes, recipes) ||
-                const DeepCollectionEquality().equals(other.recipes, recipes)));
+                other.timeFrame == timeFrame) &&
+            const DeepCollectionEquality().equals(other.recipes, recipes));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(memo) ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(timeFrame) ^
-      const DeepCollectionEquality().hash(recipes);
+  int get hashCode => Object.hash(runtimeType, id, memo, date, timeFrame,
+      const DeepCollectionEquality().hash(recipes));
 
   @JsonKey(ignore: true)
   @override
@@ -273,19 +264,19 @@ abstract class _MenuSummaryResponse implements MenuSummaryResponse {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'memo')
-  String get memo => throw _privateConstructorUsedError;
+  String get memo;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'date')
-  String get date => throw _privateConstructorUsedError;
+  String get date;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'time_frame')
-  String get timeFrame => throw _privateConstructorUsedError;
+  String get timeFrame;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'recipes')
-  List<RecipeSummaryResponse> get recipes => throw _privateConstructorUsedError;
+  List<RecipeSummaryResponse> get recipes;
   @override
   @JsonKey(ignore: true)
   _$MenuSummaryResponseCopyWith<_MenuSummaryResponse> get copyWith =>

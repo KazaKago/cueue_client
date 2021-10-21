@@ -142,19 +142,15 @@ class _$_AppleProvider implements _AppleProvider {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AppleProvider &&
-            (identical(other.uid, uid) ||
-                const DeepCollectionEquality().equals(other.uid, uid)) &&
+        (other.runtimeType == runtimeType &&
+            other is _AppleProvider &&
+            (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.displayName, displayName) ||
-                const DeepCollectionEquality()
-                    .equals(other.displayName, displayName)));
+                other.displayName == displayName));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(uid) ^
-      const DeepCollectionEquality().hash(displayName);
+  int get hashCode => Object.hash(runtimeType, uid, displayName);
 
   @JsonKey(ignore: true)
   @override
@@ -167,9 +163,9 @@ abstract class _AppleProvider implements AppleProvider {
       {required UserId uid, required String displayName}) = _$_AppleProvider;
 
   @override
-  UserId get uid => throw _privateConstructorUsedError;
+  UserId get uid;
   @override
-  String get displayName => throw _privateConstructorUsedError;
+  String get displayName;
   @override
   @JsonKey(ignore: true)
   _$AppleProviderCopyWith<_AppleProvider> get copyWith =>

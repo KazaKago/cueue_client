@@ -135,18 +135,14 @@ class _$_Tag implements _Tag {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Tag &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+        (other.runtimeType == runtimeType &&
+            other is _Tag &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name);
+  int get hashCode => Object.hash(runtimeType, id, name);
 
   @JsonKey(ignore: true)
   @override
@@ -158,9 +154,9 @@ abstract class _Tag implements Tag {
   const factory _Tag({required TagId id, required String name}) = _$_Tag;
 
   @override
-  TagId get id => throw _privateConstructorUsedError;
+  TagId get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$TagCopyWith<_Tag> get copyWith => throw _privateConstructorUsedError;

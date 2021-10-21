@@ -152,19 +152,15 @@ class _$_PasswordAuthInfo implements _PasswordAuthInfo {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PasswordAuthInfo &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
+        (other.runtimeType == runtimeType &&
+            other is _PasswordAuthInfo &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)));
+                other.password == password));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(password);
+  int get hashCode => Object.hash(runtimeType, email, password);
 
   @JsonKey(ignore: true)
   @override
@@ -177,9 +173,9 @@ abstract class _PasswordAuthInfo implements PasswordAuthInfo {
       {required Email email, required Password password}) = _$_PasswordAuthInfo;
 
   @override
-  Email get email => throw _privateConstructorUsedError;
+  Email get email;
   @override
-  Password get password => throw _privateConstructorUsedError;
+  Password get password;
   @override
   @JsonKey(ignore: true)
   _$PasswordAuthInfoCopyWith<_PasswordAuthInfo> get copyWith =>

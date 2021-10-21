@@ -189,20 +189,16 @@ class _$_Positive implements _Positive {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Positive &&
+        (other.runtimeType == runtimeType &&
+            other is _Positive &&
             (identical(other.currentText, currentText) ||
-                const DeepCollectionEquality()
-                    .equals(other.currentText, currentText)) &&
+                other.currentText == currentText) &&
             (identical(other.originalText, originalText) ||
-                const DeepCollectionEquality()
-                    .equals(other.originalText, originalText)));
+                other.originalText == originalText));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(currentText) ^
-      const DeepCollectionEquality().hash(originalText);
+  int get hashCode => Object.hash(runtimeType, currentText, originalText);
 
   @JsonKey(ignore: true)
   @override
@@ -285,9 +281,9 @@ abstract class _Positive implements TextFieldDialogEvent {
       _$_Positive;
 
   @override
-  String get currentText => throw _privateConstructorUsedError;
+  String get currentText;
   @override
-  String? get originalText => throw _privateConstructorUsedError;
+  String? get originalText;
   @override
   @JsonKey(ignore: true)
   _$PositiveCopyWith<_Positive> get copyWith =>
@@ -349,20 +345,16 @@ class _$_Neutral implements _Neutral {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Neutral &&
+        (other.runtimeType == runtimeType &&
+            other is _Neutral &&
             (identical(other.currentText, currentText) ||
-                const DeepCollectionEquality()
-                    .equals(other.currentText, currentText)) &&
+                other.currentText == currentText) &&
             (identical(other.originalText, originalText) ||
-                const DeepCollectionEquality()
-                    .equals(other.originalText, originalText)));
+                other.originalText == originalText));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(currentText) ^
-      const DeepCollectionEquality().hash(originalText);
+  int get hashCode => Object.hash(runtimeType, currentText, originalText);
 
   @JsonKey(ignore: true)
   @override
@@ -445,9 +437,9 @@ abstract class _Neutral implements TextFieldDialogEvent {
       _$_Neutral;
 
   @override
-  String get currentText => throw _privateConstructorUsedError;
+  String get currentText;
   @override
-  String? get originalText => throw _privateConstructorUsedError;
+  String? get originalText;
   @override
   @JsonKey(ignore: true)
   _$NeutralCopyWith<_Neutral> get copyWith =>
@@ -509,20 +501,16 @@ class _$_Negative implements _Negative {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Negative &&
+        (other.runtimeType == runtimeType &&
+            other is _Negative &&
             (identical(other.currentText, currentText) ||
-                const DeepCollectionEquality()
-                    .equals(other.currentText, currentText)) &&
+                other.currentText == currentText) &&
             (identical(other.originalText, originalText) ||
-                const DeepCollectionEquality()
-                    .equals(other.originalText, originalText)));
+                other.originalText == originalText));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(currentText) ^
-      const DeepCollectionEquality().hash(originalText);
+  int get hashCode => Object.hash(runtimeType, currentText, originalText);
 
   @JsonKey(ignore: true)
   @override
@@ -605,9 +593,9 @@ abstract class _Negative implements TextFieldDialogEvent {
       _$_Negative;
 
   @override
-  String get currentText => throw _privateConstructorUsedError;
+  String get currentText;
   @override
-  String? get originalText => throw _privateConstructorUsedError;
+  String? get originalText;
   @override
   @JsonKey(ignore: true)
   _$NegativeCopyWith<_Negative> get copyWith =>

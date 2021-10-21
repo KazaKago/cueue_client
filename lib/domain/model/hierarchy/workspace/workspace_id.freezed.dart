@@ -114,14 +114,13 @@ class _$_WorkspaceId implements _WorkspaceId {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _WorkspaceId &&
-            (identical(other.value, value) ||
-                const DeepCollectionEquality().equals(other.value, value)));
+        (other.runtimeType == runtimeType &&
+            other is _WorkspaceId &&
+            (identical(other.value, value) || other.value == value));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(value);
+  int get hashCode => Object.hash(runtimeType, value);
 
   @JsonKey(ignore: true)
   @override
@@ -133,7 +132,7 @@ abstract class _WorkspaceId implements WorkspaceId {
   const factory _WorkspaceId(int value) = _$_WorkspaceId;
 
   @override
-  int get value => throw _privateConstructorUsedError;
+  int get value;
   @override
   @JsonKey(ignore: true)
   _$WorkspaceIdCopyWith<_WorkspaceId> get copyWith =>

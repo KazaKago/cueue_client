@@ -27,7 +27,7 @@ class _$TagRequestTearOff {
     );
   }
 
-  TagRequest fromJson(Map<String, Object> json) {
+  TagRequest fromJson(Map<String, Object?> json) {
     return TagRequest.fromJson(json);
   }
 }
@@ -128,14 +128,13 @@ class _$_TagRequest implements _TagRequest {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _TagRequest &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+        (other.runtimeType == runtimeType &&
+            other is _TagRequest &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
+  int get hashCode => Object.hash(runtimeType, name);
 
   @JsonKey(ignore: true)
   @override
@@ -157,7 +156,7 @@ abstract class _TagRequest implements TagRequest {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$TagRequestCopyWith<_TagRequest> get copyWith =>

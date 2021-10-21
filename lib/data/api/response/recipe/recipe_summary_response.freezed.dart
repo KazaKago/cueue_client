@@ -35,7 +35,7 @@ class _$RecipeSummaryResponseTearOff {
     );
   }
 
-  RecipeSummaryResponse fromJson(Map<String, Object> json) {
+  RecipeSummaryResponse fromJson(Map<String, Object?> json) {
     return RecipeSummaryResponse.fromJson(json);
   }
 }
@@ -215,25 +215,17 @@ class _$_RecipeSummaryResponse implements _RecipeSummaryResponse {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _RecipeSummaryResponse &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.image, image) ||
-                const DeepCollectionEquality().equals(other.image, image)) &&
+        (other.runtimeType == runtimeType &&
+            other is _RecipeSummaryResponse &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.lastCookingAt, lastCookingAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastCookingAt, lastCookingAt)));
+                other.lastCookingAt == lastCookingAt));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(image) ^
-      const DeepCollectionEquality().hash(lastCookingAt);
+  int get hashCode => Object.hash(runtimeType, id, title, image, lastCookingAt);
 
   @JsonKey(ignore: true)
   @override
@@ -260,16 +252,16 @@ abstract class _RecipeSummaryResponse implements RecipeSummaryResponse {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'title')
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'image')
-  ContentResponse? get image => throw _privateConstructorUsedError;
+  ContentResponse? get image;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'last_cooking_at')
-  String? get lastCookingAt => throw _privateConstructorUsedError;
+  String? get lastCookingAt;
   @override
   @JsonKey(ignore: true)
   _$RecipeSummaryResponseCopyWith<_RecipeSummaryResponse> get copyWith =>

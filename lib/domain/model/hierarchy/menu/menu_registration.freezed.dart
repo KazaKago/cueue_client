@@ -174,26 +174,18 @@ class _$_MenuRegistration implements _MenuRegistration {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _MenuRegistration &&
-            (identical(other.memo, memo) ||
-                const DeepCollectionEquality().equals(other.memo, memo)) &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
+        (other.runtimeType == runtimeType &&
+            other is _MenuRegistration &&
+            (identical(other.memo, memo) || other.memo == memo) &&
+            (identical(other.date, date) || other.date == date) &&
             (identical(other.timeFrame, timeFrame) ||
-                const DeepCollectionEquality()
-                    .equals(other.timeFrame, timeFrame)) &&
-            (identical(other.recipeIds, recipeIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.recipeIds, recipeIds)));
+                other.timeFrame == timeFrame) &&
+            const DeepCollectionEquality().equals(other.recipeIds, recipeIds));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(memo) ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(timeFrame) ^
-      const DeepCollectionEquality().hash(recipeIds);
+  int get hashCode => Object.hash(runtimeType, memo, date, timeFrame,
+      const DeepCollectionEquality().hash(recipeIds));
 
   @JsonKey(ignore: true)
   @override
@@ -209,13 +201,13 @@ abstract class _MenuRegistration implements MenuRegistration {
       required List<RecipeId> recipeIds}) = _$_MenuRegistration;
 
   @override
-  String get memo => throw _privateConstructorUsedError;
+  String get memo;
   @override
-  DateTime get date => throw _privateConstructorUsedError;
+  DateTime get date;
   @override
-  TimeFrame get timeFrame => throw _privateConstructorUsedError;
+  TimeFrame get timeFrame;
   @override
-  List<RecipeId> get recipeIds => throw _privateConstructorUsedError;
+  List<RecipeId> get recipeIds;
   @override
   @JsonKey(ignore: true)
   _$MenuRegistrationCopyWith<_MenuRegistration> get copyWith =>

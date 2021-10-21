@@ -34,7 +34,7 @@ class _$MenuRequestTearOff {
     );
   }
 
-  MenuRequest fromJson(Map<String, Object> json) {
+  MenuRequest fromJson(Map<String, Object?> json) {
     return MenuRequest.fromJson(json);
   }
 }
@@ -196,26 +196,18 @@ class _$_MenuRequest implements _MenuRequest {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _MenuRequest &&
-            (identical(other.memo, memo) ||
-                const DeepCollectionEquality().equals(other.memo, memo)) &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
+        (other.runtimeType == runtimeType &&
+            other is _MenuRequest &&
+            (identical(other.memo, memo) || other.memo == memo) &&
+            (identical(other.date, date) || other.date == date) &&
             (identical(other.timeFrame, timeFrame) ||
-                const DeepCollectionEquality()
-                    .equals(other.timeFrame, timeFrame)) &&
-            (identical(other.recipeIds, recipeIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.recipeIds, recipeIds)));
+                other.timeFrame == timeFrame) &&
+            const DeepCollectionEquality().equals(other.recipeIds, recipeIds));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(memo) ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(timeFrame) ^
-      const DeepCollectionEquality().hash(recipeIds);
+  int get hashCode => Object.hash(runtimeType, memo, date, timeFrame,
+      const DeepCollectionEquality().hash(recipeIds));
 
   @JsonKey(ignore: true)
   @override
@@ -241,16 +233,16 @@ abstract class _MenuRequest implements MenuRequest {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'memo')
-  String get memo => throw _privateConstructorUsedError;
+  String get memo;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'date')
-  String get date => throw _privateConstructorUsedError;
+  String get date;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'time_frame')
-  String get timeFrame => throw _privateConstructorUsedError;
+  String get timeFrame;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'recipe_ids')
-  List<int> get recipeIds => throw _privateConstructorUsedError;
+  List<int> get recipeIds;
   @override
   @JsonKey(ignore: true)
   _$MenuRequestCopyWith<_MenuRequest> get copyWith =>

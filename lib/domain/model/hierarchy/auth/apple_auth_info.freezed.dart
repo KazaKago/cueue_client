@@ -150,24 +150,17 @@ class _$_AppleAuthInfo implements _AppleAuthInfo {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AppleAuthInfo &&
-            (identical(other.idToken, idToken) ||
-                const DeepCollectionEquality()
-                    .equals(other.idToken, idToken)) &&
+        (other.runtimeType == runtimeType &&
+            other is _AppleAuthInfo &&
+            (identical(other.idToken, idToken) || other.idToken == idToken) &&
             (identical(other.accessToken, accessToken) ||
-                const DeepCollectionEquality()
-                    .equals(other.accessToken, accessToken)) &&
+                other.accessToken == accessToken) &&
             (identical(other.rawNonce, rawNonce) ||
-                const DeepCollectionEquality()
-                    .equals(other.rawNonce, rawNonce)));
+                other.rawNonce == rawNonce));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(idToken) ^
-      const DeepCollectionEquality().hash(accessToken) ^
-      const DeepCollectionEquality().hash(rawNonce);
+  int get hashCode => Object.hash(runtimeType, idToken, accessToken, rawNonce);
 
   @JsonKey(ignore: true)
   @override
@@ -182,11 +175,11 @@ abstract class _AppleAuthInfo implements AppleAuthInfo {
       required String rawNonce}) = _$_AppleAuthInfo;
 
   @override
-  String get idToken => throw _privateConstructorUsedError;
+  String get idToken;
   @override
-  String get accessToken => throw _privateConstructorUsedError;
+  String get accessToken;
   @override
-  String get rawNonce => throw _privateConstructorUsedError;
+  String get rawNonce;
   @override
   @JsonKey(ignore: true)
   _$AppleAuthInfoCopyWith<_AppleAuthInfo> get copyWith =>

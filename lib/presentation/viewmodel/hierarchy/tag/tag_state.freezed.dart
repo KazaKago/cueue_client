@@ -138,7 +138,8 @@ class _$_Loading implements _Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Loading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Loading);
   }
 
   @override
@@ -251,7 +252,8 @@ class _$_Empty implements _Empty {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Empty);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Empty);
   }
 
   @override
@@ -382,14 +384,14 @@ class _$_Completed implements _Completed {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Completed &&
-            (identical(other.tags, tags) ||
-                const DeepCollectionEquality().equals(other.tags, tags)));
+        (other.runtimeType == runtimeType &&
+            other is _Completed &&
+            const DeepCollectionEquality().equals(other.tags, tags));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(tags);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(tags));
 
   @JsonKey(ignore: true)
   @override
@@ -474,7 +476,7 @@ class _$_Completed implements _Completed {
 abstract class _Completed implements TagState {
   const factory _Completed(List<Tag> tags) = _$_Completed;
 
-  List<Tag> get tags => throw _privateConstructorUsedError;
+  List<Tag> get tags;
   @JsonKey(ignore: true)
   _$CompletedCopyWith<_Completed> get copyWith =>
       throw _privateConstructorUsedError;
@@ -525,14 +527,13 @@ class _$_Error implements _Error {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Error &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is _Error &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
@@ -617,7 +618,7 @@ class _$_Error implements _Error {
 abstract class _Error implements TagState {
   const factory _Error(Exception error) = _$_Error;
 
-  Exception get error => throw _privateConstructorUsedError;
+  Exception get error;
   @JsonKey(ignore: true)
   _$ErrorCopyWith<_Error> get copyWith => throw _privateConstructorUsedError;
 }

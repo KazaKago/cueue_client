@@ -127,7 +127,8 @@ class _$_Positive implements _Positive {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Positive);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Positive);
   }
 
   @override
@@ -235,7 +236,8 @@ class _$_Neutral implements _Neutral {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Neutral);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Neutral);
   }
 
   @override
@@ -343,7 +345,8 @@ class _$_Negative implements _Negative {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Negative);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Negative);
   }
 
   @override

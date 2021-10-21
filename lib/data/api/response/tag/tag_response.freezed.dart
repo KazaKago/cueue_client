@@ -30,7 +30,7 @@ class _$TagResponseTearOff {
     );
   }
 
-  TagResponse fromJson(Map<String, Object> json) {
+  TagResponse fromJson(Map<String, Object?> json) {
     return TagResponse.fromJson(json);
   }
 }
@@ -150,18 +150,14 @@ class _$_TagResponse implements _TagResponse {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _TagResponse &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+        (other.runtimeType == runtimeType &&
+            other is _TagResponse &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name);
+  int get hashCode => Object.hash(runtimeType, id, name);
 
   @JsonKey(ignore: true)
   @override
@@ -184,10 +180,10 @@ abstract class _TagResponse implements TagResponse {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$TagResponseCopyWith<_TagResponse> get copyWith =>

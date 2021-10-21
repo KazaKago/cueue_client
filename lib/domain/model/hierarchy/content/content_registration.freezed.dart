@@ -116,14 +116,13 @@ class _$_ContentRegistration implements _ContentRegistration {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ContentRegistration &&
-            (identical(other.data, data) ||
-                const DeepCollectionEquality().equals(other.data, data)));
+        (other.runtimeType == runtimeType &&
+            other is _ContentRegistration &&
+            (identical(other.data, data) || other.data == data));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(data);
+  int get hashCode => Object.hash(runtimeType, data);
 
   @JsonKey(ignore: true)
   @override
@@ -137,7 +136,7 @@ abstract class _ContentRegistration implements ContentRegistration {
       _$_ContentRegistration;
 
   @override
-  Uint8List get data => throw _privateConstructorUsedError;
+  Uint8List get data;
   @override
   @JsonKey(ignore: true)
   _$ContentRegistrationCopyWith<_ContentRegistration> get copyWith =>

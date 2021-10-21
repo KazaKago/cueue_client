@@ -27,7 +27,7 @@ class _$ContentRequestTearOff {
     );
   }
 
-  ContentRequest fromJson(Map<String, Object> json) {
+  ContentRequest fromJson(Map<String, Object?> json) {
     return ContentRequest.fromJson(json);
   }
 }
@@ -131,14 +131,13 @@ class _$_ContentRequest implements _ContentRequest {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ContentRequest &&
-            (identical(other.data, data) ||
-                const DeepCollectionEquality().equals(other.data, data)));
+        (other.runtimeType == runtimeType &&
+            other is _ContentRequest &&
+            (identical(other.data, data) || other.data == data));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(data);
+  int get hashCode => Object.hash(runtimeType, data);
 
   @JsonKey(ignore: true)
   @override
@@ -160,7 +159,7 @@ abstract class _ContentRequest implements ContentRequest {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'data')
-  String get data => throw _privateConstructorUsedError;
+  String get data;
   @override
   @JsonKey(ignore: true)
   _$ContentRequestCopyWith<_ContentRequest> get copyWith =>

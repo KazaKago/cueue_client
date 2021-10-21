@@ -30,7 +30,7 @@ class _$ErrorResponseTearOff {
     );
   }
 
-  ErrorResponse fromJson(Map<String, Object> json) {
+  ErrorResponse fromJson(Map<String, Object?> json) {
     return ErrorResponse.fromJson(json);
   }
 }
@@ -156,18 +156,14 @@ class _$_ErrorResponse implements _ErrorResponse {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ErrorResponse &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality().equals(other.message, message)));
+        (other.runtimeType == runtimeType &&
+            other is _ErrorResponse &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(message);
+  int get hashCode => Object.hash(runtimeType, name, message);
 
   @JsonKey(ignore: true)
   @override
@@ -190,10 +186,10 @@ abstract class _ErrorResponse implements ErrorResponse {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'message')
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @override
   @JsonKey(ignore: true)
   _$ErrorResponseCopyWith<_ErrorResponse> get copyWith =>

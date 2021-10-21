@@ -130,19 +130,15 @@ class _$_GoogleAuthInfo implements _GoogleAuthInfo {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _GoogleAuthInfo &&
+        (other.runtimeType == runtimeType &&
+            other is _GoogleAuthInfo &&
             (identical(other.accessToken, accessToken) ||
-                const DeepCollectionEquality()
-                    .equals(other.accessToken, accessToken)) &&
-            (identical(other.idToken, idToken) ||
-                const DeepCollectionEquality().equals(other.idToken, idToken)));
+                other.accessToken == accessToken) &&
+            (identical(other.idToken, idToken) || other.idToken == idToken));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(accessToken) ^
-      const DeepCollectionEquality().hash(idToken);
+  int get hashCode => Object.hash(runtimeType, accessToken, idToken);
 
   @JsonKey(ignore: true)
   @override
@@ -156,9 +152,9 @@ abstract class _GoogleAuthInfo implements GoogleAuthInfo {
       required String idToken}) = _$_GoogleAuthInfo;
 
   @override
-  String get accessToken => throw _privateConstructorUsedError;
+  String get accessToken;
   @override
-  String get idToken => throw _privateConstructorUsedError;
+  String get idToken;
   @override
   @JsonKey(ignore: true)
   _$GoogleAuthInfoCopyWith<_GoogleAuthInfo> get copyWith =>

@@ -159,23 +159,16 @@ class _$_DeveloperInfo extends _DeveloperInfo {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _DeveloperInfo &&
+        (other.runtimeType == runtimeType &&
+            other is _DeveloperInfo &&
             (identical(other.developer, developer) ||
-                const DeepCollectionEquality()
-                    .equals(other.developer, developer)) &&
-            (identical(other.webSite, webSite) ||
-                const DeepCollectionEquality()
-                    .equals(other.webSite, webSite)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)));
+                other.developer == developer) &&
+            (identical(other.webSite, webSite) || other.webSite == webSite) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(developer) ^
-      const DeepCollectionEquality().hash(webSite) ^
-      const DeepCollectionEquality().hash(email);
+  int get hashCode => Object.hash(runtimeType, developer, webSite, email);
 
   @JsonKey(ignore: true)
   @override
@@ -191,11 +184,11 @@ abstract class _DeveloperInfo extends DeveloperInfo {
   const _DeveloperInfo._() : super._();
 
   @override
-  String get developer => throw _privateConstructorUsedError;
+  String get developer;
   @override
-  Uri get webSite => throw _privateConstructorUsedError;
+  Uri get webSite;
   @override
-  Email get email => throw _privateConstructorUsedError;
+  Email get email;
   @override
   @JsonKey(ignore: true)
   _$DeveloperInfoCopyWith<_DeveloperInfo> get copyWith =>

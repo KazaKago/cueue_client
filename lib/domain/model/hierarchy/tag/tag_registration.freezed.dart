@@ -116,14 +116,13 @@ class _$_TagRegistration implements _TagRegistration {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _TagRegistration &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+        (other.runtimeType == runtimeType &&
+            other is _TagRegistration &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
+  int get hashCode => Object.hash(runtimeType, name);
 
   @JsonKey(ignore: true)
   @override
@@ -135,7 +134,7 @@ abstract class _TagRegistration implements TagRegistration {
   const factory _TagRegistration({required String name}) = _$_TagRegistration;
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$TagRegistrationCopyWith<_TagRegistration> get copyWith =>

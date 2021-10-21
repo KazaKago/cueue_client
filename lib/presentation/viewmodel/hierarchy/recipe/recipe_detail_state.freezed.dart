@@ -130,7 +130,8 @@ class _$_Loading implements _Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Loading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Loading);
   }
 
   @override
@@ -265,14 +266,13 @@ class _$_Completed implements _Completed {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Completed &&
-            (identical(other.recipe, recipe) ||
-                const DeepCollectionEquality().equals(other.recipe, recipe)));
+        (other.runtimeType == runtimeType &&
+            other is _Completed &&
+            (identical(other.recipe, recipe) || other.recipe == recipe));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(recipe);
+  int get hashCode => Object.hash(runtimeType, recipe);
 
   @JsonKey(ignore: true)
   @override
@@ -351,7 +351,7 @@ class _$_Completed implements _Completed {
 abstract class _Completed implements RecipeDetailState {
   const factory _Completed(Recipe recipe) = _$_Completed;
 
-  Recipe get recipe => throw _privateConstructorUsedError;
+  Recipe get recipe;
   @JsonKey(ignore: true)
   _$CompletedCopyWith<_Completed> get copyWith =>
       throw _privateConstructorUsedError;
@@ -402,14 +402,13 @@ class _$_Error implements _Error {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Error &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is _Error &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
@@ -488,7 +487,7 @@ class _$_Error implements _Error {
 abstract class _Error implements RecipeDetailState {
   const factory _Error(Exception error) = _$_Error;
 
-  Exception get error => throw _privateConstructorUsedError;
+  Exception get error;
   @JsonKey(ignore: true)
   _$ErrorCopyWith<_Error> get copyWith => throw _privateConstructorUsedError;
 }
