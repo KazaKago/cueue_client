@@ -6,7 +6,9 @@ import 'package:cueue/domain/repository/hierarchy/info/info_repository.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class InfoRepositoryImpl implements InfoRepository {
-  const InfoRepositoryImpl();
+  const InfoRepositoryImpl(this._developerInfoConstants);
+
+  final DeveloperInfoConstants _developerInfoConstants;
 
   @override
   Future<AppInfo> getAppInfo() async {
@@ -17,9 +19,9 @@ class InfoRepositoryImpl implements InfoRepository {
   @override
   Future<DeveloperInfo> getDeveloperInfo() async {
     return DeveloperInfo(
-      developer: DeveloperInfoConstants.developer,
-      webSite: DeveloperInfoConstants.webSite,
-      email: Email(DeveloperInfoConstants.email),
+      developer: _developerInfoConstants.developer,
+      webSite: _developerInfoConstants.webSite,
+      email: Email(_developerInfoConstants.email),
     );
   }
 }
