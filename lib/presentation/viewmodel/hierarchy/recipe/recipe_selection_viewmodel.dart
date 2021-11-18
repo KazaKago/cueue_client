@@ -36,8 +36,8 @@ class RecipeSelectionViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> _follow() async {
-    final followTagsUseCase = await _followTagsUseCase();
+  void _follow() {
+    final followTagsUseCase = _followTagsUseCase();
     _compositeSubscription.add(followTagsUseCase.listen((state) {
       this.state = state.when(
         loading: (content) => const RecipeSelectionState.loading(),

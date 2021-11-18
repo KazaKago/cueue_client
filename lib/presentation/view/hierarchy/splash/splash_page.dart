@@ -2,6 +2,7 @@ import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/presentation/view/hierarchy/main/main_page.dart';
 import 'package:cueue/presentation/view/hierarchy/welcome/welcome_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
+import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/splash/splash_route_pattern.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,12 +15,12 @@ class SplashPage extends HookConsumerWidget {
   @override
   Widget build(final BuildContext context, final WidgetRef ref) {
     final splashAnimationController = useAnimationController(duration: const Duration(milliseconds: 500));
-    ref.listen(splashViewModelProvider.select((viewModel) => viewModel.nextRoute), (final NextSplashRoutePattern? nextRoute) {
-      if (nextRoute != null) {
+    ref.listen<Event<NextSplashRoutePattern>>(splashViewModelProvider.select((viewModel) => viewModel.nextRouteEvent), (previous, nextRouteEvent) {
+      nextRouteEvent((nextRoute) {
         splashAnimationController
           ..addStatusListener((status) => _splashAnimationHandler(context, status, nextRoute))
           ..forward();
-      }
+      });
     });
     return Scaffold(
       extendBodyBehindAppBar: true,

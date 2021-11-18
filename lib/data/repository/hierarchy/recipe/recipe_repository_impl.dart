@@ -1,26 +1,10 @@
-import 'package:cueue/data/api/hierarchy/menu/get_menu_api.dart';
-import 'package:cueue/data/api/hierarchy/menu/get_menus_api.dart';
 import 'package:cueue/data/api/hierarchy/recipe/create_recipe_api.dart';
 import 'package:cueue/data/api/hierarchy/recipe/delete_recipe_api.dart';
-import 'package:cueue/data/api/hierarchy/recipe/get_recipe_api.dart';
-import 'package:cueue/data/api/hierarchy/recipe/get_recipes_api.dart';
 import 'package:cueue/data/api/hierarchy/recipe/update_recipe_api.dart';
-import 'package:cueue/data/api/hierarchy/user/get_user_api.dart';
 import 'package:cueue/data/cache/hierarchy/menu/menu_cache.dart';
-import 'package:cueue/data/cache/hierarchy/menu/menu_state_manager.dart';
-import 'package:cueue/data/cache/hierarchy/menu/menu_summary_state_manager.dart';
-import 'package:cueue/data/cache/hierarchy/recipe/all_recipes_state_manager.dart';
 import 'package:cueue/data/cache/hierarchy/recipe/recipe_cache.dart';
-import 'package:cueue/data/cache/hierarchy/recipe/recipe_state_manager.dart';
-import 'package:cueue/data/cache/hierarchy/recipe/tagged_recipes_state_manager.dart';
-import 'package:cueue/data/cache/hierarchy/user/user_cache.dart';
-import 'package:cueue/data/cache/hierarchy/user/user_state_manager.dart';
-import 'package:cueue/data/mapper/hierarchy/menu/menu_response_mapper.dart';
-import 'package:cueue/data/mapper/hierarchy/menu/menu_summary_response_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/recipe/recipe_request_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/recipe/recipe_response_mapper.dart';
-import 'package:cueue/data/mapper/hierarchy/recipe/recipe_summary_response_mapper.dart';
-import 'package:cueue/data/mapper/hierarchy/user/user_response_mapper.dart';
 import 'package:cueue/data/repository/flowable/menu/menu_flowable_factory.dart';
 import 'package:cueue/data/repository/flowable/menu/menu_summary_flowable_factory.dart';
 import 'package:cueue/data/repository/flowable/recipe/all_recipes_flowable_factory.dart';
@@ -38,36 +22,26 @@ import 'package:cueue/domain/repository/hierarchy/recipe/recipe_repository.dart'
 import 'package:store_flowable/store_flowable.dart';
 
 class RecipeRepositoryImpl implements RecipeRepository {
-  const RecipeRepositoryImpl(this._userCache, this._userStateManager, this._recipeCache, this._recipeStateManager, this._allRecipesStateManager, this._taggedRecipesStateManager, this._menuCache, this._menuStateManager, this._menuSummaryStateManager, this._getUserApi, this._getRecipesApi, this._getRecipeApi, this._createRecipeApi, this._updateRecipeApi, this._deleteRecipeApi, this._getMenuApi, this._getMenusApi, this._userResponseMapper, this._recipeResponseMapper, this._recipeSummaryResponseMapper, this._recipeRequestMapper, this._menuSummaryResponseMapper, this._menuResponseMapper);
+  const RecipeRepositoryImpl(this._recipeCache, this._menuCache, this._createRecipeApi, this._updateRecipeApi, this._deleteRecipeApi, this._recipeResponseMapper, this._recipeRequestMapper, this._allRecipesFlowableFactory, this._taggedRecipesFlowableFactory, this._recipeFlowableFactory, this._userFlowableFactory, this._menuFlowableFactory, this._menuSummaryFlowableFactory);
 
-  final UserCache _userCache;
-  final UserStateManager _userStateManager;
   final RecipeCache _recipeCache;
-  final RecipeStateManager _recipeStateManager;
-  final AllRecipesStateManager _allRecipesStateManager;
-  final TaggedRecipesStateManager _taggedRecipesStateManager;
   final MenuCache _menuCache;
-  final MenuStateManager _menuStateManager;
-  final MenuSummaryStateManager _menuSummaryStateManager;
-  final GetUserApi _getUserApi;
-  final GetRecipesApi _getRecipesApi;
-  final GetRecipeApi _getRecipeApi;
   final CreateRecipeApi _createRecipeApi;
   final UpdateRecipeApi _updateRecipeApi;
   final DeleteRecipeApi _deleteRecipeApi;
-  final GetMenuApi _getMenuApi;
-  final GetMenusApi _getMenusApi;
-  final UserResponseMapper _userResponseMapper;
   final RecipeResponseMapper _recipeResponseMapper;
-  final RecipeSummaryResponseMapper _recipeSummaryResponseMapper;
   final RecipeRequestMapper _recipeRequestMapper;
-  final MenuSummaryResponseMapper _menuSummaryResponseMapper;
-  final MenuResponseMapper _menuResponseMapper;
+  final AllRecipesFlowableFactory _allRecipesFlowableFactory;
+  final TaggedRecipesFlowableFactory _taggedRecipesFlowableFactory;
+  final RecipeFlowableFactory _recipeFlowableFactory;
+  final UserFlowableFactory _userFlowableFactory;
+  final MenuFlowableFactory _menuFlowableFactory;
+  final MenuSummaryFlowableFactory _menuSummaryFlowableFactory;
 
   @override
-  Future<LoadingStateStream<List<RecipeSummary>>> followAllData() async {
-    final allRecipeFlowable = AllRecipesFlowableFactory(_userCache, _userStateManager, _recipeCache, _allRecipesStateManager, _getUserApi, _getRecipesApi, _userResponseMapper, _recipeSummaryResponseMapper).create();
-    return (await allRecipeFlowable.publish()).mapContent((recipeIds) {
+  LoadingStateStream<List<RecipeSummary>> followAllData() {
+    final allRecipeFlowable = _allRecipesFlowableFactory.create(null);
+    return allRecipeFlowable.publish().mapContent((recipeIds) {
       return recipeIds.mapNotNull((recipeId) {
         return _recipeCache.recipeSummaryMap.value[recipeId];
       }).toList();
@@ -75,9 +49,9 @@ class RecipeRepositoryImpl implements RecipeRepository {
   }
 
   @override
-  Future<LoadingStateStream<List<RecipeSummary>>> followTaggedData(final TagId tagId) async {
-    final taggedRecipeFlowable = TaggedRecipesFlowableFactory(_userCache, _userStateManager, _recipeCache, _taggedRecipesStateManager, _getUserApi, _getRecipesApi, _userResponseMapper, _recipeSummaryResponseMapper, tagId).create();
-    return (await taggedRecipeFlowable.publish()).mapContent((recipeIds) {
+  LoadingStateStream<List<RecipeSummary>> followTaggedData(final TagId tagId) {
+    final taggedRecipeFlowable = _taggedRecipesFlowableFactory.create(tagId);
+    return taggedRecipeFlowable.publish().mapContent((recipeIds) {
       return recipeIds.mapNotNull((recipeId) {
         return _recipeCache.recipeSummaryMap.value[recipeId];
       }).toList();
@@ -85,44 +59,44 @@ class RecipeRepositoryImpl implements RecipeRepository {
   }
 
   @override
-  Future<LoadingStateStream<Recipe>> followData(final RecipeId recipeId) {
-    final recipeFlowable = RecipeFlowableFactory(_userCache, _userStateManager, _recipeCache, _recipeStateManager, _getUserApi, _getRecipeApi, _userResponseMapper, _recipeResponseMapper, recipeId).create();
+  LoadingStateStream<Recipe> followData(final RecipeId recipeId) {
+    final recipeFlowable = _recipeFlowableFactory.create(recipeId);
     return recipeFlowable.publish();
   }
 
   @override
   Future<void> refreshAllData() async {
-    final recipeFlowable = AllRecipesFlowableFactory(_userCache, _userStateManager, _recipeCache, _allRecipesStateManager, _getUserApi, _getRecipesApi, _userResponseMapper, _recipeSummaryResponseMapper).create();
+    final recipeFlowable = _allRecipesFlowableFactory.create(null);
     await recipeFlowable.refresh();
   }
 
   @override
   Future<void> refreshTaggedData(final TagId tagId) async {
-    final taggedRecipeFlowable = TaggedRecipesFlowableFactory(_userCache, _userStateManager, _recipeCache, _taggedRecipesStateManager, _getUserApi, _getRecipesApi, _userResponseMapper, _recipeSummaryResponseMapper, tagId).create();
+    final taggedRecipeFlowable = _taggedRecipesFlowableFactory.create(tagId);
     await taggedRecipeFlowable.refresh();
   }
 
   @override
   Future<void> refreshData(final RecipeId recipeId) async {
-    final recipeFlowable = RecipeFlowableFactory(_userCache, _userStateManager, _recipeCache, _recipeStateManager, _getUserApi, _getRecipeApi, _userResponseMapper, _recipeResponseMapper, recipeId).create();
+    final recipeFlowable = _recipeFlowableFactory.create(recipeId);
     return recipeFlowable.refresh();
   }
 
   @override
   Future<void> requestAdditionalAllData({required final bool continueWhenError}) async {
-    final recipeFlowable = AllRecipesFlowableFactory(_userCache, _userStateManager, _recipeCache, _allRecipesStateManager, _getUserApi, _getRecipesApi, _userResponseMapper, _recipeSummaryResponseMapper).create();
+    final recipeFlowable = _allRecipesFlowableFactory.create(null);
     await recipeFlowable.requestNextData(continueWhenError: continueWhenError);
   }
 
   @override
   Future<void> requestAdditionalTaggedData(final TagId tagId, {required final bool continueWhenError}) async {
-    final taggedRecipeFlowable = TaggedRecipesFlowableFactory(_userCache, _userStateManager, _recipeCache, _taggedRecipesStateManager, _getUserApi, _getRecipesApi, _userResponseMapper, _recipeSummaryResponseMapper, tagId).create();
+    final taggedRecipeFlowable = _taggedRecipesFlowableFactory.create(tagId);
     await taggedRecipeFlowable.requestNextData(continueWhenError: continueWhenError);
   }
 
   @override
   Future<void> create(final RecipeRegistration recipeRegistration) async {
-    final user = await UserFlowableFactory(_userCache, _userStateManager, _getUserApi, _userResponseMapper).create().requireData();
+    final user = await _userFlowableFactory.create(null).requireData();
     final response = await _createRecipeApi.execute(user.currentWorkspace.id.value, _recipeRequestMapper.map(recipeRegistration));
     final recipe = _recipeResponseMapper.map(response);
 
@@ -130,10 +104,10 @@ class RecipeRepositoryImpl implements RecipeRepository {
     cachedRecipeSummaryMap[recipe.id] = recipe;
     _recipeCache.recipeSummaryMap.add(cachedRecipeSummaryMap);
 
-    final recipeFlowable = RecipeFlowableFactory(_userCache, _userStateManager, _recipeCache, _recipeStateManager, _getUserApi, _getRecipeApi, _userResponseMapper, _recipeResponseMapper, recipe.id).create();
+    final recipeFlowable = _recipeFlowableFactory.create(recipe.id);
     await recipeFlowable.update(recipe);
 
-    final allRecipeFlowable = AllRecipesFlowableFactory(_userCache, _userStateManager, _recipeCache, _allRecipesStateManager, _getUserApi, _getRecipesApi, _userResponseMapper, _recipeSummaryResponseMapper).create();
+    final allRecipeFlowable = _allRecipesFlowableFactory.create(null);
     final cachedAllRecipeIds = await allRecipeFlowable.getData(from: GettingFrom.cache);
     if (cachedAllRecipeIds != null) {
       final recipeIds = [recipe.id] + cachedAllRecipeIds;
@@ -141,7 +115,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
     }
 
     for (final tag in recipe.tags) {
-      final taggedRecipeFlowable = TaggedRecipesFlowableFactory(_userCache, _userStateManager, _recipeCache, _taggedRecipesStateManager, _getUserApi, _getRecipesApi, _userResponseMapper, _recipeSummaryResponseMapper, tag.id).create();
+      final taggedRecipeFlowable = _taggedRecipesFlowableFactory.create(tag.id);
       final cachedTaggedRecipeIds = await taggedRecipeFlowable.getData(from: GettingFrom.cache);
       if (cachedTaggedRecipeIds != null) {
         final taggedRecipeIds = [recipe.id] + cachedTaggedRecipeIds;
@@ -152,7 +126,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
 
   @override
   Future<void> update(final RecipeId recipeId, final RecipeRegistration recipeRegistration) async {
-    final user = await UserFlowableFactory(_userCache, _userStateManager, _getUserApi, _userResponseMapper).create().requireData();
+    final user = await _userFlowableFactory.create(null).requireData();
     final response = await _updateRecipeApi.execute(user.currentWorkspace.id.value, recipeId.value, _recipeRequestMapper.map(recipeRegistration));
     final recipe = _recipeResponseMapper.map(response);
 
@@ -160,12 +134,12 @@ class RecipeRepositoryImpl implements RecipeRepository {
     cachedRecipeSummaryMap[recipe.id] = recipe;
     _recipeCache.recipeSummaryMap.add(cachedRecipeSummaryMap);
 
-    final recipeFlowable = RecipeFlowableFactory(_userCache, _userStateManager, _recipeCache, _recipeStateManager, _getUserApi, _getRecipeApi, _userResponseMapper, _recipeResponseMapper, recipe.id).create();
+    final recipeFlowable = _recipeFlowableFactory.create(recipeId);
     await recipeFlowable.update(recipe);
 
     _recipeCache.taggedRecipeIds.forEach((key, value) async {
       if (!recipe.tags.map((e) => e.id).contains(key)) {
-        final taggedRecipeFlowable = TaggedRecipesFlowableFactory(_userCache, _userStateManager, _recipeCache, _taggedRecipesStateManager, _getUserApi, _getRecipesApi, _userResponseMapper, _recipeSummaryResponseMapper, key).create();
+        final taggedRecipeFlowable = _taggedRecipesFlowableFactory.create(key);
         final cachedTaggedRecipeIds = await taggedRecipeFlowable.getData(from: GettingFrom.cache);
         if (cachedTaggedRecipeIds != null) {
           final fixedTaggedRecipeIds = cachedTaggedRecipeIds.where((id) => id != recipe.id).toList();
@@ -174,7 +148,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
       }
     });
     for (final tag in recipe.tags) {
-      final taggedRecipeFlowable = TaggedRecipesFlowableFactory(_userCache, _userStateManager, _recipeCache, _taggedRecipesStateManager, _getUserApi, _getRecipesApi, _userResponseMapper, _recipeSummaryResponseMapper, tag.id).create();
+      final taggedRecipeFlowable = _taggedRecipesFlowableFactory.create(tag.id);
       final cachedTaggedRecipeIds = await taggedRecipeFlowable.getData(from: GettingFrom.cache);
       if (cachedTaggedRecipeIds != null) {
         List<RecipeId> fixedTaggedRecipeIds;
@@ -188,7 +162,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
     }
 
     _menuCache.menuMap.forEach((menuId, menu) async {
-      final menuFlowable = MenuFlowableFactory(_userCache, _userStateManager, _menuCache, _menuStateManager, _getUserApi, _getMenuApi, _userResponseMapper, _menuResponseMapper, menuId).create();
+      final menuFlowable = _menuFlowableFactory.create(menuId);
       final cachedMenus = await menuFlowable.getData(from: GettingFrom.cache);
       if (cachedMenus != null) {
         final menu = cachedMenus.copyWith(recipes: cachedMenus.recipes.map((e) => (e.id == recipe.id) ? recipe : e).toList());
@@ -196,7 +170,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
       }
     });
 
-    final menuSummaryFlowable = MenuSummaryFlowableFactory(_userCache, _userStateManager, _menuCache, _menuSummaryStateManager, _getUserApi, _getMenusApi, _userResponseMapper, _menuSummaryResponseMapper).create();
+    final menuSummaryFlowable = _menuSummaryFlowableFactory.create(null);
     final cachedMenuSummaries = await menuSummaryFlowable.getData(from: GettingFrom.cache);
     if (cachedMenuSummaries != null) {
       final menuSummaries = cachedMenuSummaries.map((menu) {
@@ -214,16 +188,16 @@ class RecipeRepositoryImpl implements RecipeRepository {
 
   @override
   Future<void> delete(final RecipeId recipeId) async {
-    final user = await UserFlowableFactory(_userCache, _userStateManager, _getUserApi, _userResponseMapper).create().requireData();
+    final user = await _userFlowableFactory.create(null).requireData();
     await _deleteRecipeApi.execute(user.currentWorkspace.id.value, recipeId.value);
 
     final cachedRecipeSummaryMap = _recipeCache.recipeSummaryMap.value..remove(recipeId);
     _recipeCache.recipeSummaryMap.add(cachedRecipeSummaryMap);
 
-    final recipeFlowable = RecipeFlowableFactory(_userCache, _userStateManager, _recipeCache, _recipeStateManager, _getUserApi, _getRecipeApi, _userResponseMapper, _recipeResponseMapper, recipeId).create();
+    final recipeFlowable = _recipeFlowableFactory.create(recipeId);
     await recipeFlowable.update(null);
 
-    final allRecipeFlowable = AllRecipesFlowableFactory(_userCache, _userStateManager, _recipeCache, _allRecipesStateManager, _getUserApi, _getRecipesApi, _userResponseMapper, _recipeSummaryResponseMapper).create();
+    final allRecipeFlowable = _allRecipesFlowableFactory.create(null);
     final cachedAllRecipeIds = await allRecipeFlowable.getData(from: GettingFrom.cache);
     if (cachedAllRecipeIds != null) {
       final recipeIds = cachedAllRecipeIds.where((id) => id != recipeId).toList();
@@ -231,7 +205,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
     }
 
     _recipeCache.taggedRecipeIds.forEach((key, value) async {
-      final taggedRecipeFlowable = TaggedRecipesFlowableFactory(_userCache, _userStateManager, _recipeCache, _taggedRecipesStateManager, _getUserApi, _getRecipesApi, _userResponseMapper, _recipeSummaryResponseMapper, key).create();
+      final taggedRecipeFlowable = _taggedRecipesFlowableFactory.create(key);
       final cachedTaggedRecipeIds = await taggedRecipeFlowable.getData(from: GettingFrom.cache);
       if (cachedTaggedRecipeIds != null) {
         final fixedTaggedRecipeIds = cachedTaggedRecipeIds.where((id) => id != recipeId).toList();
@@ -240,7 +214,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
     });
 
     _menuCache.menuMap.forEach((menuId, menu) async {
-      final menuFlowable = MenuFlowableFactory(_userCache, _userStateManager, _menuCache, _menuStateManager, _getUserApi, _getMenuApi, _userResponseMapper, _menuResponseMapper, menuId).create();
+      final menuFlowable = _menuFlowableFactory.create(menuId);
       final cachedMenus = await menuFlowable.getData(from: GettingFrom.cache);
       if (cachedMenus != null) {
         final menu = cachedMenus.copyWith(recipes: cachedMenus.recipes.where((e) => e.id != recipeId).toList());
@@ -248,7 +222,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
       }
     });
 
-    final menuSummaryFlowable = MenuSummaryFlowableFactory(_userCache, _userStateManager, _menuCache, _menuSummaryStateManager, _getUserApi, _getMenusApi, _userResponseMapper, _menuSummaryResponseMapper).create();
+    final menuSummaryFlowable = _menuSummaryFlowableFactory.create(null);
     final cachedMenuSummaries = await menuSummaryFlowable.getData(from: GettingFrom.cache);
     if (cachedMenuSummaries != null) {
       final menuSummaries = cachedMenuSummaries.map((menu) {

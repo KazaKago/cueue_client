@@ -10,7 +10,7 @@ class FollowRecipeUseCaseImpl implements FollowRecipeUseCase {
   final RecipeRepository _recipeRepository;
 
   @override
-  Future<LoadingStateStream<Recipe>> call(final RecipeId recipeId) {
+  LoadingStateStream<Recipe> call(final RecipeId recipeId) {
     return _recipeRepository.followData(recipeId);
   }
 }

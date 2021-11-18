@@ -16,25 +16,22 @@ class UserFlowableFactory extends StoreFlowableFactory<void, User> {
   final UserResponseMapper _userResponseMapper;
 
   @override
-  void getKey() {}
-
-  @override
   FlowableDataStateManager<void> getFlowableDataStateManager() => _userStateManager;
 
   @override
-  Future<User?> loadDataFromCache() async {
+  Future<User?> loadDataFromCache(final void param) async {
     return _userCache.user;
   }
 
   @override
-  Future<void> saveDataToCache(final User? data) async {
+  Future<void> saveDataToCache(final User? data, final void param) async {
     _userCache
       ..user = data
       ..userCreatedAt = DateTime.now();
   }
 
   @override
-  Future<User> fetchDataFromOrigin() async {
+  Future<User> fetchDataFromOrigin(final void param) async {
     final firebaseUser = auth.FirebaseAuth.instance.currentUser;
     if (firebaseUser != null) {
       final result = await Future.wait<dynamic>([
@@ -49,7 +46,7 @@ class UserFlowableFactory extends StoreFlowableFactory<void, User> {
   }
 
   @override
-  Future<bool> needRefresh(final User cachedData) async {
+  Future<bool> needRefresh(final User cachedData, final void param) async {
     final createdAt = _userCache.userCreatedAt;
     if (createdAt != null) {
       final expiredTime = createdAt.add(const Duration(minutes: 30));

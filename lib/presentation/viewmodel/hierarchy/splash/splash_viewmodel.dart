@@ -1,4 +1,5 @@
 import 'package:cueue/domain/usecase/hierarchy/auth/is_sign_in_usecase.dart';
+import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/splash/splash_route_pattern.dart';
 import 'package:flutter/foundation.dart';
 
@@ -8,12 +9,12 @@ class SplashViewModel with ChangeNotifier {
   }
 
   final IsSignInUseCase _isSignInUseCase;
-  NextSplashRoutePattern? _nextRoute;
+  Event<NextSplashRoutePattern> _nextRouteEvent = Event.initialize();
 
-  NextSplashRoutePattern? get nextRoute => _nextRoute;
+  Event<NextSplashRoutePattern> get nextRouteEvent => _nextRouteEvent;
 
-  set nextRoute(final NextSplashRoutePattern? nextRoute) {
-    _nextRoute = nextRoute;
+  set nextRouteEvent(final Event<NextSplashRoutePattern> nextRouteEvent) {
+    _nextRouteEvent = nextRouteEvent;
     notifyListeners();
   }
 
@@ -23,6 +24,6 @@ class SplashViewModel with ChangeNotifier {
       Future<void>.delayed(const Duration(seconds: 1)),
     ]);
     final isSignIn = result.first as bool;
-    nextRoute = isSignIn ? NextSplashRoutePattern.main : NextSplashRoutePattern.welcome;
+    nextRouteEvent = Event(isSignIn ? NextSplashRoutePattern.main : NextSplashRoutePattern.welcome);
   }
 }

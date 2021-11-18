@@ -99,7 +99,7 @@ import 'package:cueue/domain/usecase/hierarchy/user/update_email_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/update_email_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/update_password_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/update_password_usecase_impl.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod/riverpod.dart';
 
 final isSignInUseCaseProvider = Provider<IsSignInUseCase>((ref) => IsSignInUseCaseImpl(ref.read(authorizeRepositoryProvider)));
 final signUpWithPasswordUseCaseProvider = Provider<SignUpWithPasswordUseCase>((ref) => SignUpWithPasswordUseCaseImpl(ref.read(authorizeRepositoryProvider), ref.read(userRepositoryProvider)));

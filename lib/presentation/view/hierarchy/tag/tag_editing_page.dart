@@ -3,6 +3,7 @@ import 'package:cueue/presentation/view/global/exception/exception_handler.dart'
 import 'package:cueue/presentation/view/global/modal/simple_message_dialog.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/editing_result.dart';
+import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,16 +18,14 @@ class TagEditingPage extends HookConsumerWidget {
   @override
   Widget build(final BuildContext context, final WidgetRef ref) {
     ref
-      ..listen(tagEditingViewModelProvider.select((viewModel) => viewModel.isLoading), (final bool isLoading) {
+      ..listen<bool>(tagEditingViewModelProvider.select((viewModel) => viewModel.isLoading), (previous, isLoading) {
         isLoading ? EasyLoading.show() : EasyLoading.dismiss();
       })
-      ..listen(tagEditingViewModelProvider.select((viewModel) => viewModel.completion), (final EditingResult? completion) {
-        if (completion != null) Navigator.of(context).pop(completion);
-        ref.read(tagEditingViewModelProvider).completion = null;
+      ..listen<Event<EditingResult>>(tagEditingViewModelProvider.select((viewModel) => viewModel.completionEvent), (previous, completionEvent) {
+        completionEvent((completion) => Navigator.of(context).pop(completion));
       })
-      ..listen(tagEditingViewModelProvider.select((viewModel) => viewModel.exception), (final Exception? exception) {
-        if (exception != null) const ExceptionHandler().showMessageDialog(context, ref, exception);
-        ref.read(tagEditingViewModelProvider).exception = null;
+      ..listen<Event<Exception>>(tagEditingViewModelProvider.select((viewModel) => viewModel.exceptionEvent), (previous, exceptionEvent) {
+        exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
       });
     final tagEditingController = useTextEditingController(text: tag?.name);
     return Scaffold(

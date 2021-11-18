@@ -9,7 +9,7 @@ class FollowAllMenusUseCaseImpl implements FollowAllMenusUseCase {
   final MenuRepository _menuRepository;
 
   @override
-  Future<LoadingStateStream<MenuList>> call() async {
-    return (await _menuRepository.followAllData()).mapContent((content) => MenuList(content));
+  LoadingStateStream<MenuList> call() {
+    return _menuRepository.followAllData().mapContent((content) => MenuList(content));
   }
 }

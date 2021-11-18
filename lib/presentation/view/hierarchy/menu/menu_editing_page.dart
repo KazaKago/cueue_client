@@ -8,6 +8,7 @@ import 'package:cueue/presentation/view/hierarchy/menu/time_frame_extension.dart
 import 'package:cueue/presentation/view/hierarchy/recipe/recipe_selection_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/editing_result.dart';
+import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -44,15 +45,13 @@ class MenuEditingPage extends HookConsumerWidget {
     final selectedTimeFrame = useState(menu?.timeFrame ?? TimeFrame.dinner);
     final menuMemoEditingController = useTextEditingController(text: menu?.memo ?? '');
     ref
-      ..listen(menuEditingViewModelProvider.select((viewModel) => viewModel.completion), (final EditingResult? completion) {
-        if (completion != null) Navigator.of(context).pop(completion);
-        ref.read(menuEditingViewModelProvider).completion = null;
+      ..listen<Event<EditingResult>>(menuEditingViewModelProvider.select((viewModel) => viewModel.completionEvent), (previous, completionEvent) {
+        completionEvent((completion) => Navigator.of(context).pop(completion));
       })
-      ..listen(menuEditingViewModelProvider.select((viewModel) => viewModel.exception), (final Exception? exception) {
-        if (exception != null) const ExceptionHandler().showMessageDialog(context, ref, exception);
-        ref.read(menuEditingViewModelProvider).exception = null;
+      ..listen<Event<Exception>>(menuEditingViewModelProvider.select((viewModel) => viewModel.exceptionEvent), (previous, exceptionEvent) {
+        exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
       })
-      ..listen(menuEditingViewModelProvider.select((viewModel) => viewModel.isLoading), (final bool isLoading) {
+      ..listen<bool>(menuEditingViewModelProvider.select((viewModel) => viewModel.isLoading), (previous, isLoading) {
         isLoading ? EasyLoading.show() : EasyLoading.dismiss();
       });
     return Scaffold(

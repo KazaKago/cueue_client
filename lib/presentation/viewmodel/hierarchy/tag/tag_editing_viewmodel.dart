@@ -4,6 +4,7 @@ import 'package:cueue/domain/usecase/hierarchy/tag/create_tag_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/tag/delete_tag_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/tag/update_tag_usecase.dart';
 import 'package:cueue/presentation/viewmodel/global/editing_result.dart';
+import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/foundation.dart';
 
 class TagEditingViewModel with ChangeNotifier {
@@ -13,8 +14,8 @@ class TagEditingViewModel with ChangeNotifier {
   final UpdateTagUseCase _updateTagUseCase;
   final DeleteTagUseCase _deleteTagUseCase;
   bool _isLoading = false;
-  EditingResult? _completion;
-  Exception? _exception;
+  Event<EditingResult> _completionEvent = Event.initialize();
+  Event<Exception> _exceptionEvent = Event.initialize();
 
   bool get isLoading => _isLoading;
 
@@ -23,17 +24,17 @@ class TagEditingViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  EditingResult? get completion => _completion;
+  Event<EditingResult> get completionEvent => _completionEvent;
 
-  set completion(final EditingResult? completion) {
-    _completion = completion;
+  set completionEvent(final Event<EditingResult> completion) {
+    _completionEvent = completion;
     notifyListeners();
   }
 
-  Exception? get exception => _exception;
+  Event<Exception> get exceptionEvent => _exceptionEvent;
 
-  set exception(final Exception? exception) {
-    _exception = exception;
+  set exceptionEvent(final Event<Exception> exceptionEvent) {
+    _exceptionEvent = exceptionEvent;
     notifyListeners();
   }
 
@@ -41,9 +42,9 @@ class TagEditingViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _createTagUseCase(TagRegistration(name: name));
-      completion = EditingResult.created;
+      completionEvent = Event(EditingResult.created);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -52,9 +53,9 @@ class TagEditingViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _updateTagUseCase(tagId, TagRegistration(name: name));
-      completion = EditingResult.updated;
+      completionEvent = Event(EditingResult.updated);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -63,9 +64,9 @@ class TagEditingViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _deleteTagUseCase(tagId);
-      completion = EditingResult.deleted;
+      completionEvent = Event(EditingResult.deleted);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }

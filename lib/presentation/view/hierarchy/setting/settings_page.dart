@@ -15,7 +15,7 @@ import 'package:cueue/presentation/view/hierarchy/setting/settings_result_extens
 import 'package:cueue/presentation/view/hierarchy/setting/terms_of_service_url.dart';
 import 'package:cueue/presentation/view/hierarchy/welcome/welcome_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
-import 'package:cueue/presentation/viewmodel/global/unit.dart';
+import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/setting/settings_result.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -31,19 +31,16 @@ class SettingsPage extends HookConsumerWidget {
   Widget build(final BuildContext context, final WidgetRef ref) {
     final viewModel = ref.read(settingsViewModelProvider);
     ref
-      ..listen(settingsViewModelProvider.select((viewModel) => viewModel.replaceWelcomePage), ((final Unit? replaceWelcomePage) {
-        if (replaceWelcomePage != null) _replaceWelcomePage(context);
-        ref.read(settingsViewModelProvider).replaceWelcomePage = null;
+      ..listen<Event<void>>(settingsViewModelProvider.select((viewModel) => viewModel.replaceWelcomePageEvent), ((previous, replaceWelcomePageEvent) {
+        replaceWelcomePageEvent((_) => _replaceWelcomePage(context));
       }))
-      ..listen(settingsViewModelProvider.select((viewModel) => viewModel.exception), ((final Exception? exception) {
-        if (exception != null) _showErrorDialog(context, ref, exception);
-        ref.read(settingsViewModelProvider).exception = null;
+      ..listen<Event<Exception>>(settingsViewModelProvider.select((viewModel) => viewModel.exceptionEvent), ((previous, exceptionEvent) {
+        exceptionEvent((exception) => _showErrorDialog(context, ref, exception));
       }))
-      ..listen(settingsViewModelProvider.select((viewModel) => viewModel.completion), ((final SettingResult? result) {
-        if (result != null) FriedToast(context, result.toFormattedString(context)).show();
-        ref.read(settingsViewModelProvider).completion = null;
+      ..listen<Event<SettingResult>>(settingsViewModelProvider.select((viewModel) => viewModel.completionEvent), ((previous, resultEvent) {
+        resultEvent((result) => FriedToast(context, result.toFormattedString(context)).show());
       }))
-      ..listen(settingsViewModelProvider.select((viewModel) => viewModel.isLoading), ((final bool isLoading) {
+      ..listen<bool>(settingsViewModelProvider.select((viewModel) => viewModel.isLoading), ((previous, isLoading) {
         isLoading ? EasyLoading.show() : EasyLoading.dismiss();
       }));
     return Scaffold(

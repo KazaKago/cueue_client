@@ -29,8 +29,8 @@ class MenuViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> _follow() async {
-    final followMenusUseCase = await _followMenusUseCase();
+  void _follow() {
+    final followMenusUseCase = _followMenusUseCase();
     _compositeSubscription.add(followMenusUseCase.listen((state) {
       this.state = state.when(
         loading: (content) => (content != null) ? MenuState.refreshing(content.createDateSplit()) : const MenuState.loading(),

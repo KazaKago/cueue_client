@@ -1,11 +1,7 @@
-import 'package:cueue/data/api/hierarchy/user/get_user_api.dart';
 import 'package:cueue/data/auth/hierarchy/apple/apple_signaturer.dart';
 import 'package:cueue/data/auth/hierarchy/google/google_signaturer.dart';
 import 'package:cueue/data/auth/hierarchy/password/password_signaturer.dart';
 import 'package:cueue/data/cache/hierarchy/cache.dart';
-import 'package:cueue/data/cache/hierarchy/user/user_cache.dart';
-import 'package:cueue/data/cache/hierarchy/user/user_state_manager.dart';
-import 'package:cueue/data/mapper/hierarchy/user/user_response_mapper.dart';
 import 'package:cueue/data/repository/flowable/user/user_flowable_factory.dart';
 import 'package:cueue/domain/model/hierarchy/auth/apple_auth_info.dart';
 import 'package:cueue/domain/model/hierarchy/auth/google_auth_info.dart';
@@ -15,16 +11,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:store_flowable/store_flowable.dart';
 
 class AuthorizeRepositoryImpl implements AuthorizeRepository {
-  const AuthorizeRepositoryImpl(this._userCache, this._userStateManager, this._getUserApi, this._userResponseMapper, this._passwordSignaturer, this._googleSignaturer, this._appleSignaturer, this._cacheList);
+  const AuthorizeRepositoryImpl(this._passwordSignaturer, this._googleSignaturer, this._appleSignaturer, this._cacheList, this._userFlowableFactory);
 
-  final UserCache _userCache;
-  final UserStateManager _userStateManager;
-  final GetUserApi _getUserApi;
-  final UserResponseMapper _userResponseMapper;
   final PasswordSignaturer _passwordSignaturer;
   final GoogleSignaturer _googleSignaturer;
   final AppleSignaturer _appleSignaturer;
   final List<Cache> _cacheList;
+  final UserFlowableFactory _userFlowableFactory;
 
   @override
   Future<bool> isSignIn() async {
@@ -70,28 +63,28 @@ class AuthorizeRepositoryImpl implements AuthorizeRepository {
   @override
   Future<void> linkWithGoogle(final GoogleAuthInfo authInfo) async {
     await _googleSignaturer.link(authInfo);
-    final userFlowable = UserFlowableFactory(_userCache, _userStateManager, _getUserApi, _userResponseMapper).create();
+    final userFlowable = _userFlowableFactory.create(null);
     await userFlowable.refresh();
   }
 
   @override
   Future<void> linkWithApple(final AppleAuthInfo authInfo) async {
     await _appleSignaturer.link(authInfo);
-    final userFlowable = UserFlowableFactory(_userCache, _userStateManager, _getUserApi, _userResponseMapper).create();
+    final userFlowable = _userFlowableFactory.create(null);
     await userFlowable.refresh();
   }
 
   @override
   Future<void> unlinkWithGoogle() async {
     await _googleSignaturer.unlink();
-    final userFlowable = UserFlowableFactory(_userCache, _userStateManager, _getUserApi, _userResponseMapper).create();
+    final userFlowable = _userFlowableFactory.create(null);
     await userFlowable.refresh();
   }
 
   @override
   Future<void> unlinkWithApple() async {
     await _appleSignaturer.unlink();
-    final userFlowable = UserFlowableFactory(_userCache, _userStateManager, _getUserApi, _userResponseMapper).create();
+    final userFlowable = _userFlowableFactory.create(null);
     await userFlowable.refresh();
   }
 

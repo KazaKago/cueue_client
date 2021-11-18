@@ -12,7 +12,7 @@ import 'package:cueue/domain/usecase/hierarchy/user/refresh_user_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/send_email_verification_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/update_email_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/update_password_usecase.dart';
-import 'package:cueue/presentation/viewmodel/global/unit.dart';
+import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/setting/settings_result.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/setting/settings_state.dart';
 import 'package:flutter/foundation.dart';
@@ -35,10 +35,10 @@ class SettingsViewModel with ChangeNotifier {
   final SendEmailVerificationUseCase _sendEmailVerificationUseCase;
   final CompositeSubscription _compositeSubscription = CompositeSubscription();
   SettingsState _state = const SettingsState.loading();
-  SettingResult? _completion;
+  Event<SettingResult> _completionEvent = Event.initialize();
   bool _isLoading = false;
-  Unit? _replaceWelcomePage;
-  Exception? _exception;
+  Event<void> _replaceWelcomePageEvent = Event.initialize();
+  Event<Exception> _exceptionEvent = Event.initialize();
 
   @override
   void dispose() {
@@ -53,10 +53,10 @@ class SettingsViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  SettingResult? get completion => _completion;
+  Event<SettingResult> get completionEvent => _completionEvent;
 
-  set completion(final SettingResult? completion) {
-    _completion = completion;
+  set completionEvent(final Event<SettingResult> completionEvent) {
+    _completionEvent = completionEvent;
     notifyListeners();
   }
 
@@ -67,22 +67,22 @@ class SettingsViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Unit? get replaceWelcomePage => _replaceWelcomePage;
+  Event<void> get replaceWelcomePageEvent => _replaceWelcomePageEvent;
 
-  set replaceWelcomePage(final Unit? replaceWelcomePage) {
-    _replaceWelcomePage = replaceWelcomePage;
+  set replaceWelcomePageEvent(final Event<void> replaceWelcomePageEvent) {
+    _replaceWelcomePageEvent = replaceWelcomePageEvent;
     notifyListeners();
   }
 
-  Exception? get exception => _exception;
+  Event<Exception> get exceptionEvent => _exceptionEvent;
 
-  set exception(final Exception? exception) {
-    _exception = exception;
+  set exceptionEvent(final Event<Exception> exceptionEvent) {
+    _exceptionEvent = exceptionEvent;
     notifyListeners();
   }
 
-  Future<void> _follow() async {
-    final followUserUseCase = await _followUserUseCase();
+  void _follow() {
+    final followUserUseCase = _followUserUseCase();
     _compositeSubscription.add(followUserUseCase.listen((state) {
       this.state = state.when(
         loading: (user) => (user != null) ? SettingsState.completed(user) : const SettingsState.loading(),
@@ -96,9 +96,9 @@ class SettingsViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _updateEmailUseCase(Email(email));
-      completion = SettingResult.updatedEmail;
+      completionEvent = Event(SettingResult.updatedEmail);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -107,9 +107,9 @@ class SettingsViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _updatePasswordUseCase(Password.validateMatch(password, reInputPassword));
-      completion = SettingResult.updatedPassword;
+      completionEvent = Event(SettingResult.updatedPassword);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -118,9 +118,9 @@ class SettingsViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _linkWithGoogleUseCase(authInfo);
-      completion = SettingResult.linkedWithGoogle;
+      completionEvent = Event(SettingResult.linkedWithGoogle);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -129,9 +129,9 @@ class SettingsViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _linkWithAppleUseCase(authInfo);
-      completion = SettingResult.linkedWithApple;
+      completionEvent = Event(SettingResult.linkedWithApple);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -140,9 +140,9 @@ class SettingsViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _unlinkWithGoogleUseCase();
-      completion = SettingResult.unlinkedWithGoogle;
+      completionEvent = Event(SettingResult.unlinkedWithGoogle);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -151,9 +151,9 @@ class SettingsViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _unlinkWithAppleUseCase();
-      completion = SettingResult.unlinkedWithApple;
+      completionEvent = Event(SettingResult.unlinkedWithApple);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -162,9 +162,9 @@ class SettingsViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _signOutUseCase();
-      _replaceWelcomePage = const Unit();
+      _replaceWelcomePageEvent = Event(null);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -177,9 +177,9 @@ class SettingsViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _sendEmailVerificationUseCase();
-      completion = SettingResult.sentEmailVerification;
+      completionEvent = Event(SettingResult.sentEmailVerification);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }

@@ -8,7 +8,7 @@ import 'package:cueue/presentation/view/hierarchy/auth/sign_in_with_google_butto
 import 'package:cueue/presentation/view/hierarchy/auth/sign_in_with_password_button.dart';
 import 'package:cueue/presentation/view/hierarchy/main/main_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
-import 'package:cueue/presentation/viewmodel/global/unit.dart';
+import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -32,24 +32,25 @@ class AuthenticationPage extends HookConsumerWidget {
     final isObscureConfirmationPasswordText = useState(true);
     final viewModel = ref.read(authenticationViewModelProvider);
     ref
-      ..listen(authenticationViewModelProvider.select((viewModel) => viewModel.isLoading), ((final bool isLoading) {
+      ..listen<bool>(authenticationViewModelProvider.select((viewModel) => viewModel.isLoading), ((previous, isLoading) {
         isLoading ? EasyLoading.show() : EasyLoading.dismiss();
       }))
-      ..listen(authenticationViewModelProvider.select((viewModel) => viewModel.completionAuthentication), ((final Unit? completionAuthentication) {
-        if (completionAuthentication != null) _replaceMainPage(context);
-        ref.read(authenticationViewModelProvider).completionAuthentication = null;
+      ..listen<Event<void>>(authenticationViewModelProvider.select((viewModel) => viewModel.completionAuthenticationEvent), ((previous, completionAuthenticationEvent) {
+        completionAuthenticationEvent((_) => _replaceMainPage(context));
       }))
-      ..listen(authenticationViewModelProvider.select((viewModel) => viewModel.completionReauthentication), ((final Unit? completionReauthentication) {
-        if (completionReauthentication != null) Navigator.of(context).pop(true);
-        ref.read(authenticationViewModelProvider).completionReauthentication = null;
+      ..listen<Event<void>>(authenticationViewModelProvider.select((viewModel) => viewModel.completionReauthenticationEvent), ((previous, completionReauthenticationEvent) {
+        completionReauthenticationEvent((_) => Navigator.of(context).pop(true));
       }))
-      ..listen(authenticationViewModelProvider.select((viewModel) => viewModel.exception), ((final Exception? exception) {
-        if (exception != null) const ExceptionHandler().showMessageDialog(context, ref, exception);
-        ref.read(authenticationViewModelProvider).exception = null;
+      ..listen<Event<Exception>>(authenticationViewModelProvider.select((viewModel) => viewModel.exceptionEvent), ((previous, exceptionEvent) {
+        exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
       }));
     return Scaffold(
       appBar: AppBar(
-        title: Text(_whenType(signUp: () => AppLocalizations.of(context)!.signUp, signIn: () => AppLocalizations.of(context)!.signIn, reauth: () => AppLocalizations.of(context)!.reAuth)),
+        title: Text(_whenType(
+          signUp: () => AppLocalizations.of(context)!.signUp,
+          signIn: () => AppLocalizations.of(context)!.signIn,
+          reauth: () => AppLocalizations.of(context)!.reAuth,
+        )),
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),

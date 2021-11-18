@@ -6,6 +6,7 @@ import 'package:cueue/domain/usecase/hierarchy/menu/create_menu_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/menu/delete_menu_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/menu/update_menu_usecase.dart';
 import 'package:cueue/presentation/viewmodel/global/editing_result.dart';
+import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -17,8 +18,8 @@ class MenuEditingViewModel with ChangeNotifier {
   final DeleteMenuUseCase _deleteMenuUseCase;
   final CompositeSubscription _compositeSubscription = CompositeSubscription();
   bool _isLoading = false;
-  EditingResult? _completion;
-  Exception? _exception;
+  Event<EditingResult> _completionEvent = Event.initialize();
+  Event<Exception> _exceptionEvent = Event.initialize();
 
   @override
   void dispose() {
@@ -26,17 +27,17 @@ class MenuEditingViewModel with ChangeNotifier {
     _compositeSubscription.dispose();
   }
 
-  EditingResult? get completion => _completion;
+  Event<EditingResult> get completionEvent => _completionEvent;
 
-  set completion(final EditingResult? completion) {
-    _completion = completion;
+  set completionEvent(final Event<EditingResult> completion) {
+    _completionEvent = completion;
     notifyListeners();
   }
 
-  Exception? get exception => _exception;
+  Event<Exception> get exceptionEvent => _exceptionEvent;
 
-  set exception(final Exception? exception) {
-    _exception = exception;
+  set exceptionEvent(final Event<Exception> exception) {
+    _exceptionEvent = exception;
     notifyListeners();
   }
 
@@ -51,9 +52,9 @@ class MenuEditingViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _createMenuUseCase(MenuRegistration(memo: memo, date: dateTime, timeFrame: timeFrame, recipeIds: recipeIds));
-      completion = EditingResult.created;
+      completionEvent = Event(EditingResult.created);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -62,9 +63,9 @@ class MenuEditingViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _updateMenuUseCase(menuId, MenuRegistration(memo: memo, date: dateTime, timeFrame: timeFrame, recipeIds: recipeIds));
-      completion = EditingResult.updated;
+      completionEvent = Event(EditingResult.updated);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -73,9 +74,9 @@ class MenuEditingViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _deleteMenuUseCase(menuId);
-      completion = EditingResult.deleted;
+      completionEvent = Event(EditingResult.deleted);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }

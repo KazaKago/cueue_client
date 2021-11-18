@@ -1,7 +1,7 @@
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
 import 'package:cueue/presentation/view/global/modal/simple_message_dialog.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
-import 'package:cueue/presentation/viewmodel/global/unit.dart';
+import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,15 +17,13 @@ class PasswordResetPage extends HookConsumerWidget {
     final userEmail = ref.watch(passwordResetViewModelProvider.select((viewModel) => viewModel.userEmail));
     if (userEmail != null) emailEditingController.text = userEmail.value;
     ref
-      ..listen(passwordResetViewModelProvider.select((viewModel) => viewModel.completion), ((final Unit? completion) {
-        if (completion != null) _showSentPasswordResetMailDialog(context);
-        ref.read(passwordResetViewModelProvider).completion = null;
+      ..listen<Event<void>>(passwordResetViewModelProvider.select((viewModel) => viewModel.completionEvent), ((previous, completionEvent) {
+        completionEvent((_) => _showSentPasswordResetMailDialog(context));
       }))
-      ..listen(passwordResetViewModelProvider.select((viewModel) => viewModel.exception), ((final Exception? exception) {
-        if (exception != null) const ExceptionHandler().showMessageDialog(context, ref, exception);
-        ref.read(passwordResetViewModelProvider).exception = null;
+      ..listen<Event<Exception>>(passwordResetViewModelProvider.select((viewModel) => viewModel.exceptionEvent), ((previous, exceptionEvent) {
+        exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
       }))
-      ..listen(passwordResetViewModelProvider.select((viewModel) => viewModel.isLoading), ((final bool isLoading) {
+      ..listen<bool>(passwordResetViewModelProvider.select((viewModel) => viewModel.isLoading), ((previous, isLoading) {
         isLoading ? EasyLoading.show() : EasyLoading.dismiss();
       }));
     return Scaffold(

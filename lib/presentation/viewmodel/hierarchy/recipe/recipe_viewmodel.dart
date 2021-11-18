@@ -37,9 +37,9 @@ class RecipeViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> _follow() async {
+  void _follow() {
     if (_tagId != null) {
-      final followTaggedRecipesUseCase = await _followTaggedRecipesUseCase(_tagId!);
+      final followTaggedRecipesUseCase = _followTaggedRecipesUseCase(_tagId!);
       _compositeSubscription.add(followTaggedRecipesUseCase.listen((state) {
         this.state = state.when(
           loading: (content) => (content != null) ? RecipeState.refreshing(content) : const RecipeState.loading(),
@@ -52,7 +52,7 @@ class RecipeViewModel with ChangeNotifier {
         );
       }));
     } else {
-      final followAllRecipesUseCase = await _followAllRecipesUseCase();
+      final followAllRecipesUseCase = _followAllRecipesUseCase();
       _compositeSubscription.add(followAllRecipesUseCase.listen((state) {
         this.state = state.when(
           loading: (content) => (content != null) ? RecipeState.refreshing(content) : const RecipeState.loading(),

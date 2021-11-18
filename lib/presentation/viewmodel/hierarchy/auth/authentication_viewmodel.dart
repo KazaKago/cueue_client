@@ -13,7 +13,7 @@ import 'package:cueue/domain/usecase/hierarchy/auth/should_show_reauthentication
 import 'package:cueue/domain/usecase/hierarchy/auth/should_show_reauthentication_with_password_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/sign_in_with_password_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/sign_up_with_password_usecase.dart';
-import 'package:cueue/presentation/viewmodel/global/unit.dart';
+import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/foundation.dart';
 
 class AuthenticationViewModel with ChangeNotifier {
@@ -35,9 +35,9 @@ class AuthenticationViewModel with ChangeNotifier {
   bool _shouldShowReauthenticationWithPassword = false;
   bool _shouldShowReauthenticationWithGoogle = false;
   bool _shouldShowReauthenticationWithApple = false;
-  Unit? _completionAuthentication;
-  Unit? _completionReauthentication;
-  Exception? _exception;
+  Event<void> _completionAuthenticationEvent = Event.initialize();
+  Event<void> _completionReauthenticationEvent = Event.initialize();
+  Event<Exception> _exceptionEvent = Event.initialize();
 
   bool get isLoading => _isLoading;
 
@@ -67,24 +67,24 @@ class AuthenticationViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Unit? get completionAuthentication => _completionAuthentication;
+  Event<void> get completionAuthenticationEvent => _completionAuthenticationEvent;
 
-  set completionAuthentication(final Unit? completionAuthentication) {
-    _completionAuthentication = completionAuthentication;
+  set completionAuthenticationEvent(final Event<void> completionAuthenticationEvent) {
+    _completionAuthenticationEvent = completionAuthenticationEvent;
     notifyListeners();
   }
 
-  Unit? get completionReauthentication => _completionReauthentication;
+  Event<void> get completionReauthenticationEvent => _completionReauthenticationEvent;
 
-  set completionReauthentication(final Unit? completionReauthentication) {
-    _completionReauthentication = completionReauthentication;
+  set completionReauthenticationEvent(final Event<void> completionReauthenticationEvent) {
+    _completionReauthenticationEvent = completionReauthenticationEvent;
     notifyListeners();
   }
 
-  Exception? get exception => _exception;
+  Event<Exception> get exceptionEvent => _exceptionEvent;
 
-  set exception(final Exception? exception) {
-    _exception = exception;
+  set exceptionEvent(final Event<Exception> exceptionEvent) {
+    _exceptionEvent = exceptionEvent;
     notifyListeners();
   }
 
@@ -103,9 +103,9 @@ class AuthenticationViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _signUpWithPasswordUseCase(PasswordAuthInfo(email: Email(emailStr), password: Password.validateMatch(passwordStr, confirmationPasswordStr)));
-      completionAuthentication = const Unit();
+      completionAuthenticationEvent = Event(null);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -114,9 +114,9 @@ class AuthenticationViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _signInWithPasswordUseCase(PasswordAuthInfo(email: Email(emailStr), password: Password(passwordStr)));
-      completionAuthentication = const Unit();
+      completionAuthenticationEvent = Event(null);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -125,9 +125,9 @@ class AuthenticationViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _authenticateWithGoogleUseCase(authInfo);
-      completionAuthentication = const Unit();
+      completionAuthenticationEvent = Event(null);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -136,9 +136,9 @@ class AuthenticationViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _authenticateWithAppleUseCase(authInfo);
-      completionAuthentication = const Unit();
+      completionAuthenticationEvent = Event(null);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -147,9 +147,9 @@ class AuthenticationViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _reauthenticateWithPasswordUseCase(Password(passwordStr));
-      completionReauthentication = const Unit();
+      completionReauthenticationEvent = Event(null);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -158,9 +158,9 @@ class AuthenticationViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _reauthenticateWithGoogleUseCase(authInfo);
-      completionReauthentication = const Unit();
+      completionReauthenticationEvent = Event(null);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -169,9 +169,9 @@ class AuthenticationViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _reauthenticateWithAppleUseCase(authInfo);
-      completionReauthentication = const Unit();
+      completionReauthenticationEvent = Event(null);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }

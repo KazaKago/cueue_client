@@ -29,8 +29,8 @@ class RecipeDetailViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> _follow() async {
-    final followRecipeUseCase = await _followRecipeUseCase(_recipeId);
+  void _follow() {
+    final followRecipeUseCase = _followRecipeUseCase(_recipeId);
     _compositeSubscription.add(followRecipeUseCase.listen((state) {
       this.state = state.when(
         loading: (content) => (content != null) ? RecipeDetailState.completed(content) : const RecipeDetailState.loading(),

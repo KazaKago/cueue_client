@@ -9,7 +9,7 @@ import 'package:cueue/data/cache/hierarchy/tag/tag_cache.dart';
 import 'package:cueue/data/cache/hierarchy/tag/tag_state_manager.dart';
 import 'package:cueue/data/cache/hierarchy/user/user_cache.dart';
 import 'package:cueue/data/cache/hierarchy/user/user_state_manager.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod/riverpod.dart';
 
 final menuCacheProvider = Provider((ref) => MenuCache());
 final menuStateManagerProvider = Provider((ref) => MenuStateManager());

@@ -16,7 +16,7 @@ import 'package:cueue/data/api/hierarchy/tag/update_tag_api.dart';
 import 'package:cueue/data/api/hierarchy/user/create_user_api.dart';
 import 'package:cueue/data/api/hierarchy/user/get_user_api.dart';
 import 'package:cueue/data/repository/di/repository_provider.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod/riverpod.dart';
 
 final getUserApiProvider = Provider((ref) => GetUserApi(ref.read(authorizedApiRequesterProvider)));
 final createUserApiProvider = Provider((ref) => CreateUserApi(ref.read(authorizedApiRequesterProvider)));

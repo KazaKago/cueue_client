@@ -12,6 +12,7 @@ import 'package:cueue/domain/usecase/hierarchy/recipe/update_recipe_usecase.dart
 import 'package:cueue/domain/usecase/hierarchy/tag/follow_tags_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/tag/refresh_tags_usecase.dart';
 import 'package:cueue/presentation/viewmodel/global/editing_result.dart';
+import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/recipe/recipe_editing_state.dart';
 import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
@@ -31,8 +32,8 @@ class RecipeEditingViewModel with ChangeNotifier {
   RecipeEditingState _state = const RecipeEditingState.loading();
   bool _isLoading = false;
   bool _isCreatingImage = false;
-  EditingResult? _completion;
-  Exception? _exception;
+  Event<EditingResult> _completionEvent = Event.initialize();
+  Event<Exception> _exceptionEvent = Event.initialize();
 
   @override
   void dispose() {
@@ -47,17 +48,17 @@ class RecipeEditingViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  EditingResult? get completion => _completion;
+  Event<EditingResult> get completionEvent => _completionEvent;
 
-  set completion(final EditingResult? completion) {
-    _completion = completion;
+  set completionEvent(final Event<EditingResult> completion) {
+    _completionEvent = completion;
     notifyListeners();
   }
 
-  Exception? get exception => _exception;
+  Event<Exception> get exceptionEvent => _exceptionEvent;
 
-  set exception(final Exception? exception) {
-    _exception = exception;
+  set exceptionEvent(final Event<Exception> exception) {
+    _exceptionEvent = exception;
     notifyListeners();
   }
 
@@ -75,8 +76,8 @@ class RecipeEditingViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> _follow() async {
-    final followTagsUseCase = await _followTagsUseCase();
+  void _follow() {
+    final followTagsUseCase = _followTagsUseCase();
     _compositeSubscription.add(followTagsUseCase.listen((state) {
       this.state = state.when(
         loading: (content) => const RecipeEditingState.loading(),
@@ -100,7 +101,7 @@ class RecipeEditingViewModel with ChangeNotifier {
     try {
       content = await _createContentUseCase.call(ContentRegistration.fromFile(imageFile));
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isCreatingImage = false;
     return content;
@@ -111,9 +112,9 @@ class RecipeEditingViewModel with ChangeNotifier {
     try {
       final parsedUrl = url.isNotEmpty ? Uri.parse(url) : null;
       await _createRecipeUseCase(RecipeRegistration(title: title, description: description, url: parsedUrl, imageKeys: images.map((e) => e.key).toList(), tagIds: tagIds));
-      completion = EditingResult.created;
+      completionEvent = Event(EditingResult.created);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -123,9 +124,9 @@ class RecipeEditingViewModel with ChangeNotifier {
     try {
       final parsedUrl = url.isNotEmpty ? Uri.parse(url) : null;
       await _updateRecipeUseCase(recipeId, RecipeRegistration(title: title, description: description, url: parsedUrl, imageKeys: images.map((e) => e.key).toList(), tagIds: tagIds));
-      completion = EditingResult.updated;
+      completionEvent = Event(EditingResult.updated);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
@@ -134,9 +135,9 @@ class RecipeEditingViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _deleteRecipeUseCase(recipeId);
-      completion = EditingResult.deleted;
+      completionEvent = Event(EditingResult.deleted);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }

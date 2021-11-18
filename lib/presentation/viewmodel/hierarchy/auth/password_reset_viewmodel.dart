@@ -1,7 +1,7 @@
 import 'package:cueue/domain/model/hierarchy/user/email.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/follow_user_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/send_password_reset_mail_usecase.dart';
-import 'package:cueue/presentation/viewmodel/global/unit.dart';
+import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -15,8 +15,8 @@ class PasswordResetViewModel with ChangeNotifier {
   final CompositeSubscription _compositeSubscription = CompositeSubscription();
   Email? _userEmail;
   bool _isLoading = false;
-  Unit? _completion;
-  Exception? _exception;
+  Event<void> _completionEvent = Event.initialize();
+  Event<Exception> _exceptionEvent = Event.initialize();
 
   @override
   void dispose() {
@@ -38,22 +38,22 @@ class PasswordResetViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Unit? get completion => _completion;
+  Event<void> get completionEvent => _completionEvent;
 
-  set completion(final Unit? completion) {
-    _completion = completion;
+  set completionEvent(final Event<void> completion) {
+    _completionEvent = completion;
     notifyListeners();
   }
 
-  Exception? get exception => _exception;
+  Event<Exception> get exceptionEvent => _exceptionEvent;
 
-  set exception(final Exception? exception) {
-    _exception = exception;
+  set exceptionEvent(final Event<Exception> exception) {
+    _exceptionEvent = exception;
     notifyListeners();
   }
 
-  Future<void> _follow() async {
-    final followUserUseCase = await _followUserUseCase();
+  void _follow() {
+    final followUserUseCase = _followUserUseCase();
     _compositeSubscription.add(followUserUseCase.listen((state) {
       state.when(
         loading: (user) {
@@ -73,9 +73,9 @@ class PasswordResetViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _sendPasswordResetMailUseCase(Email(emailStr));
-      completion = const Unit();
+      completionEvent = Event(null);
     } on Exception catch (exception) {
-      this.exception = exception;
+      exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
