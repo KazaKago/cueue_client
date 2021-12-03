@@ -11,7 +11,7 @@ class AllRecipesStateManager extends FlowableDataStateManager<void> implements C
   final RecipeCache recipeCache;
 
   @override
-  Stream<DataState> getFlow(final void key) {
-    return CombineLatestStream.combine2<DataState, Map<RecipeId, RecipeSummary>, DataState>(super.getFlow(key), recipeCache.recipeSummaryMap, (state1, state2) => state1);
+  Stream<DataState> getFlow(final void param) {
+    return CombineLatestStream.combine2<DataState, Map<RecipeId, RecipeSummary>, DataState>(super.getFlow(param), recipeCache.recipeSummaryMap, (state1, state2) => state1);
   }
 }
