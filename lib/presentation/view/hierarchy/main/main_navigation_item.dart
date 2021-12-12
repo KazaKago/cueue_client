@@ -1,4 +1,5 @@
-import 'package:collection/collection.dart';
+import 'dart:collection';
+
 import 'package:cueue/presentation/view/hierarchy/menu/menu_editing_page.dart';
 import 'package:cueue/presentation/view/hierarchy/menu/menu_page.dart';
 import 'package:cueue/presentation/view/hierarchy/recipe/recipe_editing_page.dart';
@@ -29,14 +30,36 @@ class MainNavigationItem {
   }
 }
 
-class MainNavigationItemList extends DelegatingList<MainNavigationItem> {
-  MainNavigationItemList(final BuildContext context)
-      : super([
-          MainNavigationItem(const MenuPage(), AppLocalizations.of(context)!.cookingMenu, FontAwesomeIcons.calendar, fabPage: MenuEditingPage(), fabIcon: Icons.add, fabLabel: AppLocalizations.of(context)!.addCookingMenu),
-          MainNavigationItem(const RecipePage(), AppLocalizations.of(context)!.recipe, FontAwesomeIcons.utensils, fabPage: const RecipeEditingPage(), fabIcon: Icons.add, fabLabel: AppLocalizations.of(context)!.addRecipe),
-          MainNavigationItem(const TagPage(), AppLocalizations.of(context)!.tag, FontAwesomeIcons.tag, fabPage: const TagEditingPage(), fabIcon: Icons.add, fabLabel: AppLocalizations.of(context)!.addTag),
-          MainNavigationItem(const SettingsPage(), AppLocalizations.of(context)!.settings, Icons.settings),
-        ]);
+class MainNavigationItemList extends ListBase<MainNavigationItem> {
+  factory MainNavigationItemList(final BuildContext context) {
+    final rawList = [
+      MainNavigationItem(const MenuPage(), AppLocalizations.of(context)!.cookingMenu, FontAwesomeIcons.calendar, fabPage: MenuEditingPage(), fabIcon: Icons.add, fabLabel: AppLocalizations.of(context)!.addCookingMenu),
+      MainNavigationItem(const RecipePage(), AppLocalizations.of(context)!.recipe, FontAwesomeIcons.utensils, fabPage: const RecipeEditingPage(), fabIcon: Icons.add, fabLabel: AppLocalizations.of(context)!.addRecipe),
+      MainNavigationItem(const TagPage(), AppLocalizations.of(context)!.tag, FontAwesomeIcons.tag, fabPage: const TagEditingPage(), fabIcon: Icons.add, fabLabel: AppLocalizations.of(context)!.addTag),
+      MainNavigationItem(const SettingsPage(), AppLocalizations.of(context)!.settings, Icons.settings),
+    ];
+    return MainNavigationItemList._(rawList);
+  }
+
+  MainNavigationItemList._(this.rawList);
+
+  final List<MainNavigationItem> rawList;
+
+  @override
+  int get length => rawList.length;
+
+  @override
+  set length(final int newLength) {
+    rawList.length = newLength;
+  }
+
+  @override
+  MainNavigationItem operator [](final int index) => rawList[index];
+
+  @override
+  void operator []=(final int index, final MainNavigationItem value) {
+    rawList[index] = value;
+  }
 
   List<Widget> toPageList() {
     return map((item) => item.page).toList();

@@ -28,7 +28,7 @@ import 'package:cueue/domain/repository/hierarchy/recipe/recipe_repository.dart'
 import 'package:cueue/domain/repository/hierarchy/store/store_repository.dart';
 import 'package:cueue/domain/repository/hierarchy/tag/tag_repository.dart';
 import 'package:cueue/domain/repository/hierarchy/user/user_repository.dart';
-import 'package:riverpod/riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final authorizedApiRequesterProvider = Provider<AuthorizedApiRequester>((_) => AuthorizedApiRequesterImpl());
 final authorizeRepositoryProvider = Provider<AuthorizeRepository>((ref) => AuthorizeRepositoryImpl(ref.read(passwordSignaturerProvider), ref.read(googleSignaturerProvider), ref.read(appleSignaturerProvider), ref.read(allCacheProvider), ref.read(userFlowableFactoryProvider)));

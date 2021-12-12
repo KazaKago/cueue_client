@@ -17,7 +17,7 @@ import 'package:cueue/presentation/viewmodel/hierarchy/setting/settings_viewmode
 import 'package:cueue/presentation/viewmodel/hierarchy/splash/splash_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/tag/tag_editing_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/tag/tag_viewmodel.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final splashViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => SplashViewModel(ref.read(isSignInUseCaseProvider)));
 final authenticationViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => AuthenticationViewModel(ref.read(shouldShowReauthenticationWithPasswordUseCaseProvider), ref.read(shouldShowReauthenticationWithGoogleUseCaseProvider), ref.read(shouldShowReauthenticationWithAppleUseCaseProvider), ref.read(signUpWithPasswordUseCaseProvider), ref.read(signInWithPasswordUseCaseProvider), ref.read(authenticateWithGoogleUseCaseProvider), ref.read(authenticateWithAppleUseCaseProvider), ref.read(reauthenticateWithPasswordUseCaseProvider), ref.read(reauthenticateWithGoogleUseCaseProvider), ref.read(reauthenticateWithAppleUseCaseProvider)));

@@ -12,7 +12,7 @@ import 'package:cueue/data/mapper/hierarchy/tag/tag_request_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/tag/tag_response_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/user/user_response_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/workspace/workspace_response_mapper.dart';
-import 'package:riverpod/riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final contentResponseMapperProvider = Provider((ref) => const ContentResponseMapper());
 final contentRequestMapperProvider = Provider((ref) => const ContentRequestMapper());
