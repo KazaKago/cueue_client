@@ -111,11 +111,12 @@ class _$_Email extends _Email {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Email &&
-            (identical(other.value, value) || other.value == value));
+            const DeepCollectionEquality().equals(other.value, value));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
 
   @JsonKey(ignore: true)
   @override

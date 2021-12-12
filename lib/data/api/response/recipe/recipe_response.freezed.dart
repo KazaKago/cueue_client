@@ -336,36 +336,34 @@ class _$_RecipeResponse implements _RecipeResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _RecipeResponse &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.url, url) || other.url == url) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.url, url) &&
             const DeepCollectionEquality().equals(other.images, images) &&
             const DeepCollectionEquality().equals(other.tags, tags) &&
             const DeepCollectionEquality()
                 .equals(other.cookingHistories, cookingHistories) &&
-            (identical(other.cookingCount, cookingCount) ||
-                other.cookingCount == cookingCount) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+            const DeepCollectionEquality()
+                .equals(other.cookingCount, cookingCount) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      id,
-      title,
-      description,
-      url,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(url),
       const DeepCollectionEquality().hash(images),
       const DeepCollectionEquality().hash(tags),
       const DeepCollectionEquality().hash(cookingHistories),
-      cookingCount,
-      createdAt,
-      updatedAt);
+      const DeepCollectionEquality().hash(cookingCount),
+      const DeepCollectionEquality().hash(createdAt),
+      const DeepCollectionEquality().hash(updatedAt));
 
   @JsonKey(ignore: true)
   @override

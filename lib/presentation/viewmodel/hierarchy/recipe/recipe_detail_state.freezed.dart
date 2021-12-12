@@ -268,11 +268,12 @@ class _$_Completed implements _Completed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Completed &&
-            (identical(other.recipe, recipe) || other.recipe == recipe));
+            const DeepCollectionEquality().equals(other.recipe, recipe));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, recipe);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(recipe));
 
   @JsonKey(ignore: true)
   @override
@@ -404,11 +405,12 @@ class _$_Error implements _Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Error &&
-            (identical(other.error, error) || other.error == error));
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, error);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override

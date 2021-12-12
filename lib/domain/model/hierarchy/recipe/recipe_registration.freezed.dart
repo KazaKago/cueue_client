@@ -194,10 +194,10 @@ class _$_RecipeRegistration implements _RecipeRegistration {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _RecipeRegistration &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.url, url) || other.url == url) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.url, url) &&
             const DeepCollectionEquality().equals(other.imageKeys, imageKeys) &&
             const DeepCollectionEquality().equals(other.tagIds, tagIds));
   }
@@ -205,9 +205,9 @@ class _$_RecipeRegistration implements _RecipeRegistration {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      title,
-      description,
-      url,
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(url),
       const DeepCollectionEquality().hash(imageKeys),
       const DeepCollectionEquality().hash(tagIds));
 

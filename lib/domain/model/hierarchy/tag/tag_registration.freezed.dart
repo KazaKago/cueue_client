@@ -118,11 +118,12 @@ class _$_TagRegistration implements _TagRegistration {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _TagRegistration &&
-            (identical(other.name, name) || other.name == name));
+            const DeepCollectionEquality().equals(other.name, name));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override

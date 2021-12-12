@@ -133,13 +133,15 @@ class _$_DateSplitMenuList implements _DateSplitMenuList {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _DateSplitMenuList &&
-            (identical(other.date, date) || other.date == date) &&
+            const DeepCollectionEquality().equals(other.date, date) &&
             const DeepCollectionEquality().equals(other.menus, menus));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, date, const DeepCollectionEquality().hash(menus));
+      runtimeType,
+      const DeepCollectionEquality().hash(date),
+      const DeepCollectionEquality().hash(menus));
 
   @JsonKey(ignore: true)
   @override

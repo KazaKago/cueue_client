@@ -266,13 +266,16 @@ class _$_Completed implements _Completed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Completed &&
-            (identical(other.appInfo, appInfo) || other.appInfo == appInfo) &&
-            (identical(other.developerInfo, developerInfo) ||
-                other.developerInfo == developerInfo));
+            const DeepCollectionEquality().equals(other.appInfo, appInfo) &&
+            const DeepCollectionEquality()
+                .equals(other.developerInfo, developerInfo));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, appInfo, developerInfo);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(appInfo),
+      const DeepCollectionEquality().hash(developerInfo));
 
   @JsonKey(ignore: true)
   @override

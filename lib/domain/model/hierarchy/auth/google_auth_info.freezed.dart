@@ -132,13 +132,16 @@ class _$_GoogleAuthInfo implements _GoogleAuthInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _GoogleAuthInfo &&
-            (identical(other.accessToken, accessToken) ||
-                other.accessToken == accessToken) &&
-            (identical(other.idToken, idToken) || other.idToken == idToken));
+            const DeepCollectionEquality()
+                .equals(other.accessToken, accessToken) &&
+            const DeepCollectionEquality().equals(other.idToken, idToken));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, accessToken, idToken);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(accessToken),
+      const DeepCollectionEquality().hash(idToken));
 
   @JsonKey(ignore: true)
   @override

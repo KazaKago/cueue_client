@@ -221,16 +221,20 @@ class _$_MenuSummaryResponse implements _MenuSummaryResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _MenuSummaryResponse &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.memo, memo) || other.memo == memo) &&
-            (identical(other.date, date) || other.date == date) &&
-            (identical(other.timeFrame, timeFrame) ||
-                other.timeFrame == timeFrame) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.memo, memo) &&
+            const DeepCollectionEquality().equals(other.date, date) &&
+            const DeepCollectionEquality().equals(other.timeFrame, timeFrame) &&
             const DeepCollectionEquality().equals(other.recipes, recipes));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, memo, date, timeFrame,
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(memo),
+      const DeepCollectionEquality().hash(date),
+      const DeepCollectionEquality().hash(timeFrame),
       const DeepCollectionEquality().hash(recipes));
 
   @JsonKey(ignore: true)

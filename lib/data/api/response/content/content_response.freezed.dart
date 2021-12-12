@@ -156,12 +156,15 @@ class _$_ContentResponse implements _ContentResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ContentResponse &&
-            (identical(other.key, key) || other.key == key) &&
-            (identical(other.url, url) || other.url == url));
+            const DeepCollectionEquality().equals(other.key, key) &&
+            const DeepCollectionEquality().equals(other.url, url));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, key, url);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(key),
+      const DeepCollectionEquality().hash(url));
 
   @JsonKey(ignore: true)
   @override

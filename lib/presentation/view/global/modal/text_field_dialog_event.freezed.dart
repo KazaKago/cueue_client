@@ -191,14 +191,17 @@ class _$_Positive implements _Positive {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Positive &&
-            (identical(other.currentText, currentText) ||
-                other.currentText == currentText) &&
-            (identical(other.originalText, originalText) ||
-                other.originalText == originalText));
+            const DeepCollectionEquality()
+                .equals(other.currentText, currentText) &&
+            const DeepCollectionEquality()
+                .equals(other.originalText, originalText));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, currentText, originalText);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(currentText),
+      const DeepCollectionEquality().hash(originalText));
 
   @JsonKey(ignore: true)
   @override
@@ -347,14 +350,17 @@ class _$_Neutral implements _Neutral {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Neutral &&
-            (identical(other.currentText, currentText) ||
-                other.currentText == currentText) &&
-            (identical(other.originalText, originalText) ||
-                other.originalText == originalText));
+            const DeepCollectionEquality()
+                .equals(other.currentText, currentText) &&
+            const DeepCollectionEquality()
+                .equals(other.originalText, originalText));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, currentText, originalText);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(currentText),
+      const DeepCollectionEquality().hash(originalText));
 
   @JsonKey(ignore: true)
   @override
@@ -503,14 +509,17 @@ class _$_Negative implements _Negative {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Negative &&
-            (identical(other.currentText, currentText) ||
-                other.currentText == currentText) &&
-            (identical(other.originalText, originalText) ||
-                other.originalText == originalText));
+            const DeepCollectionEquality()
+                .equals(other.currentText, currentText) &&
+            const DeepCollectionEquality()
+                .equals(other.originalText, originalText));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, currentText, originalText);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(currentText),
+      const DeepCollectionEquality().hash(originalText));
 
   @JsonKey(ignore: true)
   @override

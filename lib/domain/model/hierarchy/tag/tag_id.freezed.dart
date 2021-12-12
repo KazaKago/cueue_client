@@ -111,11 +111,12 @@ class _$_TagId implements _TagId {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _TagId &&
-            (identical(other.value, value) || other.value == value));
+            const DeepCollectionEquality().equals(other.value, value));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
 
   @JsonKey(ignore: true)
   @override

@@ -196,15 +196,20 @@ class _$_RecipeSummaryImpl implements _RecipeSummaryImpl {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _RecipeSummaryImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.image, image) || other.image == image) &&
-            (identical(other.lastCookingAt, lastCookingAt) ||
-                other.lastCookingAt == lastCookingAt));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.image, image) &&
+            const DeepCollectionEquality()
+                .equals(other.lastCookingAt, lastCookingAt));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, image, lastCookingAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(image),
+      const DeepCollectionEquality().hash(lastCookingAt));
 
   @JsonKey(ignore: true)
   @override

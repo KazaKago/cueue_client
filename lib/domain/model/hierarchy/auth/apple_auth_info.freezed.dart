@@ -152,15 +152,18 @@ class _$_AppleAuthInfo implements _AppleAuthInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _AppleAuthInfo &&
-            (identical(other.idToken, idToken) || other.idToken == idToken) &&
-            (identical(other.accessToken, accessToken) ||
-                other.accessToken == accessToken) &&
-            (identical(other.rawNonce, rawNonce) ||
-                other.rawNonce == rawNonce));
+            const DeepCollectionEquality().equals(other.idToken, idToken) &&
+            const DeepCollectionEquality()
+                .equals(other.accessToken, accessToken) &&
+            const DeepCollectionEquality().equals(other.rawNonce, rawNonce));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, idToken, accessToken, rawNonce);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(idToken),
+      const DeepCollectionEquality().hash(accessToken),
+      const DeepCollectionEquality().hash(rawNonce));
 
   @JsonKey(ignore: true)
   @override

@@ -176,15 +176,18 @@ class _$_MenuRegistration implements _MenuRegistration {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _MenuRegistration &&
-            (identical(other.memo, memo) || other.memo == memo) &&
-            (identical(other.date, date) || other.date == date) &&
-            (identical(other.timeFrame, timeFrame) ||
-                other.timeFrame == timeFrame) &&
+            const DeepCollectionEquality().equals(other.memo, memo) &&
+            const DeepCollectionEquality().equals(other.date, date) &&
+            const DeepCollectionEquality().equals(other.timeFrame, timeFrame) &&
             const DeepCollectionEquality().equals(other.recipeIds, recipeIds));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, memo, date, timeFrame,
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(memo),
+      const DeepCollectionEquality().hash(date),
+      const DeepCollectionEquality().hash(timeFrame),
       const DeepCollectionEquality().hash(recipeIds));
 
   @JsonKey(ignore: true)

@@ -144,13 +144,16 @@ class _$_PasswordProvider implements _PasswordProvider {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PasswordProvider &&
-            (identical(other.uid, uid) || other.uid == uid) &&
-            (identical(other.displayName, displayName) ||
-                other.displayName == displayName));
+            const DeepCollectionEquality().equals(other.uid, uid) &&
+            const DeepCollectionEquality()
+                .equals(other.displayName, displayName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, uid, displayName);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(uid),
+      const DeepCollectionEquality().hash(displayName));
 
   @JsonKey(ignore: true)
   @override

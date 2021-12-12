@@ -158,14 +158,16 @@ class _$_UserResponse implements _UserResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _UserResponse &&
-            (identical(other.id, id) || other.id == id) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.workspaces, workspaces));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, const DeepCollectionEquality().hash(workspaces));
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(workspaces));
 
   @JsonKey(ignore: true)
   @override

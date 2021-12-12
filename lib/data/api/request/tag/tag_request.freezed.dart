@@ -130,11 +130,12 @@ class _$_TagRequest implements _TagRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _TagRequest &&
-            (identical(other.name, name) || other.name == name));
+            const DeepCollectionEquality().equals(other.name, name));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override

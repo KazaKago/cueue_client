@@ -158,12 +158,15 @@ class _$_ErrorResponse implements _ErrorResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ErrorResponse &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.message, message) || other.message == message));
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.message, message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, message);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(message));
 
   @JsonKey(ignore: true)
   @override

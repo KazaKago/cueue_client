@@ -288,16 +288,16 @@ class _$_User extends _User {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _User &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.isEmailVerified, isEmailVerified) ||
-                other.isEmailVerified == isEmailVerified) &&
-            (identical(other.passwordProvider, passwordProvider) ||
-                other.passwordProvider == passwordProvider) &&
-            (identical(other.googleProvider, googleProvider) ||
-                other.googleProvider == googleProvider) &&
-            (identical(other.appleProvider, appleProvider) ||
-                other.appleProvider == appleProvider) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality()
+                .equals(other.isEmailVerified, isEmailVerified) &&
+            const DeepCollectionEquality()
+                .equals(other.passwordProvider, passwordProvider) &&
+            const DeepCollectionEquality()
+                .equals(other.googleProvider, googleProvider) &&
+            const DeepCollectionEquality()
+                .equals(other.appleProvider, appleProvider) &&
             const DeepCollectionEquality()
                 .equals(other.workspaces, workspaces));
   }
@@ -305,12 +305,12 @@ class _$_User extends _User {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      id,
-      email,
-      isEmailVerified,
-      passwordProvider,
-      googleProvider,
-      appleProvider,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(isEmailVerified),
+      const DeepCollectionEquality().hash(passwordProvider),
+      const DeepCollectionEquality().hash(googleProvider),
+      const DeepCollectionEquality().hash(appleProvider),
       const DeepCollectionEquality().hash(workspaces));
 
   @JsonKey(ignore: true)

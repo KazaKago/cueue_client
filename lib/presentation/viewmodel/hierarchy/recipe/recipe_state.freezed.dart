@@ -968,11 +968,12 @@ class _$_Error implements _Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Error &&
-            (identical(other.error, error) || other.error == error));
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, error);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -1141,12 +1142,14 @@ class _$_AdditionalError implements _AdditionalError {
         (other.runtimeType == runtimeType &&
             other is _AdditionalError &&
             const DeepCollectionEquality().equals(other.recipes, recipes) &&
-            (identical(other.error, error) || other.error == error));
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(recipes), error);
+      runtimeType,
+      const DeepCollectionEquality().hash(recipes),
+      const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override

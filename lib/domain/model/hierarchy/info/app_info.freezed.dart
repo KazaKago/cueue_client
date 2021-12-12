@@ -125,12 +125,15 @@ class _$_AppInfo implements _AppInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _AppInfo &&
-            (identical(other.appName, appName) || other.appName == appName) &&
-            (identical(other.version, version) || other.version == version));
+            const DeepCollectionEquality().equals(other.appName, appName) &&
+            const DeepCollectionEquality().equals(other.version, version));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, appName, version);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(appName),
+      const DeepCollectionEquality().hash(version));
 
   @JsonKey(ignore: true)
   @override

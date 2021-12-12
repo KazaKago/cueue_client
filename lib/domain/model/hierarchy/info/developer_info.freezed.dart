@@ -161,14 +161,17 @@ class _$_DeveloperInfo extends _DeveloperInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _DeveloperInfo &&
-            (identical(other.developer, developer) ||
-                other.developer == developer) &&
-            (identical(other.webSite, webSite) || other.webSite == webSite) &&
-            (identical(other.email, email) || other.email == email));
+            const DeepCollectionEquality().equals(other.developer, developer) &&
+            const DeepCollectionEquality().equals(other.webSite, webSite) &&
+            const DeepCollectionEquality().equals(other.email, email));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, developer, webSite, email);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(developer),
+      const DeepCollectionEquality().hash(webSite),
+      const DeepCollectionEquality().hash(email));
 
   @JsonKey(ignore: true)
   @override
