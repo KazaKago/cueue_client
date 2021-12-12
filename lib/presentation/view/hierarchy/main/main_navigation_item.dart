@@ -7,7 +7,6 @@ import 'package:cueue/presentation/view/hierarchy/setting/settings_page.dart';
 import 'package:cueue/presentation/view/hierarchy/tag/tag_editing_page.dart';
 import 'package:cueue/presentation/view/hierarchy/tag/tag_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

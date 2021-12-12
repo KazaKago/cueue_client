@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class LoadingListItem extends StatelessWidget {
   const LoadingListItem({final Key? key}) : super(key: key);

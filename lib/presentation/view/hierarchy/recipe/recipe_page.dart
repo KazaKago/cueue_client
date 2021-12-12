@@ -8,7 +8,6 @@ import 'package:cueue/presentation/view/hierarchy/recipe/recipe_loading_item.dar
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class RecipePage extends HookConsumerWidget {
