@@ -10,6 +10,6 @@ class ShouldShowReauthenticationWithAppleUseCaseImpl implements ShouldShowReauth
   Future<bool> call() async {
     final user = await _userRepository.getOrNull();
     if (user == null) return false;
-    return user.isSignInWithApple();
+    return user.isAppleLinked();
   }
 }

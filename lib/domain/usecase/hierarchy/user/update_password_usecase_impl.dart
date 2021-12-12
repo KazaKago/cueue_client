@@ -13,7 +13,7 @@ class UpdatePasswordUseCaseImpl implements UpdatePasswordUseCase {
   @override
   Future<void> call(final Password password) async {
     final user = await _userRepository.get();
-    if (user.isSignInWithPassword()) {
+    if (user.isPasswordLinked()) {
       await _userRepository.updatePassword(password);
     } else {
       final authInfo = PasswordAuthInfo(email: user.email, password: password);

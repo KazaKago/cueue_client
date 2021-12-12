@@ -22,11 +22,11 @@ class User with _$User {
 
   const User._();
 
-  bool isSignInWithPassword() => passwordProvider != null;
+  bool isPasswordLinked() => passwordProvider != null;
 
-  bool isSignInWithGoogle() => googleProvider != null;
+  bool isGoogleLinked() => googleProvider != null;
 
-  bool isSignInWithApple() => appleProvider != null;
+  bool isAppleLinked() => appleProvider != null;
 
   Workspace get currentWorkspace => workspaces.first;
 }

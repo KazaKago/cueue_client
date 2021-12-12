@@ -172,8 +172,8 @@ class SettingsPage extends HookConsumerWidget {
       completed: (user) => ListTile(
         leading: const Icon(FontAwesomeIcons.key),
         title: Text(AppLocalizations.of(context)!.password),
-        subtitle: Text((user.isSignInWithPassword()) ? AppLocalizations.of(context)!.tapToChangePassword : AppLocalizations.of(context)!.tapToSetPassword),
-        trailing: Text((user.isSignInWithPassword()) ? AppLocalizations.of(context)!.alreadySetting : AppLocalizations.of(context)!.notYetSetting),
+        subtitle: Text((user.isPasswordLinked()) ? AppLocalizations.of(context)!.tapToChangePassword : AppLocalizations.of(context)!.tapToSetPassword),
+        trailing: Text((user.isPasswordLinked()) ? AppLocalizations.of(context)!.alreadySetting : AppLocalizations.of(context)!.notYetSetting),
         onTap: () => _showPasswordInputDialog(context, ref),
       ),
       error: (exception) => ListTile(
@@ -195,10 +195,10 @@ class SettingsPage extends HookConsumerWidget {
       completed: (user) => ListTile(
         leading: const Icon(FontAwesomeIcons.google),
         title: Text(AppLocalizations.of(context)!.google),
-        trailing: Text((user.isSignInWithGoogle()) ? AppLocalizations.of(context)!.alreadyConnect : AppLocalizations.of(context)!.notYetConnect),
-        subtitle: Text((user.isSignInWithGoogle()) ? AppLocalizations.of(context)!.tapToUnConnectWith(user.googleProvider!.displayName) : AppLocalizations.of(context)!.tapToConnect),
+        trailing: Text((user.isGoogleLinked()) ? AppLocalizations.of(context)!.alreadyConnect : AppLocalizations.of(context)!.notYetConnect),
+        subtitle: Text((user.isGoogleLinked()) ? AppLocalizations.of(context)!.tapToUnConnectWith(user.googleProvider!.displayName) : AppLocalizations.of(context)!.tapToConnect),
         onTap: () {
-          if (user.isSignInWithGoogle()) {
+          if (user.isGoogleLinked()) {
             _showUnlinkWithGoogleConfirmationDialog(context, ref);
           } else {
             _linkWithGoogle(context, ref);
@@ -224,10 +224,10 @@ class SettingsPage extends HookConsumerWidget {
       completed: (user) => ListTile(
         leading: const Icon(FontAwesomeIcons.apple),
         title: Text(AppLocalizations.of(context)!.apple),
-        trailing: Text((user.isSignInWithApple()) ? AppLocalizations.of(context)!.alreadyConnect : AppLocalizations.of(context)!.notYetConnect),
-        subtitle: Text((user.isSignInWithApple()) ? AppLocalizations.of(context)!.tapToUnConnectWith(user.appleProvider!.displayName) : AppLocalizations.of(context)!.tapToConnect),
+        trailing: Text((user.isAppleLinked()) ? AppLocalizations.of(context)!.alreadyConnect : AppLocalizations.of(context)!.notYetConnect),
+        subtitle: Text((user.isAppleLinked()) ? AppLocalizations.of(context)!.tapToUnConnectWith(user.appleProvider!.displayName) : AppLocalizations.of(context)!.tapToConnect),
         onTap: () {
-          if (user.isSignInWithApple()) {
+          if (user.isAppleLinked()) {
             _showUnlinkWithAppleConfirmationDialog(context, ref);
           } else {
             _linkWithApple(context, ref);

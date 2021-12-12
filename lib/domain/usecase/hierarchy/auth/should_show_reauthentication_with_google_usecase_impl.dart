@@ -10,6 +10,6 @@ class ShouldShowReauthenticationWithGoogleUseCaseImpl implements ShouldShowReaut
   Future<bool> call() async {
     final user = await _userRepository.getOrNull();
     if (user == null) return false;
-    return user.isSignInWithGoogle();
+    return user.isGoogleLinked();
   }
 }
