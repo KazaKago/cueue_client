@@ -122,7 +122,7 @@ final getAppInfoUseCaseProvider = Provider<GetAppInfoUseCase>((ref) => GetAppInf
 final getDeveloperInfoUseCaseProvider = Provider<GetDeveloperInfoUseCase>((ref) => GetDeveloperInfoUseCaseImpl(ref.read(infoRepositoryProvider)));
 final followUserUseCaseProvider = Provider<FollowUserUseCase>((ref) => FollowUserUseCaseImpl(ref.read(userRepositoryProvider)));
 final updateEmailUseCaseProvider = Provider<UpdateEmailUseCase>((ref) => UpdateEmailUseCaseImpl(ref.read(userRepositoryProvider)));
-final updatePasswordUseCaseProvider = Provider<UpdatePasswordUseCase>((ref) => UpdatePasswordUseCaseImpl(ref.read(userRepositoryProvider)));
+final updatePasswordUseCaseProvider = Provider<UpdatePasswordUseCase>((ref) => UpdatePasswordUseCaseImpl(ref.read(authorizeRepositoryProvider), ref.read(userRepositoryProvider)));
 final refreshUserUseCaseProvider = Provider<RefreshUserUseCase>((ref) => RefreshUserUseCaseImpl(ref.read(userRepositoryProvider)));
 final sendEmailVerificationUseCaseProvider = Provider<SendEmailVerificationUseCase>((ref) => SendEmailVerificationUseCaseImpl(ref.read(userRepositoryProvider)));
 final sendPasswordResetMailUseCaseProvider = Provider<SendPasswordResetMailUseCase>((ref) => SendPasswordResetMailUseCaseImpl(ref.read(userRepositoryProvider)));

@@ -32,6 +32,14 @@ class PasswordSignaturer {
     }
   }
 
+  Future<void> link(final PasswordAuthInfo authInfo) async {
+    try {
+      await const SignaturerDelegator().link(() => EmailAuthProvider.credential(email: authInfo.email.value, password: authInfo.password.value));
+    } on FirebaseAuthException catch (exception) {
+      throw await const SignaturerDelegator().classifyException(exception);
+    }
+  }
+
   Future<void> updateEmail(final Email email) async {
     try {
       final firebaseUser = FirebaseAuth.instance.currentUser!;

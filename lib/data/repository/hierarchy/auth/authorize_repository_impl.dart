@@ -61,6 +61,13 @@ class AuthorizeRepositoryImpl implements AuthorizeRepository {
   }
 
   @override
+  Future<void> linkWithPassword(PasswordAuthInfo authInfo) async {
+    await _passwordSignaturer.link(authInfo);
+    final userFlowable = _userFlowableFactory.create(null);
+    await userFlowable.refresh();
+  }
+
+  @override
   Future<void> linkWithGoogle(final GoogleAuthInfo authInfo) async {
     await _googleSignaturer.link(authInfo);
     final userFlowable = _userFlowableFactory.create(null);

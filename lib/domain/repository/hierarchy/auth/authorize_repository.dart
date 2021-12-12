@@ -19,6 +19,8 @@ abstract class AuthorizeRepository {
 
   Future<void> reauthenticateWithApple(final AppleAuthInfo authInfo);
 
+  Future<void> linkWithPassword(final PasswordAuthInfo authInfo);
+
   Future<void> linkWithGoogle(final GoogleAuthInfo authInfo);
 
   Future<void> linkWithApple(final AppleAuthInfo authInfo);
