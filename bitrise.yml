@@ -31,8 +31,7 @@ workflows:
           inputs:
             - project_path: $BITRISE_PROJECT_PATH
             - scheme: $BITRISE_SCHEME
-            - export_method: $BITRISE_EXPORT_METHOD
-            - configuration: ''
+            - distribution_method: $BITRISE_EXPORT_METHOD
       - ipa-info@1: {}
     description: |-
       ## Env Vars
