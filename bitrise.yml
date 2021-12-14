@@ -1,0 +1,326 @@
+---
+format_version: '8'
+default_step_lib_source: 'https://github.com/bitrise-io/bitrise-steplib.git'
+project_type: flutter
+workflows:
+  _build_android:
+    steps:
+      - flutter-build@0:
+          inputs:
+            - android_output_type: appbundle
+            - android_additional_params: '--release $BUILD_ARGUMENTS'
+            - platform: android
+            - project_location: $BITRISE_FLUTTER_PROJECT_LOCATION
+      - bitrise-step-export-universal-apk@0: {}
+      - apk-info@1: {}
+      - sign-apk@1:
+          inputs:
+            - use_apk_signer: 'true'
+    description: |-
+      ## Env Vars
+
+      - `$BUILD_ARGUMENTS`
+  _build_ios:
+    steps:
+      - flutter-build@0:
+          inputs:
+            - ios_additional_params: '--release --no-codesign $BUILD_ARGUMENTS'
+            - platform: ios
+            - project_location: $BITRISE_FLUTTER_PROJECT_LOCATION
+      - xcode-archive@4:
+          inputs:
+            - project_path: $BITRISE_PROJECT_PATH
+            - scheme: $BITRISE_SCHEME
+            - export_method: $BITRISE_EXPORT_METHOD
+            - configuration: ''
+      - ipa-info@1: {}
+    description: |-
+      ## Env Vars
+
+      - `$BUILD_ARGUMENTS`
+      - `$BITRISE_SCHEME`
+      - `$BITRISE_EXPORT_METHOD`
+  _deploy_android:
+    steps:
+      - firebase-app-distribution@0:
+          title: Firebase App Distribution (Android)
+          inputs:
+            - app: $FIREBAE_APP_ID
+            - firebase_token: $FIREBASE_TOKEN
+            - groups: $FIREBASE_APP_DISTRIBUTION_TESTER_GROUP
+            - release_notes: $BITRISE_GIT_MESSAGE
+            - app_path: $BITRISE_SIGNED_APK_PATH
+    description: |-
+      ## Env Vars
+
+      - `$FIREBASE_APP_DISTRIBUTION_TESTER_GROUP`
+      - `$FIREBASE_APP_ID`
+  _deploy_ios:
+    steps:
+      - firebase-app-distribution@0:
+          title: Firebase App Distribution (iOS)
+          inputs:
+            - app: $FIREBAE_APP_ID
+            - firebase_token: $FIREBASE_TOKEN
+            - groups: $FIREBASE_APP_DISTRIBUTION_TESTER_GROUP
+            - release_notes: $BITRISE_GIT_MESSAGE
+            - app_path: $BITRISE_IPA_PATH
+    description: |-
+      ## Env Vars
+
+      - `$FIREBASE_APP_DISTRIBUTION_TESTER_GROUP`
+      - `$FIREBASE_APP_ID`
+  _parallel_build:
+    steps:
+      - build-router-start@0:
+          inputs:
+            - access_token: $PERSONAL_ACCESS_TOKEN
+            - workflows: $WORKFLOWS
+    description: |-
+      ## Env Vars
+
+      - `$WORKFLOWS`
+  _release_android:
+    steps:
+      - google-play-deploy@3:
+          inputs:
+            - service_account_json_key_path: $BITRISEIO_SERVICE_ACCOUNT_JSON_KEY_FILE_URL
+            - package_name: $ANDROID_APP_PACKAGE_NAME
+            - app_path: $BITRISE_SIGNED_AAB_PATH
+            - track: internal
+    description: |-
+      ## Env Vars
+
+      - `$BITRISEIO_SERVICE_ACCOUNT_JSON_KEY_FILE_URL`
+  _release_ios:
+    steps:
+      - deploy-to-itunesconnect-application-loader@1:
+          inputs:
+            - app_password: $APPLE_APP_SPECIFIC_PASSWORD
+            - itunescon_user: $APPLE_ID
+    description: |-
+      ## Env Vars
+
+      - `$APPLE_ID`
+      - `$APPLE_APP_SPECIFIC_PASSWORD`
+  _setup_android:
+    steps:
+      - script@1:
+          inputs:
+            - content: >-
+                #!/usr/bin/env bash
+                
+                # fail if any commands fails
+                
+                set -e
+                
+                # debug log
+                
+                set -x
+                
+                
+                #
+                https://devcenter.bitrise.io/infrastructure/virtual-machines/#switching-to-java-11
+                
+                jenv global 11
+                
+                export JAVA_HOME="$(jenv prefix)"
+                
+                envman add --key JAVA_HOME --value "$(jenv prefix)"
+                
+                
+                java -version
+          title: Switch to JDK11
+      - generate-text-file@0:
+          inputs:
+            - file_content: $GOOGLE_SERVICES_JSON_STAGING
+            - file_name: android/app/src/staging/google-services.json
+          title: Generate Staging google-services.json
+      - generate-text-file@0:
+          inputs:
+            - file_content: $GOOGLE_SERVICES_JSON_PRODUCTION
+            - file_name: android/app/src/production/google-services.json
+          title: Generate Production google-services.json
+  _setup_common:
+    steps:
+      - activate-ssh-key@4:
+          run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+      - git-clone@6: {}
+      - flutter-installer@0: {}
+      - generate-text-file@0:
+          title: Generate .env.staging
+          inputs:
+            - file_content: $DOT_ENV_STAGING
+            - file_name: .env.staging
+      - generate-text-file@0:
+          title: Generate .env.production
+          inputs:
+            - file_content: $DOT_ENV_PRODUCTION
+            - file_name: .env.production
+  _setup_ios:
+    steps:
+      - fastlane@3:
+          inputs:
+            - lane: get_all_cer
+            - work_dir: $BITRISE_SOURCE_DIR/ios
+          title: Install certificate and profile by  fastlane
+      - generate-text-file@0:
+          inputs:
+            - file_name: ios/Runner/GoogleService-Info-Staging.plist
+            - file_content: $GOOGLE_SERVICE_INFO_PLIST_STAGING
+          title: Generate Staging GoogleService-Info.plist
+      - generate-text-file@0:
+          inputs:
+            - file_name: ios/Runner/GoogleService-Info-Production.plist
+            - file_content: $GOOGLE_SERVICE_INFO_PLIST_PRODUCTION
+          title: Generate Production GoogleService-Info.plist
+  _test:
+    steps:
+      - flutter-analyze@0:
+          inputs:
+            - project_location: $BITRISE_FLUTTER_PROJECT_LOCATION
+      - flutter-test@0:
+          inputs:
+            - project_location: $BITRISE_FLUTTER_PROJECT_LOCATION
+  deploy_production:
+    envs:
+      - opts:
+          is_expand: false
+        WORKFLOWS: |-
+          deploy_production_android
+          deploy_production_ios
+    after_run:
+      - _parallel_build
+  deploy_production_android:
+    after_run:
+      - _setup_common
+      - _setup_android
+      - _build_android
+      - _deploy_android
+    envs:
+      - BUILD_ARGUMENTS: '--flavor production --dart-define=FLAVOR=production'
+        opts:
+          is_expand: false
+      - opts:
+          is_expand: false
+        FIREBAE_APP_ID: '1:324675815992:android:2afe610f4ac32effb834cd'
+  deploy_production_ios:
+    after_run:
+      - _setup_common
+      - _setup_ios
+      - _build_ios
+      - _deploy_ios
+    envs:
+      - BUILD_ARGUMENTS: '--flavor production --dart-define=FLAVOR=production'
+        opts:
+          is_expand: false
+      - opts:
+          is_expand: false
+        BITRISE_SCHEME: Production
+      - opts:
+          is_expand: false
+        BITRISE_EXPORT_METHOD: ad-hoc
+      - opts:
+          is_expand: false
+        FIREBAE_APP_ID: '1:324675815992:ios:71e6cf63de4a5474b834cd'
+  deploy_staging:
+    envs:
+      - opts:
+          is_expand: false
+        WORKFLOWS: |-
+          deploy_staging_android
+          deploy_staging_ios
+    after_run:
+      - _parallel_build
+  deploy_staging_android:
+    after_run:
+      - _setup_common
+      - _setup_android
+      - _build_android
+      - _deploy_android
+    envs:
+      - BUILD_ARGUMENTS: '--flavor staging --dart-define=FLAVOR=staging'
+        opts:
+          is_expand: false
+      - opts:
+          is_expand: false
+        FIREBAE_APP_ID: '1:667428480171:android:93cf5e9568ad7129df83ee'
+  deploy_staging_ios:
+    after_run:
+      - _setup_common
+      - _setup_ios
+      - _build_ios
+      - _deploy_ios
+    envs:
+      - BUILD_ARGUMENTS: '--flavor staging --dart-define=FLAVOR=staging'
+        opts:
+          is_expand: false
+      - opts:
+          is_expand: false
+        BITRISE_SCHEME: Staging
+      - opts:
+          is_expand: false
+        BITRISE_EXPORT_METHOD: ad-hoc
+      - opts:
+          is_expand: false
+        FIREBAE_APP_ID: '1:667428480171:ios:99419cde974b3aabdf83ee'
+  release:
+    envs:
+      - opts:
+          is_expand: false
+        WORKFLOWS: |-
+          release_android
+          release_ios
+    after_run:
+      - _parallel_build
+  release_android:
+    after_run:
+      - _setup_common
+      - _setup_android
+      - _build_android
+      - _release_android
+    envs:
+      - BUILD_ARGUMENTS: '--flavor production --dart-define=FLAVOR=production'
+        opts:
+          is_expand: false
+  release_ios:
+    after_run:
+      - _setup_common
+      - _setup_ios
+      - _build_ios
+      - _release_ios
+    envs:
+      - BUILD_ARGUMENTS: '--flavor production --dart-define=FLAVOR=production'
+        opts:
+          is_expand: false
+      - opts:
+          is_expand: false
+        BITRISE_SCHEME: Production
+      - opts:
+          is_expand: false
+        BITRISE_EXPORT_METHOD: app-store
+  unittest:
+    after_run:
+      - _setup_common
+      - _test
+app:
+  envs:
+    - opts:
+        is_expand: false
+      BITRISE_FLUTTER_PROJECT_LOCATION: .
+    - opts:
+        is_expand: false
+      BITRISE_PROJECT_PATH: ios/Runner.xcworkspace
+    - opts:
+        is_expand: false
+      FIREBASE_APP_DISTRIBUTION_TESTER_GROUP: kazakago
+trigger_map:
+  - push_branch: develop
+    workflow: deploy_production
+  - pull_request_source_branch: '*'
+    workflow: unittest
+  - tag: '*.*.*'
+    workflow: release
+meta:
+  bitrise.io:
+    stack: osx-xcode-13.1.x
