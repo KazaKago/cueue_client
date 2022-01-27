@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cueue/domain/model/hierarchy/menu/menu.dart';
 import 'package:cueue/domain/model/hierarchy/menu/menu_summary.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_summary.dart';
+import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/extension/date_time_extension.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
 import 'package:cueue/presentation/view/global/widget/titled_card.dart';
@@ -11,7 +12,6 @@ import 'package:cueue/presentation/view/hierarchy/recipe/recipe_detail_page.dart
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/editing_result.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MenuDetailPage extends HookConsumerWidget {
@@ -55,7 +55,7 @@ class MenuDetailPage extends HookConsumerWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.edit),
-            tooltip: AppLocalizations.of(context)!.doEdit,
+            tooltip: intl(context).doEdit,
             onPressed: () => _goMenuEditing(context, menu),
           ),
         ],
@@ -85,7 +85,7 @@ class MenuDetailPage extends HookConsumerWidget {
   Widget _buildMenuItem(final BuildContext context, final WidgetRef ref, final MenuSummary menu) {
     return TitledCard.list(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-      title: AppLocalizations.of(context)!.cookingMenu,
+      title: intl(context).cookingMenu,
       contentPadding: const EdgeInsets.fromLTRB(0, 12, 0, 12),
       children: menu.recipes.map((recipe) {
         final image = recipe.image;
@@ -101,7 +101,7 @@ class MenuDetailPage extends HookConsumerWidget {
   Widget _buildMemoItem(final BuildContext context, final WidgetRef ref, final MenuSummary menu) {
     return TitledCard(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-      title: AppLocalizations.of(context)!.memo,
+      title: intl(context).memo,
       child: Text(menu.memo),
     );
   }

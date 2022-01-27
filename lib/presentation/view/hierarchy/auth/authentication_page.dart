@@ -1,3 +1,4 @@
+import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_type.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authorizer/apple_authorizer.dart';
@@ -11,7 +12,6 @@ import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -47,9 +47,9 @@ class AuthenticationPage extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(_whenType(
-          signUp: () => AppLocalizations.of(context)!.signUp,
-          signIn: () => AppLocalizations.of(context)!.signIn,
-          reauth: () => AppLocalizations.of(context)!.reAuth,
+          signUp: () => intl(context).signUp,
+          signIn: () => intl(context).signIn,
+          reauth: () => intl(context).reAuth,
         )),
       ),
       body: ListView(
@@ -61,7 +61,7 @@ class AuthenticationPage extends HookConsumerWidget {
               controller: emailEditingController,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
-                labelText: AppLocalizations.of(context)!.mailAddress,
+                labelText: intl(context).mailAddress,
               ),
             ),
           TextField(
@@ -70,7 +70,7 @@ class AuthenticationPage extends HookConsumerWidget {
             keyboardType: TextInputType.visiblePassword,
             obscureText: isObscurePasswordText.value,
             decoration: InputDecoration(
-              labelText: AppLocalizations.of(context)!.password,
+              labelText: intl(context).password,
               suffixIcon: IconButton(
                 icon: Icon(isObscurePasswordText.value ? Icons.visibility_off : Icons.visibility),
                 onPressed: () => isObscurePasswordText.value = !isObscurePasswordText.value,
@@ -83,7 +83,7 @@ class AuthenticationPage extends HookConsumerWidget {
               keyboardType: TextInputType.visiblePassword,
               obscureText: isObscureConfirmationPasswordText.value,
               decoration: InputDecoration(
-                labelText: AppLocalizations.of(context)!.reInputPassword,
+                labelText: intl(context).reInputPassword,
                 suffixIcon: IconButton(
                   icon: Icon(isObscureConfirmationPasswordText.value ? Icons.visibility_off : Icons.visibility),
                   onPressed: () => isObscureConfirmationPasswordText.value = !isObscureConfirmationPasswordText.value,
@@ -108,7 +108,7 @@ class AuthenticationPage extends HookConsumerWidget {
               children: [
                 InkWell(
                   onTap: (shouldShowReauthenticationWithPassword || authenticationType != AuthenticationType.reauth) ? () => _goPasswordReset(context) : null,
-                  child: Text(AppLocalizations.of(context)!.forgotPassword, style: Theme.of(context).textTheme.caption?.copyWith(decoration: TextDecoration.underline)),
+                  child: Text(intl(context).forgotPassword, style: Theme.of(context).textTheme.caption?.copyWith(decoration: TextDecoration.underline)),
                 ),
               ],
             ),
@@ -116,7 +116,7 @@ class AuthenticationPage extends HookConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(AppLocalizations.of(context)!.or),
+              Text(intl(context).or),
             ],
           ),
           const SizedBox(height: 24),

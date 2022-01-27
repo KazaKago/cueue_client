@@ -1,4 +1,5 @@
 import 'package:cueue/domain/model/hierarchy/tag/tag.dart';
+import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/widget/empty_widget.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
 import 'package:cueue/presentation/view/global/widget/shimmer_container.dart';
@@ -7,7 +8,6 @@ import 'package:cueue/presentation/view/hierarchy/tag/tag_loading_item.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/editing_result.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TagPage extends HookConsumerWidget {
@@ -18,7 +18,7 @@ class TagPage extends HookConsumerWidget {
     final state = ref.watch(tagViewModelProvider.select((viewModel) => viewModel.state));
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.tag),
+        title: Text(intl(context).tag),
       ),
       body: state.when(
         loading: () => _buildLoading(context, ref),
@@ -39,7 +39,7 @@ class TagPage extends HookConsumerWidget {
   }
 
   Widget _buildEmpty(final BuildContext context, final WidgetRef ref) {
-    return EmptyWidget(AppLocalizations.of(context)!.no_tag_message);
+    return EmptyWidget(intl(context).no_tag_message);
   }
 
   Widget _buildCompleted(final BuildContext context, final WidgetRef ref, final List<Tag> tags) {

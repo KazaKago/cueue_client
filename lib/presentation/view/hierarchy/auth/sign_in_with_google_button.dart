@@ -1,7 +1,7 @@
+import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/abstract_sign_in_button.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_type.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SignInWithGoogleButton extends AbstractSignInButton {
@@ -27,9 +27,9 @@ class SignInWithGoogleButton extends AbstractSignInButton {
       context,
       iconData: FontAwesomeIcons.google,
       color: Colors.blueAccent,
-      signUpText: AppLocalizations.of(context)!.withGoogleAccount(AppLocalizations.of(context)!.auth),
-      signInText: AppLocalizations.of(context)!.withGoogleAccount(AppLocalizations.of(context)!.auth),
-      reauthText: AppLocalizations.of(context)!.withGoogleAccount(AppLocalizations.of(context)!.reAuth),
+      signUpText: intl(context).withGoogleAccount(intl(context).auth),
+      signInText: intl(context).withGoogleAccount(intl(context).auth),
+      reauthText: intl(context).withGoogleAccount(intl(context).reAuth),
     );
   }
 }

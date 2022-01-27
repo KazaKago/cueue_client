@@ -5,6 +5,7 @@ import 'package:cueue/domain/model/hierarchy/content/content.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe.dart';
 import 'package:cueue/domain/model/hierarchy/tag/tag.dart';
 import 'package:cueue/domain/model/hierarchy/tag/tag_id.dart';
+import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
 import 'package:cueue/presentation/view/global/modal/simple_message_dialog.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
@@ -14,7 +15,6 @@ import 'package:cueue/presentation/viewmodel/global/editing_result.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
@@ -43,12 +43,12 @@ class RecipeEditingPage extends HookConsumerWidget {
       }));
     return Scaffold(
       appBar: AppBar(
-        title: Text(recipe != null ? AppLocalizations.of(context)!.editWith(recipe!.title) : AppLocalizations.of(context)!.addRecipe),
+        title: Text(recipe != null ? intl(context).editWith(recipe!.title) : intl(context).addRecipe),
         actions: [
           if (recipe != null)
             IconButton(
               icon: const Icon(Icons.delete),
-              tooltip: AppLocalizations.of(context)!.doDelete,
+              tooltip: intl(context).doDelete,
               onPressed: () => _showConfirmationDeletingDialog(context, ref, recipe!),
             ),
         ],
@@ -80,7 +80,7 @@ class RecipeEditingPage extends HookConsumerWidget {
     return TextField(
       controller: recipeTitleEditingController,
       keyboardType: TextInputType.text,
-      decoration: InputDecoration(labelText: AppLocalizations.of(context)!.recipeName, alignLabelWithHint: true, border: const OutlineInputBorder()),
+      decoration: InputDecoration(labelText: intl(context).recipeName, alignLabelWithHint: true, border: const OutlineInputBorder()),
     );
   }
 
@@ -112,7 +112,7 @@ class RecipeEditingPage extends HookConsumerWidget {
               ),
             ),
             const SizedBox(width: 16),
-            Text(AppLocalizations.of(context)!.uploading, style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Theme.of(context).textTheme.caption?.color)),
+            Text(intl(context).uploading, style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Theme.of(context).textTheme.caption?.color)),
           ],
         ))
         ..add(const SizedBox(height: 8));
@@ -144,11 +144,11 @@ class RecipeEditingPage extends HookConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Column(children: [
-                    TextButton.icon(onPressed: (0 < index) ? () => _upImage(image, images) : null, icon: const Icon(Icons.keyboard_arrow_up), label: Text(AppLocalizations.of(context)!.toUp)),
-                    TextButton.icon(onPressed: (index < (images.value.length - 1)) ? () => _downImage(image, images) : null, icon: const Icon(Icons.keyboard_arrow_down), label: Text(AppLocalizations.of(context)!.toDown)),
+                    TextButton.icon(onPressed: (0 < index) ? () => _upImage(image, images) : null, icon: const Icon(Icons.keyboard_arrow_up), label: Text(intl(context).toUp)),
+                    TextButton.icon(onPressed: (index < (images.value.length - 1)) ? () => _downImage(image, images) : null, icon: const Icon(Icons.keyboard_arrow_down), label: Text(intl(context).toDown)),
                   ]),
                   const SizedBox(width: 32),
-                  TextButton.icon(onPressed: () => _deleteImage(image, images), icon: const Icon(Icons.clear), label: Text(AppLocalizations.of(context)!.delete)),
+                  TextButton.icon(onPressed: () => _deleteImage(image, images), icon: const Icon(Icons.clear), label: Text(intl(context).delete)),
                 ],
               ),
             ),
@@ -179,7 +179,7 @@ class RecipeEditingPage extends HookConsumerWidget {
             ),
           ),
           const SizedBox(width: 16),
-          Text(AppLocalizations.of(context)!.addRecipeImage, style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Theme.of(context).colorScheme.primary)),
+          Text(intl(context).addRecipeImage, style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Theme.of(context).colorScheme.primary)),
         ],
       ),
     );
@@ -189,7 +189,7 @@ class RecipeEditingPage extends HookConsumerWidget {
     return TextField(
       controller: recipeUrlEditingController,
       keyboardType: TextInputType.url,
-      decoration: InputDecoration(labelText: AppLocalizations.of(context)!.referenceLink, alignLabelWithHint: true, border: const OutlineInputBorder()),
+      decoration: InputDecoration(labelText: intl(context).referenceLink, alignLabelWithHint: true, border: const OutlineInputBorder()),
     );
   }
 
@@ -199,7 +199,7 @@ class RecipeEditingPage extends HookConsumerWidget {
       keyboardType: TextInputType.multiline,
       minLines: 8,
       maxLines: null,
-      decoration: InputDecoration(labelText: AppLocalizations.of(context)!.description, alignLabelWithHint: true, border: const OutlineInputBorder()),
+      decoration: InputDecoration(labelText: intl(context).description, alignLabelWithHint: true, border: const OutlineInputBorder()),
     );
   }
 
@@ -247,7 +247,7 @@ class RecipeEditingPage extends HookConsumerWidget {
       padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
       child: ElevatedButton.icon(
         icon: const Icon(Icons.save),
-        label: Text(recipe != null ? AppLocalizations.of(context)!.doFix : AppLocalizations.of(context)!.doAdd),
+        label: Text(recipe != null ? intl(context).doFix : intl(context).doAdd),
         onPressed: () {
           final viewModel = ref.read(recipeEditingViewModelProvider);
           if (recipe != null) {
@@ -261,7 +261,7 @@ class RecipeEditingPage extends HookConsumerWidget {
   }
 
   Future<void> _showConfirmationDeletingDialog(final BuildContext context, final WidgetRef ref, final Recipe recipe) async {
-    final event = await SimpleMessageDialog(context, title: AppLocalizations.of(context)!.confirm, message: AppLocalizations.of(context)!.confirmDeletingWith(recipe.title), positiveButton: AppLocalizations.of(context)!.doDelete, negativeButton: AppLocalizations.of(context)!.cancel).show();
+    final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmDeletingWith(recipe.title), positiveButton: intl(context).doDelete, negativeButton: intl(context).cancel).show();
     if (event != null) {
       await event.when(
         positive: () async {

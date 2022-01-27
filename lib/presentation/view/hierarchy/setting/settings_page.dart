@@ -2,6 +2,7 @@ import 'package:cueue/domain/model/global/exception/do_not_match_password_except
 import 'package:cueue/domain/model/global/exception/email_validation_exception.dart';
 import 'package:cueue/domain/model/global/exception/password_validation_exception.dart';
 import 'package:cueue/domain/model/hierarchy/user/email.dart';
+import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
 import 'package:cueue/presentation/view/global/modal/fried_toast.dart';
 import 'package:cueue/presentation/view/global/modal/multi_text_field_dialog.dart';
@@ -19,7 +20,6 @@ import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/setting/settings_result.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -44,7 +44,7 @@ class SettingsPage extends HookConsumerWidget {
         isLoading ? EasyLoading.show() : EasyLoading.dismiss();
       }));
     return Scaffold(
-      appBar: AppBar(title: Text(AppLocalizations.of(context)!.settings)),
+      appBar: AppBar(title: Text(intl(context).settings)),
       body: RefreshIndicator(
         onRefresh: viewModel.refresh,
         child: Scrollbar(
@@ -72,7 +72,7 @@ class SettingsPage extends HookConsumerWidget {
 
   Widget _buildAccountSettingsTitle(final BuildContext context, final WidgetRef ref) {
     return ListTile(
-      title: Text(AppLocalizations.of(context)!.accountSettings, style: Theme.of(context).textTheme.caption),
+      title: Text(intl(context).accountSettings, style: Theme.of(context).textTheme.caption),
     );
   }
 
@@ -84,8 +84,8 @@ class SettingsPage extends HookConsumerWidget {
         if (!user.isEmailVerified) {
           return ListTile(
             leading: const Icon(Icons.warning, color: Colors.red),
-            title: Text(AppLocalizations.of(context)!.unConfirmationMail, style: const TextStyle(color: Colors.red)),
-            subtitle: Text(AppLocalizations.of(context)!.tapToConfirmMail, style: const TextStyle(color: Colors.red)),
+            title: Text(intl(context).unConfirmationMail, style: const TextStyle(color: Colors.red)),
+            subtitle: Text(intl(context).tapToConfirmMail, style: const TextStyle(color: Colors.red)),
             trailing: PopupMenuButton<int>(
               onSelected: (int index) {
                 switch (index) {
@@ -102,11 +102,11 @@ class SettingsPage extends HookConsumerWidget {
                 return [
                   PopupMenuItem(
                     value: 1,
-                    child: Text(AppLocalizations.of(context)!.refreshInfo),
+                    child: Text(intl(context).refreshInfo),
                   ),
                   PopupMenuItem(
                     value: 2,
-                    child: Text(AppLocalizations.of(context)!.sendConfirmationMail),
+                    child: Text(intl(context).sendConfirmationMail),
                   ),
                 ];
               },
@@ -128,12 +128,12 @@ class SettingsPage extends HookConsumerWidget {
     return state.when(
       loading: () => ListTile(
         leading: const Icon(Icons.mail_outline),
-        title: Text(AppLocalizations.of(context)!.changeMailAddress),
-        subtitle: Text(AppLocalizations.of(context)!.loading),
+        title: Text(intl(context).changeMailAddress),
+        subtitle: Text(intl(context).loading),
       ),
       completed: (user) => ListTile(
         leading: const Icon(Icons.mail_outline),
-        title: Text(AppLocalizations.of(context)!.changeMailAddress),
+        title: Text(intl(context).changeMailAddress),
         subtitle: Text(user.email.value),
         onTap: () async {
           await _showEmailInputDialog(context, ref);
@@ -141,15 +141,15 @@ class SettingsPage extends HookConsumerWidget {
       ),
       error: (exception) => ListTile(
         leading: const Icon(Icons.mail_outline),
-        title: Text(AppLocalizations.of(context)!.changeMailAddress),
-        subtitle: Text(AppLocalizations.of(context)!.errorLoading),
+        title: Text(intl(context).changeMailAddress),
+        subtitle: Text(intl(context).errorLoading),
       ),
     );
   }
 
   Widget _buildSignOutTile(final BuildContext context, final WidgetRef ref) {
     return ListTile(
-      title: Text(AppLocalizations.of(context)!.logout),
+      title: Text(intl(context).logout),
       leading: const Icon(Icons.exit_to_app),
       onTap: () => _showSignOutConfirmationDialog(context, ref),
     );
@@ -157,7 +157,7 @@ class SettingsPage extends HookConsumerWidget {
 
   Widget _buildAccountConnectionTitle(final BuildContext context, final WidgetRef ref) {
     return ListTile(
-      title: Text(AppLocalizations.of(context)!.accountConnection, style: Theme.of(context).textTheme.caption),
+      title: Text(intl(context).accountConnection, style: Theme.of(context).textTheme.caption),
     );
   }
 
@@ -166,20 +166,20 @@ class SettingsPage extends HookConsumerWidget {
     return state.when(
       loading: () => ListTile(
         leading: const Icon(FontAwesomeIcons.key),
-        title: Text(AppLocalizations.of(context)!.password),
-        subtitle: Text(AppLocalizations.of(context)!.loading),
+        title: Text(intl(context).password),
+        subtitle: Text(intl(context).loading),
       ),
       completed: (user) => ListTile(
         leading: const Icon(FontAwesomeIcons.key),
-        title: Text(AppLocalizations.of(context)!.password),
-        subtitle: Text((user.isPasswordLinked()) ? AppLocalizations.of(context)!.tapToChangePassword : AppLocalizations.of(context)!.tapToSetPassword),
-        trailing: Text((user.isPasswordLinked()) ? AppLocalizations.of(context)!.alreadySetting : AppLocalizations.of(context)!.notYetSetting),
+        title: Text(intl(context).password),
+        subtitle: Text((user.isPasswordLinked()) ? intl(context).tapToChangePassword : intl(context).tapToSetPassword),
+        trailing: Text((user.isPasswordLinked()) ? intl(context).alreadySetting : intl(context).notYetSetting),
         onTap: () => _showPasswordInputDialog(context, ref),
       ),
       error: (exception) => ListTile(
         leading: const Icon(FontAwesomeIcons.key),
-        title: Text(AppLocalizations.of(context)!.password),
-        subtitle: Text(AppLocalizations.of(context)!.errorLoading),
+        title: Text(intl(context).password),
+        subtitle: Text(intl(context).errorLoading),
       ),
     );
   }
@@ -189,14 +189,14 @@ class SettingsPage extends HookConsumerWidget {
     return state.when(
       loading: () => ListTile(
         leading: const Icon(FontAwesomeIcons.google),
-        title: Text(AppLocalizations.of(context)!.google),
-        subtitle: Text(AppLocalizations.of(context)!.loading),
+        title: Text(intl(context).google),
+        subtitle: Text(intl(context).loading),
       ),
       completed: (user) => ListTile(
         leading: const Icon(FontAwesomeIcons.google),
-        title: Text(AppLocalizations.of(context)!.google),
-        trailing: Text((user.isGoogleLinked()) ? AppLocalizations.of(context)!.alreadyConnect : AppLocalizations.of(context)!.notYetConnect),
-        subtitle: Text((user.isGoogleLinked()) ? AppLocalizations.of(context)!.tapToUnConnectWith(user.googleProvider!.displayName) : AppLocalizations.of(context)!.tapToConnect),
+        title: Text(intl(context).google),
+        trailing: Text((user.isGoogleLinked()) ? intl(context).alreadyConnect : intl(context).notYetConnect),
+        subtitle: Text((user.isGoogleLinked()) ? intl(context).tapToUnConnectWith(user.googleProvider!.displayName) : intl(context).tapToConnect),
         onTap: () {
           if (user.isGoogleLinked()) {
             _showUnlinkWithGoogleConfirmationDialog(context, ref);
@@ -207,8 +207,8 @@ class SettingsPage extends HookConsumerWidget {
       ),
       error: (exception) => ListTile(
         leading: const Icon(FontAwesomeIcons.google),
-        title: Text(AppLocalizations.of(context)!.google),
-        subtitle: Text(AppLocalizations.of(context)!.errorLoading),
+        title: Text(intl(context).google),
+        subtitle: Text(intl(context).errorLoading),
       ),
     );
   }
@@ -218,14 +218,14 @@ class SettingsPage extends HookConsumerWidget {
     return state.when(
       loading: () => ListTile(
         leading: const Icon(FontAwesomeIcons.apple),
-        title: Text(AppLocalizations.of(context)!.apple),
-        subtitle: Text(AppLocalizations.of(context)!.loading),
+        title: Text(intl(context).apple),
+        subtitle: Text(intl(context).loading),
       ),
       completed: (user) => ListTile(
         leading: const Icon(FontAwesomeIcons.apple),
-        title: Text(AppLocalizations.of(context)!.apple),
-        trailing: Text((user.isAppleLinked()) ? AppLocalizations.of(context)!.alreadyConnect : AppLocalizations.of(context)!.notYetConnect),
-        subtitle: Text((user.isAppleLinked()) ? AppLocalizations.of(context)!.tapToUnConnectWith(user.appleProvider!.displayName) : AppLocalizations.of(context)!.tapToConnect),
+        title: Text(intl(context).apple),
+        trailing: Text((user.isAppleLinked()) ? intl(context).alreadyConnect : intl(context).notYetConnect),
+        subtitle: Text((user.isAppleLinked()) ? intl(context).tapToUnConnectWith(user.appleProvider!.displayName) : intl(context).tapToConnect),
         onTap: () {
           if (user.isAppleLinked()) {
             _showUnlinkWithAppleConfirmationDialog(context, ref);
@@ -236,21 +236,21 @@ class SettingsPage extends HookConsumerWidget {
       ),
       error: (exception) => ListTile(
         leading: const Icon(FontAwesomeIcons.apple),
-        title: Text(AppLocalizations.of(context)!.apple),
-        subtitle: Text(AppLocalizations.of(context)!.errorLoading),
+        title: Text(intl(context).apple),
+        subtitle: Text(intl(context).errorLoading),
       ),
     );
   }
 
   Widget _buildInfoTitle(final BuildContext context, final WidgetRef ref) {
     return ListTile(
-      title: Text(AppLocalizations.of(context)!.info, style: Theme.of(context).textTheme.caption),
+      title: Text(intl(context).info, style: Theme.of(context).textTheme.caption),
     );
   }
 
   Widget _buildAboutAppTile(final BuildContext context, final WidgetRef ref) {
     return ListTile(
-      title: Text(AppLocalizations.of(context)!.aboutApp),
+      title: Text(intl(context).aboutApp),
       leading: const Icon(Icons.info_outline),
       onTap: () => _showAbout(context),
     );
@@ -258,7 +258,7 @@ class SettingsPage extends HookConsumerWidget {
 
   Widget _buildTermsOfServicesTile(final BuildContext context, final WidgetRef ref) {
     return ListTile(
-      title: Text(AppLocalizations.of(context)!.termsOfService),
+      title: Text(intl(context).termsOfService),
       leading: const Icon(Icons.library_books),
       onTap: _goTermsOfService,
     );
@@ -266,7 +266,7 @@ class SettingsPage extends HookConsumerWidget {
 
   Widget _buildPrivacyPolicyTile(final BuildContext context, final WidgetRef ref) {
     return ListTile(
-      title: Text(AppLocalizations.of(context)!.privacyPolicy),
+      title: Text(intl(context).privacyPolicy),
       leading: const Icon(Icons.library_books),
       onTap: _goPrivacyPolicy,
     );
@@ -293,7 +293,7 @@ class SettingsPage extends HookConsumerWidget {
   }
 
   Future<void> _showEmailInputDialog(final BuildContext context, final WidgetRef ref, {final String? defaultText}) async {
-    final event = await TextFieldDialog(context, title: AppLocalizations.of(context)!.changeMailAddress, labelText: AppLocalizations.of(context)!.wantToChangeMailAddress, defaultText: defaultText, keyboardType: TextInputType.emailAddress, positiveButton: AppLocalizations.of(context)!.doChange, negativeButton: AppLocalizations.of(context)!.cancel).show();
+    final event = await TextFieldDialog(context, title: intl(context).changeMailAddress, labelText: intl(context).wantToChangeMailAddress, defaultText: defaultText, keyboardType: TextInputType.emailAddress, positiveButton: intl(context).doChange, negativeButton: intl(context).cancel).show();
     if (event != null) {
       await event.when(
         positive: (currentText, originalText) async {
@@ -307,7 +307,7 @@ class SettingsPage extends HookConsumerWidget {
   }
 
   Future<void> _showPasswordInputDialog(final BuildContext context, final WidgetRef ref, {final String? defaultText}) async {
-    final event = await MultiTextFieldDialog(context, [TextFieldContent(labelText: AppLocalizations.of(context)!.wantToChangePassword, defaultText: defaultText, keyboardType: TextInputType.visiblePassword), TextFieldContent(labelText: AppLocalizations.of(context)!.reInputPassword, keyboardType: TextInputType.visiblePassword)], title: AppLocalizations.of(context)!.setPassword, positiveButton: AppLocalizations.of(context)!.doSet, negativeButton: AppLocalizations.of(context)!.cancel).show();
+    final event = await MultiTextFieldDialog(context, [TextFieldContent(labelText: intl(context).wantToChangePassword, defaultText: defaultText, keyboardType: TextInputType.visiblePassword), TextFieldContent(labelText: intl(context).reInputPassword, keyboardType: TextInputType.visiblePassword)], title: intl(context).setPassword, positiveButton: intl(context).doSet, negativeButton: intl(context).cancel).show();
     if (event != null) {
       await event.when(
         positive: (results) async {
@@ -321,7 +321,7 @@ class SettingsPage extends HookConsumerWidget {
   }
 
   Future<void> _showUnlinkWithGoogleConfirmationDialog(final BuildContext context, final WidgetRef ref) async {
-    final event = await SimpleMessageDialog(context, title: AppLocalizations.of(context)!.confirm, message: AppLocalizations.of(context)!.confirmToUnConnectGoogle, positiveButton: AppLocalizations.of(context)!.unConnect, negativeButton: AppLocalizations.of(context)!.cancel).show();
+    final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmToUnConnectGoogle, positiveButton: intl(context).unConnect, negativeButton: intl(context).cancel).show();
     if (event != null) {
       await event.when(
         positive: () async {
@@ -335,7 +335,7 @@ class SettingsPage extends HookConsumerWidget {
   }
 
   Future<void> _showUnlinkWithAppleConfirmationDialog(final BuildContext context, final WidgetRef ref) async {
-    final event = await SimpleMessageDialog(context, title: AppLocalizations.of(context)!.confirm, message: AppLocalizations.of(context)!.confirmToUnConnectApple, positiveButton: AppLocalizations.of(context)!.unConnect, negativeButton: AppLocalizations.of(context)!.cancel).show();
+    final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmToUnConnectApple, positiveButton: intl(context).unConnect, negativeButton: intl(context).cancel).show();
     if (event != null) {
       await event.when(
         positive: () async {
@@ -349,7 +349,7 @@ class SettingsPage extends HookConsumerWidget {
   }
 
   Future<void> _showSignOutConfirmationDialog(final BuildContext context, final WidgetRef ref) async {
-    final event = await SimpleMessageDialog(context, title: AppLocalizations.of(context)!.confirm, message: AppLocalizations.of(context)!.confirmLogout, positiveButton: AppLocalizations.of(context)!.logout, negativeButton: AppLocalizations.of(context)!.cancel).show();
+    final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmLogout, positiveButton: intl(context).logout, negativeButton: intl(context).cancel).show();
     if (event != null) {
       await event.when(
         positive: () async {
@@ -363,7 +363,7 @@ class SettingsPage extends HookConsumerWidget {
   }
 
   Future<void> _showSendingEmailVerificationConfirmationDialog(final BuildContext context, final WidgetRef ref, final Email email) async {
-    final event = await SimpleMessageDialog(context, title: AppLocalizations.of(context)!.confirm, message: AppLocalizations.of(context)!.confirmSendingMailTo(email.value), positiveButton: AppLocalizations.of(context)!.doSend, negativeButton: AppLocalizations.of(context)!.cancel).show();
+    final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmSendingMailTo(email.value), positiveButton: intl(context).doSend, negativeButton: intl(context).cancel).show();
     if (event != null) {
       await event.when(
         positive: () async {

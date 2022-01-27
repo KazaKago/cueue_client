@@ -1,5 +1,6 @@
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_summary.dart';
 import 'package:cueue/domain/model/hierarchy/tag/tag.dart';
+import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
 import 'package:cueue/presentation/view/global/widget/shimmer_container.dart';
 import 'package:cueue/presentation/view/hierarchy/recipe/recipe_detail_page.dart';
@@ -7,7 +8,6 @@ import 'package:cueue/presentation/view/hierarchy/recipe/recipe_list_widget.dart
 import 'package:cueue/presentation/view/hierarchy/recipe/recipe_loading_item.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class RecipePage extends HookConsumerWidget {
@@ -27,7 +27,7 @@ class RecipePage extends HookConsumerWidget {
   Widget _buildLoading(final BuildContext context, final WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.recipe),
+        title: Text(intl(context).recipe),
       ),
       body: ShimmerContainer(
         child: Wrap(
@@ -43,10 +43,10 @@ class RecipePage extends HookConsumerWidget {
       length: tags.length + 1,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(AppLocalizations.of(context)!.recipe),
+          title: Text(intl(context).recipe),
           bottom: TabBar(
             isScrollable: true,
-            tabs: [Tab(text: AppLocalizations.of(context)!.allRecipes)] + tags.map((tag) => Tab(text: tag.name)).toList(),
+            tabs: [Tab(text: intl(context).allRecipes)] + tags.map((tag) => Tab(text: tag.name)).toList(),
           ),
         ),
         body: TabBarView(
@@ -63,7 +63,7 @@ class RecipePage extends HookConsumerWidget {
     final viewModel = ref.read(tagViewModelProvider);
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.recipe),
+        title: Text(intl(context).recipe),
       ),
       body: ErrorHandlingWidget(exception, onClickRetry: viewModel.retry),
     );

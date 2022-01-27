@@ -1,7 +1,7 @@
+import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/abstract_sign_in_button.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_type.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignInWithPasswordButton extends AbstractSignInButton {
   const SignInWithPasswordButton({
@@ -26,9 +26,9 @@ class SignInWithPasswordButton extends AbstractSignInButton {
       context,
       iconData: Icons.mail_outline,
       color: Theme.of(context).colorScheme.primary,
-      signUpText: AppLocalizations.of(context)!.signUpWithPassword,
-      signInText: AppLocalizations.of(context)!.signInWithPassword,
-      reauthText: AppLocalizations.of(context)!.reAuthWithPassword,
+      signUpText: intl(context).signUpWithPassword,
+      signInText: intl(context).signInWithPassword,
+      reauthText: intl(context).reAuthWithPassword,
     );
   }
 }

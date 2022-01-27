@@ -1,14 +1,14 @@
+import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/modal/menu_bottom_sheet_dialog.dart';
 import 'package:cueue/presentation/view/hierarchy/photo/photo_pickup_bottom_sheet_event.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PhotoPickupBottomSheetDialog {
   factory PhotoPickupBottomSheetDialog(final BuildContext context) {
     final menuItemEvents = <_MenuItemEvent>[
-      _MenuItemEvent(MenuItem(Icons.camera, AppLocalizations.of(context)!.takePhoto), const PhotoPickupBottomSheetEvent.fromCamera()),
-      _MenuItemEvent(MenuItem(Icons.photo, AppLocalizations.of(context)!.chooseFromLibrary), const PhotoPickupBottomSheetEvent.fromLibrary()),
-      _MenuItemEvent(MenuItem(Icons.close, AppLocalizations.of(context)!.close), const PhotoPickupBottomSheetEvent.cancel()),
+      _MenuItemEvent(MenuItem(Icons.camera, intl(context).takePhoto), const PhotoPickupBottomSheetEvent.fromCamera()),
+      _MenuItemEvent(MenuItem(Icons.photo, intl(context).chooseFromLibrary), const PhotoPickupBottomSheetEvent.fromLibrary()),
+      _MenuItemEvent(MenuItem(Icons.close, intl(context).close), const PhotoPickupBottomSheetEvent.cancel()),
     ];
     final menuBottomSheetDialog = MenuBottomSheetDialog(context, menuItemEvents.map((e) => e.menuItem).toList());
     return PhotoPickupBottomSheetDialog._(menuItemEvents, menuBottomSheetDialog);

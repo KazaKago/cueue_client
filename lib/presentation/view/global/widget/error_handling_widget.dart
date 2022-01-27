@@ -1,6 +1,6 @@
+import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ErrorHandlingWidget extends ConsumerWidget {
@@ -28,7 +28,7 @@ class ErrorHandlingWidget extends ConsumerWidget {
             if (_onClickRetry != null)
               OutlinedButton(
                 onPressed: _onClickRetry,
-                child: Text(AppLocalizations.of(context)!.retry),
+                child: Text(intl(context).retry),
               ),
           ],
         ),

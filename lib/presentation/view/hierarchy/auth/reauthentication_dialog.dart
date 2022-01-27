@@ -1,12 +1,12 @@
 import 'package:cueue/domain/model/global/exception/require_reautentication_exception.dart';
 import 'package:cueue/domain/usecase/di/usecase_provider.dart';
+import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
 import 'package:cueue/presentation/view/global/modal/fried_toast.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_page.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ReauthenticationDialog {
@@ -21,15 +21,15 @@ class ReauthenticationDialog {
       context: _context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(AppLocalizations.of(context)!.needReAuthToContinue),
+          title: Text(intl(context).needReAuthToContinue),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(_context).pop(),
-              child: Text(AppLocalizations.of(context)!.cancel),
+              child: Text(intl(context).cancel),
             ),
             TextButton(
               onPressed: _goAuthorization,
-              child: Text(AppLocalizations.of(context)!.doReAuth),
+              child: Text(intl(context).doReAuth),
             ),
           ],
         );
@@ -52,12 +52,12 @@ class ReauthenticationDialog {
         final updateEmailUseCase = _ref.read(updateEmailUseCaseProvider);
         await updateEmailUseCase(email);
         await EasyLoading.dismiss();
-        FriedToast(_context, AppLocalizations.of(_context)!.updatedMailAddress).show();
+        FriedToast(_context, intl(_context).updatedMailAddress).show();
       }, settingPassword: (password) async {
         final updatePasswordUseCase = _ref.read(updatePasswordUseCaseProvider);
         await updatePasswordUseCase(password);
         await EasyLoading.dismiss();
-        FriedToast(_context, AppLocalizations.of(_context)!.updatedPassword).show();
+        FriedToast(_context, intl(_context).updatedPassword).show();
       });
     } on Exception catch (exception) {
       await EasyLoading.dismiss();

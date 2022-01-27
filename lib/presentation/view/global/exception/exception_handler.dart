@@ -1,11 +1,11 @@
 import 'package:cueue/domain/model/global/exception/require_reautentication_exception.dart';
 import 'package:cueue/domain/usecase/di/usecase_provider.dart';
+import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/extension/exception_extension.dart';
 import 'package:cueue/presentation/view/global/modal/simple_message_dialog.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/reauthentication_dialog.dart';
 import 'package:cueue/presentation/view/hierarchy/welcome/welcome_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -24,37 +24,37 @@ class ExceptionHandler {
 
   String _getMessage(final BuildContext context, final WidgetRef ref, final Exception exception, {final bool withSystemMessage = true}) {
     final message = exception.when(
-      invalidParams: (exception) => AppLocalizations.of(context)!.invalidParams(exception.message),
-      invalidToken: (exception) => AppLocalizations.of(context)!.invalidToken,
-      notFound: (exception) => AppLocalizations.of(context)!.notFound,
-      conflict: (exception) => AppLocalizations.of(context)!.conflict,
-      upgradeRequired: (exception) => AppLocalizations.of(context)!.upgradeRequired,
-      serviceUnavailable: (exception) => AppLocalizations.of(context)!.serviceUnavailable,
-      clientError: (exception) => AppLocalizations.of(context)!.clientError,
-      serverError: (exception) => AppLocalizations.of(context)!.serverError,
-      networkTimeout: (exception) => AppLocalizations.of(context)!.networkTimeout,
-      networkCancel: (exception) => AppLocalizations.of(context)!.networkCancel,
-      networkError: (exception) => AppLocalizations.of(context)!.networkError,
-      authorizationFailed: (exception) => AppLocalizations.of(context)!.authorizationFailed,
-      authorizationCanceled: (exception) => AppLocalizations.of(context)!.authorizationCanceled,
-      invalidEmail: (exception) => AppLocalizations.of(context)!.invalidEmail,
-      invalidPassword: (exception) => AppLocalizations.of(context)!.invalidPassword,
-      doNotMatchPassword: (exception) => AppLocalizations.of(context)!.doNotMatchPassword,
-      reauthenticateRequired: (exception) => AppLocalizations.of(context)!.reauthenticateRequired,
-      wrongPassword: (exception) => AppLocalizations.of(context)!.wrongPassword,
-      tooManyRequests: (exception) => AppLocalizations.of(context)!.tooManyRequests,
-      userNotFound: (exception) => AppLocalizations.of(context)!.userNotFound,
-      emailAlreadyInUse: (exception) => AppLocalizations.of(context)!.emailAlreadyInUse,
-      credentialAlreadyInUse: (exception) => AppLocalizations.of(context)!.credentialAlreadyInUse,
-      accountExistsWithDifferentCredential: (exception) => AppLocalizations.of(context)!.accountExistsWithDifferentCredential(exception.existsSignInMethods.join('\n - ')),
-      userTokenExpired: (exception) => AppLocalizations.of(context)!.userTokenExpired,
-      otherException: (exception) => AppLocalizations.of(context)!.otherException,
+      invalidParams: (exception) => intl(context).invalidParams(exception.message),
+      invalidToken: (exception) => intl(context).invalidToken,
+      notFound: (exception) => intl(context).notFound,
+      conflict: (exception) => intl(context).conflict,
+      upgradeRequired: (exception) => intl(context).upgradeRequired,
+      serviceUnavailable: (exception) => intl(context).serviceUnavailable,
+      clientError: (exception) => intl(context).clientError,
+      serverError: (exception) => intl(context).serverError,
+      networkTimeout: (exception) => intl(context).networkTimeout,
+      networkCancel: (exception) => intl(context).networkCancel,
+      networkError: (exception) => intl(context).networkError,
+      authorizationFailed: (exception) => intl(context).authorizationFailed,
+      authorizationCanceled: (exception) => intl(context).authorizationCanceled,
+      invalidEmail: (exception) => intl(context).invalidEmail,
+      invalidPassword: (exception) => intl(context).invalidPassword,
+      doNotMatchPassword: (exception) => intl(context).doNotMatchPassword,
+      reauthenticateRequired: (exception) => intl(context).reauthenticateRequired,
+      wrongPassword: (exception) => intl(context).wrongPassword,
+      tooManyRequests: (exception) => intl(context).tooManyRequests,
+      userNotFound: (exception) => intl(context).userNotFound,
+      emailAlreadyInUse: (exception) => intl(context).emailAlreadyInUse,
+      credentialAlreadyInUse: (exception) => intl(context).credentialAlreadyInUse,
+      accountExistsWithDifferentCredential: (exception) => intl(context).accountExistsWithDifferentCredential(exception.existsSignInMethods.join('\n - ')),
+      userTokenExpired: (exception) => intl(context).userTokenExpired,
+      otherException: (exception) => intl(context).otherException,
     );
     return withSystemMessage ? '$message\n\n${exception.toString()}' : message;
   }
 
   Future<void> _showMessageDialog(final BuildContext context, final WidgetRef ref, final Exception exception) async {
-    final dialog = SimpleMessageDialog(context, title: AppLocalizations.of(context)!.error, message: _getMessage(context, ref, exception), positiveButton: AppLocalizations.of(context)!.close);
+    final dialog = SimpleMessageDialog(context, title: intl(context).error, message: _getMessage(context, ref, exception), positiveButton: intl(context).close);
     await dialog.show();
   }
 

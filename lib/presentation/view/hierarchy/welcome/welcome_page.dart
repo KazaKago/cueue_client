@@ -1,11 +1,11 @@
 import 'package:cueue/gen/assets.gen.dart';
+import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_page.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_type.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/about_page.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/privacy_policy_url.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/terms_of_service_url.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -33,7 +33,7 @@ class WelcomePage extends HookConsumerWidget {
                   children: <Widget>[
                     Assets.images.icAppIcon.image(width: 256, height: 256),
                     const SizedBox(height: 12),
-                    Text(AppLocalizations.of(context)!.appName, style: const TextStyle(fontSize: 60)),
+                    Text(intl(context).appName, style: const TextStyle(fontSize: 60)),
                   ],
                 ),
               ),
@@ -42,12 +42,12 @@ class WelcomePage extends HookConsumerWidget {
                 children: <Widget>[
                   InkWell(
                     onTap: _goTermsOfService,
-                    child: Text(AppLocalizations.of(context)!.termsOfService, style: const TextStyle(decoration: TextDecoration.underline)),
+                    child: Text(intl(context).termsOfService, style: const TextStyle(decoration: TextDecoration.underline)),
                   ),
                   const SizedBox(width: 16),
                   InkWell(
                     onTap: _goPrivacyPolicy,
-                    child: Text(AppLocalizations.of(context)!.privacyPolicy, style: const TextStyle(decoration: TextDecoration.underline)),
+                    child: Text(intl(context).privacyPolicy, style: const TextStyle(decoration: TextDecoration.underline)),
                   ),
                 ],
               ),
@@ -57,7 +57,7 @@ class WelcomePage extends HookConsumerWidget {
                   padding: const EdgeInsets.fromLTRB(32, 32, 32, 0),
                   child: ElevatedButton(
                     onPressed: () => _goSignUp(context),
-                    child: Text(AppLocalizations.of(context)!.registerAndStart),
+                    child: Text(intl(context).registerAndStart),
                   ),
                 ),
               ),
@@ -68,7 +68,7 @@ class WelcomePage extends HookConsumerWidget {
                   padding: const EdgeInsets.fromLTRB(32, 0, 32, 32),
                   child: OutlinedButton(
                     onPressed: () => _goSignIn(context),
-                    child: Text(AppLocalizations.of(context)!.loginAndContinue),
+                    child: Text(intl(context).loginAndContinue),
                   ),
                 ),
               ),

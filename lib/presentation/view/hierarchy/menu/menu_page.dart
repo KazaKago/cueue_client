@@ -2,6 +2,7 @@ import 'package:cueue/domain/model/hierarchy/color/color_extension.dart';
 import 'package:cueue/domain/model/hierarchy/date/date_time_extension.dart';
 import 'package:cueue/domain/model/hierarchy/menu/date_split_menu_list.dart';
 import 'package:cueue/domain/model/hierarchy/menu/menu_summary.dart';
+import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/extension/date_time_extension.dart';
 import 'package:cueue/presentation/view/global/extension/scroll_controller_extension.dart';
 import 'package:cueue/presentation/view/global/widget/empty_widget.dart';
@@ -14,7 +15,6 @@ import 'package:cueue/presentation/view/hierarchy/menu/menu_loading_item.dart';
 import 'package:cueue/presentation/view/hierarchy/menu/time_frame_extension.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -29,7 +29,7 @@ class MenuPage extends HookConsumerWidget {
     final scrollController = useScrollController()..onReachBottomWithAutoDispose(viewModel.requestAddition);
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.cookingMenu),
+        title: Text(intl(context).cookingMenu),
       ),
       body: state.when(
         loading: () => _buildLoading(context, ref),
@@ -67,7 +67,7 @@ class MenuPage extends HookConsumerWidget {
   }
 
   Widget _buildEmpty(final BuildContext context, final WidgetRef ref) {
-    return EmptyWidget(AppLocalizations.of(context)!.no_menu_message);
+    return EmptyWidget(intl(context).no_menu_message);
   }
 
   Widget _buildCompleted(final BuildContext context, final WidgetRef ref, final ScrollController scrollController, final List<DateSplitMenuList> menus) {
@@ -110,9 +110,9 @@ class MenuPage extends HookConsumerWidget {
           color: _backgroundColor(context, dateSplitMenus.date),
           child: ListTile(
             title: Row(children: [
-              if (dateSplitMenus.date.isToday()) Text(AppLocalizations.of(context)!.today, style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.blue.shade600, fontWeight: FontWeight.bold)),
-              if (dateSplitMenus.date.isTomorrow()) Text(AppLocalizations.of(context)!.tomorrow, style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.blue.shade300, fontWeight: FontWeight.bold)),
-              if (dateSplitMenus.date.isDayAfterTomorrow()) Text(AppLocalizations.of(context)!.dayAfterTomorrow, style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.blue.shade200, fontWeight: FontWeight.bold)),
+              if (dateSplitMenus.date.isToday()) Text(intl(context).today, style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.blue.shade600, fontWeight: FontWeight.bold)),
+              if (dateSplitMenus.date.isTomorrow()) Text(intl(context).tomorrow, style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.blue.shade300, fontWeight: FontWeight.bold)),
+              if (dateSplitMenus.date.isDayAfterTomorrow()) Text(intl(context).dayAfterTomorrow, style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.blue.shade200, fontWeight: FontWeight.bold)),
               if (dateSplitMenus.date.isToday() || dateSplitMenus.date.isTomorrow() || dateSplitMenus.date.isDayAfterTomorrow()) const SizedBox(width: 16),
               Text(dateSplitMenus.date.toDateString(context), style: Theme.of(context).textTheme.subtitle1),
             ]),
@@ -125,7 +125,7 @@ class MenuPage extends HookConsumerWidget {
               child: ListTile(
                 leading: CircleAvatar(backgroundImage: dateSplitMenus.menus[i].timeFrame.toFormattedImage().image),
                 title: Text(dateSplitMenus.menus[i].recipes.map((e) => e.title).join(',')),
-                subtitle: Text(dateSplitMenus.menus[i].memo.isNotEmpty ? AppLocalizations.of(context)!.withMemo(dateSplitMenus.menus[i].memo) : dateSplitMenus.menus[i].timeFrame.toFormattedString(context), maxLines: 2, overflow: TextOverflow.ellipsis),
+                subtitle: Text(dateSplitMenus.menus[i].memo.isNotEmpty ? intl(context).withMemo(dateSplitMenus.menus[i].memo) : dateSplitMenus.menus[i].timeFrame.toFormattedString(context), maxLines: 2, overflow: TextOverflow.ellipsis),
                 onTap: () => _goMenuDetail(context, dateSplitMenus.menus[i]),
               ),
             ),

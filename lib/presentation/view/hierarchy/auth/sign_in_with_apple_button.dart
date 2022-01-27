@@ -1,7 +1,7 @@
+import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/abstract_sign_in_button.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_type.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SignInWithAppleButton extends AbstractSignInButton {
@@ -27,9 +27,9 @@ class SignInWithAppleButton extends AbstractSignInButton {
       context,
       iconData: FontAwesomeIcons.apple,
       color: Colors.black,
-      signUpText: AppLocalizations.of(context)!.withAppleAccount(AppLocalizations.of(context)!.auth),
-      signInText: AppLocalizations.of(context)!.withAppleAccount(AppLocalizations.of(context)!.auth),
-      reauthText: AppLocalizations.of(context)!.withAppleAccount(AppLocalizations.of(context)!.reAuth),
+      signUpText: intl(context).withAppleAccount(intl(context).auth),
+      signInText: intl(context).withAppleAccount(intl(context).auth),
+      reauthText: intl(context).withAppleAccount(intl(context).reAuth),
     );
   }
 }

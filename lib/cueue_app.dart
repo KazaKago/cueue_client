@@ -1,3 +1,4 @@
+import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/hierarchy/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -21,7 +22,7 @@ class CueueApp extends StatelessWidget {
       ..textColor = Colors.white
       ..backgroundColor = Colors.transparent;
     return MaterialApp(
-      title: 'Cueue',
+      onGenerateTitle: (context) => intl(context).appName,
       theme: _buildTheme(ColorScheme.light(primary: lightThemeColor, primaryVariant: lightThemeVariantColor, secondary: lightThemeColor, secondaryVariant: lightThemeVariantColor)),
       darkTheme: _buildTheme(ColorScheme.dark(primary: darkThemeColor, primaryVariant: darkThemeVariantColor, secondary: darkThemeColor, secondaryVariant: darkThemeVariantColor)),
       localizationsDelegates: const [

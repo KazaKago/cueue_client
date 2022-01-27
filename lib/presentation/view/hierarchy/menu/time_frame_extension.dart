@@ -1,19 +1,19 @@
 import 'package:cueue/domain/model/hierarchy/menu/time_frame.dart';
 import 'package:cueue/gen/assets.gen.dart';
+import 'package:cueue/l10n/intl.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 extension TimeFrameExtension on TimeFrame {
   String toFormattedString(final BuildContext context) {
     switch (this) {
       case TimeFrame.breakfast:
-        return AppLocalizations.of(context)!.breakfast;
+        return intl(context).breakfast;
       case TimeFrame.lunch:
-        return AppLocalizations.of(context)!.lunch;
+        return intl(context).lunch;
       case TimeFrame.snackTime:
-        return AppLocalizations.of(context)!.snackTime;
+        return intl(context).snackTime;
       case TimeFrame.dinner:
-        return AppLocalizations.of(context)!.dinner;
+        return intl(context).dinner;
     }
   }
 

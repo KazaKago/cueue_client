@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/hierarchy/menu/menu_editing_page.dart';
 import 'package:cueue/presentation/view/hierarchy/menu/menu_page.dart';
 import 'package:cueue/presentation/view/hierarchy/recipe/recipe_editing_page.dart';
@@ -8,7 +9,6 @@ import 'package:cueue/presentation/view/hierarchy/setting/settings_page.dart';
 import 'package:cueue/presentation/view/hierarchy/tag/tag_editing_page.dart';
 import 'package:cueue/presentation/view/hierarchy/tag/tag_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainNavigationItem {
@@ -33,10 +33,10 @@ class MainNavigationItem {
 class MainNavigationItemList extends ListBase<MainNavigationItem> {
   factory MainNavigationItemList(final BuildContext context) {
     final rawList = [
-      MainNavigationItem(const MenuPage(), AppLocalizations.of(context)!.cookingMenu, FontAwesomeIcons.calendar, fabPage: MenuEditingPage(), fabIcon: Icons.add, fabLabel: AppLocalizations.of(context)!.addCookingMenu),
-      MainNavigationItem(const RecipePage(), AppLocalizations.of(context)!.recipe, FontAwesomeIcons.utensils, fabPage: const RecipeEditingPage(), fabIcon: Icons.add, fabLabel: AppLocalizations.of(context)!.addRecipe),
-      MainNavigationItem(const TagPage(), AppLocalizations.of(context)!.tag, FontAwesomeIcons.tag, fabPage: const TagEditingPage(), fabIcon: Icons.add, fabLabel: AppLocalizations.of(context)!.addTag),
-      MainNavigationItem(const SettingsPage(), AppLocalizations.of(context)!.settings, Icons.settings),
+      MainNavigationItem(const MenuPage(), intl(context).cookingMenu, FontAwesomeIcons.calendar, fabPage: MenuEditingPage(), fabIcon: Icons.add, fabLabel: intl(context).addCookingMenu),
+      MainNavigationItem(const RecipePage(), intl(context).recipe, FontAwesomeIcons.utensils, fabPage: const RecipeEditingPage(), fabIcon: Icons.add, fabLabel: intl(context).addRecipe),
+      MainNavigationItem(const TagPage(), intl(context).tag, FontAwesomeIcons.tag, fabPage: const TagEditingPage(), fabIcon: Icons.add, fabLabel: intl(context).addTag),
+      MainNavigationItem(const SettingsPage(), intl(context).settings, Icons.settings),
     ];
     return MainNavigationItemList._(rawList);
   }

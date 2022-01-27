@@ -4,6 +4,7 @@ import 'package:cueue/domain/model/hierarchy/recipe/recipe.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_summary.dart';
 import 'package:cueue/domain/model/hierarchy/tag/tag.dart';
 import 'package:cueue/gen/assets.gen.dart';
+import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/extension/date_time_extension.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
 import 'package:cueue/presentation/view/global/widget/loading_list_item.dart';
@@ -15,7 +16,6 @@ import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/editing_result.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -107,7 +107,7 @@ class RecipeDetailPage extends HookConsumerWidget {
             actions: [
               IconButton(
                 icon: const Icon(Icons.edit),
-                tooltip: AppLocalizations.of(context)!.doEdit,
+                tooltip: intl(context).doEdit,
                 onPressed: () => _goRecipeEditing(context, recipe),
               ),
             ],
@@ -241,7 +241,7 @@ class RecipeDetailPage extends HookConsumerWidget {
           padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
           child: TextButton.icon(
             icon: const Icon(Icons.link),
-            label: Text(AppLocalizations.of(context)!.referenceLink),
+            label: Text(intl(context).referenceLink),
             onPressed: () => launch(url.toString()),
           ),
         )
@@ -268,7 +268,7 @@ class RecipeDetailPage extends HookConsumerWidget {
   Widget _buildDescription(final BuildContext context, final WidgetRef ref, final String description) {
     return TitledCard(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-      title: AppLocalizations.of(context)!.description,
+      title: intl(context).description,
       child: Text(description),
     );
   }
@@ -276,8 +276,8 @@ class RecipeDetailPage extends HookConsumerWidget {
   Widget _buildCount(final BuildContext context, final WidgetRef ref, final int cookingCount) {
     return TitledCard(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-      title: AppLocalizations.of(context)!.cookingCount,
-      child: Text(AppLocalizations.of(context)!.countWith(cookingCount.toString())),
+      title: intl(context).cookingCount,
+      child: Text(intl(context).countWith(cookingCount.toString())),
     );
   }
 
@@ -286,7 +286,7 @@ class RecipeDetailPage extends HookConsumerWidget {
       var index = 0;
       return TitledCard.list(
         margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-        title: AppLocalizations.of(context)!.cookingHistory,
+        title: intl(context).cookingHistory,
         children: cookingHistories.map((date) {
           index++;
           return Text('$index. ${date.toDateString(context)}');
@@ -295,8 +295,8 @@ class RecipeDetailPage extends HookConsumerWidget {
     } else {
       return TitledCard(
         margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-        title: AppLocalizations.of(context)!.cookingHistory,
-        child: Text(AppLocalizations.of(context)!.notYetCooking),
+        title: intl(context).cookingHistory,
+        child: Text(intl(context).notYetCooking),
       );
     }
   }
@@ -304,7 +304,7 @@ class RecipeDetailPage extends HookConsumerWidget {
   Widget _buildCreatedAt(final BuildContext context, final WidgetRef ref, final DateTime createdAt) {
     return TitledCard(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-      title: AppLocalizations.of(context)!.recipeCreatedAt,
+      title: intl(context).recipeCreatedAt,
       child: Text(createdAt.toDateTimeString(context)),
     );
   }
@@ -312,7 +312,7 @@ class RecipeDetailPage extends HookConsumerWidget {
   Widget _buildUpdatedAt(final BuildContext context, final WidgetRef ref, final DateTime updatedAt) {
     return TitledCard(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-      title: AppLocalizations.of(context)!.recipeUpdatedAt,
+      title: intl(context).recipeUpdatedAt,
       child: Text(updatedAt.toDateTimeString(context)),
     );
   }
@@ -324,7 +324,7 @@ class RecipeDetailPage extends HookConsumerWidget {
         padding: const EdgeInsets.fromLTRB(32, 32, 32, 0),
         child: OutlinedButton(
           onPressed: () => _goMenuEditing(context, recipe),
-          child: Text(AppLocalizations.of(context)!.useRecipeToMenu),
+          child: Text(intl(context).useRecipeToMenu),
         ),
       ),
     );
