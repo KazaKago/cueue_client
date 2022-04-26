@@ -21,12 +21,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RecipeDetailPage extends HookConsumerWidget {
-  const RecipeDetailPage(this.recipe, {final Key? key}) : super(key: key);
+  const RecipeDetailPage(this.recipe, {Key? key}) : super(key: key);
 
   final RecipeSummary recipe;
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final selectedPhotoIndex = useState(0);
     final state = ref.watch(recipeDetailViewModelProvider(recipe.id).select((viewModel) => viewModel.state));
     return Scaffold(
@@ -38,7 +38,7 @@ class RecipeDetailPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildLoading(final BuildContext context, final WidgetRef ref, final int selectedPhotoIndex, final RecipeSummary recipe) {
+  Widget _buildLoading(BuildContext context, WidgetRef ref, int selectedPhotoIndex, RecipeSummary recipe) {
     final viewModel = ref.read(recipeDetailViewModelProvider(recipe.id));
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
@@ -65,7 +65,7 @@ class RecipeDetailPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildError(final BuildContext context, final WidgetRef ref, final int selectedPhotoIndex, final RecipeSummary recipe, final Exception exception) {
+  Widget _buildError(BuildContext context, WidgetRef ref, int selectedPhotoIndex, RecipeSummary recipe, Exception exception) {
     final viewModel = ref.read(recipeDetailViewModelProvider(recipe.id));
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
@@ -92,7 +92,7 @@ class RecipeDetailPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildCompleted(final BuildContext context, final WidgetRef ref, final ValueNotifier<int> selectedPhotoIndex, final Recipe recipe) {
+  Widget _buildCompleted(BuildContext context, WidgetRef ref, ValueNotifier<int> selectedPhotoIndex, Recipe recipe) {
     final viewModel = ref.read(recipeDetailViewModelProvider(recipe.id));
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
@@ -135,14 +135,14 @@ class RecipeDetailPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildTitle(final BuildContext context, final WidgetRef ref, final String title) {
+  Widget _buildTitle(BuildContext context, WidgetRef ref, String title) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
       child: Text(title, style: Theme.of(context).textTheme.headline5!.copyWith(fontWeight: FontWeight.bold)),
     );
   }
 
-  Widget _buildMainImageFrame(final BuildContext context, final WidgetRef ref, final int selectedPhotoIndex, final List<Content> images) {
+  Widget _buildMainImageFrame(BuildContext context, WidgetRef ref, int selectedPhotoIndex, List<Content> images) {
     return Stack(
       fit: StackFit.expand,
       children: <Widget>[
@@ -166,7 +166,7 @@ class RecipeDetailPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildMainImage(final BuildContext context, final WidgetRef ref, final int selectedPhotoIndex, final List<Content> images) {
+  Widget _buildMainImage(BuildContext context, WidgetRef ref, int selectedPhotoIndex, List<Content> images) {
     if (images.isNotEmpty) {
       final image = images[_fixedSelectedIndex(selectedPhotoIndex, images.length)];
       return Ink.image(
@@ -193,7 +193,7 @@ class RecipeDetailPage extends HookConsumerWidget {
     }
   }
 
-  Widget _buildImageList(final BuildContext context, final WidgetRef ref, final ValueNotifier<int> selectedPhotoIndex, final List<Content> images) {
+  Widget _buildImageList(BuildContext context, WidgetRef ref, ValueNotifier<int> selectedPhotoIndex, List<Content> images) {
     if (1 < images.length) {
       return SizedBox(
         height: 80,
@@ -211,7 +211,7 @@ class RecipeDetailPage extends HookConsumerWidget {
                   child: CachedNetworkImage(
                     imageUrl: images[index].url.toString(),
                     imageBuilder: (context, imageProvider) {
-                      return Container(
+                      return DecoratedBox(
                         decoration: BoxDecoration(
                           image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
                           border: (index == _fixedSelectedIndex(selectedPhotoIndex.value, images.length)) ? Border.all(color: Theme.of(context).colorScheme.primary, width: 3) : null,
@@ -234,24 +234,26 @@ class RecipeDetailPage extends HookConsumerWidget {
     }
   }
 
-  Widget _buildUrl(final BuildContext context, final WidgetRef ref, final Uri? url) {
+  Widget _buildUrl(BuildContext context, WidgetRef ref, Uri? url) {
     if (url != null) {
-      return Wrap(children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-          child: TextButton.icon(
-            icon: const Icon(Icons.link),
-            label: Text(intl(context).referenceLink),
-            onPressed: () => launch(url.toString()),
-          ),
-        )
-      ]);
+      return Wrap(
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+            child: TextButton.icon(
+              icon: const Icon(Icons.link),
+              label: Text(intl(context).referenceLink),
+              onPressed: () => launchUrl(url),
+            ),
+          )
+        ],
+      );
     } else {
       return Container();
     }
   }
 
-  Widget _buildTagChips(final BuildContext context, final WidgetRef ref, final List<Tag> tags) {
+  Widget _buildTagChips(BuildContext context, WidgetRef ref, List<Tag> tags) {
     if (tags.isNotEmpty) {
       return Padding(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
@@ -265,7 +267,7 @@ class RecipeDetailPage extends HookConsumerWidget {
     }
   }
 
-  Widget _buildDescription(final BuildContext context, final WidgetRef ref, final String description) {
+  Widget _buildDescription(BuildContext context, WidgetRef ref, String description) {
     return TitledCard(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
       title: intl(context).description,
@@ -273,7 +275,7 @@ class RecipeDetailPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildCount(final BuildContext context, final WidgetRef ref, final int cookingCount) {
+  Widget _buildCount(BuildContext context, WidgetRef ref, int cookingCount) {
     return TitledCard(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
       title: intl(context).cookingCount,
@@ -281,7 +283,7 @@ class RecipeDetailPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildHistory(final BuildContext context, final WidgetRef ref, final List<DateTime> cookingHistories) {
+  Widget _buildHistory(BuildContext context, WidgetRef ref, List<DateTime> cookingHistories) {
     if (cookingHistories.isNotEmpty) {
       var index = 0;
       return TitledCard.list(
@@ -301,7 +303,7 @@ class RecipeDetailPage extends HookConsumerWidget {
     }
   }
 
-  Widget _buildCreatedAt(final BuildContext context, final WidgetRef ref, final DateTime createdAt) {
+  Widget _buildCreatedAt(BuildContext context, WidgetRef ref, DateTime createdAt) {
     return TitledCard(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
       title: intl(context).recipeCreatedAt,
@@ -309,7 +311,7 @@ class RecipeDetailPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildUpdatedAt(final BuildContext context, final WidgetRef ref, final DateTime updatedAt) {
+  Widget _buildUpdatedAt(BuildContext context, WidgetRef ref, DateTime updatedAt) {
     return TitledCard(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
       title: intl(context).recipeUpdatedAt,
@@ -317,7 +319,7 @@ class RecipeDetailPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildRegistrationMenuButton(final BuildContext context, final WidgetRef ref, final RecipeSummary recipe) {
+  Widget _buildRegistrationMenuButton(BuildContext context, WidgetRef ref, RecipeSummary recipe) {
     return SizedBox(
       width: double.infinity,
       child: Padding(
@@ -330,22 +332,22 @@ class RecipeDetailPage extends HookConsumerWidget {
     );
   }
 
-  Future<void> _goRecipeEditing(final BuildContext context, final Recipe recipe) async {
+  Future<void> _goRecipeEditing(BuildContext context, Recipe recipe) async {
     final result = await Navigator.push<EditingResult>(context, MaterialPageRoute(builder: (context) => RecipeEditingPage(recipe: recipe)));
     if (result == EditingResult.deleted) {
       Navigator.of(context).pop();
     }
   }
 
-  Future<void> _goPhoto(final BuildContext context, final List<Uri> imageUris, final int index) async {
+  Future<void> _goPhoto(BuildContext context, List<Uri> imageUris, int index) async {
     await Navigator.push<EditingResult>(context, MaterialPageRoute(builder: (context) => PhotoPage(imageUris: imageUris, initialIndex: index)));
   }
 
-  Future<void> _goMenuEditing(final BuildContext context, final RecipeSummary recipe) async {
+  Future<void> _goMenuEditing(BuildContext context, RecipeSummary recipe) async {
     await Navigator.push<EditingResult>(context, MaterialPageRoute(builder: (context) => MenuEditingPage.withRecipe(recipe: recipe)));
   }
 
-  int _fixedSelectedIndex(final int selectedPhotoIndex, final int imageLength) {
+  int _fixedSelectedIndex(int selectedPhotoIndex, int imageLength) {
     return (imageLength <= selectedPhotoIndex) ? 0 : selectedPhotoIndex;
   }
 }

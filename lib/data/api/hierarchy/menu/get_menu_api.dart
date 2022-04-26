@@ -8,7 +8,7 @@ class GetMenuApi {
 
   final AuthorizedApiRequester _requester;
 
-  Future<MenuResponse> execute(final int workspaceId, {required final int menuId}) async {
+  Future<MenuResponse> execute(int workspaceId, {required int menuId}) async {
     try {
       final response = await _requester.create().get<Map<String, dynamic>>('/$workspaceId/menus/$menuId');
       return MenuResponse.fromJson(response.data!);

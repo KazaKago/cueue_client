@@ -9,10 +9,10 @@ part 'menu_summary_impl.freezed.dart';
 @freezed
 class MenuSummaryImpl with _$MenuSummaryImpl implements MenuSummary {
   const factory MenuSummaryImpl({
-    required final MenuId id,
-    required final String memo,
-    required final DateTime date,
-    required final TimeFrame timeFrame,
-    required final List<RecipeSummary> recipes,
+    required MenuId id,
+    required String memo,
+    required DateTime date,
+    required TimeFrame timeFrame,
+    required List<RecipeSummary> recipes,
   }) = _MenuSummaryImpl;
 }

@@ -10,8 +10,7 @@ part of 'content.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 class _$ContentTearOff {
@@ -39,8 +38,7 @@ mixin _$Content {
 
 /// @nodoc
 abstract class $ContentCopyWith<$Res> {
-  factory $ContentCopyWith(Content value, $Res Function(Content) then) =
-      _$ContentCopyWithImpl<$Res>;
+  factory $ContentCopyWith(Content value, $Res Function(Content) then) = _$ContentCopyWithImpl<$Res>;
   $Res call({ContentKey key, Uri url});
 
   $ContentKeyCopyWith<$Res> get key;
@@ -81,8 +79,7 @@ class _$ContentCopyWithImpl<$Res> implements $ContentCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$ContentCopyWith<$Res> implements $ContentCopyWith<$Res> {
-  factory _$ContentCopyWith(_Content value, $Res Function(_Content) then) =
-      __$ContentCopyWithImpl<$Res>;
+  factory _$ContentCopyWith(_Content value, $Res Function(_Content) then) = __$ContentCopyWithImpl<$Res>;
   @override
   $Res call({ContentKey key, Uri url});
 
@@ -91,10 +88,8 @@ abstract class _$ContentCopyWith<$Res> implements $ContentCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ContentCopyWithImpl<$Res> extends _$ContentCopyWithImpl<$Res>
-    implements _$ContentCopyWith<$Res> {
-  __$ContentCopyWithImpl(_Content _value, $Res Function(_Content) _then)
-      : super(_value, (v) => _then(v as _Content));
+class __$ContentCopyWithImpl<$Res> extends _$ContentCopyWithImpl<$Res> implements _$ContentCopyWith<$Res> {
+  __$ContentCopyWithImpl(_Content _value, $Res Function(_Content) _then) : super(_value, (v) => _then(v as _Content));
 
   @override
   _Content get _value => super._value as _Content;
@@ -134,28 +129,19 @@ class _$_Content implements _Content {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Content &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.url, url));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _Content && const DeepCollectionEquality().equals(other.key, key) && const DeepCollectionEquality().equals(other.url, url));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(url));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(key), const DeepCollectionEquality().hash(url));
 
   @JsonKey(ignore: true)
   @override
-  _$ContentCopyWith<_Content> get copyWith =>
-      __$ContentCopyWithImpl<_Content>(this, _$identity);
+  _$ContentCopyWith<_Content> get copyWith => __$ContentCopyWithImpl<_Content>(this, _$identity);
 }
 
 abstract class _Content implements Content {
-  const factory _Content({required ContentKey key, required Uri url}) =
-      _$_Content;
+  const factory _Content({required ContentKey key, required Uri url}) = _$_Content;
 
   @override
   ContentKey get key;
@@ -163,6 +149,5 @@ abstract class _Content implements Content {
   Uri get url;
   @override
   @JsonKey(ignore: true)
-  _$ContentCopyWith<_Content> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$ContentCopyWith<_Content> get copyWith => throw _privateConstructorUsedError;
 }

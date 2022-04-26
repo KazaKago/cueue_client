@@ -7,7 +7,7 @@ class DeleteMenuApi {
 
   final AuthorizedApiRequester _requester;
 
-  Future<void> execute(final int workspaceId, final int menuId) async {
+  Future<void> execute(int workspaceId, int menuId) async {
     try {
       await _requester.create().delete<void>('/$workspaceId/menus/$menuId');
     } on DioError catch (dioError) {

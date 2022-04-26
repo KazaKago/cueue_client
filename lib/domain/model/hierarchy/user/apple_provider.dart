@@ -7,7 +7,7 @@ part 'apple_provider.freezed.dart';
 @freezed
 class AppleProvider with _$AppleProvider implements LoginProvider {
   const factory AppleProvider({
-    required final UserId uid,
-    required final String displayName,
+    required UserId uid,
+    required String displayName,
   }) = _AppleProvider;
 }

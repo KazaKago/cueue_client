@@ -17,29 +17,29 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 class MenuEditingPage extends HookConsumerWidget {
-  factory MenuEditingPage({final Key? key}) {
+  factory MenuEditingPage({Key? key}) {
     return MenuEditingPage._(key: key);
   }
 
-  factory MenuEditingPage.withMenu({required final Menu menu, final Key? key}) {
+  factory MenuEditingPage.withMenu({required Menu menu, Key? key}) {
     return MenuEditingPage._(menu: menu, key: key);
   }
 
-  factory MenuEditingPage.withRecipes({required final List<RecipeSummary> recipes, final Key? key}) {
+  factory MenuEditingPage.withRecipes({required List<RecipeSummary> recipes, Key? key}) {
     return MenuEditingPage._(recipes: recipes, key: key);
   }
 
-  factory MenuEditingPage.withRecipe({required final RecipeSummary recipe, final Key? key}) {
+  factory MenuEditingPage.withRecipe({required RecipeSummary recipe, Key? key}) {
     return MenuEditingPage._(recipes: [recipe], key: key);
   }
 
-  const MenuEditingPage._({this.menu, this.recipes, final Key? key}) : super(key: key);
+  const MenuEditingPage._({this.menu, this.recipes, Key? key}) : super(key: key);
 
   final Menu? menu;
   final List<RecipeSummary>? recipes;
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final selectedDateTime = useState(menu?.date ?? DateTime.now());
     final selectedRecipes = useState(menu?.recipes.toList() ?? recipes ?? []);
     final selectedTimeFrame = useState(menu?.timeFrame ?? TimeFrame.dinner);
@@ -86,7 +86,7 @@ class MenuEditingPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildDatePicker(final BuildContext context, final WidgetRef ref, final ValueNotifier<DateTime> selectedDateTime) {
+  Widget _buildDatePicker(BuildContext context, WidgetRef ref, ValueNotifier<DateTime> selectedDateTime) {
     return TextFieldDatePicker(
       labelText: intl(context).date,
       dateFormat: DateFormat(intl(context).dateFormat, Localizations.localeOf(context).toString()),
@@ -98,7 +98,7 @@ class MenuEditingPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildTimeFrame(final BuildContext context, final WidgetRef ref, final ValueNotifier<TimeFrame> selectedTimeFrame) {
+  Widget _buildTimeFrame(BuildContext context, WidgetRef ref, ValueNotifier<TimeFrame> selectedTimeFrame) {
     return DropdownButtonFormField<TimeFrame>(
       decoration: InputDecoration(labelText: intl(context).timeFrame, alignLabelWithHint: true, border: const OutlineInputBorder()),
       value: selectedTimeFrame.value,
@@ -112,7 +112,7 @@ class MenuEditingPage extends HookConsumerWidget {
     );
   }
 
-  List<Widget> _buildRecipes(final BuildContext context, final WidgetRef ref, final ValueNotifier<List<RecipeSummary>> selectedRecipes) {
+  List<Widget> _buildRecipes(BuildContext context, WidgetRef ref, ValueNotifier<List<RecipeSummary>> selectedRecipes) {
     return selectedRecipes.value.map((recipe) {
       return ListTile(
         title: Text(recipe.title),
@@ -124,11 +124,11 @@ class MenuEditingPage extends HookConsumerWidget {
     }).toList();
   }
 
-  Widget _buildAddRecipe(final BuildContext context, final WidgetRef ref, final ValueNotifier<List<RecipeSummary>> selectedRecipes) {
+  Widget _buildAddRecipe(BuildContext context, WidgetRef ref, ValueNotifier<List<RecipeSummary>> selectedRecipes) {
     return TextButton.icon(onPressed: () => _goRecipeSelection(context, ref, selectedRecipes), icon: const Icon(Icons.add), label: Text(intl(context).doSelectRecipe));
   }
 
-  Widget _buildMemo(final BuildContext context, final WidgetRef ref, final TextEditingController menuMemoEditingController) {
+  Widget _buildMemo(BuildContext context, WidgetRef ref, TextEditingController menuMemoEditingController) {
     return TextField(
       controller: menuMemoEditingController,
       keyboardType: TextInputType.multiline,
@@ -138,7 +138,7 @@ class MenuEditingPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildDoneButton(final BuildContext context, final WidgetRef ref, final TextEditingController menuMemoEditingController, final DateTime selectedDateTime, final TimeFrame selectedTimeFrame, final List<RecipeSummary> selectedRecipes) {
+  Widget _buildDoneButton(BuildContext context, WidgetRef ref, TextEditingController menuMemoEditingController, DateTime selectedDateTime, TimeFrame selectedTimeFrame, List<RecipeSummary> selectedRecipes) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
       child: ElevatedButton.icon(
@@ -156,7 +156,7 @@ class MenuEditingPage extends HookConsumerWidget {
     );
   }
 
-  Future<void> _showConfirmationDeletingDialog(final BuildContext context, final WidgetRef ref, final Menu menu) async {
+  Future<void> _showConfirmationDeletingDialog(BuildContext context, WidgetRef ref, Menu menu) async {
     final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmDeleteCookingMenu, positiveButton: intl(context).doDelete, negativeButton: intl(context).cancel).show();
     if (event != null) {
       await event.when(
@@ -170,14 +170,14 @@ class MenuEditingPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _goRecipeSelection(final BuildContext context, final WidgetRef ref, final ValueNotifier<List<RecipeSummary>> selectedRecipes) async {
+  Future<void> _goRecipeSelection(BuildContext context, WidgetRef ref, ValueNotifier<List<RecipeSummary>> selectedRecipes) async {
     final result = await Navigator.push<List<RecipeSummary>>(context, MaterialPageRoute(builder: (context) => RecipeSelectionPage(selectedRecipes.value)));
     if (result != null) {
       selectedRecipes.value = result;
     }
   }
 
-  Future<void> _deleteRecipe(final BuildContext context, final WidgetRef ref, final RecipeSummary recipe, final ValueNotifier<List<RecipeSummary>> selectedRecipes) async {
+  Future<void> _deleteRecipe(BuildContext context, WidgetRef ref, RecipeSummary recipe, ValueNotifier<List<RecipeSummary>> selectedRecipes) async {
     selectedRecipes.value = List.from(selectedRecipes.value..remove(recipe));
   }
 }

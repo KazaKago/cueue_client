@@ -10,18 +10,13 @@ part of 'menu_registration.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 class _$MenuRegistrationTearOff {
   const _$MenuRegistrationTearOff();
 
-  _MenuRegistration call(
-      {required String memo,
-      required DateTime date,
-      required TimeFrame timeFrame,
-      required List<RecipeId> recipeIds}) {
+  _MenuRegistration call({required String memo, required DateTime date, required TimeFrame timeFrame, required List<RecipeId> recipeIds}) {
     return _MenuRegistration(
       memo: memo,
       date: date,
@@ -42,25 +37,17 @@ mixin _$MenuRegistration {
   List<RecipeId> get recipeIds => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MenuRegistrationCopyWith<MenuRegistration> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MenuRegistrationCopyWith<MenuRegistration> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MenuRegistrationCopyWith<$Res> {
-  factory $MenuRegistrationCopyWith(
-          MenuRegistration value, $Res Function(MenuRegistration) then) =
-      _$MenuRegistrationCopyWithImpl<$Res>;
-  $Res call(
-      {String memo,
-      DateTime date,
-      TimeFrame timeFrame,
-      List<RecipeId> recipeIds});
+  factory $MenuRegistrationCopyWith(MenuRegistration value, $Res Function(MenuRegistration) then) = _$MenuRegistrationCopyWithImpl<$Res>;
+  $Res call({String memo, DateTime date, TimeFrame timeFrame, List<RecipeId> recipeIds});
 }
 
 /// @nodoc
-class _$MenuRegistrationCopyWithImpl<$Res>
-    implements $MenuRegistrationCopyWith<$Res> {
+class _$MenuRegistrationCopyWithImpl<$Res> implements $MenuRegistrationCopyWith<$Res> {
   _$MenuRegistrationCopyWithImpl(this._value, this._then);
 
   final MenuRegistration _value;
@@ -96,26 +83,15 @@ class _$MenuRegistrationCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MenuRegistrationCopyWith<$Res>
-    implements $MenuRegistrationCopyWith<$Res> {
-  factory _$MenuRegistrationCopyWith(
-          _MenuRegistration value, $Res Function(_MenuRegistration) then) =
-      __$MenuRegistrationCopyWithImpl<$Res>;
+abstract class _$MenuRegistrationCopyWith<$Res> implements $MenuRegistrationCopyWith<$Res> {
+  factory _$MenuRegistrationCopyWith(_MenuRegistration value, $Res Function(_MenuRegistration) then) = __$MenuRegistrationCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String memo,
-      DateTime date,
-      TimeFrame timeFrame,
-      List<RecipeId> recipeIds});
+  $Res call({String memo, DateTime date, TimeFrame timeFrame, List<RecipeId> recipeIds});
 }
 
 /// @nodoc
-class __$MenuRegistrationCopyWithImpl<$Res>
-    extends _$MenuRegistrationCopyWithImpl<$Res>
-    implements _$MenuRegistrationCopyWith<$Res> {
-  __$MenuRegistrationCopyWithImpl(
-      _MenuRegistration _value, $Res Function(_MenuRegistration) _then)
-      : super(_value, (v) => _then(v as _MenuRegistration));
+class __$MenuRegistrationCopyWithImpl<$Res> extends _$MenuRegistrationCopyWithImpl<$Res> implements _$MenuRegistrationCopyWith<$Res> {
+  __$MenuRegistrationCopyWithImpl(_MenuRegistration _value, $Res Function(_MenuRegistration) _then) : super(_value, (v) => _then(v as _MenuRegistration));
 
   @override
   _MenuRegistration get _value => super._value as _MenuRegistration;
@@ -151,11 +127,7 @@ class __$MenuRegistrationCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_MenuRegistration implements _MenuRegistration {
-  const _$_MenuRegistration(
-      {required this.memo,
-      required this.date,
-      required this.timeFrame,
-      required this.recipeIds});
+  const _$_MenuRegistration({required this.memo, required this.date, required this.timeFrame, required this.recipeIds});
 
   @override
   final String memo;
@@ -173,35 +145,19 @@ class _$_MenuRegistration implements _MenuRegistration {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _MenuRegistration &&
-            const DeepCollectionEquality().equals(other.memo, memo) &&
-            const DeepCollectionEquality().equals(other.date, date) &&
-            const DeepCollectionEquality().equals(other.timeFrame, timeFrame) &&
-            const DeepCollectionEquality().equals(other.recipeIds, recipeIds));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _MenuRegistration && const DeepCollectionEquality().equals(other.memo, memo) && const DeepCollectionEquality().equals(other.date, date) && const DeepCollectionEquality().equals(other.timeFrame, timeFrame) && const DeepCollectionEquality().equals(other.recipeIds, recipeIds));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(memo),
-      const DeepCollectionEquality().hash(date),
-      const DeepCollectionEquality().hash(timeFrame),
-      const DeepCollectionEquality().hash(recipeIds));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(memo), const DeepCollectionEquality().hash(date), const DeepCollectionEquality().hash(timeFrame), const DeepCollectionEquality().hash(recipeIds));
 
   @JsonKey(ignore: true)
   @override
-  _$MenuRegistrationCopyWith<_MenuRegistration> get copyWith =>
-      __$MenuRegistrationCopyWithImpl<_MenuRegistration>(this, _$identity);
+  _$MenuRegistrationCopyWith<_MenuRegistration> get copyWith => __$MenuRegistrationCopyWithImpl<_MenuRegistration>(this, _$identity);
 }
 
 abstract class _MenuRegistration implements MenuRegistration {
-  const factory _MenuRegistration(
-      {required String memo,
-      required DateTime date,
-      required TimeFrame timeFrame,
-      required List<RecipeId> recipeIds}) = _$_MenuRegistration;
+  const factory _MenuRegistration({required String memo, required DateTime date, required TimeFrame timeFrame, required List<RecipeId> recipeIds}) = _$_MenuRegistration;
 
   @override
   String get memo;
@@ -213,6 +169,5 @@ abstract class _MenuRegistration implements MenuRegistration {
   List<RecipeId> get recipeIds;
   @override
   @JsonKey(ignore: true)
-  _$MenuRegistrationCopyWith<_MenuRegistration> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$MenuRegistrationCopyWith<_MenuRegistration> get copyWith => throw _privateConstructorUsedError;
 }

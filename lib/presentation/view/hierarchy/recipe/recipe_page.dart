@@ -11,10 +11,10 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class RecipePage extends HookConsumerWidget {
-  const RecipePage({final Key? key}) : super(key: key);
+  const RecipePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(tagViewModelProvider.select((viewModel) => viewModel.state));
     return state.when(
       loading: () => _buildLoading(context, ref),
@@ -24,21 +24,20 @@ class RecipePage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildLoading(final BuildContext context, final WidgetRef ref) {
+  Widget _buildLoading(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: Text(intl(context).recipe),
       ),
       body: ShimmerContainer(
         child: Wrap(
-          direction: Axis.horizontal,
           children: List.filled(10, const RecipeLoadingItem()),
         ),
       ),
     );
   }
 
-  Widget _buildCompleted(final BuildContext context, final WidgetRef ref, final List<Tag> tags) {
+  Widget _buildCompleted(BuildContext context, WidgetRef ref, List<Tag> tags) {
     return DefaultTabController(
       length: tags.length + 1,
       child: Scaffold(
@@ -59,7 +58,7 @@ class RecipePage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildError(final BuildContext context, final WidgetRef ref, final Exception exception) {
+  Widget _buildError(BuildContext context, WidgetRef ref, Exception exception) {
     final viewModel = ref.read(tagViewModelProvider);
     return Scaffold(
       appBar: AppBar(
@@ -69,7 +68,7 @@ class RecipePage extends HookConsumerWidget {
     );
   }
 
-  Future<void> _goRecipeDetail(final BuildContext context, final RecipeSummary recipe) async {
+  Future<void> _goRecipeDetail(BuildContext context, RecipeSummary recipe) async {
     await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => RecipeDetailPage(recipe)));
   }
 }

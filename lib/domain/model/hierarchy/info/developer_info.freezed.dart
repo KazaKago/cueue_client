@@ -10,15 +10,13 @@ part of 'developer_info.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 class _$DeveloperInfoTearOff {
   const _$DeveloperInfoTearOff();
 
-  _DeveloperInfo call(
-      {required String developer, required Uri webSite, required Email email}) {
+  _DeveloperInfo call({required String developer, required Uri webSite, required Email email}) {
     return _DeveloperInfo(
       developer: developer,
       webSite: webSite,
@@ -37,23 +35,19 @@ mixin _$DeveloperInfo {
   Email get email => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $DeveloperInfoCopyWith<DeveloperInfo> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DeveloperInfoCopyWith<DeveloperInfo> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DeveloperInfoCopyWith<$Res> {
-  factory $DeveloperInfoCopyWith(
-          DeveloperInfo value, $Res Function(DeveloperInfo) then) =
-      _$DeveloperInfoCopyWithImpl<$Res>;
+  factory $DeveloperInfoCopyWith(DeveloperInfo value, $Res Function(DeveloperInfo) then) = _$DeveloperInfoCopyWithImpl<$Res>;
   $Res call({String developer, Uri webSite, Email email});
 
   $EmailCopyWith<$Res> get email;
 }
 
 /// @nodoc
-class _$DeveloperInfoCopyWithImpl<$Res>
-    implements $DeveloperInfoCopyWith<$Res> {
+class _$DeveloperInfoCopyWithImpl<$Res> implements $DeveloperInfoCopyWith<$Res> {
   _$DeveloperInfoCopyWithImpl(this._value, this._then);
 
   final DeveloperInfo _value;
@@ -91,11 +85,8 @@ class _$DeveloperInfoCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$DeveloperInfoCopyWith<$Res>
-    implements $DeveloperInfoCopyWith<$Res> {
-  factory _$DeveloperInfoCopyWith(
-          _DeveloperInfo value, $Res Function(_DeveloperInfo) then) =
-      __$DeveloperInfoCopyWithImpl<$Res>;
+abstract class _$DeveloperInfoCopyWith<$Res> implements $DeveloperInfoCopyWith<$Res> {
+  factory _$DeveloperInfoCopyWith(_DeveloperInfo value, $Res Function(_DeveloperInfo) then) = __$DeveloperInfoCopyWithImpl<$Res>;
   @override
   $Res call({String developer, Uri webSite, Email email});
 
@@ -104,12 +95,8 @@ abstract class _$DeveloperInfoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$DeveloperInfoCopyWithImpl<$Res>
-    extends _$DeveloperInfoCopyWithImpl<$Res>
-    implements _$DeveloperInfoCopyWith<$Res> {
-  __$DeveloperInfoCopyWithImpl(
-      _DeveloperInfo _value, $Res Function(_DeveloperInfo) _then)
-      : super(_value, (v) => _then(v as _DeveloperInfo));
+class __$DeveloperInfoCopyWithImpl<$Res> extends _$DeveloperInfoCopyWithImpl<$Res> implements _$DeveloperInfoCopyWith<$Res> {
+  __$DeveloperInfoCopyWithImpl(_DeveloperInfo _value, $Res Function(_DeveloperInfo) _then) : super(_value, (v) => _then(v as _DeveloperInfo));
 
   @override
   _DeveloperInfo get _value => super._value as _DeveloperInfo;
@@ -140,9 +127,7 @@ class __$DeveloperInfoCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DeveloperInfo extends _DeveloperInfo {
-  const _$_DeveloperInfo(
-      {required this.developer, required this.webSite, required this.email})
-      : super._();
+  const _$_DeveloperInfo({required this.developer, required this.webSite, required this.email}) : super._();
 
   @override
   final String developer;
@@ -158,32 +143,19 @@ class _$_DeveloperInfo extends _DeveloperInfo {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _DeveloperInfo &&
-            const DeepCollectionEquality().equals(other.developer, developer) &&
-            const DeepCollectionEquality().equals(other.webSite, webSite) &&
-            const DeepCollectionEquality().equals(other.email, email));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _DeveloperInfo && const DeepCollectionEquality().equals(other.developer, developer) && const DeepCollectionEquality().equals(other.webSite, webSite) && const DeepCollectionEquality().equals(other.email, email));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(developer),
-      const DeepCollectionEquality().hash(webSite),
-      const DeepCollectionEquality().hash(email));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(developer), const DeepCollectionEquality().hash(webSite), const DeepCollectionEquality().hash(email));
 
   @JsonKey(ignore: true)
   @override
-  _$DeveloperInfoCopyWith<_DeveloperInfo> get copyWith =>
-      __$DeveloperInfoCopyWithImpl<_DeveloperInfo>(this, _$identity);
+  _$DeveloperInfoCopyWith<_DeveloperInfo> get copyWith => __$DeveloperInfoCopyWithImpl<_DeveloperInfo>(this, _$identity);
 }
 
 abstract class _DeveloperInfo extends DeveloperInfo {
-  const factory _DeveloperInfo(
-      {required String developer,
-      required Uri webSite,
-      required Email email}) = _$_DeveloperInfo;
+  const factory _DeveloperInfo({required String developer, required Uri webSite, required Email email}) = _$_DeveloperInfo;
   const _DeveloperInfo._() : super._();
 
   @override
@@ -194,6 +166,5 @@ abstract class _DeveloperInfo extends DeveloperInfo {
   Email get email;
   @override
   @JsonKey(ignore: true)
-  _$DeveloperInfoCopyWith<_DeveloperInfo> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$DeveloperInfoCopyWith<_DeveloperInfo> get copyWith => throw _privateConstructorUsedError;
 }

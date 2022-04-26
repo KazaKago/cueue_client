@@ -7,7 +7,7 @@ part 'settings_state.freezed.dart';
 class SettingsState with _$SettingsState {
   const factory SettingsState.loading() = _Loading;
 
-  const factory SettingsState.completed(final User user) = _Completed;
+  const factory SettingsState.completed(User user) = _Completed;
 
-  const factory SettingsState.error(final Exception error) = _Error;
+  const factory SettingsState.error(Exception error) = _Error;
 }

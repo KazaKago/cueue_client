@@ -9,10 +9,10 @@ part 'menu.freezed.dart';
 @freezed
 class Menu with _$Menu implements MenuSummary {
   const factory Menu({
-    required final MenuId id,
-    required final String memo,
-    required final DateTime date,
-    required final TimeFrame timeFrame,
-    required final List<RecipeSummary> recipes,
+    required MenuId id,
+    required String memo,
+    required DateTime date,
+    required TimeFrame timeFrame,
+    required List<RecipeSummary> recipes,
   }) = _Menu;
 }

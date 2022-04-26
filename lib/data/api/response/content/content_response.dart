@@ -7,10 +7,10 @@ part 'content_response.g.dart';
 class ContentResponse with _$ContentResponse {
   const factory ContentResponse({
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'key') required final String key,
+    @JsonKey(name: 'key') required String key,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'url') required final String url,
+    @JsonKey(name: 'url') required String url,
   }) = _ContentResponse;
 
-  factory ContentResponse.fromJson(final Map<String, dynamic> json) => _$ContentResponseFromJson(json);
+  factory ContentResponse.fromJson(Map<String, dynamic> json) => _$ContentResponseFromJson(json);
 }

@@ -7,7 +7,7 @@ class DeleteTagApi {
 
   final AuthorizedApiRequester _requester;
 
-  Future<void> execute(final int workspaceId, final int tagId) async {
+  Future<void> execute(int workspaceId, int tagId) async {
     try {
       await _requester.create().delete<void>('/$workspaceId/tags/$tagId');
     } on DioError catch (dioError) {

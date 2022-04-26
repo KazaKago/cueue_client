@@ -6,7 +6,7 @@ part 'workspace.freezed.dart';
 @freezed
 class Workspace with _$Workspace {
   const factory Workspace({
-    required final WorkspaceId id,
-    required final String name,
+    required WorkspaceId id,
+    required String name,
   }) = _Workspace;
 }

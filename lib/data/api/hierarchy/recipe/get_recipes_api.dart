@@ -8,7 +8,7 @@ class GetRecipesApi {
 
   final AuthorizedApiRequester _requester;
 
-  Future<List<RecipeSummaryResponse>> execute(final int workspaceId, {final int? afterId, final int? tagId}) async {
+  Future<List<RecipeSummaryResponse>> execute(int workspaceId, {int? afterId, int? tagId}) async {
     try {
       final queryParameters = <String, dynamic>{};
       if (afterId != null) queryParameters.addAll(<String, dynamic>{'after_id': afterId});

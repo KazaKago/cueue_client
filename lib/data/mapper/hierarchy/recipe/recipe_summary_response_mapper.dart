@@ -9,7 +9,7 @@ class RecipeSummaryResponseMapper {
 
   final ContentResponseMapper _contentResponseMapper;
 
-  RecipeSummary map(final RecipeSummaryResponse response) {
+  RecipeSummary map(RecipeSummaryResponse response) {
     final image = response.image;
     final lastCookingAt = response.lastCookingAt;
     return RecipeSummaryImpl(

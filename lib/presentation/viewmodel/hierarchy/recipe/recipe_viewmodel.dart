@@ -32,7 +32,7 @@ class RecipeViewModel with ChangeNotifier {
 
   RecipeState get state => _state;
 
-  set state(final RecipeState state) {
+  set state(RecipeState state) {
     _state = state;
     notifyListeners();
   }
@@ -40,30 +40,34 @@ class RecipeViewModel with ChangeNotifier {
   void _follow() {
     if (_tagId != null) {
       final followTaggedRecipesUseCase = _followTaggedRecipesUseCase(_tagId!);
-      _compositeSubscription.add(followTaggedRecipesUseCase.listen((state) {
-        this.state = state.when(
-          loading: (content) => (content != null) ? RecipeState.refreshing(content) : const RecipeState.loading(),
-          completed: (content, next, prev) => next.when(
-            fixed: (_) => (content.isNotEmpty) ? RecipeState.completed(content) : const RecipeState.empty(),
-            loading: () => RecipeState.additionalLoading(content),
-            error: (exception) => RecipeState.additionalError(content, exception),
-          ),
-          error: (exception) => RecipeState.error(exception),
-        );
-      }));
+      _compositeSubscription.add(
+        followTaggedRecipesUseCase.listen((state) {
+          this.state = state.when(
+            loading: (content) => (content != null) ? RecipeState.refreshing(content) : const RecipeState.loading(),
+            completed: (content, next, prev) => next.when(
+              fixed: (_) => (content.isNotEmpty) ? RecipeState.completed(content) : const RecipeState.empty(),
+              loading: () => RecipeState.additionalLoading(content),
+              error: (exception) => RecipeState.additionalError(content, exception),
+            ),
+            error: (exception) => RecipeState.error(exception),
+          );
+        }),
+      );
     } else {
       final followAllRecipesUseCase = _followAllRecipesUseCase();
-      _compositeSubscription.add(followAllRecipesUseCase.listen((state) {
-        this.state = state.when(
-          loading: (content) => (content != null) ? RecipeState.refreshing(content) : const RecipeState.loading(),
-          completed: (content, next, prev) => next.when(
-            fixed: (_) => (content.isNotEmpty) ? RecipeState.completed(content) : const RecipeState.empty(),
-            loading: () => RecipeState.additionalLoading(content),
-            error: (exception) => RecipeState.additionalError(content, exception),
-          ),
-          error: (exception) => RecipeState.error(exception),
-        );
-      }));
+      _compositeSubscription.add(
+        followAllRecipesUseCase.listen((state) {
+          this.state = state.when(
+            loading: (content) => (content != null) ? RecipeState.refreshing(content) : const RecipeState.loading(),
+            completed: (content, next, prev) => next.when(
+              fixed: (_) => (content.isNotEmpty) ? RecipeState.completed(content) : const RecipeState.empty(),
+              loading: () => RecipeState.additionalLoading(content),
+              error: (exception) => RecipeState.additionalError(content, exception),
+            ),
+            error: (exception) => RecipeState.error(exception),
+          );
+        }),
+      );
     }
   }
 
@@ -79,7 +83,7 @@ class RecipeViewModel with ChangeNotifier {
     await refresh();
   }
 
-  Future<void> requestAddition({final bool continueWhenError = false}) async {
+  Future<void> requestAddition({bool continueWhenError = false}) async {
     if (_tagId != null) {
       await _requestAdditionalTaggedRecipesUseCase(_tagId!, continueWhenError: continueWhenError);
     } else {

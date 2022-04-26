@@ -8,7 +8,7 @@ class RefreshMenuUseCaseImpl implements RefreshMenuUseCase {
   final MenuRepository _menuRepository;
 
   @override
-  Future<void> call(final MenuId menuId) {
+  Future<void> call(MenuId menuId) {
     return _menuRepository.refreshData(menuId);
   }
 }

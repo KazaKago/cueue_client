@@ -10,8 +10,7 @@ part of 'password.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 class _$PasswordTearOff {
@@ -32,14 +31,12 @@ mixin _$Password {
   String get value => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PasswordCopyWith<Password> get copyWith =>
-      throw _privateConstructorUsedError;
+  $PasswordCopyWith<Password> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PasswordCopyWith<$Res> {
-  factory $PasswordCopyWith(Password value, $Res Function(Password) then) =
-      _$PasswordCopyWithImpl<$Res>;
+  factory $PasswordCopyWith(Password value, $Res Function(Password) then) = _$PasswordCopyWithImpl<$Res>;
   $Res call({String value});
 }
 
@@ -66,17 +63,14 @@ class _$PasswordCopyWithImpl<$Res> implements $PasswordCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$PasswordCopyWith<$Res> implements $PasswordCopyWith<$Res> {
-  factory _$PasswordCopyWith(_Password value, $Res Function(_Password) then) =
-      __$PasswordCopyWithImpl<$Res>;
+  factory _$PasswordCopyWith(_Password value, $Res Function(_Password) then) = __$PasswordCopyWithImpl<$Res>;
   @override
   $Res call({String value});
 }
 
 /// @nodoc
-class __$PasswordCopyWithImpl<$Res> extends _$PasswordCopyWithImpl<$Res>
-    implements _$PasswordCopyWith<$Res> {
-  __$PasswordCopyWithImpl(_Password _value, $Res Function(_Password) _then)
-      : super(_value, (v) => _then(v as _Password));
+class __$PasswordCopyWithImpl<$Res> extends _$PasswordCopyWithImpl<$Res> implements _$PasswordCopyWith<$Res> {
+  __$PasswordCopyWithImpl(_Password _value, $Res Function(_Password) _then) : super(_value, (v) => _then(v as _Password));
 
   @override
   _Password get _value => super._value as _Password;
@@ -109,20 +103,15 @@ class _$_Password extends _Password {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Password &&
-            const DeepCollectionEquality().equals(other.value, value));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _Password && const DeepCollectionEquality().equals(other.value, value));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
 
   @JsonKey(ignore: true)
   @override
-  _$PasswordCopyWith<_Password> get copyWith =>
-      __$PasswordCopyWithImpl<_Password>(this, _$identity);
+  _$PasswordCopyWith<_Password> get copyWith => __$PasswordCopyWithImpl<_Password>(this, _$identity);
 }
 
 abstract class _Password extends Password {
@@ -133,6 +122,5 @@ abstract class _Password extends Password {
   String get value;
   @override
   @JsonKey(ignore: true)
-  _$PasswordCopyWith<_Password> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$PasswordCopyWith<_Password> get copyWith => throw _privateConstructorUsedError;
 }

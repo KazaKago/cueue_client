@@ -8,14 +8,14 @@ part 'recipe_summary_response.g.dart';
 class RecipeSummaryResponse with _$RecipeSummaryResponse {
   const factory RecipeSummaryResponse({
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'id') required final int id,
+    @JsonKey(name: 'id') required int id,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'title') required final String title,
+    @JsonKey(name: 'title') required String title,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'image') required final ContentResponse? image,
+    @JsonKey(name: 'image') required ContentResponse? image,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'last_cooking_at') required final String? lastCookingAt,
+    @JsonKey(name: 'last_cooking_at') required String? lastCookingAt,
   }) = _RecipeSummaryResponse;
 
-  factory RecipeSummaryResponse.fromJson(final Map<String, dynamic> json) => _$RecipeSummaryResponseFromJson(json);
+  factory RecipeSummaryResponse.fromJson(Map<String, dynamic> json) => _$RecipeSummaryResponseFromJson(json);
 }

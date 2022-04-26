@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class LoadingListItem extends StatelessWidget {
-  const LoadingListItem({final Key? key}) : super(key: key);
+  const LoadingListItem({Key? key}) : super(key: key);
 
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(24),
       child: const Center(

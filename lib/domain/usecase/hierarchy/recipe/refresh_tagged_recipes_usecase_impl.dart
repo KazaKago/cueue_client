@@ -8,7 +8,7 @@ class RefreshTaggedRecipesUseCaseImpl implements RefreshTaggedRecipesUseCase {
   final RecipeRepository _recipeRepository;
 
   @override
-  Future<void> call(final TagId tagId) {
+  Future<void> call(TagId tagId) {
     return _recipeRepository.refreshTaggedData(tagId);
   }
 }

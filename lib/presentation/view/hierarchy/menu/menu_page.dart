@@ -20,10 +20,10 @@ import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MenuPage extends HookConsumerWidget {
-  const MenuPage({final Key? key}) : super(key: key);
+  const MenuPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(menuViewModelProvider.select((value) => value.state));
     final viewModel = ref.read(menuViewModelProvider);
     final scrollController = useScrollController()..onReachBottomWithAutoDispose(viewModel.requestAddition);
@@ -43,16 +43,15 @@ class MenuPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildLoading(final BuildContext context, final WidgetRef ref) {
+  Widget _buildLoading(BuildContext context, WidgetRef ref) {
     return ShimmerContainer(
       child: Wrap(
-        direction: Axis.horizontal,
         children: List.filled(10, const MenuLoadingItem()),
       ),
     );
   }
 
-  Widget _buildAdditionalLoading(final BuildContext context, final WidgetRef ref, final ScrollController scrollController, final List<DateSplitMenuList> menus) {
+  Widget _buildAdditionalLoading(BuildContext context, WidgetRef ref, ScrollController scrollController, List<DateSplitMenuList> menus) {
     final viewModel = ref.read(menuViewModelProvider);
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
@@ -66,11 +65,11 @@ class MenuPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildEmpty(final BuildContext context, final WidgetRef ref) {
+  Widget _buildEmpty(BuildContext context, WidgetRef ref) {
     return EmptyWidget(intl(context).no_menu_message);
   }
 
-  Widget _buildCompleted(final BuildContext context, final WidgetRef ref, final ScrollController scrollController, final List<DateSplitMenuList> menus) {
+  Widget _buildCompleted(BuildContext context, WidgetRef ref, ScrollController scrollController, List<DateSplitMenuList> menus) {
     final viewModel = ref.read(menuViewModelProvider);
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
@@ -84,12 +83,12 @@ class MenuPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildError(final BuildContext context, final WidgetRef ref, final Exception exception) {
+  Widget _buildError(BuildContext context, WidgetRef ref, Exception exception) {
     final viewModel = ref.read(menuViewModelProvider);
     return ErrorHandlingWidget(exception, onClickRetry: viewModel.retry);
   }
 
-  Widget _buildAdditionalError(final BuildContext context, final WidgetRef ref, final ScrollController scrollController, final List<DateSplitMenuList> menus, final Exception exception) {
+  Widget _buildAdditionalError(BuildContext context, WidgetRef ref, ScrollController scrollController, List<DateSplitMenuList> menus, Exception exception) {
     final viewModel = ref.read(menuViewModelProvider);
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
@@ -103,19 +102,21 @@ class MenuPage extends HookConsumerWidget {
     );
   }
 
-  List<SliverStickyHeader> _buildSliverList(final BuildContext context, final WidgetRef ref, final List<DateSplitMenuList> menus) {
+  List<SliverStickyHeader> _buildSliverList(BuildContext context, WidgetRef ref, List<DateSplitMenuList> menus) {
     return menus.map((dateSplitMenus) {
       return SliverStickyHeader(
         header: Container(
           color: _backgroundColor(context, dateSplitMenus.date),
           child: ListTile(
-            title: Row(children: [
-              if (dateSplitMenus.date.isToday()) Text(intl(context).today, style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.blue.shade600, fontWeight: FontWeight.bold)),
-              if (dateSplitMenus.date.isTomorrow()) Text(intl(context).tomorrow, style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.blue.shade300, fontWeight: FontWeight.bold)),
-              if (dateSplitMenus.date.isDayAfterTomorrow()) Text(intl(context).dayAfterTomorrow, style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.blue.shade200, fontWeight: FontWeight.bold)),
-              if (dateSplitMenus.date.isToday() || dateSplitMenus.date.isTomorrow() || dateSplitMenus.date.isDayAfterTomorrow()) const SizedBox(width: 16),
-              Text(dateSplitMenus.date.toDateString(context), style: Theme.of(context).textTheme.subtitle1),
-            ]),
+            title: Row(
+              children: [
+                if (dateSplitMenus.date.isToday()) Text(intl(context).today, style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.blue.shade600, fontWeight: FontWeight.bold)),
+                if (dateSplitMenus.date.isTomorrow()) Text(intl(context).tomorrow, style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.blue.shade300, fontWeight: FontWeight.bold)),
+                if (dateSplitMenus.date.isDayAfterTomorrow()) Text(intl(context).dayAfterTomorrow, style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.blue.shade200, fontWeight: FontWeight.bold)),
+                if (dateSplitMenus.date.isToday() || dateSplitMenus.date.isTomorrow() || dateSplitMenus.date.isDayAfterTomorrow()) const SizedBox(width: 16),
+                Text(dateSplitMenus.date.toDateString(context), style: Theme.of(context).textTheme.subtitle1),
+              ],
+            ),
           ),
         ),
         sliver: SliverList(
@@ -136,11 +137,11 @@ class MenuPage extends HookConsumerWidget {
     }).toList();
   }
 
-  Future<void> _goMenuDetail(final BuildContext context, final MenuSummary menu) async {
+  Future<void> _goMenuDetail(BuildContext context, MenuSummary menu) async {
     await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => MenuDetailPage(menu)));
   }
 
-  Color _backgroundColor(final BuildContext context, final DateTime dateTime) {
+  Color _backgroundColor(BuildContext context, DateTime dateTime) {
     final isToday = dateTime.isToday();
     if (isToday) {
       final color = Theme.of(context).colorScheme.primary;

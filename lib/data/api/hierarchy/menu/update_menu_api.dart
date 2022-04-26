@@ -9,7 +9,7 @@ class UpdateMenuApi {
 
   final AuthorizedApiRequester _requester;
 
-  Future<MenuResponse> execute(final int workspaceId, final int menuId, final MenuRequest request) async {
+  Future<MenuResponse> execute(int workspaceId, int menuId, MenuRequest request) async {
     try {
       final response = await _requester.create().patch<Map<String, dynamic>>('/$workspaceId/menus/$menuId', data: request);
       return MenuResponse.fromJson(response.data!);

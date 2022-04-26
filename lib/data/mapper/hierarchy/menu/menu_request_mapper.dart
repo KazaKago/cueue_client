@@ -9,7 +9,7 @@ class MenuRequestMapper {
   final _formatter = DateFormat('yyyy-MM-dd');
   final TimeFrameRequestMapper _timeFrameRequestMapper;
 
-  MenuRequest map(final MenuRegistration menuRegistration) {
+  MenuRequest map(MenuRegistration menuRegistration) {
     return MenuRequest(
       memo: menuRegistration.memo,
       date: _formatter.format(menuRegistration.date),

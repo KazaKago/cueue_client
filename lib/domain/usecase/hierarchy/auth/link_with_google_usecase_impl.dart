@@ -8,7 +8,7 @@ class LinkWithGoogleUseCaseImpl implements LinkWithGoogleUseCase {
   final AuthorizeRepository _authorizeApiRepository;
 
   @override
-  Future<void> call(final GoogleAuthInfo authInfo) async {
+  Future<void> call(GoogleAuthInfo authInfo) async {
     await _authorizeApiRepository.linkWithGoogle(authInfo);
   }
 }

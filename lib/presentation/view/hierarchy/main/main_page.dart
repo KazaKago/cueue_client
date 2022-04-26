@@ -4,10 +4,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MainPage extends HookConsumerWidget {
-  const MainPage({final Key? key}) : super(key: key);
+  const MainPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final currentIndex = useState(0);
     final mainNavigationItemList = useState(MainNavigationItemList(context)).value;
     return Scaffold(
@@ -25,7 +25,7 @@ class MainPage extends HookConsumerWidget {
     );
   }
 
-  Widget? _buildFloatingActionButton(final BuildContext context, final int currentIndex, final MainNavigationItemList mainNavigationItemList) {
+  Widget? _buildFloatingActionButton(BuildContext context, int currentIndex, MainNavigationItemList mainNavigationItemList) {
     final navigationItem = mainNavigationItemList[currentIndex];
     if (navigationItem.isVisibleFab()) {
       return FloatingActionButton(
@@ -38,7 +38,7 @@ class MainPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _goFabPage(final BuildContext context, final Widget page) async {
+  Future<void> _goFabPage(BuildContext context, Widget page) async {
     await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => page));
   }
 }

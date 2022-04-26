@@ -11,12 +11,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TagEditingPage extends HookConsumerWidget {
-  const TagEditingPage({final Key? key, this.tag}) : super(key: key);
+  const TagEditingPage({Key? key, this.tag}) : super(key: key);
 
   final Tag? tag;
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     ref
       ..listen<bool>(tagEditingViewModelProvider.select((viewModel) => viewModel.isLoading), (previous, isLoading) {
         isLoading ? EasyLoading.show() : EasyLoading.dismiss();
@@ -70,7 +70,7 @@ class TagEditingPage extends HookConsumerWidget {
     );
   }
 
-  Future<void> _showConfirmationDeletingDialog(final BuildContext context, final WidgetRef ref, final Tag tag) async {
+  Future<void> _showConfirmationDeletingDialog(BuildContext context, WidgetRef ref, Tag tag) async {
     final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmDeletingWith(tag.name), positiveButton: intl(context).doDelete, negativeButton: intl(context).cancel).show();
     if (event != null) {
       await event.when(

@@ -10,7 +10,7 @@ class AuthenticateWithGoogleUseCaseImpl implements AuthenticateWithGoogleUseCase
   final UserRepository _userRepository;
 
   @override
-  Future<void> call(final GoogleAuthInfo authInfo) async {
+  Future<void> call(GoogleAuthInfo authInfo) async {
     await _authorizeApiRepository.authenticateWithGoogle(authInfo);
     await _userRepository.create();
   }

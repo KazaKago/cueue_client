@@ -48,17 +48,20 @@ class ReauthenticationDialog {
   Future<void> _reupdateInfo() async {
     try {
       await EasyLoading.show();
-      await _exception.type.when(settingEmail: (email) async {
-        final updateEmailUseCase = _ref.read(updateEmailUseCaseProvider);
-        await updateEmailUseCase(email);
-        await EasyLoading.dismiss();
-        FriedToast(_context, intl(_context).updatedMailAddress).show();
-      }, settingPassword: (password) async {
-        final updatePasswordUseCase = _ref.read(updatePasswordUseCaseProvider);
-        await updatePasswordUseCase(password);
-        await EasyLoading.dismiss();
-        FriedToast(_context, intl(_context).updatedPassword).show();
-      });
+      await _exception.type.when(
+        settingEmail: (email) async {
+          final updateEmailUseCase = _ref.read(updateEmailUseCaseProvider);
+          await updateEmailUseCase(email);
+          await EasyLoading.dismiss();
+          FriedToast(_context, intl(_context).updatedMailAddress).show();
+        },
+        settingPassword: (password) async {
+          final updatePasswordUseCase = _ref.read(updatePasswordUseCaseProvider);
+          await updatePasswordUseCase(password);
+          await EasyLoading.dismiss();
+          FriedToast(_context, intl(_context).updatedPassword).show();
+        },
+      );
     } on Exception catch (exception) {
       await EasyLoading.dismiss();
       await const ExceptionHandler().showMessageDialog(_context, _ref, exception);

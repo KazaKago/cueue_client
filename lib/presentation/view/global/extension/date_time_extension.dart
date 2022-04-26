@@ -3,13 +3,13 @@ import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 
 extension DateTimeExtension on DateTime {
-  String toDateString(final BuildContext context) {
+  String toDateString(BuildContext context) {
     final formatter = DateFormat(intl(context).dateFormat, Localizations.localeOf(context).toString());
     final formatted = formatter.format(this);
     return formatted;
   }
 
-  String toDateTimeString(final BuildContext context) {
+  String toDateTimeString(BuildContext context) {
     final formatter = DateFormat(intl(context).dateTimeFormat, Localizations.localeOf(context).toString());
     final formatted = formatter.format(this);
     return formatted;

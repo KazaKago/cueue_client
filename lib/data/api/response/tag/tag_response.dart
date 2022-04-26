@@ -7,10 +7,10 @@ part 'tag_response.g.dart';
 class TagResponse with _$TagResponse {
   const factory TagResponse({
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'id') required final int id,
+    @JsonKey(name: 'id') required int id,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'name') required final String name,
+    @JsonKey(name: 'name') required String name,
   }) = _TagResponse;
 
-  factory TagResponse.fromJson(final Map<String, dynamic> json) => _$TagResponseFromJson(json);
+  factory TagResponse.fromJson(Map<String, dynamic> json) => _$TagResponseFromJson(json);
 }

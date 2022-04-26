@@ -14,11 +14,11 @@ abstract class UserRepository {
 
   Future<void> create();
 
-  Future<void> updateEmail(final Email email);
+  Future<void> updateEmail(Email email);
 
-  Future<void> updatePassword(final Password password);
+  Future<void> updatePassword(Password password);
 
   Future<void> sendEmailVerification();
 
-  Future<void> sendPasswordResetEmail(final Email email);
+  Future<void> sendPasswordResetEmail(Email email);
 }

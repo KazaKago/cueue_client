@@ -9,7 +9,7 @@ class CreateContentUseCaseImpl implements CreateContentUseCase {
   final ContentRepository _contentRepository;
 
   @override
-  Future<Content> call(final ContentRegistration contentRegistration) {
+  Future<Content> call(ContentRegistration contentRegistration) {
     return _contentRepository.create(contentRegistration);
   }
 }

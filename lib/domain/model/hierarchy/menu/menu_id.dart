@@ -4,5 +4,5 @@ part 'menu_id.freezed.dart';
 
 @freezed
 class MenuId with _$MenuId {
-  const factory MenuId(final int value) = _MenuId;
+  const factory MenuId(int value) = _MenuId;
 }

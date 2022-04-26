@@ -7,9 +7,9 @@ part 'menu_registration.freezed.dart';
 @freezed
 class MenuRegistration with _$MenuRegistration {
   const factory MenuRegistration({
-    required final String memo,
-    required final DateTime date,
-    required final TimeFrame timeFrame,
-    required final List<RecipeId> recipeIds,
+    required String memo,
+    required DateTime date,
+    required TimeFrame timeFrame,
+    required List<RecipeId> recipeIds,
   }) = _MenuRegistration;
 }

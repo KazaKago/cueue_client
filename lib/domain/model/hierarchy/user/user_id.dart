@@ -4,5 +4,5 @@ part 'user_id.freezed.dart';
 
 @freezed
 class UserId with _$UserId {
-  const factory UserId(final String value) = _UserId;
+  const factory UserId(String value) = _UserId;
 }

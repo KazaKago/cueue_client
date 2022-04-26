@@ -7,16 +7,16 @@ part 'recipe_request.g.dart';
 class RecipeRequest with _$RecipeRequest {
   const factory RecipeRequest({
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'title') required final String title,
+    @JsonKey(name: 'title') required String title,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'description') required final String description,
+    @JsonKey(name: 'description') required String description,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'url') required final String? url,
+    @JsonKey(name: 'url') required String? url,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'image_keys') required final List<String> imageKeys,
+    @JsonKey(name: 'image_keys') required List<String> imageKeys,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'tag_ids') required final List<int> tagIds,
+    @JsonKey(name: 'tag_ids') required List<int> tagIds,
   }) = _RecipeRequest;
 
-  factory RecipeRequest.fromJson(final Map<String, dynamic> json) => _$RecipeRequestFromJson(json);
+  factory RecipeRequest.fromJson(Map<String, dynamic> json) => _$RecipeRequestFromJson(json);
 }

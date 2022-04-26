@@ -10,12 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class RecipeSelectionPage extends HookConsumerWidget {
-  const RecipeSelectionPage(this.recipes, {final Key? key}) : super(key: key);
+  const RecipeSelectionPage(this.recipes, {Key? key}) : super(key: key);
 
   final List<RecipeSummary> recipes;
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(recipeSelectionViewModelProvider(recipes).select((viewModel) => viewModel.state));
     final viewModel = ref.read(recipeSelectionViewModelProvider(recipes));
     return WillPopScope(
@@ -31,21 +31,20 @@ class RecipeSelectionPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildLoading(final BuildContext context, final WidgetRef ref) {
+  Widget _buildLoading(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: Text(intl(context).selectRecipes),
       ),
       body: ShimmerContainer(
         child: Wrap(
-          direction: Axis.horizontal,
           children: List.filled(10, const RecipeLoadingItem()),
         ),
       ),
     );
   }
 
-  Widget _buildCompleted(final BuildContext context, final WidgetRef ref, final List<Tag> tags) {
+  Widget _buildCompleted(BuildContext context, WidgetRef ref, List<Tag> tags) {
     return DefaultTabController(
       length: tags.length + 1,
       child: Scaffold(
@@ -66,7 +65,7 @@ class RecipeSelectionPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildError(final BuildContext context, final WidgetRef ref, final Exception exception) {
+  Widget _buildError(BuildContext context, WidgetRef ref, Exception exception) {
     final viewModel = ref.read(recipeSelectionViewModelProvider(recipes));
     return Scaffold(
       appBar: AppBar(
@@ -76,7 +75,7 @@ class RecipeSelectionPage extends HookConsumerWidget {
     );
   }
 
-  Future<void> _onCheckChanged(final WidgetRef ref, final RecipeSummary recipe) async {
+  Future<void> _onCheckChanged(WidgetRef ref, RecipeSummary recipe) async {
     final viewModel = ref.read(recipeSelectionViewModelProvider(recipes));
     final selectedRecipes = viewModel.selectedRecipes.toList();
     if (selectedRecipes.map((e) => e.id).contains(recipe.id)) {

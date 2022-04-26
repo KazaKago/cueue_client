@@ -41,49 +41,49 @@ class AuthenticationViewModel with ChangeNotifier {
 
   bool get isLoading => _isLoading;
 
-  set isLoading(final bool isLoading) {
+  set isLoading(bool isLoading) {
     _isLoading = isLoading;
     notifyListeners();
   }
 
   bool get shouldShowReauthenticationWithPassword => _shouldShowReauthenticationWithPassword;
 
-  set shouldShowReauthenticationWithPassword(final bool shouldShowReauthenticationWithPassword) {
+  set shouldShowReauthenticationWithPassword(bool shouldShowReauthenticationWithPassword) {
     _shouldShowReauthenticationWithPassword = shouldShowReauthenticationWithPassword;
     notifyListeners();
   }
 
   bool get shouldShowReauthenticationWithGoogle => _shouldShowReauthenticationWithGoogle;
 
-  set shouldShowReauthenticationWithGoogle(final bool shouldShowReauthenticationWithGoogle) {
+  set shouldShowReauthenticationWithGoogle(bool shouldShowReauthenticationWithGoogle) {
     _shouldShowReauthenticationWithGoogle = shouldShowReauthenticationWithGoogle;
     notifyListeners();
   }
 
   bool get shouldShowReauthenticationWithApple => _shouldShowReauthenticationWithApple;
 
-  set shouldShowReauthenticationWithApple(final bool shouldShowReauthenticationWithApple) {
+  set shouldShowReauthenticationWithApple(bool shouldShowReauthenticationWithApple) {
     _shouldShowReauthenticationWithApple = shouldShowReauthenticationWithApple;
     notifyListeners();
   }
 
   Event<void> get completionAuthenticationEvent => _completionAuthenticationEvent;
 
-  set completionAuthenticationEvent(final Event<void> completionAuthenticationEvent) {
+  set completionAuthenticationEvent(Event<void> completionAuthenticationEvent) {
     _completionAuthenticationEvent = completionAuthenticationEvent;
     notifyListeners();
   }
 
   Event<void> get completionReauthenticationEvent => _completionReauthenticationEvent;
 
-  set completionReauthenticationEvent(final Event<void> completionReauthenticationEvent) {
+  set completionReauthenticationEvent(Event<void> completionReauthenticationEvent) {
     _completionReauthenticationEvent = completionReauthenticationEvent;
     notifyListeners();
   }
 
   Event<Exception> get exceptionEvent => _exceptionEvent;
 
-  set exceptionEvent(final Event<Exception> exceptionEvent) {
+  set exceptionEvent(Event<Exception> exceptionEvent) {
     _exceptionEvent = exceptionEvent;
     notifyListeners();
   }
@@ -99,7 +99,7 @@ class AuthenticationViewModel with ChangeNotifier {
     shouldShowReauthenticationWithApple = result[2];
   }
 
-  Future<void> signUpWithPassword(final String emailStr, final String passwordStr, final String confirmationPasswordStr) async {
+  Future<void> signUpWithPassword(String emailStr, String passwordStr, String confirmationPasswordStr) async {
     isLoading = true;
     try {
       await _signUpWithPasswordUseCase(PasswordAuthInfo(email: Email(emailStr), password: Password.validateMatch(passwordStr, confirmationPasswordStr)));
@@ -110,7 +110,7 @@ class AuthenticationViewModel with ChangeNotifier {
     isLoading = false;
   }
 
-  Future<void> signInWithPassword(final String emailStr, final String passwordStr) async {
+  Future<void> signInWithPassword(String emailStr, String passwordStr) async {
     isLoading = true;
     try {
       await _signInWithPasswordUseCase(PasswordAuthInfo(email: Email(emailStr), password: Password(passwordStr)));
@@ -121,7 +121,7 @@ class AuthenticationViewModel with ChangeNotifier {
     isLoading = false;
   }
 
-  Future<void> signInWithGoogle(final GoogleAuthInfo authInfo) async {
+  Future<void> signInWithGoogle(GoogleAuthInfo authInfo) async {
     isLoading = true;
     try {
       await _authenticateWithGoogleUseCase(authInfo);
@@ -132,7 +132,7 @@ class AuthenticationViewModel with ChangeNotifier {
     isLoading = false;
   }
 
-  Future<void> signInWithApple(final AppleAuthInfo authInfo) async {
+  Future<void> signInWithApple(AppleAuthInfo authInfo) async {
     isLoading = true;
     try {
       await _authenticateWithAppleUseCase(authInfo);
@@ -143,7 +143,7 @@ class AuthenticationViewModel with ChangeNotifier {
     isLoading = false;
   }
 
-  Future<void> reauthorizeWithPassword(final String passwordStr) async {
+  Future<void> reauthorizeWithPassword(String passwordStr) async {
     isLoading = true;
     try {
       await _reauthenticateWithPasswordUseCase(Password(passwordStr));
@@ -154,7 +154,7 @@ class AuthenticationViewModel with ChangeNotifier {
     isLoading = false;
   }
 
-  Future<void> reauthorizeWithGoogle(final GoogleAuthInfo authInfo) async {
+  Future<void> reauthorizeWithGoogle(GoogleAuthInfo authInfo) async {
     isLoading = true;
     try {
       await _reauthenticateWithGoogleUseCase(authInfo);
@@ -165,7 +165,7 @@ class AuthenticationViewModel with ChangeNotifier {
     isLoading = false;
   }
 
-  Future<void> reauthorizeWithApple(final AppleAuthInfo authInfo) async {
+  Future<void> reauthorizeWithApple(AppleAuthInfo authInfo) async {
     isLoading = true;
     try {
       await _reauthenticateWithAppleUseCase(authInfo);

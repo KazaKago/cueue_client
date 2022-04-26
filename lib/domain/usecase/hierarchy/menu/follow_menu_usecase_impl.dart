@@ -10,7 +10,7 @@ class FollowMenuUseCaseImpl implements FollowMenuUseCase {
   final MenuRepository _menuRepository;
 
   @override
-  LoadingStateStream<Menu> call(final MenuId menuId) {
+  LoadingStateStream<Menu> call(MenuId menuId) {
     return _menuRepository.followData(menuId);
   }
 }

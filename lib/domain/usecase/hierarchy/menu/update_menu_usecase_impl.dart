@@ -9,7 +9,7 @@ class UpdateMenuUseCaseImpl implements UpdateMenuUseCase {
   final MenuRepository _menuRepository;
 
   @override
-  Future<void> call(final MenuId menuId, final MenuRegistration menuRegistration) {
+  Future<void> call(MenuId menuId, MenuRegistration menuRegistration) {
     return _menuRepository.update(menuId, menuRegistration);
   }
 }

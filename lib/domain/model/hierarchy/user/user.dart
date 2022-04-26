@@ -11,13 +11,13 @@ part 'user.freezed.dart';
 @freezed
 class User with _$User {
   const factory User({
-    required final UserId id,
-    required final Email email,
-    required final bool isEmailVerified,
-    required final PasswordProvider? passwordProvider,
-    required final GoogleProvider? googleProvider,
-    required final AppleProvider? appleProvider,
-    required final List<Workspace> workspaces,
+    required UserId id,
+    required Email email,
+    required bool isEmailVerified,
+    required PasswordProvider? passwordProvider,
+    required GoogleProvider? googleProvider,
+    required AppleProvider? appleProvider,
+    required List<Workspace> workspaces,
   }) = _User;
 
   const User._();

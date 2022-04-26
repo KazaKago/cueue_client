@@ -7,8 +7,8 @@ part 'tag_request.g.dart';
 class TagRequest with _$TagRequest {
   const factory TagRequest({
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'name') required final String name,
+    @JsonKey(name: 'name') required String name,
   }) = _TagRequest;
 
-  factory TagRequest.fromJson(final Map<String, dynamic> json) => _$TagRequestFromJson(json);
+  factory TagRequest.fromJson(Map<String, dynamic> json) => _$TagRequestFromJson(json);
 }

@@ -5,7 +5,7 @@ import 'package:cueue/domain/model/hierarchy/content/content_key.dart';
 class ContentResponseMapper {
   const ContentResponseMapper();
 
-  Content map(final ContentResponse response) {
+  Content map(ContentResponse response) {
     return Content(key: ContentKey(response.key), url: Uri.parse(response.url));
   }
 }

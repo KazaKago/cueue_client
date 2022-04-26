@@ -8,7 +8,7 @@ class RequestAdditionalTaggedRecipesUseCaseImpl implements RequestAdditionalTagg
   final RecipeRepository _recipeRepository;
 
   @override
-  Future<void> call(final TagId tagId, {required final bool continueWhenError}) {
+  Future<void> call(TagId tagId, {required bool continueWhenError}) {
     return _recipeRepository.requestAdditionalTaggedData(tagId, continueWhenError: continueWhenError);
   }
 }

@@ -5,9 +5,9 @@ part 'multi_text_field_dialog_event.freezed.dart';
 
 @freezed
 class MultiTextFieldDialogEvent with _$MultiTextFieldDialogEvent {
-  const factory MultiTextFieldDialogEvent.positive(final List<MultiTextFieldDialogResult> results) = _Positive;
+  const factory MultiTextFieldDialogEvent.positive(List<MultiTextFieldDialogResult> results) = _Positive;
 
-  const factory MultiTextFieldDialogEvent.neutral(final List<MultiTextFieldDialogResult> results) = _Neutral;
+  const factory MultiTextFieldDialogEvent.neutral(List<MultiTextFieldDialogResult> results) = _Neutral;
 
-  const factory MultiTextFieldDialogEvent.negative(final List<MultiTextFieldDialogResult> results) = _Negative;
+  const factory MultiTextFieldDialogEvent.negative(List<MultiTextFieldDialogResult> results) = _Negative;
 }

@@ -16,12 +16,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class AuthenticationPage extends HookConsumerWidget {
-  const AuthenticationPage(this.authenticationType, {final Key? key}) : super(key: key);
+  const AuthenticationPage(this.authenticationType, {Key? key}) : super(key: key);
 
   final AuthenticationType authenticationType;
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final emailEditingController = useTextEditingController();
     final passwordEditingController = useTextEditingController();
     final confirmationPasswordEditingController = useTextEditingController();
@@ -32,25 +32,39 @@ class AuthenticationPage extends HookConsumerWidget {
     final isObscureConfirmationPasswordText = useState(true);
     final viewModel = ref.read(authenticationViewModelProvider);
     ref
-      ..listen<bool>(authenticationViewModelProvider.select((viewModel) => viewModel.isLoading), ((previous, isLoading) {
-        isLoading ? EasyLoading.show() : EasyLoading.dismiss();
-      }))
-      ..listen<Event<void>>(authenticationViewModelProvider.select((viewModel) => viewModel.completionAuthenticationEvent), ((previous, completionAuthenticationEvent) {
-        completionAuthenticationEvent((_) => _replaceMainPage(context));
-      }))
-      ..listen<Event<void>>(authenticationViewModelProvider.select((viewModel) => viewModel.completionReauthenticationEvent), ((previous, completionReauthenticationEvent) {
-        completionReauthenticationEvent((_) => Navigator.of(context).pop(true));
-      }))
-      ..listen<Event<Exception>>(authenticationViewModelProvider.select((viewModel) => viewModel.exceptionEvent), ((previous, exceptionEvent) {
-        exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
-      }));
+      ..listen<bool>(
+        authenticationViewModelProvider.select((viewModel) => viewModel.isLoading),
+        ((previous, isLoading) {
+          isLoading ? EasyLoading.show() : EasyLoading.dismiss();
+        }),
+      )
+      ..listen<Event<void>>(
+        authenticationViewModelProvider.select((viewModel) => viewModel.completionAuthenticationEvent),
+        ((previous, completionAuthenticationEvent) {
+          completionAuthenticationEvent((_) => _replaceMainPage(context));
+        }),
+      )
+      ..listen<Event<void>>(
+        authenticationViewModelProvider.select((viewModel) => viewModel.completionReauthenticationEvent),
+        ((previous, completionReauthenticationEvent) {
+          completionReauthenticationEvent((_) => Navigator.of(context).pop(true));
+        }),
+      )
+      ..listen<Event<Exception>>(
+        authenticationViewModelProvider.select((viewModel) => viewModel.exceptionEvent),
+        ((previous, exceptionEvent) {
+          exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
+        }),
+      );
     return Scaffold(
       appBar: AppBar(
-        title: Text(_whenType(
-          signUp: () => intl(context).signUp,
-          signIn: () => intl(context).signIn,
-          reauth: () => intl(context).reAuth,
-        )),
+        title: Text(
+          _whenType(
+            signUp: () => intl(context).signUp,
+            signIn: () => intl(context).signIn,
+            reauth: () => intl(context).reAuth,
+          ),
+        ),
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
@@ -146,7 +160,7 @@ class AuthenticationPage extends HookConsumerWidget {
     );
   }
 
-  Future<void> _signInWithGoogle(final BuildContext context, final WidgetRef ref) async {
+  Future<void> _signInWithGoogle(BuildContext context, WidgetRef ref) async {
     final viewModel = ref.read(authenticationViewModelProvider);
     try {
       final authInfo = await const GoogleAuthorizer().authorize(context);
@@ -156,7 +170,7 @@ class AuthenticationPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _signInWithApple(final BuildContext context, final WidgetRef ref) async {
+  Future<void> _signInWithApple(BuildContext context, WidgetRef ref) async {
     final viewModel = ref.read(authenticationViewModelProvider);
     try {
       final authInfo = await const AppleAuthorizer().authorize(context);
@@ -166,7 +180,7 @@ class AuthenticationPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _reauthorizeWithGoogle(final BuildContext context, final WidgetRef ref) async {
+  Future<void> _reauthorizeWithGoogle(BuildContext context, WidgetRef ref) async {
     final viewModel = ref.read(authenticationViewModelProvider);
     try {
       final authInfo = await const GoogleAuthorizer().authorize(context);
@@ -176,7 +190,7 @@ class AuthenticationPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _reauthorizeWithApple(final BuildContext context, final WidgetRef ref) async {
+  Future<void> _reauthorizeWithApple(BuildContext context, WidgetRef ref) async {
     final viewModel = ref.read(authenticationViewModelProvider);
     try {
       final authInfo = await const AppleAuthorizer().authorize(context);
@@ -186,15 +200,15 @@ class AuthenticationPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _replaceMainPage(final BuildContext context) async {
+  Future<void> _replaceMainPage(BuildContext context) async {
     await Navigator.pushAndRemoveUntil<void>(context, MaterialPageRoute(builder: (context) => const MainPage()), (route) => false);
   }
 
-  Future<void> _goPasswordReset(final BuildContext context) async {
+  Future<void> _goPasswordReset(BuildContext context) async {
     await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => const PasswordResetPage()));
   }
 
-  R _whenType<R>({required final R Function() signUp, required final R Function() signIn, required final R Function() reauth}) {
+  R _whenType<R>({required R Function() signUp, required R Function() signIn, required R Function() reauth}) {
     switch (authenticationType) {
       case AuthenticationType.signUp:
         return signUp();

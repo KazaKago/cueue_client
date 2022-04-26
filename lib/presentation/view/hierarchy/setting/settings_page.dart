@@ -25,24 +25,36 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsPage extends HookConsumerWidget {
-  const SettingsPage({final Key? key}) : super(key: key);
+  const SettingsPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.read(settingsViewModelProvider);
     ref
-      ..listen<Event<void>>(settingsViewModelProvider.select((viewModel) => viewModel.replaceWelcomePageEvent), ((previous, replaceWelcomePageEvent) {
-        replaceWelcomePageEvent((_) => _replaceWelcomePage(context));
-      }))
-      ..listen<Event<Exception>>(settingsViewModelProvider.select((viewModel) => viewModel.exceptionEvent), ((previous, exceptionEvent) {
-        exceptionEvent((exception) => _showErrorDialog(context, ref, exception));
-      }))
-      ..listen<Event<SettingResult>>(settingsViewModelProvider.select((viewModel) => viewModel.completionEvent), ((previous, resultEvent) {
-        resultEvent((result) => FriedToast(context, result.toFormattedString(context)).show());
-      }))
-      ..listen<bool>(settingsViewModelProvider.select((viewModel) => viewModel.isLoading), ((previous, isLoading) {
-        isLoading ? EasyLoading.show() : EasyLoading.dismiss();
-      }));
+      ..listen<Event<void>>(
+        settingsViewModelProvider.select((viewModel) => viewModel.replaceWelcomePageEvent),
+        ((previous, replaceWelcomePageEvent) {
+          replaceWelcomePageEvent((_) => _replaceWelcomePage(context));
+        }),
+      )
+      ..listen<Event<Exception>>(
+        settingsViewModelProvider.select((viewModel) => viewModel.exceptionEvent),
+        ((previous, exceptionEvent) {
+          exceptionEvent((exception) => _showErrorDialog(context, ref, exception));
+        }),
+      )
+      ..listen<Event<SettingResult>>(
+        settingsViewModelProvider.select((viewModel) => viewModel.completionEvent),
+        ((previous, resultEvent) {
+          resultEvent((result) => FriedToast(context, result.toFormattedString(context)).show());
+        }),
+      )
+      ..listen<bool>(
+        settingsViewModelProvider.select((viewModel) => viewModel.isLoading),
+        ((previous, isLoading) {
+          isLoading ? EasyLoading.show() : EasyLoading.dismiss();
+        }),
+      );
     return Scaffold(
       appBar: AppBar(title: Text(intl(context).settings)),
       body: RefreshIndicator(
@@ -70,13 +82,13 @@ class SettingsPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildAccountSettingsTitle(final BuildContext context, final WidgetRef ref) {
+  Widget _buildAccountSettingsTitle(BuildContext context, WidgetRef ref) {
     return ListTile(
       title: Text(intl(context).accountSettings, style: Theme.of(context).textTheme.caption),
     );
   }
 
-  Widget _buildEmailNotVerifiedTile(final BuildContext context, final WidgetRef ref) {
+  Widget _buildEmailNotVerifiedTile(BuildContext context, WidgetRef ref) {
     final state = ref.watch(settingsViewModelProvider.select((viewModel) => viewModel.state));
     return state.when(
       loading: () => const SizedBox(),
@@ -123,7 +135,7 @@ class SettingsPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildEmailChangingTile(final BuildContext context, final WidgetRef ref) {
+  Widget _buildEmailChangingTile(BuildContext context, WidgetRef ref) {
     final state = ref.watch(settingsViewModelProvider.select((viewModel) => viewModel.state));
     return state.when(
       loading: () => ListTile(
@@ -147,7 +159,7 @@ class SettingsPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildSignOutTile(final BuildContext context, final WidgetRef ref) {
+  Widget _buildSignOutTile(BuildContext context, WidgetRef ref) {
     return ListTile(
       title: Text(intl(context).logout),
       leading: const Icon(Icons.exit_to_app),
@@ -155,13 +167,13 @@ class SettingsPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildAccountConnectionTitle(final BuildContext context, final WidgetRef ref) {
+  Widget _buildAccountConnectionTitle(BuildContext context, WidgetRef ref) {
     return ListTile(
       title: Text(intl(context).accountConnection, style: Theme.of(context).textTheme.caption),
     );
   }
 
-  Widget _buildEmailConnectionTile(final BuildContext context, final WidgetRef ref) {
+  Widget _buildEmailConnectionTile(BuildContext context, WidgetRef ref) {
     final state = ref.watch(settingsViewModelProvider.select((viewModel) => viewModel.state));
     return state.when(
       loading: () => ListTile(
@@ -184,7 +196,7 @@ class SettingsPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildGoogleConnectionTile(final BuildContext context, final WidgetRef ref) {
+  Widget _buildGoogleConnectionTile(BuildContext context, WidgetRef ref) {
     final state = ref.watch(settingsViewModelProvider.select((viewModel) => viewModel.state));
     return state.when(
       loading: () => ListTile(
@@ -213,7 +225,7 @@ class SettingsPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildAppleConnectionTile(final BuildContext context, final WidgetRef ref) {
+  Widget _buildAppleConnectionTile(BuildContext context, WidgetRef ref) {
     final state = ref.watch(settingsViewModelProvider.select((viewModel) => viewModel.state));
     return state.when(
       loading: () => ListTile(
@@ -242,13 +254,13 @@ class SettingsPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildInfoTitle(final BuildContext context, final WidgetRef ref) {
+  Widget _buildInfoTitle(BuildContext context, WidgetRef ref) {
     return ListTile(
       title: Text(intl(context).info, style: Theme.of(context).textTheme.caption),
     );
   }
 
-  Widget _buildAboutAppTile(final BuildContext context, final WidgetRef ref) {
+  Widget _buildAboutAppTile(BuildContext context, WidgetRef ref) {
     return ListTile(
       title: Text(intl(context).aboutApp),
       leading: const Icon(Icons.info_outline),
@@ -256,7 +268,7 @@ class SettingsPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildTermsOfServicesTile(final BuildContext context, final WidgetRef ref) {
+  Widget _buildTermsOfServicesTile(BuildContext context, WidgetRef ref) {
     return ListTile(
       title: Text(intl(context).termsOfService),
       leading: const Icon(Icons.library_books),
@@ -264,7 +276,7 @@ class SettingsPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildPrivacyPolicyTile(final BuildContext context, final WidgetRef ref) {
+  Widget _buildPrivacyPolicyTile(BuildContext context, WidgetRef ref) {
     return ListTile(
       title: Text(intl(context).privacyPolicy),
       leading: const Icon(Icons.library_books),
@@ -272,7 +284,7 @@ class SettingsPage extends HookConsumerWidget {
     );
   }
 
-  Future<void> _linkWithGoogle(final BuildContext context, final WidgetRef ref) async {
+  Future<void> _linkWithGoogle(BuildContext context, WidgetRef ref) async {
     final viewModel = ref.read(settingsViewModelProvider);
     try {
       final authInfo = await const GoogleAuthorizer().authorize(context);
@@ -282,7 +294,7 @@ class SettingsPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _linkWithApple(final BuildContext context, final WidgetRef ref) async {
+  Future<void> _linkWithApple(BuildContext context, WidgetRef ref) async {
     final viewModel = ref.read(settingsViewModelProvider);
     try {
       final authInfo = await const AppleAuthorizer().authorize(context);
@@ -292,7 +304,7 @@ class SettingsPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _showEmailInputDialog(final BuildContext context, final WidgetRef ref, {final String? defaultText}) async {
+  Future<void> _showEmailInputDialog(BuildContext context, WidgetRef ref, {String? defaultText}) async {
     final event = await TextFieldDialog(context, title: intl(context).changeMailAddress, labelText: intl(context).wantToChangeMailAddress, defaultText: defaultText, keyboardType: TextInputType.emailAddress, positiveButton: intl(context).doChange, negativeButton: intl(context).cancel).show();
     if (event != null) {
       await event.when(
@@ -306,7 +318,7 @@ class SettingsPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _showPasswordInputDialog(final BuildContext context, final WidgetRef ref, {final String? defaultText}) async {
+  Future<void> _showPasswordInputDialog(BuildContext context, WidgetRef ref, {String? defaultText}) async {
     final event = await MultiTextFieldDialog(context, [TextFieldContent(labelText: intl(context).wantToChangePassword, defaultText: defaultText, keyboardType: TextInputType.visiblePassword), TextFieldContent(labelText: intl(context).reInputPassword, keyboardType: TextInputType.visiblePassword)], title: intl(context).setPassword, positiveButton: intl(context).doSet, negativeButton: intl(context).cancel).show();
     if (event != null) {
       await event.when(
@@ -320,7 +332,7 @@ class SettingsPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _showUnlinkWithGoogleConfirmationDialog(final BuildContext context, final WidgetRef ref) async {
+  Future<void> _showUnlinkWithGoogleConfirmationDialog(BuildContext context, WidgetRef ref) async {
     final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmToUnConnectGoogle, positiveButton: intl(context).unConnect, negativeButton: intl(context).cancel).show();
     if (event != null) {
       await event.when(
@@ -334,7 +346,7 @@ class SettingsPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _showUnlinkWithAppleConfirmationDialog(final BuildContext context, final WidgetRef ref) async {
+  Future<void> _showUnlinkWithAppleConfirmationDialog(BuildContext context, WidgetRef ref) async {
     final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmToUnConnectApple, positiveButton: intl(context).unConnect, negativeButton: intl(context).cancel).show();
     if (event != null) {
       await event.when(
@@ -348,7 +360,7 @@ class SettingsPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _showSignOutConfirmationDialog(final BuildContext context, final WidgetRef ref) async {
+  Future<void> _showSignOutConfirmationDialog(BuildContext context, WidgetRef ref) async {
     final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmLogout, positiveButton: intl(context).logout, negativeButton: intl(context).cancel).show();
     if (event != null) {
       await event.when(
@@ -362,7 +374,7 @@ class SettingsPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _showSendingEmailVerificationConfirmationDialog(final BuildContext context, final WidgetRef ref, final Email email) async {
+  Future<void> _showSendingEmailVerificationConfirmationDialog(BuildContext context, WidgetRef ref, Email email) async {
     final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmSendingMailTo(email.value), positiveButton: intl(context).doSend, negativeButton: intl(context).cancel).show();
     if (event != null) {
       await event.when(
@@ -376,7 +388,7 @@ class SettingsPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _showErrorDialog(final BuildContext context, final WidgetRef ref, final Exception exception) async {
+  Future<void> _showErrorDialog(BuildContext context, WidgetRef ref, Exception exception) async {
     await const ExceptionHandler().showMessageDialog(context, ref, exception);
     if (exception is EmailValidationException) {
       await _showEmailInputDialog(context, ref, defaultText: exception.value);
@@ -387,19 +399,19 @@ class SettingsPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _replaceWelcomePage(final BuildContext context) {
+  Future<void> _replaceWelcomePage(BuildContext context) {
     return Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const WelcomePage()), (_) => false);
   }
 
-  Future<void> _showAbout(final BuildContext context) {
+  Future<void> _showAbout(BuildContext context) {
     return Navigator.push(context, MaterialPageRoute(builder: (context) => const AboutPage()));
   }
 
   Future<void> _goTermsOfService() async {
-    await launch(termsOfServiceUrl.toString());
+    await launchUrl(termsOfServiceUrl);
   }
 
   Future<void> _goPrivacyPolicy() async {
-    await launch(privacyPolicyUrl.toString());
+    await launchUrl(privacyPolicyUrl);
   }
 }

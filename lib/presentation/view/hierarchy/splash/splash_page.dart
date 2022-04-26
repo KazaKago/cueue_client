@@ -9,10 +9,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SplashPage extends HookConsumerWidget {
-  const SplashPage({final Key? key}) : super(key: key);
+  const SplashPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final splashAnimationController = useAnimationController(duration: const Duration(milliseconds: 500));
     ref.listen<Event<NextSplashRoutePattern>>(splashViewModelProvider.select((viewModel) => viewModel.nextRouteEvent), (previous, nextRouteEvent) {
       nextRouteEvent((nextRoute) {
@@ -33,7 +33,7 @@ class SplashPage extends HookConsumerWidget {
     );
   }
 
-  void _splashAnimationHandler(final BuildContext context, final AnimationStatus status, final NextSplashRoutePattern nextRoute) {
+  void _splashAnimationHandler(BuildContext context, AnimationStatus status, NextSplashRoutePattern nextRoute) {
     switch (status) {
       case AnimationStatus.dismissed:
         break;
@@ -47,7 +47,7 @@ class SplashPage extends HookConsumerWidget {
     }
   }
 
-  Route<Widget> _parseNextRoutePattern(final NextSplashRoutePattern nextRoute) {
+  Route<Widget> _parseNextRoutePattern(NextSplashRoutePattern nextRoute) {
     Widget page;
     switch (nextRoute) {
       case NextSplashRoutePattern.main:

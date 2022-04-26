@@ -10,16 +10,15 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class WelcomePage extends HookConsumerWidget {
-  const WelcomePage({final Key? key}) : super(key: key);
+  const WelcomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: SafeArea(
         child: Center(
           child: Column(
-            mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -79,23 +78,23 @@ class WelcomePage extends HookConsumerWidget {
     );
   }
 
-  Future<void> _goSignUp(final BuildContext context) async {
+  Future<void> _goSignUp(BuildContext context) async {
     await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => const AuthenticationPage(AuthenticationType.signUp)));
   }
 
-  Future<void> _goSignIn(final BuildContext context) async {
+  Future<void> _goSignIn(BuildContext context) async {
     await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => const AuthenticationPage(AuthenticationType.signIn)));
   }
 
   Future<void> _goTermsOfService() async {
-    await launch(termsOfServiceUrl.toString());
+    await launchUrl(termsOfServiceUrl);
   }
 
   Future<void> _goPrivacyPolicy() async {
-    await launch(privacyPolicyUrl.toString());
+    await launchUrl(privacyPolicyUrl);
   }
 
-  Future<void> _goAbout(final BuildContext context) async {
+  Future<void> _goAbout(BuildContext context) async {
     await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => const AboutPage()));
   }
 }

@@ -8,7 +8,7 @@ class CreateRecipeUseCaseImpl implements CreateRecipeUseCase {
   final RecipeRepository _recipeRepository;
 
   @override
-  Future<void> call(final RecipeRegistration recipeRegistration) {
+  Future<void> call(RecipeRegistration recipeRegistration) {
     return _recipeRepository.create(recipeRegistration);
   }
 }

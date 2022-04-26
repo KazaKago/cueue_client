@@ -6,12 +6,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SignInWithGoogleButton extends AbstractSignInButton {
   const SignInWithGoogleButton({
-    final Key? key,
-    required final AuthenticationType authenticationType,
-    required final bool enabled,
-    required final void Function() onSignUp,
-    required final void Function() onSignIn,
-    required final void Function() onReauth,
+    Key? key,
+    required AuthenticationType authenticationType,
+    required bool enabled,
+    required void Function() onSignUp,
+    required void Function() onSignIn,
+    required void Function() onReauth,
   }) : super(
           key: key,
           authenticationType: authenticationType,
@@ -22,7 +22,7 @@ class SignInWithGoogleButton extends AbstractSignInButton {
         );
 
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     return buildButton(
       context,
       iconData: FontAwesomeIcons.google,

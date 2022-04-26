@@ -4,9 +4,9 @@ part 'text_field_dialog_event.freezed.dart';
 
 @freezed
 class TextFieldDialogEvent with _$TextFieldDialogEvent {
-  const factory TextFieldDialogEvent.positive(final String currentText, {final String? originalText}) = _Positive;
+  const factory TextFieldDialogEvent.positive(String currentText, {String? originalText}) = _Positive;
 
-  const factory TextFieldDialogEvent.neutral(final String currentText, {final String? originalText}) = _Neutral;
+  const factory TextFieldDialogEvent.neutral(String currentText, {String? originalText}) = _Neutral;
 
-  const factory TextFieldDialogEvent.negative(final String currentText, {final String? originalText}) = _Negative;
+  const factory TextFieldDialogEvent.negative(String currentText, {String? originalText}) = _Negative;
 }

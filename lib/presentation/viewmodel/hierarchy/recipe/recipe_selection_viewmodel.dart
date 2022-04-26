@@ -24,27 +24,29 @@ class RecipeSelectionViewModel with ChangeNotifier {
 
   RecipeSelectionState get state => _state;
 
-  set state(final RecipeSelectionState state) {
+  set state(RecipeSelectionState state) {
     _state = state;
     notifyListeners();
   }
 
   List<RecipeSummary> get selectedRecipes => _selectedRecipes;
 
-  set selectedRecipes(final List<RecipeSummary> recipes) {
+  set selectedRecipes(List<RecipeSummary> recipes) {
     _selectedRecipes = recipes;
     notifyListeners();
   }
 
   void _follow() {
     final followTagsUseCase = _followTagsUseCase();
-    _compositeSubscription.add(followTagsUseCase.listen((state) {
-      this.state = state.when(
-        loading: (content) => const RecipeSelectionState.loading(),
-        completed: (content, next, prev) => RecipeSelectionState.completed(content),
-        error: (exception) => RecipeSelectionState.error(exception),
-      );
-    }));
+    _compositeSubscription.add(
+      followTagsUseCase.listen((state) {
+        this.state = state.when(
+          loading: (content) => const RecipeSelectionState.loading(),
+          completed: (content, next, prev) => RecipeSelectionState.completed(content),
+          error: (exception) => RecipeSelectionState.error(exception),
+        );
+      }),
+    );
   }
 
   Future<void> retry() async {

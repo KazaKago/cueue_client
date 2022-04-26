@@ -8,10 +8,10 @@ part 'user_response.g.dart';
 class UserResponse with _$UserResponse {
   const factory UserResponse({
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'id') required final int id,
+    @JsonKey(name: 'id') required int id,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'workspaces') required final List<WorkspaceResponse> workspaces,
+    @JsonKey(name: 'workspaces') required List<WorkspaceResponse> workspaces,
   }) = _UserResponse;
 
-  factory UserResponse.fromJson(final Map<String, dynamic> json) => _$UserResponseFromJson(json);
+  factory UserResponse.fromJson(Map<String, dynamic> json) => _$UserResponseFromJson(json);
 }

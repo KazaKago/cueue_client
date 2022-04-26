@@ -20,26 +20,26 @@ class MenuFlowableFactory implements StoreFlowableFactory<MenuId, Menu> {
   FlowableDataStateManager<MenuId> getFlowableDataStateManager() => _menuStateManager;
 
   @override
-  Future<Menu?> loadDataFromCache(final MenuId param) async {
+  Future<Menu?> loadDataFromCache(MenuId param) async {
     return _menuCache.menuMap[param];
   }
 
   @override
-  Future<void> saveDataToCache(final Menu? newData, final MenuId param) async {
+  Future<void> saveDataToCache(Menu? newData, MenuId param) async {
     _menuCache
       ..menuMap[param] = newData
       ..menuCreatedAtMap[param] = DateTime.now();
   }
 
   @override
-  Future<Menu> fetchDataFromOrigin(final MenuId param) async {
+  Future<Menu> fetchDataFromOrigin(MenuId param) async {
     final user = await _userFlowableFactory.create(null).requireData();
     final response = await _getMenuApi.execute(user.currentWorkspace.id.value, menuId: param.value);
     return _menuResponseMapper.map(response);
   }
 
   @override
-  Future<bool> needRefresh(final Menu cachedData, final MenuId param) async {
+  Future<bool> needRefresh(Menu cachedData, MenuId param) async {
     final createdAt = _menuCache.menuCreatedAtMap[param];
     if (createdAt != null) {
       final expiredTime = createdAt.add(const Duration(minutes: 30));

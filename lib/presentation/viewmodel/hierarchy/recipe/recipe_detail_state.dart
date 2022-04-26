@@ -7,7 +7,7 @@ part 'recipe_detail_state.freezed.dart';
 class RecipeDetailState with _$RecipeDetailState {
   const factory RecipeDetailState.loading() = _Loading;
 
-  const factory RecipeDetailState.completed(final Recipe recipe) = _Completed;
+  const factory RecipeDetailState.completed(Recipe recipe) = _Completed;
 
-  const factory RecipeDetailState.error(final Exception error) = _Error;
+  const factory RecipeDetailState.error(Exception error) = _Error;
 }

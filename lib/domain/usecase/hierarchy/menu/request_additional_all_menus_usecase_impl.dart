@@ -7,7 +7,7 @@ class RequestAdditionalAllMenusUseCaseImpl implements RequestAdditionalAllMenusU
   final MenuRepository _menuRepository;
 
   @override
-  Future<void> call({required final bool continueWhenError}) {
+  Future<void> call({required bool continueWhenError}) {
     return _menuRepository.requestAdditionalAllData(continueWhenError: continueWhenError);
   }
 }

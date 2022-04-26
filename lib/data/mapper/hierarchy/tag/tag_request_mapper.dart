@@ -4,7 +4,7 @@ import 'package:cueue/domain/model/hierarchy/tag/tag_registration.dart';
 class TagRequestMapper {
   const TagRequestMapper();
 
-  TagRequest map(final TagRegistration tagRegistration) {
+  TagRequest map(TagRegistration tagRegistration) {
     return TagRequest(name: tagRegistration.name);
   }
 }

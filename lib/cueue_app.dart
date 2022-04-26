@@ -2,18 +2,16 @@ import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/hierarchy/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 class CueueApp extends StatelessWidget {
-  const CueueApp({final Key? key}) : super(key: key);
+  const CueueApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     final lightThemeColor = Colors.lightGreen.shade500;
-    final lightThemeVariantColor = Colors.lightGreen.shade700;
     final darkThemeColor = Colors.lightGreen.shade700;
-    final darkThemeVariantColor = Colors.lightGreen.shade900;
     EasyLoading.instance
       ..maskType = EasyLoadingMaskType.black
       ..indicatorType = EasyLoadingIndicatorType.dualRing
@@ -23,8 +21,8 @@ class CueueApp extends StatelessWidget {
       ..backgroundColor = Colors.transparent;
     return MaterialApp(
       onGenerateTitle: (context) => intl(context).appName,
-      theme: _buildTheme(ColorScheme.light(primary: lightThemeColor, primaryVariant: lightThemeVariantColor, secondary: lightThemeColor, secondaryVariant: lightThemeVariantColor)),
-      darkTheme: _buildTheme(ColorScheme.dark(primary: darkThemeColor, primaryVariant: darkThemeVariantColor, secondary: darkThemeColor, secondaryVariant: darkThemeVariantColor)),
+      theme: _buildTheme(ColorScheme.light(primary: lightThemeColor, secondary: lightThemeColor)),
+      darkTheme: _buildTheme(ColorScheme.dark(primary: darkThemeColor, secondary: darkThemeColor)),
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -39,12 +37,11 @@ class CueueApp extends StatelessWidget {
     );
   }
 
-  ThemeData _buildTheme(final ColorScheme colorScheme) {
+  ThemeData _buildTheme(ColorScheme colorScheme) {
     final isDark = colorScheme.brightness == Brightness.dark;
     return ThemeData(
       colorScheme: colorScheme,
       primaryColor: colorScheme.primary,
-      primaryColorBrightness: isDark ? Brightness.dark : Brightness.light /* Need for AppBar title & icon color. */,
       toggleableActiveColor: colorScheme.primary /* Need for Checkbox color on dark theme, Maybe bug of Flutter. */,
       appBarTheme: AppBarTheme(
         foregroundColor: isDark ? Colors.white : Colors.black,

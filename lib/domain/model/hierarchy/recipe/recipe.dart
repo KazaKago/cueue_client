@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:cueue/domain/model/hierarchy/content/content.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_id.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_summary.dart';
@@ -9,16 +10,16 @@ part 'recipe.freezed.dart';
 @freezed
 class Recipe with _$Recipe implements RecipeSummary {
   const factory Recipe({
-    required final RecipeId id,
-    required final String title,
-    required final String description,
-    required final Uri? url,
-    required final List<Content> images,
-    required final List<Tag> tags,
-    required final List<DateTime> cookingHistories,
-    required final int cookingCount,
-    required final DateTime createdAt,
-    required final DateTime updatedAt,
+    required RecipeId id,
+    required String title,
+    required String description,
+    required Uri? url,
+    required List<Content> images,
+    required List<Tag> tags,
+    required List<DateTime> cookingHistories,
+    required int cookingCount,
+    required DateTime createdAt,
+    required DateTime updatedAt,
   }) = _Recipe;
 
   const Recipe._();

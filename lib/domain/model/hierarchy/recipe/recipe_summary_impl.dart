@@ -8,9 +8,9 @@ part 'recipe_summary_impl.freezed.dart';
 @freezed
 class RecipeSummaryImpl with _$RecipeSummaryImpl implements RecipeSummary {
   const factory RecipeSummaryImpl({
-    required final RecipeId id,
-    required final String title,
-    required final Content? image,
-    required final DateTime? lastCookingAt,
+    required RecipeId id,
+    required String title,
+    required Content? image,
+    required DateTime? lastCookingAt,
   }) = _RecipeSummaryImpl;
 }

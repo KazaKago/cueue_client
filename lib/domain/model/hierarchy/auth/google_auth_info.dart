@@ -5,7 +5,7 @@ part 'google_auth_info.freezed.dart';
 @freezed
 class GoogleAuthInfo with _$GoogleAuthInfo {
   const factory GoogleAuthInfo({
-    required final String accessToken,
-    required final String idToken,
+    required String accessToken,
+    required String idToken,
   }) = _GoogleAuthInfo;
 }

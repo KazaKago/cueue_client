@@ -43,48 +43,50 @@ class RecipeEditingViewModel with ChangeNotifier {
 
   RecipeEditingState get state => _state;
 
-  set state(final RecipeEditingState state) {
+  set state(RecipeEditingState state) {
     _state = state;
     notifyListeners();
   }
 
   Event<EditingResult> get completionEvent => _completionEvent;
 
-  set completionEvent(final Event<EditingResult> completion) {
+  set completionEvent(Event<EditingResult> completion) {
     _completionEvent = completion;
     notifyListeners();
   }
 
   Event<Exception> get exceptionEvent => _exceptionEvent;
 
-  set exceptionEvent(final Event<Exception> exception) {
+  set exceptionEvent(Event<Exception> exception) {
     _exceptionEvent = exception;
     notifyListeners();
   }
 
   bool get isLoading => _isLoading;
 
-  set isLoading(final bool isLoading) {
+  set isLoading(bool isLoading) {
     _isLoading = isLoading;
     notifyListeners();
   }
 
   bool get isCreatingImage => _isCreatingImage;
 
-  set isCreatingImage(final bool isCreatingImage) {
+  set isCreatingImage(bool isCreatingImage) {
     _isCreatingImage = isCreatingImage;
     notifyListeners();
   }
 
   void _follow() {
     final followTagsUseCase = _followTagsUseCase();
-    _compositeSubscription.add(followTagsUseCase.listen((state) {
-      this.state = state.when(
-        loading: (content) => const RecipeEditingState.loading(),
-        completed: (content, next, prev) => RecipeEditingState.completed(content),
-        error: (exception) => RecipeEditingState.error(exception),
-      );
-    }));
+    _compositeSubscription.add(
+      followTagsUseCase.listen((state) {
+        this.state = state.when(
+          loading: (content) => const RecipeEditingState.loading(),
+          completed: (content, next, prev) => RecipeEditingState.completed(content),
+          error: (exception) => RecipeEditingState.error(exception),
+        );
+      }),
+    );
   }
 
   Future<void> refresh() async {
@@ -95,7 +97,7 @@ class RecipeEditingViewModel with ChangeNotifier {
     await refresh();
   }
 
-  Future<Content?> createImage(final File imageFile) async {
+  Future<Content?> createImage(File imageFile) async {
     Content? content;
     isCreatingImage = true;
     try {
@@ -107,7 +109,7 @@ class RecipeEditingViewModel with ChangeNotifier {
     return content;
   }
 
-  Future<void> createRecipe(final String title, final String description, final String url, final List<Content> images, final List<TagId> tagIds) async {
+  Future<void> createRecipe(String title, String description, String url, List<Content> images, List<TagId> tagIds) async {
     isLoading = true;
     try {
       final parsedUrl = url.isNotEmpty ? Uri.parse(url) : null;
@@ -119,7 +121,7 @@ class RecipeEditingViewModel with ChangeNotifier {
     isLoading = false;
   }
 
-  Future<void> updateRecipe(final RecipeId recipeId, final String title, final String description, final String url, final List<Content> images, final List<TagId> tagIds) async {
+  Future<void> updateRecipe(RecipeId recipeId, String title, String description, String url, List<Content> images, List<TagId> tagIds) async {
     isLoading = true;
     try {
       final parsedUrl = url.isNotEmpty ? Uri.parse(url) : null;
@@ -131,7 +133,7 @@ class RecipeEditingViewModel with ChangeNotifier {
     isLoading = false;
   }
 
-  Future<void> deleteRecipe(final RecipeId recipeId) async {
+  Future<void> deleteRecipe(RecipeId recipeId) async {
     isLoading = true;
     try {
       await _deleteRecipeUseCase(recipeId);

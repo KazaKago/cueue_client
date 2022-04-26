@@ -13,7 +13,7 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 class AppleAuthorizer {
   const AppleAuthorizer();
 
-  Future<AppleAuthInfo> authorize(final BuildContext context) async {
+  Future<AppleAuthInfo> authorize(BuildContext context) async {
     try {
       final rawNonce = Nonce.generate();
       final state = Nonce.generate();

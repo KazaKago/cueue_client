@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ErrorHandlingWidget extends ConsumerWidget {
-  const ErrorHandlingWidget(this._exception, {final void Function()? onClickRetry, final Key? key})
+  const ErrorHandlingWidget(this._exception, {void Function()? onClickRetry, Key? key})
       : _onClickRetry = onClickRetry,
         super(key: key);
 
@@ -12,7 +12,7 @@ class ErrorHandlingWidget extends ConsumerWidget {
   final void Function()? _onClickRetry;
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       padding: const EdgeInsets.all(16),
       child: Center(

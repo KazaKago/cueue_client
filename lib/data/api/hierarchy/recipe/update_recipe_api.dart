@@ -9,7 +9,7 @@ class UpdateRecipeApi {
 
   final AuthorizedApiRequester _requester;
 
-  Future<RecipeResponse> execute(final int workspaceId, final int recipeId, final RecipeRequest request) async {
+  Future<RecipeResponse> execute(int workspaceId, int recipeId, RecipeRequest request) async {
     try {
       final response = await _requester.create().patch<Map<String, dynamic>>('/$workspaceId/recipes/$recipeId', data: request);
       return RecipeResponse.fromJson(response.data!);

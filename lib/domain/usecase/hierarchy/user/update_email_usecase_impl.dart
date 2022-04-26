@@ -8,7 +8,7 @@ class UpdateEmailUseCaseImpl implements UpdateEmailUseCase {
   final UserRepository _userRepository;
 
   @override
-  Future<void> call(final Email email) {
+  Future<void> call(Email email) {
     return _userRepository.updateEmail(email);
   }
 }

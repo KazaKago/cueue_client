@@ -24,20 +24,22 @@ class RecipeDetailViewModel with ChangeNotifier {
 
   RecipeDetailState get state => _state;
 
-  set state(final RecipeDetailState state) {
+  set state(RecipeDetailState state) {
     _state = state;
     notifyListeners();
   }
 
   void _follow() {
     final followRecipeUseCase = _followRecipeUseCase(_recipeId);
-    _compositeSubscription.add(followRecipeUseCase.listen((state) {
-      this.state = state.when(
-        loading: (content) => (content != null) ? RecipeDetailState.completed(content) : const RecipeDetailState.loading(),
-        completed: (content, next, prev) => RecipeDetailState.completed(content),
-        error: (exception) => RecipeDetailState.error(exception),
-      );
-    }));
+    _compositeSubscription.add(
+      followRecipeUseCase.listen((state) {
+        this.state = state.when(
+          loading: (content) => (content != null) ? RecipeDetailState.completed(content) : const RecipeDetailState.loading(),
+          completed: (content, next, prev) => RecipeDetailState.completed(content),
+          error: (exception) => RecipeDetailState.error(exception),
+        );
+      }),
+    );
   }
 
   Future<void> refresh() async {

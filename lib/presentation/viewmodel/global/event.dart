@@ -1,5 +1,5 @@
 class Event<T> {
-  factory Event(final T rawEvent) {
+  factory Event(T rawEvent) {
     return Event._(rawEvent, false);
   }
 
@@ -12,7 +12,7 @@ class Event<T> {
   final T? _rawEvent;
   final bool _isInitial;
 
-  void call(final void Function(T rawEvent) invoke) {
+  void call(void Function(T rawEvent) invoke) {
     if (!_isInitial) invoke(_rawEvent as T);
   }
 }

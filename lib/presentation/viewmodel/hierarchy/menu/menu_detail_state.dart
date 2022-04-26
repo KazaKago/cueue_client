@@ -7,7 +7,7 @@ part 'menu_detail_state.freezed.dart';
 class MenuDetailState with _$MenuDetailState {
   const factory MenuDetailState.loading() = _Loading;
 
-  const factory MenuDetailState.completed(final Menu menu) = _Completed;
+  const factory MenuDetailState.completed(Menu menu) = _Completed;
 
-  const factory MenuDetailState.error(final Exception error) = _Error;
+  const factory MenuDetailState.error(Exception error) = _Error;
 }

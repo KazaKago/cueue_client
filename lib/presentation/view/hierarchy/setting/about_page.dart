@@ -8,10 +8,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends HookConsumerWidget {
-  const AboutPage({final Key? key}) : super(key: key);
+  const AboutPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(aboutViewModelProvider.select((viewModel) => viewModel.state));
     return Scaffold(
       appBar: AppBar(
@@ -26,11 +26,11 @@ class AboutPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildLoading(final BuildContext context, final WidgetRef ref) {
+  Widget _buildLoading(BuildContext context, WidgetRef ref) {
     return const SizedBox();
   }
 
-  Widget _buildCompleted(final BuildContext context, final WidgetRef ref, final AppInfo appInfo, final DeveloperInfo developerInfo) {
+  Widget _buildCompleted(BuildContext context, WidgetRef ref, AppInfo appInfo, DeveloperInfo developerInfo) {
     return Column(
       children: <Widget>[
         const SizedBox(height: 48),
@@ -62,11 +62,11 @@ class AboutPage extends HookConsumerWidget {
     );
   }
 
-  Future<bool> _openUri(final Uri uri) {
-    return launch(uri.toString());
+  Future<bool> _openUri(Uri uri) {
+    return launchUrl(uri);
   }
 
-  Future<void> _goOssLicense(final BuildContext context, final WidgetRef ref, final AppInfo appInfo, final DeveloperInfo developerInfo) async {
+  Future<void> _goOssLicense(BuildContext context, WidgetRef ref, AppInfo appInfo, DeveloperInfo developerInfo) async {
     showLicensePage(
       context: context,
       applicationName: appInfo.appName,

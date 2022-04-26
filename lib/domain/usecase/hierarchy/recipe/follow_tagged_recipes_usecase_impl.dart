@@ -10,7 +10,7 @@ class FollowTaggedRecipesUseCaseImpl implements FollowTaggedRecipesUseCase {
   final RecipeRepository _recipeRepository;
 
   @override
-  LoadingStateStream<List<RecipeSummary>> call(final TagId tagId) {
+  LoadingStateStream<List<RecipeSummary>> call(TagId tagId) {
     return _recipeRepository.followTaggedData(tagId);
   }
 }

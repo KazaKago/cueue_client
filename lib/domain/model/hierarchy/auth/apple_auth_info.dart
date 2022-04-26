@@ -5,8 +5,8 @@ part 'apple_auth_info.freezed.dart';
 @freezed
 class AppleAuthInfo with _$AppleAuthInfo {
   const factory AppleAuthInfo({
-    required final String idToken,
-    required final String accessToken,
-    required final String rawNonce,
+    required String idToken,
+    required String accessToken,
+    required String rawNonce,
   }) = _AppleAuthInfo;
 }

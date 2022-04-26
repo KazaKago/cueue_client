@@ -46,14 +46,14 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<void> updateEmail(final Email email) async {
+  Future<void> updateEmail(Email email) async {
     await _passwordSignaturer.updateEmail(email);
     final userFlowable = _userFlowableFactory.create(null);
     await userFlowable.refresh();
   }
 
   @override
-  Future<void> updatePassword(final Password password) async {
+  Future<void> updatePassword(Password password) async {
     await _passwordSignaturer.updatePassword(password);
     final userFlowable = _userFlowableFactory.create(null);
     await userFlowable.refresh();
@@ -66,7 +66,7 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<void> sendPasswordResetEmail(final Email email) async {
+  Future<void> sendPasswordResetEmail(Email email) async {
     try {
       await auth.FirebaseAuth.instance.sendPasswordResetEmail(email: email.value);
     } on auth.FirebaseAuthException catch (exception) {

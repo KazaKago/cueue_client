@@ -8,7 +8,7 @@ class CreateMenuUseCaseImpl implements CreateMenuUseCase {
   final MenuRepository _menuRepository;
 
   @override
-  Future<void> call(final MenuRegistration menuRegistration) {
+  Future<void> call(MenuRegistration menuRegistration) {
     return _menuRepository.create(menuRegistration);
   }
 }

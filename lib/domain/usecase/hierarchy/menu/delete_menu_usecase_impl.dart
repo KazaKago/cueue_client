@@ -8,7 +8,7 @@ class DeleteMenuUseCaseImpl implements DeleteMenuUseCase {
   final MenuRepository _menuRepository;
 
   @override
-  Future<void> call(final MenuId menuId) {
+  Future<void> call(MenuId menuId) {
     return _menuRepository.delete(menuId);
   }
 }

@@ -9,7 +9,7 @@ class UpdateRecipeUseCaseImpl implements UpdateRecipeUseCase {
   final RecipeRepository _recipeRepository;
 
   @override
-  Future<void> call(final RecipeId recipeId, final RecipeRegistration recipeRegistration) {
+  Future<void> call(RecipeId recipeId, RecipeRegistration recipeRegistration) {
     return _recipeRepository.update(recipeId, recipeRegistration);
   }
 }

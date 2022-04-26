@@ -6,7 +6,7 @@ part 'content.freezed.dart';
 @freezed
 class Content with _$Content {
   const factory Content({
-    required final ContentKey key,
-    required final Uri url,
+    required ContentKey key,
+    required Uri url,
   }) = _Content;
 }

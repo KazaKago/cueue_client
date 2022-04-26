@@ -31,7 +31,7 @@ class MainNavigationItem {
 }
 
 class MainNavigationItemList extends ListBase<MainNavigationItem> {
-  factory MainNavigationItemList(final BuildContext context) {
+  factory MainNavigationItemList(BuildContext context) {
     final rawList = [
       MainNavigationItem(const MenuPage(), intl(context).cookingMenu, FontAwesomeIcons.calendar, fabPage: MenuEditingPage(), fabIcon: Icons.add, fabLabel: intl(context).addCookingMenu),
       MainNavigationItem(const RecipePage(), intl(context).recipe, FontAwesomeIcons.utensils, fabPage: const RecipeEditingPage(), fabIcon: Icons.add, fabLabel: intl(context).addRecipe),
@@ -49,15 +49,15 @@ class MainNavigationItemList extends ListBase<MainNavigationItem> {
   int get length => rawList.length;
 
   @override
-  set length(final int newLength) {
+  set length(int newLength) {
     rawList.length = newLength;
   }
 
   @override
-  MainNavigationItem operator [](final int index) => rawList[index];
+  MainNavigationItem operator [](int index) => rawList[index];
 
   @override
-  void operator []=(final int index, final MainNavigationItem value) {
+  void operator []=(int index, MainNavigationItem value) {
     rawList[index] = value;
   }
 

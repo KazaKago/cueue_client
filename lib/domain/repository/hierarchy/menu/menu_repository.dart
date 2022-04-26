@@ -7,17 +7,17 @@ import 'package:store_flowable/store_flowable_core.dart';
 abstract class MenuRepository {
   LoadingStateStream<List<MenuSummary>> followAllData();
 
-  LoadingStateStream<Menu> followData(final MenuId menuId);
+  LoadingStateStream<Menu> followData(MenuId menuId);
 
   Future<void> refreshAllData();
 
-  Future<void> refreshData(final MenuId menuId);
+  Future<void> refreshData(MenuId menuId);
 
-  Future<void> requestAdditionalAllData({required final bool continueWhenError});
+  Future<void> requestAdditionalAllData({required bool continueWhenError});
 
-  Future<void> create(final MenuRegistration menuRegistration);
+  Future<void> create(MenuRegistration menuRegistration);
 
-  Future<void> update(final MenuId menuId, final MenuRegistration menuRegistration);
+  Future<void> update(MenuId menuId, MenuRegistration menuRegistration);
 
-  Future<void> delete(final MenuId menuId);
+  Future<void> delete(MenuId menuId);
 }

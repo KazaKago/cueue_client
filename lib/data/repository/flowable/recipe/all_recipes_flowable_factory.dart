@@ -19,26 +19,26 @@ class AllRecipesFlowableFactory extends PaginationStoreFlowableFactory<void, Lis
   FlowableDataStateManager<void> getFlowableDataStateManager() => _allRecipesStateManager;
 
   @override
-  Future<List<RecipeId>?> loadDataFromCache(final void param) async {
+  Future<List<RecipeId>?> loadDataFromCache(void param) async {
     return _recipeCache.allRecipeIds;
   }
 
   @override
-  Future<void> saveDataToCache(final List<RecipeId>? newData, final void param) async {
+  Future<void> saveDataToCache(List<RecipeId>? newData, void param) async {
     _recipeCache
       ..allRecipeIds = newData
       ..allRecipeIdsCreatedAt = DateTime.now();
   }
 
   @override
-  Future<void> saveNextDataToCache(final List<RecipeId> cachedData, final List<RecipeId> newData, final void param) async {
+  Future<void> saveNextDataToCache(List<RecipeId> cachedData, List<RecipeId> newData, void param) async {
     _recipeCache.allRecipeIds = cachedData + newData;
   }
 
   @override
-  Future<Fetched<List<RecipeId>>> fetchDataFromOrigin(final void param) async {
+  Future<Fetched<List<RecipeId>>> fetchDataFromOrigin(void param) async {
     final user = await _userFlowableFactory.create(null).requireData();
-    final responses = await _getRecipesApi.execute(user.currentWorkspace.id.value, afterId: null);
+    final responses = await _getRecipesApi.execute(user.currentWorkspace.id.value);
     final recipeIds = responses.map((response) {
       final recipe = _recipeSummaryResponseMapper.map(response);
       _recipeCache.recipeSummaryMap.value[recipe.id] = recipe;
@@ -51,7 +51,7 @@ class AllRecipesFlowableFactory extends PaginationStoreFlowableFactory<void, Lis
   }
 
   @override
-  Future<Fetched<List<RecipeId>>> fetchNextDataFromOrigin(final String nextKey, final void param) async {
+  Future<Fetched<List<RecipeId>>> fetchNextDataFromOrigin(String nextKey, void param) async {
     final user = await _userFlowableFactory.create(null).requireData();
     final responses = await _getRecipesApi.execute(user.currentWorkspace.id.value, afterId: int.parse(nextKey));
     final recipeIds = responses.map((response) {
@@ -66,7 +66,7 @@ class AllRecipesFlowableFactory extends PaginationStoreFlowableFactory<void, Lis
   }
 
   @override
-  Future<bool> needRefresh(final List<RecipeId> cachedData, final void param) async {
+  Future<bool> needRefresh(List<RecipeId> cachedData, void param) async {
     final createdAt = _recipeCache.allRecipeIdsCreatedAt;
     if (createdAt != null) {
       final expiredTime = createdAt.add(const Duration(minutes: 30));

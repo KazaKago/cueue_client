@@ -8,7 +8,7 @@ class SignInWithPasswordUseCaseImpl implements SignInWithPasswordUseCase {
   final AuthorizeRepository _authorizeApiRepository;
 
   @override
-  Future<void> call(final PasswordAuthInfo authInfo) async {
+  Future<void> call(PasswordAuthInfo authInfo) async {
     await _authorizeApiRepository.signInWithPassword(authInfo);
   }
 }

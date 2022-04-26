@@ -3,7 +3,7 @@ import 'package:cueue/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
 class RecipeItem extends StatelessWidget {
-  const RecipeItem({required this.title, required this.description, required this.thumbnail, this.isCheck, this.onTap, final Key? key}) : super(key: key);
+  const RecipeItem({required this.title, required this.description, required this.thumbnail, this.isCheck, this.onTap, Key? key}) : super(key: key);
 
   final String title;
   final String description;
@@ -12,7 +12,7 @@ class RecipeItem extends StatelessWidget {
   final GestureTapCallback? onTap;
 
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Padding(
@@ -42,7 +42,7 @@ class RecipeItem extends StatelessWidget {
     );
   }
 
-  Widget _buildImage(final BuildContext context) {
+  Widget _buildImage(BuildContext context) {
     if (thumbnail != null) {
       return CachedNetworkImage(
         imageUrl: thumbnail.toString(),

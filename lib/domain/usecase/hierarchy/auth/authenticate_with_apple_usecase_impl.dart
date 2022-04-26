@@ -10,7 +10,7 @@ class AuthenticateWithAppleUseCaseImpl implements AuthenticateWithAppleUseCase {
   final UserRepository _userRepository;
 
   @override
-  Future<void> call(final AppleAuthInfo authInfo) async {
+  Future<void> call(AppleAuthInfo authInfo) async {
     await _authorizeApiRepository.authenticateWithApple(authInfo);
     await _userRepository.create();
   }

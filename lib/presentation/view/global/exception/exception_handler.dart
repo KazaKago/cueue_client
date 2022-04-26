@@ -12,17 +12,17 @@ import 'package:url_launcher/url_launcher.dart';
 class ExceptionHandler {
   const ExceptionHandler();
 
-  String getMessage(final BuildContext context, final WidgetRef ref, final Exception exception, {final bool withSystemMessage = true}) {
+  String getMessage(BuildContext context, WidgetRef ref, Exception exception, {bool withSystemMessage = true}) {
     Future.delayed(Duration.zero, () => _preCheck(context, ref, exception));
     return _getMessage(context, ref, exception, withSystemMessage: withSystemMessage);
   }
 
-  Future<void> showMessageDialog(final BuildContext context, final WidgetRef ref, final Exception exception) async {
+  Future<void> showMessageDialog(BuildContext context, WidgetRef ref, Exception exception) async {
     if (await _preCheck(context, ref, exception)) return;
     await _showMessageDialog(context, ref, exception);
   }
 
-  String _getMessage(final BuildContext context, final WidgetRef ref, final Exception exception, {final bool withSystemMessage = true}) {
+  String _getMessage(BuildContext context, WidgetRef ref, Exception exception, {bool withSystemMessage = true}) {
     final message = exception.when(
       invalidParams: (exception) => intl(context).invalidParams(exception.message),
       invalidToken: (exception) => intl(context).invalidToken,
@@ -53,12 +53,12 @@ class ExceptionHandler {
     return withSystemMessage ? '$message\n\n${exception.toString()}' : message;
   }
 
-  Future<void> _showMessageDialog(final BuildContext context, final WidgetRef ref, final Exception exception) async {
+  Future<void> _showMessageDialog(BuildContext context, WidgetRef ref, Exception exception) async {
     final dialog = SimpleMessageDialog(context, title: intl(context).error, message: _getMessage(context, ref, exception), positiveButton: intl(context).close);
     await dialog.show();
   }
 
-  Future<bool> _preCheck(final BuildContext context, final WidgetRef ref, final Exception exception) {
+  Future<bool> _preCheck(BuildContext context, WidgetRef ref, Exception exception) {
     return exception.when(
       invalidParams: (exception) async => false,
       invalidToken: (exception) async {
@@ -106,20 +106,20 @@ class ExceptionHandler {
     );
   }
 
-  Future<void> _showReauthenticationDialog(final BuildContext context, final WidgetRef ref, final RequireReauthenticationException exception) async {
+  Future<void> _showReauthenticationDialog(BuildContext context, WidgetRef ref, RequireReauthenticationException exception) async {
     final dialog = ReauthenticationDialog(context, ref, exception);
     await dialog.show();
   }
 
-  Future<void> _signOut(final BuildContext context, final WidgetRef ref) async {
+  Future<void> _signOut(BuildContext context, WidgetRef ref) async {
     final signOutUseCase = ref.read(signOutUseCaseProvider);
     await signOutUseCase();
     await Navigator.pushAndRemoveUntil<void>(context, MaterialPageRoute(builder: (context) => const WelcomePage()), (_) => false);
   }
 
-  Future<void> _goStore(final BuildContext context, final WidgetRef ref) async {
+  Future<void> _goStore(BuildContext context, WidgetRef ref) async {
     final getStoreLinkUseCase = ref.read(getStoreLinkUseCaseProvider);
     final storeLink = await getStoreLinkUseCase();
-    await launch(storeLink.toString());
+    await launchUrl(storeLink);
   }
 }

@@ -9,7 +9,7 @@ class CreateTagApi {
 
   final AuthorizedApiRequester _requester;
 
-  Future<TagResponse> execute(final int workspaceId, final TagRequest request) async {
+  Future<TagResponse> execute(int workspaceId, TagRequest request) async {
     try {
       final response = await _requester.create().post<Map<String, dynamic>>('/$workspaceId/tags', data: request);
       return TagResponse.fromJson(response.data!);

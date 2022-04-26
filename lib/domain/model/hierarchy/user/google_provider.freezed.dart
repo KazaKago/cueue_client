@@ -10,8 +10,7 @@ part of 'google_provider.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 class _$GoogleProviderTearOff {
@@ -34,23 +33,19 @@ mixin _$GoogleProvider {
   String get displayName => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $GoogleProviderCopyWith<GoogleProvider> get copyWith =>
-      throw _privateConstructorUsedError;
+  $GoogleProviderCopyWith<GoogleProvider> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $GoogleProviderCopyWith<$Res> {
-  factory $GoogleProviderCopyWith(
-          GoogleProvider value, $Res Function(GoogleProvider) then) =
-      _$GoogleProviderCopyWithImpl<$Res>;
+  factory $GoogleProviderCopyWith(GoogleProvider value, $Res Function(GoogleProvider) then) = _$GoogleProviderCopyWithImpl<$Res>;
   $Res call({UserId uid, String displayName});
 
   $UserIdCopyWith<$Res> get uid;
 }
 
 /// @nodoc
-class _$GoogleProviderCopyWithImpl<$Res>
-    implements $GoogleProviderCopyWith<$Res> {
+class _$GoogleProviderCopyWithImpl<$Res> implements $GoogleProviderCopyWith<$Res> {
   _$GoogleProviderCopyWithImpl(this._value, this._then);
 
   final GoogleProvider _value;
@@ -83,11 +78,8 @@ class _$GoogleProviderCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$GoogleProviderCopyWith<$Res>
-    implements $GoogleProviderCopyWith<$Res> {
-  factory _$GoogleProviderCopyWith(
-          _GoogleProvider value, $Res Function(_GoogleProvider) then) =
-      __$GoogleProviderCopyWithImpl<$Res>;
+abstract class _$GoogleProviderCopyWith<$Res> implements $GoogleProviderCopyWith<$Res> {
+  factory _$GoogleProviderCopyWith(_GoogleProvider value, $Res Function(_GoogleProvider) then) = __$GoogleProviderCopyWithImpl<$Res>;
   @override
   $Res call({UserId uid, String displayName});
 
@@ -96,12 +88,8 @@ abstract class _$GoogleProviderCopyWith<$Res>
 }
 
 /// @nodoc
-class __$GoogleProviderCopyWithImpl<$Res>
-    extends _$GoogleProviderCopyWithImpl<$Res>
-    implements _$GoogleProviderCopyWith<$Res> {
-  __$GoogleProviderCopyWithImpl(
-      _GoogleProvider _value, $Res Function(_GoogleProvider) _then)
-      : super(_value, (v) => _then(v as _GoogleProvider));
+class __$GoogleProviderCopyWithImpl<$Res> extends _$GoogleProviderCopyWithImpl<$Res> implements _$GoogleProviderCopyWith<$Res> {
+  __$GoogleProviderCopyWithImpl(_GoogleProvider _value, $Res Function(_GoogleProvider) _then) : super(_value, (v) => _then(v as _GoogleProvider));
 
   @override
   _GoogleProvider get _value => super._value as _GoogleProvider;
@@ -141,29 +129,19 @@ class _$_GoogleProvider implements _GoogleProvider {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _GoogleProvider &&
-            const DeepCollectionEquality().equals(other.uid, uid) &&
-            const DeepCollectionEquality()
-                .equals(other.displayName, displayName));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _GoogleProvider && const DeepCollectionEquality().equals(other.uid, uid) && const DeepCollectionEquality().equals(other.displayName, displayName));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(uid),
-      const DeepCollectionEquality().hash(displayName));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(uid), const DeepCollectionEquality().hash(displayName));
 
   @JsonKey(ignore: true)
   @override
-  _$GoogleProviderCopyWith<_GoogleProvider> get copyWith =>
-      __$GoogleProviderCopyWithImpl<_GoogleProvider>(this, _$identity);
+  _$GoogleProviderCopyWith<_GoogleProvider> get copyWith => __$GoogleProviderCopyWithImpl<_GoogleProvider>(this, _$identity);
 }
 
 abstract class _GoogleProvider implements GoogleProvider {
-  const factory _GoogleProvider(
-      {required UserId uid, required String displayName}) = _$_GoogleProvider;
+  const factory _GoogleProvider({required UserId uid, required String displayName}) = _$_GoogleProvider;
 
   @override
   UserId get uid;
@@ -171,6 +149,5 @@ abstract class _GoogleProvider implements GoogleProvider {
   String get displayName;
   @override
   @JsonKey(ignore: true)
-  _$GoogleProviderCopyWith<_GoogleProvider> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$GoogleProviderCopyWith<_GoogleProvider> get copyWith => throw _privateConstructorUsedError;
 }

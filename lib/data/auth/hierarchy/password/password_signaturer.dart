@@ -8,7 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class PasswordSignaturer {
   const PasswordSignaturer();
 
-  Future<void> signUp(final PasswordAuthInfo authInfo) async {
+  Future<void> signUp(PasswordAuthInfo authInfo) async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(email: authInfo.email.value, password: authInfo.password.value);
     } on FirebaseAuthException catch (exception) {
@@ -16,7 +16,7 @@ class PasswordSignaturer {
     }
   }
 
-  Future<void> signIn(final PasswordAuthInfo authInfo) async {
+  Future<void> signIn(PasswordAuthInfo authInfo) async {
     try {
       await const SignaturerDelegator().signIn(() => EmailAuthProvider.credential(email: authInfo.email.value, password: authInfo.password.value));
     } on FirebaseAuthException catch (exception) {
@@ -24,7 +24,7 @@ class PasswordSignaturer {
     }
   }
 
-  Future<void> reauthenticate(final PasswordAuthInfo authInfo) async {
+  Future<void> reauthenticate(PasswordAuthInfo authInfo) async {
     try {
       await const SignaturerDelegator().reauthenticate(() => EmailAuthProvider.credential(email: authInfo.email.value, password: authInfo.password.value));
     } on FirebaseAuthException catch (exception) {
@@ -32,7 +32,7 @@ class PasswordSignaturer {
     }
   }
 
-  Future<void> link(final PasswordAuthInfo authInfo) async {
+  Future<void> link(PasswordAuthInfo authInfo) async {
     try {
       await const SignaturerDelegator().link(() => EmailAuthProvider.credential(email: authInfo.email.value, password: authInfo.password.value));
     } on FirebaseAuthException catch (exception) {
@@ -40,7 +40,7 @@ class PasswordSignaturer {
     }
   }
 
-  Future<void> updateEmail(final Email email) async {
+  Future<void> updateEmail(Email email) async {
     try {
       final firebaseUser = FirebaseAuth.instance.currentUser!;
       await firebaseUser.updateEmail(email.value);
@@ -49,7 +49,7 @@ class PasswordSignaturer {
     }
   }
 
-  Future<void> updatePassword(final Password password) async {
+  Future<void> updatePassword(Password password) async {
     try {
       final firebaseUser = FirebaseAuth.instance.currentUser!;
       await firebaseUser.updatePassword(password.value);

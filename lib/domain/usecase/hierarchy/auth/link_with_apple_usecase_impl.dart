@@ -8,7 +8,7 @@ class LinkWithAppleUseCaseImpl implements LinkWithAppleUseCase {
   final AuthorizeRepository _authorizeApiRepository;
 
   @override
-  Future<void> call(final AppleAuthInfo authInfo) async {
+  Future<void> call(AppleAuthInfo authInfo) async {
     await _authorizeApiRepository.linkWithApple(authInfo);
   }
 }

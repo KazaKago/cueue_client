@@ -10,8 +10,7 @@ part of 'about_state.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 class _$AboutStateTearOff {
@@ -37,8 +36,7 @@ mixin _$AboutState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(AppInfo appInfo, DeveloperInfo developerInfo)
-        completed,
+    required TResult Function(AppInfo appInfo, DeveloperInfo developerInfo) completed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,9 +75,7 @@ mixin _$AboutState {
 
 /// @nodoc
 abstract class $AboutStateCopyWith<$Res> {
-  factory $AboutStateCopyWith(
-          AboutState value, $Res Function(AboutState) then) =
-      _$AboutStateCopyWithImpl<$Res>;
+  factory $AboutStateCopyWith(AboutState value, $Res Function(AboutState) then) = _$AboutStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -93,15 +89,12 @@ class _$AboutStateCopyWithImpl<$Res> implements $AboutStateCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$LoadingCopyWith<$Res> {
-  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
-      __$LoadingCopyWithImpl<$Res>;
+  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) = __$LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$AboutStateCopyWithImpl<$Res>
-    implements _$LoadingCopyWith<$Res> {
-  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
-      : super(_value, (v) => _then(v as _Loading));
+class __$LoadingCopyWithImpl<$Res> extends _$AboutStateCopyWithImpl<$Res> implements _$LoadingCopyWith<$Res> {
+  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then) : super(_value, (v) => _then(v as _Loading));
 
   @override
   _Loading get _value => super._value as _Loading;
@@ -119,8 +112,7 @@ class _$_Loading implements _Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Loading);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _Loading);
   }
 
   @override
@@ -130,8 +122,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(AppInfo appInfo, DeveloperInfo developerInfo)
-        completed,
+    required TResult Function(AppInfo appInfo, DeveloperInfo developerInfo) completed,
   }) {
     return loading();
   }
@@ -196,9 +187,7 @@ abstract class _Loading implements AboutState {
 
 /// @nodoc
 abstract class _$CompletedCopyWith<$Res> {
-  factory _$CompletedCopyWith(
-          _Completed value, $Res Function(_Completed) then) =
-      __$CompletedCopyWithImpl<$Res>;
+  factory _$CompletedCopyWith(_Completed value, $Res Function(_Completed) then) = __$CompletedCopyWithImpl<$Res>;
   $Res call({AppInfo appInfo, DeveloperInfo developerInfo});
 
   $AppInfoCopyWith<$Res> get appInfo;
@@ -206,10 +195,8 @@ abstract class _$CompletedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$CompletedCopyWithImpl<$Res> extends _$AboutStateCopyWithImpl<$Res>
-    implements _$CompletedCopyWith<$Res> {
-  __$CompletedCopyWithImpl(_Completed _value, $Res Function(_Completed) _then)
-      : super(_value, (v) => _then(v as _Completed));
+class __$CompletedCopyWithImpl<$Res> extends _$AboutStateCopyWithImpl<$Res> implements _$CompletedCopyWith<$Res> {
+  __$CompletedCopyWithImpl(_Completed _value, $Res Function(_Completed) _then) : super(_value, (v) => _then(v as _Completed));
 
   @override
   _Completed get _value => super._value as _Completed;
@@ -263,31 +250,21 @@ class _$_Completed implements _Completed {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Completed &&
-            const DeepCollectionEquality().equals(other.appInfo, appInfo) &&
-            const DeepCollectionEquality()
-                .equals(other.developerInfo, developerInfo));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _Completed && const DeepCollectionEquality().equals(other.appInfo, appInfo) && const DeepCollectionEquality().equals(other.developerInfo, developerInfo));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(appInfo),
-      const DeepCollectionEquality().hash(developerInfo));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(appInfo), const DeepCollectionEquality().hash(developerInfo));
 
   @JsonKey(ignore: true)
   @override
-  _$CompletedCopyWith<_Completed> get copyWith =>
-      __$CompletedCopyWithImpl<_Completed>(this, _$identity);
+  _$CompletedCopyWith<_Completed> get copyWith => __$CompletedCopyWithImpl<_Completed>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(AppInfo appInfo, DeveloperInfo developerInfo)
-        completed,
+    required TResult Function(AppInfo appInfo, DeveloperInfo developerInfo) completed,
   }) {
     return completed(appInfo, developerInfo);
   }
@@ -347,12 +324,10 @@ class _$_Completed implements _Completed {
 }
 
 abstract class _Completed implements AboutState {
-  const factory _Completed(AppInfo appInfo, DeveloperInfo developerInfo) =
-      _$_Completed;
+  const factory _Completed(AppInfo appInfo, DeveloperInfo developerInfo) = _$_Completed;
 
   AppInfo get appInfo;
   DeveloperInfo get developerInfo;
   @JsonKey(ignore: true)
-  _$CompletedCopyWith<_Completed> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$CompletedCopyWith<_Completed> get copyWith => throw _privateConstructorUsedError;
 }

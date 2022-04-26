@@ -15,12 +15,12 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MenuDetailPage extends HookConsumerWidget {
-  const MenuDetailPage(this.menu, {final Key? key}) : super(key: key);
+  const MenuDetailPage(this.menu, {Key? key}) : super(key: key);
 
   final MenuSummary menu;
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(menuDetailViewModelProvider(menu.id).select((viewModel) => viewModel.state));
     return state.when(
       loading: () => _buildLoading(context, ref, menu),
@@ -29,7 +29,7 @@ class MenuDetailPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildLoading(final BuildContext context, final WidgetRef ref, final MenuSummary menu) {
+  Widget _buildLoading(BuildContext context, WidgetRef ref, MenuSummary menu) {
     final viewModel = ref.read(menuDetailViewModelProvider(menu.id));
     return Scaffold(
       appBar: AppBar(
@@ -47,7 +47,7 @@ class MenuDetailPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildCompleted(final BuildContext context, final WidgetRef ref, final Menu menu) {
+  Widget _buildCompleted(BuildContext context, WidgetRef ref, Menu menu) {
     final viewModel = ref.read(menuDetailViewModelProvider(menu.id));
     return Scaffold(
       appBar: AppBar(
@@ -72,7 +72,7 @@ class MenuDetailPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildError(final BuildContext context, final WidgetRef ref, final MenuSummary menu, final Exception exception) {
+  Widget _buildError(BuildContext context, WidgetRef ref, MenuSummary menu, Exception exception) {
     final viewModel = ref.read(menuDetailViewModelProvider(menu.id));
     return Scaffold(
       appBar: AppBar(
@@ -82,7 +82,7 @@ class MenuDetailPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildMenuItem(final BuildContext context, final WidgetRef ref, final MenuSummary menu) {
+  Widget _buildMenuItem(BuildContext context, WidgetRef ref, MenuSummary menu) {
     return TitledCard.list(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
       title: intl(context).cookingMenu,
@@ -98,7 +98,7 @@ class MenuDetailPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildMemoItem(final BuildContext context, final WidgetRef ref, final MenuSummary menu) {
+  Widget _buildMemoItem(BuildContext context, WidgetRef ref, MenuSummary menu) {
     return TitledCard(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
       title: intl(context).memo,
@@ -106,14 +106,14 @@ class MenuDetailPage extends HookConsumerWidget {
     );
   }
 
-  Future<void> _goMenuEditing(final BuildContext context, final Menu menu) async {
+  Future<void> _goMenuEditing(BuildContext context, Menu menu) async {
     final result = await Navigator.push<EditingResult>(context, MaterialPageRoute(builder: (context) => MenuEditingPage.withMenu(menu: menu)));
     if (result == EditingResult.deleted) {
       Navigator.of(context).pop();
     }
   }
 
-  Future<void> _goRecipeDetail(final BuildContext context, final RecipeSummary recipe) async {
+  Future<void> _goRecipeDetail(BuildContext context, RecipeSummary recipe) async {
     await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => RecipeDetailPage(recipe)));
   }
 }

@@ -8,7 +8,7 @@ class DeleteRecipeUseCaseImpl implements DeleteRecipeUseCase {
   final RecipeRepository _recipeRepository;
 
   @override
-  Future<void> call(final RecipeId recipeId) {
+  Future<void> call(RecipeId recipeId) {
     return _recipeRepository.delete(recipeId);
   }
 }

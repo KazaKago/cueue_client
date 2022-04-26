@@ -20,26 +20,26 @@ class TaggedRecipesFlowableFactory extends PaginationStoreFlowableFactory<TagId,
   FlowableDataStateManager<TagId> getFlowableDataStateManager() => _taggedRecipesStateManager;
 
   @override
-  Future<List<RecipeId>?> loadDataFromCache(final TagId param) async {
+  Future<List<RecipeId>?> loadDataFromCache(TagId param) async {
     return _recipeCache.taggedRecipeIds[param];
   }
 
   @override
-  Future<void> saveDataToCache(final List<RecipeId>? newData, final TagId param) async {
+  Future<void> saveDataToCache(List<RecipeId>? newData, TagId param) async {
     _recipeCache
       ..taggedRecipeIds[param] = newData
       ..taggedRecipeIdsCreatedAt[param] = DateTime.now();
   }
 
   @override
-  Future<void> saveNextDataToCache(final List<RecipeId> cachedData, final List<RecipeId> newData, final TagId param) async {
+  Future<void> saveNextDataToCache(List<RecipeId> cachedData, List<RecipeId> newData, TagId param) async {
     _recipeCache.taggedRecipeIds[param] = cachedData + newData;
   }
 
   @override
-  Future<Fetched<List<RecipeId>>> fetchDataFromOrigin(final TagId param) async {
+  Future<Fetched<List<RecipeId>>> fetchDataFromOrigin(TagId param) async {
     final user = await _userFlowableFactory.create(null).requireData();
-    final responses = await _getRecipesApi.execute(user.currentWorkspace.id.value, afterId: null, tagId: param.value);
+    final responses = await _getRecipesApi.execute(user.currentWorkspace.id.value, tagId: param.value);
     final recipeIds = responses.map((response) {
       final recipe = _recipeSummaryResponseMapper.map(response);
       _recipeCache.recipeSummaryMap.value[recipe.id] = recipe;
@@ -52,7 +52,7 @@ class TaggedRecipesFlowableFactory extends PaginationStoreFlowableFactory<TagId,
   }
 
   @override
-  Future<Fetched<List<RecipeId>>> fetchNextDataFromOrigin(final String nextKey, final TagId param) async {
+  Future<Fetched<List<RecipeId>>> fetchNextDataFromOrigin(String nextKey, TagId param) async {
     final user = await _userFlowableFactory.create(null).requireData();
     final responses = await _getRecipesApi.execute(user.currentWorkspace.id.value, afterId: int.parse(nextKey), tagId: param.value);
     final recipeIds = responses.map((response) {
@@ -67,7 +67,7 @@ class TaggedRecipesFlowableFactory extends PaginationStoreFlowableFactory<TagId,
   }
 
   @override
-  Future<bool> needRefresh(final List<RecipeId>? cachedData, final TagId param) async {
+  Future<bool> needRefresh(List<RecipeId>? cachedData, TagId param) async {
     final createdAt = _recipeCache.taggedRecipeIdsCreatedAt[param];
     if (createdAt != null) {
       final expiredTime = createdAt.add(const Duration(minutes: 30));

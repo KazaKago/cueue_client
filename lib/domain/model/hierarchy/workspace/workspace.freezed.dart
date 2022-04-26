@@ -10,8 +10,7 @@ part of 'workspace.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 class _$WorkspaceTearOff {
@@ -34,14 +33,12 @@ mixin _$Workspace {
   String get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $WorkspaceCopyWith<Workspace> get copyWith =>
-      throw _privateConstructorUsedError;
+  $WorkspaceCopyWith<Workspace> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $WorkspaceCopyWith<$Res> {
-  factory $WorkspaceCopyWith(Workspace value, $Res Function(Workspace) then) =
-      _$WorkspaceCopyWithImpl<$Res>;
+  factory $WorkspaceCopyWith(Workspace value, $Res Function(Workspace) then) = _$WorkspaceCopyWithImpl<$Res>;
   $Res call({WorkspaceId id, String name});
 
   $WorkspaceIdCopyWith<$Res> get id;
@@ -82,9 +79,7 @@ class _$WorkspaceCopyWithImpl<$Res> implements $WorkspaceCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$WorkspaceCopyWith<$Res> implements $WorkspaceCopyWith<$Res> {
-  factory _$WorkspaceCopyWith(
-          _Workspace value, $Res Function(_Workspace) then) =
-      __$WorkspaceCopyWithImpl<$Res>;
+  factory _$WorkspaceCopyWith(_Workspace value, $Res Function(_Workspace) then) = __$WorkspaceCopyWithImpl<$Res>;
   @override
   $Res call({WorkspaceId id, String name});
 
@@ -93,10 +88,8 @@ abstract class _$WorkspaceCopyWith<$Res> implements $WorkspaceCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$WorkspaceCopyWithImpl<$Res> extends _$WorkspaceCopyWithImpl<$Res>
-    implements _$WorkspaceCopyWith<$Res> {
-  __$WorkspaceCopyWithImpl(_Workspace _value, $Res Function(_Workspace) _then)
-      : super(_value, (v) => _then(v as _Workspace));
+class __$WorkspaceCopyWithImpl<$Res> extends _$WorkspaceCopyWithImpl<$Res> implements _$WorkspaceCopyWith<$Res> {
+  __$WorkspaceCopyWithImpl(_Workspace _value, $Res Function(_Workspace) _then) : super(_value, (v) => _then(v as _Workspace));
 
   @override
   _Workspace get _value => super._value as _Workspace;
@@ -136,28 +129,19 @@ class _$_Workspace implements _Workspace {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Workspace &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _Workspace && const DeepCollectionEquality().equals(other.id, id) && const DeepCollectionEquality().equals(other.name, name));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(id), const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override
-  _$WorkspaceCopyWith<_Workspace> get copyWith =>
-      __$WorkspaceCopyWithImpl<_Workspace>(this, _$identity);
+  _$WorkspaceCopyWith<_Workspace> get copyWith => __$WorkspaceCopyWithImpl<_Workspace>(this, _$identity);
 }
 
 abstract class _Workspace implements Workspace {
-  const factory _Workspace({required WorkspaceId id, required String name}) =
-      _$_Workspace;
+  const factory _Workspace({required WorkspaceId id, required String name}) = _$_Workspace;
 
   @override
   WorkspaceId get id;
@@ -165,6 +149,5 @@ abstract class _Workspace implements Workspace {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$WorkspaceCopyWith<_Workspace> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$WorkspaceCopyWith<_Workspace> get copyWith => throw _privateConstructorUsedError;
 }

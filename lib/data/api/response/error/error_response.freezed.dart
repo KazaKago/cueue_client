@@ -10,8 +10,7 @@ part of 'error_response.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ErrorResponse _$ErrorResponseFromJson(Map<String, dynamic> json) {
   return _ErrorResponse.fromJson(json);
@@ -21,9 +20,7 @@ ErrorResponse _$ErrorResponseFromJson(Map<String, dynamic> json) {
 class _$ErrorResponseTearOff {
   const _$ErrorResponseTearOff();
 
-  _ErrorResponse call(
-      {@JsonKey(name: 'name') required String name,
-      @JsonKey(name: 'message') required String message}) {
+  _ErrorResponse call({@JsonKey(name: 'name') required String name, @JsonKey(name: 'message') required String message}) {
     return _ErrorResponse(
       name: name,
       message: message,
@@ -42,30 +39,23 @@ const $ErrorResponse = _$ErrorResponseTearOff();
 mixin _$ErrorResponse {
 // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
-  String get name =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  String get name => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'message')
   String get message => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ErrorResponseCopyWith<ErrorResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ErrorResponseCopyWith<ErrorResponse> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ErrorResponseCopyWith<$Res> {
-  factory $ErrorResponseCopyWith(
-          ErrorResponse value, $Res Function(ErrorResponse) then) =
-      _$ErrorResponseCopyWithImpl<$Res>;
-  $Res call(
-      {@JsonKey(name: 'name') String name,
-      @JsonKey(name: 'message') String message});
+  factory $ErrorResponseCopyWith(ErrorResponse value, $Res Function(ErrorResponse) then) = _$ErrorResponseCopyWithImpl<$Res>;
+  $Res call({@JsonKey(name: 'name') String name, @JsonKey(name: 'message') String message});
 }
 
 /// @nodoc
-class _$ErrorResponseCopyWithImpl<$Res>
-    implements $ErrorResponseCopyWith<$Res> {
+class _$ErrorResponseCopyWithImpl<$Res> implements $ErrorResponseCopyWith<$Res> {
   _$ErrorResponseCopyWithImpl(this._value, this._then);
 
   final ErrorResponse _value;
@@ -91,24 +81,15 @@ class _$ErrorResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ErrorResponseCopyWith<$Res>
-    implements $ErrorResponseCopyWith<$Res> {
-  factory _$ErrorResponseCopyWith(
-          _ErrorResponse value, $Res Function(_ErrorResponse) then) =
-      __$ErrorResponseCopyWithImpl<$Res>;
+abstract class _$ErrorResponseCopyWith<$Res> implements $ErrorResponseCopyWith<$Res> {
+  factory _$ErrorResponseCopyWith(_ErrorResponse value, $Res Function(_ErrorResponse) then) = __$ErrorResponseCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {@JsonKey(name: 'name') String name,
-      @JsonKey(name: 'message') String message});
+  $Res call({@JsonKey(name: 'name') String name, @JsonKey(name: 'message') String message});
 }
 
 /// @nodoc
-class __$ErrorResponseCopyWithImpl<$Res>
-    extends _$ErrorResponseCopyWithImpl<$Res>
-    implements _$ErrorResponseCopyWith<$Res> {
-  __$ErrorResponseCopyWithImpl(
-      _ErrorResponse _value, $Res Function(_ErrorResponse) _then)
-      : super(_value, (v) => _then(v as _ErrorResponse));
+class __$ErrorResponseCopyWithImpl<$Res> extends _$ErrorResponseCopyWithImpl<$Res> implements _$ErrorResponseCopyWith<$Res> {
+  __$ErrorResponseCopyWithImpl(_ErrorResponse _value, $Res Function(_ErrorResponse) _then) : super(_value, (v) => _then(v as _ErrorResponse));
 
   @override
   _ErrorResponse get _value => super._value as _ErrorResponse;
@@ -134,12 +115,9 @@ class __$ErrorResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ErrorResponse implements _ErrorResponse {
-  const _$_ErrorResponse(
-      {@JsonKey(name: 'name') required this.name,
-      @JsonKey(name: 'message') required this.message});
+  const _$_ErrorResponse({@JsonKey(name: 'name') required this.name, @JsonKey(name: 'message') required this.message});
 
-  factory _$_ErrorResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_ErrorResponseFromJson(json);
+  factory _$_ErrorResponse.fromJson(Map<String, dynamic> json) => _$$_ErrorResponseFromJson(json);
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
@@ -155,23 +133,15 @@ class _$_ErrorResponse implements _ErrorResponse {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _ErrorResponse &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.message, message));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _ErrorResponse && const DeepCollectionEquality().equals(other.name, name) && const DeepCollectionEquality().equals(other.message, message));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(message));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(name), const DeepCollectionEquality().hash(message));
 
   @JsonKey(ignore: true)
   @override
-  _$ErrorResponseCopyWith<_ErrorResponse> get copyWith =>
-      __$ErrorResponseCopyWithImpl<_ErrorResponse>(this, _$identity);
+  _$ErrorResponseCopyWith<_ErrorResponse> get copyWith => __$ErrorResponseCopyWithImpl<_ErrorResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -180,12 +150,9 @@ class _$_ErrorResponse implements _ErrorResponse {
 }
 
 abstract class _ErrorResponse implements ErrorResponse {
-  const factory _ErrorResponse(
-      {@JsonKey(name: 'name') required String name,
-      @JsonKey(name: 'message') required String message}) = _$_ErrorResponse;
+  const factory _ErrorResponse({@JsonKey(name: 'name') required String name, @JsonKey(name: 'message') required String message}) = _$_ErrorResponse;
 
-  factory _ErrorResponse.fromJson(Map<String, dynamic> json) =
-      _$_ErrorResponse.fromJson;
+  factory _ErrorResponse.fromJson(Map<String, dynamic> json) = _$_ErrorResponse.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
@@ -195,6 +162,5 @@ abstract class _ErrorResponse implements ErrorResponse {
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$ErrorResponseCopyWith<_ErrorResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$ErrorResponseCopyWith<_ErrorResponse> get copyWith => throw _privateConstructorUsedError;
 }

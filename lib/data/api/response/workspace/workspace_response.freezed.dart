@@ -10,8 +10,7 @@ part of 'workspace_response.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 WorkspaceResponse _$WorkspaceResponseFromJson(Map<String, dynamic> json) {
   return _WorkspaceResponse.fromJson(json);
@@ -21,9 +20,7 @@ WorkspaceResponse _$WorkspaceResponseFromJson(Map<String, dynamic> json) {
 class _$WorkspaceResponseTearOff {
   const _$WorkspaceResponseTearOff();
 
-  _WorkspaceResponse call(
-      {@JsonKey(name: 'id') required int id,
-      @JsonKey(name: 'name') required String name}) {
+  _WorkspaceResponse call({@JsonKey(name: 'id') required int id, @JsonKey(name: 'name') required String name}) {
     return _WorkspaceResponse(
       id: id,
       name: name,
@@ -42,28 +39,23 @@ const $WorkspaceResponse = _$WorkspaceResponseTearOff();
 mixin _$WorkspaceResponse {
 // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  int get id => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $WorkspaceResponseCopyWith<WorkspaceResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+  $WorkspaceResponseCopyWith<WorkspaceResponse> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $WorkspaceResponseCopyWith<$Res> {
-  factory $WorkspaceResponseCopyWith(
-          WorkspaceResponse value, $Res Function(WorkspaceResponse) then) =
-      _$WorkspaceResponseCopyWithImpl<$Res>;
+  factory $WorkspaceResponseCopyWith(WorkspaceResponse value, $Res Function(WorkspaceResponse) then) = _$WorkspaceResponseCopyWithImpl<$Res>;
   $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
-class _$WorkspaceResponseCopyWithImpl<$Res>
-    implements $WorkspaceResponseCopyWith<$Res> {
+class _$WorkspaceResponseCopyWithImpl<$Res> implements $WorkspaceResponseCopyWith<$Res> {
   _$WorkspaceResponseCopyWithImpl(this._value, this._then);
 
   final WorkspaceResponse _value;
@@ -89,22 +81,15 @@ class _$WorkspaceResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$WorkspaceResponseCopyWith<$Res>
-    implements $WorkspaceResponseCopyWith<$Res> {
-  factory _$WorkspaceResponseCopyWith(
-          _WorkspaceResponse value, $Res Function(_WorkspaceResponse) then) =
-      __$WorkspaceResponseCopyWithImpl<$Res>;
+abstract class _$WorkspaceResponseCopyWith<$Res> implements $WorkspaceResponseCopyWith<$Res> {
+  factory _$WorkspaceResponseCopyWith(_WorkspaceResponse value, $Res Function(_WorkspaceResponse) then) = __$WorkspaceResponseCopyWithImpl<$Res>;
   @override
   $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
-class __$WorkspaceResponseCopyWithImpl<$Res>
-    extends _$WorkspaceResponseCopyWithImpl<$Res>
-    implements _$WorkspaceResponseCopyWith<$Res> {
-  __$WorkspaceResponseCopyWithImpl(
-      _WorkspaceResponse _value, $Res Function(_WorkspaceResponse) _then)
-      : super(_value, (v) => _then(v as _WorkspaceResponse));
+class __$WorkspaceResponseCopyWithImpl<$Res> extends _$WorkspaceResponseCopyWithImpl<$Res> implements _$WorkspaceResponseCopyWith<$Res> {
+  __$WorkspaceResponseCopyWithImpl(_WorkspaceResponse _value, $Res Function(_WorkspaceResponse) _then) : super(_value, (v) => _then(v as _WorkspaceResponse));
 
   @override
   _WorkspaceResponse get _value => super._value as _WorkspaceResponse;
@@ -130,12 +115,9 @@ class __$WorkspaceResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_WorkspaceResponse implements _WorkspaceResponse {
-  const _$_WorkspaceResponse(
-      {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'name') required this.name});
+  const _$_WorkspaceResponse({@JsonKey(name: 'id') required this.id, @JsonKey(name: 'name') required this.name});
 
-  factory _$_WorkspaceResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_WorkspaceResponseFromJson(json);
+  factory _$_WorkspaceResponse.fromJson(Map<String, dynamic> json) => _$$_WorkspaceResponseFromJson(json);
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
@@ -151,23 +133,15 @@ class _$_WorkspaceResponse implements _WorkspaceResponse {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _WorkspaceResponse &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _WorkspaceResponse && const DeepCollectionEquality().equals(other.id, id) && const DeepCollectionEquality().equals(other.name, name));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(id), const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override
-  _$WorkspaceResponseCopyWith<_WorkspaceResponse> get copyWith =>
-      __$WorkspaceResponseCopyWithImpl<_WorkspaceResponse>(this, _$identity);
+  _$WorkspaceResponseCopyWith<_WorkspaceResponse> get copyWith => __$WorkspaceResponseCopyWithImpl<_WorkspaceResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -176,12 +150,9 @@ class _$_WorkspaceResponse implements _WorkspaceResponse {
 }
 
 abstract class _WorkspaceResponse implements WorkspaceResponse {
-  const factory _WorkspaceResponse(
-      {@JsonKey(name: 'id') required int id,
-      @JsonKey(name: 'name') required String name}) = _$_WorkspaceResponse;
+  const factory _WorkspaceResponse({@JsonKey(name: 'id') required int id, @JsonKey(name: 'name') required String name}) = _$_WorkspaceResponse;
 
-  factory _WorkspaceResponse.fromJson(Map<String, dynamic> json) =
-      _$_WorkspaceResponse.fromJson;
+  factory _WorkspaceResponse.fromJson(Map<String, dynamic> json) = _$_WorkspaceResponse.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
@@ -191,6 +162,5 @@ abstract class _WorkspaceResponse implements WorkspaceResponse {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$WorkspaceResponseCopyWith<_WorkspaceResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$WorkspaceResponseCopyWith<_WorkspaceResponse> get copyWith => throw _privateConstructorUsedError;
 }

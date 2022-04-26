@@ -11,10 +11,10 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TagPage extends HookConsumerWidget {
-  const TagPage({final Key? key}) : super(key: key);
+  const TagPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(tagViewModelProvider.select((viewModel) => viewModel.state));
     return Scaffold(
       appBar: AppBar(
@@ -29,20 +29,19 @@ class TagPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildLoading(final BuildContext context, final WidgetRef ref) {
+  Widget _buildLoading(BuildContext context, WidgetRef ref) {
     return ShimmerContainer(
       child: Wrap(
-        direction: Axis.horizontal,
         children: List.filled(20, const TagLoadingItem()),
       ),
     );
   }
 
-  Widget _buildEmpty(final BuildContext context, final WidgetRef ref) {
+  Widget _buildEmpty(BuildContext context, WidgetRef ref) {
     return EmptyWidget(intl(context).no_tag_message);
   }
 
-  Widget _buildCompleted(final BuildContext context, final WidgetRef ref, final List<Tag> tags) {
+  Widget _buildCompleted(BuildContext context, WidgetRef ref, List<Tag> tags) {
     final viewModel = ref.read(tagViewModelProvider);
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
@@ -61,12 +60,12 @@ class TagPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildError(final BuildContext context, final WidgetRef ref, final Exception exception) {
+  Widget _buildError(BuildContext context, WidgetRef ref, Exception exception) {
     final viewModel = ref.read(tagViewModelProvider);
     return ErrorHandlingWidget(exception, onClickRetry: viewModel.retry);
   }
 
-  Future<void> _goTagEditing(final BuildContext context, final Tag tag) async {
+  Future<void> _goTagEditing(BuildContext context, Tag tag) async {
     await Navigator.push<EditingResult>(context, MaterialPageRoute(builder: (context) => TagEditingPage(tag: tag)));
   }
 }

@@ -10,13 +10,13 @@ class RequireReauthenticationException implements Exception {
 abstract class RequireReauthenticationType {
   const RequireReauthenticationType();
 
-  const factory RequireReauthenticationType.settingEmail(final Email email) = _SettingEmail;
+  const factory RequireReauthenticationType.settingEmail(Email email) = _SettingEmail;
 
-  const factory RequireReauthenticationType.settingPassword(final Password password) = _SettingPassword;
+  const factory RequireReauthenticationType.settingPassword(Password password) = _SettingPassword;
 
   R when<R>({
-    required final R Function(Email email) settingEmail,
-    required final R Function(Password password) settingPassword,
+    required R Function(Email email) settingEmail,
+    required R Function(Password password) settingPassword,
   }) {
     if (this is _SettingEmail) {
       return settingEmail((this as _SettingEmail).email);

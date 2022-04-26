@@ -9,7 +9,7 @@ class CreateMenuApi {
 
   final AuthorizedApiRequester _requester;
 
-  Future<MenuResponse> execute(final int workspaceId, final MenuRequest request) async {
+  Future<MenuResponse> execute(int workspaceId, MenuRequest request) async {
     try {
       final response = await _requester.create().post<Map<String, dynamic>>('/$workspaceId/menus', data: request);
       return MenuResponse.fromJson(response.data!);

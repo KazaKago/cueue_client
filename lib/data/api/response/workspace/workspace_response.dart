@@ -7,10 +7,10 @@ part 'workspace_response.g.dart';
 class WorkspaceResponse with _$WorkspaceResponse {
   const factory WorkspaceResponse({
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'id') required final int id,
+    @JsonKey(name: 'id') required int id,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'name') required final String name,
+    @JsonKey(name: 'name') required String name,
   }) = _WorkspaceResponse;
 
-  factory WorkspaceResponse.fromJson(final Map<String, dynamic> json) => _$WorkspaceResponseFromJson(json);
+  factory WorkspaceResponse.fromJson(Map<String, dynamic> json) => _$WorkspaceResponseFromJson(json);
 }

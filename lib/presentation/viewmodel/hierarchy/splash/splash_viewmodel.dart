@@ -13,7 +13,7 @@ class SplashViewModel with ChangeNotifier {
 
   Event<NextSplashRoutePattern> get nextRouteEvent => _nextRouteEvent;
 
-  set nextRouteEvent(final Event<NextSplashRoutePattern> nextRouteEvent) {
+  set nextRouteEvent(Event<NextSplashRoutePattern> nextRouteEvent) {
     _nextRouteEvent = nextRouteEvent;
     notifyListeners();
   }

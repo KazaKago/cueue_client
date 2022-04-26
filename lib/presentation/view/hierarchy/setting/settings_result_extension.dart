@@ -3,7 +3,7 @@ import 'package:cueue/presentation/viewmodel/hierarchy/setting/settings_result.d
 import 'package:flutter/widgets.dart';
 
 extension SettingsResultExtension on SettingResult {
-  String toFormattedString(final BuildContext context) {
+  String toFormattedString(BuildContext context) {
     switch (this) {
       case SettingResult.updatedEmail:
         return intl(context).updatedMailAddress;

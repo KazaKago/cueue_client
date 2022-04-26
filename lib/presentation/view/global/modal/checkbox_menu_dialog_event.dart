@@ -5,7 +5,7 @@ part 'checkbox_menu_dialog_event.freezed.dart';
 
 @freezed
 class CheckedMenuDialogEvent with _$CheckedMenuDialogEvent {
-  const factory CheckedMenuDialogEvent.positive(final List<CheckedMenuItem> menuItems) = _Positive;
+  const factory CheckedMenuDialogEvent.positive(List<CheckedMenuItem> menuItems) = _Positive;
 
-  const factory CheckedMenuDialogEvent.negative(final List<CheckedMenuItem> menuItems) = _Negative;
+  const factory CheckedMenuDialogEvent.negative(List<CheckedMenuItem> menuItems) = _Negative;
 }

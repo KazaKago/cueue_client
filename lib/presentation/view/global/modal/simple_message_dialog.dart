@@ -14,22 +14,28 @@ class SimpleMessageDialog {
   Future<SimpleMessageDialogEvent?> show() {
     final buttons = <Widget>[];
     if (negativeButton != null) {
-      buttons.add(TextButton(
-        onPressed: () => Navigator.of(_context).pop(const SimpleMessageDialogEvent.negative()),
-        child: Text(negativeButton!),
-      ));
+      buttons.add(
+        TextButton(
+          onPressed: () => Navigator.of(_context).pop(const SimpleMessageDialogEvent.negative()),
+          child: Text(negativeButton!),
+        ),
+      );
     }
     if (neutralButton != null) {
-      buttons.add(TextButton(
-        onPressed: () => Navigator.of(_context).pop(const SimpleMessageDialogEvent.neutral()),
-        child: Text(neutralButton!),
-      ));
+      buttons.add(
+        TextButton(
+          onPressed: () => Navigator.of(_context).pop(const SimpleMessageDialogEvent.neutral()),
+          child: Text(neutralButton!),
+        ),
+      );
     }
     if (positiveButton != null) {
-      buttons.add(TextButton(
-        onPressed: () => Navigator.of(_context).pop(const SimpleMessageDialogEvent.positive()),
-        child: Text(positiveButton!),
-      ));
+      buttons.add(
+        TextButton(
+          onPressed: () => Navigator.of(_context).pop(const SimpleMessageDialogEvent.positive()),
+          child: Text(positiveButton!),
+        ),
+      );
     }
     return showDialog(
       context: _context,

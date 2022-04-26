@@ -10,8 +10,7 @@ part of 'multi_text_field_dialog_event.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 class _$MultiTextFieldDialogEventTearOff {
@@ -41,16 +40,13 @@ const $MultiTextFieldDialogEvent = _$MultiTextFieldDialogEventTearOff();
 
 /// @nodoc
 mixin _$MultiTextFieldDialogEvent {
-  List<MultiTextFieldDialogResult> get results =>
-      throw _privateConstructorUsedError;
+  List<MultiTextFieldDialogResult> get results => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<MultiTextFieldDialogResult> results)
-        positive,
+    required TResult Function(List<MultiTextFieldDialogResult> results) positive,
     required TResult Function(List<MultiTextFieldDialogResult> results) neutral,
-    required TResult Function(List<MultiTextFieldDialogResult> results)
-        negative,
+    required TResult Function(List<MultiTextFieldDialogResult> results) negative,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -92,21 +88,17 @@ mixin _$MultiTextFieldDialogEvent {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MultiTextFieldDialogEventCopyWith<MultiTextFieldDialogEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MultiTextFieldDialogEventCopyWith<MultiTextFieldDialogEvent> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MultiTextFieldDialogEventCopyWith<$Res> {
-  factory $MultiTextFieldDialogEventCopyWith(MultiTextFieldDialogEvent value,
-          $Res Function(MultiTextFieldDialogEvent) then) =
-      _$MultiTextFieldDialogEventCopyWithImpl<$Res>;
+  factory $MultiTextFieldDialogEventCopyWith(MultiTextFieldDialogEvent value, $Res Function(MultiTextFieldDialogEvent) then) = _$MultiTextFieldDialogEventCopyWithImpl<$Res>;
   $Res call({List<MultiTextFieldDialogResult> results});
 }
 
 /// @nodoc
-class _$MultiTextFieldDialogEventCopyWithImpl<$Res>
-    implements $MultiTextFieldDialogEventCopyWith<$Res> {
+class _$MultiTextFieldDialogEventCopyWithImpl<$Res> implements $MultiTextFieldDialogEventCopyWith<$Res> {
   _$MultiTextFieldDialogEventCopyWithImpl(this._value, this._then);
 
   final MultiTextFieldDialogEvent _value;
@@ -127,20 +119,15 @@ class _$MultiTextFieldDialogEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PositiveCopyWith<$Res>
-    implements $MultiTextFieldDialogEventCopyWith<$Res> {
-  factory _$PositiveCopyWith(_Positive value, $Res Function(_Positive) then) =
-      __$PositiveCopyWithImpl<$Res>;
+abstract class _$PositiveCopyWith<$Res> implements $MultiTextFieldDialogEventCopyWith<$Res> {
+  factory _$PositiveCopyWith(_Positive value, $Res Function(_Positive) then) = __$PositiveCopyWithImpl<$Res>;
   @override
   $Res call({List<MultiTextFieldDialogResult> results});
 }
 
 /// @nodoc
-class __$PositiveCopyWithImpl<$Res>
-    extends _$MultiTextFieldDialogEventCopyWithImpl<$Res>
-    implements _$PositiveCopyWith<$Res> {
-  __$PositiveCopyWithImpl(_Positive _value, $Res Function(_Positive) _then)
-      : super(_value, (v) => _then(v as _Positive));
+class __$PositiveCopyWithImpl<$Res> extends _$MultiTextFieldDialogEventCopyWithImpl<$Res> implements _$PositiveCopyWith<$Res> {
+  __$PositiveCopyWithImpl(_Positive _value, $Res Function(_Positive) _then) : super(_value, (v) => _then(v as _Positive));
 
   @override
   _Positive get _value => super._value as _Positive;
@@ -173,29 +160,22 @@ class _$_Positive implements _Positive {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Positive &&
-            const DeepCollectionEquality().equals(other.results, results));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _Positive && const DeepCollectionEquality().equals(other.results, results));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(results));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(results));
 
   @JsonKey(ignore: true)
   @override
-  _$PositiveCopyWith<_Positive> get copyWith =>
-      __$PositiveCopyWithImpl<_Positive>(this, _$identity);
+  _$PositiveCopyWith<_Positive> get copyWith => __$PositiveCopyWithImpl<_Positive>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<MultiTextFieldDialogResult> results)
-        positive,
+    required TResult Function(List<MultiTextFieldDialogResult> results) positive,
     required TResult Function(List<MultiTextFieldDialogResult> results) neutral,
-    required TResult Function(List<MultiTextFieldDialogResult> results)
-        negative,
+    required TResult Function(List<MultiTextFieldDialogResult> results) negative,
   }) {
     return positive(results);
   }
@@ -260,32 +240,25 @@ class _$_Positive implements _Positive {
 }
 
 abstract class _Positive implements MultiTextFieldDialogEvent {
-  const factory _Positive(List<MultiTextFieldDialogResult> results) =
-      _$_Positive;
+  const factory _Positive(List<MultiTextFieldDialogResult> results) = _$_Positive;
 
   @override
   List<MultiTextFieldDialogResult> get results;
   @override
   @JsonKey(ignore: true)
-  _$PositiveCopyWith<_Positive> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$PositiveCopyWith<_Positive> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$NeutralCopyWith<$Res>
-    implements $MultiTextFieldDialogEventCopyWith<$Res> {
-  factory _$NeutralCopyWith(_Neutral value, $Res Function(_Neutral) then) =
-      __$NeutralCopyWithImpl<$Res>;
+abstract class _$NeutralCopyWith<$Res> implements $MultiTextFieldDialogEventCopyWith<$Res> {
+  factory _$NeutralCopyWith(_Neutral value, $Res Function(_Neutral) then) = __$NeutralCopyWithImpl<$Res>;
   @override
   $Res call({List<MultiTextFieldDialogResult> results});
 }
 
 /// @nodoc
-class __$NeutralCopyWithImpl<$Res>
-    extends _$MultiTextFieldDialogEventCopyWithImpl<$Res>
-    implements _$NeutralCopyWith<$Res> {
-  __$NeutralCopyWithImpl(_Neutral _value, $Res Function(_Neutral) _then)
-      : super(_value, (v) => _then(v as _Neutral));
+class __$NeutralCopyWithImpl<$Res> extends _$MultiTextFieldDialogEventCopyWithImpl<$Res> implements _$NeutralCopyWith<$Res> {
+  __$NeutralCopyWithImpl(_Neutral _value, $Res Function(_Neutral) _then) : super(_value, (v) => _then(v as _Neutral));
 
   @override
   _Neutral get _value => super._value as _Neutral;
@@ -318,29 +291,22 @@ class _$_Neutral implements _Neutral {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Neutral &&
-            const DeepCollectionEquality().equals(other.results, results));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _Neutral && const DeepCollectionEquality().equals(other.results, results));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(results));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(results));
 
   @JsonKey(ignore: true)
   @override
-  _$NeutralCopyWith<_Neutral> get copyWith =>
-      __$NeutralCopyWithImpl<_Neutral>(this, _$identity);
+  _$NeutralCopyWith<_Neutral> get copyWith => __$NeutralCopyWithImpl<_Neutral>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<MultiTextFieldDialogResult> results)
-        positive,
+    required TResult Function(List<MultiTextFieldDialogResult> results) positive,
     required TResult Function(List<MultiTextFieldDialogResult> results) neutral,
-    required TResult Function(List<MultiTextFieldDialogResult> results)
-        negative,
+    required TResult Function(List<MultiTextFieldDialogResult> results) negative,
   }) {
     return neutral(results);
   }
@@ -411,25 +377,19 @@ abstract class _Neutral implements MultiTextFieldDialogEvent {
   List<MultiTextFieldDialogResult> get results;
   @override
   @JsonKey(ignore: true)
-  _$NeutralCopyWith<_Neutral> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$NeutralCopyWith<_Neutral> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$NegativeCopyWith<$Res>
-    implements $MultiTextFieldDialogEventCopyWith<$Res> {
-  factory _$NegativeCopyWith(_Negative value, $Res Function(_Negative) then) =
-      __$NegativeCopyWithImpl<$Res>;
+abstract class _$NegativeCopyWith<$Res> implements $MultiTextFieldDialogEventCopyWith<$Res> {
+  factory _$NegativeCopyWith(_Negative value, $Res Function(_Negative) then) = __$NegativeCopyWithImpl<$Res>;
   @override
   $Res call({List<MultiTextFieldDialogResult> results});
 }
 
 /// @nodoc
-class __$NegativeCopyWithImpl<$Res>
-    extends _$MultiTextFieldDialogEventCopyWithImpl<$Res>
-    implements _$NegativeCopyWith<$Res> {
-  __$NegativeCopyWithImpl(_Negative _value, $Res Function(_Negative) _then)
-      : super(_value, (v) => _then(v as _Negative));
+class __$NegativeCopyWithImpl<$Res> extends _$MultiTextFieldDialogEventCopyWithImpl<$Res> implements _$NegativeCopyWith<$Res> {
+  __$NegativeCopyWithImpl(_Negative _value, $Res Function(_Negative) _then) : super(_value, (v) => _then(v as _Negative));
 
   @override
   _Negative get _value => super._value as _Negative;
@@ -462,29 +422,22 @@ class _$_Negative implements _Negative {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Negative &&
-            const DeepCollectionEquality().equals(other.results, results));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _Negative && const DeepCollectionEquality().equals(other.results, results));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(results));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(results));
 
   @JsonKey(ignore: true)
   @override
-  _$NegativeCopyWith<_Negative> get copyWith =>
-      __$NegativeCopyWithImpl<_Negative>(this, _$identity);
+  _$NegativeCopyWith<_Negative> get copyWith => __$NegativeCopyWithImpl<_Negative>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<MultiTextFieldDialogResult> results)
-        positive,
+    required TResult Function(List<MultiTextFieldDialogResult> results) positive,
     required TResult Function(List<MultiTextFieldDialogResult> results) neutral,
-    required TResult Function(List<MultiTextFieldDialogResult> results)
-        negative,
+    required TResult Function(List<MultiTextFieldDialogResult> results) negative,
   }) {
     return negative(results);
   }
@@ -549,13 +502,11 @@ class _$_Negative implements _Negative {
 }
 
 abstract class _Negative implements MultiTextFieldDialogEvent {
-  const factory _Negative(List<MultiTextFieldDialogResult> results) =
-      _$_Negative;
+  const factory _Negative(List<MultiTextFieldDialogResult> results) = _$_Negative;
 
   @override
   List<MultiTextFieldDialogResult> get results;
   @override
   @JsonKey(ignore: true)
-  _$NegativeCopyWith<_Negative> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$NegativeCopyWith<_Negative> get copyWith => throw _privateConstructorUsedError;
 }

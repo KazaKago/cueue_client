@@ -10,8 +10,7 @@ part of 'tag_response.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 TagResponse _$TagResponseFromJson(Map<String, dynamic> json) {
   return _TagResponse.fromJson(json);
@@ -21,9 +20,7 @@ TagResponse _$TagResponseFromJson(Map<String, dynamic> json) {
 class _$TagResponseTearOff {
   const _$TagResponseTearOff();
 
-  _TagResponse call(
-      {@JsonKey(name: 'id') required int id,
-      @JsonKey(name: 'name') required String name}) {
+  _TagResponse call({@JsonKey(name: 'id') required int id, @JsonKey(name: 'name') required String name}) {
     return _TagResponse(
       id: id,
       name: name,
@@ -42,22 +39,18 @@ const $TagResponse = _$TagResponseTearOff();
 mixin _$TagResponse {
 // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  int get id => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TagResponseCopyWith<TagResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TagResponseCopyWith<TagResponse> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TagResponseCopyWith<$Res> {
-  factory $TagResponseCopyWith(
-          TagResponse value, $Res Function(TagResponse) then) =
-      _$TagResponseCopyWithImpl<$Res>;
+  factory $TagResponseCopyWith(TagResponse value, $Res Function(TagResponse) then) = _$TagResponseCopyWithImpl<$Res>;
   $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
 }
 
@@ -88,21 +81,15 @@ class _$TagResponseCopyWithImpl<$Res> implements $TagResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$TagResponseCopyWith<$Res>
-    implements $TagResponseCopyWith<$Res> {
-  factory _$TagResponseCopyWith(
-          _TagResponse value, $Res Function(_TagResponse) then) =
-      __$TagResponseCopyWithImpl<$Res>;
+abstract class _$TagResponseCopyWith<$Res> implements $TagResponseCopyWith<$Res> {
+  factory _$TagResponseCopyWith(_TagResponse value, $Res Function(_TagResponse) then) = __$TagResponseCopyWithImpl<$Res>;
   @override
   $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
-class __$TagResponseCopyWithImpl<$Res> extends _$TagResponseCopyWithImpl<$Res>
-    implements _$TagResponseCopyWith<$Res> {
-  __$TagResponseCopyWithImpl(
-      _TagResponse _value, $Res Function(_TagResponse) _then)
-      : super(_value, (v) => _then(v as _TagResponse));
+class __$TagResponseCopyWithImpl<$Res> extends _$TagResponseCopyWithImpl<$Res> implements _$TagResponseCopyWith<$Res> {
+  __$TagResponseCopyWithImpl(_TagResponse _value, $Res Function(_TagResponse) _then) : super(_value, (v) => _then(v as _TagResponse));
 
   @override
   _TagResponse get _value => super._value as _TagResponse;
@@ -128,12 +115,9 @@ class __$TagResponseCopyWithImpl<$Res> extends _$TagResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_TagResponse implements _TagResponse {
-  const _$_TagResponse(
-      {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'name') required this.name});
+  const _$_TagResponse({@JsonKey(name: 'id') required this.id, @JsonKey(name: 'name') required this.name});
 
-  factory _$_TagResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_TagResponseFromJson(json);
+  factory _$_TagResponse.fromJson(Map<String, dynamic> json) => _$$_TagResponseFromJson(json);
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
@@ -149,23 +133,15 @@ class _$_TagResponse implements _TagResponse {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _TagResponse &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _TagResponse && const DeepCollectionEquality().equals(other.id, id) && const DeepCollectionEquality().equals(other.name, name));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(id), const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override
-  _$TagResponseCopyWith<_TagResponse> get copyWith =>
-      __$TagResponseCopyWithImpl<_TagResponse>(this, _$identity);
+  _$TagResponseCopyWith<_TagResponse> get copyWith => __$TagResponseCopyWithImpl<_TagResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -174,12 +150,9 @@ class _$_TagResponse implements _TagResponse {
 }
 
 abstract class _TagResponse implements TagResponse {
-  const factory _TagResponse(
-      {@JsonKey(name: 'id') required int id,
-      @JsonKey(name: 'name') required String name}) = _$_TagResponse;
+  const factory _TagResponse({@JsonKey(name: 'id') required int id, @JsonKey(name: 'name') required String name}) = _$_TagResponse;
 
-  factory _TagResponse.fromJson(Map<String, dynamic> json) =
-      _$_TagResponse.fromJson;
+  factory _TagResponse.fromJson(Map<String, dynamic> json) = _$_TagResponse.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
@@ -189,6 +162,5 @@ abstract class _TagResponse implements TagResponse {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$TagResponseCopyWith<_TagResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$TagResponseCopyWith<_TagResponse> get copyWith => throw _privateConstructorUsedError;
 }

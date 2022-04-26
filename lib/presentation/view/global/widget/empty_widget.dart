@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class EmptyWidget extends StatelessWidget {
-  const EmptyWidget(this.message, {final Key? key}) : super(key: key);
+  const EmptyWidget(this.message, {Key? key}) : super(key: key);
 
   final String message;
 
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
       child: Center(

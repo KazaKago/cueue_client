@@ -9,7 +9,7 @@ class UpdateTagUseCaseImpl implements UpdateTagUseCase {
   final TagRepository _tagsRepository;
 
   @override
-  Future<void> call(final TagId tagId, final TagRegistration tagRegistration) {
+  Future<void> call(TagId tagId, TagRegistration tagRegistration) {
     return _tagsRepository.update(tagId, tagRegistration);
   }
 }

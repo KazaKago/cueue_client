@@ -6,9 +6,9 @@ part 'password.freezed.dart';
 
 @freezed
 class Password with _$Password {
-  factory Password(final String value) = _Password;
+  factory Password(String value) = _Password;
 
-  factory Password.validateMatch(final String value1, final String value2) {
+  factory Password.validateMatch(String value1, String value2) {
     if (value1 != value2) throw DoNotMatchPasswordException(value1);
     return Password(value1);
   }

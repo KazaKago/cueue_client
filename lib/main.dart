@@ -17,7 +17,10 @@ Future<void> main() async {
   await FirebaseAppCheck.instance.activate();
 
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
-  await runZonedGuarded<Future<void>>(() async {
-    runApp(const ProviderScope(child: CueueApp()));
-  }, FirebaseCrashlytics.instance.recordError);
+  await runZonedGuarded<Future<void>>(
+    () async {
+      runApp(const ProviderScope(child: CueueApp()));
+    },
+    FirebaseCrashlytics.instance.recordError,
+  );
 }

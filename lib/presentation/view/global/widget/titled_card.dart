@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class TitledCard extends StatelessWidget {
-  const TitledCard({final Key? key, required this.child, this.title, this.margin, this.contentPadding})
+  const TitledCard({Key? key, required this.child, this.title, this.margin, this.contentPadding})
       : children = null,
         super(key: key);
 
-  const TitledCard.list({final Key? key, required this.children, this.title, this.margin, this.contentPadding})
+  const TitledCard.list({Key? key, required this.children, this.title, this.margin, this.contentPadding})
       : child = null,
         super(key: key);
 
@@ -16,7 +16,7 @@ class TitledCard extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
 
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     return Card(
       margin: margin,
       child: Column(

@@ -10,7 +10,7 @@ class RecipeResponseMapper {
   final TagResponseMapper _tagResponseMapper;
   final ContentResponseMapper _contentResponseMapper;
 
-  Recipe map(final RecipeResponse response) {
+  Recipe map(RecipeResponse response) {
     return Recipe(
       id: RecipeId(response.id),
       title: response.title,

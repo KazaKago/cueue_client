@@ -22,47 +22,57 @@ class TextFieldDialog {
   Future<TextFieldDialogEvent?> show() {
     final buttons = <Widget>[];
     if (negativeButton != null) {
-      buttons.add(TextButton(
-        onPressed: () => Navigator.of(_context).pop(TextFieldDialogEvent.negative(_textEditingController.text, originalText: defaultText)),
-        child: Text(negativeButton!),
-      ));
+      buttons.add(
+        TextButton(
+          onPressed: () => Navigator.of(_context).pop(TextFieldDialogEvent.negative(_textEditingController.text, originalText: defaultText)),
+          child: Text(negativeButton!),
+        ),
+      );
     }
     if (neutralButton != null) {
-      buttons.add(TextButton(
-        onPressed: () => Navigator.of(_context).pop(TextFieldDialogEvent.neutral(_textEditingController.text, originalText: defaultText)),
-        child: Text(neutralButton!),
-      ));
+      buttons.add(
+        TextButton(
+          onPressed: () => Navigator.of(_context).pop(TextFieldDialogEvent.neutral(_textEditingController.text, originalText: defaultText)),
+          child: Text(neutralButton!),
+        ),
+      );
     }
     if (positiveButton != null) {
-      buttons.add(TextButton(
-        onPressed: () => Navigator.of(_context).pop(TextFieldDialogEvent.positive(_textEditingController.text, originalText: defaultText)),
-        child: Text(positiveButton!),
-      ));
+      buttons.add(
+        TextButton(
+          onPressed: () => Navigator.of(_context).pop(TextFieldDialogEvent.positive(_textEditingController.text, originalText: defaultText)),
+          child: Text(positiveButton!),
+        ),
+      );
     }
     return showDialog(
-        context: _context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: (title != null) ? Text(title!) : null,
-            content: StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
+      context: _context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: (title != null) ? Text(title!) : null,
+          content: StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) {
               return TextField(
                 controller: _textEditingController,
                 autofocus: true,
                 keyboardType: keyboardType,
                 obscureText: _isObscureText,
                 decoration: InputDecoration(
-                    labelText: labelText,
-                    hintText: hintText,
-                    suffixIcon: (keyboardType == TextInputType.visiblePassword)
-                        ? IconButton(
-                            icon: Icon(_isObscureText ? Icons.visibility_off : Icons.visibility),
-                            onPressed: () => setState(() => _isObscureText = !_isObscureText),
-                          )
-                        : null),
+                  labelText: labelText,
+                  hintText: hintText,
+                  suffixIcon: (keyboardType == TextInputType.visiblePassword)
+                      ? IconButton(
+                          icon: Icon(_isObscureText ? Icons.visibility_off : Icons.visibility),
+                          onPressed: () => setState(() => _isObscureText = !_isObscureText),
+                        )
+                      : null,
+                ),
               );
-            }),
-            actions: buttons,
-          );
-        });
+            },
+          ),
+          actions: buttons,
+        );
+      },
+    );
   }
 }

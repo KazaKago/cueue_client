@@ -22,20 +22,22 @@ class TagViewModel with ChangeNotifier {
 
   TagState get state => _state;
 
-  set state(final TagState state) {
+  set state(TagState state) {
     _state = state;
     notifyListeners();
   }
 
   void _follow() {
     final followTagsUseCase = _followTagsUseCase();
-    _compositeSubscription.add(followTagsUseCase.listen((state) {
-      this.state = state.when(
-        loading: (tags) => (tags != null) ? TagState.completed(tags) : const TagState.loading(),
-        completed: (tags, next, prev) => (tags.isNotEmpty) ? TagState.completed(tags) : const TagState.empty(),
-        error: (exception) => TagState.error(exception),
-      );
-    }));
+    _compositeSubscription.add(
+      followTagsUseCase.listen((state) {
+        this.state = state.when(
+          loading: (tags) => (tags != null) ? TagState.completed(tags) : const TagState.loading(),
+          completed: (tags, next, prev) => (tags.isNotEmpty) ? TagState.completed(tags) : const TagState.empty(),
+          error: (exception) => TagState.error(exception),
+        );
+      }),
+    );
   }
 
   Future<void> refresh() async {

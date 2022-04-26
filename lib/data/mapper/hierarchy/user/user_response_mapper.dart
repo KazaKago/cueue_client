@@ -18,7 +18,7 @@ class UserResponseMapper {
 
   final WorkspaceResponseMapper _workspaceResponseMapper;
 
-  User map(final auth.User firebaseUser, final UserResponse userResponse) {
+  User map(auth.User firebaseUser, UserResponse userResponse) {
     return User(
       id: UserId(firebaseUser.uid),
       email: Email(firebaseUser.email!),
@@ -30,7 +30,7 @@ class UserResponseMapper {
     );
   }
 
-  T? _getLoginProvider<T extends LoginProvider>(final auth.User firebaseUser, final ProviderId providerId, final T Function(UserId userId, String displayName) transform) {
+  T? _getLoginProvider<T extends LoginProvider>(auth.User firebaseUser, ProviderId providerId, T Function(UserId userId, String displayName) transform) {
     final userInfos = firebaseUser.providerData.where((element) => element.providerId == providerId.value).toList();
     if (userInfos.isNotEmpty) {
       final userInfo = userInfos.first;

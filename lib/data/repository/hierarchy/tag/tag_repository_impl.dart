@@ -40,7 +40,7 @@ class TagRepositoryImpl implements TagRepository {
   }
 
   @override
-  Future<void> create(final TagRegistration tagRegistration) async {
+  Future<void> create(TagRegistration tagRegistration) async {
     final user = await _userFlowableFactory.create(null).requireData();
     final response = await _createTagApi.execute(user.currentWorkspace.id.value, _tagRequestMapper.map(tagRegistration));
     final tag = _tagResponseMapper.map(response);
@@ -54,7 +54,7 @@ class TagRepositoryImpl implements TagRepository {
   }
 
   @override
-  Future<void> update(final TagId tagId, final TagRegistration tagRegistration) async {
+  Future<void> update(TagId tagId, TagRegistration tagRegistration) async {
     final user = await _userFlowableFactory.create(null).requireData();
     final response = await _updateTagApi.execute(user.currentWorkspace.id.value, tagId.value, _tagRequestMapper.map(tagRegistration));
     final tag = _tagResponseMapper.map(response);
@@ -78,7 +78,7 @@ class TagRepositoryImpl implements TagRepository {
   }
 
   @override
-  Future<void> delete(final TagId tagId) async {
+  Future<void> delete(TagId tagId) async {
     final user = await _userFlowableFactory.create(null).requireData();
     await _deleteTagApi.execute(user.currentWorkspace.id.value, tagId.value);
 

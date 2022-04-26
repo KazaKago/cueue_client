@@ -20,26 +20,26 @@ class RecipeFlowableFactory extends StoreFlowableFactory<RecipeId, Recipe> {
   FlowableDataStateManager<RecipeId> getFlowableDataStateManager() => _recipeStateManager;
 
   @override
-  Future<Recipe?> loadDataFromCache(final RecipeId param) async {
+  Future<Recipe?> loadDataFromCache(RecipeId param) async {
     return _recipeCache.recipeMap[param];
   }
 
   @override
-  Future<void> saveDataToCache(final Recipe? newData, final RecipeId param) async {
+  Future<void> saveDataToCache(Recipe? newData, RecipeId param) async {
     _recipeCache
       ..recipeMap[param] = newData
       ..recipeCreatedAt[param] = DateTime.now();
   }
 
   @override
-  Future<Recipe> fetchDataFromOrigin(final RecipeId param) async {
+  Future<Recipe> fetchDataFromOrigin(RecipeId param) async {
     final user = await _userFlowableFactory.create(null).requireData();
     final response = await _getRecipeApi.execute(user.currentWorkspace.id.value, recipeId: param.value);
     return _recipeResponseMapper.map(response);
   }
 
   @override
-  Future<bool> needRefresh(final Recipe cachedData, final RecipeId param) async {
+  Future<bool> needRefresh(Recipe cachedData, RecipeId param) async {
     final createdAt = _recipeCache.recipeCreatedAt[param];
     if (createdAt != null) {
       final expiredTime = createdAt.add(const Duration(minutes: 30));

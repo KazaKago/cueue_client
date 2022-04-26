@@ -8,5 +8,5 @@ part 'about_state.freezed.dart';
 class AboutState with _$AboutState {
   const factory AboutState.loading() = _Loading;
 
-  const factory AboutState.completed(final AppInfo appInfo, final DeveloperInfo developerInfo) = _Completed;
+  const factory AboutState.completed(AppInfo appInfo, DeveloperInfo developerInfo) = _Completed;
 }

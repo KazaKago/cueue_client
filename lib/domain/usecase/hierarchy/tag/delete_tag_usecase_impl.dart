@@ -8,7 +8,7 @@ class DeleteTagUseCaseImpl implements DeleteTagUseCase {
   final TagRepository _tagsRepository;
 
   @override
-  Future<void> call(final TagId tagId) {
+  Future<void> call(TagId tagId) {
     return _tagsRepository.delete(tagId);
   }
 }

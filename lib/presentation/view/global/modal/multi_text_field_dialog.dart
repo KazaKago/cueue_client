@@ -14,59 +14,75 @@ class MultiTextFieldDialog {
   Future<MultiTextFieldDialogEvent?> show() {
     final buttons = <Widget>[];
     if (negativeButton != null) {
-      buttons.add(TextButton(
-        onPressed: () => Navigator.of(_context).pop(MultiTextFieldDialogEvent.negative(
-          _textFieldContents.map((textFieldContent) => MultiTextFieldDialogResult(textFieldContent.textEditingController.text, textFieldContent.defaultText)).toList(),
-        )),
-        child: Text(negativeButton!),
-      ));
+      buttons.add(
+        TextButton(
+          onPressed: () => Navigator.of(_context).pop(
+            MultiTextFieldDialogEvent.negative(
+              _textFieldContents.map((textFieldContent) => MultiTextFieldDialogResult(textFieldContent.textEditingController.text, textFieldContent.defaultText)).toList(),
+            ),
+          ),
+          child: Text(negativeButton!),
+        ),
+      );
     }
     if (neutralButton != null) {
-      buttons.add(TextButton(
-        onPressed: () => Navigator.of(_context).pop(MultiTextFieldDialogEvent.neutral(
-          _textFieldContents.map((textFieldContent) => MultiTextFieldDialogResult(textFieldContent.textEditingController.text, textFieldContent.defaultText)).toList(),
-        )),
-        child: Text(neutralButton!),
-      ));
+      buttons.add(
+        TextButton(
+          onPressed: () => Navigator.of(_context).pop(
+            MultiTextFieldDialogEvent.neutral(
+              _textFieldContents.map((textFieldContent) => MultiTextFieldDialogResult(textFieldContent.textEditingController.text, textFieldContent.defaultText)).toList(),
+            ),
+          ),
+          child: Text(neutralButton!),
+        ),
+      );
     }
     if (positiveButton != null) {
-      buttons.add(TextButton(
-        onPressed: () => Navigator.of(_context).pop(MultiTextFieldDialogEvent.positive(
-          _textFieldContents.map((textFieldContent) => MultiTextFieldDialogResult(textFieldContent.textEditingController.text, textFieldContent.defaultText)).toList(),
-        )),
-        child: Text(positiveButton!),
-      ));
+      buttons.add(
+        TextButton(
+          onPressed: () => Navigator.of(_context).pop(
+            MultiTextFieldDialogEvent.positive(
+              _textFieldContents.map((textFieldContent) => MultiTextFieldDialogResult(textFieldContent.textEditingController.text, textFieldContent.defaultText)).toList(),
+            ),
+          ),
+          child: Text(positiveButton!),
+        ),
+      );
     }
     return showDialog(
-        context: _context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: (title != null) ? Text(title!) : null,
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: _textFieldContents.map((element) {
-                return StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
+      context: _context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: (title != null) ? Text(title!) : null,
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: _textFieldContents.map((element) {
+              return StatefulBuilder(
+                builder: (BuildContext context, StateSetter setState) {
                   return TextField(
                     controller: element.textEditingController,
                     autofocus: true,
                     keyboardType: element.keyboardType,
                     obscureText: element.isObscureText,
                     decoration: InputDecoration(
-                        labelText: element.labelText,
-                        hintText: element.hintText,
-                        suffixIcon: (element.keyboardType == TextInputType.visiblePassword)
-                            ? IconButton(
-                                icon: Icon(element.isObscureText ? Icons.visibility_off : Icons.visibility),
-                                onPressed: () => setState(() => element.isObscureText = !element.isObscureText),
-                              )
-                            : null),
+                      labelText: element.labelText,
+                      hintText: element.hintText,
+                      suffixIcon: (element.keyboardType == TextInputType.visiblePassword)
+                          ? IconButton(
+                              icon: Icon(element.isObscureText ? Icons.visibility_off : Icons.visibility),
+                              onPressed: () => setState(() => element.isObscureText = !element.isObscureText),
+                            )
+                          : null,
+                    ),
                   );
-                });
-              }).toList(),
-            ),
-            actions: buttons,
-          );
-        });
+                },
+              );
+            }).toList(),
+          ),
+          actions: buttons,
+        );
+      },
+    );
   }
 }
 

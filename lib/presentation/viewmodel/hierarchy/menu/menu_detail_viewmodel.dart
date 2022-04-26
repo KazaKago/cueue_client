@@ -24,20 +24,22 @@ class MenuDetailViewModel with ChangeNotifier {
 
   MenuDetailState get state => _state;
 
-  set state(final MenuDetailState state) {
+  set state(MenuDetailState state) {
     _state = state;
     notifyListeners();
   }
 
   void _follow() {
     final followMenuUseCase = _followMenuUseCase(_menuId);
-    _compositeSubscription.add(followMenuUseCase.listen((state) {
-      this.state = state.when(
-        loading: (content) => (content != null) ? MenuDetailState.completed(content) : const MenuDetailState.loading(),
-        completed: (content, next, prev) => MenuDetailState.completed(content),
-        error: (exception) => MenuDetailState.error(exception),
-      );
-    }));
+    _compositeSubscription.add(
+      followMenuUseCase.listen((state) {
+        this.state = state.when(
+          loading: (content) => (content != null) ? MenuDetailState.completed(content) : const MenuDetailState.loading(),
+          completed: (content, next, prev) => MenuDetailState.completed(content),
+          error: (exception) => MenuDetailState.error(exception),
+        );
+      }),
+    );
   }
 
   Future<void> refresh() async {

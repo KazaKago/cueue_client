@@ -5,7 +5,7 @@ import 'package:cueue/domain/model/hierarchy/tag/tag_id.dart';
 class TagResponseMapper {
   const TagResponseMapper();
 
-  Tag map(final TagResponse response) {
+  Tag map(TagResponse response) {
     return Tag(
       id: TagId(response.id),
       name: response.name,

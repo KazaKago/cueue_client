@@ -16,14 +16,14 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class RecipeListWidget extends HookConsumerWidget {
-  const RecipeListWidget({this.tag, this.selectedRecipes, this.onTap, final Key? key}) : super(key: key);
+  const RecipeListWidget({this.tag, this.selectedRecipes, this.onTap, Key? key}) : super(key: key);
 
   final Tag? tag;
   final List<RecipeSummary>? selectedRecipes;
   final void Function(RecipeSummary recipe)? onTap;
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(recipeViewModelProvider(tag?.id).select((viewModel) => viewModel.state));
     final viewModel = ref.read(recipeViewModelProvider(tag?.id));
     final scrollController = useScrollController()..onReachBottomWithAutoDispose(viewModel.requestAddition);
@@ -38,16 +38,15 @@ class RecipeListWidget extends HookConsumerWidget {
     );
   }
 
-  Widget _buildLoading(final BuildContext context, final WidgetRef ref) {
+  Widget _buildLoading(BuildContext context, WidgetRef ref) {
     return ShimmerContainer(
       child: Wrap(
-        direction: Axis.horizontal,
         children: List.filled(10, const RecipeLoadingItem()),
       ),
     );
   }
 
-  Widget _buildAdditionalLoading(final BuildContext context, final WidgetRef ref, final ScrollController scrollController, final List<RecipeSummary> recipes) {
+  Widget _buildAdditionalLoading(BuildContext context, WidgetRef ref, ScrollController scrollController, List<RecipeSummary> recipes) {
     final viewModel = ref.read(recipeViewModelProvider(tag?.id));
     final recipeSelectionViewModel = ref.read(recipeSelectionViewModelProvider(selectedRecipes ?? []));
     return RefreshIndicator(
@@ -79,11 +78,11 @@ class RecipeListWidget extends HookConsumerWidget {
     );
   }
 
-  Widget _buildEmpty(final BuildContext context, final WidgetRef ref) {
+  Widget _buildEmpty(BuildContext context, WidgetRef ref) {
     return EmptyWidget(intl(context).no_recipe_message);
   }
 
-  Widget _buildCompleted(final BuildContext context, final WidgetRef ref, final ScrollController scrollController, final List<RecipeSummary> recipes) {
+  Widget _buildCompleted(BuildContext context, WidgetRef ref, ScrollController scrollController, List<RecipeSummary> recipes) {
     final viewModel = ref.read(recipeViewModelProvider(tag?.id));
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
@@ -95,8 +94,8 @@ class RecipeListWidget extends HookConsumerWidget {
           itemBuilder: (BuildContext context, int index) {
             bool? isCheck;
             if (selectedRecipes != null) {
-              final _selectedRecipes = ref.watch(recipeSelectionViewModelProvider(selectedRecipes!).select((viewModel) => viewModel.selectedRecipes));
-              isCheck = _selectedRecipes.map((e) => e.id).contains(recipes[index].id);
+              final selectedRecipes = ref.watch(recipeSelectionViewModelProvider(this.selectedRecipes!).select((viewModel) => viewModel.selectedRecipes));
+              isCheck = selectedRecipes.map((e) => e.id).contains(recipes[index].id);
             }
             return RecipeItem(
               title: recipes[index].title,
@@ -111,12 +110,12 @@ class RecipeListWidget extends HookConsumerWidget {
     );
   }
 
-  Widget _buildError(final BuildContext context, final WidgetRef ref, final Exception exception) {
+  Widget _buildError(BuildContext context, WidgetRef ref, Exception exception) {
     final viewModel = ref.read(recipeViewModelProvider(tag?.id));
     return ErrorHandlingWidget(exception, onClickRetry: viewModel.retry);
   }
 
-  Widget _buildAdditionalError(final BuildContext context, final WidgetRef ref, final ScrollController scrollController, final List<RecipeSummary> recipes, final Exception exception) {
+  Widget _buildAdditionalError(BuildContext context, WidgetRef ref, ScrollController scrollController, List<RecipeSummary> recipes, Exception exception) {
     final viewModel = ref.read(recipeViewModelProvider(tag?.id));
     final recipeSelectionViewModel = ref.read(recipeSelectionViewModelProvider(selectedRecipes ?? []));
     return RefreshIndicator(

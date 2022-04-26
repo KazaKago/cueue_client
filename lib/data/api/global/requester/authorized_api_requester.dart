@@ -21,7 +21,7 @@ abstract class AuthorizedApiRequester {
     );
   }
 
-  InterceptorsWrapper _createInterceptor(final Dio dio) {
+  InterceptorsWrapper _createInterceptor(Dio dio) {
     return InterceptorsWrapper(
       onRequest: (RequestOptions options, RequestInterceptorHandler handler) async {
         try {

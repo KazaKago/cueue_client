@@ -51,7 +51,7 @@ class _TextFieldDatePicker extends State<TextFieldDatePicker> {
   }
 
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     return TextField(
       focusNode: widget.focusNode,
       controller: _controllerDate,
@@ -72,7 +72,7 @@ class _TextFieldDatePicker extends State<TextFieldDatePicker> {
     super.dispose();
   }
 
-  Future<void> _selectDate(final BuildContext context) async {
+  Future<void> _selectDate(BuildContext context) async {
     final pickedDate = await showDatePicker(
       context: context,
       initialDate: _selectedDate,

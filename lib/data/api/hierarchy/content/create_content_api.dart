@@ -9,7 +9,7 @@ class CreateContentApi {
 
   final AuthorizedApiRequester _requester;
 
-  Future<ContentResponse> execute(final ContentRequest request) async {
+  Future<ContentResponse> execute(ContentRequest request) async {
     try {
       final response = await _requester.create().post<Map<String, dynamic>>('/contents', data: request);
       return ContentResponse.fromJson(response.data!);

@@ -3,7 +3,7 @@ import 'package:cueue/domain/model/hierarchy/menu/time_frame.dart';
 class TimeFrameResponseMapper {
   const TimeFrameResponseMapper();
 
-  TimeFrame map(final String response) {
+  TimeFrame map(String response) {
     switch (response) {
       case 'breakfast':
         return TimeFrame.breakfast;

@@ -10,19 +10,13 @@ part of 'menu.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 class _$MenuTearOff {
   const _$MenuTearOff();
 
-  _Menu call(
-      {required MenuId id,
-      required String memo,
-      required DateTime date,
-      required TimeFrame timeFrame,
-      required List<RecipeSummary> recipes}) {
+  _Menu call({required MenuId id, required String memo, required DateTime date, required TimeFrame timeFrame, required List<RecipeSummary> recipes}) {
     return _Menu(
       id: id,
       memo: memo,
@@ -50,14 +44,8 @@ mixin _$Menu {
 
 /// @nodoc
 abstract class $MenuCopyWith<$Res> {
-  factory $MenuCopyWith(Menu value, $Res Function(Menu) then) =
-      _$MenuCopyWithImpl<$Res>;
-  $Res call(
-      {MenuId id,
-      String memo,
-      DateTime date,
-      TimeFrame timeFrame,
-      List<RecipeSummary> recipes});
+  factory $MenuCopyWith(Menu value, $Res Function(Menu) then) = _$MenuCopyWithImpl<$Res>;
+  $Res call({MenuId id, String memo, DateTime date, TimeFrame timeFrame, List<RecipeSummary> recipes});
 
   $MenuIdCopyWith<$Res> get id;
 }
@@ -112,25 +100,17 @@ class _$MenuCopyWithImpl<$Res> implements $MenuCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$MenuCopyWith<$Res> implements $MenuCopyWith<$Res> {
-  factory _$MenuCopyWith(_Menu value, $Res Function(_Menu) then) =
-      __$MenuCopyWithImpl<$Res>;
+  factory _$MenuCopyWith(_Menu value, $Res Function(_Menu) then) = __$MenuCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {MenuId id,
-      String memo,
-      DateTime date,
-      TimeFrame timeFrame,
-      List<RecipeSummary> recipes});
+  $Res call({MenuId id, String memo, DateTime date, TimeFrame timeFrame, List<RecipeSummary> recipes});
 
   @override
   $MenuIdCopyWith<$Res> get id;
 }
 
 /// @nodoc
-class __$MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res>
-    implements _$MenuCopyWith<$Res> {
-  __$MenuCopyWithImpl(_Menu _value, $Res Function(_Menu) _then)
-      : super(_value, (v) => _then(v as _Menu));
+class __$MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res> implements _$MenuCopyWith<$Res> {
+  __$MenuCopyWithImpl(_Menu _value, $Res Function(_Menu) _then) : super(_value, (v) => _then(v as _Menu));
 
   @override
   _Menu get _value => super._value as _Menu;
@@ -171,12 +151,7 @@ class __$MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Menu implements _Menu {
-  const _$_Menu(
-      {required this.id,
-      required this.memo,
-      required this.date,
-      required this.timeFrame,
-      required this.recipes});
+  const _$_Menu({required this.id, required this.memo, required this.date, required this.timeFrame, required this.recipes});
 
   @override
   final MenuId id;
@@ -196,38 +171,19 @@ class _$_Menu implements _Menu {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Menu &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.memo, memo) &&
-            const DeepCollectionEquality().equals(other.date, date) &&
-            const DeepCollectionEquality().equals(other.timeFrame, timeFrame) &&
-            const DeepCollectionEquality().equals(other.recipes, recipes));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _Menu && const DeepCollectionEquality().equals(other.id, id) && const DeepCollectionEquality().equals(other.memo, memo) && const DeepCollectionEquality().equals(other.date, date) && const DeepCollectionEquality().equals(other.timeFrame, timeFrame) && const DeepCollectionEquality().equals(other.recipes, recipes));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(memo),
-      const DeepCollectionEquality().hash(date),
-      const DeepCollectionEquality().hash(timeFrame),
-      const DeepCollectionEquality().hash(recipes));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(id), const DeepCollectionEquality().hash(memo), const DeepCollectionEquality().hash(date), const DeepCollectionEquality().hash(timeFrame), const DeepCollectionEquality().hash(recipes));
 
   @JsonKey(ignore: true)
   @override
-  _$MenuCopyWith<_Menu> get copyWith =>
-      __$MenuCopyWithImpl<_Menu>(this, _$identity);
+  _$MenuCopyWith<_Menu> get copyWith => __$MenuCopyWithImpl<_Menu>(this, _$identity);
 }
 
 abstract class _Menu implements Menu {
-  const factory _Menu(
-      {required MenuId id,
-      required String memo,
-      required DateTime date,
-      required TimeFrame timeFrame,
-      required List<RecipeSummary> recipes}) = _$_Menu;
+  const factory _Menu({required MenuId id, required String memo, required DateTime date, required TimeFrame timeFrame, required List<RecipeSummary> recipes}) = _$_Menu;
 
   @override
   MenuId get id;

@@ -8,9 +8,9 @@ abstract class TagRepository {
 
   Future<void> refresh();
 
-  Future<void> create(final TagRegistration tagRegistration);
+  Future<void> create(TagRegistration tagRegistration);
 
-  Future<void> update(final TagId tagId, final TagRegistration tagRegistration);
+  Future<void> update(TagId tagId, TagRegistration tagRegistration);
 
-  Future<void> delete(final TagId tagId);
+  Future<void> delete(TagId tagId);
 }

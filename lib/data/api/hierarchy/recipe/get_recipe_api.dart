@@ -8,7 +8,7 @@ class GetRecipeApi {
 
   final AuthorizedApiRequester _requester;
 
-  Future<RecipeResponse> execute(final int workspaceId, {required final int recipeId}) async {
+  Future<RecipeResponse> execute(int workspaceId, {required int recipeId}) async {
     try {
       final response = await _requester.create().get<Map<String, dynamic>>('/$workspaceId/recipes/$recipeId');
       return RecipeResponse.fromJson(response.data!);

@@ -2,13 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class PhotoPage extends StatelessWidget {
-  const PhotoPage({required this.imageUris, this.initialIndex = 0, final Key? key}) : super(key: key);
+  const PhotoPage({required this.imageUris, this.initialIndex = 0, Key? key}) : super(key: key);
 
   final List<Uri> imageUris;
   final int initialIndex;
 
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     return DefaultTabController(
       length: imageUris.length,
       initialIndex: initialIndex,

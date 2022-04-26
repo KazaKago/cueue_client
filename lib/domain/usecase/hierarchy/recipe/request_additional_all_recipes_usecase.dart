@@ -1,3 +1,3 @@
 abstract class RequestAdditionalAllRecipesUseCase {
-  Future<void> call({required final bool continueWhenError});
+  Future<void> call({required bool continueWhenError});
 }

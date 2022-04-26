@@ -6,7 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 class GoogleAuthorizer {
   const GoogleAuthorizer();
 
-  Future<GoogleAuthInfo> authorize(final BuildContext context) async {
+  Future<GoogleAuthInfo> authorize(BuildContext context) async {
     final googleSignInAccount = await GoogleSignIn().signIn();
     if (googleSignInAccount != null) {
       final authResult = await googleSignInAccount.authentication;

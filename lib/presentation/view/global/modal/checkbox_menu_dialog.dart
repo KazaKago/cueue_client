@@ -13,16 +13,20 @@ class CheckedMenuDialog {
   Future<CheckedMenuDialogEvent?> show() {
     final buttons = <Widget>[];
     if (negativeButton != null) {
-      buttons.add(TextButton(
-        onPressed: () => Navigator.of(_context).pop(CheckedMenuDialogEvent.negative(_menuItems)),
-        child: Text(negativeButton!),
-      ));
+      buttons.add(
+        TextButton(
+          onPressed: () => Navigator.of(_context).pop(CheckedMenuDialogEvent.negative(_menuItems)),
+          child: Text(negativeButton!),
+        ),
+      );
     }
     if (positiveButton != null) {
-      buttons.add(TextButton(
-        onPressed: () => Navigator.of(_context).pop(CheckedMenuDialogEvent.positive(_menuItems)),
-        child: Text(positiveButton!),
-      ));
+      buttons.add(
+        TextButton(
+          onPressed: () => Navigator.of(_context).pop(CheckedMenuDialogEvent.positive(_menuItems)),
+          child: Text(positiveButton!),
+        ),
+      );
     }
     return showDialog<CheckedMenuDialogEvent?>(
       context: _context,

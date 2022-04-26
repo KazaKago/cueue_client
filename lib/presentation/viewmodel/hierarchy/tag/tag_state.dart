@@ -9,7 +9,7 @@ class TagState with _$TagState {
 
   const factory TagState.empty() = _Empty;
 
-  const factory TagState.completed(final List<Tag> tags) = _Completed;
+  const factory TagState.completed(List<Tag> tags) = _Completed;
 
-  const factory TagState.error(final Exception error) = _Error;
+  const factory TagState.error(Exception error) = _Error;
 }

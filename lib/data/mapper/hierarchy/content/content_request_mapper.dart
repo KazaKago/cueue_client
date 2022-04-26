@@ -6,7 +6,7 @@ import 'package:cueue/domain/model/hierarchy/content/content_registration.dart';
 class ContentRequestMapper {
   const ContentRequestMapper();
 
-  ContentRequest map(final ContentRegistration contentRegistration) {
+  ContentRequest map(ContentRegistration contentRegistration) {
     return ContentRequest(data: base64Encode(contentRegistration.data));
   }
 }

@@ -7,15 +7,15 @@ part 'menu_state.freezed.dart';
 class MenuState with _$MenuState {
   const factory MenuState.loading() = _Loading;
 
-  const factory MenuState.refreshing(final List<DateSplitMenuList> menus) = _Refreshing;
+  const factory MenuState.refreshing(List<DateSplitMenuList> menus) = _Refreshing;
 
-  const factory MenuState.additionalLoading(final List<DateSplitMenuList> menus) = _AdditionalLoading;
+  const factory MenuState.additionalLoading(List<DateSplitMenuList> menus) = _AdditionalLoading;
 
   const factory MenuState.empty() = _Empty;
 
-  const factory MenuState.completed(final List<DateSplitMenuList> menus) = _Completed;
+  const factory MenuState.completed(List<DateSplitMenuList> menus) = _Completed;
 
-  const factory MenuState.error(final Exception error) = _Error;
+  const factory MenuState.error(Exception error) = _Error;
 
-  const factory MenuState.additionalError(final List<DateSplitMenuList> menus, final Exception error) = _AdditionalError;
+  const factory MenuState.additionalError(List<DateSplitMenuList> menus, Exception error) = _AdditionalError;
 }

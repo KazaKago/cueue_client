@@ -8,16 +8,16 @@ part 'menu_summary_response.g.dart';
 class MenuSummaryResponse with _$MenuSummaryResponse {
   const factory MenuSummaryResponse({
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'id') required final int id,
+    @JsonKey(name: 'id') required int id,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'memo') required final String memo,
+    @JsonKey(name: 'memo') required String memo,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'date') required final String date,
+    @JsonKey(name: 'date') required String date,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'time_frame') required final String timeFrame,
+    @JsonKey(name: 'time_frame') required String timeFrame,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'recipes') required final List<RecipeSummaryResponse> recipes,
+    @JsonKey(name: 'recipes') required List<RecipeSummaryResponse> recipes,
   }) = _MenuSummaryResponse;
 
-  factory MenuSummaryResponse.fromJson(final Map<String, dynamic> json) => _$MenuSummaryResponseFromJson(json);
+  factory MenuSummaryResponse.fromJson(Map<String, dynamic> json) => _$MenuSummaryResponseFromJson(json);
 }

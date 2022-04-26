@@ -1,5 +1,5 @@
 extension DateTimeExtension on DateTime {
-  bool isSameDay(final DateTime date) {
+  bool isSameDay(DateTime date) {
     return difference(DateTime(date.year, date.month, date.day)).inDays == 0;
   }
 

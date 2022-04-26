@@ -19,26 +19,26 @@ class TagFlowableFactory extends StoreFlowableFactory<void, List<Tag>> {
   FlowableDataStateManager<void> getFlowableDataStateManager() => _tagStateManager;
 
   @override
-  Future<List<Tag>?> loadDataFromCache(final void param) async {
+  Future<List<Tag>?> loadDataFromCache(void param) async {
     return _tagCache.tags;
   }
 
   @override
-  Future<void> saveDataToCache(final List<Tag>? newData, final void param) async {
+  Future<void> saveDataToCache(List<Tag>? newData, void param) async {
     _tagCache
       ..tags = newData
       ..tagsCreatedAt = DateTime.now();
   }
 
   @override
-  Future<List<Tag>> fetchDataFromOrigin(final void param) async {
+  Future<List<Tag>> fetchDataFromOrigin(void param) async {
     final user = await _userFlowableFactory.create(null).requireData();
     final response = await _getTagsApi.execute(user.currentWorkspace.id.value);
     return response.map(_tagResponseMapper.map).toList();
   }
 
   @override
-  Future<bool> needRefresh(final List<Tag> cachedData, final void param) async {
+  Future<bool> needRefresh(List<Tag> cachedData, void param) async {
     final createdAt = _tagCache.tagsCreatedAt;
     if (createdAt != null) {
       final expiredTime = createdAt.add(const Duration(minutes: 30));

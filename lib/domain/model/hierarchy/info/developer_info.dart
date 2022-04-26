@@ -6,9 +6,9 @@ part 'developer_info.freezed.dart';
 @freezed
 class DeveloperInfo with _$DeveloperInfo {
   const factory DeveloperInfo({
-    required final String developer,
-    required final Uri webSite,
-    required final Email email,
+    required String developer,
+    required Uri webSite,
+    required Email email,
   }) = _DeveloperInfo;
 
   const DeveloperInfo._();

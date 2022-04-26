@@ -13,7 +13,7 @@ class ContentRepositoryImpl implements ContentRepository {
   final ContentResponseMapper _contentResponseMapper;
 
   @override
-  Future<Content> create(final ContentRegistration contentRegistration) async {
+  Future<Content> create(ContentRegistration contentRegistration) async {
     final response = await _createContentApi.execute(_contentRequestMapper.map(contentRegistration));
     return _contentResponseMapper.map(response);
   }

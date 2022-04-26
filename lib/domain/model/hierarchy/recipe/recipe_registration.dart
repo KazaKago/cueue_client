@@ -7,10 +7,10 @@ part 'recipe_registration.freezed.dart';
 @freezed
 class RecipeRegistration with _$RecipeRegistration {
   const factory RecipeRegistration({
-    required final String title,
-    required final String description,
-    required final Uri? url,
-    required final List<ContentKey> imageKeys,
-    required final List<TagId> tagIds,
+    required String title,
+    required String description,
+    required Uri? url,
+    required List<ContentKey> imageKeys,
+    required List<TagId> tagIds,
   }) = _RecipeRegistration;
 }

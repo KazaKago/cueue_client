@@ -4,5 +4,5 @@ part 'content_key.freezed.dart';
 
 @freezed
 class ContentKey with _$ContentKey {
-  const factory ContentKey(final String value) = _ContentKey;
+  const factory ContentKey(String value) = _ContentKey;
 }

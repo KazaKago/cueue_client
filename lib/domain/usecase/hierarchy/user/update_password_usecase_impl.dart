@@ -11,7 +11,7 @@ class UpdatePasswordUseCaseImpl implements UpdatePasswordUseCase {
   final UserRepository _userRepository;
 
   @override
-  Future<void> call(final Password password) async {
+  Future<void> call(Password password) async {
     final user = await _userRepository.get();
     if (user.isPasswordLinked()) {
       await _userRepository.updatePassword(password);

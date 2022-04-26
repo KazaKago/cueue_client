@@ -8,7 +8,7 @@ class CreateTagUseCaseImpl implements CreateTagUseCase {
   final TagRepository _tagsRepository;
 
   @override
-  Future<void> call(final TagRegistration tagRegistration) {
+  Future<void> call(TagRegistration tagRegistration) {
     return _tagsRepository.create(tagRegistration);
   }
 }

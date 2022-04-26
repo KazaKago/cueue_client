@@ -19,26 +19,26 @@ class TagEditingViewModel with ChangeNotifier {
 
   bool get isLoading => _isLoading;
 
-  set isLoading(final bool isLoading) {
+  set isLoading(bool isLoading) {
     _isLoading = isLoading;
     notifyListeners();
   }
 
   Event<EditingResult> get completionEvent => _completionEvent;
 
-  set completionEvent(final Event<EditingResult> completion) {
+  set completionEvent(Event<EditingResult> completion) {
     _completionEvent = completion;
     notifyListeners();
   }
 
   Event<Exception> get exceptionEvent => _exceptionEvent;
 
-  set exceptionEvent(final Event<Exception> exceptionEvent) {
+  set exceptionEvent(Event<Exception> exceptionEvent) {
     _exceptionEvent = exceptionEvent;
     notifyListeners();
   }
 
-  Future<void> create(final String name) async {
+  Future<void> create(String name) async {
     isLoading = true;
     try {
       await _createTagUseCase(TagRegistration(name: name));
@@ -49,7 +49,7 @@ class TagEditingViewModel with ChangeNotifier {
     isLoading = false;
   }
 
-  Future<void> update(final TagId tagId, final String name) async {
+  Future<void> update(TagId tagId, String name) async {
     isLoading = true;
     try {
       await _updateTagUseCase(tagId, TagRegistration(name: name));
@@ -60,7 +60,7 @@ class TagEditingViewModel with ChangeNotifier {
     isLoading = false;
   }
 
-  Future<void> delete(final TagId tagId) async {
+  Future<void> delete(TagId tagId) async {
     isLoading = true;
     try {
       await _deleteTagUseCase(tagId);

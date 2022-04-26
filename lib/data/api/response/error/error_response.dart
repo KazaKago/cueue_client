@@ -7,10 +7,10 @@ part 'error_response.g.dart';
 class ErrorResponse with _$ErrorResponse {
   const factory ErrorResponse({
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'name') required final String name,
+    @JsonKey(name: 'name') required String name,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'message') required final String message,
+    @JsonKey(name: 'message') required String message,
   }) = _ErrorResponse;
 
-  factory ErrorResponse.fromJson(final Map<String, dynamic> json) => _$ErrorResponseFromJson(json);
+  factory ErrorResponse.fromJson(Map<String, dynamic> json) => _$ErrorResponseFromJson(json);
 }

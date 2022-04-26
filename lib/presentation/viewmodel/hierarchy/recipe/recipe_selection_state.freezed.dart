@@ -10,8 +10,7 @@ part of 'recipe_selection_state.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 class _$RecipeSelectionStateTearOff {
@@ -87,14 +86,11 @@ mixin _$RecipeSelectionState {
 
 /// @nodoc
 abstract class $RecipeSelectionStateCopyWith<$Res> {
-  factory $RecipeSelectionStateCopyWith(RecipeSelectionState value,
-          $Res Function(RecipeSelectionState) then) =
-      _$RecipeSelectionStateCopyWithImpl<$Res>;
+  factory $RecipeSelectionStateCopyWith(RecipeSelectionState value, $Res Function(RecipeSelectionState) then) = _$RecipeSelectionStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RecipeSelectionStateCopyWithImpl<$Res>
-    implements $RecipeSelectionStateCopyWith<$Res> {
+class _$RecipeSelectionStateCopyWithImpl<$Res> implements $RecipeSelectionStateCopyWith<$Res> {
   _$RecipeSelectionStateCopyWithImpl(this._value, this._then);
 
   final RecipeSelectionState _value;
@@ -104,16 +100,12 @@ class _$RecipeSelectionStateCopyWithImpl<$Res>
 
 /// @nodoc
 abstract class _$LoadingCopyWith<$Res> {
-  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
-      __$LoadingCopyWithImpl<$Res>;
+  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) = __$LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res>
-    extends _$RecipeSelectionStateCopyWithImpl<$Res>
-    implements _$LoadingCopyWith<$Res> {
-  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
-      : super(_value, (v) => _then(v as _Loading));
+class __$LoadingCopyWithImpl<$Res> extends _$RecipeSelectionStateCopyWithImpl<$Res> implements _$LoadingCopyWith<$Res> {
+  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then) : super(_value, (v) => _then(v as _Loading));
 
   @override
   _Loading get _value => super._value as _Loading;
@@ -131,8 +123,7 @@ class _$_Loading implements _Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Loading);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _Loading);
   }
 
   @override
@@ -213,18 +204,13 @@ abstract class _Loading implements RecipeSelectionState {
 
 /// @nodoc
 abstract class _$CompletedCopyWith<$Res> {
-  factory _$CompletedCopyWith(
-          _Completed value, $Res Function(_Completed) then) =
-      __$CompletedCopyWithImpl<$Res>;
+  factory _$CompletedCopyWith(_Completed value, $Res Function(_Completed) then) = __$CompletedCopyWithImpl<$Res>;
   $Res call({List<Tag> tags});
 }
 
 /// @nodoc
-class __$CompletedCopyWithImpl<$Res>
-    extends _$RecipeSelectionStateCopyWithImpl<$Res>
-    implements _$CompletedCopyWith<$Res> {
-  __$CompletedCopyWithImpl(_Completed _value, $Res Function(_Completed) _then)
-      : super(_value, (v) => _then(v as _Completed));
+class __$CompletedCopyWithImpl<$Res> extends _$RecipeSelectionStateCopyWithImpl<$Res> implements _$CompletedCopyWith<$Res> {
+  __$CompletedCopyWithImpl(_Completed _value, $Res Function(_Completed) _then) : super(_value, (v) => _then(v as _Completed));
 
   @override
   _Completed get _value => super._value as _Completed;
@@ -257,20 +243,15 @@ class _$_Completed implements _Completed {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Completed &&
-            const DeepCollectionEquality().equals(other.tags, tags));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _Completed && const DeepCollectionEquality().equals(other.tags, tags));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(tags));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(tags));
 
   @JsonKey(ignore: true)
   @override
-  _$CompletedCopyWith<_Completed> get copyWith =>
-      __$CompletedCopyWithImpl<_Completed>(this, _$identity);
+  _$CompletedCopyWith<_Completed> get copyWith => __$CompletedCopyWithImpl<_Completed>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -346,23 +327,18 @@ abstract class _Completed implements RecipeSelectionState {
 
   List<Tag> get tags;
   @JsonKey(ignore: true)
-  _$CompletedCopyWith<_Completed> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$CompletedCopyWith<_Completed> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$ErrorCopyWith<$Res> {
-  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) =
-      __$ErrorCopyWithImpl<$Res>;
+  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) = __$ErrorCopyWithImpl<$Res>;
   $Res call({Exception error});
 }
 
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res>
-    extends _$RecipeSelectionStateCopyWithImpl<$Res>
-    implements _$ErrorCopyWith<$Res> {
-  __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
-      : super(_value, (v) => _then(v as _Error));
+class __$ErrorCopyWithImpl<$Res> extends _$RecipeSelectionStateCopyWithImpl<$Res> implements _$ErrorCopyWith<$Res> {
+  __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then) : super(_value, (v) => _then(v as _Error));
 
   @override
   _Error get _value => super._value as _Error;
@@ -395,20 +371,15 @@ class _$_Error implements _Error {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Error &&
-            const DeepCollectionEquality().equals(other.error, error));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _Error && const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
-  _$ErrorCopyWith<_Error> get copyWith =>
-      __$ErrorCopyWithImpl<_Error>(this, _$identity);
+  _$ErrorCopyWith<_Error> get copyWith => __$ErrorCopyWithImpl<_Error>(this, _$identity);
 
   @override
   @optionalTypeArgs

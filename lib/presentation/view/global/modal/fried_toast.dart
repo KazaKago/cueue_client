@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class FriedToast {
-  FriedToast(final BuildContext context, this._text, {final IconData iconData = Icons.check}) : _iconData = iconData {
+  FriedToast(BuildContext context, this._text, {IconData iconData = Icons.check}) : _iconData = iconData {
     FToast().init(context);
   }
 

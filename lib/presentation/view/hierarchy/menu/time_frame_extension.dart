@@ -4,7 +4,7 @@ import 'package:cueue/l10n/intl.dart';
 import 'package:flutter/widgets.dart';
 
 extension TimeFrameExtension on TimeFrame {
-  String toFormattedString(final BuildContext context) {
+  String toFormattedString(BuildContext context) {
     switch (this) {
       case TimeFrame.breakfast:
         return intl(context).breakfast;

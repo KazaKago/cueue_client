@@ -12,7 +12,7 @@ class TaggedRecipesStateManager extends FlowableDataStateManager<TagId> implemen
   final RecipeCache recipeCache;
 
   @override
-  Stream<DataState> getFlow(final TagId param) {
+  Stream<DataState> getFlow(TagId param) {
     return CombineLatestStream.combine2<DataState, Map<RecipeId, RecipeSummary>, DataState>(super.getFlow(param), recipeCache.recipeSummaryMap, (state1, state2) => state1);
   }
 }

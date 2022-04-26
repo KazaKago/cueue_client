@@ -10,7 +10,7 @@ class MenuResponseMapper {
   final TimeFrameResponseMapper _timeFrameResponseMapper;
   final RecipeSummaryResponseMapper _recipeSummaryResponseMapper;
 
-  Menu map(final MenuResponse response) {
+  Menu map(MenuResponse response) {
     return Menu(
       id: MenuId(response.id),
       memo: response.memo,

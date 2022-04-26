@@ -48,51 +48,53 @@ class SettingsViewModel with ChangeNotifier {
 
   SettingsState get state => _state;
 
-  set state(final SettingsState state) {
+  set state(SettingsState state) {
     _state = state;
     notifyListeners();
   }
 
   Event<SettingResult> get completionEvent => _completionEvent;
 
-  set completionEvent(final Event<SettingResult> completionEvent) {
+  set completionEvent(Event<SettingResult> completionEvent) {
     _completionEvent = completionEvent;
     notifyListeners();
   }
 
   bool get isLoading => _isLoading;
 
-  set isLoading(final bool isLoading) {
+  set isLoading(bool isLoading) {
     _isLoading = isLoading;
     notifyListeners();
   }
 
   Event<void> get replaceWelcomePageEvent => _replaceWelcomePageEvent;
 
-  set replaceWelcomePageEvent(final Event<void> replaceWelcomePageEvent) {
+  set replaceWelcomePageEvent(Event<void> replaceWelcomePageEvent) {
     _replaceWelcomePageEvent = replaceWelcomePageEvent;
     notifyListeners();
   }
 
   Event<Exception> get exceptionEvent => _exceptionEvent;
 
-  set exceptionEvent(final Event<Exception> exceptionEvent) {
+  set exceptionEvent(Event<Exception> exceptionEvent) {
     _exceptionEvent = exceptionEvent;
     notifyListeners();
   }
 
   void _follow() {
     final followUserUseCase = _followUserUseCase();
-    _compositeSubscription.add(followUserUseCase.listen((state) {
-      this.state = state.when(
-        loading: (user) => (user != null) ? SettingsState.completed(user) : const SettingsState.loading(),
-        completed: (user, next, prev) => SettingsState.completed(user),
-        error: (exception) => SettingsState.error(exception),
-      );
-    }));
+    _compositeSubscription.add(
+      followUserUseCase.listen((state) {
+        this.state = state.when(
+          loading: (user) => (user != null) ? SettingsState.completed(user) : const SettingsState.loading(),
+          completed: (user, next, prev) => SettingsState.completed(user),
+          error: (exception) => SettingsState.error(exception),
+        );
+      }),
+    );
   }
 
-  Future<void> updateEmail(final String email) async {
+  Future<void> updateEmail(String email) async {
     isLoading = true;
     try {
       await _updateEmailUseCase(Email(email));
@@ -103,7 +105,7 @@ class SettingsViewModel with ChangeNotifier {
     isLoading = false;
   }
 
-  Future<void> updatePassword(final String password, final String reInputPassword) async {
+  Future<void> updatePassword(String password, String reInputPassword) async {
     isLoading = true;
     try {
       await _updatePasswordUseCase(Password.validateMatch(password, reInputPassword));
@@ -114,7 +116,7 @@ class SettingsViewModel with ChangeNotifier {
     isLoading = false;
   }
 
-  Future<void> linkWithGoogle(final GoogleAuthInfo authInfo) async {
+  Future<void> linkWithGoogle(GoogleAuthInfo authInfo) async {
     isLoading = true;
     try {
       await _linkWithGoogleUseCase(authInfo);
@@ -125,7 +127,7 @@ class SettingsViewModel with ChangeNotifier {
     isLoading = false;
   }
 
-  Future<void> linkWithApple(final AppleAuthInfo authInfo) async {
+  Future<void> linkWithApple(AppleAuthInfo authInfo) async {
     isLoading = true;
     try {
       await _linkWithAppleUseCase(authInfo);
@@ -173,7 +175,7 @@ class SettingsViewModel with ChangeNotifier {
     return _refreshUserUseCase();
   }
 
-  Future<void> sendEmailVerification(final Email email) async {
+  Future<void> sendEmailVerification(Email email) async {
     isLoading = true;
     try {
       await _sendEmailVerificationUseCase();

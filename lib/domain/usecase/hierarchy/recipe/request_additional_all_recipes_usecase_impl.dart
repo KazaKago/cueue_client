@@ -7,7 +7,7 @@ class RequestAdditionalAllRecipesUseCaseImpl implements RequestAdditionalAllReci
   final RecipeRepository _recipeRepository;
 
   @override
-  Future<void> call({required final bool continueWhenError}) {
+  Future<void> call({required bool continueWhenError}) {
     return _recipeRepository.requestAdditionalAllData(continueWhenError: continueWhenError);
   }
 }

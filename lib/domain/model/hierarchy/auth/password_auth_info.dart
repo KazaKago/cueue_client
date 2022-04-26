@@ -7,7 +7,7 @@ part 'password_auth_info.freezed.dart';
 @freezed
 class PasswordAuthInfo with _$PasswordAuthInfo {
   const factory PasswordAuthInfo({
-    required final Email email,
-    required final Password password,
+    required Email email,
+    required Password password,
   }) = _PasswordAuthInfo;
 }

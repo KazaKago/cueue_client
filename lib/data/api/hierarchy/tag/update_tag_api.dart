@@ -9,7 +9,7 @@ class UpdateTagApi {
 
   final AuthorizedApiRequester _requester;
 
-  Future<TagResponse> execute(final int workspaceId, final int tagId, final TagRequest request) async {
+  Future<TagResponse> execute(int workspaceId, int tagId, TagRequest request) async {
     try {
       final response = await _requester.create().patch<Map<String, dynamic>>('/$workspaceId/tags/$tagId', data: request);
       return TagResponse.fromJson(response.data!);

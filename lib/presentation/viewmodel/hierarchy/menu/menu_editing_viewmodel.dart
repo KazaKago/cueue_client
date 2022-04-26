@@ -29,26 +29,26 @@ class MenuEditingViewModel with ChangeNotifier {
 
   Event<EditingResult> get completionEvent => _completionEvent;
 
-  set completionEvent(final Event<EditingResult> completion) {
+  set completionEvent(Event<EditingResult> completion) {
     _completionEvent = completion;
     notifyListeners();
   }
 
   Event<Exception> get exceptionEvent => _exceptionEvent;
 
-  set exceptionEvent(final Event<Exception> exception) {
+  set exceptionEvent(Event<Exception> exception) {
     _exceptionEvent = exception;
     notifyListeners();
   }
 
   bool get isLoading => _isLoading;
 
-  set isLoading(final bool isLoading) {
+  set isLoading(bool isLoading) {
     _isLoading = isLoading;
     notifyListeners();
   }
 
-  Future<void> create(final String memo, final DateTime dateTime, final TimeFrame timeFrame, final List<RecipeId> recipeIds) async {
+  Future<void> create(String memo, DateTime dateTime, TimeFrame timeFrame, List<RecipeId> recipeIds) async {
     isLoading = true;
     try {
       await _createMenuUseCase(MenuRegistration(memo: memo, date: dateTime, timeFrame: timeFrame, recipeIds: recipeIds));
@@ -59,7 +59,7 @@ class MenuEditingViewModel with ChangeNotifier {
     isLoading = false;
   }
 
-  Future<void> update(final MenuId menuId, final String memo, final DateTime dateTime, final TimeFrame timeFrame, final List<RecipeId> recipeIds) async {
+  Future<void> update(MenuId menuId, String memo, DateTime dateTime, TimeFrame timeFrame, List<RecipeId> recipeIds) async {
     isLoading = true;
     try {
       await _updateMenuUseCase(menuId, MenuRegistration(memo: memo, date: dateTime, timeFrame: timeFrame, recipeIds: recipeIds));
@@ -70,7 +70,7 @@ class MenuEditingViewModel with ChangeNotifier {
     isLoading = false;
   }
 
-  Future<void> delete(final MenuId menuId) async {
+  Future<void> delete(MenuId menuId) async {
     isLoading = true;
     try {
       await _deleteMenuUseCase(menuId);

@@ -26,27 +26,27 @@ class AuthorizeRepositoryImpl implements AuthorizeRepository {
   }
 
   @override
-  Future<void> signUpWithPassword(final PasswordAuthInfo authInfo) async {
+  Future<void> signUpWithPassword(PasswordAuthInfo authInfo) async {
     await _passwordSignaturer.signUp(authInfo);
   }
 
   @override
-  Future<void> signInWithPassword(final PasswordAuthInfo authInfo) async {
+  Future<void> signInWithPassword(PasswordAuthInfo authInfo) async {
     await _passwordSignaturer.signIn(authInfo);
   }
 
   @override
-  Future<void> authenticateWithGoogle(final GoogleAuthInfo authInfo) async {
+  Future<void> authenticateWithGoogle(GoogleAuthInfo authInfo) async {
     await _googleSignaturer.authenticate(authInfo);
   }
 
   @override
-  Future<void> authenticateWithApple(final AppleAuthInfo authInfo) async {
+  Future<void> authenticateWithApple(AppleAuthInfo authInfo) async {
     await _appleSignaturer.authenticate(authInfo);
   }
 
   @override
-  Future<void> reauthenticateWithPassword(final PasswordAuthInfo authInfo) async {
+  Future<void> reauthenticateWithPassword(PasswordAuthInfo authInfo) async {
     await _passwordSignaturer.reauthenticate(authInfo);
   }
 
@@ -68,14 +68,14 @@ class AuthorizeRepositoryImpl implements AuthorizeRepository {
   }
 
   @override
-  Future<void> linkWithGoogle(final GoogleAuthInfo authInfo) async {
+  Future<void> linkWithGoogle(GoogleAuthInfo authInfo) async {
     await _googleSignaturer.link(authInfo);
     final userFlowable = _userFlowableFactory.create(null);
     await userFlowable.refresh();
   }
 
   @override
-  Future<void> linkWithApple(final AppleAuthInfo authInfo) async {
+  Future<void> linkWithApple(AppleAuthInfo authInfo) async {
     await _appleSignaturer.link(authInfo);
     final userFlowable = _userFlowableFactory.create(null);
     await userFlowable.refresh();

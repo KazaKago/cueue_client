@@ -8,7 +8,7 @@ class SendPasswordResetMailUseCaseImpl implements SendPasswordResetMailUseCase {
   final UserRepository _userRepository;
 
   @override
-  Future<void> call(final Email email) async {
+  Future<void> call(Email email) async {
     await _userRepository.sendPasswordResetEmail(email);
   }
 }

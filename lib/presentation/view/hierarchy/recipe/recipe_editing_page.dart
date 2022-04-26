@@ -20,27 +20,36 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 class RecipeEditingPage extends HookConsumerWidget {
-  const RecipeEditingPage({this.recipe, final Key? key}) : super(key: key);
+  const RecipeEditingPage({this.recipe, Key? key}) : super(key: key);
 
   final Recipe? recipe;
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final images = useState(recipe?.images.toList() ?? []);
     final selectedTagIds = useState(recipe?.tags.map((e) => e.id).toList() ?? []);
     final recipeTitleEditingController = useTextEditingController(text: recipe?.title ?? '');
     final recipeUrlEditingController = useTextEditingController(text: recipe?.url?.toString() ?? '');
     final recipeDescriptionEditingController = useTextEditingController(text: recipe?.description ?? '');
     ref
-      ..listen<bool>(recipeEditingViewModelProvider.select((viewModel) => viewModel.isLoading), ((previous, isLoading) {
-        isLoading ? EasyLoading.show() : EasyLoading.dismiss();
-      }))
-      ..listen<Event<EditingResult>>(recipeEditingViewModelProvider.select((viewModel) => viewModel.completionEvent), ((previous, completionEvent) {
-        completionEvent((completion) => Navigator.of(context).pop(completion));
-      }))
-      ..listen<Event<Exception>>(recipeEditingViewModelProvider.select((viewModel) => viewModel.exceptionEvent), ((previous, exceptionEvent) {
-        exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
-      }));
+      ..listen<bool>(
+        recipeEditingViewModelProvider.select((viewModel) => viewModel.isLoading),
+        ((previous, isLoading) {
+          isLoading ? EasyLoading.show() : EasyLoading.dismiss();
+        }),
+      )
+      ..listen<Event<EditingResult>>(
+        recipeEditingViewModelProvider.select((viewModel) => viewModel.completionEvent),
+        ((previous, completionEvent) {
+          completionEvent((completion) => Navigator.of(context).pop(completion));
+        }),
+      )
+      ..listen<Event<Exception>>(
+        recipeEditingViewModelProvider.select((viewModel) => viewModel.exceptionEvent),
+        ((previous, exceptionEvent) {
+          exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
+        }),
+      );
     return Scaffold(
       appBar: AppBar(
         title: Text(recipe != null ? intl(context).editWith(recipe!.title) : intl(context).addRecipe),
@@ -76,7 +85,7 @@ class RecipeEditingPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildTitle(final BuildContext context, final WidgetRef ref, final TextEditingController recipeTitleEditingController) {
+  Widget _buildTitle(BuildContext context, WidgetRef ref, TextEditingController recipeTitleEditingController) {
     return TextField(
       controller: recipeTitleEditingController,
       keyboardType: TextInputType.text,
@@ -84,82 +93,88 @@ class RecipeEditingPage extends HookConsumerWidget {
     );
   }
 
-  List<Widget> _buildLoadingImage(final BuildContext context, final WidgetRef ref) {
+  List<Widget> _buildLoadingImage(BuildContext context, WidgetRef ref) {
     final widgetList = <Widget>[];
     final isCreatingImage = ref.watch(recipeEditingViewModelProvider.select((viewModel) => viewModel.isCreatingImage));
     if (isCreatingImage) {
       widgetList
-        ..add(Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: Stack(
-                alignment: Alignment.center,
-                fit: StackFit.passthrough,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Container(
-                      color: Theme.of(context).dividerColor,
-                      width: 96,
-                      height: 96,
+        ..add(
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Stack(
+                  alignment: Alignment.center,
+                  fit: StackFit.passthrough,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Container(
+                        color: Theme.of(context).dividerColor,
+                        width: 96,
+                        height: 96,
+                      ),
                     ),
-                  ),
-                  const Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                ],
+                    const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(width: 16),
-            Text(intl(context).uploading, style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Theme.of(context).textTheme.caption?.color)),
-          ],
-        ))
+              const SizedBox(width: 16),
+              Text(intl(context).uploading, style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Theme.of(context).textTheme.caption?.color)),
+            ],
+          ),
+        )
         ..add(const SizedBox(height: 8));
     }
     return widgetList;
   }
 
-  List<Widget> _buildImages(final BuildContext context, final WidgetRef ref, final ValueNotifier<List<Content>> images) {
+  List<Widget> _buildImages(BuildContext context, WidgetRef ref, ValueNotifier<List<Content>> images) {
     final widgetList = <Widget>[];
     images.value.asMap().forEach((index, image) {
       widgetList
-        ..add(Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: CachedNetworkImage(
-                  imageUrl: image.url.toString(),
-                  fit: BoxFit.cover,
-                  width: 96,
-                  height: 96,
-                  fadeInDuration: const Duration(milliseconds: 300),
+        ..add(
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: CachedNetworkImage(
+                    imageUrl: image.url.toString(),
+                    fit: BoxFit.cover,
+                    width: 96,
+                    height: 96,
+                    fadeInDuration: const Duration(milliseconds: 300),
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(children: [
-                    TextButton.icon(onPressed: (0 < index) ? () => _upImage(image, images) : null, icon: const Icon(Icons.keyboard_arrow_up), label: Text(intl(context).toUp)),
-                    TextButton.icon(onPressed: (index < (images.value.length - 1)) ? () => _downImage(image, images) : null, icon: const Icon(Icons.keyboard_arrow_down), label: Text(intl(context).toDown)),
-                  ]),
-                  const SizedBox(width: 32),
-                  TextButton.icon(onPressed: () => _deleteImage(image, images), icon: const Icon(Icons.clear), label: Text(intl(context).delete)),
-                ],
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        TextButton.icon(onPressed: (0 < index) ? () => _upImage(image, images) : null, icon: const Icon(Icons.keyboard_arrow_up), label: Text(intl(context).toUp)),
+                        TextButton.icon(onPressed: (index < (images.value.length - 1)) ? () => _downImage(image, images) : null, icon: const Icon(Icons.keyboard_arrow_down), label: Text(intl(context).toDown)),
+                      ],
+                    ),
+                    const SizedBox(width: 32),
+                    TextButton.icon(onPressed: () => _deleteImage(image, images), icon: const Icon(Icons.clear), label: Text(intl(context).delete)),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ))
+            ],
+          ),
+        )
         ..add(const SizedBox(height: 8));
     });
     return widgetList;
   }
 
-  Widget _buildImageAdding(final BuildContext context, final WidgetRef ref, final ValueNotifier<List<Content>> images) {
+  Widget _buildImageAdding(BuildContext context, WidgetRef ref, ValueNotifier<List<Content>> images) {
     return InkWell(
       onTap: () => _pickupProfileImage(context, ref, images),
       child: Row(
@@ -185,7 +200,7 @@ class RecipeEditingPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildUrl(final BuildContext context, final WidgetRef ref, final TextEditingController recipeUrlEditingController) {
+  Widget _buildUrl(BuildContext context, WidgetRef ref, TextEditingController recipeUrlEditingController) {
     return TextField(
       controller: recipeUrlEditingController,
       keyboardType: TextInputType.url,
@@ -193,7 +208,7 @@ class RecipeEditingPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildDescription(final BuildContext context, final WidgetRef ref, final TextEditingController recipeDescriptionEditingController) {
+  Widget _buildDescription(BuildContext context, WidgetRef ref, TextEditingController recipeDescriptionEditingController) {
     return TextField(
       controller: recipeDescriptionEditingController,
       keyboardType: TextInputType.multiline,
@@ -203,7 +218,7 @@ class RecipeEditingPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildTagChips(final BuildContext context, final WidgetRef ref, final ValueNotifier<List<TagId>> selectedTagIds) {
+  Widget _buildTagChips(BuildContext context, WidgetRef ref, ValueNotifier<List<TagId>> selectedTagIds) {
     final state = ref.watch(recipeEditingViewModelProvider.select((viewModel) => viewModel.state));
     return state.when(
       loading: () => _buildTagChipsLoading(context, ref),
@@ -212,13 +227,13 @@ class RecipeEditingPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildTagChipsLoading(final BuildContext context, final WidgetRef ref) {
+  Widget _buildTagChipsLoading(BuildContext context, WidgetRef ref) {
     return const Center(
       child: CircularProgressIndicator(),
     );
   }
 
-  Widget _buildTagChipsCompleted(final BuildContext context, final WidgetRef ref, final List<Tag> tags, final ValueNotifier<List<TagId>> selectedTagIds) {
+  Widget _buildTagChipsCompleted(BuildContext context, WidgetRef ref, List<Tag> tags, ValueNotifier<List<TagId>> selectedTagIds) {
     return Wrap(
       spacing: 12,
       children: tags.map((e) {
@@ -237,12 +252,12 @@ class RecipeEditingPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildTagChipsError(final BuildContext context, final WidgetRef ref, final Exception exception) {
+  Widget _buildTagChipsError(BuildContext context, WidgetRef ref, Exception exception) {
     final viewModel = ref.read(recipeEditingViewModelProvider);
     return ErrorHandlingWidget(exception, onClickRetry: viewModel.retry);
   }
 
-  Widget _buildRegisterButton(final BuildContext context, final WidgetRef ref, final TextEditingController recipeTitleEditingController, final TextEditingController recipeDescriptionEditingController, final TextEditingController recipeUrlEditingController, final List<Content> images, final List<TagId> selectedTagIds) {
+  Widget _buildRegisterButton(BuildContext context, WidgetRef ref, TextEditingController recipeTitleEditingController, TextEditingController recipeDescriptionEditingController, TextEditingController recipeUrlEditingController, List<Content> images, List<TagId> selectedTagIds) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
       child: ElevatedButton.icon(
@@ -260,7 +275,7 @@ class RecipeEditingPage extends HookConsumerWidget {
     );
   }
 
-  Future<void> _showConfirmationDeletingDialog(final BuildContext context, final WidgetRef ref, final Recipe recipe) async {
+  Future<void> _showConfirmationDeletingDialog(BuildContext context, WidgetRef ref, Recipe recipe) async {
     final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmDeletingWith(recipe.title), positiveButton: intl(context).doDelete, negativeButton: intl(context).cancel).show();
     if (event != null) {
       await event.when(
@@ -274,7 +289,7 @@ class RecipeEditingPage extends HookConsumerWidget {
     }
   }
 
-  Future<Content?> _pickupProfileImage(final BuildContext context, final WidgetRef ref, final ValueNotifier<List<Content>> images) async {
+  Future<void> _pickupProfileImage(BuildContext context, WidgetRef ref, ValueNotifier<List<Content>> images) async {
     final imagePicker = ImagePicker();
     final event = await PhotoPickupBottomSheetDialog(context).show();
     final pickedImage = await event?.when(
@@ -289,23 +304,27 @@ class RecipeEditingPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _deleteImage(final Content image, final ValueNotifier<List<Content>> images) async {
+  Future<void> _deleteImage(Content image, ValueNotifier<List<Content>> images) async {
     images.value = List.from(images.value..remove(image));
   }
 
-  Future<void> _upImage(final Content image, final ValueNotifier<List<Content>> images) async {
+  Future<void> _upImage(Content image, ValueNotifier<List<Content>> images) async {
     final originalIndex = images.value.indexOf(image);
     if (originalIndex <= 0) return;
-    images.value = List.from(images.value
-      ..removeAt(originalIndex)
-      ..insert(originalIndex - 1, image));
+    images.value = List.from(
+      images.value
+        ..removeAt(originalIndex)
+        ..insert(originalIndex - 1, image),
+    );
   }
 
-  Future<void> _downImage(final Content image, final ValueNotifier<List<Content>> images) async {
+  Future<void> _downImage(Content image, ValueNotifier<List<Content>> images) async {
     final originalIndex = images.value.indexOf(image);
     if (originalIndex < 0 || (images.value.length - 2) < originalIndex) return;
-    images.value = List.from(images.value
-      ..removeAt(originalIndex)
-      ..insert(originalIndex + 1, image));
+    images.value = List.from(
+      images.value
+        ..removeAt(originalIndex)
+        ..insert(originalIndex + 1, image),
+    );
   }
 }

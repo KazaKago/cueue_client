@@ -10,7 +10,7 @@ class SignUpWithPasswordUseCaseImpl implements SignUpWithPasswordUseCase {
   final UserRepository _userRepository;
 
   @override
-  Future<void> call(final PasswordAuthInfo authInfo) async {
+  Future<void> call(PasswordAuthInfo authInfo) async {
     await _authorizeApiRepository.signUpWithPassword(authInfo);
     await _userRepository.create();
   }

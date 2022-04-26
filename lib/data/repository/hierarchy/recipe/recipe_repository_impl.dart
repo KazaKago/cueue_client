@@ -49,7 +49,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
   }
 
   @override
-  LoadingStateStream<List<RecipeSummary>> followTaggedData(final TagId tagId) {
+  LoadingStateStream<List<RecipeSummary>> followTaggedData(TagId tagId) {
     final taggedRecipeFlowable = _taggedRecipesFlowableFactory.create(tagId);
     return taggedRecipeFlowable.publish().mapContent((recipeIds) {
       return recipeIds.mapNotNull((recipeId) {
@@ -59,7 +59,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
   }
 
   @override
-  LoadingStateStream<Recipe> followData(final RecipeId recipeId) {
+  LoadingStateStream<Recipe> followData(RecipeId recipeId) {
     final recipeFlowable = _recipeFlowableFactory.create(recipeId);
     return recipeFlowable.publish();
   }
@@ -71,31 +71,31 @@ class RecipeRepositoryImpl implements RecipeRepository {
   }
 
   @override
-  Future<void> refreshTaggedData(final TagId tagId) async {
+  Future<void> refreshTaggedData(TagId tagId) async {
     final taggedRecipeFlowable = _taggedRecipesFlowableFactory.create(tagId);
     await taggedRecipeFlowable.refresh();
   }
 
   @override
-  Future<void> refreshData(final RecipeId recipeId) async {
+  Future<void> refreshData(RecipeId recipeId) async {
     final recipeFlowable = _recipeFlowableFactory.create(recipeId);
     return recipeFlowable.refresh();
   }
 
   @override
-  Future<void> requestAdditionalAllData({required final bool continueWhenError}) async {
+  Future<void> requestAdditionalAllData({required bool continueWhenError}) async {
     final recipeFlowable = _allRecipesFlowableFactory.create(null);
     await recipeFlowable.requestNextData(continueWhenError: continueWhenError);
   }
 
   @override
-  Future<void> requestAdditionalTaggedData(final TagId tagId, {required final bool continueWhenError}) async {
+  Future<void> requestAdditionalTaggedData(TagId tagId, {required bool continueWhenError}) async {
     final taggedRecipeFlowable = _taggedRecipesFlowableFactory.create(tagId);
     await taggedRecipeFlowable.requestNextData(continueWhenError: continueWhenError);
   }
 
   @override
-  Future<void> create(final RecipeRegistration recipeRegistration) async {
+  Future<void> create(RecipeRegistration recipeRegistration) async {
     final user = await _userFlowableFactory.create(null).requireData();
     final response = await _createRecipeApi.execute(user.currentWorkspace.id.value, _recipeRequestMapper.map(recipeRegistration));
     final recipe = _recipeResponseMapper.map(response);
@@ -125,7 +125,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
   }
 
   @override
-  Future<void> update(final RecipeId recipeId, final RecipeRegistration recipeRegistration) async {
+  Future<void> update(RecipeId recipeId, RecipeRegistration recipeRegistration) async {
     final user = await _userFlowableFactory.create(null).requireData();
     final response = await _updateRecipeApi.execute(user.currentWorkspace.id.value, recipeId.value, _recipeRequestMapper.map(recipeRegistration));
     final recipe = _recipeResponseMapper.map(response);
@@ -187,7 +187,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
   }
 
   @override
-  Future<void> delete(final RecipeId recipeId) async {
+  Future<void> delete(RecipeId recipeId) async {
     final user = await _userFlowableFactory.create(null).requireData();
     await _deleteRecipeApi.execute(user.currentWorkspace.id.value, recipeId.value);
 

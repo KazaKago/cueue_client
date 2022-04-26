@@ -4,5 +4,5 @@ part 'recipe_id.freezed.dart';
 
 @freezed
 class RecipeId with _$RecipeId {
-  const factory RecipeId(final int value) = _RecipeId;
+  const factory RecipeId(int value) = _RecipeId;
 }

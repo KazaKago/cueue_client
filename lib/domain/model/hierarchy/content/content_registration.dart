@@ -8,10 +8,10 @@ part 'content_registration.freezed.dart';
 @freezed
 class ContentRegistration with _$ContentRegistration {
   const factory ContentRegistration({
-    required final Uint8List data,
+    required Uint8List data,
   }) = _ContentRegistration;
 
-  factory ContentRegistration.fromFile(final File file) {
+  factory ContentRegistration.fromFile(File file) {
     final contentByte = file.readAsBytesSync();
     return ContentRegistration(data: contentByte);
   }

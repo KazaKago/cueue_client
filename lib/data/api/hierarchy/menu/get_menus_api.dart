@@ -8,7 +8,7 @@ class GetMenusApi {
 
   final AuthorizedApiRequester _requester;
 
-  Future<List<MenuSummaryResponse>> execute(final int workspaceId, {final int? afterId}) async {
+  Future<List<MenuSummaryResponse>> execute(int workspaceId, {int? afterId}) async {
     try {
       final queryParameters = <String, dynamic>{};
       if (afterId != null) queryParameters.addAll(<String, dynamic>{'after_id': afterId});

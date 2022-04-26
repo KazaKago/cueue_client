@@ -11,7 +11,7 @@ class MenuSummaryResponseMapper {
   final TimeFrameResponseMapper _timeFrameResponseMapper;
   final RecipeSummaryResponseMapper _recipeSummaryResponseMapper;
 
-  MenuSummary map(final MenuSummaryResponse response) {
+  MenuSummary map(MenuSummaryResponse response) {
     return MenuSummaryImpl(
       id: MenuId(response.id),
       memo: response.memo,

@@ -10,8 +10,7 @@ part of 'content_key.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 class _$ContentKeyTearOff {
@@ -32,15 +31,12 @@ mixin _$ContentKey {
   String get value => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ContentKeyCopyWith<ContentKey> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ContentKeyCopyWith<ContentKey> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ContentKeyCopyWith<$Res> {
-  factory $ContentKeyCopyWith(
-          ContentKey value, $Res Function(ContentKey) then) =
-      _$ContentKeyCopyWithImpl<$Res>;
+  factory $ContentKeyCopyWith(ContentKey value, $Res Function(ContentKey) then) = _$ContentKeyCopyWithImpl<$Res>;
   $Res call({String value});
 }
 
@@ -67,19 +63,14 @@ class _$ContentKeyCopyWithImpl<$Res> implements $ContentKeyCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$ContentKeyCopyWith<$Res> implements $ContentKeyCopyWith<$Res> {
-  factory _$ContentKeyCopyWith(
-          _ContentKey value, $Res Function(_ContentKey) then) =
-      __$ContentKeyCopyWithImpl<$Res>;
+  factory _$ContentKeyCopyWith(_ContentKey value, $Res Function(_ContentKey) then) = __$ContentKeyCopyWithImpl<$Res>;
   @override
   $Res call({String value});
 }
 
 /// @nodoc
-class __$ContentKeyCopyWithImpl<$Res> extends _$ContentKeyCopyWithImpl<$Res>
-    implements _$ContentKeyCopyWith<$Res> {
-  __$ContentKeyCopyWithImpl(
-      _ContentKey _value, $Res Function(_ContentKey) _then)
-      : super(_value, (v) => _then(v as _ContentKey));
+class __$ContentKeyCopyWithImpl<$Res> extends _$ContentKeyCopyWithImpl<$Res> implements _$ContentKeyCopyWith<$Res> {
+  __$ContentKeyCopyWithImpl(_ContentKey _value, $Res Function(_ContentKey) _then) : super(_value, (v) => _then(v as _ContentKey));
 
   @override
   _ContentKey get _value => super._value as _ContentKey;
@@ -112,20 +103,15 @@ class _$_ContentKey implements _ContentKey {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _ContentKey &&
-            const DeepCollectionEquality().equals(other.value, value));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _ContentKey && const DeepCollectionEquality().equals(other.value, value));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
 
   @JsonKey(ignore: true)
   @override
-  _$ContentKeyCopyWith<_ContentKey> get copyWith =>
-      __$ContentKeyCopyWithImpl<_ContentKey>(this, _$identity);
+  _$ContentKeyCopyWith<_ContentKey> get copyWith => __$ContentKeyCopyWithImpl<_ContentKey>(this, _$identity);
 }
 
 abstract class _ContentKey implements ContentKey {
@@ -135,6 +121,5 @@ abstract class _ContentKey implements ContentKey {
   String get value;
   @override
   @JsonKey(ignore: true)
-  _$ContentKeyCopyWith<_ContentKey> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$ContentKeyCopyWith<_ContentKey> get copyWith => throw _privateConstructorUsedError;
 }

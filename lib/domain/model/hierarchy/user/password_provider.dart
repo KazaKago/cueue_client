@@ -7,7 +7,7 @@ part 'password_provider.freezed.dart';
 @freezed
 class PasswordProvider with _$PasswordProvider implements LoginProvider {
   const factory PasswordProvider({
-    required final UserId uid,
-    required final String displayName,
+    required UserId uid,
+    required String displayName,
   }) = _PasswordProvider;
 }

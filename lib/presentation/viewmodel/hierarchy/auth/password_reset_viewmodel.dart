@@ -26,50 +26,52 @@ class PasswordResetViewModel with ChangeNotifier {
 
   Email? get userEmail => _userEmail;
 
-  set userEmail(final Email? userEmail) {
+  set userEmail(Email? userEmail) {
     _userEmail = userEmail;
     notifyListeners();
   }
 
   bool get isLoading => _isLoading;
 
-  set isLoading(final bool isLoading) {
+  set isLoading(bool isLoading) {
     _isLoading = isLoading;
     notifyListeners();
   }
 
   Event<void> get completionEvent => _completionEvent;
 
-  set completionEvent(final Event<void> completion) {
+  set completionEvent(Event<void> completion) {
     _completionEvent = completion;
     notifyListeners();
   }
 
   Event<Exception> get exceptionEvent => _exceptionEvent;
 
-  set exceptionEvent(final Event<Exception> exception) {
+  set exceptionEvent(Event<Exception> exception) {
     _exceptionEvent = exception;
     notifyListeners();
   }
 
   void _follow() {
     final followUserUseCase = _followUserUseCase();
-    _compositeSubscription.add(followUserUseCase.listen((state) {
-      state.when(
-        loading: (user) {
-          // do nothing.
-        },
-        completed: (user, next, prev) {
-          userEmail = user.email;
-        },
-        error: (exception) {
-          // do nothing.
-        },
-      );
-    }));
+    _compositeSubscription.add(
+      followUserUseCase.listen((state) {
+        state.when(
+          loading: (user) {
+            // do nothing.
+          },
+          completed: (user, next, prev) {
+            userEmail = user.email;
+          },
+          error: (exception) {
+            // do nothing.
+          },
+        );
+      }),
+    );
   }
 
-  Future<void> sendPasswordResetMail(final String emailStr) async {
+  Future<void> sendPasswordResetMail(String emailStr) async {
     isLoading = true;
     try {
       await _sendPasswordResetMailUseCase(Email(emailStr));

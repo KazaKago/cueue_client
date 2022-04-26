@@ -10,8 +10,7 @@ part of 'email.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 class _$EmailTearOff {
@@ -37,8 +36,7 @@ mixin _$Email {
 
 /// @nodoc
 abstract class $EmailCopyWith<$Res> {
-  factory $EmailCopyWith(Email value, $Res Function(Email) then) =
-      _$EmailCopyWithImpl<$Res>;
+  factory $EmailCopyWith(Email value, $Res Function(Email) then) = _$EmailCopyWithImpl<$Res>;
   $Res call({String value});
 }
 
@@ -65,17 +63,14 @@ class _$EmailCopyWithImpl<$Res> implements $EmailCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$EmailCopyWith<$Res> implements $EmailCopyWith<$Res> {
-  factory _$EmailCopyWith(_Email value, $Res Function(_Email) then) =
-      __$EmailCopyWithImpl<$Res>;
+  factory _$EmailCopyWith(_Email value, $Res Function(_Email) then) = __$EmailCopyWithImpl<$Res>;
   @override
   $Res call({String value});
 }
 
 /// @nodoc
-class __$EmailCopyWithImpl<$Res> extends _$EmailCopyWithImpl<$Res>
-    implements _$EmailCopyWith<$Res> {
-  __$EmailCopyWithImpl(_Email _value, $Res Function(_Email) _then)
-      : super(_value, (v) => _then(v as _Email));
+class __$EmailCopyWithImpl<$Res> extends _$EmailCopyWithImpl<$Res> implements _$EmailCopyWith<$Res> {
+  __$EmailCopyWithImpl(_Email _value, $Res Function(_Email) _then) : super(_value, (v) => _then(v as _Email));
 
   @override
   _Email get _value => super._value as _Email;
@@ -108,20 +103,15 @@ class _$_Email extends _Email {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Email &&
-            const DeepCollectionEquality().equals(other.value, value));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _Email && const DeepCollectionEquality().equals(other.value, value));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
 
   @JsonKey(ignore: true)
   @override
-  _$EmailCopyWith<_Email> get copyWith =>
-      __$EmailCopyWithImpl<_Email>(this, _$identity);
+  _$EmailCopyWith<_Email> get copyWith => __$EmailCopyWithImpl<_Email>(this, _$identity);
 }
 
 abstract class _Email extends Email {

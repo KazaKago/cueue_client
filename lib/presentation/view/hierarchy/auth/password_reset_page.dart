@@ -9,23 +9,32 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class PasswordResetPage extends HookConsumerWidget {
-  const PasswordResetPage({final Key? key}) : super(key: key);
+  const PasswordResetPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final emailEditingController = useTextEditingController();
     final userEmail = ref.watch(passwordResetViewModelProvider.select((viewModel) => viewModel.userEmail));
     if (userEmail != null) emailEditingController.text = userEmail.value;
     ref
-      ..listen<Event<void>>(passwordResetViewModelProvider.select((viewModel) => viewModel.completionEvent), ((previous, completionEvent) {
-        completionEvent((_) => _showSentPasswordResetMailDialog(context));
-      }))
-      ..listen<Event<Exception>>(passwordResetViewModelProvider.select((viewModel) => viewModel.exceptionEvent), ((previous, exceptionEvent) {
-        exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
-      }))
-      ..listen<bool>(passwordResetViewModelProvider.select((viewModel) => viewModel.isLoading), ((previous, isLoading) {
-        isLoading ? EasyLoading.show() : EasyLoading.dismiss();
-      }));
+      ..listen<Event<void>>(
+        passwordResetViewModelProvider.select((viewModel) => viewModel.completionEvent),
+        ((previous, completionEvent) {
+          completionEvent((_) => _showSentPasswordResetMailDialog(context));
+        }),
+      )
+      ..listen<Event<Exception>>(
+        passwordResetViewModelProvider.select((viewModel) => viewModel.exceptionEvent),
+        ((previous, exceptionEvent) {
+          exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
+        }),
+      )
+      ..listen<bool>(
+        passwordResetViewModelProvider.select((viewModel) => viewModel.isLoading),
+        ((previous, isLoading) {
+          isLoading ? EasyLoading.show() : EasyLoading.dismiss();
+        }),
+      );
     return Scaffold(
       appBar: AppBar(
         title: Text(intl(context).passwordReset),
@@ -56,7 +65,7 @@ class PasswordResetPage extends HookConsumerWidget {
     );
   }
 
-  Future<void> _showSentPasswordResetMailDialog(final BuildContext context) async {
+  Future<void> _showSentPasswordResetMailDialog(BuildContext context) async {
     await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).sentEmailForPasswordReset, positiveButton: intl(context).close).show();
     Navigator.of(context).pop();
   }

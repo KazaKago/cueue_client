@@ -10,24 +10,13 @@ part of 'recipe.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 class _$RecipeTearOff {
   const _$RecipeTearOff();
 
-  _Recipe call(
-      {required RecipeId id,
-      required String title,
-      required String description,
-      required Uri? url,
-      required List<Content> images,
-      required List<Tag> tags,
-      required List<DateTime> cookingHistories,
-      required int cookingCount,
-      required DateTime createdAt,
-      required DateTime updatedAt}) {
+  _Recipe call({required RecipeId id, required String title, required String description, required Uri? url, required List<Content> images, required List<Tag> tags, required List<DateTime> cookingHistories, required int cookingCount, required DateTime createdAt, required DateTime updatedAt}) {
     return _Recipe(
       id: id,
       title: title,
@@ -65,19 +54,8 @@ mixin _$Recipe {
 
 /// @nodoc
 abstract class $RecipeCopyWith<$Res> {
-  factory $RecipeCopyWith(Recipe value, $Res Function(Recipe) then) =
-      _$RecipeCopyWithImpl<$Res>;
-  $Res call(
-      {RecipeId id,
-      String title,
-      String description,
-      Uri? url,
-      List<Content> images,
-      List<Tag> tags,
-      List<DateTime> cookingHistories,
-      int cookingCount,
-      DateTime createdAt,
-      DateTime updatedAt});
+  factory $RecipeCopyWith(Recipe value, $Res Function(Recipe) then) = _$RecipeCopyWithImpl<$Res>;
+  $Res call({RecipeId id, String title, String description, Uri? url, List<Content> images, List<Tag> tags, List<DateTime> cookingHistories, int cookingCount, DateTime createdAt, DateTime updatedAt});
 
   $RecipeIdCopyWith<$Res> get id;
 }
@@ -157,30 +135,17 @@ class _$RecipeCopyWithImpl<$Res> implements $RecipeCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
-  factory _$RecipeCopyWith(_Recipe value, $Res Function(_Recipe) then) =
-      __$RecipeCopyWithImpl<$Res>;
+  factory _$RecipeCopyWith(_Recipe value, $Res Function(_Recipe) then) = __$RecipeCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {RecipeId id,
-      String title,
-      String description,
-      Uri? url,
-      List<Content> images,
-      List<Tag> tags,
-      List<DateTime> cookingHistories,
-      int cookingCount,
-      DateTime createdAt,
-      DateTime updatedAt});
+  $Res call({RecipeId id, String title, String description, Uri? url, List<Content> images, List<Tag> tags, List<DateTime> cookingHistories, int cookingCount, DateTime createdAt, DateTime updatedAt});
 
   @override
   $RecipeIdCopyWith<$Res> get id;
 }
 
 /// @nodoc
-class __$RecipeCopyWithImpl<$Res> extends _$RecipeCopyWithImpl<$Res>
-    implements _$RecipeCopyWith<$Res> {
-  __$RecipeCopyWithImpl(_Recipe _value, $Res Function(_Recipe) _then)
-      : super(_value, (v) => _then(v as _Recipe));
+class __$RecipeCopyWithImpl<$Res> extends _$RecipeCopyWithImpl<$Res> implements _$RecipeCopyWith<$Res> {
+  __$RecipeCopyWithImpl(_Recipe _value, $Res Function(_Recipe) _then) : super(_value, (v) => _then(v as _Recipe));
 
   @override
   _Recipe get _value => super._value as _Recipe;
@@ -246,18 +211,7 @@ class __$RecipeCopyWithImpl<$Res> extends _$RecipeCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Recipe extends _Recipe {
-  const _$_Recipe(
-      {required this.id,
-      required this.title,
-      required this.description,
-      required this.url,
-      required this.images,
-      required this.tags,
-      required this.cookingHistories,
-      required this.cookingCount,
-      required this.createdAt,
-      required this.updatedAt})
-      : super._();
+  const _$_Recipe({required this.id, required this.title, required this.description, required this.url, required this.images, required this.tags, required this.cookingHistories, required this.cookingCount, required this.createdAt, required this.updatedAt}) : super._();
 
   @override
   final RecipeId id;
@@ -287,56 +241,19 @@ class _$_Recipe extends _Recipe {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Recipe &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality().equals(other.images, images) &&
-            const DeepCollectionEquality().equals(other.tags, tags) &&
-            const DeepCollectionEquality()
-                .equals(other.cookingHistories, cookingHistories) &&
-            const DeepCollectionEquality()
-                .equals(other.cookingCount, cookingCount) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _Recipe && const DeepCollectionEquality().equals(other.id, id) && const DeepCollectionEquality().equals(other.title, title) && const DeepCollectionEquality().equals(other.description, description) && const DeepCollectionEquality().equals(other.url, url) && const DeepCollectionEquality().equals(other.images, images) && const DeepCollectionEquality().equals(other.tags, tags) && const DeepCollectionEquality().equals(other.cookingHistories, cookingHistories) && const DeepCollectionEquality().equals(other.cookingCount, cookingCount) && const DeepCollectionEquality().equals(other.createdAt, createdAt) && const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(images),
-      const DeepCollectionEquality().hash(tags),
-      const DeepCollectionEquality().hash(cookingHistories),
-      const DeepCollectionEquality().hash(cookingCount),
-      const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(updatedAt));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(id), const DeepCollectionEquality().hash(title), const DeepCollectionEquality().hash(description), const DeepCollectionEquality().hash(url), const DeepCollectionEquality().hash(images), const DeepCollectionEquality().hash(tags), const DeepCollectionEquality().hash(cookingHistories), const DeepCollectionEquality().hash(cookingCount), const DeepCollectionEquality().hash(createdAt), const DeepCollectionEquality().hash(updatedAt));
 
   @JsonKey(ignore: true)
   @override
-  _$RecipeCopyWith<_Recipe> get copyWith =>
-      __$RecipeCopyWithImpl<_Recipe>(this, _$identity);
+  _$RecipeCopyWith<_Recipe> get copyWith => __$RecipeCopyWithImpl<_Recipe>(this, _$identity);
 }
 
 abstract class _Recipe extends Recipe {
-  const factory _Recipe(
-      {required RecipeId id,
-      required String title,
-      required String description,
-      required Uri? url,
-      required List<Content> images,
-      required List<Tag> tags,
-      required List<DateTime> cookingHistories,
-      required int cookingCount,
-      required DateTime createdAt,
-      required DateTime updatedAt}) = _$_Recipe;
+  const factory _Recipe({required RecipeId id, required String title, required String description, required Uri? url, required List<Content> images, required List<Tag> tags, required List<DateTime> cookingHistories, required int cookingCount, required DateTime createdAt, required DateTime updatedAt}) = _$_Recipe;
   const _Recipe._() : super._();
 
   @override

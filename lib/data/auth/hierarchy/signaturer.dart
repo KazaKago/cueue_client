@@ -17,29 +17,29 @@ import 'package:firebase_auth/firebase_auth.dart';
 class SignaturerDelegator {
   const SignaturerDelegator();
 
-  Future<void> signIn(final AuthCredential Function() getCredential) async {
+  Future<void> signIn(AuthCredential Function() getCredential) async {
     final credential = getCredential();
     await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
-  Future<void> link(final AuthCredential Function() getCredential) async {
+  Future<void> link(AuthCredential Function() getCredential) async {
     final credential = getCredential();
     final firebaseUser = FirebaseAuth.instance.currentUser;
     await firebaseUser?.linkWithCredential(credential);
   }
 
-  Future<void> unlink(final ProviderId providerId) async {
+  Future<void> unlink(ProviderId providerId) async {
     final firebaseUser = FirebaseAuth.instance.currentUser;
     await firebaseUser?.unlink(providerId.value);
   }
 
-  Future<void> reauthenticate(final AuthCredential Function() getCredential) async {
+  Future<void> reauthenticate(AuthCredential Function() getCredential) async {
     final credential = getCredential();
     final firebaseUser = FirebaseAuth.instance.currentUser;
     await firebaseUser?.reauthenticateWithCredential(credential);
   }
 
-  Future<Exception> classifyException(final FirebaseAuthException exception, {final Email? email, final Password? password, final RequireReauthenticationType? requireReauthenticationType}) async {
+  Future<Exception> classifyException(FirebaseAuthException exception, {Email? email, Password? password, RequireReauthenticationType? requireReauthenticationType}) async {
     switch (exception.code) {
       case 'network-request-failed':
         return const NetworkException();

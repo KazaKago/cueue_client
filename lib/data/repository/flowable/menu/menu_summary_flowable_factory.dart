@@ -19,26 +19,26 @@ class MenuSummaryFlowableFactory implements PaginationStoreFlowableFactory<void,
   FlowableDataStateManager<void> getFlowableDataStateManager() => _menuSummaryStateManager;
 
   @override
-  Future<List<MenuSummary>?> loadDataFromCache(final void param) async {
+  Future<List<MenuSummary>?> loadDataFromCache(void param) async {
     return _menuCache.menuSummaries;
   }
 
   @override
-  Future<void> saveDataToCache(final List<MenuSummary>? newData, final void param) async {
+  Future<void> saveDataToCache(List<MenuSummary>? newData, void param) async {
     _menuCache
       ..menuSummaries = newData
       ..menuSummariesCreatedAt = DateTime.now();
   }
 
   @override
-  Future<void> saveNextDataToCache(final List<MenuSummary> cachedData, final List<MenuSummary> newData, final void param) async {
+  Future<void> saveNextDataToCache(List<MenuSummary> cachedData, List<MenuSummary> newData, void param) async {
     _menuCache.menuSummaries = cachedData + newData;
   }
 
   @override
-  Future<Fetched<List<MenuSummary>>> fetchDataFromOrigin(final void param) async {
+  Future<Fetched<List<MenuSummary>>> fetchDataFromOrigin(void param) async {
     final user = await _userFlowableFactory.create(null).requireData();
-    final response = await _getMenusApi.execute(user.currentWorkspace.id.value, afterId: null);
+    final response = await _getMenusApi.execute(user.currentWorkspace.id.value);
     final recipes = response.map(_menuSummaryResponseMapper.map).toList();
     return Fetched(
       data: recipes,
@@ -47,7 +47,7 @@ class MenuSummaryFlowableFactory implements PaginationStoreFlowableFactory<void,
   }
 
   @override
-  Future<Fetched<List<MenuSummary>>> fetchNextDataFromOrigin(final String nextKey, final void param) async {
+  Future<Fetched<List<MenuSummary>>> fetchNextDataFromOrigin(String nextKey, void param) async {
     final user = await _userFlowableFactory.create(null).requireData();
     final response = await _getMenusApi.execute(user.currentWorkspace.id.value, afterId: int.parse(nextKey));
     final recipes = response.map(_menuSummaryResponseMapper.map).toList();
@@ -58,7 +58,7 @@ class MenuSummaryFlowableFactory implements PaginationStoreFlowableFactory<void,
   }
 
   @override
-  Future<bool> needRefresh(final List<MenuSummary> cachedData, final void param) async {
+  Future<bool> needRefresh(List<MenuSummary> cachedData, void param) async {
     final createdAt = _menuCache.menuSummariesCreatedAt;
     if (createdAt != null) {
       final expiredTime = createdAt.add(const Duration(minutes: 30));

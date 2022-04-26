@@ -7,8 +7,8 @@ part 'content_request.g.dart';
 class ContentRequest with _$ContentRequest {
   const factory ContentRequest({
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'data') required final String data,
+    @JsonKey(name: 'data') required String data,
   }) = _ContentRequest;
 
-  factory ContentRequest.fromJson(final Map<String, dynamic> json) => _$ContentRequestFromJson(json);
+  factory ContentRequest.fromJson(Map<String, dynamic> json) => _$ContentRequestFromJson(json);
 }

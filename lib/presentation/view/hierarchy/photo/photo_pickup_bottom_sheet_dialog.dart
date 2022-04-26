@@ -4,7 +4,7 @@ import 'package:cueue/presentation/view/hierarchy/photo/photo_pickup_bottom_shee
 import 'package:flutter/material.dart';
 
 class PhotoPickupBottomSheetDialog {
-  factory PhotoPickupBottomSheetDialog(final BuildContext context) {
+  factory PhotoPickupBottomSheetDialog(BuildContext context) {
     final menuItemEvents = <_MenuItemEvent>[
       _MenuItemEvent(MenuItem(Icons.camera, intl(context).takePhoto), const PhotoPickupBottomSheetEvent.fromCamera()),
       _MenuItemEvent(MenuItem(Icons.photo, intl(context).chooseFromLibrary), const PhotoPickupBottomSheetEvent.fromLibrary()),

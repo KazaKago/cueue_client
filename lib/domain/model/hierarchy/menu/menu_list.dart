@@ -1,10 +1,10 @@
+import 'package:collection/collection.dart';
 import 'package:cueue/domain/model/hierarchy/date/date_time_extension.dart';
 import 'package:cueue/domain/model/hierarchy/menu/date_split_menu_list.dart';
 import 'package:cueue/domain/model/hierarchy/menu/menu_summary.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 class MenuList extends DelegatingList<MenuSummary> {
-  MenuList(final List<MenuSummary> base) : super(base);
+  MenuList(List<MenuSummary> base) : super(base);
 
   List<DateSplitMenuList> createDateSplit() {
     final dateSplitDateMenuList = <DateSplitMenuList>[];

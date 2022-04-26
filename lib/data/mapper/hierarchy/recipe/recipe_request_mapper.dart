@@ -4,7 +4,7 @@ import 'package:cueue/domain/model/hierarchy/recipe/recipe_registration.dart';
 class RecipeRequestMapper {
   const RecipeRequestMapper();
 
-  RecipeRequest map(final RecipeRegistration recipeRegistration) {
+  RecipeRequest map(RecipeRegistration recipeRegistration) {
     return RecipeRequest(
       title: recipeRegistration.title,
       description: recipeRegistration.description,

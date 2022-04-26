@@ -4,7 +4,7 @@ class MenuLoadingItem extends StatelessWidget {
   const MenuLoadingItem({Key? key}) : super(key: key);
 
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(

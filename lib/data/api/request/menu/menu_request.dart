@@ -7,14 +7,14 @@ part 'menu_request.g.dart';
 class MenuRequest with _$MenuRequest {
   const factory MenuRequest({
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'memo') required final String memo,
+    @JsonKey(name: 'memo') required String memo,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'date') required final String date,
+    @JsonKey(name: 'date') required String date,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'time_frame') required final String timeFrame,
+    @JsonKey(name: 'time_frame') required String timeFrame,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'recipe_ids') required final List<int> recipeIds,
+    @JsonKey(name: 'recipe_ids') required List<int> recipeIds,
   }) = _MenuRequest;
 
-  factory MenuRequest.fromJson(final Map<String, dynamic> json) => _$MenuRequestFromJson(json);
+  factory MenuRequest.fromJson(Map<String, dynamic> json) => _$MenuRequestFromJson(json);
 }

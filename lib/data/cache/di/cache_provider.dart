@@ -22,16 +22,18 @@ final tagCacheProvider = Provider((ref) => TagCache());
 final tagStateManagerProvider = Provider((ref) => TagStateManager());
 final userCacheProvider = Provider((ref) => UserCache());
 final userStateManagerProvider = Provider((ref) => UserStateManager());
-final allCacheProvider = Provider((ref) => [
-      ref.read(menuCacheProvider),
-      ref.read(menuStateManagerProvider),
-      ref.read(menuSummaryStateManagerProvider),
-      ref.read(recipeCacheProvider),
-      ref.read(allRecipesStateManagerProvider),
-      ref.read(recipeStateManagerProvider),
-      ref.read(taggedRecipesStateManagerProvider),
-      ref.read(tagCacheProvider),
-      ref.read(tagStateManagerProvider),
-      ref.read(userCacheProvider),
-      ref.read(userStateManagerProvider),
-    ]);
+final allCacheProvider = Provider(
+  (ref) => [
+    ref.read(menuCacheProvider),
+    ref.read(menuStateManagerProvider),
+    ref.read(menuSummaryStateManagerProvider),
+    ref.read(recipeCacheProvider),
+    ref.read(allRecipesStateManagerProvider),
+    ref.read(recipeStateManagerProvider),
+    ref.read(taggedRecipesStateManagerProvider),
+    ref.read(tagCacheProvider),
+    ref.read(tagStateManagerProvider),
+    ref.read(userCacheProvider),
+    ref.read(userStateManagerProvider),
+  ],
+);

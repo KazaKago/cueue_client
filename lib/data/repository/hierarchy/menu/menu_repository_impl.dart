@@ -27,7 +27,7 @@ class MenuRepositoryImpl implements MenuRepository {
   final UserFlowableFactory _userFlowableFactory;
 
   @override
-  LoadingStateStream<Menu> followData(final MenuId menuId) {
+  LoadingStateStream<Menu> followData(MenuId menuId) {
     final menuFlowable = _menuFlowableFactory.create(menuId);
     return menuFlowable.publish();
   }
@@ -39,7 +39,7 @@ class MenuRepositoryImpl implements MenuRepository {
   }
 
   @override
-  Future<void> refreshData(final MenuId menuId) {
+  Future<void> refreshData(MenuId menuId) {
     final menuFlowable = _menuFlowableFactory.create(menuId);
     return menuFlowable.refresh();
   }
@@ -51,13 +51,13 @@ class MenuRepositoryImpl implements MenuRepository {
   }
 
   @override
-  Future<void> requestAdditionalAllData({required final bool continueWhenError}) async {
+  Future<void> requestAdditionalAllData({required bool continueWhenError}) async {
     final menuFlowable = _menuSummaryFlowableFactory.create(null);
     await menuFlowable.requestNextData(continueWhenError: continueWhenError);
   }
 
   @override
-  Future<void> create(final MenuRegistration menuRegistration) async {
+  Future<void> create(MenuRegistration menuRegistration) async {
     final user = await _userFlowableFactory.create(null).requireData();
     final response = await _createMenuApi.execute(user.currentWorkspace.id.value, _menuRequestMapper.map(menuRegistration));
     final menu = _menuResponseMapper.map(response);
@@ -74,7 +74,7 @@ class MenuRepositoryImpl implements MenuRepository {
   }
 
   @override
-  Future<void> update(final MenuId menuId, final MenuRegistration menuRegistration) async {
+  Future<void> update(MenuId menuId, MenuRegistration menuRegistration) async {
     final user = await _userFlowableFactory.create(null).requireData();
     final response = await _updateMenuApi.execute(user.currentWorkspace.id.value, menuId.value, _menuRequestMapper.map(menuRegistration));
     final menu = _menuResponseMapper.map(response);
@@ -91,7 +91,7 @@ class MenuRepositoryImpl implements MenuRepository {
   }
 
   @override
-  Future<void> delete(final MenuId menuId) async {
+  Future<void> delete(MenuId menuId) async {
     final user = await _userFlowableFactory.create(null).requireData();
     await _deleteMenuApi.execute(user.currentWorkspace.id.value, menuId.value);
 

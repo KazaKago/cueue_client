@@ -5,7 +5,7 @@ import 'package:cueue/domain/model/hierarchy/workspace/workspace_id.dart';
 class WorkspaceResponseMapper {
   const WorkspaceResponseMapper();
 
-  Workspace map(final WorkspaceResponse response) {
+  Workspace map(WorkspaceResponse response) {
     return Workspace(
       id: WorkspaceId(response.id),
       name: response.name,
