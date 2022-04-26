@@ -178,7 +178,7 @@ workflows:
       - flutter-analyze@0:
           inputs:
             - project_location: $BITRISE_FLUTTER_PROJECT_LOCATION
-      - flutter-test@0:
+      - flutter-test@1:
           inputs:
             - project_location: $BITRISE_FLUTTER_PROJECT_LOCATION
   deploy_production:
@@ -322,4 +322,4 @@ trigger_map:
     workflow: release
 meta:
   bitrise.io:
-    stack: osx-xcode-13.1.x
+    stack: osx-xcode-13.3.x
