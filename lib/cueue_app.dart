@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CueueApp extends StatelessWidget {
   const CueueApp({Key? key}) : super(key: key);
@@ -21,8 +22,8 @@ class CueueApp extends StatelessWidget {
       ..backgroundColor = Colors.transparent;
     return MaterialApp(
       onGenerateTitle: (context) => intl(context).appName,
-      theme: _buildTheme(ColorScheme.light(primary: lightThemeColor, secondary: lightThemeColor)),
-      darkTheme: _buildTheme(ColorScheme.dark(primary: darkThemeColor, secondary: darkThemeColor)),
+      theme: _buildTheme(context, ColorScheme.light(primary: lightThemeColor, secondary: lightThemeColor)),
+      darkTheme: _buildTheme(context, ColorScheme.dark(primary: darkThemeColor, secondary: darkThemeColor)),
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -37,7 +38,7 @@ class CueueApp extends StatelessWidget {
     );
   }
 
-  ThemeData _buildTheme(ColorScheme colorScheme) {
+  ThemeData _buildTheme(BuildContext context, ColorScheme colorScheme) {
     final isDark = colorScheme.brightness == Brightness.dark;
     return ThemeData(
       colorScheme: colorScheme,
@@ -68,6 +69,9 @@ class CueueApp extends StatelessWidget {
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.white,
+      ),
+      textTheme: GoogleFonts.mPlus1pTextTheme(
+        Theme.of(context).textTheme,
       ),
     );
   }
