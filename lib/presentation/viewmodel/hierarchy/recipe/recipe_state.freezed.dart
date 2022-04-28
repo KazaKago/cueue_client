@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'recipe_state.dart';
@@ -10,54 +11,8 @@ part of 'recipe_state.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$RecipeStateTearOff {
-  const _$RecipeStateTearOff();
-
-  _Loading loading() {
-    return const _Loading();
-  }
-
-  _Refreshing refreshing(List<RecipeSummary> menus) {
-    return _Refreshing(
-      menus,
-    );
-  }
-
-  _AdditionalLoading additionalLoading(List<RecipeSummary> menus) {
-    return _AdditionalLoading(
-      menus,
-    );
-  }
-
-  _Empty empty() {
-    return const _Empty();
-  }
-
-  _Completed completed(List<RecipeSummary> recipes) {
-    return _Completed(
-      recipes,
-    );
-  }
-
-  _Error error(Exception error) {
-    return _Error(
-      error,
-    );
-  }
-
-  _AdditionalError additionalError(List<RecipeSummary> recipes, Exception error) {
-    return _AdditionalError(
-      recipes,
-      error,
-    );
-  }
-}
-
-/// @nodoc
-const $RecipeState = _$RecipeStateTearOff();
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$RecipeState {
@@ -69,7 +24,8 @@ mixin _$RecipeState {
     required TResult Function() empty,
     required TResult Function(List<RecipeSummary> recipes) completed,
     required TResult Function(Exception error) error,
-    required TResult Function(List<RecipeSummary> recipes, Exception error) additionalError,
+    required TResult Function(List<RecipeSummary> recipes, Exception error)
+        additionalError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,7 +36,8 @@ mixin _$RecipeState {
     TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<RecipeSummary> recipes, Exception error)? additionalError,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -91,7 +48,8 @@ mixin _$RecipeState {
     TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<RecipeSummary> recipes, Exception error)? additionalError,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,7 +91,9 @@ mixin _$RecipeState {
 
 /// @nodoc
 abstract class $RecipeStateCopyWith<$Res> {
-  factory $RecipeStateCopyWith(RecipeState value, $Res Function(RecipeState) then) = _$RecipeStateCopyWithImpl<$Res>;
+  factory $RecipeStateCopyWith(
+          RecipeState value, $Res Function(RecipeState) then) =
+      _$RecipeStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -147,12 +107,15 @@ class _$RecipeStateCopyWithImpl<$Res> implements $RecipeStateCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$LoadingCopyWith<$Res> {
-  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) = __$LoadingCopyWithImpl<$Res>;
+  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
+      __$LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$Res> implements _$LoadingCopyWith<$Res> {
-  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then) : super(_value, (v) => _then(v as _Loading));
+class __$LoadingCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$Res>
+    implements _$LoadingCopyWith<$Res> {
+  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
+      : super(_value, (v) => _then(v as _Loading));
 
   @override
   _Loading get _value => super._value as _Loading;
@@ -170,7 +133,8 @@ class _$_Loading implements _Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _Loading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Loading);
   }
 
   @override
@@ -185,7 +149,8 @@ class _$_Loading implements _Loading {
     required TResult Function() empty,
     required TResult Function(List<RecipeSummary> recipes) completed,
     required TResult Function(Exception error) error,
-    required TResult Function(List<RecipeSummary> recipes, Exception error) additionalError,
+    required TResult Function(List<RecipeSummary> recipes, Exception error)
+        additionalError,
   }) {
     return loading();
   }
@@ -199,7 +164,8 @@ class _$_Loading implements _Loading {
     TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<RecipeSummary> recipes, Exception error)? additionalError,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
   }) {
     return loading?.call();
   }
@@ -213,7 +179,8 @@ class _$_Loading implements _Loading {
     TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<RecipeSummary> recipes, Exception error)? additionalError,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -275,13 +242,18 @@ abstract class _Loading implements RecipeState {
 
 /// @nodoc
 abstract class _$RefreshingCopyWith<$Res> {
-  factory _$RefreshingCopyWith(_Refreshing value, $Res Function(_Refreshing) then) = __$RefreshingCopyWithImpl<$Res>;
+  factory _$RefreshingCopyWith(
+          _Refreshing value, $Res Function(_Refreshing) then) =
+      __$RefreshingCopyWithImpl<$Res>;
   $Res call({List<RecipeSummary> menus});
 }
 
 /// @nodoc
-class __$RefreshingCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$Res> implements _$RefreshingCopyWith<$Res> {
-  __$RefreshingCopyWithImpl(_Refreshing _value, $Res Function(_Refreshing) _then) : super(_value, (v) => _then(v as _Refreshing));
+class __$RefreshingCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$Res>
+    implements _$RefreshingCopyWith<$Res> {
+  __$RefreshingCopyWithImpl(
+      _Refreshing _value, $Res Function(_Refreshing) _then)
+      : super(_value, (v) => _then(v as _Refreshing));
 
   @override
   _Refreshing get _value => super._value as _Refreshing;
@@ -302,10 +274,14 @@ class __$RefreshingCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$Res> im
 /// @nodoc
 
 class _$_Refreshing implements _Refreshing {
-  const _$_Refreshing(this.menus);
+  const _$_Refreshing(final List<RecipeSummary> menus) : _menus = menus;
 
+  final List<RecipeSummary> _menus;
   @override
-  final List<RecipeSummary> menus;
+  List<RecipeSummary> get menus {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_menus);
+  }
 
   @override
   String toString() {
@@ -314,15 +290,20 @@ class _$_Refreshing implements _Refreshing {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _Refreshing && const DeepCollectionEquality().equals(other.menus, menus));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Refreshing &&
+            const DeepCollectionEquality().equals(other.menus, menus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(menus));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(menus));
 
   @JsonKey(ignore: true)
   @override
-  _$RefreshingCopyWith<_Refreshing> get copyWith => __$RefreshingCopyWithImpl<_Refreshing>(this, _$identity);
+  _$RefreshingCopyWith<_Refreshing> get copyWith =>
+      __$RefreshingCopyWithImpl<_Refreshing>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -333,7 +314,8 @@ class _$_Refreshing implements _Refreshing {
     required TResult Function() empty,
     required TResult Function(List<RecipeSummary> recipes) completed,
     required TResult Function(Exception error) error,
-    required TResult Function(List<RecipeSummary> recipes, Exception error) additionalError,
+    required TResult Function(List<RecipeSummary> recipes, Exception error)
+        additionalError,
   }) {
     return refreshing(menus);
   }
@@ -347,7 +329,8 @@ class _$_Refreshing implements _Refreshing {
     TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<RecipeSummary> recipes, Exception error)? additionalError,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
   }) {
     return refreshing?.call(menus);
   }
@@ -361,7 +344,8 @@ class _$_Refreshing implements _Refreshing {
     TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<RecipeSummary> recipes, Exception error)? additionalError,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
     required TResult orElse(),
   }) {
     if (refreshing != null) {
@@ -418,22 +402,29 @@ class _$_Refreshing implements _Refreshing {
 }
 
 abstract class _Refreshing implements RecipeState {
-  const factory _Refreshing(List<RecipeSummary> menus) = _$_Refreshing;
+  const factory _Refreshing(final List<RecipeSummary> menus) = _$_Refreshing;
 
-  List<RecipeSummary> get menus;
+  List<RecipeSummary> get menus => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$RefreshingCopyWith<_Refreshing> get copyWith => throw _privateConstructorUsedError;
+  _$RefreshingCopyWith<_Refreshing> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$AdditionalLoadingCopyWith<$Res> {
-  factory _$AdditionalLoadingCopyWith(_AdditionalLoading value, $Res Function(_AdditionalLoading) then) = __$AdditionalLoadingCopyWithImpl<$Res>;
+  factory _$AdditionalLoadingCopyWith(
+          _AdditionalLoading value, $Res Function(_AdditionalLoading) then) =
+      __$AdditionalLoadingCopyWithImpl<$Res>;
   $Res call({List<RecipeSummary> menus});
 }
 
 /// @nodoc
-class __$AdditionalLoadingCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$Res> implements _$AdditionalLoadingCopyWith<$Res> {
-  __$AdditionalLoadingCopyWithImpl(_AdditionalLoading _value, $Res Function(_AdditionalLoading) _then) : super(_value, (v) => _then(v as _AdditionalLoading));
+class __$AdditionalLoadingCopyWithImpl<$Res>
+    extends _$RecipeStateCopyWithImpl<$Res>
+    implements _$AdditionalLoadingCopyWith<$Res> {
+  __$AdditionalLoadingCopyWithImpl(
+      _AdditionalLoading _value, $Res Function(_AdditionalLoading) _then)
+      : super(_value, (v) => _then(v as _AdditionalLoading));
 
   @override
   _AdditionalLoading get _value => super._value as _AdditionalLoading;
@@ -454,10 +445,14 @@ class __$AdditionalLoadingCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$
 /// @nodoc
 
 class _$_AdditionalLoading implements _AdditionalLoading {
-  const _$_AdditionalLoading(this.menus);
+  const _$_AdditionalLoading(final List<RecipeSummary> menus) : _menus = menus;
 
+  final List<RecipeSummary> _menus;
   @override
-  final List<RecipeSummary> menus;
+  List<RecipeSummary> get menus {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_menus);
+  }
 
   @override
   String toString() {
@@ -466,15 +461,20 @@ class _$_AdditionalLoading implements _AdditionalLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _AdditionalLoading && const DeepCollectionEquality().equals(other.menus, menus));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AdditionalLoading &&
+            const DeepCollectionEquality().equals(other.menus, menus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(menus));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(menus));
 
   @JsonKey(ignore: true)
   @override
-  _$AdditionalLoadingCopyWith<_AdditionalLoading> get copyWith => __$AdditionalLoadingCopyWithImpl<_AdditionalLoading>(this, _$identity);
+  _$AdditionalLoadingCopyWith<_AdditionalLoading> get copyWith =>
+      __$AdditionalLoadingCopyWithImpl<_AdditionalLoading>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -485,7 +485,8 @@ class _$_AdditionalLoading implements _AdditionalLoading {
     required TResult Function() empty,
     required TResult Function(List<RecipeSummary> recipes) completed,
     required TResult Function(Exception error) error,
-    required TResult Function(List<RecipeSummary> recipes, Exception error) additionalError,
+    required TResult Function(List<RecipeSummary> recipes, Exception error)
+        additionalError,
   }) {
     return additionalLoading(menus);
   }
@@ -499,7 +500,8 @@ class _$_AdditionalLoading implements _AdditionalLoading {
     TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<RecipeSummary> recipes, Exception error)? additionalError,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
   }) {
     return additionalLoading?.call(menus);
   }
@@ -513,7 +515,8 @@ class _$_AdditionalLoading implements _AdditionalLoading {
     TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<RecipeSummary> recipes, Exception error)? additionalError,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
     required TResult orElse(),
   }) {
     if (additionalLoading != null) {
@@ -570,21 +573,26 @@ class _$_AdditionalLoading implements _AdditionalLoading {
 }
 
 abstract class _AdditionalLoading implements RecipeState {
-  const factory _AdditionalLoading(List<RecipeSummary> menus) = _$_AdditionalLoading;
+  const factory _AdditionalLoading(final List<RecipeSummary> menus) =
+      _$_AdditionalLoading;
 
-  List<RecipeSummary> get menus;
+  List<RecipeSummary> get menus => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$AdditionalLoadingCopyWith<_AdditionalLoading> get copyWith => throw _privateConstructorUsedError;
+  _$AdditionalLoadingCopyWith<_AdditionalLoading> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$EmptyCopyWith<$Res> {
-  factory _$EmptyCopyWith(_Empty value, $Res Function(_Empty) then) = __$EmptyCopyWithImpl<$Res>;
+  factory _$EmptyCopyWith(_Empty value, $Res Function(_Empty) then) =
+      __$EmptyCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$EmptyCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$Res> implements _$EmptyCopyWith<$Res> {
-  __$EmptyCopyWithImpl(_Empty _value, $Res Function(_Empty) _then) : super(_value, (v) => _then(v as _Empty));
+class __$EmptyCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$Res>
+    implements _$EmptyCopyWith<$Res> {
+  __$EmptyCopyWithImpl(_Empty _value, $Res Function(_Empty) _then)
+      : super(_value, (v) => _then(v as _Empty));
 
   @override
   _Empty get _value => super._value as _Empty;
@@ -602,7 +610,8 @@ class _$_Empty implements _Empty {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _Empty);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Empty);
   }
 
   @override
@@ -617,7 +626,8 @@ class _$_Empty implements _Empty {
     required TResult Function() empty,
     required TResult Function(List<RecipeSummary> recipes) completed,
     required TResult Function(Exception error) error,
-    required TResult Function(List<RecipeSummary> recipes, Exception error) additionalError,
+    required TResult Function(List<RecipeSummary> recipes, Exception error)
+        additionalError,
   }) {
     return empty();
   }
@@ -631,7 +641,8 @@ class _$_Empty implements _Empty {
     TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<RecipeSummary> recipes, Exception error)? additionalError,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
   }) {
     return empty?.call();
   }
@@ -645,7 +656,8 @@ class _$_Empty implements _Empty {
     TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<RecipeSummary> recipes, Exception error)? additionalError,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -707,13 +719,17 @@ abstract class _Empty implements RecipeState {
 
 /// @nodoc
 abstract class _$CompletedCopyWith<$Res> {
-  factory _$CompletedCopyWith(_Completed value, $Res Function(_Completed) then) = __$CompletedCopyWithImpl<$Res>;
+  factory _$CompletedCopyWith(
+          _Completed value, $Res Function(_Completed) then) =
+      __$CompletedCopyWithImpl<$Res>;
   $Res call({List<RecipeSummary> recipes});
 }
 
 /// @nodoc
-class __$CompletedCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$Res> implements _$CompletedCopyWith<$Res> {
-  __$CompletedCopyWithImpl(_Completed _value, $Res Function(_Completed) _then) : super(_value, (v) => _then(v as _Completed));
+class __$CompletedCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$Res>
+    implements _$CompletedCopyWith<$Res> {
+  __$CompletedCopyWithImpl(_Completed _value, $Res Function(_Completed) _then)
+      : super(_value, (v) => _then(v as _Completed));
 
   @override
   _Completed get _value => super._value as _Completed;
@@ -734,10 +750,14 @@ class __$CompletedCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$Res> imp
 /// @nodoc
 
 class _$_Completed implements _Completed {
-  const _$_Completed(this.recipes);
+  const _$_Completed(final List<RecipeSummary> recipes) : _recipes = recipes;
 
+  final List<RecipeSummary> _recipes;
   @override
-  final List<RecipeSummary> recipes;
+  List<RecipeSummary> get recipes {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_recipes);
+  }
 
   @override
   String toString() {
@@ -746,15 +766,20 @@ class _$_Completed implements _Completed {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _Completed && const DeepCollectionEquality().equals(other.recipes, recipes));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Completed &&
+            const DeepCollectionEquality().equals(other.recipes, recipes));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(recipes));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(recipes));
 
   @JsonKey(ignore: true)
   @override
-  _$CompletedCopyWith<_Completed> get copyWith => __$CompletedCopyWithImpl<_Completed>(this, _$identity);
+  _$CompletedCopyWith<_Completed> get copyWith =>
+      __$CompletedCopyWithImpl<_Completed>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -765,7 +790,8 @@ class _$_Completed implements _Completed {
     required TResult Function() empty,
     required TResult Function(List<RecipeSummary> recipes) completed,
     required TResult Function(Exception error) error,
-    required TResult Function(List<RecipeSummary> recipes, Exception error) additionalError,
+    required TResult Function(List<RecipeSummary> recipes, Exception error)
+        additionalError,
   }) {
     return completed(recipes);
   }
@@ -779,7 +805,8 @@ class _$_Completed implements _Completed {
     TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<RecipeSummary> recipes, Exception error)? additionalError,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
   }) {
     return completed?.call(recipes);
   }
@@ -793,7 +820,8 @@ class _$_Completed implements _Completed {
     TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<RecipeSummary> recipes, Exception error)? additionalError,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
     required TResult orElse(),
   }) {
     if (completed != null) {
@@ -850,22 +878,26 @@ class _$_Completed implements _Completed {
 }
 
 abstract class _Completed implements RecipeState {
-  const factory _Completed(List<RecipeSummary> recipes) = _$_Completed;
+  const factory _Completed(final List<RecipeSummary> recipes) = _$_Completed;
 
-  List<RecipeSummary> get recipes;
+  List<RecipeSummary> get recipes => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$CompletedCopyWith<_Completed> get copyWith => throw _privateConstructorUsedError;
+  _$CompletedCopyWith<_Completed> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$ErrorCopyWith<$Res> {
-  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) = __$ErrorCopyWithImpl<$Res>;
+  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) =
+      __$ErrorCopyWithImpl<$Res>;
   $Res call({Exception error});
 }
 
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$Res> implements _$ErrorCopyWith<$Res> {
-  __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then) : super(_value, (v) => _then(v as _Error));
+class __$ErrorCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$Res>
+    implements _$ErrorCopyWith<$Res> {
+  __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
+      : super(_value, (v) => _then(v as _Error));
 
   @override
   _Error get _value => super._value as _Error;
@@ -898,15 +930,20 @@ class _$_Error implements _Error {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _Error && const DeepCollectionEquality().equals(other.error, error));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Error &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
-  _$ErrorCopyWith<_Error> get copyWith => __$ErrorCopyWithImpl<_Error>(this, _$identity);
+  _$ErrorCopyWith<_Error> get copyWith =>
+      __$ErrorCopyWithImpl<_Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -917,7 +954,8 @@ class _$_Error implements _Error {
     required TResult Function() empty,
     required TResult Function(List<RecipeSummary> recipes) completed,
     required TResult Function(Exception error) error,
-    required TResult Function(List<RecipeSummary> recipes, Exception error) additionalError,
+    required TResult Function(List<RecipeSummary> recipes, Exception error)
+        additionalError,
   }) {
     return error(this.error);
   }
@@ -931,7 +969,8 @@ class _$_Error implements _Error {
     TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<RecipeSummary> recipes, Exception error)? additionalError,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
   }) {
     return error?.call(this.error);
   }
@@ -945,7 +984,8 @@ class _$_Error implements _Error {
     TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<RecipeSummary> recipes, Exception error)? additionalError,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1002,22 +1042,28 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements RecipeState {
-  const factory _Error(Exception error) = _$_Error;
+  const factory _Error(final Exception error) = _$_Error;
 
-  Exception get error;
+  Exception get error => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$ErrorCopyWith<_Error> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$AdditionalErrorCopyWith<$Res> {
-  factory _$AdditionalErrorCopyWith(_AdditionalError value, $Res Function(_AdditionalError) then) = __$AdditionalErrorCopyWithImpl<$Res>;
+  factory _$AdditionalErrorCopyWith(
+          _AdditionalError value, $Res Function(_AdditionalError) then) =
+      __$AdditionalErrorCopyWithImpl<$Res>;
   $Res call({List<RecipeSummary> recipes, Exception error});
 }
 
 /// @nodoc
-class __$AdditionalErrorCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$Res> implements _$AdditionalErrorCopyWith<$Res> {
-  __$AdditionalErrorCopyWithImpl(_AdditionalError _value, $Res Function(_AdditionalError) _then) : super(_value, (v) => _then(v as _AdditionalError));
+class __$AdditionalErrorCopyWithImpl<$Res>
+    extends _$RecipeStateCopyWithImpl<$Res>
+    implements _$AdditionalErrorCopyWith<$Res> {
+  __$AdditionalErrorCopyWithImpl(
+      _AdditionalError _value, $Res Function(_AdditionalError) _then)
+      : super(_value, (v) => _then(v as _AdditionalError));
 
   @override
   _AdditionalError get _value => super._value as _AdditionalError;
@@ -1043,10 +1089,16 @@ class __$AdditionalErrorCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$Re
 /// @nodoc
 
 class _$_AdditionalError implements _AdditionalError {
-  const _$_AdditionalError(this.recipes, this.error);
+  const _$_AdditionalError(final List<RecipeSummary> recipes, this.error)
+      : _recipes = recipes;
 
+  final List<RecipeSummary> _recipes;
   @override
-  final List<RecipeSummary> recipes;
+  List<RecipeSummary> get recipes {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_recipes);
+  }
+
   @override
   final Exception error;
 
@@ -1057,15 +1109,23 @@ class _$_AdditionalError implements _AdditionalError {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _AdditionalError && const DeepCollectionEquality().equals(other.recipes, recipes) && const DeepCollectionEquality().equals(other.error, error));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AdditionalError &&
+            const DeepCollectionEquality().equals(other.recipes, recipes) &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(recipes), const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(recipes),
+      const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
-  _$AdditionalErrorCopyWith<_AdditionalError> get copyWith => __$AdditionalErrorCopyWithImpl<_AdditionalError>(this, _$identity);
+  _$AdditionalErrorCopyWith<_AdditionalError> get copyWith =>
+      __$AdditionalErrorCopyWithImpl<_AdditionalError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1076,7 +1136,8 @@ class _$_AdditionalError implements _AdditionalError {
     required TResult Function() empty,
     required TResult Function(List<RecipeSummary> recipes) completed,
     required TResult Function(Exception error) error,
-    required TResult Function(List<RecipeSummary> recipes, Exception error) additionalError,
+    required TResult Function(List<RecipeSummary> recipes, Exception error)
+        additionalError,
   }) {
     return additionalError(recipes, this.error);
   }
@@ -1090,7 +1151,8 @@ class _$_AdditionalError implements _AdditionalError {
     TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<RecipeSummary> recipes, Exception error)? additionalError,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
   }) {
     return additionalError?.call(recipes, this.error);
   }
@@ -1104,7 +1166,8 @@ class _$_AdditionalError implements _AdditionalError {
     TResult Function()? empty,
     TResult Function(List<RecipeSummary> recipes)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<RecipeSummary> recipes, Exception error)? additionalError,
+    TResult Function(List<RecipeSummary> recipes, Exception error)?
+        additionalError,
     required TResult orElse(),
   }) {
     if (additionalError != null) {
@@ -1161,10 +1224,13 @@ class _$_AdditionalError implements _AdditionalError {
 }
 
 abstract class _AdditionalError implements RecipeState {
-  const factory _AdditionalError(List<RecipeSummary> recipes, Exception error) = _$_AdditionalError;
+  const factory _AdditionalError(
+          final List<RecipeSummary> recipes, final Exception error) =
+      _$_AdditionalError;
 
-  List<RecipeSummary> get recipes;
-  Exception get error;
+  List<RecipeSummary> get recipes => throw _privateConstructorUsedError;
+  Exception get error => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$AdditionalErrorCopyWith<_AdditionalError> get copyWith => throw _privateConstructorUsedError;
+  _$AdditionalErrorCopyWith<_AdditionalError> get copyWith =>
+      throw _privateConstructorUsedError;
 }

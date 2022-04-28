@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'tag_state.dart';
@@ -10,35 +11,8 @@ part of 'tag_state.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$TagStateTearOff {
-  const _$TagStateTearOff();
-
-  _Loading loading() {
-    return const _Loading();
-  }
-
-  _Empty empty() {
-    return const _Empty();
-  }
-
-  _Completed completed(List<Tag> tags) {
-    return _Completed(
-      tags,
-    );
-  }
-
-  _Error error(Exception error) {
-    return _Error(
-      error,
-    );
-  }
-}
-
-/// @nodoc
-const $TagState = _$TagStateTearOff();
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$TagState {
@@ -96,7 +70,8 @@ mixin _$TagState {
 
 /// @nodoc
 abstract class $TagStateCopyWith<$Res> {
-  factory $TagStateCopyWith(TagState value, $Res Function(TagState) then) = _$TagStateCopyWithImpl<$Res>;
+  factory $TagStateCopyWith(TagState value, $Res Function(TagState) then) =
+      _$TagStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -110,12 +85,15 @@ class _$TagStateCopyWithImpl<$Res> implements $TagStateCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$LoadingCopyWith<$Res> {
-  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) = __$LoadingCopyWithImpl<$Res>;
+  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
+      __$LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$TagStateCopyWithImpl<$Res> implements _$LoadingCopyWith<$Res> {
-  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then) : super(_value, (v) => _then(v as _Loading));
+class __$LoadingCopyWithImpl<$Res> extends _$TagStateCopyWithImpl<$Res>
+    implements _$LoadingCopyWith<$Res> {
+  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
+      : super(_value, (v) => _then(v as _Loading));
 
   @override
   _Loading get _value => super._value as _Loading;
@@ -133,7 +111,8 @@ class _$_Loading implements _Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _Loading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Loading);
   }
 
   @override
@@ -220,12 +199,15 @@ abstract class _Loading implements TagState {
 
 /// @nodoc
 abstract class _$EmptyCopyWith<$Res> {
-  factory _$EmptyCopyWith(_Empty value, $Res Function(_Empty) then) = __$EmptyCopyWithImpl<$Res>;
+  factory _$EmptyCopyWith(_Empty value, $Res Function(_Empty) then) =
+      __$EmptyCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$EmptyCopyWithImpl<$Res> extends _$TagStateCopyWithImpl<$Res> implements _$EmptyCopyWith<$Res> {
-  __$EmptyCopyWithImpl(_Empty _value, $Res Function(_Empty) _then) : super(_value, (v) => _then(v as _Empty));
+class __$EmptyCopyWithImpl<$Res> extends _$TagStateCopyWithImpl<$Res>
+    implements _$EmptyCopyWith<$Res> {
+  __$EmptyCopyWithImpl(_Empty _value, $Res Function(_Empty) _then)
+      : super(_value, (v) => _then(v as _Empty));
 
   @override
   _Empty get _value => super._value as _Empty;
@@ -243,7 +225,8 @@ class _$_Empty implements _Empty {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _Empty);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Empty);
   }
 
   @override
@@ -330,13 +313,17 @@ abstract class _Empty implements TagState {
 
 /// @nodoc
 abstract class _$CompletedCopyWith<$Res> {
-  factory _$CompletedCopyWith(_Completed value, $Res Function(_Completed) then) = __$CompletedCopyWithImpl<$Res>;
+  factory _$CompletedCopyWith(
+          _Completed value, $Res Function(_Completed) then) =
+      __$CompletedCopyWithImpl<$Res>;
   $Res call({List<Tag> tags});
 }
 
 /// @nodoc
-class __$CompletedCopyWithImpl<$Res> extends _$TagStateCopyWithImpl<$Res> implements _$CompletedCopyWith<$Res> {
-  __$CompletedCopyWithImpl(_Completed _value, $Res Function(_Completed) _then) : super(_value, (v) => _then(v as _Completed));
+class __$CompletedCopyWithImpl<$Res> extends _$TagStateCopyWithImpl<$Res>
+    implements _$CompletedCopyWith<$Res> {
+  __$CompletedCopyWithImpl(_Completed _value, $Res Function(_Completed) _then)
+      : super(_value, (v) => _then(v as _Completed));
 
   @override
   _Completed get _value => super._value as _Completed;
@@ -357,10 +344,14 @@ class __$CompletedCopyWithImpl<$Res> extends _$TagStateCopyWithImpl<$Res> implem
 /// @nodoc
 
 class _$_Completed implements _Completed {
-  const _$_Completed(this.tags);
+  const _$_Completed(final List<Tag> tags) : _tags = tags;
 
+  final List<Tag> _tags;
   @override
-  final List<Tag> tags;
+  List<Tag> get tags {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tags);
+  }
 
   @override
   String toString() {
@@ -369,15 +360,20 @@ class _$_Completed implements _Completed {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _Completed && const DeepCollectionEquality().equals(other.tags, tags));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Completed &&
+            const DeepCollectionEquality().equals(other.tags, tags));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(tags));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(tags));
 
   @JsonKey(ignore: true)
   @override
-  _$CompletedCopyWith<_Completed> get copyWith => __$CompletedCopyWithImpl<_Completed>(this, _$identity);
+  _$CompletedCopyWith<_Completed> get copyWith =>
+      __$CompletedCopyWithImpl<_Completed>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -455,22 +451,26 @@ class _$_Completed implements _Completed {
 }
 
 abstract class _Completed implements TagState {
-  const factory _Completed(List<Tag> tags) = _$_Completed;
+  const factory _Completed(final List<Tag> tags) = _$_Completed;
 
-  List<Tag> get tags;
+  List<Tag> get tags => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$CompletedCopyWith<_Completed> get copyWith => throw _privateConstructorUsedError;
+  _$CompletedCopyWith<_Completed> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$ErrorCopyWith<$Res> {
-  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) = __$ErrorCopyWithImpl<$Res>;
+  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) =
+      __$ErrorCopyWithImpl<$Res>;
   $Res call({Exception error});
 }
 
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res> extends _$TagStateCopyWithImpl<$Res> implements _$ErrorCopyWith<$Res> {
-  __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then) : super(_value, (v) => _then(v as _Error));
+class __$ErrorCopyWithImpl<$Res> extends _$TagStateCopyWithImpl<$Res>
+    implements _$ErrorCopyWith<$Res> {
+  __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
+      : super(_value, (v) => _then(v as _Error));
 
   @override
   _Error get _value => super._value as _Error;
@@ -503,15 +503,20 @@ class _$_Error implements _Error {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _Error && const DeepCollectionEquality().equals(other.error, error));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Error &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
-  _$ErrorCopyWith<_Error> get copyWith => __$ErrorCopyWithImpl<_Error>(this, _$identity);
+  _$ErrorCopyWith<_Error> get copyWith =>
+      __$ErrorCopyWithImpl<_Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -589,9 +594,9 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements TagState {
-  const factory _Error(Exception error) = _$_Error;
+  const factory _Error(final Exception error) = _$_Error;
 
-  Exception get error;
+  Exception get error => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$ErrorCopyWith<_Error> get copyWith => throw _privateConstructorUsedError;
 }

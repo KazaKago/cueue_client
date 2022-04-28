@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'user.dart';
@@ -10,27 +11,8 @@ part of 'user.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$UserTearOff {
-  const _$UserTearOff();
-
-  _User call({required UserId id, required Email email, required bool isEmailVerified, required PasswordProvider? passwordProvider, required GoogleProvider? googleProvider, required AppleProvider? appleProvider, required List<Workspace> workspaces}) {
-    return _User(
-      id: id,
-      email: email,
-      isEmailVerified: isEmailVerified,
-      passwordProvider: passwordProvider,
-      googleProvider: googleProvider,
-      appleProvider: appleProvider,
-      workspaces: workspaces,
-    );
-  }
-}
-
-/// @nodoc
-const $User = _$UserTearOff();
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$User {
@@ -48,8 +30,16 @@ mixin _$User {
 
 /// @nodoc
 abstract class $UserCopyWith<$Res> {
-  factory $UserCopyWith(User value, $Res Function(User) then) = _$UserCopyWithImpl<$Res>;
-  $Res call({UserId id, Email email, bool isEmailVerified, PasswordProvider? passwordProvider, GoogleProvider? googleProvider, AppleProvider? appleProvider, List<Workspace> workspaces});
+  factory $UserCopyWith(User value, $Res Function(User) then) =
+      _$UserCopyWithImpl<$Res>;
+  $Res call(
+      {UserId id,
+      Email email,
+      bool isEmailVerified,
+      PasswordProvider? passwordProvider,
+      GoogleProvider? googleProvider,
+      AppleProvider? appleProvider,
+      List<Workspace> workspaces});
 
   $UserIdCopyWith<$Res> get id;
   $EmailCopyWith<$Res> get email;
@@ -158,9 +148,17 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$UserCopyWith(_User value, $Res Function(_User) then) = __$UserCopyWithImpl<$Res>;
+  factory _$UserCopyWith(_User value, $Res Function(_User) then) =
+      __$UserCopyWithImpl<$Res>;
   @override
-  $Res call({UserId id, Email email, bool isEmailVerified, PasswordProvider? passwordProvider, GoogleProvider? googleProvider, AppleProvider? appleProvider, List<Workspace> workspaces});
+  $Res call(
+      {UserId id,
+      Email email,
+      bool isEmailVerified,
+      PasswordProvider? passwordProvider,
+      GoogleProvider? googleProvider,
+      AppleProvider? appleProvider,
+      List<Workspace> workspaces});
 
   @override
   $UserIdCopyWith<$Res> get id;
@@ -175,8 +173,10 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res> implements _$UserCopyWith<$Res> {
-  __$UserCopyWithImpl(_User _value, $Res Function(_User) _then) : super(_value, (v) => _then(v as _User));
+class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
+    implements _$UserCopyWith<$Res> {
+  __$UserCopyWithImpl(_User _value, $Res Function(_User) _then)
+      : super(_value, (v) => _then(v as _User));
 
   @override
   _User get _value => super._value as _User;
@@ -227,7 +227,16 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res> implements _$Us
 /// @nodoc
 
 class _$_User extends _User {
-  const _$_User({required this.id, required this.email, required this.isEmailVerified, required this.passwordProvider, required this.googleProvider, required this.appleProvider, required this.workspaces}) : super._();
+  const _$_User(
+      {required this.id,
+      required this.email,
+      required this.isEmailVerified,
+      required this.passwordProvider,
+      required this.googleProvider,
+      required this.appleProvider,
+      required final List<Workspace> workspaces})
+      : _workspaces = workspaces,
+        super._();
 
   @override
   final UserId id;
@@ -241,8 +250,12 @@ class _$_User extends _User {
   final GoogleProvider? googleProvider;
   @override
   final AppleProvider? appleProvider;
+  final List<Workspace> _workspaces;
   @override
-  final List<Workspace> workspaces;
+  List<Workspace> get workspaces {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_workspaces);
+  }
 
   @override
   String toString() {
@@ -251,35 +264,65 @@ class _$_User extends _User {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _User && const DeepCollectionEquality().equals(other.id, id) && const DeepCollectionEquality().equals(other.email, email) && const DeepCollectionEquality().equals(other.isEmailVerified, isEmailVerified) && const DeepCollectionEquality().equals(other.passwordProvider, passwordProvider) && const DeepCollectionEquality().equals(other.googleProvider, googleProvider) && const DeepCollectionEquality().equals(other.appleProvider, appleProvider) && const DeepCollectionEquality().equals(other.workspaces, workspaces));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _User &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality()
+                .equals(other.isEmailVerified, isEmailVerified) &&
+            const DeepCollectionEquality()
+                .equals(other.passwordProvider, passwordProvider) &&
+            const DeepCollectionEquality()
+                .equals(other.googleProvider, googleProvider) &&
+            const DeepCollectionEquality()
+                .equals(other.appleProvider, appleProvider) &&
+            const DeepCollectionEquality()
+                .equals(other.workspaces, workspaces));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(id), const DeepCollectionEquality().hash(email), const DeepCollectionEquality().hash(isEmailVerified), const DeepCollectionEquality().hash(passwordProvider), const DeepCollectionEquality().hash(googleProvider), const DeepCollectionEquality().hash(appleProvider), const DeepCollectionEquality().hash(workspaces));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(isEmailVerified),
+      const DeepCollectionEquality().hash(passwordProvider),
+      const DeepCollectionEquality().hash(googleProvider),
+      const DeepCollectionEquality().hash(appleProvider),
+      const DeepCollectionEquality().hash(workspaces));
 
   @JsonKey(ignore: true)
   @override
-  _$UserCopyWith<_User> get copyWith => __$UserCopyWithImpl<_User>(this, _$identity);
+  _$UserCopyWith<_User> get copyWith =>
+      __$UserCopyWithImpl<_User>(this, _$identity);
 }
 
 abstract class _User extends User {
-  const factory _User({required UserId id, required Email email, required bool isEmailVerified, required PasswordProvider? passwordProvider, required GoogleProvider? googleProvider, required AppleProvider? appleProvider, required List<Workspace> workspaces}) = _$_User;
+  const factory _User(
+      {required final UserId id,
+      required final Email email,
+      required final bool isEmailVerified,
+      required final PasswordProvider? passwordProvider,
+      required final GoogleProvider? googleProvider,
+      required final AppleProvider? appleProvider,
+      required final List<Workspace> workspaces}) = _$_User;
   const _User._() : super._();
 
   @override
-  UserId get id;
+  UserId get id => throw _privateConstructorUsedError;
   @override
-  Email get email;
+  Email get email => throw _privateConstructorUsedError;
   @override
-  bool get isEmailVerified;
+  bool get isEmailVerified => throw _privateConstructorUsedError;
   @override
-  PasswordProvider? get passwordProvider;
+  PasswordProvider? get passwordProvider => throw _privateConstructorUsedError;
   @override
-  GoogleProvider? get googleProvider;
+  GoogleProvider? get googleProvider => throw _privateConstructorUsedError;
   @override
-  AppleProvider? get appleProvider;
+  AppleProvider? get appleProvider => throw _privateConstructorUsedError;
   @override
-  List<Workspace> get workspaces;
+  List<Workspace> get workspaces => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;

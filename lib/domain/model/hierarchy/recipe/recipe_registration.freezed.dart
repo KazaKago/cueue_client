@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'recipe_registration.dart';
@@ -10,25 +11,8 @@ part of 'recipe_registration.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$RecipeRegistrationTearOff {
-  const _$RecipeRegistrationTearOff();
-
-  _RecipeRegistration call({required String title, required String description, required Uri? url, required List<ContentKey> imageKeys, required List<TagId> tagIds}) {
-    return _RecipeRegistration(
-      title: title,
-      description: description,
-      url: url,
-      imageKeys: imageKeys,
-      tagIds: tagIds,
-    );
-  }
-}
-
-/// @nodoc
-const $RecipeRegistration = _$RecipeRegistrationTearOff();
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$RecipeRegistration {
@@ -39,17 +23,26 @@ mixin _$RecipeRegistration {
   List<TagId> get tagIds => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RecipeRegistrationCopyWith<RecipeRegistration> get copyWith => throw _privateConstructorUsedError;
+  $RecipeRegistrationCopyWith<RecipeRegistration> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $RecipeRegistrationCopyWith<$Res> {
-  factory $RecipeRegistrationCopyWith(RecipeRegistration value, $Res Function(RecipeRegistration) then) = _$RecipeRegistrationCopyWithImpl<$Res>;
-  $Res call({String title, String description, Uri? url, List<ContentKey> imageKeys, List<TagId> tagIds});
+  factory $RecipeRegistrationCopyWith(
+          RecipeRegistration value, $Res Function(RecipeRegistration) then) =
+      _$RecipeRegistrationCopyWithImpl<$Res>;
+  $Res call(
+      {String title,
+      String description,
+      Uri? url,
+      List<ContentKey> imageKeys,
+      List<TagId> tagIds});
 }
 
 /// @nodoc
-class _$RecipeRegistrationCopyWithImpl<$Res> implements $RecipeRegistrationCopyWith<$Res> {
+class _$RecipeRegistrationCopyWithImpl<$Res>
+    implements $RecipeRegistrationCopyWith<$Res> {
   _$RecipeRegistrationCopyWithImpl(this._value, this._then);
 
   final RecipeRegistration _value;
@@ -90,15 +83,27 @@ class _$RecipeRegistrationCopyWithImpl<$Res> implements $RecipeRegistrationCopyW
 }
 
 /// @nodoc
-abstract class _$RecipeRegistrationCopyWith<$Res> implements $RecipeRegistrationCopyWith<$Res> {
-  factory _$RecipeRegistrationCopyWith(_RecipeRegistration value, $Res Function(_RecipeRegistration) then) = __$RecipeRegistrationCopyWithImpl<$Res>;
+abstract class _$RecipeRegistrationCopyWith<$Res>
+    implements $RecipeRegistrationCopyWith<$Res> {
+  factory _$RecipeRegistrationCopyWith(
+          _RecipeRegistration value, $Res Function(_RecipeRegistration) then) =
+      __$RecipeRegistrationCopyWithImpl<$Res>;
   @override
-  $Res call({String title, String description, Uri? url, List<ContentKey> imageKeys, List<TagId> tagIds});
+  $Res call(
+      {String title,
+      String description,
+      Uri? url,
+      List<ContentKey> imageKeys,
+      List<TagId> tagIds});
 }
 
 /// @nodoc
-class __$RecipeRegistrationCopyWithImpl<$Res> extends _$RecipeRegistrationCopyWithImpl<$Res> implements _$RecipeRegistrationCopyWith<$Res> {
-  __$RecipeRegistrationCopyWithImpl(_RecipeRegistration _value, $Res Function(_RecipeRegistration) _then) : super(_value, (v) => _then(v as _RecipeRegistration));
+class __$RecipeRegistrationCopyWithImpl<$Res>
+    extends _$RecipeRegistrationCopyWithImpl<$Res>
+    implements _$RecipeRegistrationCopyWith<$Res> {
+  __$RecipeRegistrationCopyWithImpl(
+      _RecipeRegistration _value, $Res Function(_RecipeRegistration) _then)
+      : super(_value, (v) => _then(v as _RecipeRegistration));
 
   @override
   _RecipeRegistration get _value => super._value as _RecipeRegistration;
@@ -139,7 +144,14 @@ class __$RecipeRegistrationCopyWithImpl<$Res> extends _$RecipeRegistrationCopyWi
 /// @nodoc
 
 class _$_RecipeRegistration implements _RecipeRegistration {
-  const _$_RecipeRegistration({required this.title, required this.description, required this.url, required this.imageKeys, required this.tagIds});
+  const _$_RecipeRegistration(
+      {required this.title,
+      required this.description,
+      required this.url,
+      required final List<ContentKey> imageKeys,
+      required final List<TagId> tagIds})
+      : _imageKeys = imageKeys,
+        _tagIds = tagIds;
 
   @override
   final String title;
@@ -147,10 +159,19 @@ class _$_RecipeRegistration implements _RecipeRegistration {
   final String description;
   @override
   final Uri? url;
+  final List<ContentKey> _imageKeys;
   @override
-  final List<ContentKey> imageKeys;
+  List<ContentKey> get imageKeys {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_imageKeys);
+  }
+
+  final List<TagId> _tagIds;
   @override
-  final List<TagId> tagIds;
+  List<TagId> get tagIds {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tagIds);
+  }
 
   @override
   String toString() {
@@ -159,31 +180,52 @@ class _$_RecipeRegistration implements _RecipeRegistration {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _RecipeRegistration && const DeepCollectionEquality().equals(other.title, title) && const DeepCollectionEquality().equals(other.description, description) && const DeepCollectionEquality().equals(other.url, url) && const DeepCollectionEquality().equals(other.imageKeys, imageKeys) && const DeepCollectionEquality().equals(other.tagIds, tagIds));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _RecipeRegistration &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.url, url) &&
+            const DeepCollectionEquality().equals(other.imageKeys, imageKeys) &&
+            const DeepCollectionEquality().equals(other.tagIds, tagIds));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(title), const DeepCollectionEquality().hash(description), const DeepCollectionEquality().hash(url), const DeepCollectionEquality().hash(imageKeys), const DeepCollectionEquality().hash(tagIds));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(url),
+      const DeepCollectionEquality().hash(imageKeys),
+      const DeepCollectionEquality().hash(tagIds));
 
   @JsonKey(ignore: true)
   @override
-  _$RecipeRegistrationCopyWith<_RecipeRegistration> get copyWith => __$RecipeRegistrationCopyWithImpl<_RecipeRegistration>(this, _$identity);
+  _$RecipeRegistrationCopyWith<_RecipeRegistration> get copyWith =>
+      __$RecipeRegistrationCopyWithImpl<_RecipeRegistration>(this, _$identity);
 }
 
 abstract class _RecipeRegistration implements RecipeRegistration {
-  const factory _RecipeRegistration({required String title, required String description, required Uri? url, required List<ContentKey> imageKeys, required List<TagId> tagIds}) = _$_RecipeRegistration;
+  const factory _RecipeRegistration(
+      {required final String title,
+      required final String description,
+      required final Uri? url,
+      required final List<ContentKey> imageKeys,
+      required final List<TagId> tagIds}) = _$_RecipeRegistration;
 
   @override
-  String get title;
+  String get title => throw _privateConstructorUsedError;
   @override
-  String get description;
+  String get description => throw _privateConstructorUsedError;
   @override
-  Uri? get url;
+  Uri? get url => throw _privateConstructorUsedError;
   @override
-  List<ContentKey> get imageKeys;
+  List<ContentKey> get imageKeys => throw _privateConstructorUsedError;
   @override
-  List<TagId> get tagIds;
+  List<TagId> get tagIds => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RecipeRegistrationCopyWith<_RecipeRegistration> get copyWith => throw _privateConstructorUsedError;
+  _$RecipeRegistrationCopyWith<_RecipeRegistration> get copyWith =>
+      throw _privateConstructorUsedError;
 }

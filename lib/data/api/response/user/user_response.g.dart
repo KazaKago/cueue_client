@@ -6,12 +6,16 @@ part of 'user_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UserResponse _$$_UserResponseFromJson(Map<String, dynamic> json) => _$_UserResponse(
+_$_UserResponse _$$_UserResponseFromJson(Map<String, dynamic> json) =>
+    _$_UserResponse(
       id: json['id'] as int,
-      workspaces: (json['workspaces'] as List<dynamic>).map((e) => WorkspaceResponse.fromJson(e as Map<String, dynamic>)).toList(),
+      workspaces: (json['workspaces'] as List<dynamic>)
+          .map((e) => WorkspaceResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
-Map<String, dynamic> _$$_UserResponseToJson(_$_UserResponse instance) => <String, dynamic>{
+Map<String, dynamic> _$$_UserResponseToJson(_$_UserResponse instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'workspaces': instance.workspaces,
     };

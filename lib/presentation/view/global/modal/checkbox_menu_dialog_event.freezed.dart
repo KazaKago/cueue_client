@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'checkbox_menu_dialog_event.dart';
@@ -10,32 +11,12 @@ part of 'checkbox_menu_dialog_event.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$CheckedMenuDialogEventTearOff {
-  const _$CheckedMenuDialogEventTearOff();
-
-  _Positive positive(List<CheckedMenuItem> menuItems) {
-    return _Positive(
-      menuItems,
-    );
-  }
-
-  _Negative negative(List<CheckedMenuItem> menuItems) {
-    return _Negative(
-      menuItems,
-    );
-  }
-}
-
-/// @nodoc
-const $CheckedMenuDialogEvent = _$CheckedMenuDialogEventTearOff();
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$CheckedMenuDialogEvent {
   List<CheckedMenuItem> get menuItems => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<CheckedMenuItem> menuItems) positive,
@@ -76,17 +57,21 @@ mixin _$CheckedMenuDialogEvent {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CheckedMenuDialogEventCopyWith<CheckedMenuDialogEvent> get copyWith => throw _privateConstructorUsedError;
+  $CheckedMenuDialogEventCopyWith<CheckedMenuDialogEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CheckedMenuDialogEventCopyWith<$Res> {
-  factory $CheckedMenuDialogEventCopyWith(CheckedMenuDialogEvent value, $Res Function(CheckedMenuDialogEvent) then) = _$CheckedMenuDialogEventCopyWithImpl<$Res>;
+  factory $CheckedMenuDialogEventCopyWith(CheckedMenuDialogEvent value,
+          $Res Function(CheckedMenuDialogEvent) then) =
+      _$CheckedMenuDialogEventCopyWithImpl<$Res>;
   $Res call({List<CheckedMenuItem> menuItems});
 }
 
 /// @nodoc
-class _$CheckedMenuDialogEventCopyWithImpl<$Res> implements $CheckedMenuDialogEventCopyWith<$Res> {
+class _$CheckedMenuDialogEventCopyWithImpl<$Res>
+    implements $CheckedMenuDialogEventCopyWith<$Res> {
   _$CheckedMenuDialogEventCopyWithImpl(this._value, this._then);
 
   final CheckedMenuDialogEvent _value;
@@ -107,15 +92,20 @@ class _$CheckedMenuDialogEventCopyWithImpl<$Res> implements $CheckedMenuDialogEv
 }
 
 /// @nodoc
-abstract class _$PositiveCopyWith<$Res> implements $CheckedMenuDialogEventCopyWith<$Res> {
-  factory _$PositiveCopyWith(_Positive value, $Res Function(_Positive) then) = __$PositiveCopyWithImpl<$Res>;
+abstract class _$PositiveCopyWith<$Res>
+    implements $CheckedMenuDialogEventCopyWith<$Res> {
+  factory _$PositiveCopyWith(_Positive value, $Res Function(_Positive) then) =
+      __$PositiveCopyWithImpl<$Res>;
   @override
   $Res call({List<CheckedMenuItem> menuItems});
 }
 
 /// @nodoc
-class __$PositiveCopyWithImpl<$Res> extends _$CheckedMenuDialogEventCopyWithImpl<$Res> implements _$PositiveCopyWith<$Res> {
-  __$PositiveCopyWithImpl(_Positive _value, $Res Function(_Positive) _then) : super(_value, (v) => _then(v as _Positive));
+class __$PositiveCopyWithImpl<$Res>
+    extends _$CheckedMenuDialogEventCopyWithImpl<$Res>
+    implements _$PositiveCopyWith<$Res> {
+  __$PositiveCopyWithImpl(_Positive _value, $Res Function(_Positive) _then)
+      : super(_value, (v) => _then(v as _Positive));
 
   @override
   _Positive get _value => super._value as _Positive;
@@ -136,10 +126,15 @@ class __$PositiveCopyWithImpl<$Res> extends _$CheckedMenuDialogEventCopyWithImpl
 /// @nodoc
 
 class _$_Positive implements _Positive {
-  const _$_Positive(this.menuItems);
+  const _$_Positive(final List<CheckedMenuItem> menuItems)
+      : _menuItems = menuItems;
 
+  final List<CheckedMenuItem> _menuItems;
   @override
-  final List<CheckedMenuItem> menuItems;
+  List<CheckedMenuItem> get menuItems {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_menuItems);
+  }
 
   @override
   String toString() {
@@ -148,15 +143,20 @@ class _$_Positive implements _Positive {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _Positive && const DeepCollectionEquality().equals(other.menuItems, menuItems));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Positive &&
+            const DeepCollectionEquality().equals(other.menuItems, menuItems));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(menuItems));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(menuItems));
 
   @JsonKey(ignore: true)
   @override
-  _$PositiveCopyWith<_Positive> get copyWith => __$PositiveCopyWithImpl<_Positive>(this, _$identity);
+  _$PositiveCopyWith<_Positive> get copyWith =>
+      __$PositiveCopyWithImpl<_Positive>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -222,25 +222,31 @@ class _$_Positive implements _Positive {
 }
 
 abstract class _Positive implements CheckedMenuDialogEvent {
-  const factory _Positive(List<CheckedMenuItem> menuItems) = _$_Positive;
+  const factory _Positive(final List<CheckedMenuItem> menuItems) = _$_Positive;
 
   @override
-  List<CheckedMenuItem> get menuItems;
+  List<CheckedMenuItem> get menuItems => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PositiveCopyWith<_Positive> get copyWith => throw _privateConstructorUsedError;
+  _$PositiveCopyWith<_Positive> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$NegativeCopyWith<$Res> implements $CheckedMenuDialogEventCopyWith<$Res> {
-  factory _$NegativeCopyWith(_Negative value, $Res Function(_Negative) then) = __$NegativeCopyWithImpl<$Res>;
+abstract class _$NegativeCopyWith<$Res>
+    implements $CheckedMenuDialogEventCopyWith<$Res> {
+  factory _$NegativeCopyWith(_Negative value, $Res Function(_Negative) then) =
+      __$NegativeCopyWithImpl<$Res>;
   @override
   $Res call({List<CheckedMenuItem> menuItems});
 }
 
 /// @nodoc
-class __$NegativeCopyWithImpl<$Res> extends _$CheckedMenuDialogEventCopyWithImpl<$Res> implements _$NegativeCopyWith<$Res> {
-  __$NegativeCopyWithImpl(_Negative _value, $Res Function(_Negative) _then) : super(_value, (v) => _then(v as _Negative));
+class __$NegativeCopyWithImpl<$Res>
+    extends _$CheckedMenuDialogEventCopyWithImpl<$Res>
+    implements _$NegativeCopyWith<$Res> {
+  __$NegativeCopyWithImpl(_Negative _value, $Res Function(_Negative) _then)
+      : super(_value, (v) => _then(v as _Negative));
 
   @override
   _Negative get _value => super._value as _Negative;
@@ -261,10 +267,15 @@ class __$NegativeCopyWithImpl<$Res> extends _$CheckedMenuDialogEventCopyWithImpl
 /// @nodoc
 
 class _$_Negative implements _Negative {
-  const _$_Negative(this.menuItems);
+  const _$_Negative(final List<CheckedMenuItem> menuItems)
+      : _menuItems = menuItems;
 
+  final List<CheckedMenuItem> _menuItems;
   @override
-  final List<CheckedMenuItem> menuItems;
+  List<CheckedMenuItem> get menuItems {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_menuItems);
+  }
 
   @override
   String toString() {
@@ -273,15 +284,20 @@ class _$_Negative implements _Negative {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _Negative && const DeepCollectionEquality().equals(other.menuItems, menuItems));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Negative &&
+            const DeepCollectionEquality().equals(other.menuItems, menuItems));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(menuItems));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(menuItems));
 
   @JsonKey(ignore: true)
   @override
-  _$NegativeCopyWith<_Negative> get copyWith => __$NegativeCopyWithImpl<_Negative>(this, _$identity);
+  _$NegativeCopyWith<_Negative> get copyWith =>
+      __$NegativeCopyWithImpl<_Negative>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -347,11 +363,12 @@ class _$_Negative implements _Negative {
 }
 
 abstract class _Negative implements CheckedMenuDialogEvent {
-  const factory _Negative(List<CheckedMenuItem> menuItems) = _$_Negative;
+  const factory _Negative(final List<CheckedMenuItem> menuItems) = _$_Negative;
 
   @override
-  List<CheckedMenuItem> get menuItems;
+  List<CheckedMenuItem> get menuItems => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$NegativeCopyWith<_Negative> get copyWith => throw _privateConstructorUsedError;
+  _$NegativeCopyWith<_Negative> get copyWith =>
+      throw _privateConstructorUsedError;
 }

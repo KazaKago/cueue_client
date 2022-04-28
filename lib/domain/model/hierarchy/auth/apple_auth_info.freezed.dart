@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'apple_auth_info.dart';
@@ -10,23 +11,8 @@ part of 'apple_auth_info.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AppleAuthInfoTearOff {
-  const _$AppleAuthInfoTearOff();
-
-  _AppleAuthInfo call({required String idToken, required String accessToken, required String rawNonce}) {
-    return _AppleAuthInfo(
-      idToken: idToken,
-      accessToken: accessToken,
-      rawNonce: rawNonce,
-    );
-  }
-}
-
-/// @nodoc
-const $AppleAuthInfo = _$AppleAuthInfoTearOff();
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AppleAuthInfo {
@@ -35,17 +21,21 @@ mixin _$AppleAuthInfo {
   String get rawNonce => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AppleAuthInfoCopyWith<AppleAuthInfo> get copyWith => throw _privateConstructorUsedError;
+  $AppleAuthInfoCopyWith<AppleAuthInfo> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AppleAuthInfoCopyWith<$Res> {
-  factory $AppleAuthInfoCopyWith(AppleAuthInfo value, $Res Function(AppleAuthInfo) then) = _$AppleAuthInfoCopyWithImpl<$Res>;
+  factory $AppleAuthInfoCopyWith(
+          AppleAuthInfo value, $Res Function(AppleAuthInfo) then) =
+      _$AppleAuthInfoCopyWithImpl<$Res>;
   $Res call({String idToken, String accessToken, String rawNonce});
 }
 
 /// @nodoc
-class _$AppleAuthInfoCopyWithImpl<$Res> implements $AppleAuthInfoCopyWith<$Res> {
+class _$AppleAuthInfoCopyWithImpl<$Res>
+    implements $AppleAuthInfoCopyWith<$Res> {
   _$AppleAuthInfoCopyWithImpl(this._value, this._then);
 
   final AppleAuthInfo _value;
@@ -76,15 +66,22 @@ class _$AppleAuthInfoCopyWithImpl<$Res> implements $AppleAuthInfoCopyWith<$Res> 
 }
 
 /// @nodoc
-abstract class _$AppleAuthInfoCopyWith<$Res> implements $AppleAuthInfoCopyWith<$Res> {
-  factory _$AppleAuthInfoCopyWith(_AppleAuthInfo value, $Res Function(_AppleAuthInfo) then) = __$AppleAuthInfoCopyWithImpl<$Res>;
+abstract class _$AppleAuthInfoCopyWith<$Res>
+    implements $AppleAuthInfoCopyWith<$Res> {
+  factory _$AppleAuthInfoCopyWith(
+          _AppleAuthInfo value, $Res Function(_AppleAuthInfo) then) =
+      __$AppleAuthInfoCopyWithImpl<$Res>;
   @override
   $Res call({String idToken, String accessToken, String rawNonce});
 }
 
 /// @nodoc
-class __$AppleAuthInfoCopyWithImpl<$Res> extends _$AppleAuthInfoCopyWithImpl<$Res> implements _$AppleAuthInfoCopyWith<$Res> {
-  __$AppleAuthInfoCopyWithImpl(_AppleAuthInfo _value, $Res Function(_AppleAuthInfo) _then) : super(_value, (v) => _then(v as _AppleAuthInfo));
+class __$AppleAuthInfoCopyWithImpl<$Res>
+    extends _$AppleAuthInfoCopyWithImpl<$Res>
+    implements _$AppleAuthInfoCopyWith<$Res> {
+  __$AppleAuthInfoCopyWithImpl(
+      _AppleAuthInfo _value, $Res Function(_AppleAuthInfo) _then)
+      : super(_value, (v) => _then(v as _AppleAuthInfo));
 
   @override
   _AppleAuthInfo get _value => super._value as _AppleAuthInfo;
@@ -115,7 +112,10 @@ class __$AppleAuthInfoCopyWithImpl<$Res> extends _$AppleAuthInfoCopyWithImpl<$Re
 /// @nodoc
 
 class _$_AppleAuthInfo implements _AppleAuthInfo {
-  const _$_AppleAuthInfo({required this.idToken, required this.accessToken, required this.rawNonce});
+  const _$_AppleAuthInfo(
+      {required this.idToken,
+      required this.accessToken,
+      required this.rawNonce});
 
   @override
   final String idToken;
@@ -131,27 +131,42 @@ class _$_AppleAuthInfo implements _AppleAuthInfo {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _AppleAuthInfo && const DeepCollectionEquality().equals(other.idToken, idToken) && const DeepCollectionEquality().equals(other.accessToken, accessToken) && const DeepCollectionEquality().equals(other.rawNonce, rawNonce));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AppleAuthInfo &&
+            const DeepCollectionEquality().equals(other.idToken, idToken) &&
+            const DeepCollectionEquality()
+                .equals(other.accessToken, accessToken) &&
+            const DeepCollectionEquality().equals(other.rawNonce, rawNonce));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(idToken), const DeepCollectionEquality().hash(accessToken), const DeepCollectionEquality().hash(rawNonce));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(idToken),
+      const DeepCollectionEquality().hash(accessToken),
+      const DeepCollectionEquality().hash(rawNonce));
 
   @JsonKey(ignore: true)
   @override
-  _$AppleAuthInfoCopyWith<_AppleAuthInfo> get copyWith => __$AppleAuthInfoCopyWithImpl<_AppleAuthInfo>(this, _$identity);
+  _$AppleAuthInfoCopyWith<_AppleAuthInfo> get copyWith =>
+      __$AppleAuthInfoCopyWithImpl<_AppleAuthInfo>(this, _$identity);
 }
 
 abstract class _AppleAuthInfo implements AppleAuthInfo {
-  const factory _AppleAuthInfo({required String idToken, required String accessToken, required String rawNonce}) = _$_AppleAuthInfo;
+  const factory _AppleAuthInfo(
+      {required final String idToken,
+      required final String accessToken,
+      required final String rawNonce}) = _$_AppleAuthInfo;
 
   @override
-  String get idToken;
+  String get idToken => throw _privateConstructorUsedError;
   @override
-  String get accessToken;
+  String get accessToken => throw _privateConstructorUsedError;
   @override
-  String get rawNonce;
+  String get rawNonce => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppleAuthInfoCopyWith<_AppleAuthInfo> get copyWith => throw _privateConstructorUsedError;
+  _$AppleAuthInfoCopyWith<_AppleAuthInfo> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'menu_response.dart';
@@ -10,57 +11,48 @@ part of 'menu_response.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 MenuResponse _$MenuResponseFromJson(Map<String, dynamic> json) {
   return _MenuResponse.fromJson(json);
 }
 
 /// @nodoc
-class _$MenuResponseTearOff {
-  const _$MenuResponseTearOff();
-
-  _MenuResponse call({@JsonKey(name: 'id') required int id, @JsonKey(name: 'memo') required String memo, @JsonKey(name: 'date') required String date, @JsonKey(name: 'time_frame') required String timeFrame, @JsonKey(name: 'recipes') required List<RecipeSummaryResponse> recipes}) {
-    return _MenuResponse(
-      id: id,
-      memo: memo,
-      date: date,
-      timeFrame: timeFrame,
-      recipes: recipes,
-    );
-  }
-
-  MenuResponse fromJson(Map<String, Object?> json) {
-    return MenuResponse.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $MenuResponse = _$MenuResponseTearOff();
-
-/// @nodoc
 mixin _$MenuResponse {
 // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  int get id =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'memo')
-  String get memo => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  String get memo =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'date')
-  String get date => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  String get date =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'time_frame')
-  String get timeFrame => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  String get timeFrame =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'recipes')
   List<RecipeSummaryResponse> get recipes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MenuResponseCopyWith<MenuResponse> get copyWith => throw _privateConstructorUsedError;
+  $MenuResponseCopyWith<MenuResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MenuResponseCopyWith<$Res> {
-  factory $MenuResponseCopyWith(MenuResponse value, $Res Function(MenuResponse) then) = _$MenuResponseCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'memo') String memo, @JsonKey(name: 'date') String date, @JsonKey(name: 'time_frame') String timeFrame, @JsonKey(name: 'recipes') List<RecipeSummaryResponse> recipes});
+  factory $MenuResponseCopyWith(
+          MenuResponse value, $Res Function(MenuResponse) then) =
+      _$MenuResponseCopyWithImpl<$Res>;
+  $Res call(
+      {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'memo') String memo,
+      @JsonKey(name: 'date') String date,
+      @JsonKey(name: 'time_frame') String timeFrame,
+      @JsonKey(name: 'recipes') List<RecipeSummaryResponse> recipes});
 }
 
 /// @nodoc
@@ -105,15 +97,26 @@ class _$MenuResponseCopyWithImpl<$Res> implements $MenuResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$MenuResponseCopyWith<$Res> implements $MenuResponseCopyWith<$Res> {
-  factory _$MenuResponseCopyWith(_MenuResponse value, $Res Function(_MenuResponse) then) = __$MenuResponseCopyWithImpl<$Res>;
+abstract class _$MenuResponseCopyWith<$Res>
+    implements $MenuResponseCopyWith<$Res> {
+  factory _$MenuResponseCopyWith(
+          _MenuResponse value, $Res Function(_MenuResponse) then) =
+      __$MenuResponseCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'memo') String memo, @JsonKey(name: 'date') String date, @JsonKey(name: 'time_frame') String timeFrame, @JsonKey(name: 'recipes') List<RecipeSummaryResponse> recipes});
+  $Res call(
+      {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'memo') String memo,
+      @JsonKey(name: 'date') String date,
+      @JsonKey(name: 'time_frame') String timeFrame,
+      @JsonKey(name: 'recipes') List<RecipeSummaryResponse> recipes});
 }
 
 /// @nodoc
-class __$MenuResponseCopyWithImpl<$Res> extends _$MenuResponseCopyWithImpl<$Res> implements _$MenuResponseCopyWith<$Res> {
-  __$MenuResponseCopyWithImpl(_MenuResponse _value, $Res Function(_MenuResponse) _then) : super(_value, (v) => _then(v as _MenuResponse));
+class __$MenuResponseCopyWithImpl<$Res> extends _$MenuResponseCopyWithImpl<$Res>
+    implements _$MenuResponseCopyWith<$Res> {
+  __$MenuResponseCopyWithImpl(
+      _MenuResponse _value, $Res Function(_MenuResponse) _then)
+      : super(_value, (v) => _then(v as _MenuResponse));
 
   @override
   _MenuResponse get _value => super._value as _MenuResponse;
@@ -154,25 +157,48 @@ class __$MenuResponseCopyWithImpl<$Res> extends _$MenuResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_MenuResponse implements _MenuResponse {
-  const _$_MenuResponse({@JsonKey(name: 'id') required this.id, @JsonKey(name: 'memo') required this.memo, @JsonKey(name: 'date') required this.date, @JsonKey(name: 'time_frame') required this.timeFrame, @JsonKey(name: 'recipes') required this.recipes});
+  const _$_MenuResponse(
+      {@JsonKey(name: 'id')
+          required this.id,
+      @JsonKey(name: 'memo')
+          required this.memo,
+      @JsonKey(name: 'date')
+          required this.date,
+      @JsonKey(name: 'time_frame')
+          required this.timeFrame,
+      @JsonKey(name: 'recipes')
+          required final List<RecipeSummaryResponse> recipes})
+      : _recipes = recipes;
 
-  factory _$_MenuResponse.fromJson(Map<String, dynamic> json) => _$$_MenuResponseFromJson(json);
+  factory _$_MenuResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_MenuResponseFromJson(json);
 
-  @override // ignore: invalid_annotation_target
+// ignore: invalid_annotation_target
+  @override
   @JsonKey(name: 'id')
   final int id;
-  @override // ignore: invalid_annotation_target
+// ignore: invalid_annotation_target
+  @override
   @JsonKey(name: 'memo')
   final String memo;
-  @override // ignore: invalid_annotation_target
+// ignore: invalid_annotation_target
+  @override
   @JsonKey(name: 'date')
   final String date;
-  @override // ignore: invalid_annotation_target
+// ignore: invalid_annotation_target
+  @override
   @JsonKey(name: 'time_frame')
   final String timeFrame;
-  @override // ignore: invalid_annotation_target
+// ignore: invalid_annotation_target
   @JsonKey(name: 'recipes')
-  final List<RecipeSummaryResponse> recipes;
+  final List<RecipeSummaryResponse> _recipes;
+// ignore: invalid_annotation_target
+  @override
+  @JsonKey(name: 'recipes')
+  List<RecipeSummaryResponse> get recipes {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_recipes);
+  }
 
   @override
   String toString() {
@@ -181,15 +207,30 @@ class _$_MenuResponse implements _MenuResponse {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _MenuResponse && const DeepCollectionEquality().equals(other.id, id) && const DeepCollectionEquality().equals(other.memo, memo) && const DeepCollectionEquality().equals(other.date, date) && const DeepCollectionEquality().equals(other.timeFrame, timeFrame) && const DeepCollectionEquality().equals(other.recipes, recipes));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _MenuResponse &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.memo, memo) &&
+            const DeepCollectionEquality().equals(other.date, date) &&
+            const DeepCollectionEquality().equals(other.timeFrame, timeFrame) &&
+            const DeepCollectionEquality().equals(other.recipes, recipes));
   }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(id), const DeepCollectionEquality().hash(memo), const DeepCollectionEquality().hash(date), const DeepCollectionEquality().hash(timeFrame), const DeepCollectionEquality().hash(recipes));
 
   @JsonKey(ignore: true)
   @override
-  _$MenuResponseCopyWith<_MenuResponse> get copyWith => __$MenuResponseCopyWithImpl<_MenuResponse>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(memo),
+      const DeepCollectionEquality().hash(date),
+      const DeepCollectionEquality().hash(timeFrame),
+      const DeepCollectionEquality().hash(recipes));
+
+  @JsonKey(ignore: true)
+  @override
+  _$MenuResponseCopyWith<_MenuResponse> get copyWith =>
+      __$MenuResponseCopyWithImpl<_MenuResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -198,26 +239,39 @@ class _$_MenuResponse implements _MenuResponse {
 }
 
 abstract class _MenuResponse implements MenuResponse {
-  const factory _MenuResponse({@JsonKey(name: 'id') required int id, @JsonKey(name: 'memo') required String memo, @JsonKey(name: 'date') required String date, @JsonKey(name: 'time_frame') required String timeFrame, @JsonKey(name: 'recipes') required List<RecipeSummaryResponse> recipes}) = _$_MenuResponse;
+  const factory _MenuResponse(
+          {@JsonKey(name: 'id')
+              required final int id,
+          @JsonKey(name: 'memo')
+              required final String memo,
+          @JsonKey(name: 'date')
+              required final String date,
+          @JsonKey(name: 'time_frame')
+              required final String timeFrame,
+          @JsonKey(name: 'recipes')
+              required final List<RecipeSummaryResponse> recipes}) =
+      _$_MenuResponse;
 
-  factory _MenuResponse.fromJson(Map<String, dynamic> json) = _$_MenuResponse.fromJson;
+  factory _MenuResponse.fromJson(Map<String, dynamic> json) =
+      _$_MenuResponse.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id;
+  int get id => throw _privateConstructorUsedError;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'memo')
-  String get memo;
+  String get memo => throw _privateConstructorUsedError;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'date')
-  String get date;
+  String get date => throw _privateConstructorUsedError;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'time_frame')
-  String get timeFrame;
+  String get timeFrame => throw _privateConstructorUsedError;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'recipes')
-  List<RecipeSummaryResponse> get recipes;
+  List<RecipeSummaryResponse> get recipes => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MenuResponseCopyWith<_MenuResponse> get copyWith => throw _privateConstructorUsedError;
+  _$MenuResponseCopyWith<_MenuResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }

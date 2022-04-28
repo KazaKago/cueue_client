@@ -11,19 +11,24 @@ class $AssetsImagesGen {
   const $AssetsImagesGen();
 
   /// File path: assets/images/ic_app_icon.png
-  AssetGenImage get icAppIcon => const AssetGenImage('assets/images/ic_app_icon.png');
+  AssetGenImage get icAppIcon =>
+      const AssetGenImage('assets/images/ic_app_icon.png');
 
   /// File path: assets/images/time1_asa.png
-  AssetGenImage get time1Asa => const AssetGenImage('assets/images/time1_asa.png');
+  AssetGenImage get time1Asa =>
+      const AssetGenImage('assets/images/time1_asa.png');
 
   /// File path: assets/images/time2_hiru.png
-  AssetGenImage get time2Hiru => const AssetGenImage('assets/images/time2_hiru.png');
+  AssetGenImage get time2Hiru =>
+      const AssetGenImage('assets/images/time2_hiru.png');
 
   /// File path: assets/images/time3_yuu.png
-  AssetGenImage get time3Yuu => const AssetGenImage('assets/images/time3_yuu.png');
+  AssetGenImage get time3Yuu =>
+      const AssetGenImage('assets/images/time3_yuu.png');
 
   /// File path: assets/images/time4_yoru.png
-  AssetGenImage get time4Yoru => const AssetGenImage('assets/images/time4_yoru.png');
+  AssetGenImage get time4Yoru =>
+      const AssetGenImage('assets/images/time4_yoru.png');
 }
 
 class Assets {
