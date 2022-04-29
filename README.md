@@ -1,5 +1,7 @@
 # Cueue client
 
+[![Build Status](https://app.bitrise.io/app/57c4ea4ac6e52d43/status.svg?token=habVBv75VkNorlaHkv4a4w&branch=develop)](https://app.bitrise.io/app/57c4ea4ac6e52d43)
+
 **This project is under development.**  
 
 `Cueue` is management service of menu for meals every day.  
