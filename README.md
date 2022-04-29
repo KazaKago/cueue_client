@@ -1,4 +1,4 @@
-# Cueue flutter
+# Cueue client
 
 **This project is under development.**  
 
@@ -7,7 +7,9 @@ This repository is client.
 
 # Project Repositories
 
-- Server (Ktor)
+- Server
     - https://github.com/KazaKago/cueue_server
-- Client (Flutter)
-    - https://github.com/KazaKago/cueue_flutter
+- Client
+    - https://github.com/KazaKago/cueue_client
+- Website
+    - https://github.com/KazaKago/cueue_website
