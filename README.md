@@ -11,5 +11,5 @@ This repository is client.
     - https://github.com/KazaKago/cueue_server
 - Client
     - https://github.com/KazaKago/cueue_client
-- Website
-    - https://github.com/KazaKago/cueue_website
+- Pages
+    - https://github.com/KazaKago/cueue_pages
