@@ -1,5 +1,5 @@
 import 'package:cueue/data/api/di/api_provider.dart';
-import 'package:cueue/data/api/global/requester/authorized_api_requester.dart';
+import 'package:cueue/data/api/global/requester/dio_creator.dart';
 import 'package:cueue/data/auth/di/auth_provider.dart';
 import 'package:cueue/data/cache/di/cache_provider.dart';
 import 'package:cueue/data/mapper/di/mapper_provider.dart';
@@ -10,7 +10,7 @@ import 'package:cueue/data/repository/flowable/recipe/recipe_flowable_factory.da
 import 'package:cueue/data/repository/flowable/recipe/tagged_recipes_flowable_factory.dart';
 import 'package:cueue/data/repository/flowable/tag/tag_flowable_factory.dart';
 import 'package:cueue/data/repository/flowable/user/user_flowable_factory.dart';
-import 'package:cueue/data/repository/global/requester/authorized_api_requester_impl.dart';
+import 'package:cueue/data/repository/global/requester/dio_creator_impl.dart';
 import 'package:cueue/data/repository/hierarchy/auth/authorize_repository_impl.dart';
 import 'package:cueue/data/repository/hierarchy/content/content_repository_impl.dart';
 import 'package:cueue/data/repository/hierarchy/info/info_repository_impl.dart';
@@ -30,7 +30,7 @@ import 'package:cueue/domain/repository/hierarchy/tag/tag_repository.dart';
 import 'package:cueue/domain/repository/hierarchy/user/user_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final authorizedApiRequesterProvider = Provider<AuthorizedApiRequester>((_) => AuthorizedApiRequesterImpl());
+final dioCreatorProvider = Provider<DioCreator>((_) => DioCreatorImpl());
 final authorizeRepositoryProvider = Provider<AuthorizeRepository>((ref) => AuthorizeRepositoryImpl(ref.read(passwordSignaturerProvider), ref.read(googleSignaturerProvider), ref.read(appleSignaturerProvider), ref.read(allCacheProvider), ref.read(userFlowableFactoryProvider)));
 final contentRepositoryProvider = Provider<ContentRepository>((ref) => ContentRepositoryImpl(ref.read(createContentApiProvider), ref.read(contentRequestMapperProvider), ref.read(contentResponseMapperProvider)));
 final userRepositoryProvider = Provider<UserRepository>((ref) => UserRepositoryImpl(ref.read(createUserApiProvider), ref.read(passwordSignaturerProvider), ref.read(userFlowableFactoryProvider)));

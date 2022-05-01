@@ -5,7 +5,7 @@ import 'package:cueue/data/api/global/entity/api_version.dart';
 import 'package:cueue/data/api/global/requester/error_classifier.dart';
 import 'package:dio/dio.dart';
 
-abstract class AuthorizedApiRequester {
+abstract class DioCreator {
   Future<String> loadToken();
 
   Dio create() {
@@ -17,7 +17,9 @@ abstract class AuthorizedApiRequester {
   BaseOptions _createBaseOption() {
     return BaseOptions(
       baseUrl: const ApiBaseUrl().value.toString(),
-      headers: <String, dynamic>{'Api-Version': const ApiVersion().value},
+      headers: <String, dynamic>{
+        'Api-Version': const ApiVersion().value,
+      },
     );
   }
 

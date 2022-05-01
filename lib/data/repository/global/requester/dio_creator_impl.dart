@@ -1,8 +1,8 @@
-import 'package:cueue/data/api/global/requester/authorized_api_requester.dart';
+import 'package:cueue/data/api/global/requester/dio_creator.dart';
 import 'package:cueue/data/auth/hierarchy/signaturer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class AuthorizedApiRequesterImpl extends AuthorizedApiRequester {
+class DioCreatorImpl extends DioCreator {
   @override
   Future<String> loadToken() async {
     try {

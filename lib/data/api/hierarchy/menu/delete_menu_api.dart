@@ -1,15 +1,14 @@
-import 'package:cueue/data/api/global/requester/authorized_api_requester.dart';
 import 'package:cueue/data/api/global/requester/error_classifier.dart';
 import 'package:dio/dio.dart';
 
 class DeleteMenuApi {
-  const DeleteMenuApi(this._requester);
+  const DeleteMenuApi(this._dio);
 
-  final AuthorizedApiRequester _requester;
+  final Dio _dio;
 
   Future<void> execute(int workspaceId, int menuId) async {
     try {
-      await _requester.create().delete<void>('/$workspaceId/menus/$menuId');
+      await _dio.delete<void>('/$workspaceId/menus/$menuId');
     } on DioError catch (dioError) {
       throw dioError.parseException();
     }
