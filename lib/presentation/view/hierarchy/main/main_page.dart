@@ -22,16 +22,17 @@ class MainPage extends HookConsumerWidget {
         items: mainNavigationItemList.toBottomNavigationBarItemList(),
       ),
       floatingActionButton: _buildFloatingActionButton(context, currentIndex.value, mainNavigationItemList),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 
   Widget? _buildFloatingActionButton(BuildContext context, int currentIndex, MainNavigationItemList mainNavigationItemList) {
     final navigationItem = mainNavigationItemList[currentIndex];
     if (navigationItem.isVisibleFab()) {
-      return FloatingActionButton(
-        tooltip: navigationItem.fabLabel,
+      return FloatingActionButton.extended(
+        label: Text(navigationItem.fabLabel ?? ''),
         onPressed: () => _goFabPage(context, navigationItem.fabPage!),
-        child: Icon(navigationItem.fabIcon),
+        icon: Icon(navigationItem.fabIcon),
       );
     } else {
       return null;

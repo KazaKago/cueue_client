@@ -26,11 +26,12 @@ class TagPage extends HookConsumerWidget {
         completed: (tags) => _buildCompleted(context, ref, tags),
         error: (exception) => _buildError(context, ref, exception),
       ),
-      floatingActionButton: FloatingActionButton(
-        tooltip: intl(context).addTag,
+      floatingActionButton: FloatingActionButton.extended(
+        label: Text(intl(context).addTag),
         onPressed: () => _goTagEditing(context),
-        child: const Icon(Icons.add),
+        icon: const Icon(Icons.add),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 
@@ -52,6 +53,7 @@ class TagPage extends HookConsumerWidget {
       onRefresh: viewModel.refresh,
       child: Scrollbar(
         child: ListView.builder(
+          padding: const EdgeInsets.only(bottom: 70),
           physics: const AlwaysScrollableScrollPhysics(),
           itemCount: tags.length,
           itemBuilder: (BuildContext context, int index) {

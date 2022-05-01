@@ -59,7 +59,7 @@ class MenuPage extends HookConsumerWidget {
         child: CustomScrollView(
           controller: scrollController,
           physics: const AlwaysScrollableScrollPhysics(),
-          slivers: _buildSliverList(context, ref, menus) + [SliverStickyHeader(sticky: false, header: const LoadingListItem())],
+          slivers: _buildSliverList(context, ref, menus) + [SliverStickyHeader(sticky: false, header: const LoadingListItem()), SliverStickyHeader(sticky: false, header: const SizedBox(height: 70))],
         ),
       ),
     );
@@ -77,7 +77,7 @@ class MenuPage extends HookConsumerWidget {
         child: CustomScrollView(
           controller: scrollController,
           physics: const AlwaysScrollableScrollPhysics(),
-          slivers: _buildSliverList(context, ref, menus),
+          slivers: _buildSliverList(context, ref, menus) + [SliverStickyHeader(sticky: false, header: const SizedBox(height: 70))],
         ),
       ),
     );
@@ -96,7 +96,7 @@ class MenuPage extends HookConsumerWidget {
         child: CustomScrollView(
           controller: scrollController,
           physics: const AlwaysScrollableScrollPhysics(),
-          slivers: _buildSliverList(context, ref, menus) + [SliverStickyHeader(sticky: false, header: ErrorListItem(exception, onClickRetry: viewModel.retryAddition))],
+          slivers: _buildSliverList(context, ref, menus) + [SliverStickyHeader(sticky: false, header: ErrorListItem(exception, onClickRetry: viewModel.retryAddition)), SliverStickyHeader(sticky: false, header: const SizedBox(height: 70))],
         ),
       ),
     );

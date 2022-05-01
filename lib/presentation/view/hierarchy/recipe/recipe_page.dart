@@ -65,9 +65,9 @@ class RecipePage extends HookConsumerWidget {
           ),
         ),
         body: TabBarView(
-          children: [RecipeListWidget(key: const PageStorageKey(-1), onTap: (recipe) => _goRecipeDetail(context, recipe))] +
+          children: [RecipeListWidget(key: const PageStorageKey(-1), onTap: (recipe) => _goRecipeDetail(context, recipe), fabPadding: true)] +
               tags.map((tag) {
-                return RecipeListWidget(key: PageStorageKey(tag.id.value), tagIds: List.filled(1, tag.id), onTap: (recipe) => _goRecipeDetail(context, recipe));
+                return RecipeListWidget(key: PageStorageKey(tag.id.value), tagIds: List.filled(1, tag.id), onTap: (recipe) => _goRecipeDetail(context, recipe), fabPadding: true);
               }).toList(),
         ),
       ),
