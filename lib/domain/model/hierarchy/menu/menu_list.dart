@@ -8,20 +8,24 @@ class MenuList extends DelegatingList<MenuSummary> {
 
   List<DateSplitMenuList> createDateSplit() {
     final dateSplitDateMenuList = <DateSplitMenuList>[];
-    DateSplitMenuList? dateSplitDateMenu;
-    forEach((menu) {
-      if (dateSplitDateMenu == null) {
-        dateSplitDateMenu = DateSplitMenuList(date: menu.date, menus: []);
-        dateSplitDateMenu!.menus.add(menu);
-      } else if (dateSplitDateMenu!.date.isSameDay(menu.date)) {
-        dateSplitDateMenu!.menus.add(menu);
+    DateTime? menuDate;
+    var menus = const <MenuSummary>[];
+    forEachIndexed((index, menu) {
+      final date = menuDate;
+      if (date == null) {
+        menuDate = menu.date;
+        menus = [menu];
+      } else if (date.isSameDay(menu.date)) {
+        menus = menus + [menu];
       } else {
-        dateSplitDateMenuList.add(dateSplitDateMenu!);
-        dateSplitDateMenu = DateSplitMenuList(date: menu.date, menus: []);
-        dateSplitDateMenu!.menus.add(menu);
+        dateSplitDateMenuList.add(DateSplitMenuList(date: date, menus: menus));
+        menuDate = menu.date;
+        menus = [menu];
       }
     });
-    if (dateSplitDateMenu != null) dateSplitDateMenuList.add(dateSplitDateMenu!);
+    if (menuDate != null) {
+      dateSplitDateMenuList.add(DateSplitMenuList(date: menuDate!, menus: menus));
+    }
     return dateSplitDateMenuList;
   }
 }

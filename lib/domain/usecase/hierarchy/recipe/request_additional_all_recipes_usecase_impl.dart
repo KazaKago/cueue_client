@@ -1,3 +1,4 @@
+import 'package:cueue/domain/model/hierarchy/recipe/recipe_search_option.dart';
 import 'package:cueue/domain/repository/hierarchy/recipe/recipe_repository.dart';
 import 'package:cueue/domain/usecase/hierarchy/recipe/request_additional_all_recipes_usecase.dart';
 
@@ -7,7 +8,7 @@ class RequestAdditionalAllRecipesUseCaseImpl implements RequestAdditionalAllReci
   final RecipeRepository _recipeRepository;
 
   @override
-  Future<void> call({required bool continueWhenError}) {
-    return _recipeRepository.requestAdditionalAllData(continueWhenError: continueWhenError);
+  Future<void> call(RecipeSearchOption searchOption, {required bool continueWhenError}) {
+    return _recipeRepository.requestAdditionalAllData(searchOption, continueWhenError: continueWhenError);
   }
 }

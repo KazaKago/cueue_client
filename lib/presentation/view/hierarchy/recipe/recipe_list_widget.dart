@@ -1,5 +1,6 @@
+import 'package:cueue/domain/model/hierarchy/recipe/recipe_search_option.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_summary.dart';
-import 'package:cueue/domain/model/hierarchy/tag/tag.dart';
+import 'package:cueue/domain/model/hierarchy/tag/tag_id.dart';
 import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/extension/date_time_extension.dart';
 import 'package:cueue/presentation/view/global/extension/scroll_controller_extension.dart';
@@ -16,16 +17,26 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class RecipeListWidget extends HookConsumerWidget {
-  const RecipeListWidget({this.tag, this.selectedRecipes, this.onTap, Key? key}) : super(key: key);
+  factory RecipeListWidget({
+    String? keyword,
+    List<TagId>? tagIds,
+    List<RecipeSummary>? selectedRecipes,
+    void Function(RecipeSummary recipe)? onTap,
+    Key? key,
+  }) {
+    return RecipeListWidget._(RecipeSearchOption(keyword: keyword, tagIds: tagIds), selectedRecipes, onTap, key);
+  }
 
-  final Tag? tag;
+  const RecipeListWidget._(this._recipeSearchOption, this.selectedRecipes, this.onTap, Key? key) : super(key: key);
+
+  final RecipeSearchOption _recipeSearchOption;
   final List<RecipeSummary>? selectedRecipes;
   final void Function(RecipeSummary recipe)? onTap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(recipeViewModelProvider(tag?.id).select((viewModel) => viewModel.state));
-    final viewModel = ref.read(recipeViewModelProvider(tag?.id));
+    final state = ref.watch(recipeViewModelProvider(_recipeSearchOption).select((viewModel) => viewModel.state));
+    final viewModel = ref.read(recipeViewModelProvider(_recipeSearchOption));
     final scrollController = useScrollController()..onReachBottomWithAutoDispose(viewModel.requestAddition);
     return state.when(
       loading: () => _buildLoading(context, ref),
@@ -47,7 +58,7 @@ class RecipeListWidget extends HookConsumerWidget {
   }
 
   Widget _buildAdditionalLoading(BuildContext context, WidgetRef ref, ScrollController scrollController, List<RecipeSummary> recipes) {
-    final viewModel = ref.read(recipeViewModelProvider(tag?.id));
+    final viewModel = ref.read(recipeViewModelProvider(_recipeSearchOption));
     final recipeSelectionViewModel = ref.read(recipeSelectionViewModelProvider(selectedRecipes ?? []));
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
@@ -79,11 +90,11 @@ class RecipeListWidget extends HookConsumerWidget {
   }
 
   Widget _buildEmpty(BuildContext context, WidgetRef ref) {
-    return EmptyWidget(intl(context).no_recipe_message);
+    return EmptyWidget(intl(context).noRecipeMessage);
   }
 
   Widget _buildCompleted(BuildContext context, WidgetRef ref, ScrollController scrollController, List<RecipeSummary> recipes) {
-    final viewModel = ref.read(recipeViewModelProvider(tag?.id));
+    final viewModel = ref.read(recipeViewModelProvider(_recipeSearchOption));
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
       child: Scrollbar(
@@ -111,12 +122,12 @@ class RecipeListWidget extends HookConsumerWidget {
   }
 
   Widget _buildError(BuildContext context, WidgetRef ref, Exception exception) {
-    final viewModel = ref.read(recipeViewModelProvider(tag?.id));
+    final viewModel = ref.read(recipeViewModelProvider(_recipeSearchOption));
     return ErrorHandlingWidget(exception, onClickRetry: viewModel.retry);
   }
 
   Widget _buildAdditionalError(BuildContext context, WidgetRef ref, ScrollController scrollController, List<RecipeSummary> recipes, Exception exception) {
-    final viewModel = ref.read(recipeViewModelProvider(tag?.id));
+    final viewModel = ref.read(recipeViewModelProvider(_recipeSearchOption));
     final recipeSelectionViewModel = ref.read(recipeSelectionViewModelProvider(selectedRecipes ?? []));
     return RefreshIndicator(
       onRefresh: viewModel.refresh,

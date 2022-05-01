@@ -66,7 +66,7 @@ class MenuPage extends HookConsumerWidget {
   }
 
   Widget _buildEmpty(BuildContext context, WidgetRef ref) {
-    return EmptyWidget(intl(context).no_menu_message);
+    return EmptyWidget(intl(context).noMenuMessage);
   }
 
   Widget _buildCompleted(BuildContext context, WidgetRef ref, ScrollController scrollController, List<DateSplitMenuList> menus) {

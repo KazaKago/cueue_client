@@ -61,18 +61,12 @@ import 'package:cueue/domain/usecase/hierarchy/recipe/follow_all_recipes_usecase
 import 'package:cueue/domain/usecase/hierarchy/recipe/follow_all_recipes_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/recipe/follow_recipe_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/recipe/follow_recipe_usecase_impl.dart';
-import 'package:cueue/domain/usecase/hierarchy/recipe/follow_tagged_recipes_usecase.dart';
-import 'package:cueue/domain/usecase/hierarchy/recipe/follow_tagged_recipes_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/recipe/refresh_all_recipes_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/recipe/refresh_all_recipes_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/recipe/refresh_recipe_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/recipe/refresh_recipe_usecase_impl.dart';
-import 'package:cueue/domain/usecase/hierarchy/recipe/refresh_tagged_recipes_usecase.dart';
-import 'package:cueue/domain/usecase/hierarchy/recipe/refresh_tagged_recipes_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/recipe/request_additional_all_recipes_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/recipe/request_additional_all_recipes_usecase_impl.dart';
-import 'package:cueue/domain/usecase/hierarchy/recipe/request_additional_tagged_recipes_usecase.dart';
-import 'package:cueue/domain/usecase/hierarchy/recipe/request_additional_tagged_recipes_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/recipe/update_recipe_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/recipe/update_recipe_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/store/get_store_link_usecase.dart';
@@ -144,9 +138,6 @@ final deleteRecipeUseCaseProvider = Provider<DeleteRecipeUseCase>((ref) => Delet
 final createMenuUseCaseProvider = Provider<CreateMenuUseCase>((ref) => CreateMenuUseCaseImpl(ref.read(menuRepositoryProvider)));
 final updateMenuUseCaseProvider = Provider<UpdateMenuUseCase>((ref) => UpdateMenuUseCaseImpl(ref.read(menuRepositoryProvider)));
 final deleteMenuUseCaseProvider = Provider<DeleteMenuUseCase>((ref) => DeleteMenuUseCaseImpl(ref.read(menuRepositoryProvider)));
-final followTaggedRecipesUseCaseProvider = Provider<FollowTaggedRecipesUseCase>((ref) => FollowTaggedRecipesUseCaseImpl(ref.read(recipeRepositoryProvider)));
-final refreshTaggedRecipesUseCaseProvider = Provider<RefreshTaggedRecipesUseCase>((ref) => RefreshTaggedRecipesUseCaseImpl(ref.read(recipeRepositoryProvider)));
-final requestAdditionalTaggedRecipesUseCaseProvider = Provider<RequestAdditionalTaggedRecipesUseCase>((ref) => RequestAdditionalTaggedRecipesUseCaseImpl(ref.read(recipeRepositoryProvider)));
 final createContentUseCaseProvider = Provider<CreateContentUseCase>((ref) => CreateContentUseCaseImpl(ref.read(contentRepositoryProvider)));
 final refreshRecipeUseCaseProvider = Provider<RefreshRecipeUseCase>((ref) => RefreshRecipeUseCaseImpl(ref.read(recipeRepositoryProvider)));
 final followMenuUseCaseProvider = Provider<FollowMenuUseCase>((ref) => FollowMenuUseCaseImpl(ref.read(menuRepositoryProvider)));

@@ -5,6 +5,7 @@ import 'package:cueue/presentation/view/hierarchy/menu/menu_editing_page.dart';
 import 'package:cueue/presentation/view/hierarchy/menu/menu_page.dart';
 import 'package:cueue/presentation/view/hierarchy/recipe/recipe_editing_page.dart';
 import 'package:cueue/presentation/view/hierarchy/recipe/recipe_page.dart';
+import 'package:cueue/presentation/view/hierarchy/search/search_page.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/settings_page.dart';
 import 'package:cueue/presentation/view/hierarchy/tag/tag_editing_page.dart';
 import 'package:cueue/presentation/view/hierarchy/tag/tag_page.dart';
@@ -35,6 +36,7 @@ class MainNavigationItemList extends ListBase<MainNavigationItem> {
     final rawList = [
       MainNavigationItem(const MenuPage(), intl(context).cookingMenu, FontAwesomeIcons.calendar, fabPage: MenuEditingPage(), fabIcon: Icons.add, fabLabel: intl(context).addCookingMenu),
       MainNavigationItem(const RecipePage(), intl(context).recipe, FontAwesomeIcons.utensils, fabPage: const RecipeEditingPage(), fabIcon: Icons.add, fabLabel: intl(context).addRecipe),
+      MainNavigationItem(const SearchPage(), intl(context).search, FontAwesomeIcons.magnifyingGlass),
       MainNavigationItem(const TagPage(), intl(context).tag, FontAwesomeIcons.tag, fabPage: const TagEditingPage(), fabIcon: Icons.add, fabLabel: intl(context).addTag),
       MainNavigationItem(const SettingsPage(), intl(context).settings, Icons.settings),
     ];

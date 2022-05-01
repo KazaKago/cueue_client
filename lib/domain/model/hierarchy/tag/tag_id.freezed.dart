@@ -82,8 +82,8 @@ class __$TagIdCopyWithImpl<$Res> extends _$TagIdCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TagId implements _TagId {
-  const _$_TagId(this.value);
+class _$_TagId extends _TagId {
+  const _$_TagId(this.value) : super._();
 
   @override
   final int value;
@@ -111,8 +111,9 @@ class _$_TagId implements _TagId {
       __$TagIdCopyWithImpl<_TagId>(this, _$identity);
 }
 
-abstract class _TagId implements TagId {
+abstract class _TagId extends TagId {
   const factory _TagId(final int value) = _$_TagId;
+  const _TagId._() : super._();
 
   @override
   int get value => throw _privateConstructorUsedError;

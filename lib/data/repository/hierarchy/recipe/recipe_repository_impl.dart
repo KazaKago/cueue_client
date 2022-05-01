@@ -7,22 +7,20 @@ import 'package:cueue/data/mapper/hierarchy/recipe/recipe_request_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/recipe/recipe_response_mapper.dart';
 import 'package:cueue/data/repository/flowable/menu/menu_flowable_factory.dart';
 import 'package:cueue/data/repository/flowable/menu/menu_summary_flowable_factory.dart';
-import 'package:cueue/data/repository/flowable/recipe/all_recipes_flowable_factory.dart';
 import 'package:cueue/data/repository/flowable/recipe/recipe_flowable_factory.dart';
-import 'package:cueue/data/repository/flowable/recipe/tagged_recipes_flowable_factory.dart';
+import 'package:cueue/data/repository/flowable/recipe/recipes_flowable_factory.dart';
 import 'package:cueue/data/repository/flowable/user/user_flowable_factory.dart';
-import 'package:cueue/domain/model/global/extension/iterable_extension.dart';
 import 'package:cueue/domain/model/hierarchy/menu/menu_summary_impl.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_id.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_registration.dart';
+import 'package:cueue/domain/model/hierarchy/recipe/recipe_search_option.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_summary.dart';
-import 'package:cueue/domain/model/hierarchy/tag/tag_id.dart';
 import 'package:cueue/domain/repository/hierarchy/recipe/recipe_repository.dart';
 import 'package:store_flowable/store_flowable.dart';
 
 class RecipeRepositoryImpl implements RecipeRepository {
-  const RecipeRepositoryImpl(this._recipeCache, this._menuCache, this._createRecipeApi, this._updateRecipeApi, this._deleteRecipeApi, this._recipeResponseMapper, this._recipeRequestMapper, this._allRecipesFlowableFactory, this._taggedRecipesFlowableFactory, this._recipeFlowableFactory, this._userFlowableFactory, this._menuFlowableFactory, this._menuSummaryFlowableFactory);
+  const RecipeRepositoryImpl(this._recipeCache, this._menuCache, this._createRecipeApi, this._updateRecipeApi, this._deleteRecipeApi, this._recipeResponseMapper, this._recipeRequestMapper, this._recipesFlowableFactory, this._recipeFlowableFactory, this._userFlowableFactory, this._menuFlowableFactory, this._menuSummaryFlowableFactory);
 
   final RecipeCache _recipeCache;
   final MenuCache _menuCache;
@@ -31,31 +29,16 @@ class RecipeRepositoryImpl implements RecipeRepository {
   final DeleteRecipeApi _deleteRecipeApi;
   final RecipeResponseMapper _recipeResponseMapper;
   final RecipeRequestMapper _recipeRequestMapper;
-  final AllRecipesFlowableFactory _allRecipesFlowableFactory;
-  final TaggedRecipesFlowableFactory _taggedRecipesFlowableFactory;
+  final RecipesFlowableFactory _recipesFlowableFactory;
   final RecipeFlowableFactory _recipeFlowableFactory;
   final UserFlowableFactory _userFlowableFactory;
   final MenuFlowableFactory _menuFlowableFactory;
   final MenuSummaryFlowableFactory _menuSummaryFlowableFactory;
 
   @override
-  LoadingStateStream<List<RecipeSummary>> followAllData() {
-    final allRecipeFlowable = _allRecipesFlowableFactory.create(null);
-    return allRecipeFlowable.publish().mapContent((recipeIds) {
-      return recipeIds.mapNotNull((recipeId) {
-        return _recipeCache.recipeSummaryMap.value[recipeId];
-      }).toList();
-    });
-  }
-
-  @override
-  LoadingStateStream<List<RecipeSummary>> followTaggedData(TagId tagId) {
-    final taggedRecipeFlowable = _taggedRecipesFlowableFactory.create(tagId);
-    return taggedRecipeFlowable.publish().mapContent((recipeIds) {
-      return recipeIds.mapNotNull((recipeId) {
-        return _recipeCache.recipeSummaryMap.value[recipeId];
-      }).toList();
-    });
+  LoadingStateStream<List<RecipeSummary>> followAllData(RecipeSearchOption searchOption) {
+    final recipesFlowable = _recipesFlowableFactory.create(searchOption);
+    return recipesFlowable.publish();
   }
 
   @override
@@ -65,15 +48,9 @@ class RecipeRepositoryImpl implements RecipeRepository {
   }
 
   @override
-  Future<void> refreshAllData() async {
-    final recipeFlowable = _allRecipesFlowableFactory.create(null);
-    await recipeFlowable.refresh();
-  }
-
-  @override
-  Future<void> refreshTaggedData(TagId tagId) async {
-    final taggedRecipeFlowable = _taggedRecipesFlowableFactory.create(tagId);
-    await taggedRecipeFlowable.refresh();
+  Future<void> refreshAllData(RecipeSearchOption searchOption) async {
+    final recipesFlowable = _recipesFlowableFactory.create(searchOption);
+    await recipesFlowable.refresh();
   }
 
   @override
@@ -83,15 +60,9 @@ class RecipeRepositoryImpl implements RecipeRepository {
   }
 
   @override
-  Future<void> requestAdditionalAllData({required bool continueWhenError}) async {
-    final recipeFlowable = _allRecipesFlowableFactory.create(null);
-    await recipeFlowable.requestNextData(continueWhenError: continueWhenError);
-  }
-
-  @override
-  Future<void> requestAdditionalTaggedData(TagId tagId, {required bool continueWhenError}) async {
-    final taggedRecipeFlowable = _taggedRecipesFlowableFactory.create(tagId);
-    await taggedRecipeFlowable.requestNextData(continueWhenError: continueWhenError);
+  Future<void> requestAdditionalAllData(RecipeSearchOption searchOption, {required bool continueWhenError}) async {
+    final recipesFlowable = _recipesFlowableFactory.create(searchOption);
+    await recipesFlowable.requestNextData(continueWhenError: continueWhenError);
   }
 
   @override
@@ -100,26 +71,25 @@ class RecipeRepositoryImpl implements RecipeRepository {
     final response = await _createRecipeApi.execute(user.currentWorkspace.id.value, _recipeRequestMapper.map(recipeRegistration));
     final recipe = _recipeResponseMapper.map(response);
 
-    final cachedRecipeSummaryMap = _recipeCache.recipeSummaryMap.value;
-    cachedRecipeSummaryMap[recipe.id] = recipe;
-    _recipeCache.recipeSummaryMap.add(cachedRecipeSummaryMap);
-
+    // 1. Add to Recipe cache
     final recipeFlowable = _recipeFlowableFactory.create(recipe.id);
     await recipeFlowable.update(recipe);
 
-    final allRecipeFlowable = _allRecipesFlowableFactory.create(null);
-    final cachedAllRecipeIds = await allRecipeFlowable.getData(from: GettingFrom.cache);
-    if (cachedAllRecipeIds != null) {
-      final recipeIds = [recipe.id] + cachedAllRecipeIds;
-      await allRecipeFlowable.update(recipeIds);
+    // 2. Add to 'all' RecipeSummaries cache
+    final recipesFlowable = _recipesFlowableFactory.create(RecipeSearchOption());
+    final cachedRecipeSummaries = await recipesFlowable.getData(from: GettingFrom.cache);
+    if (cachedRecipeSummaries != null) {
+      final recipeSummaries = <RecipeSummary>[recipe] + cachedRecipeSummaries;
+      await recipesFlowable.update(recipeSummaries);
     }
 
+    // 3. Add to 'tagged' RecipeSummaries cache
     for (final tag in recipe.tags) {
-      final taggedRecipeFlowable = _taggedRecipesFlowableFactory.create(tag.id);
-      final cachedTaggedRecipeIds = await taggedRecipeFlowable.getData(from: GettingFrom.cache);
-      if (cachedTaggedRecipeIds != null) {
-        final taggedRecipeIds = [recipe.id] + cachedTaggedRecipeIds;
-        await taggedRecipeFlowable.update(taggedRecipeIds);
+      final recipesFlowable = _recipesFlowableFactory.create(RecipeSearchOption(tagIds: List.filled(1, tag.id)));
+      final cachedRecipeSummaries = await recipesFlowable.getData(from: GettingFrom.cache);
+      if (cachedRecipeSummaries != null) {
+        final recipeSummaries = <RecipeSummary>[recipe] + cachedRecipeSummaries;
+        await recipesFlowable.update(recipeSummaries);
       }
     }
   }
@@ -130,37 +100,48 @@ class RecipeRepositoryImpl implements RecipeRepository {
     final response = await _updateRecipeApi.execute(user.currentWorkspace.id.value, recipeId.value, _recipeRequestMapper.map(recipeRegistration));
     final recipe = _recipeResponseMapper.map(response);
 
-    final cachedRecipeSummaryMap = _recipeCache.recipeSummaryMap.value;
-    cachedRecipeSummaryMap[recipe.id] = recipe;
-    _recipeCache.recipeSummaryMap.add(cachedRecipeSummaryMap);
-
+    // 1. Update for Recipe cache
     final recipeFlowable = _recipeFlowableFactory.create(recipeId);
     await recipeFlowable.update(recipe);
 
-    _recipeCache.taggedRecipeIds.forEach((key, value) async {
-      if (!recipe.tags.map((e) => e.id).contains(key)) {
-        final taggedRecipeFlowable = _taggedRecipesFlowableFactory.create(key);
-        final cachedTaggedRecipeIds = await taggedRecipeFlowable.getData(from: GettingFrom.cache);
-        if (cachedTaggedRecipeIds != null) {
-          final fixedTaggedRecipeIds = cachedTaggedRecipeIds.where((id) => id != recipe.id).toList();
-          await taggedRecipeFlowable.update(fixedTaggedRecipeIds);
+    // 2. Update for 'all' RecipeSummaries cache
+    final recipesFlowable = _recipesFlowableFactory.create(RecipeSearchOption());
+    final cachedRecipeSummaries = await recipesFlowable.getData(from: GettingFrom.cache);
+    if (cachedRecipeSummaries != null) {
+      final recipeSummaries = cachedRecipeSummaries.map((e) => (e.id == recipe.id) ? recipe : e).toList();
+      await recipesFlowable.update(recipeSummaries);
+    }
+
+    // 3. Update for 'tagged' RecipeSummaries cache
+    _recipeCache.recipeSummaries.forEach((key, value) async {
+      final tagIds = recipe.tags.map((e) => e.id);
+      if (key.tagIds?.any(tagIds.contains) == false) {
+        final recipesFlowable = _recipesFlowableFactory.create(key);
+        final cachedRecipeSummaries = await recipesFlowable.getData(from: GettingFrom.cache);
+        if (cachedRecipeSummaries != null) {
+          // Remove
+          final recipeSummaries = cachedRecipeSummaries.where((e) => e.id != recipe.id).toList();
+          await recipesFlowable.update(recipeSummaries);
         }
       }
     });
     for (final tag in recipe.tags) {
-      final taggedRecipeFlowable = _taggedRecipesFlowableFactory.create(tag.id);
-      final cachedTaggedRecipeIds = await taggedRecipeFlowable.getData(from: GettingFrom.cache);
-      if (cachedTaggedRecipeIds != null) {
-        List<RecipeId> fixedTaggedRecipeIds;
-        if (cachedTaggedRecipeIds.where((id) => id == recipe.id).isNotEmpty) {
-          fixedTaggedRecipeIds = cachedTaggedRecipeIds.map((id) => (id == recipe.id) ? recipe.id : id).toList();
+      final recipesFlowable = _recipesFlowableFactory.create(RecipeSearchOption(tagIds: List.filled(1, tag.id)));
+      final cachedRecipeSummaries = await recipesFlowable.getData(from: GettingFrom.cache);
+      if (cachedRecipeSummaries != null) {
+        List<RecipeSummary> recipeSummaries;
+        if (cachedRecipeSummaries.where((e) => e.id == recipe.id).isNotEmpty) {
+          // Update
+          recipeSummaries = cachedRecipeSummaries.map((e) => (e.id == recipe.id) ? recipe : e).toList();
         } else {
-          fixedTaggedRecipeIds = [recipe.id] + cachedTaggedRecipeIds;
+          // Add
+          recipeSummaries = <RecipeSummary>[recipe] + cachedRecipeSummaries;
         }
-        await taggedRecipeFlowable.update(fixedTaggedRecipeIds);
+        await recipesFlowable.update(recipeSummaries);
       }
     }
 
+    // 4. Update for Menu cache
     _menuCache.menuMap.forEach((menuId, menu) async {
       final menuFlowable = _menuFlowableFactory.create(menuId);
       final cachedMenus = await menuFlowable.getData(from: GettingFrom.cache);
@@ -170,8 +151,9 @@ class RecipeRepositoryImpl implements RecipeRepository {
       }
     });
 
-    final menuSummaryFlowable = _menuSummaryFlowableFactory.create(null);
-    final cachedMenuSummaries = await menuSummaryFlowable.getData(from: GettingFrom.cache);
+    // 5. Update for MenuSummaries cache
+    final menuSummariesFlowable = _menuSummaryFlowableFactory.create(null);
+    final cachedMenuSummaries = await menuSummariesFlowable.getData(from: GettingFrom.cache);
     if (cachedMenuSummaries != null) {
       final menuSummaries = cachedMenuSummaries.map((menu) {
         return MenuSummaryImpl(
@@ -182,7 +164,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
           recipes: menu.recipes.map((e) => (e.id == recipe.id) ? recipe : e).toList(),
         );
       }).toList();
-      await menuSummaryFlowable.update(menuSummaries);
+      await menuSummariesFlowable.update(menuSummaries);
     }
   }
 
@@ -191,28 +173,21 @@ class RecipeRepositoryImpl implements RecipeRepository {
     final user = await _userFlowableFactory.create(null).requireData();
     await _deleteRecipeApi.execute(user.currentWorkspace.id.value, recipeId.value);
 
-    final cachedRecipeSummaryMap = _recipeCache.recipeSummaryMap.value..remove(recipeId);
-    _recipeCache.recipeSummaryMap.add(cachedRecipeSummaryMap);
-
+    // 1. Remove from Recipe cache
     final recipeFlowable = _recipeFlowableFactory.create(recipeId);
     await recipeFlowable.update(null);
 
-    final allRecipeFlowable = _allRecipesFlowableFactory.create(null);
-    final cachedAllRecipeIds = await allRecipeFlowable.getData(from: GettingFrom.cache);
-    if (cachedAllRecipeIds != null) {
-      final recipeIds = cachedAllRecipeIds.where((id) => id != recipeId).toList();
-      await allRecipeFlowable.update(recipeIds);
-    }
-
-    _recipeCache.taggedRecipeIds.forEach((key, value) async {
-      final taggedRecipeFlowable = _taggedRecipesFlowableFactory.create(key);
-      final cachedTaggedRecipeIds = await taggedRecipeFlowable.getData(from: GettingFrom.cache);
-      if (cachedTaggedRecipeIds != null) {
-        final fixedTaggedRecipeIds = cachedTaggedRecipeIds.where((id) => id != recipeId).toList();
-        await taggedRecipeFlowable.update(fixedTaggedRecipeIds);
+    // 2. Remove from RecipeSummaries cache
+    _recipeCache.recipeSummaries.forEach((key, value) async {
+      final recipesFlowable = _recipesFlowableFactory.create(key);
+      final cachedRecipeSummaries = await recipesFlowable.getData(from: GettingFrom.cache);
+      if (cachedRecipeSummaries != null) {
+        final recipeSummaries = cachedRecipeSummaries.where((e) => e.id != recipeId).toList();
+        await recipesFlowable.update(recipeSummaries);
       }
     });
 
+    // 3. Remove from Menu cache
     _menuCache.menuMap.forEach((menuId, menu) async {
       final menuFlowable = _menuFlowableFactory.create(menuId);
       final cachedMenus = await menuFlowable.getData(from: GettingFrom.cache);
@@ -222,6 +197,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
       }
     });
 
+    // 4. Remove from MenuSummaries cache
     final menuSummaryFlowable = _menuSummaryFlowableFactory.create(null);
     final cachedMenuSummaries = await menuSummaryFlowable.getData(from: GettingFrom.cache);
     if (cachedMenuSummaries != null) {

@@ -38,7 +38,7 @@ class TagPage extends HookConsumerWidget {
   }
 
   Widget _buildEmpty(BuildContext context, WidgetRef ref) {
-    return EmptyWidget(intl(context).no_tag_message);
+    return EmptyWidget(intl(context).noTagMessage);
   }
 
   Widget _buildCompleted(BuildContext context, WidgetRef ref, List<Tag> tags) {

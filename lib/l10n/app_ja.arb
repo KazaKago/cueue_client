@@ -241,7 +241,19 @@
   "unlinkedWithGoogle": "Googleとの\nアカウント連携を解除しました",
   "unlinkedWithApple": "Appleとの\nアカウント連携を解除しました",
   "sentEmailVerification": "入力されたアドレスへ\nへ認証メールを送信しました",
-  "no_menu_message": "こんだての記録がまだ無いようです\n今日のこんだてを追加してみましょう！",
-  "no_recipe_message": "レシピがまだ無いようです\n作りたい料理を登録してみましょう！",
-  "no_tag_message": "タグがまだ無いようです\n「中華」「和食」など分類分けできるよう\nタグ登録をしてみましょう！"
+  "noMenuMessage": "こんだての記録がまだ無いようです\n今日のこんだてを追加してみましょう！",
+  "noRecipeMessage": "レシピがまだ無いようです\n作りたい料理を登録してみましょう！",
+  "noTagMessage": "タグがまだ無いようです\n「中華」「和食」など分類分けできるよう\nタグ登録をしてみましょう！",
+  "search": "検索",
+  "searchKeyword": "検索キーワード",
+  "filterByTags": "タグ絞り込み",
+  "doSearch": "検索する",
+  "searchResultOf": "「{keyword}」の検索結果",
+  "@searchResultOf": {
+    "placeholders": {
+      "keyword": {
+        "type": "String"
+      }
+    }
+  }
 }

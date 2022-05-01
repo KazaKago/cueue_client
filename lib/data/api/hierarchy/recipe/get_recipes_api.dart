@@ -7,11 +7,12 @@ class GetRecipesApi {
 
   final Dio _dio;
 
-  Future<List<RecipeSummaryResponse>> execute(int workspaceId, {int? afterId, int? tagId}) async {
+  Future<List<RecipeSummaryResponse>> execute(int workspaceId, {int? afterId, String? keyword, List<int>? tagIds}) async {
     try {
       final queryParameters = <String, dynamic>{};
       if (afterId != null) queryParameters.addAll(<String, dynamic>{'after_id': afterId});
-      if (tagId != null) queryParameters.addAll(<String, dynamic>{'tag_id': tagId});
+      if (keyword != null) queryParameters.addAll(<String, dynamic>{'keyword': keyword});
+      if (tagIds != null) queryParameters.addAll(<String, dynamic>{'tag_id': tagIds});
       final response = await _dio.get<List<dynamic>>('/$workspaceId/recipes', queryParameters: queryParameters);
       return response.data!.map<RecipeSummaryResponse>((dynamic json) {
         return RecipeSummaryResponse.fromJson(json as Map<String, dynamic>);

@@ -1,3 +1,4 @@
+import 'package:cueue/domain/model/hierarchy/recipe/recipe_search_option.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_summary.dart';
 import 'package:cueue/domain/repository/hierarchy/recipe/recipe_repository.dart';
 import 'package:cueue/domain/usecase/hierarchy/recipe/follow_all_recipes_usecase.dart';
@@ -9,7 +10,7 @@ class FollowAllRecipesUseCaseImpl implements FollowAllRecipesUseCase {
   final RecipeRepository _recipeRepository;
 
   @override
-  LoadingStateStream<List<RecipeSummary>> call() {
-    return _recipeRepository.followAllData();
+  LoadingStateStream<List<RecipeSummary>> call(RecipeSearchOption searchOption) {
+    return _recipeRepository.followAllData(searchOption);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:cueue/l10n/intl.dart';
+import 'package:cueue/presentation/view/global/utils/route_observer.dart';
 import 'package:cueue/presentation/view/hierarchy/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -30,6 +31,7 @@ class CueueApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
+      navigatorObservers: [routeObserver],
       supportedLocales: const [
         Locale('ja', 'JP'),
       ],
