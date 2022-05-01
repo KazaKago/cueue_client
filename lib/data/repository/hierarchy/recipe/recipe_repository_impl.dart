@@ -115,7 +115,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
     // 3. Update for 'tagged' RecipeSummaries cache
     _recipeCache.recipeSummaries.forEach((key, value) async {
       final tagIds = recipe.tags.map((e) => e.id);
-      if (key.tagIds?.any(tagIds.contains) == false) {
+      if (key.tagIds?.isNotEmpty == true && key.tagIds?.any(tagIds.contains) == false) {
         final recipesFlowable = _recipesFlowableFactory.create(key);
         final cachedRecipeSummaries = await recipesFlowable.getData(from: GettingFrom.cache);
         if (cachedRecipeSummaries != null) {
