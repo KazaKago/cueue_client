@@ -26,6 +26,11 @@ class TagPage extends HookConsumerWidget {
         completed: (tags) => _buildCompleted(context, ref, tags),
         error: (exception) => _buildError(context, ref, exception),
       ),
+      floatingActionButton: FloatingActionButton(
+        tooltip: intl(context).addTag,
+        onPressed: () => _goTagEditing(context),
+        child: const Icon(Icons.add),
+      ),
     );
   }
 
@@ -52,7 +57,7 @@ class TagPage extends HookConsumerWidget {
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
               title: Text(tags[index].name),
-              onTap: () => _goTagEditing(context, tags[index]),
+              onTap: () => _goTagEditing(context, tag: tags[index]),
             );
           },
         ),
@@ -65,7 +70,7 @@ class TagPage extends HookConsumerWidget {
     return ErrorHandlingWidget(exception, onClickRetry: viewModel.retry);
   }
 
-  Future<void> _goTagEditing(BuildContext context, Tag tag) async {
+  Future<void> _goTagEditing(BuildContext context, {Tag? tag}) async {
     await Navigator.push<EditingResult>(context, MaterialPageRoute(builder: (context) => TagEditingPage(tag: tag)));
   }
 }

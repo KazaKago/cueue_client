@@ -6,8 +6,10 @@ import 'package:cueue/presentation/view/global/widget/shimmer_container.dart';
 import 'package:cueue/presentation/view/hierarchy/recipe/recipe_detail_page.dart';
 import 'package:cueue/presentation/view/hierarchy/recipe/recipe_list_widget.dart';
 import 'package:cueue/presentation/view/hierarchy/recipe/recipe_loading_item.dart';
+import 'package:cueue/presentation/view/hierarchy/tag/tag_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class RecipePage extends HookConsumerWidget {
@@ -28,6 +30,13 @@ class RecipePage extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(intl(context).recipe),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(FontAwesomeIcons.tag),
+            tooltip: intl(context).tag,
+            onPressed: () => _goTag(context),
+          ),
+        ],
       ),
       body: ShimmerContainer(
         child: Wrap(
@@ -43,6 +52,13 @@ class RecipePage extends HookConsumerWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(intl(context).recipe),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(FontAwesomeIcons.tag),
+              tooltip: intl(context).tag,
+              onPressed: () => _goTag(context),
+            ),
+          ],
           bottom: TabBar(
             isScrollable: true,
             tabs: [Tab(text: intl(context).allRecipes)] + tags.map((tag) => Tab(text: tag.name)).toList(),
@@ -63,6 +79,13 @@ class RecipePage extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(intl(context).recipe),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(FontAwesomeIcons.tag),
+            tooltip: intl(context).tag,
+            onPressed: () => _goTag(context),
+          ),
+        ],
       ),
       body: ErrorHandlingWidget(exception, onClickRetry: viewModel.retry),
     );
@@ -70,5 +93,9 @@ class RecipePage extends HookConsumerWidget {
 
   Future<void> _goRecipeDetail(BuildContext context, RecipeSummary recipe) async {
     await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => RecipeDetailPage(recipe)));
+  }
+
+  Future<void> _goTag(BuildContext context) async {
+    await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => const TagPage()));
   }
 }
