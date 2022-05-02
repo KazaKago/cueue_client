@@ -1,0 +1,13 @@
+name: Setup iOS
+
+runs:
+  using: composite
+  steps:
+    - name: Put GoogleService-Info.plist for staging
+      run: echo GOOGLE_SERVICE_INFO_PLIST__STAGING >> ios/Runner/GoogleService-Info-Staging.plist
+      env:
+        GOOGLE_SERVICE_INFO_PLIST__STAGING: ${{ secrets.GOOGLE_SERVICE_INFO_PLIST__STAGING }}
+    - name: Put GoogleService-Info.plist for production
+      run: echo GOOGLE_SERVICE_INFO_PLIST__PRODUCTION >> ios/Runner/GoogleService-Info-Production.plist
+      env:
+        GOOGLE_SERVICE_INFO_PLIST__PRODUCTION: ${{ secrets.GOOGLE_SERVICE_INFO_PLIST__PRODUCTION }}

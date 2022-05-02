@@ -1,0 +1,29 @@
+name: Setup Common
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        channel: 'stable'
+    - name: Create dot env file for staging
+      uses: weyheyhey/create-dotenv-action@v1
+      with:
+        filename: '.env.staging'
+      env:
+        ^API_BASE_URL: ${{ secrets.API_BASE_URL__STAGING }}
+        ^APPLE_CLIENT_ID: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
+        ^APPLE_CALLBACK_URL: ${{ secrets.APPLE_CALLBACK_URL__STAGING }}
+    - name: Create dot env file for production
+      uses: weyheyhey/create-dotenv-action@v1
+      with:
+        filename: '.env.production'
+      env:
+        ^API_BASE_URL: ${{ secrets.API_BASE_URL__PRODUCTION }}
+        ^APPLE_CLIENT_ID: ${{ secrets.APPLE_CLIENT_ID__PRODUCTION }}
+        ^APPLE_CALLBACK_URL: ${{ secrets.APPLE_CALLBACK_URL__PRODUCTION }}
+    - name: Pub get
+      run: flutter pub get

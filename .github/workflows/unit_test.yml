@@ -10,47 +10,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    needs: [setup-common]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'
-      - name: Create dot env file for staging
-        uses: weyheyhey/create-dotenv-action@v1
-        with:
-          filename: '.env.staging'
-        env:
-          ^API_BASE_URL: ${{ secrets.API_BASE_URL__STAGING }}
-          ^APPLE_CLIENT_ID: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
-          ^APPLE_CALLBACK_URL: ${{ secrets.APPLE_CALLBACK_URL__STAGING }}
-      - name: Create dot env file for production
-        uses: weyheyhey/create-dotenv-action@v1
-        with:
-          filename: '.env.production'
-        env:
-          ^API_BASE_URL: ${{ secrets.API_BASE_URL__PRODUCTION }}
-          ^APPLE_CLIENT_ID: ${{ secrets.APPLE_CLIENT_ID__PRODUCTION }}
-          ^APPLE_CALLBACK_URL: ${{ secrets.APPLE_CALLBACK_URL__PRODUCTION }}
-      - name: Put google-services.json for staging
-        run: echo GOOGLE_SERVICES_JSON__STAGING >> android/app/src/staging/google-services.json
-        env:
-          GOOGLE_SERVICES_JSON__STAGING: ${{ secrets.GOOGLE_SERVICES_JSON__STAGING }}
-      - name: Put google-services.json for production
-        run: echo GOOGLE_SERVICES_JSON__PRODUCTION >> android/app/src/production/google-services.json
-        env:
-          GOOGLE_SERVICES_JSON__PRODUCTION: ${{ secrets.GOOGLE_SERVICES_JSON__PRODUCTION }}
-      - name: Put GoogleService-Info.plist for staging
-        run: echo GOOGLE_SERVICE_INFO_PLIST__STAGING >> ios/Runner/GoogleService-Info-Staging.plist
-        env:
-          GOOGLE_SERVICE_INFO_PLIST__STAGING: ${{ secrets.GOOGLE_SERVICE_INFO_PLIST__STAGING }}
-      - name: Put GoogleService-Info.plist for production
-        run: echo GOOGLE_SERVICE_INFO_PLIST__PRODUCTION >> ios/Runner/GoogleService-Info-Production.plist
-        env:
-          GOOGLE_SERVICE_INFO_PLIST__PRODUCTION: ${{ secrets.GOOGLE_SERVICE_INFO_PLIST__PRODUCTION }}
-      - run: cat ios/Runner/GoogleService-Info-Production.plist
-      - name: Pub get
-        run: flutter pub get
       - name: Test
         run: flutter test
