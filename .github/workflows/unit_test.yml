@@ -11,6 +11,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Setup Common
         uses: ./.github/actions/setup_common
       - name: Test
