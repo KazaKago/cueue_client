@@ -14,4 +14,4 @@ jobs:
       - name: Setup Common
         uses: ./.github/actions/setup_common
       - name: Test
-        run: flutter test
+        uses: ./.github/actions/test

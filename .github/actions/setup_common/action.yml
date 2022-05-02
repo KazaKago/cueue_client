@@ -1,4 +1,5 @@
 name: Setup Common
+description: setup for flutter action.
 
 runs:
   using: composite

@@ -1,0 +1,8 @@
+name: Test
+description: test for flutter.
+
+runs:
+  using: composite
+  steps:
+    - name: Test
+      run: flutter test

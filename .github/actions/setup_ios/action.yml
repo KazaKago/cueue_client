@@ -1,4 +1,5 @@
 name: Setup iOS
+description: setup for iOS action.
 
 runs:
   using: composite
