@@ -11,7 +11,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Future.wait([
-    dotenv.load(fileName: '.env.${const String.fromEnvironment('FLAVOR')}'),
+    dotenv.load(fileName: const String.fromEnvironment('DOT_ENV')),
     Firebase.initializeApp(),
   ]);
   await FirebaseAppCheck.instance.activate();

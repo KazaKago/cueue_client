@@ -197,7 +197,7 @@ workflows:
       - _build_android
       - _deploy_android
     envs:
-      - BUILD_ARGUMENTS: '--flavor production --dart-define=FLAVOR=production'
+      - BUILD_ARGUMENTS: '--flavor production --dart-define=DOT_ENV=.env.production'
         opts:
           is_expand: false
       - opts:
@@ -210,7 +210,7 @@ workflows:
       - _build_ios
       - _deploy_ios
     envs:
-      - BUILD_ARGUMENTS: '--flavor production --dart-define=FLAVOR=production'
+      - BUILD_ARGUMENTS: '--flavor production --dart-define=DOT_ENV=.env.production'
         opts:
           is_expand: false
       - opts:
@@ -238,7 +238,7 @@ workflows:
       - _build_android
       - _deploy_android
     envs:
-      - BUILD_ARGUMENTS: '--flavor staging --dart-define=FLAVOR=staging'
+      - BUILD_ARGUMENTS: '--flavor staging --dart-define=DOT_ENV=.env.staging'
         opts:
           is_expand: false
       - opts:
@@ -251,7 +251,7 @@ workflows:
       - _build_ios
       - _deploy_ios
     envs:
-      - BUILD_ARGUMENTS: '--flavor staging --dart-define=FLAVOR=staging'
+      - BUILD_ARGUMENTS: '--flavor staging --dart-define=DOT_ENV=.env.staging'
         opts:
           is_expand: false
       - opts:
@@ -279,7 +279,7 @@ workflows:
       - _build_android
       - _release_android
     envs:
-      - BUILD_ARGUMENTS: '--flavor production --dart-define=FLAVOR=production'
+      - BUILD_ARGUMENTS: '--flavor production --dart-define=DOT_ENV=.env.production'
         opts:
           is_expand: false
   release_ios:
@@ -289,7 +289,7 @@ workflows:
       - _build_ios
       - _release_ios
     envs:
-      - BUILD_ARGUMENTS: '--flavor production --dart-define=FLAVOR=production'
+      - BUILD_ARGUMENTS: '--flavor production --dart-define=DOT_ENV=.env.production'
         opts:
           is_expand: false
       - opts:
