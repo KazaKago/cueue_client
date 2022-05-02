@@ -18,21 +18,21 @@ jobs:
       with:
         channel: 'stable'
     - name: Create staging dot env file
-      uses: microsoft/variable-substitution@v1
+      uses: SpicyPizza/create-envfile@v1
       with:
-        files: '.env.staging'
-      env:
-        API_BASE_URL: ${{ secrets.API_BASE_URL__STAGING }}
-        APPLE_CLIENT_ID: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
-        APPLE_CALLBACK_URL: ${{ secrets.APPLE_CALLBACK_URL__STAGING }}
+        envkey_API_BASE_URL: ${{ secrets.API_BASE_URL__STAGING }}
+        envkey_APPLE_CLIENT_ID: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
+        envkey_APPLE_CALLBACK_URL: ${{ secrets.APPLE_CALLBACK_URL__STAGING }}
+        file_name: .env.staging
+        fail_on_empty: true
     - name: Create production dot env file
-      uses: microsoft/variable-substitution@v1
+      uses: SpicyPizza/create-envfile@v1
       with:
-        files: '.env.production'
-      env:
-        API_BASE_URL: ${{ secrets.API_BASE_URL__PRODUCTION }}
-        APPLE_CLIENT_ID: ${{ secrets.APPLE_CLIENT_ID__PRODUCTION }}
-        APPLE_CALLBACK_URL: ${{ secrets.APPLE_CALLBACK_URL__PRODUCTION }}
+        envkey_API_BASE_URL: ${{ secrets.API_BASE_URL__PRODUCTION }}
+        envkey_APPLE_CLIENT_ID: ${{ secrets.APPLE_CLIENT_ID__PRODUCTION }}
+        envkey_APPLE_CALLBACK_URL: ${{ secrets.APPLE_CALLBACK_URL__PRODUCTION }}
+        file_name: .env.production
+        fail_on_empty: true
     - name: Pub get
       run: flutter pub get
     - name: Test
