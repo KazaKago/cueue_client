@@ -1,6 +1,26 @@
 name: Setup Common
 description: setup for flutter action.
 
+inputs:
+  api_base_url__staging:
+    description: api base url for staging.
+    required: true
+  api_base_url__production:
+    description: api base url for production.
+    required: true
+  apple_client_id__staging:
+    description: apple client id for staging.
+    required: true
+  apple_client_id__production:
+    description: apple client id for production.
+    required: true
+  apple_callback_url__staging:
+    description: apple callback url for staging.
+    required: true
+  apple_callback_url__production:
+    description: apple callback url for production.
+    required: true
+
 runs:
   using: composite
   steps:
@@ -13,16 +33,17 @@ runs:
       with:
         filename: '.env.staging'
       env:
-        ^API_BASE_URL: ${{ secrets.API_BASE_URL__STAGING }}
-        ^APPLE_CLIENT_ID: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
-        ^APPLE_CALLBACK_URL: ${{ secrets.APPLE_CALLBACK_URL__STAGING }}
+        ^API_BASE_URL: ${{ inputs.api_base_url__staging }}
+        ^APPLE_CLIENT_ID: ${{ inputs.apple_client_id__staging }}
+        ^APPLE_CALLBACK_URL: ${{ inputs.apple_callback_url__staging }}
     - name: Create dot env file for production
       uses: weyheyhey/create-dotenv-action@v1
       with:
         filename: '.env.production'
       env:
-        ^API_BASE_URL: ${{ secrets.API_BASE_URL__PRODUCTION }}
-        ^APPLE_CLIENT_ID: ${{ secrets.APPLE_CLIENT_ID__PRODUCTION }}
-        ^APPLE_CALLBACK_URL: ${{ secrets.APPLE_CALLBACK_URL__PRODUCTION }}
+        ^API_BASE_URL: ${{ inputs.api_base_url__production }}
+        ^APPLE_CLIENT_ID: ${{ inputs.apple_client_id__production }}
+        ^APPLE_CALLBACK_URL: ${{ inputs.apple_callback_url__production }}
     - name: Pub get
       run: flutter pub get
+      shell: bash

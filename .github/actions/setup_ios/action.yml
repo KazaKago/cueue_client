@@ -1,14 +1,24 @@
 name: Setup iOS
 description: setup for iOS action.
 
+inputs:
+  google_service_info_plist__staging:
+    description: GoogleServiceInfo.plist for staging.
+    required: true
+  google_service_info_plist__production:
+    description: GoogleServiceInfo.plist for production.
+    required: true
+
 runs:
   using: composite
   steps:
     - name: Put GoogleService-Info.plist for staging
       run: echo GOOGLE_SERVICE_INFO_PLIST__STAGING >> ios/Runner/GoogleService-Info-Staging.plist
+      shell: bash
       env:
-        GOOGLE_SERVICE_INFO_PLIST__STAGING: ${{ secrets.GOOGLE_SERVICE_INFO_PLIST__STAGING }}
+        GOOGLE_SERVICE_INFO_PLIST__STAGING: ${{ inputs.google_service_info_plist__staging }}
     - name: Put GoogleService-Info.plist for production
       run: echo GOOGLE_SERVICE_INFO_PLIST__PRODUCTION >> ios/Runner/GoogleService-Info-Production.plist
+      shell: bash
       env:
-        GOOGLE_SERVICE_INFO_PLIST__PRODUCTION: ${{ secrets.GOOGLE_SERVICE_INFO_PLIST__PRODUCTION }}
+        GOOGLE_SERVICE_INFO_PLIST__PRODUCTION: ${{ inputs.google_service_info_plist__production }}

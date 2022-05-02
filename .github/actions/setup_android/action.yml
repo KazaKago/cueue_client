@@ -1,6 +1,14 @@
 name: Setup Android
 description: setup for Android action.
 
+inputs:
+  google_services_json__staging:
+    description: google-services.json for staging.
+    required: true
+  google_services_json__production:
+    description: google-services.json for production.
+    required: true
+
 runs:
   using: composite
   steps:
@@ -10,9 +18,11 @@ runs:
         java-version: 11
     - name: Put google-services.json for staging
       run: echo GOOGLE_SERVICES_JSON__STAGING >> android/app/src/staging/google-services.json
+      shell: bash
       env:
-        GOOGLE_SERVICES_JSON__STAGING: ${{ secrets.GOOGLE_SERVICES_JSON__STAGING }}
+        GOOGLE_SERVICES_JSON__STAGING: ${{ inputs.google_services_json__staging }}
     - name: Put google-services.json for production
       run: echo GOOGLE_SERVICES_JSON__PRODUCTION >> android/app/src/production/google-services.json
+      shell: bash
       env:
-        GOOGLE_SERVICES_JSON__PRODUCTION: ${{ secrets.GOOGLE_SERVICES_JSON__PRODUCTION }}
+        GOOGLE_SERVICES_JSON__PRODUCTION: ${{ inputs.google_services_json__production }}

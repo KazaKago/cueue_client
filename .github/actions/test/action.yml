@@ -6,3 +6,4 @@ runs:
   steps:
     - name: Test
       run: flutter test
+      shell: bash
