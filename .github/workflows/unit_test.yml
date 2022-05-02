@@ -10,7 +10,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    needs: [setup-common]
     steps:
+      - name: Setup Common
+        uses: ./.github/actions/setup_common
       - name: Test
         run: flutter test
