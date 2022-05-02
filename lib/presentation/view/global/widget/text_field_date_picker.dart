@@ -2,7 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class TextFieldDatePicker extends StatefulWidget {
-  TextFieldDatePicker({
+  factory TextFieldDatePicker({
+    Key? key,
+    String? labelText,
+    Icon? prefixIcon,
+    Icon? suffixIcon,
+    FocusNode? focusNode,
+    DateFormat? dateFormat,
+    DateTime? lastDate,
+    DateTime? firstDate,
+    required DateTime initialDate,
+    required ValueChanged<DateTime> onDateChanged,
+  }) {
+    firstDate ??= DateTime.now().add(const Duration(days: -(365 * 1000))); // 1000 years
+    lastDate ??= DateTime.now().add(const Duration(days: 365 * 1000)); // 1000 years
+    assert(!initialDate.isBefore(firstDate), 'initialDate must be on or after firstDate');
+    assert(!initialDate.isAfter(lastDate), 'initialDate must be on or before lastDate');
+    assert(!firstDate.isAfter(lastDate), 'lastDate must be on or after firstDate');
+    return TextFieldDatePicker._(
+      key: key,
+      labelText: labelText,
+      prefixIcon: prefixIcon,
+      suffixIcon: suffixIcon,
+      focusNode: focusNode,
+      dateFormat: dateFormat,
+      lastDate: lastDate,
+      firstDate: firstDate,
+      initialDate: initialDate,
+      onDateChanged: onDateChanged,
+    );
+  }
+
+  const TextFieldDatePicker._({
     Key? key,
     this.labelText,
     this.prefixIcon,
@@ -13,10 +44,7 @@ class TextFieldDatePicker extends StatefulWidget {
     required this.firstDate,
     required this.initialDate,
     required this.onDateChanged,
-  })  : assert(!initialDate.isBefore(firstDate), 'initialDate must be on or after firstDate'),
-        assert(!initialDate.isAfter(lastDate), 'initialDate must be on or before lastDate'),
-        assert(!firstDate.isAfter(lastDate), 'lastDate must be on or after firstDate'),
-        super(key: key);
+  }) : super(key: key);
 
   final ValueChanged<DateTime> onDateChanged;
   final DateTime initialDate;

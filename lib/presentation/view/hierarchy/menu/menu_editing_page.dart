@@ -91,8 +91,6 @@ class MenuEditingPage extends HookConsumerWidget {
       labelText: intl(context).date,
       dateFormat: DateFormat(intl(context).dateFormat, Localizations.localeOf(context).toString()),
       suffixIcon: const Icon(Icons.arrow_drop_down),
-      firstDate: DateTime.now().add(const Duration(days: -366)),
-      lastDate: DateTime.now().add(const Duration(days: 366)),
       initialDate: selectedDateTime.value,
       onDateChanged: (value) => selectedDateTime.value = value,
     );
