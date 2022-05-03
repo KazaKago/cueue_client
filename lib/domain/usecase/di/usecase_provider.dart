@@ -83,6 +83,8 @@ import 'package:cueue/domain/usecase/hierarchy/tag/reorder_tag_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/tag/reorder_tag_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/tag/update_tag_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/tag/update_tag_usecase_impl.dart';
+import 'package:cueue/domain/usecase/hierarchy/user/delete_account_usecase.dart';
+import 'package:cueue/domain/usecase/hierarchy/user/delete_account_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/follow_user_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/follow_user_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/refresh_user_usecase.dart';
@@ -145,3 +147,4 @@ final refreshRecipeUseCaseProvider = Provider<RefreshRecipeUseCase>((ref) => Ref
 final followMenuUseCaseProvider = Provider<FollowMenuUseCase>((ref) => FollowMenuUseCaseImpl(ref.read(menuRepositoryProvider)));
 final refreshMenuUseCaseProvider = Provider<RefreshMenuUseCase>((ref) => RefreshMenuUseCaseImpl(ref.read(menuRepositoryProvider)));
 final reorderTagUseCaseProvider = Provider<ReorderTagUseCase>((ref) => ReorderTagUseCaseImpl(ref.read(tagRepositoryProvider)));
+final deleteAccountUseCaseProvider = Provider<DeleteAccountUseCase>((ref) => DeleteAccountUseCaseImpl(ref.read(userRepositoryProvider)));

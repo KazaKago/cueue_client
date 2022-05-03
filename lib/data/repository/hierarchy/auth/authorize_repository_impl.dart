@@ -98,10 +98,6 @@ class AuthorizeRepositoryImpl implements AuthorizeRepository {
   @override
   Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
-    _deleteAllCache();
-  }
-
-  void _deleteAllCache() {
     for (final cache in _cacheList) {
       cache.clearAll();
     }

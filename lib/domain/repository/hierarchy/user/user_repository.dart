@@ -21,4 +21,6 @@ abstract class UserRepository {
   Future<void> sendEmailVerification();
 
   Future<void> sendPasswordResetEmail(Email email);
+
+  Future<void> delete();
 }
