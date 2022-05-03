@@ -73,7 +73,7 @@ class CueueApp extends StatelessWidget {
         foregroundColor: Colors.white,
       ),
       textTheme: GoogleFonts.mPlus1pTextTheme(
-        Theme.of(context).textTheme,
+        ThemeData(brightness: colorScheme.brightness).textTheme,
       ),
     );
   }
