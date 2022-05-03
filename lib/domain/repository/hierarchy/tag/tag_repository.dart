@@ -13,4 +13,6 @@ abstract class TagRepository {
   Future<void> update(TagId tagId, TagRegistration tagRegistration);
 
   Future<void> delete(TagId tagId);
+
+  Future<void> reorder(List<TagId> tagIds);
 }

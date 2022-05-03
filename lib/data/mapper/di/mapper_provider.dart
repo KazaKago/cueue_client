@@ -8,6 +8,7 @@ import 'package:cueue/data/mapper/hierarchy/menu/time_frame_response_mapper.dart
 import 'package:cueue/data/mapper/hierarchy/recipe/recipe_request_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/recipe/recipe_response_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/recipe/recipe_summary_response_mapper.dart';
+import 'package:cueue/data/mapper/hierarchy/tag/tag_order_request_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/tag/tag_request_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/tag/tag_response_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/user/user_response_mapper.dart';
@@ -28,3 +29,4 @@ final menuResponseMapperProvider = Provider((ref) => MenuResponseMapper(ref.read
 final menuRequestMapperProvider = Provider((ref) => MenuRequestMapper(ref.read(timeFrameRequestMapperProvider)));
 final timeFrameResponseMapperProvider = Provider((ref) => const TimeFrameResponseMapper());
 final timeFrameRequestMapperProvider = Provider((ref) => const TimeFrameRequestMapper());
+final tagOrderRequestMapperProvider = Provider((ref) => const TagOrderRequestMapper());

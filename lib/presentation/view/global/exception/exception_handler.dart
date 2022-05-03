@@ -22,6 +22,11 @@ class ExceptionHandler {
     await _showMessageDialog(context, ref, exception);
   }
 
+  Future<void> showSnackBar(BuildContext context, WidgetRef ref, Exception exception) async {
+    if (await _preCheck(context, ref, exception)) return;
+    _showSnackBar(context, ref, exception);
+  }
+
   String _getMessage(BuildContext context, WidgetRef ref, Exception exception, {bool withSystemMessage = true}) {
     final message = exception.when(
       invalidParams: (exception) => intl(context).invalidParams(exception.message),
@@ -56,6 +61,11 @@ class ExceptionHandler {
   Future<void> _showMessageDialog(BuildContext context, WidgetRef ref, Exception exception) async {
     final dialog = SimpleMessageDialog(context, title: intl(context).error, message: _getMessage(context, ref, exception), positiveButton: intl(context).close);
     await dialog.show();
+  }
+
+  void _showSnackBar(BuildContext context, WidgetRef ref, Exception exception) {
+    final snackBar = SnackBar(content: Text(_getMessage(context, ref, exception, withSystemMessage: false)));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   Future<bool> _preCheck(BuildContext context, WidgetRef ref, Exception exception) {

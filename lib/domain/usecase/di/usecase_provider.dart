@@ -79,6 +79,8 @@ import 'package:cueue/domain/usecase/hierarchy/tag/follow_tags_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/tag/follow_tags_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/tag/refresh_tags_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/tag/refresh_tags_usecase_impl.dart';
+import 'package:cueue/domain/usecase/hierarchy/tag/reorder_tag_usecase.dart';
+import 'package:cueue/domain/usecase/hierarchy/tag/reorder_tag_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/tag/update_tag_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/tag/update_tag_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/follow_user_usecase.dart';
@@ -142,3 +144,4 @@ final createContentUseCaseProvider = Provider<CreateContentUseCase>((ref) => Cre
 final refreshRecipeUseCaseProvider = Provider<RefreshRecipeUseCase>((ref) => RefreshRecipeUseCaseImpl(ref.read(recipeRepositoryProvider)));
 final followMenuUseCaseProvider = Provider<FollowMenuUseCase>((ref) => FollowMenuUseCaseImpl(ref.read(menuRepositoryProvider)));
 final refreshMenuUseCaseProvider = Provider<RefreshMenuUseCase>((ref) => RefreshMenuUseCaseImpl(ref.read(menuRepositoryProvider)));
+final reorderTagUseCaseProvider = Provider<ReorderTagUseCase>((ref) => ReorderTagUseCaseImpl(ref.read(tagRepositoryProvider)));

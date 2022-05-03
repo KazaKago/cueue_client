@@ -1,7 +1,9 @@
 import 'package:cueue/data/api/hierarchy/tag/create_tag_api.dart';
 import 'package:cueue/data/api/hierarchy/tag/delete_tag_api.dart';
+import 'package:cueue/data/api/hierarchy/tag/order_tag_api.dart';
 import 'package:cueue/data/api/hierarchy/tag/update_tag_api.dart';
 import 'package:cueue/data/cache/hierarchy/recipe/recipe_cache.dart';
+import 'package:cueue/data/mapper/hierarchy/tag/tag_order_request_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/tag/tag_request_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/tag/tag_response_mapper.dart';
 import 'package:cueue/data/repository/flowable/recipe/recipe_flowable_factory.dart';
@@ -15,14 +17,16 @@ import 'package:cueue/domain/repository/hierarchy/tag/tag_repository.dart';
 import 'package:store_flowable/store_flowable.dart';
 
 class TagRepositoryImpl implements TagRepository {
-  const TagRepositoryImpl(this._recipeCache, this._createTagApi, this._updateTagApi, this._deleteTagApi, this._tagResponseMapper, this._tagRequestMapper, this._tagFlowableFactory, this._userFlowableFactory, this._recipeFlowableFactory);
+  const TagRepositoryImpl(this._recipeCache, this._createTagApi, this._updateTagApi, this._deleteTagApi, this._orderTagApi, this._tagResponseMapper, this._tagRequestMapper, this._tagOrderRequestMapper, this._tagFlowableFactory, this._userFlowableFactory, this._recipeFlowableFactory);
 
   final RecipeCache _recipeCache;
   final CreateTagApi _createTagApi;
   final UpdateTagApi _updateTagApi;
   final DeleteTagApi _deleteTagApi;
+  final OrderTagApi _orderTagApi;
   final TagResponseMapper _tagResponseMapper;
   final TagRequestMapper _tagRequestMapper;
+  final TagOrderRequestMapper _tagOrderRequestMapper;
   final TagFlowableFactory _tagFlowableFactory;
   final UserFlowableFactory _userFlowableFactory;
   final RecipeFlowableFactory _recipeFlowableFactory;
@@ -97,6 +101,24 @@ class TagRepositoryImpl implements TagRepository {
         final fixedRecipe = cachedRecipe.copyWith(tags: cachedRecipe.tags.where((e) => e.id != tagId).toList());
         await recipeFlowable.update(fixedRecipe);
       }
+    }
+  }
+
+  @override
+  Future<void> reorder(List<TagId> tagIds) async {
+    final tagFlowable = _tagFlowableFactory.create(null);
+    final cachedTags = await tagFlowable.getData(from: GettingFrom.cache);
+    if (cachedTags != null) {
+      final tags = tagIds.map((tagId) => cachedTags.firstWhere((tag) => tag.id == tagId)).toList();
+      await tagFlowable.update(tags);
+    }
+
+    try {
+      final user = await _userFlowableFactory.create(null).requireData();
+      await _orderTagApi.execute(user.currentWorkspace.id.value, _tagOrderRequestMapper.map(tagIds));
+    } on Exception {
+      await tagFlowable.update(cachedTags);
+      rethrow;
     }
   }
 }
