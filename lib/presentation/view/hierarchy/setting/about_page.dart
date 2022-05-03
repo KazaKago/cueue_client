@@ -17,10 +17,12 @@ class AboutPage extends HookConsumerWidget {
       appBar: AppBar(
         title: Text(intl(context).aboutApp),
       ),
-      body: SingleChildScrollView(
-        child: state.when(
-          loading: () => _buildLoading(context, ref),
-          completed: (appInfo, developerInfo) => _buildCompleted(context, ref, appInfo, developerInfo),
+      body: Scrollbar(
+        child: SingleChildScrollView(
+          child: state.when(
+            loading: () => _buildLoading(context, ref),
+            completed: (appInfo, developerInfo) => _buildCompleted(context, ref, appInfo, developerInfo),
+          ),
         ),
       ),
     );
