@@ -21,6 +21,11 @@ jobs:
           apple_client_id__production: ${{ secrets.APPLE_CLIENT_ID__PRODUCTION }}
           apple_callback_url__staging: ${{ secrets.APPLE_CALLBACK_URL__STAGING }}
           apple_callback_url__production: ${{ secrets.APPLE_CALLBACK_URL__PRODUCTION }}
+      - name: Setup Android
+        uses: ./.github/actions/setup_android
+        with:
+          google_services_json__staging: ${{ secrets.GOOGLE_SERVICES_JSON__STAGING }}
+          google_services_json__production: ${{ secrets.GOOGLE_SERVICES_JSON__PRODUCTION }}
       - name: Build
         uses: ./.github/actions/build_android
         with:
