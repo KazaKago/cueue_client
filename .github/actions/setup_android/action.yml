@@ -23,3 +23,11 @@ runs:
     - name: Put google-services.json for production
       run: echo "${{ inputs.google_services_json__production }}" > android/app/src/production/google-services.json
       shell: bash
+    - uses: actions/upload-artifact@v3
+      with:
+        name: google-services-staging.json
+        path: android/app/src/staging/google-services.json
+    - uses: actions/upload-artifact@v3
+      with:
+        name: google-services-production.json
+        path: android/app/src/production/google-services.json

@@ -26,12 +26,12 @@ jobs:
         with:
           google_services_json__staging: ${{ secrets.GOOGLE_SERVICES_JSON__STAGING }}
           google_services_json__production: ${{ secrets.GOOGLE_SERVICES_JSON__PRODUCTION }}
-      - name: Build
-        uses: ./.github/actions/build_android
-        with:
-          flavor: staging
-          dot_env_file: .env.staging
-          base64Keystore: ${{ secrets.ANDROID_SIGNING_KEY__BASE64 }}
-          keystorePassword: ${{ secrets.ANDROID_SIGNING_KEY__PASSWORD }}
-          keystoreAlias: ${{ secrets.ANDROID_SIGNING_KEY__ALIAS }}
-          keyPassword: ${{ secrets.ANDROID_SIGNING_KEY__ALIAS_PASSWORD }}
+#      - name: Build
+#        uses: ./.github/actions/build_android
+#        with:
+#          flavor: staging
+#          dot_env_file: .env.staging
+#          base64Keystore: ${{ secrets.ANDROID_SIGNING_KEY__BASE64 }}
+#          keystorePassword: ${{ secrets.ANDROID_SIGNING_KEY__PASSWORD }}
+#          keystoreAlias: ${{ secrets.ANDROID_SIGNING_KEY__ALIAS }}
+#          keyPassword: ${{ secrets.ANDROID_SIGNING_KEY__ALIAS_PASSWORD }}
