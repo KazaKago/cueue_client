@@ -27,11 +27,11 @@ runs:
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
       with:
-        channel: 'stable'
+        channel: stable
     - name: Create dot env file for staging
       uses: weyheyhey/create-dotenv-action@v1
       with:
-        filename: '.env.staging'
+        filename: .env.staging
       env:
         ^API_BASE_URL: ${{ inputs.api_base_url__staging }}
         ^APPLE_CLIENT_ID: ${{ inputs.apple_client_id__staging }}
@@ -39,7 +39,7 @@ runs:
     - name: Create dot env file for production
       uses: weyheyhey/create-dotenv-action@v1
       with:
-        filename: '.env.production'
+        filename: .env.production
       env:
         ^API_BASE_URL: ${{ inputs.api_base_url__production }}
         ^APPLE_CLIENT_ID: ${{ inputs.apple_client_id__production }}

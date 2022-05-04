@@ -16,6 +16,7 @@ runs:
       uses: actions/setup-java@v3
       with:
         java-version: 11
+        distribution: temurin
     - name: Put google-services.json for staging
       run: echo ${{ inputs.google_services_json__staging }} > android/app/src/staging/google-services.json
       shell: bash
