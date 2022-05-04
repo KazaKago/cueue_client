@@ -11,6 +11,7 @@ import 'package:cueue/presentation/view/global/modal/text_field_dialog.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authorizer/apple_authorizer.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authorizer/google_authorizer.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/about_page.dart';
+import 'package:cueue/presentation/view/hierarchy/setting/account_deletion_page.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/privacy_policy_url.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/settings_result_extension.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/terms_of_service_url.dart';
@@ -75,6 +76,8 @@ class SettingsPage extends HookConsumerWidget {
               _buildAboutAppTile(context, ref),
               _buildTermsOfServicesTile(context, ref),
               _buildPrivacyPolicyTile(context, ref),
+              _buildCautionOperationTitle(context, ref),
+              _buildAccountDeletionTile(context, ref),
             ],
           ),
         ),
@@ -95,9 +98,11 @@ class SettingsPage extends HookConsumerWidget {
       completed: (user) {
         if (!user.isEmailVerified) {
           return ListTile(
-            leading: const Icon(Icons.warning, color: Colors.red),
-            title: Text(intl(context).unConfirmationMail, style: const TextStyle(color: Colors.red)),
-            subtitle: Text(intl(context).tapToConfirmMail, style: const TextStyle(color: Colors.red)),
+            leading: const Icon(Icons.warning),
+            iconColor: Theme.of(context).errorColor,
+            title: Text(intl(context).unConfirmationMail),
+            subtitle: Text(intl(context).tapToConfirmMail),
+            textColor: Theme.of(context).errorColor,
             trailing: PopupMenuButton<int>(
               onSelected: (int index) {
                 switch (index) {
@@ -284,6 +289,22 @@ class SettingsPage extends HookConsumerWidget {
     );
   }
 
+  Widget _buildCautionOperationTitle(BuildContext context, WidgetRef ref) {
+    return ListTile(
+      title: Text(intl(context).cautionOperation, style: Theme.of(context).textTheme.caption),
+    );
+  }
+
+  Widget _buildAccountDeletionTile(BuildContext context, WidgetRef ref) {
+    return ListTile(
+      title: Text(intl(context).accountDeletion),
+      textColor: Theme.of(context).errorColor,
+      leading: const Icon(Icons.delete_forever),
+      iconColor: Theme.of(context).errorColor,
+      onTap: () => _goAccountDeletion(context),
+    );
+  }
+
   Future<void> _linkWithGoogle(BuildContext context, WidgetRef ref) async {
     final viewModel = ref.read(settingsViewModelProvider);
     try {
@@ -413,5 +434,9 @@ class SettingsPage extends HookConsumerWidget {
 
   Future<void> _goPrivacyPolicy() async {
     await launchUrl(privacyPolicyUrl);
+  }
+
+  Future<void> _goAccountDeletion(BuildContext context) {
+    return Navigator.push(context, MaterialPageRoute(builder: (context) => const AccountDeletionPage()));
   }
 }

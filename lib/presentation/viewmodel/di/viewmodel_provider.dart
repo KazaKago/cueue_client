@@ -14,6 +14,7 @@ import 'package:cueue/presentation/viewmodel/hierarchy/recipe/recipe_selection_v
 import 'package:cueue/presentation/viewmodel/hierarchy/recipe/recipe_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/search/search_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/setting/about_viewmodel.dart';
+import 'package:cueue/presentation/viewmodel/hierarchy/setting/account_deletion_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/setting/settings_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/splash/splash_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/tag/tag_editing_viewmodel.dart';
@@ -35,3 +36,4 @@ final recipeEditingViewModelProvider = ChangeNotifierProvider.autoDispose((ref) 
 final menuEditingViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => MenuEditingViewModel(ref.read(createMenuUseCaseProvider), ref.read(updateMenuUseCaseProvider), ref.read(deleteMenuUseCaseProvider)));
 final recipeDetailViewModelProvider = ChangeNotifierProvider.autoDispose.family<RecipeDetailViewModel, RecipeId>((ref, recipeId) => RecipeDetailViewModel(ref.read(followRecipeUseCaseProvider), ref.read(refreshRecipeUseCaseProvider), recipeId));
 final menuDetailViewModelProvider = ChangeNotifierProvider.autoDispose.family<MenuDetailViewModel, MenuId>((ref, menuId) => MenuDetailViewModel(ref.read(followMenuUseCaseProvider), ref.read(refreshMenuUseCaseProvider), menuId));
+final accountDeletionViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => AccountDeletionViewModel(ref.read(deleteAccountUseCaseProvider)));

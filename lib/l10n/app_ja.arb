@@ -255,5 +255,10 @@
         "type": "String"
       }
     }
-  }
+  },
+  "accountDeletion": "アカウント削除",
+  "cautionOperation": "注意が必要な操作",
+  "approveAndDeletionAccount": "すべて理解した上でアカウントを削除する",
+  "accountDeletionConfirmation": "本当にアカウントを削除してよろしいですか？",
+  "warning": "警告"
 }
