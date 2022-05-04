@@ -13,8 +13,8 @@ runs:
   using: composite
   steps:
     - name: Put GoogleService-Info.plist for staging
-      run: echo ${{ inputs.google_service_info_plist__staging }} >> ios/Runner/GoogleService-Info-Staging.plist
+      run: echo "${{ inputs.google_service_info_plist__staging }}" > ios/Runner/GoogleService-Info-Staging.plist
       shell: bash
     - name: Put GoogleService-Info.plist for production
-      run: echo ${{ inputs.google_service_info_plist__production }} >> ios/Runner/GoogleService-Info-Production.plist
+      run: echo "${{ inputs.google_service_info_plist__production }}" > ios/Runner/GoogleService-Info-Production.plist
       shell: bash

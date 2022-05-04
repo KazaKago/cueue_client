@@ -17,9 +17,9 @@ runs:
       with:
         java-version: 11
         distribution: temurin
-#    - name: Put google-services.json for staging
-#      run: echo ${{ inputs.google_services_json__staging }} >> android/app/src/staging/google-services.json
-#      shell: bash
-#    - name: Put google-services.json for production
-#      run: echo ${{ inputs.google_services_json__production }} >> android/app/src/production/google-services.json
-#      shell: bash
+    - name: Put google-services.json for staging
+      run: echo "${{ inputs.google_services_json__staging }}" > android/app/src/staging/google-services.json
+      shell: bash
+    - name: Put google-services.json for production
+      run: echo "${{ inputs.google_services_json__production }}" > android/app/src/production/google-services.json
+      shell: bash
