@@ -1,0 +1,32 @@
+name: DeployStaging
+
+on:
+  push:
+    branches:
+      - develop
+  workflow_dispatch:
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Common
+        uses: ./.github/actions/setup_common
+        with:
+          api_base_url__staging: ${{ secrets.API_BASE_URL__STAGING }}
+          api_base_url__production: ${{ secrets.API_BASE_URL__PRODUCTION }}
+          apple_client_id__staging: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
+          apple_client_id__production: ${{ secrets.APPLE_CLIENT_ID__PRODUCTION }}
+          apple_callback_url__staging: ${{ secrets.APPLE_CALLBACK_URL__STAGING }}
+          apple_callback_url__production: ${{ secrets.APPLE_CALLBACK_URL__PRODUCTION }}
+      - name: Build
+        uses: ./.github/actions/build_android
+        with:
+          flavor: staging
+          dot_env_file: .env.staging
+          base64Keystore: ${{ secrets.ANDROID_SIGNING_KEY__BASE64 }}
+          keystorePassword: ${{ secrets.ANDROID_SIGNING_KEY__PASSWORD }}
+          keystoreAlias: ${{ secrets.ANDROID_SIGNING_KEY__ALIAS }}
+          keyPassword: ${{ secrets.ANDROID_SIGNING_KEY__ALIAS_PASSWORD }}

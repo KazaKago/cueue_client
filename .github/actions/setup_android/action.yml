@@ -17,12 +17,8 @@ runs:
       with:
         java-version: 11
     - name: Put google-services.json for staging
-      run: echo GOOGLE_SERVICES_JSON__STAGING >> android/app/src/staging/google-services.json
+      run: echo ${{ inputs.google_services_json__staging }} >> android/app/src/staging/google-services.json
       shell: bash
-      env:
-        GOOGLE_SERVICES_JSON__STAGING: ${{ inputs.google_services_json__staging }}
     - name: Put google-services.json for production
-      run: echo GOOGLE_SERVICES_JSON__PRODUCTION >> android/app/src/production/google-services.json
+      run: echo ${{ inputs.google_services_json__production }} >> android/app/src/production/google-services.json
       shell: bash
-      env:
-        GOOGLE_SERVICES_JSON__PRODUCTION: ${{ inputs.google_services_json__production }}

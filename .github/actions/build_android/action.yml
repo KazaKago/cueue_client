@@ -1,0 +1,38 @@
+name: Build Android
+description: build for android.
+
+inputs:
+  flavor:
+    description: flutter flavor argument.
+    required: true
+  dot_env_file:
+    description: .env file location.
+    required: true
+  base64Keystore:
+    description: base64 encoded signing key.
+    required: true
+  keystorePassword:
+    description: keystore password.
+    required: true
+  keystoreAlias:
+    description: keystore alias.
+    required: true
+  keyPassword:
+    description: keystore alias password.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Build
+      run: flutter build appbundle --flavor ${{ inputs.flavor }} --dart-define=DOT_ENV=${{ inputs.dot_env_file }}
+      shell: bash
+    - name: Sign
+      id: sign
+      uses: mukeshsolanki/bundletool-action@v1.0.0
+      with:
+        aabFile: ./build/app/outputs/bundle/${{ inputs.flavor }}Release/app-${{ inputs.flavor }}-release.aab
+        base64Keystore: ${{ inputs.base64Keystore }}
+        keystorePassword: ${{ inputs.keystorePassword }}
+        keystoreAlias: ${{ inputs.keystoreAlias }}
+        keyPassword: ${{ inputs.keyPassword }}
