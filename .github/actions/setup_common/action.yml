@@ -2,22 +2,22 @@ name: Setup Common
 description: setup for flutter action.
 
 inputs:
-  api_base_url__staging:
+  apiBaseUrl-staging:
     description: api base url for staging.
     required: true
-  api_base_url__production:
+  apiBaseUrl-production:
     description: api base url for production.
     required: true
-  apple_client_id__staging:
+  appleClientId-staging:
     description: apple client id for staging.
     required: true
-  apple_client_id__production:
+  appleClientId-production:
     description: apple client id for production.
     required: true
-  apple_callback_url__staging:
+  appleCallbackUrl-staging:
     description: apple callback url for staging.
     required: true
-  apple_callback_url__production:
+  appleCallbackUrl-production:
     description: apple callback url for production.
     required: true
 
@@ -33,17 +33,17 @@ runs:
       with:
         filename: .env.staging
       env:
-        ^API_BASE_URL: ${{ inputs.api_base_url__staging }}
-        ^APPLE_CLIENT_ID: ${{ inputs.apple_client_id__staging }}
-        ^APPLE_CALLBACK_URL: ${{ inputs.apple_callback_url__staging }}
+        ^API_BASE_URL: ${{ inputs.apiBaseUrl-staging }}
+        ^APPLE_CLIENT_ID: ${{ inputs.appleClientId-staging }}
+        ^APPLE_CALLBACK_URL: ${{ inputs.appleCallbackUrl-staging }}
     - name: Create dot env file for production
       uses: weyheyhey/create-dotenv-action@v1
       with:
         filename: .env.production
       env:
-        ^API_BASE_URL: ${{ inputs.api_base_url__production }}
-        ^APPLE_CLIENT_ID: ${{ inputs.apple_client_id__production }}
-        ^APPLE_CALLBACK_URL: ${{ inputs.apple_callback_url__production }}
+        ^API_BASE_URL: ${{ inputs.apiBaseUrl-production }}
+        ^APPLE_CLIENT_ID: ${{ inputs.appleClientId-production }}
+        ^APPLE_CALLBACK_URL: ${{ inputs.appleCallbackUrl-production }}
     - name: Pub get
       run: flutter pub get
       shell: bash

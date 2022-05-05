@@ -2,10 +2,10 @@ name: Setup iOS
 description: setup for iOS action.
 
 inputs:
-  google_service_info_plist_base64__staging:
+  googleServiceInfoPlistBase64-staging:
     description: base64 encoded GoogleServiceInfo.plist for staging.
     required: true
-  google_service_info_plist_base64__production:
+  googleServiceInfoPlistBase64-production:
     description: base64 encoded GoogleServiceInfo.plist for production.
     required: true
 
@@ -13,8 +13,8 @@ runs:
   using: composite
   steps:
     - name: Put GoogleService-Info.plist for staging
-      run: echo ${{ inputs.google_service_info_plist_base64__staging }} > base64 -d ios/Runner/GoogleService-Info-Staging.plist
+      run: echo ${{ inputs.googleServiceInfoPlistBase64-staging }} > base64 -d ios/Runner/GoogleService-Info-Staging.plist
       shell: bash
     - name: Put GoogleService-Info.plist for production
-      run: echo ${{ inputs.google_service_info_plist_base64__production }} > base64 -d ios/Runner/GoogleService-Info-Production.plist
+      run: echo ${{ inputs.googleServiceInfoPlistBase64-production }} > base64 -d ios/Runner/GoogleService-Info-Production.plist
       shell: bash

@@ -5,7 +5,7 @@ inputs:
   flavor:
     description: flutter flavor argument.
     required: true
-  dot_env_file:
+  dotEnvFile:
     description: .env file location.
     required: true
   base64Keystore:
@@ -21,11 +21,22 @@ inputs:
     description: keystore alias password.
     required: true
 
+outputs:
+  aabPath:
+    description: AAB path.
+    value: ${{ steps.output-aab.outputs.aabPath }}
+  apkPath:
+    description: APK path.
+    value: ${{ steps.sign.outputs.apkPath }}
+
 runs:
   using: composite
   steps:
     - name: Build
-      run: flutter build appbundle --flavor ${{ inputs.flavor }} --dart-define=DOT_ENV=${{ inputs.dot_env_file }}
+      run: flutter build appbundle --flavor ${{ inputs.flavor }} --dart-define=DOT_ENV=${{ inputs.dotEnvFile }}
+      shell: bash
+    - id: output-aab
+      run: echo "::set-output name=aabPath::$(echo ./build/app/outputs/bundle/${{ inputs.flavor }}Release/app-${{ inputs.flavor }}-release.aab)"
       shell: bash
     - name: Sign
       id: sign

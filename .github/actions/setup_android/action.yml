@@ -2,10 +2,10 @@ name: Setup Android
 description: setup for Android action.
 
 inputs:
-  google_services_json_base64__staging:
+  googleServicesJsonBase64-staging:
     description: base64 encoded google-services.json for staging.
     required: true
-  google_services_json_base64__production:
+  googleServicesJsonBase64-production:
     description: base64 encoded google-services.json for production.
     required: true
 
@@ -19,8 +19,8 @@ runs:
         distribution: temurin
         cache: gradle
     - name: Put google-services.json for staging
-      run: echo ${{ inputs.google_services_json_base64__staging }} | base64 -d > android/app/src/staging/google-services.json
+      run: echo ${{ inputs.googleServicesJsonBase64-staging }} | base64 -d > android/app/src/staging/google-services.json
       shell: bash
     - name: Put google-services.json for production
-      run: echo ${{ inputs.google_services_json_base64__production }} | base64 -d > android/app/src/production/google-services.json
+      run: echo ${{ inputs.googleServicesJsonBase64-production }} | base64 -d > android/app/src/production/google-services.json
       shell: bash
