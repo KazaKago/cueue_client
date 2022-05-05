@@ -48,5 +48,4 @@ app.*.map.json
 /android/app/release
 
 # Manual rules.
-.env.staging
-.env.production
+assets/env/

@@ -3,10 +3,7 @@ description: build for android.
 
 inputs:
   flavor:
-    description: flutter flavor argument.
-    required: true
-  dotEnvFile:
-    description: .env file location.
+    description: flavor argument.
     required: true
   base64Keystore:
     description: base64 encoded signing key.
@@ -33,9 +30,10 @@ runs:
   using: composite
   steps:
     - name: Build
-      run: flutter build appbundle --flavor ${{ inputs.flavor }} --dart-define=DOT_ENV=${{ inputs.dotEnvFile }}
+      run: flutter build appbundle --flavor ${{ inputs.flavor }} --dart-define=DOT_ENV=assets/env/.env
       shell: bash
-    - id: output-aab
+    - name: Output AAB
+      id: output-aab
       run: echo "::set-output name=aabPath::$(echo ./build/app/outputs/bundle/${{ inputs.flavor }}Release/app-${{ inputs.flavor }}-release.aab)"
       shell: bash
     - name: Sign

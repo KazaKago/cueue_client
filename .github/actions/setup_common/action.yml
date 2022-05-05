@@ -2,23 +2,14 @@ name: Setup Common
 description: setup for flutter action.
 
 inputs:
-  apiBaseUrl-staging:
-    description: api base url for staging.
+  apiBaseUrl:
+    description: api base url.
     required: true
-  apiBaseUrl-production:
-    description: api base url for production.
+  appleClientId:
+    description: apple client id.
     required: true
-  appleClientId-staging:
-    description: apple client id for staging.
-    required: true
-  appleClientId-production:
-    description: apple client id for production.
-    required: true
-  appleCallbackUrl-staging:
-    description: apple callback url for staging.
-    required: true
-  appleCallbackUrl-production:
-    description: apple callback url for production.
+  appleCallbackUrl:
+    description: apple callback url.
     required: true
 
 runs:
@@ -28,22 +19,17 @@ runs:
       uses: subosito/flutter-action@v2
       with:
         channel: stable
-    - name: Create dot env file for staging
+    - name: Mkdir env folder
+      run: mkdir -p assets/env
+      shell: bash
+    - name: Create dot env file
       uses: weyheyhey/create-dotenv-action@v1
       with:
-        filename: .env.staging
+        filename: assets/env/.env
       env:
-        ^API_BASE_URL: ${{ inputs.apiBaseUrl-staging }}
-        ^APPLE_CLIENT_ID: ${{ inputs.appleClientId-staging }}
-        ^APPLE_CALLBACK_URL: ${{ inputs.appleCallbackUrl-staging }}
-    - name: Create dot env file for production
-      uses: weyheyhey/create-dotenv-action@v1
-      with:
-        filename: .env.production
-      env:
-        ^API_BASE_URL: ${{ inputs.apiBaseUrl-production }}
-        ^APPLE_CLIENT_ID: ${{ inputs.appleClientId-production }}
-        ^APPLE_CALLBACK_URL: ${{ inputs.appleCallbackUrl-production }}
+        ^API_BASE_URL: ${{ inputs.apiBaseUrl }}
+        ^APPLE_CLIENT_ID: ${{ inputs.appleClientId }}
+        ^APPLE_CALLBACK_URL: ${{ inputs.appleCallbackUrl }}
     - name: Pub get
       run: flutter pub get
       shell: bash

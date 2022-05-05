@@ -16,11 +16,8 @@ jobs:
       - name: Setup Common
         uses: ./.github/actions/setup_common
         with:
-          apiBaseUrl-staging: ${{ secrets.API_BASE_URL__STAGING }}
-          apiBaseUrl-production: ${{ secrets.API_BASE_URL__PRODUCTION }}
-          appleClientId-staging: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
-          appleClientId-production: ${{ secrets.APPLE_CLIENT_ID__PRODUCTION }}
-          appleCallbackUrl-staging: ${{ secrets.APPLE_CALLBACK_URL__STAGING }}
-          appleCallbackUrl-production: ${{ secrets.APPLE_CALLBACK_URL__PRODUCTION }}
+          apiBaseUrl: ${{ secrets.API_BASE_URL__STAGING }}
+          appleClientId: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
+          appleCallbackUrl: ${{ secrets.APPLE_CALLBACK_URL__STAGING }}
       - name: Test
         uses: ./.github/actions/test

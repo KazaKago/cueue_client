@@ -1,4 +1,4 @@
-git_url("git@gitlab.com:KazaKago/apple_certificates.git")
+git_url("git@github.com:KazaKago/apple_certificates.git")
 
 storage_mode("git")
 

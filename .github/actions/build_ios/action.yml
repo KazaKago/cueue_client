@@ -1,0 +1,29 @@
+name: Build iOS
+description: build for ios.
+
+inputs:
+  flavor:
+    description: flavor argument.
+    required: true
+  exportOptionsPlistBase64:
+    description: base64 encoded ExportOptions.plist
+    required: true
+
+outputs:
+  ipaPath:
+    description: IPA path.
+    value: ${{ steps.output-ipa.outputs.ipaPath }}
+
+runs:
+  using: composite
+  steps:
+    - name: Put ExportOptions.plist
+      run: echo ${{ inputs.exportOptionsPlistBase64 }} | base64 -d > ExportOptions.plist
+      shell: bash
+    - name: Build
+      run: flutter build ipa --flavor ${{ inputs.flavor }} --dart-define=DOT_ENV=assets/env/.env --export-options-plist=ExportOptions.plist
+      shell: bash
+    - name: Output IPA
+      id: output-ipa
+      run: echo "::set-output name=ipaPath::$(echo ./build/ios/ipa/cueue.ipa)"
+      shell: bash

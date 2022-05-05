@@ -2,19 +2,38 @@ name: Setup iOS
 description: setup for iOS action.
 
 inputs:
-  googleServiceInfoPlistBase64-staging:
-    description: base64 encoded GoogleServiceInfo.plist for staging.
+  appleCertificatesRepositorySshKey:
+    description: ssh key for fastlane match repository.
     required: true
-  googleServiceInfoPlistBase64-production:
-    description: base64 encoded GoogleServiceInfo.plist for production.
+  fastlaneMatchPassword:
+    description: fastlane match password.
+    required: true
+  flavor:
+    description: flavor argument.
+    required: true
+  googleServiceInfoPlistBase64:
+    description: base64 encoded GoogleServiceInfo.plist.
     required: true
 
 runs:
   using: composite
   steps:
-    - name: Put GoogleService-Info.plist for staging
-      run: echo ${{ inputs.googleServiceInfoPlistBase64-staging }} > base64 -d ios/Runner/GoogleService-Info-Staging.plist
+    - uses: webfactory/ssh-agent@v0.5.4
+      with:
+        ssh-private-key: ${{ inputs.appleCertificatesRepositorySshKey }}
+    - name: Install Bundler 1.17.2
+      run: gem install bundler:1.17.2
       shell: bash
-    - name: Put GoogleService-Info.plist for production
-      run: echo ${{ inputs.googleServiceInfoPlistBase64-production }} > base64 -d ios/Runner/GoogleService-Info-Production.plist
+    - name: Bundle Install
+      run: bundle install
+      shell: bash
+      working-directory: ./ios
+    - name: Fastlane Match
+      run: bundle exec fastlane get_all_cer
+      shell: bash
+      working-directory: ./ios
+      env:
+        MATCH_PASSWORD: ${{ inputs.fastlaneMatchPassword }}
+    - name: Put GoogleService-Info.plist
+      run: echo ${{ inputs.googleServiceInfoPlistBase64 }} > base64 -d ios/Runner/GoogleService-Info-${{ inputs.flavor }}.plist
       shell: bash
