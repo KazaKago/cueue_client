@@ -19,12 +19,12 @@ runs:
         distribution: temurin
         cache: gradle
     - name: Put google-services.json for staging
-      run: echo $GOOGLE_SERVICES_JSON | base64 -d > android/app/src/staging/google-services.json
+      run: echo GOOGLE_SERVICES_JSON | base64 -d > android/app/src/staging/google-services.json
       shell: bash
       env:
         GOOGLE_SERVICES_JSON: ${{ inputs.google_services_json_base64__staging }}
     - name: Put google-services.json for production
-      run: echo $GOOGLE_SERVICES_JSON | base64 -d > android/app/src/production/google-services.json
+      run: echo GOOGLE_SERVICES_JSON | base64 -d > android/app/src/production/google-services.json
       shell: bash
       env:
         GOOGLE_SERVICES_JSON: ${{ inputs.google_services_json_base64__production }}
