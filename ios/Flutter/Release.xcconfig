@@ -1,5 +1,2 @@
-#include "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
+#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
 #include "Generated.xcconfig"
-
-DEVELOPMENT_TEAM=3WUM9V6RP7
-CODE_SIGN_IDENTITY=Apple Distribution
