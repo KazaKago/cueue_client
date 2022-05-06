@@ -21,19 +21,19 @@ runs:
     - uses: webfactory/ssh-agent@v0.5.4
       with:
         ssh-private-key: ${{ inputs.appleCertificatesRepositorySshKey }}
-    - name: Install Bundler 1.17.2
-      run: gem install bundler:1.17.2
-      shell: bash
-    - name: Bundle Install
-      run: bundle install
-      shell: bash
-      working-directory: ./ios
-    - name: Fastlane Match
-      run: bundle exec fastlane get_all_cer
-      shell: bash
-      working-directory: ./ios
-      env:
-        MATCH_PASSWORD: ${{ inputs.fastlaneMatchPassword }}
+#    - name: Install Bundler 1.17.2
+#      run: gem install bundler:1.17.2
+#      shell: bash
+#    - name: Bundle Install
+#      run: bundle install
+#      shell: bash
+#      working-directory: ./ios
+#    - name: Fastlane Match
+#      run: bundle exec fastlane get_all_cer
+#      shell: bash
+#      working-directory: ./ios
+#      env:
+#        MATCH_PASSWORD: ${{ inputs.fastlaneMatchPassword }}
     - name: Put GoogleService-Info.plist
       run: echo ${{ inputs.googleServiceInfoPlistBase64 }} | base64 -d > ios/Runner/GoogleService-Info-${{ inputs.flavor }}.plist
       shell: bash
