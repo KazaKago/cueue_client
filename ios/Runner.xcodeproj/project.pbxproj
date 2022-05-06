@@ -165,6 +165,7 @@
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				A186AB04D1F49D4316AD6803 /* [CP] Embed Pods Frameworks */,
+				E3D1B49B2825883C00B9D671 /* Crashlytics */,
 				037B2E23807BAE8EAF2CCD00 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -327,6 +328,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ $CONFIGURATION == *\"Staging\"* ]]; then\n    cp $PRODUCT_NAME/GoogleService-Info-Staging.plist $PRODUCT_NAME/GoogleService-Info.plist\nelif [[ $CONFIGURATION == *\"Production\"* ]]; then\n    cp $PRODUCT_NAME/GoogleService-Info-Production.plist $PRODUCT_NAME/GoogleService-Info.plist\nelif [[ $CONFIGURATION == \"Release\" ]]; then\n    echo \"Might be CI archive\"\nelse\n    echo \"configuration didn't match to Staging or Production\"\n    echo $CONFIGURATION\n    exit 1\nfi\n";
+		};
+		E3D1B49B2825883C00B9D671 /* Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = Crashlytics;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PODS_ROOT}/FirebaseCrashlytics/run\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
