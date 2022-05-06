@@ -1,0 +1,4 @@
+#include "Debug.xcconfig"
+#include "Production.xcconfig"
+
+PROVISIONING_PROFILE_SPECIFIER=match Development com.kazakago.cueue
