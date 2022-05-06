@@ -21,7 +21,7 @@ runs:
       run: echo ${{ inputs.exportOptionsPlistBase64 }} | base64 -d > ExportOptions.plist
       shell: bash
     - name: Build
-      run: flutter build ipa --flavor ${{ inputs.flavor }} --dart-define=DOT_ENV=assets/env/.env
+      run: flutter build ios --flavor ${{ inputs.flavor }} --dart-define=DOT_ENV=assets/env/.env
       shell: bash
 #    - name: Build
 #      run: flutter build ipa --flavor ${{ inputs.flavor }} --dart-define=DOT_ENV=assets/env/.env --export-options-plist=ExportOptions.plist
