@@ -40,7 +40,7 @@ jobs:
 #          groups: ${{ secrets.FIREBASE_APP_DISTRIBUTION_TESTER_GROUP }}
 #          file: ${{ steps.build.outputs.apkPath }}
   ios:
-    runs-on: macos-latest
+    runs-on: macos-12
     steps:
       - name: Checkout
         uses: actions/checkout@v3
