@@ -35,7 +35,7 @@ lane :get_all_cer do
     readonly: true,
   )
   match(
-    app_identifier: ["com.kazakago.cueue"],
+    app_identifier: ["com.kazakago.cueue", "com.kazakago.cueue.staging"],
     type: "appstore",
     readonly: true,
   )
@@ -54,7 +54,7 @@ lane :update_all_cer do
     force_for_new_devices: true,
   )
   match(
-    app_identifier: ["com.kazakago.cueue"],
+    app_identifier: ["com.kazakago.cueue", "com.kazakago.cueue.staging"],
     type: "appstore",
   )
 end
