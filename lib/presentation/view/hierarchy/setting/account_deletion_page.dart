@@ -13,7 +13,6 @@ class AccountDeletionPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final viewModel = ref.read(accountDeletionViewModelProvider);
     ref
       ..listen<Event<void>>(
         accountDeletionViewModelProvider.select((viewModel) => viewModel.replaceWelcomePageEvent),
