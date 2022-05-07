@@ -7,40 +7,40 @@ on:
   workflow_dispatch:
 
 jobs:
-#  android:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v3
-#      - name: Setup Common
-#        uses: ./.github/actions/setup_common
-#        with:
-#          apiBaseUrl: ${{ secrets.API_BASE_URL__STAGING }}
-#          appleClientId: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
-#          appleCallbackUrl: ${{ secrets.APPLE_CALLBACK_URL__STAGING }}
-#      - name: Setup Android
-#        uses: ./.github/actions/setup_android
-#        with:
-#          flavor: staging
-#          googleServicesJsonBase64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64__STAGING }}
-#      - name: Build
-#        id: build
-#        uses: ./.github/actions/build_android
-#        with:
-#          flavor: staging
-#          base64Keystore: ${{ secrets.ANDROID_SIGNING_KEY__BASE64 }}
-#          keystorePassword: ${{ secrets.ANDROID_SIGNING_KEY__PASSWORD }}
-#          keystoreAlias: ${{ secrets.ANDROID_SIGNING_KEY__ALIAS }}
-#          keyPassword: ${{ secrets.ANDROID_SIGNING_KEY__ALIAS_PASSWORD }}
-#      - name: Deploy
-#        uses: wzieba/Firebase-Distribution-Github-Action@v1
-#        with:
-#          appId: ${{ secrets.FIREBASE_APP_ID_ANDROID__STAGING }}
-#          token: ${{ secrets.FIREBASE_TOKEN }}
-#          groups: ${{ secrets.FIREBASE_APP_DISTRIBUTION_TESTER_GROUP }}
-#          file: ${{ steps.build.outputs.apkPath }}
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Common
+        uses: ./.github/actions/setup_common
+        with:
+          apiBaseUrl: ${{ secrets.API_BASE_URL__STAGING }}
+          appleClientId: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
+          appleCallbackUrl: ${{ secrets.APPLE_CALLBACK_URL__STAGING }}
+      - name: Setup Android
+        uses: ./.github/actions/setup_android
+        with:
+          flavor: staging
+          googleServicesJsonBase64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64__STAGING }}
+      - name: Build
+        id: build
+        uses: ./.github/actions/build_android
+        with:
+          flavor: staging
+          base64Keystore: ${{ secrets.ANDROID_SIGNING_KEY__BASE64 }}
+          keystorePassword: ${{ secrets.ANDROID_SIGNING_KEY__PASSWORD }}
+          keystoreAlias: ${{ secrets.ANDROID_SIGNING_KEY__ALIAS }}
+          keyPassword: ${{ secrets.ANDROID_SIGNING_KEY__ALIAS_PASSWORD }}
+      - name: Deploy
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID_ANDROID__STAGING }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          groups: ${{ secrets.FIREBASE_APP_DISTRIBUTION_TESTER_GROUP }}
+          file: ${{ steps.build.outputs.apkPath }}
   ios:
-    runs-on: macos-12
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -63,10 +63,23 @@ jobs:
         with:
           flavor: Staging
           exportOptionsPlistBase64: ${{ secrets.EXPORT_OPTIONS_PLIST_ADHOC__STAGING }}
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: iosApp.ipa
+          path: ${{ steps.build.outputs.ipaPath }}
+  ios-distribute:
+    needs: ios
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: iosApp.ipa
       - name: Deploy
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID_IOS__STAGING }}
           token: ${{ secrets.FIREBASE_TOKEN }}
           groups: ${{ secrets.FIREBASE_APP_DISTRIBUTION_TESTER_GROUP }}
-          file: ${{ steps.build.outputs.ipaPath }}
+          file: iosApp.ipa
