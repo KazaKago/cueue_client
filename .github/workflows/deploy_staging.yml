@@ -76,6 +76,11 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: iosApp.ipa
+          path: iosApp.ipa
+      - name: Delete artifact
+        uses: geekyeggo/delete-artifact@v1
+        with:
+          name: iosApp.ipa
       - name: Deploy
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
