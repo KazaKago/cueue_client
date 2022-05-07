@@ -1,6 +1,9 @@
-name: DeployStaging
+name: DeployProduction
 
 on:
+  push:
+    branches:
+      - develop
   workflow_dispatch:
 
 jobs:
@@ -12,19 +15,19 @@ jobs:
       - name: Setup Common
         uses: ./.github/actions/setup_common
         with:
-          apiBaseUrl: ${{ secrets.API_BASE_URL__STAGING }}
-          appleClientId: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
-          appleCallbackUrl: ${{ secrets.APPLE_CALLBACK_URL__STAGING }}
+          apiBaseUrl: ${{ secrets.API_BASE_URL__PRODUCTION }}
+          appleClientId: ${{ secrets.APPLE_CLIENT_ID__PRODUCTION }}
+          appleCallbackUrl: ${{ secrets.APPLE_CALLBACK_URL__PRODUCTION }}
       - name: Setup Android
         uses: ./.github/actions/setup_android
         with:
-          flavor: staging
-          googleServicesJsonBase64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64__STAGING }}
+          flavor: production
+          googleServicesJsonBase64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64__PRODUCTION }}
       - name: Build
         id: build
         uses: ./.github/actions/build_android
         with:
-          flavor: staging
+          flavor: production
           base64Keystore: ${{ secrets.ANDROID_SIGNING_KEY__BASE64 }}
           keystorePassword: ${{ secrets.ANDROID_SIGNING_KEY__PASSWORD }}
           keystoreAlias: ${{ secrets.ANDROID_SIGNING_KEY__ALIAS }}
@@ -32,7 +35,7 @@ jobs:
       - name: Deploy
         uses: ./.github/actions/deploy
         with:
-          appId: ${{ secrets.FIREBASE_APP_ID_ANDROID__STAGING }}
+          appId: ${{ secrets.FIREBASE_APP_ID_ANDROID__PRODUCTION }}
           token: ${{ secrets.FIREBASE_TOKEN }}
           groups: ${{ secrets.FIREBASE_APP_DISTRIBUTION_TESTER_GROUP }}
           file: ${{ steps.build.outputs.apkPath }}
@@ -44,26 +47,26 @@ jobs:
       - name: Setup Common
         uses: ./.github/actions/setup_common
         with:
-          apiBaseUrl: ${{ secrets.API_BASE_URL__STAGING }}
-          appleClientId: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
-          appleCallbackUrl: ${{ secrets.APPLE_CALLBACK_URL__STAGING }}
+          apiBaseUrl: ${{ secrets.API_BASE_URL__PRODUCTION }}
+          appleClientId: ${{ secrets.APPLE_CLIENT_ID__PRODUCTION }}
+          appleCallbackUrl: ${{ secrets.APPLE_CALLBACK_URL__PRODUCTION }}
       - name: Setup iOS
         uses: ./.github/actions/setup_ios
         with:
           appleCertificatesRepositorySshKey: ${{ secrets.APPLE_CERTIFICATES_REPOSITORY_SSH_KEY }}
           fastlaneMatchPassword: ${{ secrets.FASTLANE_MATCH_PASSWORD }}
-          flavor: Staging
-          googleServiceInfoPlistBase64: ${{ secrets.GOOGLE_SERVICE_INFO_PLIST_BASE64__STAGING }}
+          flavor: production
+          googleServiceInfoPlistBase64: ${{ secrets.GOOGLE_SERVICE_INFO_PLIST_BASE64__PRODUCTION }}
       - name: Build
         id: build
         uses: ./.github/actions/build_ios
         with:
-          flavor: Staging
-          exportOptionsPlistBase64: ${{ secrets.EXPORT_OPTIONS_PLIST_ADHOC__STAGING }}
+          flavor: production
+          exportOptionsPlistBase64: ${{ secrets.EXPORT_OPTIONS_PLIST_ADHOC__PRODUCTION }}
       - name: Deploy
         uses: ./.github/actions/deploy
         with:
-          appId: ${{ secrets.FIREBASE_APP_ID_IOS__STAGING }}
+          appId: ${{ secrets.FIREBASE_APP_ID_IOS__PRODUCTION }}
           token: ${{ secrets.FIREBASE_TOKEN }}
           groups: ${{ secrets.FIREBASE_APP_DISTRIBUTION_TESTER_GROUP }}
           file: ${{ steps.build.outputs.ipaPath }}
