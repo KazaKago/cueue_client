@@ -1,0 +1,26 @@
+name: Deploy
+description: deploy to firebase distribution.
+
+inputs:
+  appId:
+    description: App id can be found on the General Settings page.
+    required: true
+  token:
+    description: Upload token - see Firebase CLI Reference.
+    required: true
+  file:
+    description: Artifact to upload (.apk or .ipa).
+    required: true
+  groups:
+    description: Distribution groups.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Install Firebase
+      run: npm install -g firebase-tools
+      shell: bash
+    - name: Upload
+      run: firebase appdistribution:distribute ${{ inputs.file }} --app ${{ inputs.appId }} --groups ${{ inputs.groups }} --token ${{ inputs.token }}
+      shell: bash
