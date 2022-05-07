@@ -30,7 +30,7 @@ runs:
   using: composite
   steps:
     - name: Build
-      run: flutter build appbundle --flavor ${{ inputs.flavor }} --dart-define=DOT_ENV=assets/env/.env
+      run: flutter build appbundle --flavor ${{ inputs.flavor }}
       shell: bash
     - name: Output AAB
       id: output-aab
