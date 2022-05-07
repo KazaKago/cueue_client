@@ -32,59 +32,63 @@ jobs:
           keystorePassword: ${{ secrets.ANDROID_SIGNING_KEY__PASSWORD }}
           keystoreAlias: ${{ secrets.ANDROID_SIGNING_KEY__ALIAS }}
           keyPassword: ${{ secrets.ANDROID_SIGNING_KEY__ALIAS_PASSWORD }}
-      - name: Deploy
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
-        with:
-          appId: ${{ secrets.FIREBASE_APP_ID_ANDROID__STAGING }}
-          token: ${{ secrets.FIREBASE_TOKEN }}
-          groups: ${{ secrets.FIREBASE_APP_DISTRIBUTION_TESTER_GROUP }}
-          file: ${{ steps.build.outputs.apkPath }}
-  ios:
-    runs-on: macos-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Common
-        uses: ./.github/actions/setup_common
-        with:
-          apiBaseUrl: ${{ secrets.API_BASE_URL__STAGING }}
-          appleClientId: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
-          appleCallbackUrl: ${{ secrets.APPLE_CALLBACK_URL__STAGING }}
-      - name: Setup iOS
-        uses: ./.github/actions/setup_ios
-        with:
-          appleCertificatesRepositorySshKey: ${{ secrets.APPLE_CERTIFICATES_REPOSITORY_SSH_KEY }}
-          fastlaneMatchPassword: ${{ secrets.FASTLANE_MATCH_PASSWORD }}
-          flavor: Staging
-          googleServiceInfoPlistBase64: ${{ secrets.GOOGLE_SERVICE_INFO_PLIST_BASE64__STAGING }}
-      - name: Build
-        id: build
-        uses: ./.github/actions/build_ios
-        with:
-          flavor: Staging
-          exportOptionsPlistBase64: ${{ secrets.EXPORT_OPTIONS_PLIST_ADHOC__STAGING }}
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: iosApp.ipa
-          path: ${{ steps.build.outputs.ipaPath }}
-  ios-distribute:
-    needs: ios
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: iosApp.ipa
-          path: iosApp.ipa
-      - name: Delete artifact
-        uses: geekyeggo/delete-artifact@v1
-        with:
-          name: iosApp.ipa
-      - name: Deploy
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
-        with:
-          appId: ${{ secrets.FIREBASE_APP_ID_IOS__STAGING }}
-          token: ${{ secrets.FIREBASE_TOKEN }}
-          groups: ${{ secrets.FIREBASE_APP_DISTRIBUTION_TESTER_GROUP }}
-          file: iosApp.ipa
+      - name: Install Firebase
+        run: yarn install
+      - name: Upload
+        run: yarn run firebase appdistribution:distribute ${{ steps.build.outputs.apkPath }} --app ${{ secrets.FIREBASE_APP_ID_ANDROID__STAGING }} --groups ${{ secrets.FIREBASE_APP_DISTRIBUTION_TESTER_GROUP }} --token ${{ secrets.FIREBASE_TOKEN }}
+#      - name: Deploy
+#        uses: wzieba/Firebase-Distribution-Github-Action@v1
+#        with:
+#          appId: ${{ secrets.FIREBASE_APP_ID_ANDROID__STAGING }}
+#          token: ${{ secrets.FIREBASE_TOKEN }}
+#          groups: ${{ secrets.FIREBASE_APP_DISTRIBUTION_TESTER_GROUP }}
+#          file: ${{ steps.build.outputs.apkPath }}
+#  ios:
+#    runs-on: macos-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v3
+#      - name: Setup Common
+#        uses: ./.github/actions/setup_common
+#        with:
+#          apiBaseUrl: ${{ secrets.API_BASE_URL__STAGING }}
+#          appleClientId: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
+#          appleCallbackUrl: ${{ secrets.APPLE_CALLBACK_URL__STAGING }}
+#      - name: Setup iOS
+#        uses: ./.github/actions/setup_ios
+#        with:
+#          appleCertificatesRepositorySshKey: ${{ secrets.APPLE_CERTIFICATES_REPOSITORY_SSH_KEY }}
+#          fastlaneMatchPassword: ${{ secrets.FASTLANE_MATCH_PASSWORD }}
+#          flavor: Staging
+#          googleServiceInfoPlistBase64: ${{ secrets.GOOGLE_SERVICE_INFO_PLIST_BASE64__STAGING }}
+#      - name: Build
+#        id: build
+#        uses: ./.github/actions/build_ios
+#        with:
+#          flavor: Staging
+#          exportOptionsPlistBase64: ${{ secrets.EXPORT_OPTIONS_PLIST_ADHOC__STAGING }}
+#      - name: Upload artifact
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: iosApp.ipa
+#          path: ${{ steps.build.outputs.ipaPath }}
+#  ios-distribute:
+#    needs: ios
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Download artifact
+#        uses: actions/download-artifact@v3
+#        with:
+#          name: iosApp.ipa
+#          path: iosApp.ipa
+#      - name: Delete artifact
+#        uses: geekyeggo/delete-artifact@v1
+#        with:
+#          name: iosApp.ipa
+#      - name: Deploy
+#        uses: wzieba/Firebase-Distribution-Github-Action@v1
+#        with:
+#          appId: ${{ secrets.FIREBASE_APP_ID_IOS__STAGING }}
+#          token: ${{ secrets.FIREBASE_TOKEN }}
+#          groups: ${{ secrets.FIREBASE_APP_DISTRIBUTION_TESTER_GROUP }}
+#          file: iosApp.ipa
