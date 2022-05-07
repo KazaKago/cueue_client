@@ -4,21 +4,24 @@ import 'package:cueue/data/api/global/entity/api_base_url.dart';
 import 'package:cueue/data/api/global/entity/api_version.dart';
 import 'package:cueue/data/api/global/requester/error_classifier.dart';
 import 'package:dio/dio.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 
 abstract class DioCreator {
   Future<String> loadToken();
 
-  Dio create() {
-    final dio = Dio()..options = _createBaseOption();
+  Future<Dio> create() async {
+    final dio = Dio()..options = await _createBaseOption();
     dio.interceptors.add(_createInterceptor(dio));
     return dio;
   }
 
-  BaseOptions _createBaseOption() {
+  Future<BaseOptions> _createBaseOption() async {
+    final appCheckToken = await FirebaseAppCheck.instance.getToken();
     return BaseOptions(
       baseUrl: const ApiBaseUrl().value.toString(),
       headers: <String, dynamic>{
         'Api-Version': const ApiVersion().value,
+        'AppCheck-Token': appCheckToken,
       },
     );
   }

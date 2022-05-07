@@ -1,16 +1,18 @@
+import 'package:cueue/data/api/global/requester/dio_creator.dart';
 import 'package:cueue/data/api/global/requester/error_classifier.dart';
 import 'package:cueue/data/api/request/menu/menu_request.dart';
 import 'package:cueue/data/api/response/menu/menu_response.dart';
 import 'package:dio/dio.dart';
 
 class CreateMenuApi {
-  const CreateMenuApi(this._dio);
+  const CreateMenuApi(this._dioCreator);
 
-  final Dio _dio;
+  final DioCreator _dioCreator;
 
   Future<MenuResponse> execute(int workspaceId, MenuRequest request) async {
     try {
-      final response = await _dio.post<Map<String, dynamic>>('/$workspaceId/menus', data: request);
+      final dio = await _dioCreator.create();
+      final response = await dio.post<Map<String, dynamic>>('/$workspaceId/menus', data: request);
       return MenuResponse.fromJson(response.data!);
     } on DioError catch (dioError) {
       throw dioError.parseException();
