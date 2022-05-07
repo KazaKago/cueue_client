@@ -2,9 +2,6 @@ name: Setup Android
 description: setup for Android action.
 
 inputs:
-  flavor:
-    description: flavor argument.
-    required: true
   googleServicesJsonBase64:
     description: base64 encoded google-services.json.
     required: true
@@ -19,5 +16,5 @@ runs:
         distribution: temurin
         cache: gradle
     - name: Put google-services.json
-      run: echo ${{ inputs.googleServicesJsonBase64 }} | base64 -d > android/app/src/${{ inputs.flavor }}/google-services.json
+      run: echo ${{ inputs.googleServicesJsonBase64 }} | base64 -d > android/app/google-services.json
       shell: bash

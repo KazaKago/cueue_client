@@ -8,9 +8,6 @@ inputs:
   fastlaneMatchPassword:
     description: fastlane match password.
     required: true
-  flavor:
-    description: flavor argument.
-    required: true
   googleServiceInfoPlistBase64:
     description: base64 encoded GoogleServiceInfo.plist.
     required: true
@@ -35,5 +32,5 @@ runs:
       env:
         MATCH_PASSWORD: ${{ inputs.fastlaneMatchPassword }}
     - name: Put GoogleService-Info.plist
-      run: echo ${{ inputs.googleServiceInfoPlistBase64 }} | base64 -d > ios/Runner/GoogleService-Info-${{ inputs.flavor }}.plist
+      run: echo ${{ inputs.googleServiceInfoPlistBase64 }} | base64 -d > ios/Runner/GoogleService-Info.plist
       shell: bash

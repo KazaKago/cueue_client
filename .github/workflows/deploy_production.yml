@@ -21,7 +21,6 @@ jobs:
       - name: Setup Android
         uses: ./.github/actions/setup_android
         with:
-          flavor: production
           googleServicesJsonBase64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64__PRODUCTION }}
       - name: Build
         id: build
@@ -55,7 +54,6 @@ jobs:
         with:
           appleCertificatesRepositorySshKey: ${{ secrets.APPLE_CERTIFICATES_REPOSITORY_SSH_KEY }}
           fastlaneMatchPassword: ${{ secrets.FASTLANE_MATCH_PASSWORD }}
-          flavor: production
           googleServiceInfoPlistBase64: ${{ secrets.GOOGLE_SERVICE_INFO_PLIST_BASE64__PRODUCTION }}
       - name: Build
         id: build

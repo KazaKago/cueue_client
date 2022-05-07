@@ -327,7 +327,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ $CONFIGURATION == *\"Staging\"* ]]; then\n    cp $PRODUCT_NAME/GoogleService-Info-Staging.plist $PRODUCT_NAME/GoogleService-Info.plist\nelif [[ $CONFIGURATION == *\"Production\"* ]]; then\n    cp $PRODUCT_NAME/GoogleService-Info-Production.plist $PRODUCT_NAME/GoogleService-Info.plist\nelif [[ $CONFIGURATION == \"Release\" ]]; then\n    echo \"Might be CI archive\"\nelse\n    echo \"configuration didn't match to Staging or Production\"\n    echo $CONFIGURATION\n    exit 1\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ $CONFIGURATION == *\"Staging\"* ]]; then\n    if [[ -e $PRODUCT_NAME/GoogleService-Info-Staging.plist ]]; then\n        cp $PRODUCT_NAME/GoogleService-Info-Staging.plist $PRODUCT_NAME/GoogleService-Info.plist\n    fi\nelif [[ $CONFIGURATION == *\"Production\"* ]]; then\n    if [[ -e $PRODUCT_NAME/GoogleService-Info-Production.plist ]]; then\n        cp $PRODUCT_NAME/GoogleService-Info-Production.plist $PRODUCT_NAME/GoogleService-Info.plist\n    fi\nelse\n    echo \"configuration didn't match to Staging or Production\"\n    echo $CONFIGURATION\n    exit 1\nfi\n";
 		};
 		E3D1B49B2825883C00B9D671 /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
