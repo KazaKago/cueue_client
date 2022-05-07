@@ -63,10 +63,10 @@ jobs:
         with:
           flavor: Staging
           exportOptionsPlistBase64: ${{ secrets.EXPORT_OPTIONS_PLIST_ADHOC__STAGING }}
-#      - name: Deploy
-#        uses: wzieba/Firebase-Distribution-Github-Action@v1
-#        with:
-#          appId: ${{ secrets.FIREBASE_APP_ID_IOS__STAGING }}
-#          token: ${{ secrets.FIREBASE_TOKEN }}
-#          groups: ${{ secrets.FIREBASE_APP_DISTRIBUTION_TESTER_GROUP }}
-#          file: ${{ steps.build.outputs.ipaPath }}
+      - name: Deploy
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID_IOS__STAGING }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          groups: ${{ secrets.FIREBASE_APP_DISTRIBUTION_TESTER_GROUP }}
+          file: ${{ steps.build.outputs.ipaPath }}

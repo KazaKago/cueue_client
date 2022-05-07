@@ -30,6 +30,3 @@ runs:
         ^API_BASE_URL: ${{ inputs.apiBaseUrl }}
         ^APPLE_CLIENT_ID: ${{ inputs.appleClientId }}
         ^APPLE_CALLBACK_URL: ${{ inputs.appleCallbackUrl }}
-    - name: Pub get
-      run: flutter pub get
-      shell: bash

@@ -24,6 +24,7 @@ end
 
 desc "Get all provisioning profiles."
 lane :get_all_cer do
+  setup_ci
   match(
     app_identifier: ["com.kazakago.cueue", "com.kazakago.cueue.staging"],
     type: "development",
@@ -43,6 +44,7 @@ end
 
 desc "Update all provisioning profiles."
 lane :update_all_cer do
+  setup_ci
   match(
     app_identifier: ["com.kazakago.cueue", "com.kazakago.cueue.staging"],
     type: "development",
