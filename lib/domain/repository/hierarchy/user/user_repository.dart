@@ -12,7 +12,7 @@ abstract class UserRepository {
 
   Future<void> refresh();
 
-  Future<void> create();
+  Future<User> create();
 
   Future<void> updateEmail(Email email);
 

@@ -1,4 +1,4 @@
-import 'package:cueue/domain/usecase/hierarchy/auth/launch_check_result.dart';
+import 'package:cueue/domain/model/hierarchy/auth/launch_check_result.dart';
 import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/presentation/view/hierarchy/main/main_page.dart';
 import 'package:cueue/presentation/view/hierarchy/welcome/welcome_page.dart';

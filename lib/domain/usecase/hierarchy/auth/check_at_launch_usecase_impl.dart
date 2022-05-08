@@ -1,6 +1,6 @@
+import 'package:cueue/domain/model/hierarchy/auth/launch_check_result.dart';
 import 'package:cueue/domain/repository/hierarchy/user/user_repository.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/check_at_launch_usecase.dart';
-import 'package:cueue/domain/usecase/hierarchy/auth/launch_check_result.dart';
 
 class CheckAtLaunchUseCaseImpl implements CheckAtLaunchUseCase {
   const CheckAtLaunchUseCaseImpl(this._userRepository);

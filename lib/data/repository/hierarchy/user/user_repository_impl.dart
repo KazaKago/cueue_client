@@ -1,4 +1,5 @@
 import 'package:cueue/data/api/hierarchy/user/create_user_api.dart';
+import 'package:cueue/data/api/hierarchy/user/delete_user_api.dart';
 import 'package:cueue/data/auth/hierarchy/password/password_signaturer.dart';
 import 'package:cueue/data/auth/hierarchy/signaturer.dart';
 import 'package:cueue/data/cache/hierarchy/cache.dart';
@@ -13,10 +14,11 @@ import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:store_flowable/store_flowable.dart';
 
 class UserRepositoryImpl implements UserRepository {
-  const UserRepositoryImpl(this._cacheList, this._createUserApi, this._passwordSignaturer, this._userFlowableFactory, this._userResponseMapper);
+  const UserRepositoryImpl(this._cacheList, this._createUserApi, this._deleteUserApi, this._passwordSignaturer, this._userFlowableFactory, this._userResponseMapper);
 
   final List<Cache> _cacheList;
   final CreateUserApi _createUserApi;
+  final DeleteUserApi _deleteUserApi;
   final PasswordSignaturer _passwordSignaturer;
   final UserFlowableFactory _userFlowableFactory;
   final UserResponseMapper _userResponseMapper;
@@ -46,11 +48,12 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<void> create() async {
+  Future<User> create() async {
     final userResponse = await _createUserApi.execute();
     final user = _userResponseMapper.map(auth.FirebaseAuth.instance.currentUser!, userResponse);
     final userFlowable = _userFlowableFactory.create(null);
     await userFlowable.update(user);
+    return user;
   }
 
   @override
@@ -85,6 +88,7 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<void> delete() async {
     try {
+      await _deleteUserApi.execute();
       await auth.FirebaseAuth.instance.currentUser!.delete();
       for (final cache in _cacheList) {
         cache.clearAll();

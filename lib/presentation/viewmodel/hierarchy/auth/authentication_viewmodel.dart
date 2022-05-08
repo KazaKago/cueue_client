@@ -1,6 +1,7 @@
 import 'package:cueue/domain/model/hierarchy/auth/apple_auth_info.dart';
 import 'package:cueue/domain/model/hierarchy/auth/google_auth_info.dart';
 import 'package:cueue/domain/model/hierarchy/auth/password_auth_info.dart';
+import 'package:cueue/domain/model/hierarchy/auth/sign_in_check_result.dart';
 import 'package:cueue/domain/model/hierarchy/user/email.dart';
 import 'package:cueue/domain/model/hierarchy/user/password.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/authenticate_with_apple_usecase.dart';
@@ -11,7 +12,6 @@ import 'package:cueue/domain/usecase/hierarchy/auth/reauthenticate_with_password
 import 'package:cueue/domain/usecase/hierarchy/auth/should_show_reauthentication_with_apple_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/should_show_reauthentication_with_google_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/should_show_reauthentication_with_password_usecase.dart';
-import 'package:cueue/domain/usecase/hierarchy/auth/sign_in_check_result.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/sign_in_with_password_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/sign_up_with_password_usecase.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';

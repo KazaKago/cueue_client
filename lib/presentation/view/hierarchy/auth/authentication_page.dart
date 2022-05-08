@@ -1,4 +1,4 @@
-import 'package:cueue/domain/usecase/hierarchy/auth/sign_in_check_result.dart';
+import 'package:cueue/domain/model/hierarchy/auth/sign_in_check_result.dart';
 import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_type.dart';
