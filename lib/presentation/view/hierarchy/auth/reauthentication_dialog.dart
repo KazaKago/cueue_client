@@ -5,7 +5,7 @@ import 'package:cueue/presentation/view/global/exception/exception_handler.dart'
 import 'package:cueue/presentation/view/global/modal/fried_toast.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_page.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_type.dart';
-import 'package:cueue/presentation/view/hierarchy/welcome/thanks_for_using_page.dart';
+import 'package:cueue/presentation/view/hierarchy/setting/thanks_for_using_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

@@ -1,7 +1,7 @@
 import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
 import 'package:cueue/presentation/view/global/modal/simple_message_dialog.dart';
-import 'package:cueue/presentation/view/hierarchy/welcome/thanks_for_using_page.dart';
+import 'package:cueue/presentation/view/hierarchy/setting/thanks_for_using_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/material.dart';
