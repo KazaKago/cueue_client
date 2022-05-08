@@ -5,6 +5,7 @@ import 'package:cueue/presentation/view/global/exception/exception_handler.dart'
 import 'package:cueue/presentation/view/global/modal/fried_toast.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_page.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_type.dart';
+import 'package:cueue/presentation/view/hierarchy/welcome/thanks_for_using_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -60,6 +61,12 @@ class ReauthenticationDialog {
           await updatePasswordUseCase(password);
           await EasyLoading.dismiss();
           FriedToast(_context, intl(_context).updatedPassword).show();
+        },
+        deleteAccount: () async {
+          final deleteAccountUseCase = _ref.read(deleteAccountUseCaseProvider);
+          await deleteAccountUseCase();
+          await EasyLoading.dismiss();
+          await Navigator.pushAndRemoveUntil<void>(_context, MaterialPageRoute(builder: (context) => const ThanksForUsingPage()), (_) => false);
         },
       );
     } on Exception catch (exception) {

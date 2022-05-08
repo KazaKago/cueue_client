@@ -1,7 +1,7 @@
 import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
 import 'package:cueue/presentation/view/global/modal/simple_message_dialog.dart';
-import 'package:cueue/presentation/view/hierarchy/welcome/welcome_page.dart';
+import 'package:cueue/presentation/view/hierarchy/welcome/thanks_for_using_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +14,8 @@ class AccountDeletionPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref
-      ..listen<Event<void>>(accountDeletionViewModelProvider.select((viewModel) => viewModel.replaceWelcomePageEvent), (previous, replaceWelcomePageEvent) {
-        replaceWelcomePageEvent((_) => _replaceWelcomePage(context));
+      ..listen<Event<void>>(accountDeletionViewModelProvider.select((viewModel) => viewModel.completionEvent), (previous, completionEvent) {
+        completionEvent((_) => _replaceThanksForUsingPage(context));
       })
       ..listen<Event<Exception>>(accountDeletionViewModelProvider.select((viewModel) => viewModel.exceptionEvent), (previous, exceptionEvent) {
         exceptionEvent((exception) => _showErrorDialog(context, ref, exception));
@@ -63,8 +63,8 @@ class AccountDeletionPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _replaceWelcomePage(BuildContext context) {
-    return Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const WelcomePage()), (_) => false);
+  Future<void> _replaceThanksForUsingPage(BuildContext context) async {
+    await Navigator.pushAndRemoveUntil<void>(context, MaterialPageRoute(builder: (context) => const ThanksForUsingPage()), (_) => false);
   }
 
   Future<void> _showErrorDialog(BuildContext context, WidgetRef ref, Exception exception) async {

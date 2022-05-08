@@ -7,13 +7,13 @@ class AccountDeletionViewModel with ChangeNotifier {
 
   final DeleteAccountUseCase _deleteAccountUseCase;
   bool _isLoading = false;
-  Event<void> _replaceWelcomePageEvent = Event.initialize();
+  Event<void> _completionEvent = Event.initialize();
   Event<Exception> _exceptionEvent = Event.initialize();
 
-  Event<void> get replaceWelcomePageEvent => _replaceWelcomePageEvent;
+  Event<void> get completionEvent => _completionEvent;
 
-  set replaceWelcomePageEvent(Event<void> replaceWelcomePageEvent) {
-    _replaceWelcomePageEvent = replaceWelcomePageEvent;
+  set completionEvent(Event<void> completionEvent) {
+    _completionEvent = completionEvent;
     notifyListeners();
   }
 
@@ -35,7 +35,7 @@ class AccountDeletionViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _deleteAccountUseCase();
-      _replaceWelcomePageEvent = Event(null);
+      completionEvent = Event(null);
     } on Exception catch (exception) {
       exceptionEvent = Event(exception);
     }

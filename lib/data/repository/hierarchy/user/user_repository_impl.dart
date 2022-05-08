@@ -4,6 +4,7 @@ import 'package:cueue/data/auth/hierarchy/signaturer.dart';
 import 'package:cueue/data/cache/hierarchy/cache.dart';
 import 'package:cueue/data/mapper/hierarchy/user/user_response_mapper.dart';
 import 'package:cueue/data/repository/flowable/user/user_flowable_factory.dart';
+import 'package:cueue/domain/model/global/exception/require_reautentication_exception.dart';
 import 'package:cueue/domain/model/hierarchy/user/email.dart';
 import 'package:cueue/domain/model/hierarchy/user/password.dart';
 import 'package:cueue/domain/model/hierarchy/user/user.dart';
@@ -83,9 +84,13 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<void> delete() async {
-    await auth.FirebaseAuth.instance.currentUser!.delete();
-    for (final cache in _cacheList) {
-      cache.clearAll();
+    try {
+      await auth.FirebaseAuth.instance.currentUser!.delete();
+      for (final cache in _cacheList) {
+        cache.clearAll();
+      }
+    } on auth.FirebaseAuthException catch (exception) {
+      throw await const SignaturerDelegator().classifyException(exception, requireReauthenticationType: const RequireReauthenticationType.deleteAccount());
     }
   }
 }
