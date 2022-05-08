@@ -1,29 +1,29 @@
-import 'package:cueue/domain/usecase/hierarchy/auth/is_sign_in_usecase.dart';
+import 'package:cueue/domain/usecase/hierarchy/auth/check_at_launch_usecase.dart';
+import 'package:cueue/domain/usecase/hierarchy/auth/launch_check_result.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
-import 'package:cueue/presentation/viewmodel/hierarchy/splash/splash_route_pattern.dart';
 import 'package:flutter/foundation.dart';
 
 class SplashViewModel with ChangeNotifier {
-  SplashViewModel(this._isSignInUseCase) {
+  SplashViewModel(this._checkAtLaunchUseCase) {
     _loadNextRoute();
   }
 
-  final IsSignInUseCase _isSignInUseCase;
-  Event<NextSplashRoutePattern> _nextRouteEvent = Event.initialize();
+  final CheckAtLaunchUseCase _checkAtLaunchUseCase;
+  Event<LaunchCheckResult> _nextRouteEvent = Event.initialize();
 
-  Event<NextSplashRoutePattern> get nextRouteEvent => _nextRouteEvent;
+  Event<LaunchCheckResult> get nextRouteEvent => _nextRouteEvent;
 
-  set nextRouteEvent(Event<NextSplashRoutePattern> nextRouteEvent) {
+  set nextRouteEvent(Event<LaunchCheckResult> nextRouteEvent) {
     _nextRouteEvent = nextRouteEvent;
     notifyListeners();
   }
 
   Future<void> _loadNextRoute() async {
     final result = await Future.wait<dynamic>([
-      _isSignInUseCase(),
+      _checkAtLaunchUseCase(),
       Future<void>.delayed(const Duration(seconds: 1)),
     ]);
-    final isSignIn = result.first as bool;
-    nextRouteEvent = Event(isSignIn ? NextSplashRoutePattern.main : NextSplashRoutePattern.welcome);
+    final launchCheckResult = result.first as LaunchCheckResult;
+    nextRouteEvent = Event(launchCheckResult);
   }
 }

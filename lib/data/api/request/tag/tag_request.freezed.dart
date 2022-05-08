@@ -60,29 +60,30 @@ class _$TagRequestCopyWithImpl<$Res> implements $TagRequestCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$TagRequestCopyWith<$Res> implements $TagRequestCopyWith<$Res> {
-  factory _$TagRequestCopyWith(
-          _TagRequest value, $Res Function(_TagRequest) then) =
-      __$TagRequestCopyWithImpl<$Res>;
+abstract class _$$_TagRequestCopyWith<$Res>
+    implements $TagRequestCopyWith<$Res> {
+  factory _$$_TagRequestCopyWith(
+          _$_TagRequest value, $Res Function(_$_TagRequest) then) =
+      __$$_TagRequestCopyWithImpl<$Res>;
   @override
   $Res call({@JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
-class __$TagRequestCopyWithImpl<$Res> extends _$TagRequestCopyWithImpl<$Res>
-    implements _$TagRequestCopyWith<$Res> {
-  __$TagRequestCopyWithImpl(
-      _TagRequest _value, $Res Function(_TagRequest) _then)
-      : super(_value, (v) => _then(v as _TagRequest));
+class __$$_TagRequestCopyWithImpl<$Res> extends _$TagRequestCopyWithImpl<$Res>
+    implements _$$_TagRequestCopyWith<$Res> {
+  __$$_TagRequestCopyWithImpl(
+      _$_TagRequest _value, $Res Function(_$_TagRequest) _then)
+      : super(_value, (v) => _then(v as _$_TagRequest));
 
   @override
-  _TagRequest get _value => super._value as _TagRequest;
+  _$_TagRequest get _value => super._value as _$_TagRequest;
 
   @override
   $Res call({
     Object? name = freezed,
   }) {
-    return _then(_TagRequest(
+    return _then(_$_TagRequest(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -113,7 +114,7 @@ class _$_TagRequest implements _TagRequest {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TagRequest &&
+            other is _$_TagRequest &&
             const DeepCollectionEquality().equals(other.name, name));
   }
 
@@ -124,8 +125,8 @@ class _$_TagRequest implements _TagRequest {
 
   @JsonKey(ignore: true)
   @override
-  _$TagRequestCopyWith<_TagRequest> get copyWith =>
-      __$TagRequestCopyWithImpl<_TagRequest>(this, _$identity);
+  _$$_TagRequestCopyWith<_$_TagRequest> get copyWith =>
+      __$$_TagRequestCopyWithImpl<_$_TagRequest>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -145,6 +146,6 @@ abstract class _TagRequest implements TagRequest {
   String get name => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$TagRequestCopyWith<_TagRequest> get copyWith =>
+  _$$_TagRequestCopyWith<_$_TagRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }

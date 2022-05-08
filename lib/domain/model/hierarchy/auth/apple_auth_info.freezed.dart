@@ -66,25 +66,25 @@ class _$AppleAuthInfoCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AppleAuthInfoCopyWith<$Res>
+abstract class _$$_AppleAuthInfoCopyWith<$Res>
     implements $AppleAuthInfoCopyWith<$Res> {
-  factory _$AppleAuthInfoCopyWith(
-          _AppleAuthInfo value, $Res Function(_AppleAuthInfo) then) =
-      __$AppleAuthInfoCopyWithImpl<$Res>;
+  factory _$$_AppleAuthInfoCopyWith(
+          _$_AppleAuthInfo value, $Res Function(_$_AppleAuthInfo) then) =
+      __$$_AppleAuthInfoCopyWithImpl<$Res>;
   @override
   $Res call({String idToken, String accessToken, String rawNonce});
 }
 
 /// @nodoc
-class __$AppleAuthInfoCopyWithImpl<$Res>
+class __$$_AppleAuthInfoCopyWithImpl<$Res>
     extends _$AppleAuthInfoCopyWithImpl<$Res>
-    implements _$AppleAuthInfoCopyWith<$Res> {
-  __$AppleAuthInfoCopyWithImpl(
-      _AppleAuthInfo _value, $Res Function(_AppleAuthInfo) _then)
-      : super(_value, (v) => _then(v as _AppleAuthInfo));
+    implements _$$_AppleAuthInfoCopyWith<$Res> {
+  __$$_AppleAuthInfoCopyWithImpl(
+      _$_AppleAuthInfo _value, $Res Function(_$_AppleAuthInfo) _then)
+      : super(_value, (v) => _then(v as _$_AppleAuthInfo));
 
   @override
-  _AppleAuthInfo get _value => super._value as _AppleAuthInfo;
+  _$_AppleAuthInfo get _value => super._value as _$_AppleAuthInfo;
 
   @override
   $Res call({
@@ -92,7 +92,7 @@ class __$AppleAuthInfoCopyWithImpl<$Res>
     Object? accessToken = freezed,
     Object? rawNonce = freezed,
   }) {
-    return _then(_AppleAuthInfo(
+    return _then(_$_AppleAuthInfo(
       idToken: idToken == freezed
           ? _value.idToken
           : idToken // ignore: cast_nullable_to_non_nullable
@@ -133,7 +133,7 @@ class _$_AppleAuthInfo implements _AppleAuthInfo {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AppleAuthInfo &&
+            other is _$_AppleAuthInfo &&
             const DeepCollectionEquality().equals(other.idToken, idToken) &&
             const DeepCollectionEquality()
                 .equals(other.accessToken, accessToken) &&
@@ -149,8 +149,8 @@ class _$_AppleAuthInfo implements _AppleAuthInfo {
 
   @JsonKey(ignore: true)
   @override
-  _$AppleAuthInfoCopyWith<_AppleAuthInfo> get copyWith =>
-      __$AppleAuthInfoCopyWithImpl<_AppleAuthInfo>(this, _$identity);
+  _$$_AppleAuthInfoCopyWith<_$_AppleAuthInfo> get copyWith =>
+      __$$_AppleAuthInfoCopyWithImpl<_$_AppleAuthInfo>(this, _$identity);
 }
 
 abstract class _AppleAuthInfo implements AppleAuthInfo {
@@ -167,6 +167,6 @@ abstract class _AppleAuthInfo implements AppleAuthInfo {
   String get rawNonce => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppleAuthInfoCopyWith<_AppleAuthInfo> get copyWith =>
+  _$$_AppleAuthInfoCopyWith<_$_AppleAuthInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }

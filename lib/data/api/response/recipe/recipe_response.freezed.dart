@@ -143,11 +143,11 @@ class _$RecipeResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$RecipeResponseCopyWith<$Res>
+abstract class _$$_RecipeResponseCopyWith<$Res>
     implements $RecipeResponseCopyWith<$Res> {
-  factory _$RecipeResponseCopyWith(
-          _RecipeResponse value, $Res Function(_RecipeResponse) then) =
-      __$RecipeResponseCopyWithImpl<$Res>;
+  factory _$$_RecipeResponseCopyWith(
+          _$_RecipeResponse value, $Res Function(_$_RecipeResponse) then) =
+      __$$_RecipeResponseCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'id') int id,
@@ -163,15 +163,15 @@ abstract class _$RecipeResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$RecipeResponseCopyWithImpl<$Res>
+class __$$_RecipeResponseCopyWithImpl<$Res>
     extends _$RecipeResponseCopyWithImpl<$Res>
-    implements _$RecipeResponseCopyWith<$Res> {
-  __$RecipeResponseCopyWithImpl(
-      _RecipeResponse _value, $Res Function(_RecipeResponse) _then)
-      : super(_value, (v) => _then(v as _RecipeResponse));
+    implements _$$_RecipeResponseCopyWith<$Res> {
+  __$$_RecipeResponseCopyWithImpl(
+      _$_RecipeResponse _value, $Res Function(_$_RecipeResponse) _then)
+      : super(_value, (v) => _then(v as _$_RecipeResponse));
 
   @override
-  _RecipeResponse get _value => super._value as _RecipeResponse;
+  _$_RecipeResponse get _value => super._value as _$_RecipeResponse;
 
   @override
   $Res call({
@@ -186,7 +186,7 @@ class __$RecipeResponseCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_RecipeResponse(
+    return _then(_$_RecipeResponse(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -204,15 +204,15 @@ class __$RecipeResponseCopyWithImpl<$Res>
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
       images: images == freezed
-          ? _value.images
+          ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
               as List<ContentResponse>,
       tags: tags == freezed
-          ? _value.tags
+          ? _value._tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<TagResponse>,
       cookingHistories: cookingHistories == freezed
-          ? _value.cookingHistories
+          ? _value._cookingHistories
           : cookingHistories // ignore: cast_nullable_to_non_nullable
               as List<String>,
       cookingCount: cookingCount == freezed
@@ -279,7 +279,6 @@ class _$_RecipeResponse implements _RecipeResponse {
   @JsonKey(name: 'url')
   final String? url;
 // ignore: invalid_annotation_target
-  @JsonKey(name: 'images')
   final List<ContentResponse> _images;
 // ignore: invalid_annotation_target
   @override
@@ -290,7 +289,6 @@ class _$_RecipeResponse implements _RecipeResponse {
   }
 
 // ignore: invalid_annotation_target
-  @JsonKey(name: 'tags')
   final List<TagResponse> _tags;
 // ignore: invalid_annotation_target
   @override
@@ -301,7 +299,6 @@ class _$_RecipeResponse implements _RecipeResponse {
   }
 
 // ignore: invalid_annotation_target
-  @JsonKey(name: 'cooking_histories')
   final List<String> _cookingHistories;
 // ignore: invalid_annotation_target
   @override
@@ -333,16 +330,16 @@ class _$_RecipeResponse implements _RecipeResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RecipeResponse &&
+            other is _$_RecipeResponse &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality().equals(other.images, images) &&
-            const DeepCollectionEquality().equals(other.tags, tags) &&
+            const DeepCollectionEquality().equals(other._images, _images) &&
+            const DeepCollectionEquality().equals(other._tags, _tags) &&
             const DeepCollectionEquality()
-                .equals(other.cookingHistories, cookingHistories) &&
+                .equals(other._cookingHistories, _cookingHistories) &&
             const DeepCollectionEquality()
                 .equals(other.cookingCount, cookingCount) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
@@ -357,17 +354,17 @@ class _$_RecipeResponse implements _RecipeResponse {
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(images),
-      const DeepCollectionEquality().hash(tags),
-      const DeepCollectionEquality().hash(cookingHistories),
+      const DeepCollectionEquality().hash(_images),
+      const DeepCollectionEquality().hash(_tags),
+      const DeepCollectionEquality().hash(_cookingHistories),
       const DeepCollectionEquality().hash(cookingCount),
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(updatedAt));
 
   @JsonKey(ignore: true)
   @override
-  _$RecipeResponseCopyWith<_RecipeResponse> get copyWith =>
-      __$RecipeResponseCopyWithImpl<_RecipeResponse>(this, _$identity);
+  _$$_RecipeResponseCopyWith<_$_RecipeResponse> get copyWith =>
+      __$$_RecipeResponseCopyWithImpl<_$_RecipeResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -433,6 +430,6 @@ abstract class _RecipeResponse implements RecipeResponse {
   String get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RecipeResponseCopyWith<_RecipeResponse> get copyWith =>
+  _$$_RecipeResponseCopyWith<_$_RecipeResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

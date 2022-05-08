@@ -51,27 +51,27 @@ class _$EmailCopyWithImpl<$Res> implements $EmailCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$EmailCopyWith<$Res> implements $EmailCopyWith<$Res> {
-  factory _$EmailCopyWith(_Email value, $Res Function(_Email) then) =
-      __$EmailCopyWithImpl<$Res>;
+abstract class _$$_EmailCopyWith<$Res> implements $EmailCopyWith<$Res> {
+  factory _$$_EmailCopyWith(_$_Email value, $Res Function(_$_Email) then) =
+      __$$_EmailCopyWithImpl<$Res>;
   @override
   $Res call({String value});
 }
 
 /// @nodoc
-class __$EmailCopyWithImpl<$Res> extends _$EmailCopyWithImpl<$Res>
-    implements _$EmailCopyWith<$Res> {
-  __$EmailCopyWithImpl(_Email _value, $Res Function(_Email) _then)
-      : super(_value, (v) => _then(v as _Email));
+class __$$_EmailCopyWithImpl<$Res> extends _$EmailCopyWithImpl<$Res>
+    implements _$$_EmailCopyWith<$Res> {
+  __$$_EmailCopyWithImpl(_$_Email _value, $Res Function(_$_Email) _then)
+      : super(_value, (v) => _then(v as _$_Email));
 
   @override
-  _Email get _value => super._value as _Email;
+  _$_Email get _value => super._value as _$_Email;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_Email(
+    return _then(_$_Email(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ class _$_Email extends _Email {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Email &&
+            other is _$_Email &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -107,8 +107,8 @@ class _$_Email extends _Email {
 
   @JsonKey(ignore: true)
   @override
-  _$EmailCopyWith<_Email> get copyWith =>
-      __$EmailCopyWithImpl<_Email>(this, _$identity);
+  _$$_EmailCopyWith<_$_Email> get copyWith =>
+      __$$_EmailCopyWithImpl<_$_Email>(this, _$identity);
 }
 
 abstract class _Email extends Email {
@@ -119,5 +119,6 @@ abstract class _Email extends Email {
   String get value => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$EmailCopyWith<_Email> get copyWith => throw _privateConstructorUsedError;
+  _$$_EmailCopyWith<_$_Email> get copyWith =>
+      throw _privateConstructorUsedError;
 }

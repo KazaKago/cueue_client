@@ -17,24 +17,15 @@ class PasswordResetPage extends HookConsumerWidget {
     final userEmail = ref.watch(passwordResetViewModelProvider.select((viewModel) => viewModel.userEmail));
     if (userEmail != null) emailEditingController.text = userEmail.value;
     ref
-      ..listen<Event<void>>(
-        passwordResetViewModelProvider.select((viewModel) => viewModel.completionEvent),
-        ((previous, completionEvent) {
-          completionEvent((_) => _showSentPasswordResetMailDialog(context));
-        }),
-      )
-      ..listen<Event<Exception>>(
-        passwordResetViewModelProvider.select((viewModel) => viewModel.exceptionEvent),
-        ((previous, exceptionEvent) {
-          exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
-        }),
-      )
-      ..listen<bool>(
-        passwordResetViewModelProvider.select((viewModel) => viewModel.isLoading),
-        ((previous, isLoading) {
-          isLoading ? EasyLoading.show() : EasyLoading.dismiss();
-        }),
-      );
+      ..listen<Event<void>>(passwordResetViewModelProvider.select((viewModel) => viewModel.completionEvent), (previous, completionEvent) {
+        completionEvent((_) => _showSentPasswordResetMailDialog(context));
+      })
+      ..listen<Event<Exception>>(passwordResetViewModelProvider.select((viewModel) => viewModel.exceptionEvent), (previous, exceptionEvent) {
+        exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
+      })
+      ..listen<bool>(passwordResetViewModelProvider.select((viewModel) => viewModel.isLoading), (previous, isLoading) {
+        isLoading ? EasyLoading.show() : EasyLoading.dismiss();
+      });
     return Scaffold(
       appBar: AppBar(
         title: Text(intl(context).passwordReset),

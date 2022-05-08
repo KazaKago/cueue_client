@@ -89,9 +89,9 @@ class _$MenuCopyWithImpl<$Res> implements $MenuCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$MenuCopyWith<$Res> implements $MenuCopyWith<$Res> {
-  factory _$MenuCopyWith(_Menu value, $Res Function(_Menu) then) =
-      __$MenuCopyWithImpl<$Res>;
+abstract class _$$_MenuCopyWith<$Res> implements $MenuCopyWith<$Res> {
+  factory _$$_MenuCopyWith(_$_Menu value, $Res Function(_$_Menu) then) =
+      __$$_MenuCopyWithImpl<$Res>;
   @override
   $Res call(
       {MenuId id,
@@ -105,13 +105,13 @@ abstract class _$MenuCopyWith<$Res> implements $MenuCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res>
-    implements _$MenuCopyWith<$Res> {
-  __$MenuCopyWithImpl(_Menu _value, $Res Function(_Menu) _then)
-      : super(_value, (v) => _then(v as _Menu));
+class __$$_MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res>
+    implements _$$_MenuCopyWith<$Res> {
+  __$$_MenuCopyWithImpl(_$_Menu _value, $Res Function(_$_Menu) _then)
+      : super(_value, (v) => _then(v as _$_Menu));
 
   @override
-  _Menu get _value => super._value as _Menu;
+  _$_Menu get _value => super._value as _$_Menu;
 
   @override
   $Res call({
@@ -121,7 +121,7 @@ class __$MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res>
     Object? timeFrame = freezed,
     Object? recipes = freezed,
   }) {
-    return _then(_Menu(
+    return _then(_$_Menu(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -139,7 +139,7 @@ class __$MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res>
           : timeFrame // ignore: cast_nullable_to_non_nullable
               as TimeFrame,
       recipes: recipes == freezed
-          ? _value.recipes
+          ? _value._recipes
           : recipes // ignore: cast_nullable_to_non_nullable
               as List<RecipeSummary>,
     ));
@@ -181,12 +181,12 @@ class _$_Menu implements _Menu {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Menu &&
+            other is _$_Menu &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.memo, memo) &&
             const DeepCollectionEquality().equals(other.date, date) &&
             const DeepCollectionEquality().equals(other.timeFrame, timeFrame) &&
-            const DeepCollectionEquality().equals(other.recipes, recipes));
+            const DeepCollectionEquality().equals(other._recipes, _recipes));
   }
 
   @override
@@ -196,12 +196,12 @@ class _$_Menu implements _Menu {
       const DeepCollectionEquality().hash(memo),
       const DeepCollectionEquality().hash(date),
       const DeepCollectionEquality().hash(timeFrame),
-      const DeepCollectionEquality().hash(recipes));
+      const DeepCollectionEquality().hash(_recipes));
 
   @JsonKey(ignore: true)
   @override
-  _$MenuCopyWith<_Menu> get copyWith =>
-      __$MenuCopyWithImpl<_Menu>(this, _$identity);
+  _$$_MenuCopyWith<_$_Menu> get copyWith =>
+      __$$_MenuCopyWithImpl<_$_Menu>(this, _$identity);
 }
 
 abstract class _Menu implements Menu {
@@ -224,5 +224,5 @@ abstract class _Menu implements Menu {
   List<RecipeSummary> get recipes => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MenuCopyWith<_Menu> get copyWith => throw _privateConstructorUsedError;
+  _$$_MenuCopyWith<_$_Menu> get copyWith => throw _privateConstructorUsedError;
 }

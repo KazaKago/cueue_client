@@ -68,31 +68,31 @@ class _$TagResponseCopyWithImpl<$Res> implements $TagResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$TagResponseCopyWith<$Res>
+abstract class _$$_TagResponseCopyWith<$Res>
     implements $TagResponseCopyWith<$Res> {
-  factory _$TagResponseCopyWith(
-          _TagResponse value, $Res Function(_TagResponse) then) =
-      __$TagResponseCopyWithImpl<$Res>;
+  factory _$$_TagResponseCopyWith(
+          _$_TagResponse value, $Res Function(_$_TagResponse) then) =
+      __$$_TagResponseCopyWithImpl<$Res>;
   @override
   $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
-class __$TagResponseCopyWithImpl<$Res> extends _$TagResponseCopyWithImpl<$Res>
-    implements _$TagResponseCopyWith<$Res> {
-  __$TagResponseCopyWithImpl(
-      _TagResponse _value, $Res Function(_TagResponse) _then)
-      : super(_value, (v) => _then(v as _TagResponse));
+class __$$_TagResponseCopyWithImpl<$Res> extends _$TagResponseCopyWithImpl<$Res>
+    implements _$$_TagResponseCopyWith<$Res> {
+  __$$_TagResponseCopyWithImpl(
+      _$_TagResponse _value, $Res Function(_$_TagResponse) _then)
+      : super(_value, (v) => _then(v as _$_TagResponse));
 
   @override
-  _TagResponse get _value => super._value as _TagResponse;
+  _$_TagResponse get _value => super._value as _$_TagResponse;
 
   @override
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
   }) {
-    return _then(_TagResponse(
+    return _then(_$_TagResponse(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -133,7 +133,7 @@ class _$_TagResponse implements _TagResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TagResponse &&
+            other is _$_TagResponse &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name));
   }
@@ -147,8 +147,8 @@ class _$_TagResponse implements _TagResponse {
 
   @JsonKey(ignore: true)
   @override
-  _$TagResponseCopyWith<_TagResponse> get copyWith =>
-      __$TagResponseCopyWithImpl<_TagResponse>(this, _$identity);
+  _$$_TagResponseCopyWith<_$_TagResponse> get copyWith =>
+      __$$_TagResponseCopyWithImpl<_$_TagResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -172,6 +172,6 @@ abstract class _TagResponse implements TagResponse {
   String get name => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$TagResponseCopyWith<_TagResponse> get copyWith =>
+  _$$_TagResponseCopyWith<_$_TagResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

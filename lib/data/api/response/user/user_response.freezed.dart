@@ -70,11 +70,11 @@ class _$UserResponseCopyWithImpl<$Res> implements $UserResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$UserResponseCopyWith<$Res>
+abstract class _$$_UserResponseCopyWith<$Res>
     implements $UserResponseCopyWith<$Res> {
-  factory _$UserResponseCopyWith(
-          _UserResponse value, $Res Function(_UserResponse) then) =
-      __$UserResponseCopyWithImpl<$Res>;
+  factory _$$_UserResponseCopyWith(
+          _$_UserResponse value, $Res Function(_$_UserResponse) then) =
+      __$$_UserResponseCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'id') int id,
@@ -82,27 +82,28 @@ abstract class _$UserResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$UserResponseCopyWithImpl<$Res> extends _$UserResponseCopyWithImpl<$Res>
-    implements _$UserResponseCopyWith<$Res> {
-  __$UserResponseCopyWithImpl(
-      _UserResponse _value, $Res Function(_UserResponse) _then)
-      : super(_value, (v) => _then(v as _UserResponse));
+class __$$_UserResponseCopyWithImpl<$Res>
+    extends _$UserResponseCopyWithImpl<$Res>
+    implements _$$_UserResponseCopyWith<$Res> {
+  __$$_UserResponseCopyWithImpl(
+      _$_UserResponse _value, $Res Function(_$_UserResponse) _then)
+      : super(_value, (v) => _then(v as _$_UserResponse));
 
   @override
-  _UserResponse get _value => super._value as _UserResponse;
+  _$_UserResponse get _value => super._value as _$_UserResponse;
 
   @override
   $Res call({
     Object? id = freezed,
     Object? workspaces = freezed,
   }) {
-    return _then(_UserResponse(
+    return _then(_$_UserResponse(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
       workspaces: workspaces == freezed
-          ? _value.workspaces
+          ? _value._workspaces
           : workspaces // ignore: cast_nullable_to_non_nullable
               as List<WorkspaceResponse>,
     ));
@@ -127,7 +128,6 @@ class _$_UserResponse implements _UserResponse {
   @JsonKey(name: 'id')
   final int id;
 // ignore: invalid_annotation_target
-  @JsonKey(name: 'workspaces')
   final List<WorkspaceResponse> _workspaces;
 // ignore: invalid_annotation_target
   @override
@@ -146,10 +146,10 @@ class _$_UserResponse implements _UserResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserResponse &&
+            other is _$_UserResponse &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
-                .equals(other.workspaces, workspaces));
+                .equals(other._workspaces, _workspaces));
   }
 
   @JsonKey(ignore: true)
@@ -157,12 +157,12 @@ class _$_UserResponse implements _UserResponse {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(workspaces));
+      const DeepCollectionEquality().hash(_workspaces));
 
   @JsonKey(ignore: true)
   @override
-  _$UserResponseCopyWith<_UserResponse> get copyWith =>
-      __$UserResponseCopyWithImpl<_UserResponse>(this, _$identity);
+  _$$_UserResponseCopyWith<_$_UserResponse> get copyWith =>
+      __$$_UserResponseCopyWithImpl<_$_UserResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -188,6 +188,6 @@ abstract class _UserResponse implements UserResponse {
   List<WorkspaceResponse> get workspaces => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserResponseCopyWith<_UserResponse> get copyWith =>
+  _$$_UserResponseCopyWith<_$_UserResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -98,11 +98,11 @@ class _$MenuSummaryResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MenuSummaryResponseCopyWith<$Res>
+abstract class _$$_MenuSummaryResponseCopyWith<$Res>
     implements $MenuSummaryResponseCopyWith<$Res> {
-  factory _$MenuSummaryResponseCopyWith(_MenuSummaryResponse value,
-          $Res Function(_MenuSummaryResponse) then) =
-      __$MenuSummaryResponseCopyWithImpl<$Res>;
+  factory _$$_MenuSummaryResponseCopyWith(_$_MenuSummaryResponse value,
+          $Res Function(_$_MenuSummaryResponse) then) =
+      __$$_MenuSummaryResponseCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'id') int id,
@@ -113,15 +113,15 @@ abstract class _$MenuSummaryResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$MenuSummaryResponseCopyWithImpl<$Res>
+class __$$_MenuSummaryResponseCopyWithImpl<$Res>
     extends _$MenuSummaryResponseCopyWithImpl<$Res>
-    implements _$MenuSummaryResponseCopyWith<$Res> {
-  __$MenuSummaryResponseCopyWithImpl(
-      _MenuSummaryResponse _value, $Res Function(_MenuSummaryResponse) _then)
-      : super(_value, (v) => _then(v as _MenuSummaryResponse));
+    implements _$$_MenuSummaryResponseCopyWith<$Res> {
+  __$$_MenuSummaryResponseCopyWithImpl(_$_MenuSummaryResponse _value,
+      $Res Function(_$_MenuSummaryResponse) _then)
+      : super(_value, (v) => _then(v as _$_MenuSummaryResponse));
 
   @override
-  _MenuSummaryResponse get _value => super._value as _MenuSummaryResponse;
+  _$_MenuSummaryResponse get _value => super._value as _$_MenuSummaryResponse;
 
   @override
   $Res call({
@@ -131,7 +131,7 @@ class __$MenuSummaryResponseCopyWithImpl<$Res>
     Object? timeFrame = freezed,
     Object? recipes = freezed,
   }) {
-    return _then(_MenuSummaryResponse(
+    return _then(_$_MenuSummaryResponse(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -149,7 +149,7 @@ class __$MenuSummaryResponseCopyWithImpl<$Res>
           : timeFrame // ignore: cast_nullable_to_non_nullable
               as String,
       recipes: recipes == freezed
-          ? _value.recipes
+          ? _value._recipes
           : recipes // ignore: cast_nullable_to_non_nullable
               as List<RecipeSummaryResponse>,
     ));
@@ -192,7 +192,6 @@ class _$_MenuSummaryResponse implements _MenuSummaryResponse {
   @JsonKey(name: 'time_frame')
   final String timeFrame;
 // ignore: invalid_annotation_target
-  @JsonKey(name: 'recipes')
   final List<RecipeSummaryResponse> _recipes;
 // ignore: invalid_annotation_target
   @override
@@ -211,12 +210,12 @@ class _$_MenuSummaryResponse implements _MenuSummaryResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MenuSummaryResponse &&
+            other is _$_MenuSummaryResponse &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.memo, memo) &&
             const DeepCollectionEquality().equals(other.date, date) &&
             const DeepCollectionEquality().equals(other.timeFrame, timeFrame) &&
-            const DeepCollectionEquality().equals(other.recipes, recipes));
+            const DeepCollectionEquality().equals(other._recipes, _recipes));
   }
 
   @JsonKey(ignore: true)
@@ -227,12 +226,12 @@ class _$_MenuSummaryResponse implements _MenuSummaryResponse {
       const DeepCollectionEquality().hash(memo),
       const DeepCollectionEquality().hash(date),
       const DeepCollectionEquality().hash(timeFrame),
-      const DeepCollectionEquality().hash(recipes));
+      const DeepCollectionEquality().hash(_recipes));
 
   @JsonKey(ignore: true)
   @override
-  _$MenuSummaryResponseCopyWith<_MenuSummaryResponse> get copyWith =>
-      __$MenuSummaryResponseCopyWithImpl<_MenuSummaryResponse>(
+  _$$_MenuSummaryResponseCopyWith<_$_MenuSummaryResponse> get copyWith =>
+      __$$_MenuSummaryResponseCopyWithImpl<_$_MenuSummaryResponse>(
           this, _$identity);
 
   @override
@@ -275,6 +274,6 @@ abstract class _MenuSummaryResponse implements MenuSummaryResponse {
   List<RecipeSummaryResponse> get recipes => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MenuSummaryResponseCopyWith<_MenuSummaryResponse> get copyWith =>
+  _$$_MenuSummaryResponseCopyWith<_$_MenuSummaryResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

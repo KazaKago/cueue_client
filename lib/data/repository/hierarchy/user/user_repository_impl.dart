@@ -2,6 +2,7 @@ import 'package:cueue/data/api/hierarchy/user/create_user_api.dart';
 import 'package:cueue/data/auth/hierarchy/password/password_signaturer.dart';
 import 'package:cueue/data/auth/hierarchy/signaturer.dart';
 import 'package:cueue/data/cache/hierarchy/cache.dart';
+import 'package:cueue/data/mapper/hierarchy/user/user_response_mapper.dart';
 import 'package:cueue/data/repository/flowable/user/user_flowable_factory.dart';
 import 'package:cueue/domain/model/hierarchy/user/email.dart';
 import 'package:cueue/domain/model/hierarchy/user/password.dart';
@@ -11,12 +12,13 @@ import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:store_flowable/store_flowable.dart';
 
 class UserRepositoryImpl implements UserRepository {
-  const UserRepositoryImpl(this._cacheList, this._createUserApi, this._passwordSignaturer, this._userFlowableFactory);
+  const UserRepositoryImpl(this._cacheList, this._createUserApi, this._passwordSignaturer, this._userFlowableFactory, this._userResponseMapper);
 
   final List<Cache> _cacheList;
   final CreateUserApi _createUserApi;
   final PasswordSignaturer _passwordSignaturer;
   final UserFlowableFactory _userFlowableFactory;
+  final UserResponseMapper _userResponseMapper;
 
   @override
   LoadingStateStream<User> follow() {
@@ -44,7 +46,10 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<void> create() async {
-    await _createUserApi.execute();
+    final userResponse = await _createUserApi.execute();
+    final user = _userResponseMapper.map(auth.FirebaseAuth.instance.currentUser!, userResponse);
+    final userFlowable = _userFlowableFactory.create(null);
+    await userFlowable.update(user);
   }
 
   @override

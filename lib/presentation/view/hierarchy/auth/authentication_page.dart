@@ -1,3 +1,4 @@
+import 'package:cueue/domain/usecase/hierarchy/auth/sign_in_check_result.dart';
 import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_type.dart';
@@ -8,6 +9,7 @@ import 'package:cueue/presentation/view/hierarchy/auth/sign_in_with_apple_button
 import 'package:cueue/presentation/view/hierarchy/auth/sign_in_with_google_button.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/sign_in_with_password_button.dart';
 import 'package:cueue/presentation/view/hierarchy/main/main_page.dart';
+import 'package:cueue/presentation/view/hierarchy/welcome/workspace_creation_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/material.dart';
@@ -32,30 +34,18 @@ class AuthenticationPage extends HookConsumerWidget {
     final isObscureConfirmationPasswordText = useState(true);
     final viewModel = ref.read(authenticationViewModelProvider);
     ref
-      ..listen<bool>(
-        authenticationViewModelProvider.select((viewModel) => viewModel.isLoading),
-        ((previous, isLoading) {
-          isLoading ? EasyLoading.show() : EasyLoading.dismiss();
-        }),
-      )
-      ..listen<Event<void>>(
-        authenticationViewModelProvider.select((viewModel) => viewModel.completionAuthenticationEvent),
-        ((previous, completionAuthenticationEvent) {
-          completionAuthenticationEvent((_) => _replaceMainPage(context));
-        }),
-      )
-      ..listen<Event<void>>(
-        authenticationViewModelProvider.select((viewModel) => viewModel.completionReauthenticationEvent),
-        ((previous, completionReauthenticationEvent) {
-          completionReauthenticationEvent((_) => Navigator.of(context).pop(true));
-        }),
-      )
-      ..listen<Event<Exception>>(
-        authenticationViewModelProvider.select((viewModel) => viewModel.exceptionEvent),
-        ((previous, exceptionEvent) {
-          exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
-        }),
-      );
+      ..listen<bool>(authenticationViewModelProvider.select((viewModel) => viewModel.isLoading), (previous, isLoading) {
+        isLoading ? EasyLoading.show() : EasyLoading.dismiss();
+      })
+      ..listen<Event<SignInCheckResult>>(authenticationViewModelProvider.select((viewModel) => viewModel.completionAuthenticationEvent), (previous, completionAuthenticationEvent) {
+        completionAuthenticationEvent((event) => _goNextRoute(context, event));
+      })
+      ..listen<Event<void>>(authenticationViewModelProvider.select((viewModel) => viewModel.completionReauthenticationEvent), (previous, completionReauthenticationEvent) {
+        completionReauthenticationEvent((_) => Navigator.of(context).pop(true));
+      })
+      ..listen<Event<Exception>>(authenticationViewModelProvider.select((viewModel) => viewModel.exceptionEvent), (previous, exceptionEvent) {
+        exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
+      });
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -200,8 +190,17 @@ class AuthenticationPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _replaceMainPage(BuildContext context) async {
-    await Navigator.pushAndRemoveUntil<void>(context, MaterialPageRoute(builder: (context) => const MainPage()), (route) => false);
+  Future<void> _goNextRoute(BuildContext context, SignInCheckResult signInCheckResult) async {
+    Widget page;
+    switch (signInCheckResult) {
+      case SignInCheckResult.workspaceCreation:
+        page = const WorkspaceCreationPage();
+        break;
+      case SignInCheckResult.afterSignIn:
+        page = const MainPage();
+        break;
+    }
+    await Navigator.pushAndRemoveUntil<void>(context, MaterialPageRoute(builder: (context) => page), (route) => false);
   }
 
   Future<void> _goPasswordReset(BuildContext context) async {

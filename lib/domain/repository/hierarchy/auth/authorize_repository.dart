@@ -3,8 +3,6 @@ import 'package:cueue/domain/model/hierarchy/auth/google_auth_info.dart';
 import 'package:cueue/domain/model/hierarchy/auth/password_auth_info.dart';
 
 abstract class AuthorizeRepository {
-  Future<bool> isSignIn();
-
   Future<void> signUpWithPassword(PasswordAuthInfo authInfo);
 
   Future<void> signInWithPassword(PasswordAuthInfo authInfo);

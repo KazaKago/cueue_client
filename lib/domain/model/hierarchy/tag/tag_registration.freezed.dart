@@ -54,31 +54,31 @@ class _$TagRegistrationCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$TagRegistrationCopyWith<$Res>
+abstract class _$$_TagRegistrationCopyWith<$Res>
     implements $TagRegistrationCopyWith<$Res> {
-  factory _$TagRegistrationCopyWith(
-          _TagRegistration value, $Res Function(_TagRegistration) then) =
-      __$TagRegistrationCopyWithImpl<$Res>;
+  factory _$$_TagRegistrationCopyWith(
+          _$_TagRegistration value, $Res Function(_$_TagRegistration) then) =
+      __$$_TagRegistrationCopyWithImpl<$Res>;
   @override
   $Res call({String name});
 }
 
 /// @nodoc
-class __$TagRegistrationCopyWithImpl<$Res>
+class __$$_TagRegistrationCopyWithImpl<$Res>
     extends _$TagRegistrationCopyWithImpl<$Res>
-    implements _$TagRegistrationCopyWith<$Res> {
-  __$TagRegistrationCopyWithImpl(
-      _TagRegistration _value, $Res Function(_TagRegistration) _then)
-      : super(_value, (v) => _then(v as _TagRegistration));
+    implements _$$_TagRegistrationCopyWith<$Res> {
+  __$$_TagRegistrationCopyWithImpl(
+      _$_TagRegistration _value, $Res Function(_$_TagRegistration) _then)
+      : super(_value, (v) => _then(v as _$_TagRegistration));
 
   @override
-  _TagRegistration get _value => super._value as _TagRegistration;
+  _$_TagRegistration get _value => super._value as _$_TagRegistration;
 
   @override
   $Res call({
     Object? name = freezed,
   }) {
-    return _then(_TagRegistration(
+    return _then(_$_TagRegistration(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -104,7 +104,7 @@ class _$_TagRegistration implements _TagRegistration {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TagRegistration &&
+            other is _$_TagRegistration &&
             const DeepCollectionEquality().equals(other.name, name));
   }
 
@@ -114,8 +114,8 @@ class _$_TagRegistration implements _TagRegistration {
 
   @JsonKey(ignore: true)
   @override
-  _$TagRegistrationCopyWith<_TagRegistration> get copyWith =>
-      __$TagRegistrationCopyWithImpl<_TagRegistration>(this, _$identity);
+  _$$_TagRegistrationCopyWith<_$_TagRegistration> get copyWith =>
+      __$$_TagRegistrationCopyWithImpl<_$_TagRegistration>(this, _$identity);
 }
 
 abstract class _TagRegistration implements TagRegistration {
@@ -126,6 +126,6 @@ abstract class _TagRegistration implements TagRegistration {
   String get name => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$TagRegistrationCopyWith<_TagRegistration> get copyWith =>
+  _$$_TagRegistrationCopyWith<_$_TagRegistration> get copyWith =>
       throw _privateConstructorUsedError;
 }

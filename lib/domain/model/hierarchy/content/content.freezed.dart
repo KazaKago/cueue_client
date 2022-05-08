@@ -66,9 +66,10 @@ class _$ContentCopyWithImpl<$Res> implements $ContentCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ContentCopyWith<$Res> implements $ContentCopyWith<$Res> {
-  factory _$ContentCopyWith(_Content value, $Res Function(_Content) then) =
-      __$ContentCopyWithImpl<$Res>;
+abstract class _$$_ContentCopyWith<$Res> implements $ContentCopyWith<$Res> {
+  factory _$$_ContentCopyWith(
+          _$_Content value, $Res Function(_$_Content) then) =
+      __$$_ContentCopyWithImpl<$Res>;
   @override
   $Res call({ContentKey key, Uri url});
 
@@ -77,20 +78,20 @@ abstract class _$ContentCopyWith<$Res> implements $ContentCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ContentCopyWithImpl<$Res> extends _$ContentCopyWithImpl<$Res>
-    implements _$ContentCopyWith<$Res> {
-  __$ContentCopyWithImpl(_Content _value, $Res Function(_Content) _then)
-      : super(_value, (v) => _then(v as _Content));
+class __$$_ContentCopyWithImpl<$Res> extends _$ContentCopyWithImpl<$Res>
+    implements _$$_ContentCopyWith<$Res> {
+  __$$_ContentCopyWithImpl(_$_Content _value, $Res Function(_$_Content) _then)
+      : super(_value, (v) => _then(v as _$_Content));
 
   @override
-  _Content get _value => super._value as _Content;
+  _$_Content get _value => super._value as _$_Content;
 
   @override
   $Res call({
     Object? key = freezed,
     Object? url = freezed,
   }) {
-    return _then(_Content(
+    return _then(_$_Content(
       key: key == freezed
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
@@ -122,7 +123,7 @@ class _$_Content implements _Content {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Content &&
+            other is _$_Content &&
             const DeepCollectionEquality().equals(other.key, key) &&
             const DeepCollectionEquality().equals(other.url, url));
   }
@@ -135,8 +136,8 @@ class _$_Content implements _Content {
 
   @JsonKey(ignore: true)
   @override
-  _$ContentCopyWith<_Content> get copyWith =>
-      __$ContentCopyWithImpl<_Content>(this, _$identity);
+  _$$_ContentCopyWith<_$_Content> get copyWith =>
+      __$$_ContentCopyWithImpl<_$_Content>(this, _$identity);
 }
 
 abstract class _Content implements Content {
@@ -149,6 +150,6 @@ abstract class _Content implements Content {
   Uri get url => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ContentCopyWith<_Content> get copyWith =>
+  _$$_ContentCopyWith<_$_Content> get copyWith =>
       throw _privateConstructorUsedError;
 }

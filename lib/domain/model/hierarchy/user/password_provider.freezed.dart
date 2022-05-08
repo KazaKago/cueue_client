@@ -69,11 +69,11 @@ class _$PasswordProviderCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PasswordProviderCopyWith<$Res>
+abstract class _$$_PasswordProviderCopyWith<$Res>
     implements $PasswordProviderCopyWith<$Res> {
-  factory _$PasswordProviderCopyWith(
-          _PasswordProvider value, $Res Function(_PasswordProvider) then) =
-      __$PasswordProviderCopyWithImpl<$Res>;
+  factory _$$_PasswordProviderCopyWith(
+          _$_PasswordProvider value, $Res Function(_$_PasswordProvider) then) =
+      __$$_PasswordProviderCopyWithImpl<$Res>;
   @override
   $Res call({UserId uid, String displayName});
 
@@ -82,22 +82,22 @@ abstract class _$PasswordProviderCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PasswordProviderCopyWithImpl<$Res>
+class __$$_PasswordProviderCopyWithImpl<$Res>
     extends _$PasswordProviderCopyWithImpl<$Res>
-    implements _$PasswordProviderCopyWith<$Res> {
-  __$PasswordProviderCopyWithImpl(
-      _PasswordProvider _value, $Res Function(_PasswordProvider) _then)
-      : super(_value, (v) => _then(v as _PasswordProvider));
+    implements _$$_PasswordProviderCopyWith<$Res> {
+  __$$_PasswordProviderCopyWithImpl(
+      _$_PasswordProvider _value, $Res Function(_$_PasswordProvider) _then)
+      : super(_value, (v) => _then(v as _$_PasswordProvider));
 
   @override
-  _PasswordProvider get _value => super._value as _PasswordProvider;
+  _$_PasswordProvider get _value => super._value as _$_PasswordProvider;
 
   @override
   $Res call({
     Object? uid = freezed,
     Object? displayName = freezed,
   }) {
-    return _then(_PasswordProvider(
+    return _then(_$_PasswordProvider(
       uid: uid == freezed
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -129,7 +129,7 @@ class _$_PasswordProvider implements _PasswordProvider {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PasswordProvider &&
+            other is _$_PasswordProvider &&
             const DeepCollectionEquality().equals(other.uid, uid) &&
             const DeepCollectionEquality()
                 .equals(other.displayName, displayName));
@@ -143,8 +143,8 @@ class _$_PasswordProvider implements _PasswordProvider {
 
   @JsonKey(ignore: true)
   @override
-  _$PasswordProviderCopyWith<_PasswordProvider> get copyWith =>
-      __$PasswordProviderCopyWithImpl<_PasswordProvider>(this, _$identity);
+  _$$_PasswordProviderCopyWith<_$_PasswordProvider> get copyWith =>
+      __$$_PasswordProviderCopyWithImpl<_$_PasswordProvider>(this, _$identity);
 }
 
 abstract class _PasswordProvider implements PasswordProvider {
@@ -158,6 +158,6 @@ abstract class _PasswordProvider implements PasswordProvider {
   String get displayName => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PasswordProviderCopyWith<_PasswordProvider> get copyWith =>
+  _$$_PasswordProviderCopyWith<_$_PasswordProvider> get copyWith =>
       throw _privateConstructorUsedError;
 }

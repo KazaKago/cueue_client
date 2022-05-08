@@ -20,12 +20,6 @@ class AuthorizeRepositoryImpl implements AuthorizeRepository {
   final UserFlowableFactory _userFlowableFactory;
 
   @override
-  Future<bool> isSignIn() async {
-    final user = FirebaseAuth.instance.currentUser;
-    return user != null;
-  }
-
-  @override
   Future<void> signUpWithPassword(PasswordAuthInfo authInfo) async {
     await _passwordSignaturer.signUp(authInfo);
   }

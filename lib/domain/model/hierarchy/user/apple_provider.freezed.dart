@@ -69,11 +69,11 @@ class _$AppleProviderCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AppleProviderCopyWith<$Res>
+abstract class _$$_AppleProviderCopyWith<$Res>
     implements $AppleProviderCopyWith<$Res> {
-  factory _$AppleProviderCopyWith(
-          _AppleProvider value, $Res Function(_AppleProvider) then) =
-      __$AppleProviderCopyWithImpl<$Res>;
+  factory _$$_AppleProviderCopyWith(
+          _$_AppleProvider value, $Res Function(_$_AppleProvider) then) =
+      __$$_AppleProviderCopyWithImpl<$Res>;
   @override
   $Res call({UserId uid, String displayName});
 
@@ -82,22 +82,22 @@ abstract class _$AppleProviderCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AppleProviderCopyWithImpl<$Res>
+class __$$_AppleProviderCopyWithImpl<$Res>
     extends _$AppleProviderCopyWithImpl<$Res>
-    implements _$AppleProviderCopyWith<$Res> {
-  __$AppleProviderCopyWithImpl(
-      _AppleProvider _value, $Res Function(_AppleProvider) _then)
-      : super(_value, (v) => _then(v as _AppleProvider));
+    implements _$$_AppleProviderCopyWith<$Res> {
+  __$$_AppleProviderCopyWithImpl(
+      _$_AppleProvider _value, $Res Function(_$_AppleProvider) _then)
+      : super(_value, (v) => _then(v as _$_AppleProvider));
 
   @override
-  _AppleProvider get _value => super._value as _AppleProvider;
+  _$_AppleProvider get _value => super._value as _$_AppleProvider;
 
   @override
   $Res call({
     Object? uid = freezed,
     Object? displayName = freezed,
   }) {
-    return _then(_AppleProvider(
+    return _then(_$_AppleProvider(
       uid: uid == freezed
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -129,7 +129,7 @@ class _$_AppleProvider implements _AppleProvider {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AppleProvider &&
+            other is _$_AppleProvider &&
             const DeepCollectionEquality().equals(other.uid, uid) &&
             const DeepCollectionEquality()
                 .equals(other.displayName, displayName));
@@ -143,8 +143,8 @@ class _$_AppleProvider implements _AppleProvider {
 
   @JsonKey(ignore: true)
   @override
-  _$AppleProviderCopyWith<_AppleProvider> get copyWith =>
-      __$AppleProviderCopyWithImpl<_AppleProvider>(this, _$identity);
+  _$$_AppleProviderCopyWith<_$_AppleProvider> get copyWith =>
+      __$$_AppleProviderCopyWithImpl<_$_AppleProvider>(this, _$identity);
 }
 
 abstract class _AppleProvider implements AppleProvider {
@@ -158,6 +158,6 @@ abstract class _AppleProvider implements AppleProvider {
   String get displayName => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppleProviderCopyWith<_AppleProvider> get copyWith =>
+  _$$_AppleProviderCopyWith<_$_AppleProvider> get copyWith =>
       throw _privateConstructorUsedError;
 }

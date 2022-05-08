@@ -69,11 +69,11 @@ class _$GoogleProviderCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$GoogleProviderCopyWith<$Res>
+abstract class _$$_GoogleProviderCopyWith<$Res>
     implements $GoogleProviderCopyWith<$Res> {
-  factory _$GoogleProviderCopyWith(
-          _GoogleProvider value, $Res Function(_GoogleProvider) then) =
-      __$GoogleProviderCopyWithImpl<$Res>;
+  factory _$$_GoogleProviderCopyWith(
+          _$_GoogleProvider value, $Res Function(_$_GoogleProvider) then) =
+      __$$_GoogleProviderCopyWithImpl<$Res>;
   @override
   $Res call({UserId uid, String displayName});
 
@@ -82,22 +82,22 @@ abstract class _$GoogleProviderCopyWith<$Res>
 }
 
 /// @nodoc
-class __$GoogleProviderCopyWithImpl<$Res>
+class __$$_GoogleProviderCopyWithImpl<$Res>
     extends _$GoogleProviderCopyWithImpl<$Res>
-    implements _$GoogleProviderCopyWith<$Res> {
-  __$GoogleProviderCopyWithImpl(
-      _GoogleProvider _value, $Res Function(_GoogleProvider) _then)
-      : super(_value, (v) => _then(v as _GoogleProvider));
+    implements _$$_GoogleProviderCopyWith<$Res> {
+  __$$_GoogleProviderCopyWithImpl(
+      _$_GoogleProvider _value, $Res Function(_$_GoogleProvider) _then)
+      : super(_value, (v) => _then(v as _$_GoogleProvider));
 
   @override
-  _GoogleProvider get _value => super._value as _GoogleProvider;
+  _$_GoogleProvider get _value => super._value as _$_GoogleProvider;
 
   @override
   $Res call({
     Object? uid = freezed,
     Object? displayName = freezed,
   }) {
-    return _then(_GoogleProvider(
+    return _then(_$_GoogleProvider(
       uid: uid == freezed
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -129,7 +129,7 @@ class _$_GoogleProvider implements _GoogleProvider {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _GoogleProvider &&
+            other is _$_GoogleProvider &&
             const DeepCollectionEquality().equals(other.uid, uid) &&
             const DeepCollectionEquality()
                 .equals(other.displayName, displayName));
@@ -143,8 +143,8 @@ class _$_GoogleProvider implements _GoogleProvider {
 
   @JsonKey(ignore: true)
   @override
-  _$GoogleProviderCopyWith<_GoogleProvider> get copyWith =>
-      __$GoogleProviderCopyWithImpl<_GoogleProvider>(this, _$identity);
+  _$$_GoogleProviderCopyWith<_$_GoogleProvider> get copyWith =>
+      __$$_GoogleProviderCopyWithImpl<_$_GoogleProvider>(this, _$identity);
 }
 
 abstract class _GoogleProvider implements GoogleProvider {
@@ -158,6 +158,6 @@ abstract class _GoogleProvider implements GoogleProvider {
   String get displayName => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$GoogleProviderCopyWith<_GoogleProvider> get copyWith =>
+  _$$_GoogleProviderCopyWith<_$_GoogleProvider> get copyWith =>
       throw _privateConstructorUsedError;
 }

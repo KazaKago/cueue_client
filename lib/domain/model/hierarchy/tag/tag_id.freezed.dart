@@ -51,27 +51,27 @@ class _$TagIdCopyWithImpl<$Res> implements $TagIdCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$TagIdCopyWith<$Res> implements $TagIdCopyWith<$Res> {
-  factory _$TagIdCopyWith(_TagId value, $Res Function(_TagId) then) =
-      __$TagIdCopyWithImpl<$Res>;
+abstract class _$$_TagIdCopyWith<$Res> implements $TagIdCopyWith<$Res> {
+  factory _$$_TagIdCopyWith(_$_TagId value, $Res Function(_$_TagId) then) =
+      __$$_TagIdCopyWithImpl<$Res>;
   @override
   $Res call({int value});
 }
 
 /// @nodoc
-class __$TagIdCopyWithImpl<$Res> extends _$TagIdCopyWithImpl<$Res>
-    implements _$TagIdCopyWith<$Res> {
-  __$TagIdCopyWithImpl(_TagId _value, $Res Function(_TagId) _then)
-      : super(_value, (v) => _then(v as _TagId));
+class __$$_TagIdCopyWithImpl<$Res> extends _$TagIdCopyWithImpl<$Res>
+    implements _$$_TagIdCopyWith<$Res> {
+  __$$_TagIdCopyWithImpl(_$_TagId _value, $Res Function(_$_TagId) _then)
+      : super(_value, (v) => _then(v as _$_TagId));
 
   @override
-  _TagId get _value => super._value as _TagId;
+  _$_TagId get _value => super._value as _$_TagId;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_TagId(
+    return _then(_$_TagId(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ class _$_TagId extends _TagId {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TagId &&
+            other is _$_TagId &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -107,8 +107,8 @@ class _$_TagId extends _TagId {
 
   @JsonKey(ignore: true)
   @override
-  _$TagIdCopyWith<_TagId> get copyWith =>
-      __$TagIdCopyWithImpl<_TagId>(this, _$identity);
+  _$$_TagIdCopyWith<_$_TagId> get copyWith =>
+      __$$_TagIdCopyWithImpl<_$_TagId>(this, _$identity);
 }
 
 abstract class _TagId extends TagId {
@@ -119,5 +119,6 @@ abstract class _TagId extends TagId {
   int get value => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$TagIdCopyWith<_TagId> get copyWith => throw _privateConstructorUsedError;
+  _$$_TagIdCopyWith<_$_TagId> get copyWith =>
+      throw _privateConstructorUsedError;
 }

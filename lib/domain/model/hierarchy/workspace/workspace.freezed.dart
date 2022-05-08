@@ -67,10 +67,10 @@ class _$WorkspaceCopyWithImpl<$Res> implements $WorkspaceCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$WorkspaceCopyWith<$Res> implements $WorkspaceCopyWith<$Res> {
-  factory _$WorkspaceCopyWith(
-          _Workspace value, $Res Function(_Workspace) then) =
-      __$WorkspaceCopyWithImpl<$Res>;
+abstract class _$$_WorkspaceCopyWith<$Res> implements $WorkspaceCopyWith<$Res> {
+  factory _$$_WorkspaceCopyWith(
+          _$_Workspace value, $Res Function(_$_Workspace) then) =
+      __$$_WorkspaceCopyWithImpl<$Res>;
   @override
   $Res call({WorkspaceId id, String name});
 
@@ -79,20 +79,21 @@ abstract class _$WorkspaceCopyWith<$Res> implements $WorkspaceCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$WorkspaceCopyWithImpl<$Res> extends _$WorkspaceCopyWithImpl<$Res>
-    implements _$WorkspaceCopyWith<$Res> {
-  __$WorkspaceCopyWithImpl(_Workspace _value, $Res Function(_Workspace) _then)
-      : super(_value, (v) => _then(v as _Workspace));
+class __$$_WorkspaceCopyWithImpl<$Res> extends _$WorkspaceCopyWithImpl<$Res>
+    implements _$$_WorkspaceCopyWith<$Res> {
+  __$$_WorkspaceCopyWithImpl(
+      _$_Workspace _value, $Res Function(_$_Workspace) _then)
+      : super(_value, (v) => _then(v as _$_Workspace));
 
   @override
-  _Workspace get _value => super._value as _Workspace;
+  _$_Workspace get _value => super._value as _$_Workspace;
 
   @override
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
   }) {
-    return _then(_Workspace(
+    return _then(_$_Workspace(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -124,7 +125,7 @@ class _$_Workspace implements _Workspace {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Workspace &&
+            other is _$_Workspace &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name));
   }
@@ -137,8 +138,8 @@ class _$_Workspace implements _Workspace {
 
   @JsonKey(ignore: true)
   @override
-  _$WorkspaceCopyWith<_Workspace> get copyWith =>
-      __$WorkspaceCopyWithImpl<_Workspace>(this, _$identity);
+  _$$_WorkspaceCopyWith<_$_Workspace> get copyWith =>
+      __$$_WorkspaceCopyWithImpl<_$_Workspace>(this, _$identity);
 }
 
 abstract class _Workspace implements Workspace {
@@ -152,6 +153,6 @@ abstract class _Workspace implements Workspace {
   String get name => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$WorkspaceCopyWith<_Workspace> get copyWith =>
+  _$$_WorkspaceCopyWith<_$_Workspace> get copyWith =>
       throw _privateConstructorUsedError;
 }

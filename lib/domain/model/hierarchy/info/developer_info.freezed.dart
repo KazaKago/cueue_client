@@ -75,11 +75,11 @@ class _$DeveloperInfoCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$DeveloperInfoCopyWith<$Res>
+abstract class _$$_DeveloperInfoCopyWith<$Res>
     implements $DeveloperInfoCopyWith<$Res> {
-  factory _$DeveloperInfoCopyWith(
-          _DeveloperInfo value, $Res Function(_DeveloperInfo) then) =
-      __$DeveloperInfoCopyWithImpl<$Res>;
+  factory _$$_DeveloperInfoCopyWith(
+          _$_DeveloperInfo value, $Res Function(_$_DeveloperInfo) then) =
+      __$$_DeveloperInfoCopyWithImpl<$Res>;
   @override
   $Res call({String developer, Uri webSite, Email email});
 
@@ -88,15 +88,15 @@ abstract class _$DeveloperInfoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$DeveloperInfoCopyWithImpl<$Res>
+class __$$_DeveloperInfoCopyWithImpl<$Res>
     extends _$DeveloperInfoCopyWithImpl<$Res>
-    implements _$DeveloperInfoCopyWith<$Res> {
-  __$DeveloperInfoCopyWithImpl(
-      _DeveloperInfo _value, $Res Function(_DeveloperInfo) _then)
-      : super(_value, (v) => _then(v as _DeveloperInfo));
+    implements _$$_DeveloperInfoCopyWith<$Res> {
+  __$$_DeveloperInfoCopyWithImpl(
+      _$_DeveloperInfo _value, $Res Function(_$_DeveloperInfo) _then)
+      : super(_value, (v) => _then(v as _$_DeveloperInfo));
 
   @override
-  _DeveloperInfo get _value => super._value as _DeveloperInfo;
+  _$_DeveloperInfo get _value => super._value as _$_DeveloperInfo;
 
   @override
   $Res call({
@@ -104,7 +104,7 @@ class __$DeveloperInfoCopyWithImpl<$Res>
     Object? webSite = freezed,
     Object? email = freezed,
   }) {
-    return _then(_DeveloperInfo(
+    return _then(_$_DeveloperInfo(
       developer: developer == freezed
           ? _value.developer
           : developer // ignore: cast_nullable_to_non_nullable
@@ -144,7 +144,7 @@ class _$_DeveloperInfo extends _DeveloperInfo {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DeveloperInfo &&
+            other is _$_DeveloperInfo &&
             const DeepCollectionEquality().equals(other.developer, developer) &&
             const DeepCollectionEquality().equals(other.webSite, webSite) &&
             const DeepCollectionEquality().equals(other.email, email));
@@ -159,8 +159,8 @@ class _$_DeveloperInfo extends _DeveloperInfo {
 
   @JsonKey(ignore: true)
   @override
-  _$DeveloperInfoCopyWith<_DeveloperInfo> get copyWith =>
-      __$DeveloperInfoCopyWithImpl<_DeveloperInfo>(this, _$identity);
+  _$$_DeveloperInfoCopyWith<_$_DeveloperInfo> get copyWith =>
+      __$$_DeveloperInfoCopyWithImpl<_$_DeveloperInfo>(this, _$identity);
 }
 
 abstract class _DeveloperInfo extends DeveloperInfo {
@@ -178,6 +178,6 @@ abstract class _DeveloperInfo extends DeveloperInfo {
   Email get email => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DeveloperInfoCopyWith<_DeveloperInfo> get copyWith =>
+  _$$_DeveloperInfoCopyWith<_$_DeveloperInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -60,38 +60,38 @@ class _$DateSplitMenuListCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$DateSplitMenuListCopyWith<$Res>
+abstract class _$$_DateSplitMenuListCopyWith<$Res>
     implements $DateSplitMenuListCopyWith<$Res> {
-  factory _$DateSplitMenuListCopyWith(
-          _DateSplitMenuList value, $Res Function(_DateSplitMenuList) then) =
-      __$DateSplitMenuListCopyWithImpl<$Res>;
+  factory _$$_DateSplitMenuListCopyWith(_$_DateSplitMenuList value,
+          $Res Function(_$_DateSplitMenuList) then) =
+      __$$_DateSplitMenuListCopyWithImpl<$Res>;
   @override
   $Res call({DateTime date, List<MenuSummary> menus});
 }
 
 /// @nodoc
-class __$DateSplitMenuListCopyWithImpl<$Res>
+class __$$_DateSplitMenuListCopyWithImpl<$Res>
     extends _$DateSplitMenuListCopyWithImpl<$Res>
-    implements _$DateSplitMenuListCopyWith<$Res> {
-  __$DateSplitMenuListCopyWithImpl(
-      _DateSplitMenuList _value, $Res Function(_DateSplitMenuList) _then)
-      : super(_value, (v) => _then(v as _DateSplitMenuList));
+    implements _$$_DateSplitMenuListCopyWith<$Res> {
+  __$$_DateSplitMenuListCopyWithImpl(
+      _$_DateSplitMenuList _value, $Res Function(_$_DateSplitMenuList) _then)
+      : super(_value, (v) => _then(v as _$_DateSplitMenuList));
 
   @override
-  _DateSplitMenuList get _value => super._value as _DateSplitMenuList;
+  _$_DateSplitMenuList get _value => super._value as _$_DateSplitMenuList;
 
   @override
   $Res call({
     Object? date = freezed,
     Object? menus = freezed,
   }) {
-    return _then(_DateSplitMenuList(
+    return _then(_$_DateSplitMenuList(
       date: date == freezed
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
       menus: menus == freezed
-          ? _value.menus
+          ? _value._menus
           : menus // ignore: cast_nullable_to_non_nullable
               as List<MenuSummary>,
     ));
@@ -123,21 +123,22 @@ class _$_DateSplitMenuList implements _DateSplitMenuList {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DateSplitMenuList &&
+            other is _$_DateSplitMenuList &&
             const DeepCollectionEquality().equals(other.date, date) &&
-            const DeepCollectionEquality().equals(other.menus, menus));
+            const DeepCollectionEquality().equals(other._menus, _menus));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(date),
-      const DeepCollectionEquality().hash(menus));
+      const DeepCollectionEquality().hash(_menus));
 
   @JsonKey(ignore: true)
   @override
-  _$DateSplitMenuListCopyWith<_DateSplitMenuList> get copyWith =>
-      __$DateSplitMenuListCopyWithImpl<_DateSplitMenuList>(this, _$identity);
+  _$$_DateSplitMenuListCopyWith<_$_DateSplitMenuList> get copyWith =>
+      __$$_DateSplitMenuListCopyWithImpl<_$_DateSplitMenuList>(
+          this, _$identity);
 }
 
 abstract class _DateSplitMenuList implements DateSplitMenuList {
@@ -151,6 +152,6 @@ abstract class _DateSplitMenuList implements DateSplitMenuList {
   List<MenuSummary> get menus => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DateSplitMenuListCopyWith<_DateSplitMenuList> get copyWith =>
+  _$$_DateSplitMenuListCopyWith<_$_DateSplitMenuList> get copyWith =>
       throw _privateConstructorUsedError;
 }

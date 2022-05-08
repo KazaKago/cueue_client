@@ -92,31 +92,33 @@ class _$CheckedMenuDialogEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PositiveCopyWith<$Res>
+abstract class _$$_PositiveCopyWith<$Res>
     implements $CheckedMenuDialogEventCopyWith<$Res> {
-  factory _$PositiveCopyWith(_Positive value, $Res Function(_Positive) then) =
-      __$PositiveCopyWithImpl<$Res>;
+  factory _$$_PositiveCopyWith(
+          _$_Positive value, $Res Function(_$_Positive) then) =
+      __$$_PositiveCopyWithImpl<$Res>;
   @override
   $Res call({List<CheckedMenuItem> menuItems});
 }
 
 /// @nodoc
-class __$PositiveCopyWithImpl<$Res>
+class __$$_PositiveCopyWithImpl<$Res>
     extends _$CheckedMenuDialogEventCopyWithImpl<$Res>
-    implements _$PositiveCopyWith<$Res> {
-  __$PositiveCopyWithImpl(_Positive _value, $Res Function(_Positive) _then)
-      : super(_value, (v) => _then(v as _Positive));
+    implements _$$_PositiveCopyWith<$Res> {
+  __$$_PositiveCopyWithImpl(
+      _$_Positive _value, $Res Function(_$_Positive) _then)
+      : super(_value, (v) => _then(v as _$_Positive));
 
   @override
-  _Positive get _value => super._value as _Positive;
+  _$_Positive get _value => super._value as _$_Positive;
 
   @override
   $Res call({
     Object? menuItems = freezed,
   }) {
-    return _then(_Positive(
+    return _then(_$_Positive(
       menuItems == freezed
-          ? _value.menuItems
+          ? _value._menuItems
           : menuItems // ignore: cast_nullable_to_non_nullable
               as List<CheckedMenuItem>,
     ));
@@ -145,18 +147,19 @@ class _$_Positive implements _Positive {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Positive &&
-            const DeepCollectionEquality().equals(other.menuItems, menuItems));
+            other is _$_Positive &&
+            const DeepCollectionEquality()
+                .equals(other._menuItems, _menuItems));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(menuItems));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_menuItems));
 
   @JsonKey(ignore: true)
   @override
-  _$PositiveCopyWith<_Positive> get copyWith =>
-      __$PositiveCopyWithImpl<_Positive>(this, _$identity);
+  _$$_PositiveCopyWith<_$_Positive> get copyWith =>
+      __$$_PositiveCopyWithImpl<_$_Positive>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -228,36 +231,38 @@ abstract class _Positive implements CheckedMenuDialogEvent {
   List<CheckedMenuItem> get menuItems => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PositiveCopyWith<_Positive> get copyWith =>
+  _$$_PositiveCopyWith<_$_Positive> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$NegativeCopyWith<$Res>
+abstract class _$$_NegativeCopyWith<$Res>
     implements $CheckedMenuDialogEventCopyWith<$Res> {
-  factory _$NegativeCopyWith(_Negative value, $Res Function(_Negative) then) =
-      __$NegativeCopyWithImpl<$Res>;
+  factory _$$_NegativeCopyWith(
+          _$_Negative value, $Res Function(_$_Negative) then) =
+      __$$_NegativeCopyWithImpl<$Res>;
   @override
   $Res call({List<CheckedMenuItem> menuItems});
 }
 
 /// @nodoc
-class __$NegativeCopyWithImpl<$Res>
+class __$$_NegativeCopyWithImpl<$Res>
     extends _$CheckedMenuDialogEventCopyWithImpl<$Res>
-    implements _$NegativeCopyWith<$Res> {
-  __$NegativeCopyWithImpl(_Negative _value, $Res Function(_Negative) _then)
-      : super(_value, (v) => _then(v as _Negative));
+    implements _$$_NegativeCopyWith<$Res> {
+  __$$_NegativeCopyWithImpl(
+      _$_Negative _value, $Res Function(_$_Negative) _then)
+      : super(_value, (v) => _then(v as _$_Negative));
 
   @override
-  _Negative get _value => super._value as _Negative;
+  _$_Negative get _value => super._value as _$_Negative;
 
   @override
   $Res call({
     Object? menuItems = freezed,
   }) {
-    return _then(_Negative(
+    return _then(_$_Negative(
       menuItems == freezed
-          ? _value.menuItems
+          ? _value._menuItems
           : menuItems // ignore: cast_nullable_to_non_nullable
               as List<CheckedMenuItem>,
     ));
@@ -286,18 +291,19 @@ class _$_Negative implements _Negative {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Negative &&
-            const DeepCollectionEquality().equals(other.menuItems, menuItems));
+            other is _$_Negative &&
+            const DeepCollectionEquality()
+                .equals(other._menuItems, _menuItems));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(menuItems));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_menuItems));
 
   @JsonKey(ignore: true)
   @override
-  _$NegativeCopyWith<_Negative> get copyWith =>
-      __$NegativeCopyWithImpl<_Negative>(this, _$identity);
+  _$$_NegativeCopyWith<_$_Negative> get copyWith =>
+      __$$_NegativeCopyWithImpl<_$_Negative>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -369,6 +375,6 @@ abstract class _Negative implements CheckedMenuDialogEvent {
   List<CheckedMenuItem> get menuItems => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$NegativeCopyWith<_Negative> get copyWith =>
+  _$$_NegativeCopyWith<_$_Negative> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -98,11 +98,11 @@ class _$RecipeRequestCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$RecipeRequestCopyWith<$Res>
+abstract class _$$_RecipeRequestCopyWith<$Res>
     implements $RecipeRequestCopyWith<$Res> {
-  factory _$RecipeRequestCopyWith(
-          _RecipeRequest value, $Res Function(_RecipeRequest) then) =
-      __$RecipeRequestCopyWithImpl<$Res>;
+  factory _$$_RecipeRequestCopyWith(
+          _$_RecipeRequest value, $Res Function(_$_RecipeRequest) then) =
+      __$$_RecipeRequestCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'title') String title,
@@ -113,15 +113,15 @@ abstract class _$RecipeRequestCopyWith<$Res>
 }
 
 /// @nodoc
-class __$RecipeRequestCopyWithImpl<$Res>
+class __$$_RecipeRequestCopyWithImpl<$Res>
     extends _$RecipeRequestCopyWithImpl<$Res>
-    implements _$RecipeRequestCopyWith<$Res> {
-  __$RecipeRequestCopyWithImpl(
-      _RecipeRequest _value, $Res Function(_RecipeRequest) _then)
-      : super(_value, (v) => _then(v as _RecipeRequest));
+    implements _$$_RecipeRequestCopyWith<$Res> {
+  __$$_RecipeRequestCopyWithImpl(
+      _$_RecipeRequest _value, $Res Function(_$_RecipeRequest) _then)
+      : super(_value, (v) => _then(v as _$_RecipeRequest));
 
   @override
-  _RecipeRequest get _value => super._value as _RecipeRequest;
+  _$_RecipeRequest get _value => super._value as _$_RecipeRequest;
 
   @override
   $Res call({
@@ -131,7 +131,7 @@ class __$RecipeRequestCopyWithImpl<$Res>
     Object? imageKeys = freezed,
     Object? tagIds = freezed,
   }) {
-    return _then(_RecipeRequest(
+    return _then(_$_RecipeRequest(
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -145,11 +145,11 @@ class __$RecipeRequestCopyWithImpl<$Res>
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
       imageKeys: imageKeys == freezed
-          ? _value.imageKeys
+          ? _value._imageKeys
           : imageKeys // ignore: cast_nullable_to_non_nullable
               as List<String>,
       tagIds: tagIds == freezed
-          ? _value.tagIds
+          ? _value._tagIds
           : tagIds // ignore: cast_nullable_to_non_nullable
               as List<int>,
     ));
@@ -184,7 +184,6 @@ class _$_RecipeRequest implements _RecipeRequest {
   @JsonKey(name: 'url')
   final String? url;
 // ignore: invalid_annotation_target
-  @JsonKey(name: 'image_keys')
   final List<String> _imageKeys;
 // ignore: invalid_annotation_target
   @override
@@ -195,7 +194,6 @@ class _$_RecipeRequest implements _RecipeRequest {
   }
 
 // ignore: invalid_annotation_target
-  @JsonKey(name: 'tag_ids')
   final List<int> _tagIds;
 // ignore: invalid_annotation_target
   @override
@@ -214,13 +212,14 @@ class _$_RecipeRequest implements _RecipeRequest {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RecipeRequest &&
+            other is _$_RecipeRequest &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality().equals(other.imageKeys, imageKeys) &&
-            const DeepCollectionEquality().equals(other.tagIds, tagIds));
+            const DeepCollectionEquality()
+                .equals(other._imageKeys, _imageKeys) &&
+            const DeepCollectionEquality().equals(other._tagIds, _tagIds));
   }
 
   @JsonKey(ignore: true)
@@ -230,13 +229,13 @@ class _$_RecipeRequest implements _RecipeRequest {
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(imageKeys),
-      const DeepCollectionEquality().hash(tagIds));
+      const DeepCollectionEquality().hash(_imageKeys),
+      const DeepCollectionEquality().hash(_tagIds));
 
   @JsonKey(ignore: true)
   @override
-  _$RecipeRequestCopyWith<_RecipeRequest> get copyWith =>
-      __$RecipeRequestCopyWithImpl<_RecipeRequest>(this, _$identity);
+  _$$_RecipeRequestCopyWith<_$_RecipeRequest> get copyWith =>
+      __$$_RecipeRequestCopyWithImpl<_$_RecipeRequest>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -273,6 +272,6 @@ abstract class _RecipeRequest implements RecipeRequest {
   List<int> get tagIds => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RecipeRequestCopyWith<_RecipeRequest> get copyWith =>
+  _$$_RecipeRequestCopyWith<_$_RecipeRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }

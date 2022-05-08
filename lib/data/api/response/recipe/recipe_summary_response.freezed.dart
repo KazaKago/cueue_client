@@ -103,11 +103,11 @@ class _$RecipeSummaryResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$RecipeSummaryResponseCopyWith<$Res>
+abstract class _$$_RecipeSummaryResponseCopyWith<$Res>
     implements $RecipeSummaryResponseCopyWith<$Res> {
-  factory _$RecipeSummaryResponseCopyWith(_RecipeSummaryResponse value,
-          $Res Function(_RecipeSummaryResponse) then) =
-      __$RecipeSummaryResponseCopyWithImpl<$Res>;
+  factory _$$_RecipeSummaryResponseCopyWith(_$_RecipeSummaryResponse value,
+          $Res Function(_$_RecipeSummaryResponse) then) =
+      __$$_RecipeSummaryResponseCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'id') int id,
@@ -120,15 +120,16 @@ abstract class _$RecipeSummaryResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$RecipeSummaryResponseCopyWithImpl<$Res>
+class __$$_RecipeSummaryResponseCopyWithImpl<$Res>
     extends _$RecipeSummaryResponseCopyWithImpl<$Res>
-    implements _$RecipeSummaryResponseCopyWith<$Res> {
-  __$RecipeSummaryResponseCopyWithImpl(_RecipeSummaryResponse _value,
-      $Res Function(_RecipeSummaryResponse) _then)
-      : super(_value, (v) => _then(v as _RecipeSummaryResponse));
+    implements _$$_RecipeSummaryResponseCopyWith<$Res> {
+  __$$_RecipeSummaryResponseCopyWithImpl(_$_RecipeSummaryResponse _value,
+      $Res Function(_$_RecipeSummaryResponse) _then)
+      : super(_value, (v) => _then(v as _$_RecipeSummaryResponse));
 
   @override
-  _RecipeSummaryResponse get _value => super._value as _RecipeSummaryResponse;
+  _$_RecipeSummaryResponse get _value =>
+      super._value as _$_RecipeSummaryResponse;
 
   @override
   $Res call({
@@ -137,7 +138,7 @@ class __$RecipeSummaryResponseCopyWithImpl<$Res>
     Object? image = freezed,
     Object? lastCookingAt = freezed,
   }) {
-    return _then(_RecipeSummaryResponse(
+    return _then(_$_RecipeSummaryResponse(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -196,7 +197,7 @@ class _$_RecipeSummaryResponse implements _RecipeSummaryResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RecipeSummaryResponse &&
+            other is _$_RecipeSummaryResponse &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.image, image) &&
@@ -215,8 +216,8 @@ class _$_RecipeSummaryResponse implements _RecipeSummaryResponse {
 
   @JsonKey(ignore: true)
   @override
-  _$RecipeSummaryResponseCopyWith<_RecipeSummaryResponse> get copyWith =>
-      __$RecipeSummaryResponseCopyWithImpl<_RecipeSummaryResponse>(
+  _$$_RecipeSummaryResponseCopyWith<_$_RecipeSummaryResponse> get copyWith =>
+      __$$_RecipeSummaryResponseCopyWithImpl<_$_RecipeSummaryResponse>(
           this, _$identity);
 
   @override
@@ -253,6 +254,6 @@ abstract class _RecipeSummaryResponse implements RecipeSummaryResponse {
   String? get lastCookingAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RecipeSummaryResponseCopyWith<_RecipeSummaryResponse> get copyWith =>
+  _$$_RecipeSummaryResponseCopyWith<_$_RecipeSummaryResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

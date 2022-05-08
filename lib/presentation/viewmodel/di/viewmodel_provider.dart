@@ -19,9 +19,10 @@ import 'package:cueue/presentation/viewmodel/hierarchy/setting/settings_viewmode
 import 'package:cueue/presentation/viewmodel/hierarchy/splash/splash_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/tag/tag_editing_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/tag/tag_viewmodel.dart';
+import 'package:cueue/presentation/viewmodel/hierarchy/welcome/workspace_creation_viewmodel.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final splashViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => SplashViewModel(ref.read(isSignInUseCaseProvider)));
+final splashViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => SplashViewModel(ref.read(checkAtLaunchUseCaseProvider)));
 final authenticationViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => AuthenticationViewModel(ref.read(shouldShowReauthenticationWithPasswordUseCaseProvider), ref.read(shouldShowReauthenticationWithGoogleUseCaseProvider), ref.read(shouldShowReauthenticationWithAppleUseCaseProvider), ref.read(signUpWithPasswordUseCaseProvider), ref.read(signInWithPasswordUseCaseProvider), ref.read(authenticateWithGoogleUseCaseProvider), ref.read(authenticateWithAppleUseCaseProvider), ref.read(reauthenticateWithPasswordUseCaseProvider), ref.read(reauthenticateWithGoogleUseCaseProvider), ref.read(reauthenticateWithAppleUseCaseProvider)));
 final recipeViewModelProvider = ChangeNotifierProvider.autoDispose.family<RecipeViewModel, RecipeSearchOption?>((ref, searchOption) => RecipeViewModel(ref.read(followAllRecipesUseCaseProvider), ref.read(refreshAllRecipesUseCaseProvider), ref.read(requestAdditionalAllRecipesUseCaseProvider), searchOption ?? RecipeSearchOption()));
 final recipeSelectionViewModelProvider = ChangeNotifierProvider.autoDispose.family<RecipeSelectionViewModel, List<RecipeSummary>>((ref, recipes) => RecipeSelectionViewModel(ref.read(followTagsUseCaseProvider), ref.read(refreshTagsUseCaseProvider), recipes.toList()));
@@ -37,3 +38,4 @@ final menuEditingViewModelProvider = ChangeNotifierProvider.autoDispose((ref) =>
 final recipeDetailViewModelProvider = ChangeNotifierProvider.autoDispose.family<RecipeDetailViewModel, RecipeId>((ref, recipeId) => RecipeDetailViewModel(ref.read(followRecipeUseCaseProvider), ref.read(refreshRecipeUseCaseProvider), recipeId));
 final menuDetailViewModelProvider = ChangeNotifierProvider.autoDispose.family<MenuDetailViewModel, MenuId>((ref, menuId) => MenuDetailViewModel(ref.read(followMenuUseCaseProvider), ref.read(refreshMenuUseCaseProvider), menuId));
 final accountDeletionViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => AccountDeletionViewModel(ref.read(deleteAccountUseCaseProvider)));
+final workspaceCreationViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => WorkspaceCreationViewModel(ref.read(createWorkspaceUseCaseProvider)));

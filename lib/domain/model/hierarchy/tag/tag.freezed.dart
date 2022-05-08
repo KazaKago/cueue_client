@@ -66,9 +66,9 @@ class _$TagCopyWithImpl<$Res> implements $TagCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$TagCopyWith<$Res> implements $TagCopyWith<$Res> {
-  factory _$TagCopyWith(_Tag value, $Res Function(_Tag) then) =
-      __$TagCopyWithImpl<$Res>;
+abstract class _$$_TagCopyWith<$Res> implements $TagCopyWith<$Res> {
+  factory _$$_TagCopyWith(_$_Tag value, $Res Function(_$_Tag) then) =
+      __$$_TagCopyWithImpl<$Res>;
   @override
   $Res call({TagId id, String name});
 
@@ -77,20 +77,20 @@ abstract class _$TagCopyWith<$Res> implements $TagCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$TagCopyWithImpl<$Res> extends _$TagCopyWithImpl<$Res>
-    implements _$TagCopyWith<$Res> {
-  __$TagCopyWithImpl(_Tag _value, $Res Function(_Tag) _then)
-      : super(_value, (v) => _then(v as _Tag));
+class __$$_TagCopyWithImpl<$Res> extends _$TagCopyWithImpl<$Res>
+    implements _$$_TagCopyWith<$Res> {
+  __$$_TagCopyWithImpl(_$_Tag _value, $Res Function(_$_Tag) _then)
+      : super(_value, (v) => _then(v as _$_Tag));
 
   @override
-  _Tag get _value => super._value as _Tag;
+  _$_Tag get _value => super._value as _$_Tag;
 
   @override
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
   }) {
-    return _then(_Tag(
+    return _then(_$_Tag(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -122,7 +122,7 @@ class _$_Tag implements _Tag {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Tag &&
+            other is _$_Tag &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name));
   }
@@ -135,8 +135,8 @@ class _$_Tag implements _Tag {
 
   @JsonKey(ignore: true)
   @override
-  _$TagCopyWith<_Tag> get copyWith =>
-      __$TagCopyWithImpl<_Tag>(this, _$identity);
+  _$$_TagCopyWith<_$_Tag> get copyWith =>
+      __$$_TagCopyWithImpl<_$_Tag>(this, _$identity);
 }
 
 abstract class _Tag implements Tag {
@@ -149,5 +149,5 @@ abstract class _Tag implements Tag {
   String get name => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$TagCopyWith<_Tag> get copyWith => throw _privateConstructorUsedError;
+  _$$_TagCopyWith<_$_Tag> get copyWith => throw _privateConstructorUsedError;
 }

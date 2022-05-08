@@ -32,24 +32,15 @@ class RecipeEditingPage extends HookConsumerWidget {
     final recipeUrlEditingController = useTextEditingController(text: recipe?.url?.toString() ?? '');
     final recipeDescriptionEditingController = useTextEditingController(text: recipe?.description ?? '');
     ref
-      ..listen<bool>(
-        recipeEditingViewModelProvider.select((viewModel) => viewModel.isLoading),
-        ((previous, isLoading) {
-          isLoading ? EasyLoading.show() : EasyLoading.dismiss();
-        }),
-      )
-      ..listen<Event<EditingResult>>(
-        recipeEditingViewModelProvider.select((viewModel) => viewModel.completionEvent),
-        ((previous, completionEvent) {
-          completionEvent((completion) => Navigator.of(context).pop(completion));
-        }),
-      )
-      ..listen<Event<Exception>>(
-        recipeEditingViewModelProvider.select((viewModel) => viewModel.exceptionEvent),
-        ((previous, exceptionEvent) {
-          exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
-        }),
-      );
+      ..listen<bool>(recipeEditingViewModelProvider.select((viewModel) => viewModel.isLoading), (previous, isLoading) {
+        isLoading ? EasyLoading.show() : EasyLoading.dismiss();
+      })
+      ..listen<Event<EditingResult>>(recipeEditingViewModelProvider.select((viewModel) => viewModel.completionEvent), (previous, completionEvent) {
+        completionEvent((completion) => Navigator.of(context).pop(completion));
+      })
+      ..listen<Event<Exception>>(recipeEditingViewModelProvider.select((viewModel) => viewModel.exceptionEvent), (previous, exceptionEvent) {
+        exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
+      });
     return Scaffold(
       appBar: AppBar(
         title: Text(recipe != null ? intl(context).editWith(recipe!.title) : intl(context).addRecipe),

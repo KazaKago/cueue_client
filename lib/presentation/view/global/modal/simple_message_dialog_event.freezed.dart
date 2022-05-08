@@ -80,20 +80,22 @@ class _$SimpleMessageDialogEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PositiveCopyWith<$Res> {
-  factory _$PositiveCopyWith(_Positive value, $Res Function(_Positive) then) =
-      __$PositiveCopyWithImpl<$Res>;
+abstract class _$$_PositiveCopyWith<$Res> {
+  factory _$$_PositiveCopyWith(
+          _$_Positive value, $Res Function(_$_Positive) then) =
+      __$$_PositiveCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$PositiveCopyWithImpl<$Res>
+class __$$_PositiveCopyWithImpl<$Res>
     extends _$SimpleMessageDialogEventCopyWithImpl<$Res>
-    implements _$PositiveCopyWith<$Res> {
-  __$PositiveCopyWithImpl(_Positive _value, $Res Function(_Positive) _then)
-      : super(_value, (v) => _then(v as _Positive));
+    implements _$$_PositiveCopyWith<$Res> {
+  __$$_PositiveCopyWithImpl(
+      _$_Positive _value, $Res Function(_$_Positive) _then)
+      : super(_value, (v) => _then(v as _$_Positive));
 
   @override
-  _Positive get _value => super._value as _Positive;
+  _$_Positive get _value => super._value as _$_Positive;
 }
 
 /// @nodoc
@@ -109,7 +111,7 @@ class _$_Positive implements _Positive {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Positive);
+        (other.runtimeType == runtimeType && other is _$_Positive);
   }
 
   @override
@@ -189,20 +191,21 @@ abstract class _Positive implements SimpleMessageDialogEvent {
 }
 
 /// @nodoc
-abstract class _$NeutralCopyWith<$Res> {
-  factory _$NeutralCopyWith(_Neutral value, $Res Function(_Neutral) then) =
-      __$NeutralCopyWithImpl<$Res>;
+abstract class _$$_NeutralCopyWith<$Res> {
+  factory _$$_NeutralCopyWith(
+          _$_Neutral value, $Res Function(_$_Neutral) then) =
+      __$$_NeutralCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$NeutralCopyWithImpl<$Res>
+class __$$_NeutralCopyWithImpl<$Res>
     extends _$SimpleMessageDialogEventCopyWithImpl<$Res>
-    implements _$NeutralCopyWith<$Res> {
-  __$NeutralCopyWithImpl(_Neutral _value, $Res Function(_Neutral) _then)
-      : super(_value, (v) => _then(v as _Neutral));
+    implements _$$_NeutralCopyWith<$Res> {
+  __$$_NeutralCopyWithImpl(_$_Neutral _value, $Res Function(_$_Neutral) _then)
+      : super(_value, (v) => _then(v as _$_Neutral));
 
   @override
-  _Neutral get _value => super._value as _Neutral;
+  _$_Neutral get _value => super._value as _$_Neutral;
 }
 
 /// @nodoc
@@ -218,7 +221,7 @@ class _$_Neutral implements _Neutral {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Neutral);
+        (other.runtimeType == runtimeType && other is _$_Neutral);
   }
 
   @override
@@ -298,20 +301,22 @@ abstract class _Neutral implements SimpleMessageDialogEvent {
 }
 
 /// @nodoc
-abstract class _$NegativeCopyWith<$Res> {
-  factory _$NegativeCopyWith(_Negative value, $Res Function(_Negative) then) =
-      __$NegativeCopyWithImpl<$Res>;
+abstract class _$$_NegativeCopyWith<$Res> {
+  factory _$$_NegativeCopyWith(
+          _$_Negative value, $Res Function(_$_Negative) then) =
+      __$$_NegativeCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$NegativeCopyWithImpl<$Res>
+class __$$_NegativeCopyWithImpl<$Res>
     extends _$SimpleMessageDialogEventCopyWithImpl<$Res>
-    implements _$NegativeCopyWith<$Res> {
-  __$NegativeCopyWithImpl(_Negative _value, $Res Function(_Negative) _then)
-      : super(_value, (v) => _then(v as _Negative));
+    implements _$$_NegativeCopyWith<$Res> {
+  __$$_NegativeCopyWithImpl(
+      _$_Negative _value, $Res Function(_$_Negative) _then)
+      : super(_value, (v) => _then(v as _$_Negative));
 
   @override
-  _Negative get _value => super._value as _Negative;
+  _$_Negative get _value => super._value as _$_Negative;
 }
 
 /// @nodoc
@@ -327,7 +332,7 @@ class _$_Negative implements _Negative {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Negative);
+        (other.runtimeType == runtimeType && other is _$_Negative);
   }
 
   @override

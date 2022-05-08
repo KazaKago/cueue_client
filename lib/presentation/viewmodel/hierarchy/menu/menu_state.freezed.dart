@@ -105,19 +105,20 @@ class _$MenuStateCopyWithImpl<$Res> implements $MenuStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$LoadingCopyWith<$Res> {
-  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
-      __$LoadingCopyWithImpl<$Res>;
+abstract class _$$_LoadingCopyWith<$Res> {
+  factory _$$_LoadingCopyWith(
+          _$_Loading value, $Res Function(_$_Loading) then) =
+      __$$_LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res>
-    implements _$LoadingCopyWith<$Res> {
-  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
-      : super(_value, (v) => _then(v as _Loading));
+class __$$_LoadingCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res>
+    implements _$$_LoadingCopyWith<$Res> {
+  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+      : super(_value, (v) => _then(v as _$_Loading));
 
   @override
-  _Loading get _value => super._value as _Loading;
+  _$_Loading get _value => super._value as _$_Loading;
 }
 
 /// @nodoc
@@ -133,7 +134,7 @@ class _$_Loading implements _Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Loading);
+        (other.runtimeType == runtimeType && other is _$_Loading);
   }
 
   @override
@@ -240,30 +241,30 @@ abstract class _Loading implements MenuState {
 }
 
 /// @nodoc
-abstract class _$RefreshingCopyWith<$Res> {
-  factory _$RefreshingCopyWith(
-          _Refreshing value, $Res Function(_Refreshing) then) =
-      __$RefreshingCopyWithImpl<$Res>;
+abstract class _$$_RefreshingCopyWith<$Res> {
+  factory _$$_RefreshingCopyWith(
+          _$_Refreshing value, $Res Function(_$_Refreshing) then) =
+      __$$_RefreshingCopyWithImpl<$Res>;
   $Res call({List<DateSplitMenuList> menus});
 }
 
 /// @nodoc
-class __$RefreshingCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res>
-    implements _$RefreshingCopyWith<$Res> {
-  __$RefreshingCopyWithImpl(
-      _Refreshing _value, $Res Function(_Refreshing) _then)
-      : super(_value, (v) => _then(v as _Refreshing));
+class __$$_RefreshingCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res>
+    implements _$$_RefreshingCopyWith<$Res> {
+  __$$_RefreshingCopyWithImpl(
+      _$_Refreshing _value, $Res Function(_$_Refreshing) _then)
+      : super(_value, (v) => _then(v as _$_Refreshing));
 
   @override
-  _Refreshing get _value => super._value as _Refreshing;
+  _$_Refreshing get _value => super._value as _$_Refreshing;
 
   @override
   $Res call({
     Object? menus = freezed,
   }) {
-    return _then(_Refreshing(
+    return _then(_$_Refreshing(
       menus == freezed
-          ? _value.menus
+          ? _value._menus
           : menus // ignore: cast_nullable_to_non_nullable
               as List<DateSplitMenuList>,
     ));
@@ -291,18 +292,18 @@ class _$_Refreshing implements _Refreshing {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Refreshing &&
-            const DeepCollectionEquality().equals(other.menus, menus));
+            other is _$_Refreshing &&
+            const DeepCollectionEquality().equals(other._menus, _menus));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(menus));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_menus));
 
   @JsonKey(ignore: true)
   @override
-  _$RefreshingCopyWith<_Refreshing> get copyWith =>
-      __$RefreshingCopyWithImpl<_Refreshing>(this, _$identity);
+  _$$_RefreshingCopyWith<_$_Refreshing> get copyWith =>
+      __$$_RefreshingCopyWithImpl<_$_Refreshing>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -406,36 +407,36 @@ abstract class _Refreshing implements MenuState {
 
   List<DateSplitMenuList> get menus => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$RefreshingCopyWith<_Refreshing> get copyWith =>
+  _$$_RefreshingCopyWith<_$_Refreshing> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$AdditionalLoadingCopyWith<$Res> {
-  factory _$AdditionalLoadingCopyWith(
-          _AdditionalLoading value, $Res Function(_AdditionalLoading) then) =
-      __$AdditionalLoadingCopyWithImpl<$Res>;
+abstract class _$$_AdditionalLoadingCopyWith<$Res> {
+  factory _$$_AdditionalLoadingCopyWith(_$_AdditionalLoading value,
+          $Res Function(_$_AdditionalLoading) then) =
+      __$$_AdditionalLoadingCopyWithImpl<$Res>;
   $Res call({List<DateSplitMenuList> menus});
 }
 
 /// @nodoc
-class __$AdditionalLoadingCopyWithImpl<$Res>
+class __$$_AdditionalLoadingCopyWithImpl<$Res>
     extends _$MenuStateCopyWithImpl<$Res>
-    implements _$AdditionalLoadingCopyWith<$Res> {
-  __$AdditionalLoadingCopyWithImpl(
-      _AdditionalLoading _value, $Res Function(_AdditionalLoading) _then)
-      : super(_value, (v) => _then(v as _AdditionalLoading));
+    implements _$$_AdditionalLoadingCopyWith<$Res> {
+  __$$_AdditionalLoadingCopyWithImpl(
+      _$_AdditionalLoading _value, $Res Function(_$_AdditionalLoading) _then)
+      : super(_value, (v) => _then(v as _$_AdditionalLoading));
 
   @override
-  _AdditionalLoading get _value => super._value as _AdditionalLoading;
+  _$_AdditionalLoading get _value => super._value as _$_AdditionalLoading;
 
   @override
   $Res call({
     Object? menus = freezed,
   }) {
-    return _then(_AdditionalLoading(
+    return _then(_$_AdditionalLoading(
       menus == freezed
-          ? _value.menus
+          ? _value._menus
           : menus // ignore: cast_nullable_to_non_nullable
               as List<DateSplitMenuList>,
     ));
@@ -464,18 +465,19 @@ class _$_AdditionalLoading implements _AdditionalLoading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AdditionalLoading &&
-            const DeepCollectionEquality().equals(other.menus, menus));
+            other is _$_AdditionalLoading &&
+            const DeepCollectionEquality().equals(other._menus, _menus));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(menus));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_menus));
 
   @JsonKey(ignore: true)
   @override
-  _$AdditionalLoadingCopyWith<_AdditionalLoading> get copyWith =>
-      __$AdditionalLoadingCopyWithImpl<_AdditionalLoading>(this, _$identity);
+  _$$_AdditionalLoadingCopyWith<_$_AdditionalLoading> get copyWith =>
+      __$$_AdditionalLoadingCopyWithImpl<_$_AdditionalLoading>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -579,24 +581,24 @@ abstract class _AdditionalLoading implements MenuState {
 
   List<DateSplitMenuList> get menus => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$AdditionalLoadingCopyWith<_AdditionalLoading> get copyWith =>
+  _$$_AdditionalLoadingCopyWith<_$_AdditionalLoading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$EmptyCopyWith<$Res> {
-  factory _$EmptyCopyWith(_Empty value, $Res Function(_Empty) then) =
-      __$EmptyCopyWithImpl<$Res>;
+abstract class _$$_EmptyCopyWith<$Res> {
+  factory _$$_EmptyCopyWith(_$_Empty value, $Res Function(_$_Empty) then) =
+      __$$_EmptyCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$EmptyCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res>
-    implements _$EmptyCopyWith<$Res> {
-  __$EmptyCopyWithImpl(_Empty _value, $Res Function(_Empty) _then)
-      : super(_value, (v) => _then(v as _Empty));
+class __$$_EmptyCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res>
+    implements _$$_EmptyCopyWith<$Res> {
+  __$$_EmptyCopyWithImpl(_$_Empty _value, $Res Function(_$_Empty) _then)
+      : super(_value, (v) => _then(v as _$_Empty));
 
   @override
-  _Empty get _value => super._value as _Empty;
+  _$_Empty get _value => super._value as _$_Empty;
 }
 
 /// @nodoc
@@ -612,7 +614,7 @@ class _$_Empty implements _Empty {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Empty);
+        (other.runtimeType == runtimeType && other is _$_Empty);
   }
 
   @override
@@ -719,29 +721,30 @@ abstract class _Empty implements MenuState {
 }
 
 /// @nodoc
-abstract class _$CompletedCopyWith<$Res> {
-  factory _$CompletedCopyWith(
-          _Completed value, $Res Function(_Completed) then) =
-      __$CompletedCopyWithImpl<$Res>;
+abstract class _$$_CompletedCopyWith<$Res> {
+  factory _$$_CompletedCopyWith(
+          _$_Completed value, $Res Function(_$_Completed) then) =
+      __$$_CompletedCopyWithImpl<$Res>;
   $Res call({List<DateSplitMenuList> menus});
 }
 
 /// @nodoc
-class __$CompletedCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res>
-    implements _$CompletedCopyWith<$Res> {
-  __$CompletedCopyWithImpl(_Completed _value, $Res Function(_Completed) _then)
-      : super(_value, (v) => _then(v as _Completed));
+class __$$_CompletedCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res>
+    implements _$$_CompletedCopyWith<$Res> {
+  __$$_CompletedCopyWithImpl(
+      _$_Completed _value, $Res Function(_$_Completed) _then)
+      : super(_value, (v) => _then(v as _$_Completed));
 
   @override
-  _Completed get _value => super._value as _Completed;
+  _$_Completed get _value => super._value as _$_Completed;
 
   @override
   $Res call({
     Object? menus = freezed,
   }) {
-    return _then(_Completed(
+    return _then(_$_Completed(
       menus == freezed
-          ? _value.menus
+          ? _value._menus
           : menus // ignore: cast_nullable_to_non_nullable
               as List<DateSplitMenuList>,
     ));
@@ -769,18 +772,18 @@ class _$_Completed implements _Completed {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Completed &&
-            const DeepCollectionEquality().equals(other.menus, menus));
+            other is _$_Completed &&
+            const DeepCollectionEquality().equals(other._menus, _menus));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(menus));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_menus));
 
   @JsonKey(ignore: true)
   @override
-  _$CompletedCopyWith<_Completed> get copyWith =>
-      __$CompletedCopyWithImpl<_Completed>(this, _$identity);
+  _$$_CompletedCopyWith<_$_Completed> get copyWith =>
+      __$$_CompletedCopyWithImpl<_$_Completed>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -883,31 +886,31 @@ abstract class _Completed implements MenuState {
 
   List<DateSplitMenuList> get menus => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$CompletedCopyWith<_Completed> get copyWith =>
+  _$$_CompletedCopyWith<_$_Completed> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ErrorCopyWith<$Res> {
-  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) =
-      __$ErrorCopyWithImpl<$Res>;
+abstract class _$$_ErrorCopyWith<$Res> {
+  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
+      __$$_ErrorCopyWithImpl<$Res>;
   $Res call({Exception error});
 }
 
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res>
-    implements _$ErrorCopyWith<$Res> {
-  __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
-      : super(_value, (v) => _then(v as _Error));
+class __$$_ErrorCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res>
+    implements _$$_ErrorCopyWith<$Res> {
+  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+      : super(_value, (v) => _then(v as _$_Error));
 
   @override
-  _Error get _value => super._value as _Error;
+  _$_Error get _value => super._value as _$_Error;
 
   @override
   $Res call({
     Object? error = freezed,
   }) {
-    return _then(_Error(
+    return _then(_$_Error(
       error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -933,7 +936,7 @@ class _$_Error implements _Error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Error &&
+            other is _$_Error &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
@@ -943,8 +946,8 @@ class _$_Error implements _Error {
 
   @JsonKey(ignore: true)
   @override
-  _$ErrorCopyWith<_Error> get copyWith =>
-      __$ErrorCopyWithImpl<_Error>(this, _$identity);
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1047,35 +1050,37 @@ abstract class _Error implements MenuState {
 
   Exception get error => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ErrorCopyWith<_Error> get copyWith => throw _privateConstructorUsedError;
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$AdditionalErrorCopyWith<$Res> {
-  factory _$AdditionalErrorCopyWith(
-          _AdditionalError value, $Res Function(_AdditionalError) then) =
-      __$AdditionalErrorCopyWithImpl<$Res>;
+abstract class _$$_AdditionalErrorCopyWith<$Res> {
+  factory _$$_AdditionalErrorCopyWith(
+          _$_AdditionalError value, $Res Function(_$_AdditionalError) then) =
+      __$$_AdditionalErrorCopyWithImpl<$Res>;
   $Res call({List<DateSplitMenuList> menus, Exception error});
 }
 
 /// @nodoc
-class __$AdditionalErrorCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res>
-    implements _$AdditionalErrorCopyWith<$Res> {
-  __$AdditionalErrorCopyWithImpl(
-      _AdditionalError _value, $Res Function(_AdditionalError) _then)
-      : super(_value, (v) => _then(v as _AdditionalError));
+class __$$_AdditionalErrorCopyWithImpl<$Res>
+    extends _$MenuStateCopyWithImpl<$Res>
+    implements _$$_AdditionalErrorCopyWith<$Res> {
+  __$$_AdditionalErrorCopyWithImpl(
+      _$_AdditionalError _value, $Res Function(_$_AdditionalError) _then)
+      : super(_value, (v) => _then(v as _$_AdditionalError));
 
   @override
-  _AdditionalError get _value => super._value as _AdditionalError;
+  _$_AdditionalError get _value => super._value as _$_AdditionalError;
 
   @override
   $Res call({
     Object? menus = freezed,
     Object? error = freezed,
   }) {
-    return _then(_AdditionalError(
+    return _then(_$_AdditionalError(
       menus == freezed
-          ? _value.menus
+          ? _value._menus
           : menus // ignore: cast_nullable_to_non_nullable
               as List<DateSplitMenuList>,
       error == freezed
@@ -1111,21 +1116,21 @@ class _$_AdditionalError implements _AdditionalError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AdditionalError &&
-            const DeepCollectionEquality().equals(other.menus, menus) &&
+            other is _$_AdditionalError &&
+            const DeepCollectionEquality().equals(other._menus, _menus) &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(menus),
+      const DeepCollectionEquality().hash(_menus),
       const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
-  _$AdditionalErrorCopyWith<_AdditionalError> get copyWith =>
-      __$AdditionalErrorCopyWithImpl<_AdditionalError>(this, _$identity);
+  _$$_AdditionalErrorCopyWith<_$_AdditionalError> get copyWith =>
+      __$$_AdditionalErrorCopyWithImpl<_$_AdditionalError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1231,6 +1236,6 @@ abstract class _AdditionalError implements MenuState {
   List<DateSplitMenuList> get menus => throw _privateConstructorUsedError;
   Exception get error => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$AdditionalErrorCopyWith<_AdditionalError> get copyWith =>
+  _$$_AdditionalErrorCopyWith<_$_AdditionalError> get copyWith =>
       throw _privateConstructorUsedError;
 }

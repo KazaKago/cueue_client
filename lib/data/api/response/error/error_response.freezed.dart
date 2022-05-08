@@ -71,11 +71,11 @@ class _$ErrorResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ErrorResponseCopyWith<$Res>
+abstract class _$$_ErrorResponseCopyWith<$Res>
     implements $ErrorResponseCopyWith<$Res> {
-  factory _$ErrorResponseCopyWith(
-          _ErrorResponse value, $Res Function(_ErrorResponse) then) =
-      __$ErrorResponseCopyWithImpl<$Res>;
+  factory _$$_ErrorResponseCopyWith(
+          _$_ErrorResponse value, $Res Function(_$_ErrorResponse) then) =
+      __$$_ErrorResponseCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'name') String name,
@@ -83,22 +83,22 @@ abstract class _$ErrorResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ErrorResponseCopyWithImpl<$Res>
+class __$$_ErrorResponseCopyWithImpl<$Res>
     extends _$ErrorResponseCopyWithImpl<$Res>
-    implements _$ErrorResponseCopyWith<$Res> {
-  __$ErrorResponseCopyWithImpl(
-      _ErrorResponse _value, $Res Function(_ErrorResponse) _then)
-      : super(_value, (v) => _then(v as _ErrorResponse));
+    implements _$$_ErrorResponseCopyWith<$Res> {
+  __$$_ErrorResponseCopyWithImpl(
+      _$_ErrorResponse _value, $Res Function(_$_ErrorResponse) _then)
+      : super(_value, (v) => _then(v as _$_ErrorResponse));
 
   @override
-  _ErrorResponse get _value => super._value as _ErrorResponse;
+  _$_ErrorResponse get _value => super._value as _$_ErrorResponse;
 
   @override
   $Res call({
     Object? name = freezed,
     Object? message = freezed,
   }) {
-    return _then(_ErrorResponse(
+    return _then(_$_ErrorResponse(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -139,7 +139,7 @@ class _$_ErrorResponse implements _ErrorResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ErrorResponse &&
+            other is _$_ErrorResponse &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.message, message));
   }
@@ -153,8 +153,8 @@ class _$_ErrorResponse implements _ErrorResponse {
 
   @JsonKey(ignore: true)
   @override
-  _$ErrorResponseCopyWith<_ErrorResponse> get copyWith =>
-      __$ErrorResponseCopyWithImpl<_ErrorResponse>(this, _$identity);
+  _$$_ErrorResponseCopyWith<_$_ErrorResponse> get copyWith =>
+      __$$_ErrorResponseCopyWithImpl<_$_ErrorResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -179,6 +179,6 @@ abstract class _ErrorResponse implements ErrorResponse {
   String get message => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ErrorResponseCopyWith<_ErrorResponse> get copyWith =>
+  _$$_ErrorResponseCopyWith<_$_ErrorResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

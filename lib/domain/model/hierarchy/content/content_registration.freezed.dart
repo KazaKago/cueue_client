@@ -54,31 +54,31 @@ class _$ContentRegistrationCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ContentRegistrationCopyWith<$Res>
+abstract class _$$_ContentRegistrationCopyWith<$Res>
     implements $ContentRegistrationCopyWith<$Res> {
-  factory _$ContentRegistrationCopyWith(_ContentRegistration value,
-          $Res Function(_ContentRegistration) then) =
-      __$ContentRegistrationCopyWithImpl<$Res>;
+  factory _$$_ContentRegistrationCopyWith(_$_ContentRegistration value,
+          $Res Function(_$_ContentRegistration) then) =
+      __$$_ContentRegistrationCopyWithImpl<$Res>;
   @override
   $Res call({Uint8List data});
 }
 
 /// @nodoc
-class __$ContentRegistrationCopyWithImpl<$Res>
+class __$$_ContentRegistrationCopyWithImpl<$Res>
     extends _$ContentRegistrationCopyWithImpl<$Res>
-    implements _$ContentRegistrationCopyWith<$Res> {
-  __$ContentRegistrationCopyWithImpl(
-      _ContentRegistration _value, $Res Function(_ContentRegistration) _then)
-      : super(_value, (v) => _then(v as _ContentRegistration));
+    implements _$$_ContentRegistrationCopyWith<$Res> {
+  __$$_ContentRegistrationCopyWithImpl(_$_ContentRegistration _value,
+      $Res Function(_$_ContentRegistration) _then)
+      : super(_value, (v) => _then(v as _$_ContentRegistration));
 
   @override
-  _ContentRegistration get _value => super._value as _ContentRegistration;
+  _$_ContentRegistration get _value => super._value as _$_ContentRegistration;
 
   @override
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(_ContentRegistration(
+    return _then(_$_ContentRegistration(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -104,7 +104,7 @@ class _$_ContentRegistration implements _ContentRegistration {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ContentRegistration &&
+            other is _$_ContentRegistration &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
@@ -114,8 +114,8 @@ class _$_ContentRegistration implements _ContentRegistration {
 
   @JsonKey(ignore: true)
   @override
-  _$ContentRegistrationCopyWith<_ContentRegistration> get copyWith =>
-      __$ContentRegistrationCopyWithImpl<_ContentRegistration>(
+  _$$_ContentRegistrationCopyWith<_$_ContentRegistration> get copyWith =>
+      __$$_ContentRegistrationCopyWithImpl<_$_ContentRegistration>(
           this, _$identity);
 }
 
@@ -127,6 +127,6 @@ abstract class _ContentRegistration implements ContentRegistration {
   Uint8List get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ContentRegistrationCopyWith<_ContentRegistration> get copyWith =>
+  _$$_ContentRegistrationCopyWith<_$_ContentRegistration> get copyWith =>
       throw _privateConstructorUsedError;
 }

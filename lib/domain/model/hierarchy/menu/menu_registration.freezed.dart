@@ -76,11 +76,11 @@ class _$MenuRegistrationCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MenuRegistrationCopyWith<$Res>
+abstract class _$$_MenuRegistrationCopyWith<$Res>
     implements $MenuRegistrationCopyWith<$Res> {
-  factory _$MenuRegistrationCopyWith(
-          _MenuRegistration value, $Res Function(_MenuRegistration) then) =
-      __$MenuRegistrationCopyWithImpl<$Res>;
+  factory _$$_MenuRegistrationCopyWith(
+          _$_MenuRegistration value, $Res Function(_$_MenuRegistration) then) =
+      __$$_MenuRegistrationCopyWithImpl<$Res>;
   @override
   $Res call(
       {String memo,
@@ -90,15 +90,15 @@ abstract class _$MenuRegistrationCopyWith<$Res>
 }
 
 /// @nodoc
-class __$MenuRegistrationCopyWithImpl<$Res>
+class __$$_MenuRegistrationCopyWithImpl<$Res>
     extends _$MenuRegistrationCopyWithImpl<$Res>
-    implements _$MenuRegistrationCopyWith<$Res> {
-  __$MenuRegistrationCopyWithImpl(
-      _MenuRegistration _value, $Res Function(_MenuRegistration) _then)
-      : super(_value, (v) => _then(v as _MenuRegistration));
+    implements _$$_MenuRegistrationCopyWith<$Res> {
+  __$$_MenuRegistrationCopyWithImpl(
+      _$_MenuRegistration _value, $Res Function(_$_MenuRegistration) _then)
+      : super(_value, (v) => _then(v as _$_MenuRegistration));
 
   @override
-  _MenuRegistration get _value => super._value as _MenuRegistration;
+  _$_MenuRegistration get _value => super._value as _$_MenuRegistration;
 
   @override
   $Res call({
@@ -107,7 +107,7 @@ class __$MenuRegistrationCopyWithImpl<$Res>
     Object? timeFrame = freezed,
     Object? recipeIds = freezed,
   }) {
-    return _then(_MenuRegistration(
+    return _then(_$_MenuRegistration(
       memo: memo == freezed
           ? _value.memo
           : memo // ignore: cast_nullable_to_non_nullable
@@ -121,7 +121,7 @@ class __$MenuRegistrationCopyWithImpl<$Res>
           : timeFrame // ignore: cast_nullable_to_non_nullable
               as TimeFrame,
       recipeIds: recipeIds == freezed
-          ? _value.recipeIds
+          ? _value._recipeIds
           : recipeIds // ignore: cast_nullable_to_non_nullable
               as List<RecipeId>,
     ));
@@ -160,11 +160,12 @@ class _$_MenuRegistration implements _MenuRegistration {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MenuRegistration &&
+            other is _$_MenuRegistration &&
             const DeepCollectionEquality().equals(other.memo, memo) &&
             const DeepCollectionEquality().equals(other.date, date) &&
             const DeepCollectionEquality().equals(other.timeFrame, timeFrame) &&
-            const DeepCollectionEquality().equals(other.recipeIds, recipeIds));
+            const DeepCollectionEquality()
+                .equals(other._recipeIds, _recipeIds));
   }
 
   @override
@@ -173,12 +174,12 @@ class _$_MenuRegistration implements _MenuRegistration {
       const DeepCollectionEquality().hash(memo),
       const DeepCollectionEquality().hash(date),
       const DeepCollectionEquality().hash(timeFrame),
-      const DeepCollectionEquality().hash(recipeIds));
+      const DeepCollectionEquality().hash(_recipeIds));
 
   @JsonKey(ignore: true)
   @override
-  _$MenuRegistrationCopyWith<_MenuRegistration> get copyWith =>
-      __$MenuRegistrationCopyWithImpl<_MenuRegistration>(this, _$identity);
+  _$$_MenuRegistrationCopyWith<_$_MenuRegistration> get copyWith =>
+      __$$_MenuRegistrationCopyWithImpl<_$_MenuRegistration>(this, _$identity);
 }
 
 abstract class _MenuRegistration implements MenuRegistration {
@@ -198,6 +199,6 @@ abstract class _MenuRegistration implements MenuRegistration {
   List<RecipeId> get recipeIds => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MenuRegistrationCopyWith<_MenuRegistration> get copyWith =>
+  _$$_MenuRegistrationCopyWith<_$_MenuRegistration> get copyWith =>
       throw _privateConstructorUsedError;
 }

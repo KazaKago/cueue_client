@@ -60,32 +60,32 @@ class _$GoogleAuthInfoCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$GoogleAuthInfoCopyWith<$Res>
+abstract class _$$_GoogleAuthInfoCopyWith<$Res>
     implements $GoogleAuthInfoCopyWith<$Res> {
-  factory _$GoogleAuthInfoCopyWith(
-          _GoogleAuthInfo value, $Res Function(_GoogleAuthInfo) then) =
-      __$GoogleAuthInfoCopyWithImpl<$Res>;
+  factory _$$_GoogleAuthInfoCopyWith(
+          _$_GoogleAuthInfo value, $Res Function(_$_GoogleAuthInfo) then) =
+      __$$_GoogleAuthInfoCopyWithImpl<$Res>;
   @override
   $Res call({String accessToken, String idToken});
 }
 
 /// @nodoc
-class __$GoogleAuthInfoCopyWithImpl<$Res>
+class __$$_GoogleAuthInfoCopyWithImpl<$Res>
     extends _$GoogleAuthInfoCopyWithImpl<$Res>
-    implements _$GoogleAuthInfoCopyWith<$Res> {
-  __$GoogleAuthInfoCopyWithImpl(
-      _GoogleAuthInfo _value, $Res Function(_GoogleAuthInfo) _then)
-      : super(_value, (v) => _then(v as _GoogleAuthInfo));
+    implements _$$_GoogleAuthInfoCopyWith<$Res> {
+  __$$_GoogleAuthInfoCopyWithImpl(
+      _$_GoogleAuthInfo _value, $Res Function(_$_GoogleAuthInfo) _then)
+      : super(_value, (v) => _then(v as _$_GoogleAuthInfo));
 
   @override
-  _GoogleAuthInfo get _value => super._value as _GoogleAuthInfo;
+  _$_GoogleAuthInfo get _value => super._value as _$_GoogleAuthInfo;
 
   @override
   $Res call({
     Object? accessToken = freezed,
     Object? idToken = freezed,
   }) {
-    return _then(_GoogleAuthInfo(
+    return _then(_$_GoogleAuthInfo(
       accessToken: accessToken == freezed
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -117,7 +117,7 @@ class _$_GoogleAuthInfo implements _GoogleAuthInfo {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _GoogleAuthInfo &&
+            other is _$_GoogleAuthInfo &&
             const DeepCollectionEquality()
                 .equals(other.accessToken, accessToken) &&
             const DeepCollectionEquality().equals(other.idToken, idToken));
@@ -131,8 +131,8 @@ class _$_GoogleAuthInfo implements _GoogleAuthInfo {
 
   @JsonKey(ignore: true)
   @override
-  _$GoogleAuthInfoCopyWith<_GoogleAuthInfo> get copyWith =>
-      __$GoogleAuthInfoCopyWithImpl<_GoogleAuthInfo>(this, _$identity);
+  _$$_GoogleAuthInfoCopyWith<_$_GoogleAuthInfo> get copyWith =>
+      __$$_GoogleAuthInfoCopyWithImpl<_$_GoogleAuthInfo>(this, _$identity);
 }
 
 abstract class _GoogleAuthInfo implements GoogleAuthInfo {
@@ -146,6 +146,6 @@ abstract class _GoogleAuthInfo implements GoogleAuthInfo {
   String get idToken => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$GoogleAuthInfoCopyWith<_GoogleAuthInfo> get copyWith =>
+  _$$_GoogleAuthInfoCopyWith<_$_GoogleAuthInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }

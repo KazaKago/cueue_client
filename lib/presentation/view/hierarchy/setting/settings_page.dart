@@ -32,30 +32,18 @@ class SettingsPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.read(settingsViewModelProvider);
     ref
-      ..listen<Event<void>>(
-        settingsViewModelProvider.select((viewModel) => viewModel.replaceWelcomePageEvent),
-        ((previous, replaceWelcomePageEvent) {
-          replaceWelcomePageEvent((_) => _replaceWelcomePage(context));
-        }),
-      )
-      ..listen<Event<Exception>>(
-        settingsViewModelProvider.select((viewModel) => viewModel.exceptionEvent),
-        ((previous, exceptionEvent) {
-          exceptionEvent((exception) => _showErrorDialog(context, ref, exception));
-        }),
-      )
-      ..listen<Event<SettingResult>>(
-        settingsViewModelProvider.select((viewModel) => viewModel.completionEvent),
-        ((previous, resultEvent) {
-          resultEvent((result) => FriedToast(context, result.toFormattedString(context)).show());
-        }),
-      )
-      ..listen<bool>(
-        settingsViewModelProvider.select((viewModel) => viewModel.isLoading),
-        ((previous, isLoading) {
-          isLoading ? EasyLoading.show() : EasyLoading.dismiss();
-        }),
-      );
+      ..listen<Event<void>>(settingsViewModelProvider.select((viewModel) => viewModel.replaceWelcomePageEvent), (previous, replaceWelcomePageEvent) {
+        replaceWelcomePageEvent((_) => _replaceWelcomePage(context));
+      })
+      ..listen<Event<Exception>>(settingsViewModelProvider.select((viewModel) => viewModel.exceptionEvent), (previous, exceptionEvent) {
+        exceptionEvent((exception) => _showErrorDialog(context, ref, exception));
+      })
+      ..listen<Event<SettingResult>>(settingsViewModelProvider.select((viewModel) => viewModel.completionEvent), (previous, resultEvent) {
+        resultEvent((result) => FriedToast(context, result.toFormattedString(context)).show());
+      })
+      ..listen<bool>(settingsViewModelProvider.select((viewModel) => viewModel.isLoading), (previous, isLoading) {
+        isLoading ? EasyLoading.show() : EasyLoading.dismiss();
+      });
     return Scaffold(
       appBar: AppBar(title: Text(intl(context).settings)),
       body: RefreshIndicator(

@@ -14,24 +14,15 @@ class AccountDeletionPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref
-      ..listen<Event<void>>(
-        accountDeletionViewModelProvider.select((viewModel) => viewModel.replaceWelcomePageEvent),
-        ((previous, replaceWelcomePageEvent) {
-          replaceWelcomePageEvent((_) => _replaceWelcomePage(context));
-        }),
-      )
-      ..listen<Event<Exception>>(
-        accountDeletionViewModelProvider.select((viewModel) => viewModel.exceptionEvent),
-        ((previous, exceptionEvent) {
-          exceptionEvent((exception) => _showErrorDialog(context, ref, exception));
-        }),
-      )
-      ..listen<bool>(
-        accountDeletionViewModelProvider.select((viewModel) => viewModel.isLoading),
-        ((previous, isLoading) {
-          isLoading ? EasyLoading.show() : EasyLoading.dismiss();
-        }),
-      );
+      ..listen<Event<void>>(accountDeletionViewModelProvider.select((viewModel) => viewModel.replaceWelcomePageEvent), (previous, replaceWelcomePageEvent) {
+        replaceWelcomePageEvent((_) => _replaceWelcomePage(context));
+      })
+      ..listen<Event<Exception>>(accountDeletionViewModelProvider.select((viewModel) => viewModel.exceptionEvent), (previous, exceptionEvent) {
+        exceptionEvent((exception) => _showErrorDialog(context, ref, exception));
+      })
+      ..listen<bool>(accountDeletionViewModelProvider.select((viewModel) => viewModel.isLoading), (previous, isLoading) {
+        isLoading ? EasyLoading.show() : EasyLoading.dismiss();
+      });
     return Scaffold(
       appBar: AppBar(title: Text(intl(context).accountDeletion)),
       body: Scrollbar(

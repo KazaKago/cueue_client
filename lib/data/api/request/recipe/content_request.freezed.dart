@@ -61,31 +61,31 @@ class _$ContentRequestCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ContentRequestCopyWith<$Res>
+abstract class _$$_ContentRequestCopyWith<$Res>
     implements $ContentRequestCopyWith<$Res> {
-  factory _$ContentRequestCopyWith(
-          _ContentRequest value, $Res Function(_ContentRequest) then) =
-      __$ContentRequestCopyWithImpl<$Res>;
+  factory _$$_ContentRequestCopyWith(
+          _$_ContentRequest value, $Res Function(_$_ContentRequest) then) =
+      __$$_ContentRequestCopyWithImpl<$Res>;
   @override
   $Res call({@JsonKey(name: 'data') String data});
 }
 
 /// @nodoc
-class __$ContentRequestCopyWithImpl<$Res>
+class __$$_ContentRequestCopyWithImpl<$Res>
     extends _$ContentRequestCopyWithImpl<$Res>
-    implements _$ContentRequestCopyWith<$Res> {
-  __$ContentRequestCopyWithImpl(
-      _ContentRequest _value, $Res Function(_ContentRequest) _then)
-      : super(_value, (v) => _then(v as _ContentRequest));
+    implements _$$_ContentRequestCopyWith<$Res> {
+  __$$_ContentRequestCopyWithImpl(
+      _$_ContentRequest _value, $Res Function(_$_ContentRequest) _then)
+      : super(_value, (v) => _then(v as _$_ContentRequest));
 
   @override
-  _ContentRequest get _value => super._value as _ContentRequest;
+  _$_ContentRequest get _value => super._value as _$_ContentRequest;
 
   @override
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(_ContentRequest(
+    return _then(_$_ContentRequest(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -116,7 +116,7 @@ class _$_ContentRequest implements _ContentRequest {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ContentRequest &&
+            other is _$_ContentRequest &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
@@ -127,8 +127,8 @@ class _$_ContentRequest implements _ContentRequest {
 
   @JsonKey(ignore: true)
   @override
-  _$ContentRequestCopyWith<_ContentRequest> get copyWith =>
-      __$ContentRequestCopyWithImpl<_ContentRequest>(this, _$identity);
+  _$$_ContentRequestCopyWith<_$_ContentRequest> get copyWith =>
+      __$$_ContentRequestCopyWithImpl<_$_ContentRequest>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -148,6 +148,6 @@ abstract class _ContentRequest implements ContentRequest {
   String get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ContentRequestCopyWith<_ContentRequest> get copyWith =>
+  _$$_ContentRequestCopyWith<_$_ContentRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }

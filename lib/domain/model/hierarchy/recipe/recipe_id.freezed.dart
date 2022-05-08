@@ -52,27 +52,29 @@ class _$RecipeIdCopyWithImpl<$Res> implements $RecipeIdCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$RecipeIdCopyWith<$Res> implements $RecipeIdCopyWith<$Res> {
-  factory _$RecipeIdCopyWith(_RecipeId value, $Res Function(_RecipeId) then) =
-      __$RecipeIdCopyWithImpl<$Res>;
+abstract class _$$_RecipeIdCopyWith<$Res> implements $RecipeIdCopyWith<$Res> {
+  factory _$$_RecipeIdCopyWith(
+          _$_RecipeId value, $Res Function(_$_RecipeId) then) =
+      __$$_RecipeIdCopyWithImpl<$Res>;
   @override
   $Res call({int value});
 }
 
 /// @nodoc
-class __$RecipeIdCopyWithImpl<$Res> extends _$RecipeIdCopyWithImpl<$Res>
-    implements _$RecipeIdCopyWith<$Res> {
-  __$RecipeIdCopyWithImpl(_RecipeId _value, $Res Function(_RecipeId) _then)
-      : super(_value, (v) => _then(v as _RecipeId));
+class __$$_RecipeIdCopyWithImpl<$Res> extends _$RecipeIdCopyWithImpl<$Res>
+    implements _$$_RecipeIdCopyWith<$Res> {
+  __$$_RecipeIdCopyWithImpl(
+      _$_RecipeId _value, $Res Function(_$_RecipeId) _then)
+      : super(_value, (v) => _then(v as _$_RecipeId));
 
   @override
-  _RecipeId get _value => super._value as _RecipeId;
+  _$_RecipeId get _value => super._value as _$_RecipeId;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_RecipeId(
+    return _then(_$_RecipeId(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -98,7 +100,7 @@ class _$_RecipeId implements _RecipeId {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RecipeId &&
+            other is _$_RecipeId &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -108,8 +110,8 @@ class _$_RecipeId implements _RecipeId {
 
   @JsonKey(ignore: true)
   @override
-  _$RecipeIdCopyWith<_RecipeId> get copyWith =>
-      __$RecipeIdCopyWithImpl<_RecipeId>(this, _$identity);
+  _$$_RecipeIdCopyWith<_$_RecipeId> get copyWith =>
+      __$$_RecipeIdCopyWithImpl<_$_RecipeId>(this, _$identity);
 }
 
 abstract class _RecipeId implements RecipeId {
@@ -119,6 +121,6 @@ abstract class _RecipeId implements RecipeId {
   int get value => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RecipeIdCopyWith<_RecipeId> get copyWith =>
+  _$$_RecipeIdCopyWith<_$_RecipeId> get copyWith =>
       throw _privateConstructorUsedError;
 }

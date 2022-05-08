@@ -124,9 +124,9 @@ class _$RecipeCopyWithImpl<$Res> implements $RecipeCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
-  factory _$RecipeCopyWith(_Recipe value, $Res Function(_Recipe) then) =
-      __$RecipeCopyWithImpl<$Res>;
+abstract class _$$_RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
+  factory _$$_RecipeCopyWith(_$_Recipe value, $Res Function(_$_Recipe) then) =
+      __$$_RecipeCopyWithImpl<$Res>;
   @override
   $Res call(
       {RecipeId id,
@@ -145,13 +145,13 @@ abstract class _$RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$RecipeCopyWithImpl<$Res> extends _$RecipeCopyWithImpl<$Res>
-    implements _$RecipeCopyWith<$Res> {
-  __$RecipeCopyWithImpl(_Recipe _value, $Res Function(_Recipe) _then)
-      : super(_value, (v) => _then(v as _Recipe));
+class __$$_RecipeCopyWithImpl<$Res> extends _$RecipeCopyWithImpl<$Res>
+    implements _$$_RecipeCopyWith<$Res> {
+  __$$_RecipeCopyWithImpl(_$_Recipe _value, $Res Function(_$_Recipe) _then)
+      : super(_value, (v) => _then(v as _$_Recipe));
 
   @override
-  _Recipe get _value => super._value as _Recipe;
+  _$_Recipe get _value => super._value as _$_Recipe;
 
   @override
   $Res call({
@@ -166,7 +166,7 @@ class __$RecipeCopyWithImpl<$Res> extends _$RecipeCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_Recipe(
+    return _then(_$_Recipe(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -184,15 +184,15 @@ class __$RecipeCopyWithImpl<$Res> extends _$RecipeCopyWithImpl<$Res>
           : url // ignore: cast_nullable_to_non_nullable
               as Uri?,
       images: images == freezed
-          ? _value.images
+          ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
               as List<Content>,
       tags: tags == freezed
-          ? _value.tags
+          ? _value._tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<Tag>,
       cookingHistories: cookingHistories == freezed
-          ? _value.cookingHistories
+          ? _value._cookingHistories
           : cookingHistories // ignore: cast_nullable_to_non_nullable
               as List<DateTime>,
       cookingCount: cookingCount == freezed
@@ -275,16 +275,16 @@ class _$_Recipe extends _Recipe {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Recipe &&
+            other is _$_Recipe &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality().equals(other.images, images) &&
-            const DeepCollectionEquality().equals(other.tags, tags) &&
+            const DeepCollectionEquality().equals(other._images, _images) &&
+            const DeepCollectionEquality().equals(other._tags, _tags) &&
             const DeepCollectionEquality()
-                .equals(other.cookingHistories, cookingHistories) &&
+                .equals(other._cookingHistories, _cookingHistories) &&
             const DeepCollectionEquality()
                 .equals(other.cookingCount, cookingCount) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
@@ -298,17 +298,17 @@ class _$_Recipe extends _Recipe {
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(images),
-      const DeepCollectionEquality().hash(tags),
-      const DeepCollectionEquality().hash(cookingHistories),
+      const DeepCollectionEquality().hash(_images),
+      const DeepCollectionEquality().hash(_tags),
+      const DeepCollectionEquality().hash(_cookingHistories),
       const DeepCollectionEquality().hash(cookingCount),
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(updatedAt));
 
   @JsonKey(ignore: true)
   @override
-  _$RecipeCopyWith<_Recipe> get copyWith =>
-      __$RecipeCopyWithImpl<_Recipe>(this, _$identity);
+  _$$_RecipeCopyWith<_$_Recipe> get copyWith =>
+      __$$_RecipeCopyWithImpl<_$_Recipe>(this, _$identity);
 }
 
 abstract class _Recipe extends Recipe {
@@ -347,5 +347,6 @@ abstract class _Recipe extends Recipe {
   DateTime get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RecipeCopyWith<_Recipe> get copyWith => throw _privateConstructorUsedError;
+  _$$_RecipeCopyWith<_$_Recipe> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -60,38 +60,38 @@ class _$RecipeSearchOptionCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$RecipeSearchOptionCopyWith<$Res>
+abstract class _$$_RecipeSearchOptionCopyWith<$Res>
     implements $RecipeSearchOptionCopyWith<$Res> {
-  factory _$RecipeSearchOptionCopyWith(
-          _RecipeSearchOption value, $Res Function(_RecipeSearchOption) then) =
-      __$RecipeSearchOptionCopyWithImpl<$Res>;
+  factory _$$_RecipeSearchOptionCopyWith(_$_RecipeSearchOption value,
+          $Res Function(_$_RecipeSearchOption) then) =
+      __$$_RecipeSearchOptionCopyWithImpl<$Res>;
   @override
   $Res call({String? keyword, List<TagId>? tagIds});
 }
 
 /// @nodoc
-class __$RecipeSearchOptionCopyWithImpl<$Res>
+class __$$_RecipeSearchOptionCopyWithImpl<$Res>
     extends _$RecipeSearchOptionCopyWithImpl<$Res>
-    implements _$RecipeSearchOptionCopyWith<$Res> {
-  __$RecipeSearchOptionCopyWithImpl(
-      _RecipeSearchOption _value, $Res Function(_RecipeSearchOption) _then)
-      : super(_value, (v) => _then(v as _RecipeSearchOption));
+    implements _$$_RecipeSearchOptionCopyWith<$Res> {
+  __$$_RecipeSearchOptionCopyWithImpl(
+      _$_RecipeSearchOption _value, $Res Function(_$_RecipeSearchOption) _then)
+      : super(_value, (v) => _then(v as _$_RecipeSearchOption));
 
   @override
-  _RecipeSearchOption get _value => super._value as _RecipeSearchOption;
+  _$_RecipeSearchOption get _value => super._value as _$_RecipeSearchOption;
 
   @override
   $Res call({
     Object? keyword = freezed,
     Object? tagIds = freezed,
   }) {
-    return _then(_RecipeSearchOption(
+    return _then(_$_RecipeSearchOption(
       keyword: keyword == freezed
           ? _value.keyword
           : keyword // ignore: cast_nullable_to_non_nullable
               as String?,
       tagIds: tagIds == freezed
-          ? _value.tagIds
+          ? _value._tagIds
           : tagIds // ignore: cast_nullable_to_non_nullable
               as List<TagId>?,
     ));
@@ -124,21 +124,22 @@ class _$_RecipeSearchOption implements _RecipeSearchOption {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RecipeSearchOption &&
+            other is _$_RecipeSearchOption &&
             const DeepCollectionEquality().equals(other.keyword, keyword) &&
-            const DeepCollectionEquality().equals(other.tagIds, tagIds));
+            const DeepCollectionEquality().equals(other._tagIds, _tagIds));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(keyword),
-      const DeepCollectionEquality().hash(tagIds));
+      const DeepCollectionEquality().hash(_tagIds));
 
   @JsonKey(ignore: true)
   @override
-  _$RecipeSearchOptionCopyWith<_RecipeSearchOption> get copyWith =>
-      __$RecipeSearchOptionCopyWithImpl<_RecipeSearchOption>(this, _$identity);
+  _$$_RecipeSearchOptionCopyWith<_$_RecipeSearchOption> get copyWith =>
+      __$$_RecipeSearchOptionCopyWithImpl<_$_RecipeSearchOption>(
+          this, _$identity);
 }
 
 abstract class _RecipeSearchOption implements RecipeSearchOption {
@@ -152,6 +153,6 @@ abstract class _RecipeSearchOption implements RecipeSearchOption {
   List<TagId>? get tagIds => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RecipeSearchOptionCopyWith<_RecipeSearchOption> get copyWith =>
+  _$$_RecipeSearchOptionCopyWith<_$_RecipeSearchOption> get copyWith =>
       throw _privateConstructorUsedError;
 }

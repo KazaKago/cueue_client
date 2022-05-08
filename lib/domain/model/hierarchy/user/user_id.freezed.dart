@@ -51,27 +51,27 @@ class _$UserIdCopyWithImpl<$Res> implements $UserIdCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$UserIdCopyWith<$Res> implements $UserIdCopyWith<$Res> {
-  factory _$UserIdCopyWith(_UserId value, $Res Function(_UserId) then) =
-      __$UserIdCopyWithImpl<$Res>;
+abstract class _$$_UserIdCopyWith<$Res> implements $UserIdCopyWith<$Res> {
+  factory _$$_UserIdCopyWith(_$_UserId value, $Res Function(_$_UserId) then) =
+      __$$_UserIdCopyWithImpl<$Res>;
   @override
   $Res call({String value});
 }
 
 /// @nodoc
-class __$UserIdCopyWithImpl<$Res> extends _$UserIdCopyWithImpl<$Res>
-    implements _$UserIdCopyWith<$Res> {
-  __$UserIdCopyWithImpl(_UserId _value, $Res Function(_UserId) _then)
-      : super(_value, (v) => _then(v as _UserId));
+class __$$_UserIdCopyWithImpl<$Res> extends _$UserIdCopyWithImpl<$Res>
+    implements _$$_UserIdCopyWith<$Res> {
+  __$$_UserIdCopyWithImpl(_$_UserId _value, $Res Function(_$_UserId) _then)
+      : super(_value, (v) => _then(v as _$_UserId));
 
   @override
-  _UserId get _value => super._value as _UserId;
+  _$_UserId get _value => super._value as _$_UserId;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_UserId(
+    return _then(_$_UserId(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ class _$_UserId implements _UserId {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserId &&
+            other is _$_UserId &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -107,8 +107,8 @@ class _$_UserId implements _UserId {
 
   @JsonKey(ignore: true)
   @override
-  _$UserIdCopyWith<_UserId> get copyWith =>
-      __$UserIdCopyWithImpl<_UserId>(this, _$identity);
+  _$$_UserIdCopyWith<_$_UserId> get copyWith =>
+      __$$_UserIdCopyWithImpl<_$_UserId>(this, _$identity);
 }
 
 abstract class _UserId implements UserId {
@@ -118,5 +118,6 @@ abstract class _UserId implements UserId {
   String get value => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserIdCopyWith<_UserId> get copyWith => throw _privateConstructorUsedError;
+  _$$_UserIdCopyWith<_$_UserId> get copyWith =>
+      throw _privateConstructorUsedError;
 }

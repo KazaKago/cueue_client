@@ -94,11 +94,11 @@ class _$RecipeSummaryImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$RecipeSummaryImplCopyWith<$Res>
+abstract class _$$_RecipeSummaryImplCopyWith<$Res>
     implements $RecipeSummaryImplCopyWith<$Res> {
-  factory _$RecipeSummaryImplCopyWith(
-          _RecipeSummaryImpl value, $Res Function(_RecipeSummaryImpl) then) =
-      __$RecipeSummaryImplCopyWithImpl<$Res>;
+  factory _$$_RecipeSummaryImplCopyWith(_$_RecipeSummaryImpl value,
+          $Res Function(_$_RecipeSummaryImpl) then) =
+      __$$_RecipeSummaryImplCopyWithImpl<$Res>;
   @override
   $Res call(
       {RecipeId id, String title, Content? image, DateTime? lastCookingAt});
@@ -110,15 +110,15 @@ abstract class _$RecipeSummaryImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$RecipeSummaryImplCopyWithImpl<$Res>
+class __$$_RecipeSummaryImplCopyWithImpl<$Res>
     extends _$RecipeSummaryImplCopyWithImpl<$Res>
-    implements _$RecipeSummaryImplCopyWith<$Res> {
-  __$RecipeSummaryImplCopyWithImpl(
-      _RecipeSummaryImpl _value, $Res Function(_RecipeSummaryImpl) _then)
-      : super(_value, (v) => _then(v as _RecipeSummaryImpl));
+    implements _$$_RecipeSummaryImplCopyWith<$Res> {
+  __$$_RecipeSummaryImplCopyWithImpl(
+      _$_RecipeSummaryImpl _value, $Res Function(_$_RecipeSummaryImpl) _then)
+      : super(_value, (v) => _then(v as _$_RecipeSummaryImpl));
 
   @override
-  _RecipeSummaryImpl get _value => super._value as _RecipeSummaryImpl;
+  _$_RecipeSummaryImpl get _value => super._value as _$_RecipeSummaryImpl;
 
   @override
   $Res call({
@@ -127,7 +127,7 @@ class __$RecipeSummaryImplCopyWithImpl<$Res>
     Object? image = freezed,
     Object? lastCookingAt = freezed,
   }) {
-    return _then(_RecipeSummaryImpl(
+    return _then(_$_RecipeSummaryImpl(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -175,7 +175,7 @@ class _$_RecipeSummaryImpl implements _RecipeSummaryImpl {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RecipeSummaryImpl &&
+            other is _$_RecipeSummaryImpl &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.image, image) &&
@@ -193,8 +193,9 @@ class _$_RecipeSummaryImpl implements _RecipeSummaryImpl {
 
   @JsonKey(ignore: true)
   @override
-  _$RecipeSummaryImplCopyWith<_RecipeSummaryImpl> get copyWith =>
-      __$RecipeSummaryImplCopyWithImpl<_RecipeSummaryImpl>(this, _$identity);
+  _$$_RecipeSummaryImplCopyWith<_$_RecipeSummaryImpl> get copyWith =>
+      __$$_RecipeSummaryImplCopyWithImpl<_$_RecipeSummaryImpl>(
+          this, _$identity);
 }
 
 abstract class _RecipeSummaryImpl implements RecipeSummaryImpl {
@@ -214,6 +215,6 @@ abstract class _RecipeSummaryImpl implements RecipeSummaryImpl {
   DateTime? get lastCookingAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RecipeSummaryImplCopyWith<_RecipeSummaryImpl> get copyWith =>
+  _$$_RecipeSummaryImplCopyWith<_$_RecipeSummaryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

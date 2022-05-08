@@ -51,27 +51,27 @@ class _$MenuIdCopyWithImpl<$Res> implements $MenuIdCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$MenuIdCopyWith<$Res> implements $MenuIdCopyWith<$Res> {
-  factory _$MenuIdCopyWith(_MenuId value, $Res Function(_MenuId) then) =
-      __$MenuIdCopyWithImpl<$Res>;
+abstract class _$$_MenuIdCopyWith<$Res> implements $MenuIdCopyWith<$Res> {
+  factory _$$_MenuIdCopyWith(_$_MenuId value, $Res Function(_$_MenuId) then) =
+      __$$_MenuIdCopyWithImpl<$Res>;
   @override
   $Res call({int value});
 }
 
 /// @nodoc
-class __$MenuIdCopyWithImpl<$Res> extends _$MenuIdCopyWithImpl<$Res>
-    implements _$MenuIdCopyWith<$Res> {
-  __$MenuIdCopyWithImpl(_MenuId _value, $Res Function(_MenuId) _then)
-      : super(_value, (v) => _then(v as _MenuId));
+class __$$_MenuIdCopyWithImpl<$Res> extends _$MenuIdCopyWithImpl<$Res>
+    implements _$$_MenuIdCopyWith<$Res> {
+  __$$_MenuIdCopyWithImpl(_$_MenuId _value, $Res Function(_$_MenuId) _then)
+      : super(_value, (v) => _then(v as _$_MenuId));
 
   @override
-  _MenuId get _value => super._value as _MenuId;
+  _$_MenuId get _value => super._value as _$_MenuId;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_MenuId(
+    return _then(_$_MenuId(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ class _$_MenuId implements _MenuId {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MenuId &&
+            other is _$_MenuId &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -107,8 +107,8 @@ class _$_MenuId implements _MenuId {
 
   @JsonKey(ignore: true)
   @override
-  _$MenuIdCopyWith<_MenuId> get copyWith =>
-      __$MenuIdCopyWithImpl<_MenuId>(this, _$identity);
+  _$$_MenuIdCopyWith<_$_MenuId> get copyWith =>
+      __$$_MenuIdCopyWithImpl<_$_MenuId>(this, _$identity);
 }
 
 abstract class _MenuId implements MenuId {
@@ -118,5 +118,6 @@ abstract class _MenuId implements MenuId {
   int get value => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MenuIdCopyWith<_MenuId> get copyWith => throw _privateConstructorUsedError;
+  _$$_MenuIdCopyWith<_$_MenuId> get copyWith =>
+      throw _privateConstructorUsedError;
 }

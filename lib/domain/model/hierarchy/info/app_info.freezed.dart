@@ -57,28 +57,29 @@ class _$AppInfoCopyWithImpl<$Res> implements $AppInfoCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$AppInfoCopyWith<$Res> implements $AppInfoCopyWith<$Res> {
-  factory _$AppInfoCopyWith(_AppInfo value, $Res Function(_AppInfo) then) =
-      __$AppInfoCopyWithImpl<$Res>;
+abstract class _$$_AppInfoCopyWith<$Res> implements $AppInfoCopyWith<$Res> {
+  factory _$$_AppInfoCopyWith(
+          _$_AppInfo value, $Res Function(_$_AppInfo) then) =
+      __$$_AppInfoCopyWithImpl<$Res>;
   @override
   $Res call({String appName, String version});
 }
 
 /// @nodoc
-class __$AppInfoCopyWithImpl<$Res> extends _$AppInfoCopyWithImpl<$Res>
-    implements _$AppInfoCopyWith<$Res> {
-  __$AppInfoCopyWithImpl(_AppInfo _value, $Res Function(_AppInfo) _then)
-      : super(_value, (v) => _then(v as _AppInfo));
+class __$$_AppInfoCopyWithImpl<$Res> extends _$AppInfoCopyWithImpl<$Res>
+    implements _$$_AppInfoCopyWith<$Res> {
+  __$$_AppInfoCopyWithImpl(_$_AppInfo _value, $Res Function(_$_AppInfo) _then)
+      : super(_value, (v) => _then(v as _$_AppInfo));
 
   @override
-  _AppInfo get _value => super._value as _AppInfo;
+  _$_AppInfo get _value => super._value as _$_AppInfo;
 
   @override
   $Res call({
     Object? appName = freezed,
     Object? version = freezed,
   }) {
-    return _then(_AppInfo(
+    return _then(_$_AppInfo(
       appName: appName == freezed
           ? _value.appName
           : appName // ignore: cast_nullable_to_non_nullable
@@ -110,7 +111,7 @@ class _$_AppInfo implements _AppInfo {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AppInfo &&
+            other is _$_AppInfo &&
             const DeepCollectionEquality().equals(other.appName, appName) &&
             const DeepCollectionEquality().equals(other.version, version));
   }
@@ -123,8 +124,8 @@ class _$_AppInfo implements _AppInfo {
 
   @JsonKey(ignore: true)
   @override
-  _$AppInfoCopyWith<_AppInfo> get copyWith =>
-      __$AppInfoCopyWithImpl<_AppInfo>(this, _$identity);
+  _$$_AppInfoCopyWith<_$_AppInfo> get copyWith =>
+      __$$_AppInfoCopyWithImpl<_$_AppInfo>(this, _$identity);
 }
 
 abstract class _AppInfo implements AppInfo {
@@ -138,6 +139,6 @@ abstract class _AppInfo implements AppInfo {
   String get version => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppInfoCopyWith<_AppInfo> get copyWith =>
+  _$$_AppInfoCopyWith<_$_AppInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }

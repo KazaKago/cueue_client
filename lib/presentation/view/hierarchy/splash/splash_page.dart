@@ -1,9 +1,10 @@
+import 'package:cueue/domain/usecase/hierarchy/auth/launch_check_result.dart';
 import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/presentation/view/hierarchy/main/main_page.dart';
 import 'package:cueue/presentation/view/hierarchy/welcome/welcome_page.dart';
+import 'package:cueue/presentation/view/hierarchy/welcome/workspace_creation_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
-import 'package:cueue/presentation/viewmodel/hierarchy/splash/splash_route_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -14,7 +15,7 @@ class SplashPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final splashAnimationController = useAnimationController(duration: const Duration(milliseconds: 500));
-    ref.listen<Event<NextSplashRoutePattern>>(splashViewModelProvider.select((viewModel) => viewModel.nextRouteEvent), (previous, nextRouteEvent) {
+    ref.listen<Event<LaunchCheckResult>>(splashViewModelProvider.select((viewModel) => viewModel.nextRouteEvent), (previous, nextRouteEvent) {
       nextRouteEvent((nextRoute) {
         splashAnimationController
           ..addStatusListener((status) => _splashAnimationHandler(context, status, nextRoute))
@@ -33,7 +34,7 @@ class SplashPage extends HookConsumerWidget {
     );
   }
 
-  void _splashAnimationHandler(BuildContext context, AnimationStatus status, NextSplashRoutePattern nextRoute) {
+  Future<void> _splashAnimationHandler(BuildContext context, AnimationStatus status, LaunchCheckResult nextRoute) async {
     switch (status) {
       case AnimationStatus.dismissed:
         break;
@@ -42,19 +43,22 @@ class SplashPage extends HookConsumerWidget {
       case AnimationStatus.reverse:
         break;
       case AnimationStatus.completed:
-        Navigator.pushReplacement(context, _parseNextRoutePattern(nextRoute));
+        await Navigator.pushAndRemoveUntil(context, _getNextRoute(nextRoute), (route) => false);
         break;
     }
   }
 
-  Route<Widget> _parseNextRoutePattern(NextSplashRoutePattern nextRoute) {
+  Route<Widget> _getNextRoute(LaunchCheckResult nextRoute) {
     Widget page;
     switch (nextRoute) {
-      case NextSplashRoutePattern.main:
-        page = const MainPage();
-        break;
-      case NextSplashRoutePattern.welcome:
+      case LaunchCheckResult.beforeSignIn:
         page = const WelcomePage();
+        break;
+      case LaunchCheckResult.workspaceCreation:
+        page = const WorkspaceCreationPage();
+        break;
+      case LaunchCheckResult.afterSignIn:
+        page = const MainPage();
         break;
     }
     return PageRouteBuilder(

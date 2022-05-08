@@ -3,8 +3,8 @@ import 'package:cueue/domain/usecase/hierarchy/auth/authenticate_with_apple_usec
 import 'package:cueue/domain/usecase/hierarchy/auth/authenticate_with_apple_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/authenticate_with_google_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/authenticate_with_google_usecase_impl.dart';
-import 'package:cueue/domain/usecase/hierarchy/auth/is_sign_in_usecase.dart';
-import 'package:cueue/domain/usecase/hierarchy/auth/is_sign_in_usecase_impl.dart';
+import 'package:cueue/domain/usecase/hierarchy/auth/check_at_launch_usecase.dart';
+import 'package:cueue/domain/usecase/hierarchy/auth/check_at_launch_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/link_with_apple_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/link_with_apple_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/link_with_google_usecase.dart';
@@ -97,11 +97,13 @@ import 'package:cueue/domain/usecase/hierarchy/user/update_email_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/update_email_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/update_password_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/update_password_usecase_impl.dart';
+import 'package:cueue/domain/usecase/hierarchy/workspace/create_workspace_usecase.dart';
+import 'package:cueue/domain/usecase/hierarchy/workspace/create_workspace_usecase_impl.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final isSignInUseCaseProvider = Provider<IsSignInUseCase>((ref) => IsSignInUseCaseImpl(ref.read(authorizeRepositoryProvider)));
+final checkAtLaunchUseCaseProvider = Provider<CheckAtLaunchUseCase>((ref) => CheckAtLaunchUseCaseImpl(ref.read(userRepositoryProvider)));
 final signUpWithPasswordUseCaseProvider = Provider<SignUpWithPasswordUseCase>((ref) => SignUpWithPasswordUseCaseImpl(ref.read(authorizeRepositoryProvider), ref.read(userRepositoryProvider)));
-final signInWithPasswordUseCaseProvider = Provider<SignInWithPasswordUseCase>((ref) => SignInWithPasswordUseCaseImpl(ref.read(authorizeRepositoryProvider)));
+final signInWithPasswordUseCaseProvider = Provider<SignInWithPasswordUseCase>((ref) => SignInWithPasswordUseCaseImpl(ref.read(authorizeRepositoryProvider), ref.read(userRepositoryProvider)));
 final authenticateWithGoogleUseCaseProvider = Provider<AuthenticateWithGoogleUseCase>((ref) => AuthenticateWithGoogleUseCaseImpl(ref.read(authorizeRepositoryProvider), ref.read(userRepositoryProvider)));
 final authenticateWithAppleUseCaseProvider = Provider<AuthenticateWithAppleUseCase>((ref) => AuthenticateWithAppleUseCaseImpl(ref.read(authorizeRepositoryProvider), ref.read(userRepositoryProvider)));
 final linkWithGoogleUseCaseProvider = Provider<LinkWithGoogleUseCase>((ref) => LinkWithGoogleUseCaseImpl(ref.read(authorizeRepositoryProvider)));
@@ -148,3 +150,4 @@ final followMenuUseCaseProvider = Provider<FollowMenuUseCase>((ref) => FollowMen
 final refreshMenuUseCaseProvider = Provider<RefreshMenuUseCase>((ref) => RefreshMenuUseCaseImpl(ref.read(menuRepositoryProvider)));
 final reorderTagUseCaseProvider = Provider<ReorderTagUseCase>((ref) => ReorderTagUseCaseImpl(ref.read(tagRepositoryProvider)));
 final deleteAccountUseCaseProvider = Provider<DeleteAccountUseCase>((ref) => DeleteAccountUseCaseImpl(ref.read(userRepositoryProvider)));
+final createWorkspaceUseCaseProvider = Provider<CreateWorkspaceUseCase>((ref) => CreateWorkspaceUseCaseImpl(ref.read(workspaceRepositoryProvider)));

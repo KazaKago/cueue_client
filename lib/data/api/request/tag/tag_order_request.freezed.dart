@@ -61,33 +61,33 @@ class _$TagOrderRequestCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$TagOrderRequestCopyWith<$Res>
+abstract class _$$_TagOrderRequestCopyWith<$Res>
     implements $TagOrderRequestCopyWith<$Res> {
-  factory _$TagOrderRequestCopyWith(
-          _TagOrderRequest value, $Res Function(_TagOrderRequest) then) =
-      __$TagOrderRequestCopyWithImpl<$Res>;
+  factory _$$_TagOrderRequestCopyWith(
+          _$_TagOrderRequest value, $Res Function(_$_TagOrderRequest) then) =
+      __$$_TagOrderRequestCopyWithImpl<$Res>;
   @override
   $Res call({@JsonKey(name: 'tag_ids') List<int> tagIds});
 }
 
 /// @nodoc
-class __$TagOrderRequestCopyWithImpl<$Res>
+class __$$_TagOrderRequestCopyWithImpl<$Res>
     extends _$TagOrderRequestCopyWithImpl<$Res>
-    implements _$TagOrderRequestCopyWith<$Res> {
-  __$TagOrderRequestCopyWithImpl(
-      _TagOrderRequest _value, $Res Function(_TagOrderRequest) _then)
-      : super(_value, (v) => _then(v as _TagOrderRequest));
+    implements _$$_TagOrderRequestCopyWith<$Res> {
+  __$$_TagOrderRequestCopyWithImpl(
+      _$_TagOrderRequest _value, $Res Function(_$_TagOrderRequest) _then)
+      : super(_value, (v) => _then(v as _$_TagOrderRequest));
 
   @override
-  _TagOrderRequest get _value => super._value as _TagOrderRequest;
+  _$_TagOrderRequest get _value => super._value as _$_TagOrderRequest;
 
   @override
   $Res call({
     Object? tagIds = freezed,
   }) {
-    return _then(_TagOrderRequest(
+    return _then(_$_TagOrderRequest(
       tagIds: tagIds == freezed
-          ? _value.tagIds
+          ? _value._tagIds
           : tagIds // ignore: cast_nullable_to_non_nullable
               as List<int>,
     ));
@@ -105,7 +105,6 @@ class _$_TagOrderRequest implements _TagOrderRequest {
       _$$_TagOrderRequestFromJson(json);
 
 // ignore: invalid_annotation_target
-  @JsonKey(name: 'tag_ids')
   final List<int> _tagIds;
 // ignore: invalid_annotation_target
   @override
@@ -124,19 +123,19 @@ class _$_TagOrderRequest implements _TagOrderRequest {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TagOrderRequest &&
-            const DeepCollectionEquality().equals(other.tagIds, tagIds));
+            other is _$_TagOrderRequest &&
+            const DeepCollectionEquality().equals(other._tagIds, _tagIds));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(tagIds));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tagIds));
 
   @JsonKey(ignore: true)
   @override
-  _$TagOrderRequestCopyWith<_TagOrderRequest> get copyWith =>
-      __$TagOrderRequestCopyWithImpl<_TagOrderRequest>(this, _$identity);
+  _$$_TagOrderRequestCopyWith<_$_TagOrderRequest> get copyWith =>
+      __$$_TagOrderRequestCopyWithImpl<_$_TagOrderRequest>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -157,6 +156,6 @@ abstract class _TagOrderRequest implements TagOrderRequest {
   List<int> get tagIds => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$TagOrderRequestCopyWith<_TagOrderRequest> get copyWith =>
+  _$$_TagOrderRequestCopyWith<_$_TagOrderRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }

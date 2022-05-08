@@ -88,11 +88,11 @@ class _$MenuRequestCopyWithImpl<$Res> implements $MenuRequestCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$MenuRequestCopyWith<$Res>
+abstract class _$$_MenuRequestCopyWith<$Res>
     implements $MenuRequestCopyWith<$Res> {
-  factory _$MenuRequestCopyWith(
-          _MenuRequest value, $Res Function(_MenuRequest) then) =
-      __$MenuRequestCopyWithImpl<$Res>;
+  factory _$$_MenuRequestCopyWith(
+          _$_MenuRequest value, $Res Function(_$_MenuRequest) then) =
+      __$$_MenuRequestCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'memo') String memo,
@@ -102,14 +102,14 @@ abstract class _$MenuRequestCopyWith<$Res>
 }
 
 /// @nodoc
-class __$MenuRequestCopyWithImpl<$Res> extends _$MenuRequestCopyWithImpl<$Res>
-    implements _$MenuRequestCopyWith<$Res> {
-  __$MenuRequestCopyWithImpl(
-      _MenuRequest _value, $Res Function(_MenuRequest) _then)
-      : super(_value, (v) => _then(v as _MenuRequest));
+class __$$_MenuRequestCopyWithImpl<$Res> extends _$MenuRequestCopyWithImpl<$Res>
+    implements _$$_MenuRequestCopyWith<$Res> {
+  __$$_MenuRequestCopyWithImpl(
+      _$_MenuRequest _value, $Res Function(_$_MenuRequest) _then)
+      : super(_value, (v) => _then(v as _$_MenuRequest));
 
   @override
-  _MenuRequest get _value => super._value as _MenuRequest;
+  _$_MenuRequest get _value => super._value as _$_MenuRequest;
 
   @override
   $Res call({
@@ -118,7 +118,7 @@ class __$MenuRequestCopyWithImpl<$Res> extends _$MenuRequestCopyWithImpl<$Res>
     Object? timeFrame = freezed,
     Object? recipeIds = freezed,
   }) {
-    return _then(_MenuRequest(
+    return _then(_$_MenuRequest(
       memo: memo == freezed
           ? _value.memo
           : memo // ignore: cast_nullable_to_non_nullable
@@ -132,7 +132,7 @@ class __$MenuRequestCopyWithImpl<$Res> extends _$MenuRequestCopyWithImpl<$Res>
           : timeFrame // ignore: cast_nullable_to_non_nullable
               as String,
       recipeIds: recipeIds == freezed
-          ? _value.recipeIds
+          ? _value._recipeIds
           : recipeIds // ignore: cast_nullable_to_non_nullable
               as List<int>,
     ));
@@ -165,7 +165,6 @@ class _$_MenuRequest implements _MenuRequest {
   @JsonKey(name: 'time_frame')
   final String timeFrame;
 // ignore: invalid_annotation_target
-  @JsonKey(name: 'recipe_ids')
   final List<int> _recipeIds;
 // ignore: invalid_annotation_target
   @override
@@ -184,11 +183,12 @@ class _$_MenuRequest implements _MenuRequest {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MenuRequest &&
+            other is _$_MenuRequest &&
             const DeepCollectionEquality().equals(other.memo, memo) &&
             const DeepCollectionEquality().equals(other.date, date) &&
             const DeepCollectionEquality().equals(other.timeFrame, timeFrame) &&
-            const DeepCollectionEquality().equals(other.recipeIds, recipeIds));
+            const DeepCollectionEquality()
+                .equals(other._recipeIds, _recipeIds));
   }
 
   @JsonKey(ignore: true)
@@ -198,12 +198,12 @@ class _$_MenuRequest implements _MenuRequest {
       const DeepCollectionEquality().hash(memo),
       const DeepCollectionEquality().hash(date),
       const DeepCollectionEquality().hash(timeFrame),
-      const DeepCollectionEquality().hash(recipeIds));
+      const DeepCollectionEquality().hash(_recipeIds));
 
   @JsonKey(ignore: true)
   @override
-  _$MenuRequestCopyWith<_MenuRequest> get copyWith =>
-      __$MenuRequestCopyWithImpl<_MenuRequest>(this, _$identity);
+  _$$_MenuRequestCopyWith<_$_MenuRequest> get copyWith =>
+      __$$_MenuRequestCopyWithImpl<_$_MenuRequest>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -236,6 +236,6 @@ abstract class _MenuRequest implements MenuRequest {
   List<int> get recipeIds => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MenuRequestCopyWith<_MenuRequest> get copyWith =>
+  _$$_MenuRequestCopyWith<_$_MenuRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }

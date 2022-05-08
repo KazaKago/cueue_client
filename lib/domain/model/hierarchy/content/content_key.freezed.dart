@@ -53,29 +53,30 @@ class _$ContentKeyCopyWithImpl<$Res> implements $ContentKeyCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ContentKeyCopyWith<$Res> implements $ContentKeyCopyWith<$Res> {
-  factory _$ContentKeyCopyWith(
-          _ContentKey value, $Res Function(_ContentKey) then) =
-      __$ContentKeyCopyWithImpl<$Res>;
+abstract class _$$_ContentKeyCopyWith<$Res>
+    implements $ContentKeyCopyWith<$Res> {
+  factory _$$_ContentKeyCopyWith(
+          _$_ContentKey value, $Res Function(_$_ContentKey) then) =
+      __$$_ContentKeyCopyWithImpl<$Res>;
   @override
   $Res call({String value});
 }
 
 /// @nodoc
-class __$ContentKeyCopyWithImpl<$Res> extends _$ContentKeyCopyWithImpl<$Res>
-    implements _$ContentKeyCopyWith<$Res> {
-  __$ContentKeyCopyWithImpl(
-      _ContentKey _value, $Res Function(_ContentKey) _then)
-      : super(_value, (v) => _then(v as _ContentKey));
+class __$$_ContentKeyCopyWithImpl<$Res> extends _$ContentKeyCopyWithImpl<$Res>
+    implements _$$_ContentKeyCopyWith<$Res> {
+  __$$_ContentKeyCopyWithImpl(
+      _$_ContentKey _value, $Res Function(_$_ContentKey) _then)
+      : super(_value, (v) => _then(v as _$_ContentKey));
 
   @override
-  _ContentKey get _value => super._value as _ContentKey;
+  _$_ContentKey get _value => super._value as _$_ContentKey;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_ContentKey(
+    return _then(_$_ContentKey(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -101,7 +102,7 @@ class _$_ContentKey implements _ContentKey {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ContentKey &&
+            other is _$_ContentKey &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -111,8 +112,8 @@ class _$_ContentKey implements _ContentKey {
 
   @JsonKey(ignore: true)
   @override
-  _$ContentKeyCopyWith<_ContentKey> get copyWith =>
-      __$ContentKeyCopyWithImpl<_ContentKey>(this, _$identity);
+  _$$_ContentKeyCopyWith<_$_ContentKey> get copyWith =>
+      __$$_ContentKeyCopyWithImpl<_$_ContentKey>(this, _$identity);
 }
 
 abstract class _ContentKey implements ContentKey {
@@ -122,6 +123,6 @@ abstract class _ContentKey implements ContentKey {
   String get value => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ContentKeyCopyWith<_ContentKey> get copyWith =>
+  _$$_ContentKeyCopyWith<_$_ContentKey> get copyWith =>
       throw _privateConstructorUsedError;
 }

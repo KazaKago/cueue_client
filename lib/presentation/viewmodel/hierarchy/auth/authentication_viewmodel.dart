@@ -11,6 +11,7 @@ import 'package:cueue/domain/usecase/hierarchy/auth/reauthenticate_with_password
 import 'package:cueue/domain/usecase/hierarchy/auth/should_show_reauthentication_with_apple_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/should_show_reauthentication_with_google_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/should_show_reauthentication_with_password_usecase.dart';
+import 'package:cueue/domain/usecase/hierarchy/auth/sign_in_check_result.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/sign_in_with_password_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/sign_up_with_password_usecase.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
@@ -35,7 +36,7 @@ class AuthenticationViewModel with ChangeNotifier {
   bool _shouldShowReauthenticationWithPassword = false;
   bool _shouldShowReauthenticationWithGoogle = false;
   bool _shouldShowReauthenticationWithApple = false;
-  Event<void> _completionAuthenticationEvent = Event.initialize();
+  Event<SignInCheckResult> _completionAuthenticationEvent = Event.initialize();
   Event<void> _completionReauthenticationEvent = Event.initialize();
   Event<Exception> _exceptionEvent = Event.initialize();
 
@@ -67,9 +68,9 @@ class AuthenticationViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Event<void> get completionAuthenticationEvent => _completionAuthenticationEvent;
+  Event<SignInCheckResult> get completionAuthenticationEvent => _completionAuthenticationEvent;
 
-  set completionAuthenticationEvent(Event<void> completionAuthenticationEvent) {
+  set completionAuthenticationEvent(Event<SignInCheckResult> completionAuthenticationEvent) {
     _completionAuthenticationEvent = completionAuthenticationEvent;
     notifyListeners();
   }
@@ -102,8 +103,8 @@ class AuthenticationViewModel with ChangeNotifier {
   Future<void> signUpWithPassword(String emailStr, String passwordStr, String confirmationPasswordStr) async {
     isLoading = true;
     try {
-      await _signUpWithPasswordUseCase(PasswordAuthInfo(email: Email(emailStr), password: Password.validateMatch(passwordStr, confirmationPasswordStr)));
-      completionAuthenticationEvent = Event(null);
+      final result = await _signUpWithPasswordUseCase(PasswordAuthInfo(email: Email(emailStr), password: Password.validateMatch(passwordStr, confirmationPasswordStr)));
+      completionAuthenticationEvent = Event(result);
     } on Exception catch (exception) {
       exceptionEvent = Event(exception);
     }
@@ -113,8 +114,8 @@ class AuthenticationViewModel with ChangeNotifier {
   Future<void> signInWithPassword(String emailStr, String passwordStr) async {
     isLoading = true;
     try {
-      await _signInWithPasswordUseCase(PasswordAuthInfo(email: Email(emailStr), password: Password(passwordStr)));
-      completionAuthenticationEvent = Event(null);
+      final result = await _signInWithPasswordUseCase(PasswordAuthInfo(email: Email(emailStr), password: Password(passwordStr)));
+      completionAuthenticationEvent = Event(result);
     } on Exception catch (exception) {
       exceptionEvent = Event(exception);
     }
@@ -124,8 +125,8 @@ class AuthenticationViewModel with ChangeNotifier {
   Future<void> signInWithGoogle(GoogleAuthInfo authInfo) async {
     isLoading = true;
     try {
-      await _authenticateWithGoogleUseCase(authInfo);
-      completionAuthenticationEvent = Event(null);
+      final result = await _authenticateWithGoogleUseCase(authInfo);
+      completionAuthenticationEvent = Event(result);
     } on Exception catch (exception) {
       exceptionEvent = Event(exception);
     }
@@ -135,8 +136,8 @@ class AuthenticationViewModel with ChangeNotifier {
   Future<void> signInWithApple(AppleAuthInfo authInfo) async {
     isLoading = true;
     try {
-      await _authenticateWithAppleUseCase(authInfo);
-      completionAuthenticationEvent = Event(null);
+      final result = await _authenticateWithAppleUseCase(authInfo);
+      completionAuthenticationEvent = Event(result);
     } on Exception catch (exception) {
       exceptionEvent = Event(exception);
     }

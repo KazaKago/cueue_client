@@ -69,32 +69,32 @@ class _$WorkspaceResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$WorkspaceResponseCopyWith<$Res>
+abstract class _$$_WorkspaceResponseCopyWith<$Res>
     implements $WorkspaceResponseCopyWith<$Res> {
-  factory _$WorkspaceResponseCopyWith(
-          _WorkspaceResponse value, $Res Function(_WorkspaceResponse) then) =
-      __$WorkspaceResponseCopyWithImpl<$Res>;
+  factory _$$_WorkspaceResponseCopyWith(_$_WorkspaceResponse value,
+          $Res Function(_$_WorkspaceResponse) then) =
+      __$$_WorkspaceResponseCopyWithImpl<$Res>;
   @override
   $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
-class __$WorkspaceResponseCopyWithImpl<$Res>
+class __$$_WorkspaceResponseCopyWithImpl<$Res>
     extends _$WorkspaceResponseCopyWithImpl<$Res>
-    implements _$WorkspaceResponseCopyWith<$Res> {
-  __$WorkspaceResponseCopyWithImpl(
-      _WorkspaceResponse _value, $Res Function(_WorkspaceResponse) _then)
-      : super(_value, (v) => _then(v as _WorkspaceResponse));
+    implements _$$_WorkspaceResponseCopyWith<$Res> {
+  __$$_WorkspaceResponseCopyWithImpl(
+      _$_WorkspaceResponse _value, $Res Function(_$_WorkspaceResponse) _then)
+      : super(_value, (v) => _then(v as _$_WorkspaceResponse));
 
   @override
-  _WorkspaceResponse get _value => super._value as _WorkspaceResponse;
+  _$_WorkspaceResponse get _value => super._value as _$_WorkspaceResponse;
 
   @override
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
   }) {
-    return _then(_WorkspaceResponse(
+    return _then(_$_WorkspaceResponse(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -135,7 +135,7 @@ class _$_WorkspaceResponse implements _WorkspaceResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WorkspaceResponse &&
+            other is _$_WorkspaceResponse &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name));
   }
@@ -149,8 +149,9 @@ class _$_WorkspaceResponse implements _WorkspaceResponse {
 
   @JsonKey(ignore: true)
   @override
-  _$WorkspaceResponseCopyWith<_WorkspaceResponse> get copyWith =>
-      __$WorkspaceResponseCopyWithImpl<_WorkspaceResponse>(this, _$identity);
+  _$$_WorkspaceResponseCopyWith<_$_WorkspaceResponse> get copyWith =>
+      __$$_WorkspaceResponseCopyWithImpl<_$_WorkspaceResponse>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -175,6 +176,6 @@ abstract class _WorkspaceResponse implements WorkspaceResponse {
   String get name => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$WorkspaceResponseCopyWith<_WorkspaceResponse> get copyWith =>
+  _$$_WorkspaceResponseCopyWith<_$_WorkspaceResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

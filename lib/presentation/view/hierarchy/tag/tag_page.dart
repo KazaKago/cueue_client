@@ -18,12 +18,9 @@ class TagPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(tagViewModelProvider.select((viewModel) => viewModel.state));
-    ref.listen<Event<Exception>>(
-      tagViewModelProvider.select((viewModel) => viewModel.exceptionEvent),
-      (previous, exceptionEvent) {
-        exceptionEvent((exception) => const ExceptionHandler().showSnackBar(context, ref, exception));
-      },
-    );
+    ref.listen<Event<Exception>>(tagViewModelProvider.select((viewModel) => viewModel.exceptionEvent), (previous, exceptionEvent) {
+      exceptionEvent((exception) => const ExceptionHandler().showSnackBar(context, ref, exception));
+    });
     return Scaffold(
       appBar: AppBar(
         title: Text(intl(context).tag),

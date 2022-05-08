@@ -70,33 +70,33 @@ class _$ContentResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ContentResponseCopyWith<$Res>
+abstract class _$$_ContentResponseCopyWith<$Res>
     implements $ContentResponseCopyWith<$Res> {
-  factory _$ContentResponseCopyWith(
-          _ContentResponse value, $Res Function(_ContentResponse) then) =
-      __$ContentResponseCopyWithImpl<$Res>;
+  factory _$$_ContentResponseCopyWith(
+          _$_ContentResponse value, $Res Function(_$_ContentResponse) then) =
+      __$$_ContentResponseCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'key') String key, @JsonKey(name: 'url') String url});
 }
 
 /// @nodoc
-class __$ContentResponseCopyWithImpl<$Res>
+class __$$_ContentResponseCopyWithImpl<$Res>
     extends _$ContentResponseCopyWithImpl<$Res>
-    implements _$ContentResponseCopyWith<$Res> {
-  __$ContentResponseCopyWithImpl(
-      _ContentResponse _value, $Res Function(_ContentResponse) _then)
-      : super(_value, (v) => _then(v as _ContentResponse));
+    implements _$$_ContentResponseCopyWith<$Res> {
+  __$$_ContentResponseCopyWithImpl(
+      _$_ContentResponse _value, $Res Function(_$_ContentResponse) _then)
+      : super(_value, (v) => _then(v as _$_ContentResponse));
 
   @override
-  _ContentResponse get _value => super._value as _ContentResponse;
+  _$_ContentResponse get _value => super._value as _$_ContentResponse;
 
   @override
   $Res call({
     Object? key = freezed,
     Object? url = freezed,
   }) {
-    return _then(_ContentResponse(
+    return _then(_$_ContentResponse(
       key: key == freezed
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
@@ -137,7 +137,7 @@ class _$_ContentResponse implements _ContentResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ContentResponse &&
+            other is _$_ContentResponse &&
             const DeepCollectionEquality().equals(other.key, key) &&
             const DeepCollectionEquality().equals(other.url, url));
   }
@@ -151,8 +151,8 @@ class _$_ContentResponse implements _ContentResponse {
 
   @JsonKey(ignore: true)
   @override
-  _$ContentResponseCopyWith<_ContentResponse> get copyWith =>
-      __$ContentResponseCopyWithImpl<_ContentResponse>(this, _$identity);
+  _$$_ContentResponseCopyWith<_$_ContentResponse> get copyWith =>
+      __$$_ContentResponseCopyWithImpl<_$_ContentResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -176,6 +176,6 @@ abstract class _ContentResponse implements ContentResponse {
   String get url => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ContentResponseCopyWith<_ContentResponse> get copyWith =>
+  _$$_ContentResponseCopyWith<_$_ContentResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

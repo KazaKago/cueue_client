@@ -83,11 +83,11 @@ class _$RecipeRegistrationCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$RecipeRegistrationCopyWith<$Res>
+abstract class _$$_RecipeRegistrationCopyWith<$Res>
     implements $RecipeRegistrationCopyWith<$Res> {
-  factory _$RecipeRegistrationCopyWith(
-          _RecipeRegistration value, $Res Function(_RecipeRegistration) then) =
-      __$RecipeRegistrationCopyWithImpl<$Res>;
+  factory _$$_RecipeRegistrationCopyWith(_$_RecipeRegistration value,
+          $Res Function(_$_RecipeRegistration) then) =
+      __$$_RecipeRegistrationCopyWithImpl<$Res>;
   @override
   $Res call(
       {String title,
@@ -98,15 +98,15 @@ abstract class _$RecipeRegistrationCopyWith<$Res>
 }
 
 /// @nodoc
-class __$RecipeRegistrationCopyWithImpl<$Res>
+class __$$_RecipeRegistrationCopyWithImpl<$Res>
     extends _$RecipeRegistrationCopyWithImpl<$Res>
-    implements _$RecipeRegistrationCopyWith<$Res> {
-  __$RecipeRegistrationCopyWithImpl(
-      _RecipeRegistration _value, $Res Function(_RecipeRegistration) _then)
-      : super(_value, (v) => _then(v as _RecipeRegistration));
+    implements _$$_RecipeRegistrationCopyWith<$Res> {
+  __$$_RecipeRegistrationCopyWithImpl(
+      _$_RecipeRegistration _value, $Res Function(_$_RecipeRegistration) _then)
+      : super(_value, (v) => _then(v as _$_RecipeRegistration));
 
   @override
-  _RecipeRegistration get _value => super._value as _RecipeRegistration;
+  _$_RecipeRegistration get _value => super._value as _$_RecipeRegistration;
 
   @override
   $Res call({
@@ -116,7 +116,7 @@ class __$RecipeRegistrationCopyWithImpl<$Res>
     Object? imageKeys = freezed,
     Object? tagIds = freezed,
   }) {
-    return _then(_RecipeRegistration(
+    return _then(_$_RecipeRegistration(
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -130,11 +130,11 @@ class __$RecipeRegistrationCopyWithImpl<$Res>
           : url // ignore: cast_nullable_to_non_nullable
               as Uri?,
       imageKeys: imageKeys == freezed
-          ? _value.imageKeys
+          ? _value._imageKeys
           : imageKeys // ignore: cast_nullable_to_non_nullable
               as List<ContentKey>,
       tagIds: tagIds == freezed
-          ? _value.tagIds
+          ? _value._tagIds
           : tagIds // ignore: cast_nullable_to_non_nullable
               as List<TagId>,
     ));
@@ -182,13 +182,14 @@ class _$_RecipeRegistration implements _RecipeRegistration {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RecipeRegistration &&
+            other is _$_RecipeRegistration &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality().equals(other.imageKeys, imageKeys) &&
-            const DeepCollectionEquality().equals(other.tagIds, tagIds));
+            const DeepCollectionEquality()
+                .equals(other._imageKeys, _imageKeys) &&
+            const DeepCollectionEquality().equals(other._tagIds, _tagIds));
   }
 
   @override
@@ -197,13 +198,14 @@ class _$_RecipeRegistration implements _RecipeRegistration {
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(imageKeys),
-      const DeepCollectionEquality().hash(tagIds));
+      const DeepCollectionEquality().hash(_imageKeys),
+      const DeepCollectionEquality().hash(_tagIds));
 
   @JsonKey(ignore: true)
   @override
-  _$RecipeRegistrationCopyWith<_RecipeRegistration> get copyWith =>
-      __$RecipeRegistrationCopyWithImpl<_RecipeRegistration>(this, _$identity);
+  _$$_RecipeRegistrationCopyWith<_$_RecipeRegistration> get copyWith =>
+      __$$_RecipeRegistrationCopyWithImpl<_$_RecipeRegistration>(
+          this, _$identity);
 }
 
 abstract class _RecipeRegistration implements RecipeRegistration {
@@ -226,6 +228,6 @@ abstract class _RecipeRegistration implements RecipeRegistration {
   List<TagId> get tagIds => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RecipeRegistrationCopyWith<_RecipeRegistration> get copyWith =>
+  _$$_RecipeRegistrationCopyWith<_$_RecipeRegistration> get copyWith =>
       throw _privateConstructorUsedError;
 }

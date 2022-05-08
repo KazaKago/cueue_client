@@ -77,11 +77,11 @@ class _$PasswordAuthInfoCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PasswordAuthInfoCopyWith<$Res>
+abstract class _$$_PasswordAuthInfoCopyWith<$Res>
     implements $PasswordAuthInfoCopyWith<$Res> {
-  factory _$PasswordAuthInfoCopyWith(
-          _PasswordAuthInfo value, $Res Function(_PasswordAuthInfo) then) =
-      __$PasswordAuthInfoCopyWithImpl<$Res>;
+  factory _$$_PasswordAuthInfoCopyWith(
+          _$_PasswordAuthInfo value, $Res Function(_$_PasswordAuthInfo) then) =
+      __$$_PasswordAuthInfoCopyWithImpl<$Res>;
   @override
   $Res call({Email email, Password password});
 
@@ -92,22 +92,22 @@ abstract class _$PasswordAuthInfoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PasswordAuthInfoCopyWithImpl<$Res>
+class __$$_PasswordAuthInfoCopyWithImpl<$Res>
     extends _$PasswordAuthInfoCopyWithImpl<$Res>
-    implements _$PasswordAuthInfoCopyWith<$Res> {
-  __$PasswordAuthInfoCopyWithImpl(
-      _PasswordAuthInfo _value, $Res Function(_PasswordAuthInfo) _then)
-      : super(_value, (v) => _then(v as _PasswordAuthInfo));
+    implements _$$_PasswordAuthInfoCopyWith<$Res> {
+  __$$_PasswordAuthInfoCopyWithImpl(
+      _$_PasswordAuthInfo _value, $Res Function(_$_PasswordAuthInfo) _then)
+      : super(_value, (v) => _then(v as _$_PasswordAuthInfo));
 
   @override
-  _PasswordAuthInfo get _value => super._value as _PasswordAuthInfo;
+  _$_PasswordAuthInfo get _value => super._value as _$_PasswordAuthInfo;
 
   @override
   $Res call({
     Object? email = freezed,
     Object? password = freezed,
   }) {
-    return _then(_PasswordAuthInfo(
+    return _then(_$_PasswordAuthInfo(
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -139,7 +139,7 @@ class _$_PasswordAuthInfo implements _PasswordAuthInfo {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PasswordAuthInfo &&
+            other is _$_PasswordAuthInfo &&
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality().equals(other.password, password));
   }
@@ -152,8 +152,8 @@ class _$_PasswordAuthInfo implements _PasswordAuthInfo {
 
   @JsonKey(ignore: true)
   @override
-  _$PasswordAuthInfoCopyWith<_PasswordAuthInfo> get copyWith =>
-      __$PasswordAuthInfoCopyWithImpl<_PasswordAuthInfo>(this, _$identity);
+  _$$_PasswordAuthInfoCopyWith<_$_PasswordAuthInfo> get copyWith =>
+      __$$_PasswordAuthInfoCopyWithImpl<_$_PasswordAuthInfo>(this, _$identity);
 }
 
 abstract class _PasswordAuthInfo implements PasswordAuthInfo {
@@ -167,6 +167,6 @@ abstract class _PasswordAuthInfo implements PasswordAuthInfo {
   Password get password => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PasswordAuthInfoCopyWith<_PasswordAuthInfo> get copyWith =>
+  _$$_PasswordAuthInfoCopyWith<_$_PasswordAuthInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }

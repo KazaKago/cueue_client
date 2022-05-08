@@ -97,11 +97,11 @@ class _$MenuResponseCopyWithImpl<$Res> implements $MenuResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$MenuResponseCopyWith<$Res>
+abstract class _$$_MenuResponseCopyWith<$Res>
     implements $MenuResponseCopyWith<$Res> {
-  factory _$MenuResponseCopyWith(
-          _MenuResponse value, $Res Function(_MenuResponse) then) =
-      __$MenuResponseCopyWithImpl<$Res>;
+  factory _$$_MenuResponseCopyWith(
+          _$_MenuResponse value, $Res Function(_$_MenuResponse) then) =
+      __$$_MenuResponseCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'id') int id,
@@ -112,14 +112,15 @@ abstract class _$MenuResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$MenuResponseCopyWithImpl<$Res> extends _$MenuResponseCopyWithImpl<$Res>
-    implements _$MenuResponseCopyWith<$Res> {
-  __$MenuResponseCopyWithImpl(
-      _MenuResponse _value, $Res Function(_MenuResponse) _then)
-      : super(_value, (v) => _then(v as _MenuResponse));
+class __$$_MenuResponseCopyWithImpl<$Res>
+    extends _$MenuResponseCopyWithImpl<$Res>
+    implements _$$_MenuResponseCopyWith<$Res> {
+  __$$_MenuResponseCopyWithImpl(
+      _$_MenuResponse _value, $Res Function(_$_MenuResponse) _then)
+      : super(_value, (v) => _then(v as _$_MenuResponse));
 
   @override
-  _MenuResponse get _value => super._value as _MenuResponse;
+  _$_MenuResponse get _value => super._value as _$_MenuResponse;
 
   @override
   $Res call({
@@ -129,7 +130,7 @@ class __$MenuResponseCopyWithImpl<$Res> extends _$MenuResponseCopyWithImpl<$Res>
     Object? timeFrame = freezed,
     Object? recipes = freezed,
   }) {
-    return _then(_MenuResponse(
+    return _then(_$_MenuResponse(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -147,7 +148,7 @@ class __$MenuResponseCopyWithImpl<$Res> extends _$MenuResponseCopyWithImpl<$Res>
           : timeFrame // ignore: cast_nullable_to_non_nullable
               as String,
       recipes: recipes == freezed
-          ? _value.recipes
+          ? _value._recipes
           : recipes // ignore: cast_nullable_to_non_nullable
               as List<RecipeSummaryResponse>,
     ));
@@ -190,7 +191,6 @@ class _$_MenuResponse implements _MenuResponse {
   @JsonKey(name: 'time_frame')
   final String timeFrame;
 // ignore: invalid_annotation_target
-  @JsonKey(name: 'recipes')
   final List<RecipeSummaryResponse> _recipes;
 // ignore: invalid_annotation_target
   @override
@@ -209,12 +209,12 @@ class _$_MenuResponse implements _MenuResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MenuResponse &&
+            other is _$_MenuResponse &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.memo, memo) &&
             const DeepCollectionEquality().equals(other.date, date) &&
             const DeepCollectionEquality().equals(other.timeFrame, timeFrame) &&
-            const DeepCollectionEquality().equals(other.recipes, recipes));
+            const DeepCollectionEquality().equals(other._recipes, _recipes));
   }
 
   @JsonKey(ignore: true)
@@ -225,12 +225,12 @@ class _$_MenuResponse implements _MenuResponse {
       const DeepCollectionEquality().hash(memo),
       const DeepCollectionEquality().hash(date),
       const DeepCollectionEquality().hash(timeFrame),
-      const DeepCollectionEquality().hash(recipes));
+      const DeepCollectionEquality().hash(_recipes));
 
   @JsonKey(ignore: true)
   @override
-  _$MenuResponseCopyWith<_MenuResponse> get copyWith =>
-      __$MenuResponseCopyWithImpl<_MenuResponse>(this, _$identity);
+  _$$_MenuResponseCopyWith<_$_MenuResponse> get copyWith =>
+      __$$_MenuResponseCopyWithImpl<_$_MenuResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -272,6 +272,6 @@ abstract class _MenuResponse implements MenuResponse {
   List<RecipeSummaryResponse> get recipes => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MenuResponseCopyWith<_MenuResponse> get copyWith =>
+  _$$_MenuResponseCopyWith<_$_MenuResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
