@@ -19,11 +19,7 @@ class SplashViewModel with ChangeNotifier {
   }
 
   Future<void> _loadNextRoute() async {
-    final result = await Future.wait<dynamic>([
-      _checkAtLaunchUseCase(),
-      Future<void>.delayed(const Duration(seconds: 1)),
-    ]);
-    final launchCheckResult = result.first as LaunchCheckResult;
-    nextRouteEvent = Event(launchCheckResult);
+    final result = await _checkAtLaunchUseCase();
+    nextRouteEvent = Event(result);
   }
 }
