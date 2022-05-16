@@ -9,7 +9,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class AccountDeletionPage extends HookConsumerWidget {
-  const AccountDeletionPage({Key? key}) : super(key: key);
+  const AccountDeletionPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

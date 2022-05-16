@@ -33,7 +33,7 @@ class MenuEditingPage extends HookConsumerWidget {
     return MenuEditingPage._(recipes: [recipe], key: key);
   }
 
-  const MenuEditingPage._({this.menu, this.recipes, Key? key}) : super(key: key);
+  const MenuEditingPage._({this.menu, this.recipes, super.key});
 
   final Menu? menu;
   final List<RecipeSummary>? recipes;

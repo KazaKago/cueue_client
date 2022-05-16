@@ -15,7 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MenuDetailPage extends HookConsumerWidget {
-  const MenuDetailPage(this.menu, {Key? key}) : super(key: key);
+  const MenuDetailPage(this.menu, {super.key});
 
   final MenuSummary menu;
 

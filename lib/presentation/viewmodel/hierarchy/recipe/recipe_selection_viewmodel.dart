@@ -43,7 +43,7 @@ class RecipeSelectionViewModel with ChangeNotifier {
         this.state = state.when(
           loading: (content) => const RecipeSelectionState.loading(),
           completed: (content, next, prev) => RecipeSelectionState.completed(content),
-          error: (exception) => RecipeSelectionState.error(exception),
+          error: RecipeSelectionState.error,
         );
       }),
     );

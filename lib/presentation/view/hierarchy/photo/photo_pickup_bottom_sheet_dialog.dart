@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 
 class PhotoPickupBottomSheetDialog {
   factory PhotoPickupBottomSheetDialog(BuildContext context) {
-    final menuItemEvents = <_MenuItemEvent>[
-      _MenuItemEvent(MenuItem(Icons.camera, intl(context).takePhoto), const PhotoPickupBottomSheetEvent.fromCamera()),
-      _MenuItemEvent(MenuItem(Icons.photo, intl(context).chooseFromLibrary), const PhotoPickupBottomSheetEvent.fromLibrary()),
-      _MenuItemEvent(MenuItem(Icons.close, intl(context).close), const PhotoPickupBottomSheetEvent.cancel()),
+    final menuItemEvents = <_MenuValueEvent>[
+      _MenuValueEvent(MenuValue(Icons.camera, intl(context).takePhoto), const PhotoPickupBottomSheetEvent.fromCamera()),
+      _MenuValueEvent(MenuValue(Icons.photo, intl(context).chooseFromLibrary), const PhotoPickupBottomSheetEvent.fromLibrary()),
+      _MenuValueEvent(MenuValue(Icons.close, intl(context).close), const PhotoPickupBottomSheetEvent.cancel()),
     ];
     final menuBottomSheetDialog = MenuBottomSheetDialog(context, menuItemEvents.map((e) => e.menuItem).toList());
     return PhotoPickupBottomSheetDialog._(menuItemEvents, menuBottomSheetDialog);
@@ -16,7 +16,7 @@ class PhotoPickupBottomSheetDialog {
 
   PhotoPickupBottomSheetDialog._(this._menuItemEvents, this._menuBottomSheetDialog);
 
-  final List<_MenuItemEvent> _menuItemEvents;
+  final List<_MenuValueEvent> _menuItemEvents;
   final MenuBottomSheetDialog _menuBottomSheetDialog;
 
   Future<PhotoPickupBottomSheetEvent?> show() async {
@@ -29,9 +29,9 @@ class PhotoPickupBottomSheetDialog {
   }
 }
 
-class _MenuItemEvent {
-  const _MenuItemEvent(this.menuItem, this.event);
+class _MenuValueEvent {
+  const _MenuValueEvent(this.menuItem, this.event);
 
-  final MenuItem menuItem;
+  final MenuValue menuItem;
   final PhotoPickupBottomSheetEvent event;
 }

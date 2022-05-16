@@ -34,7 +34,7 @@ class TextFieldDatePicker extends StatefulWidget {
   }
 
   const TextFieldDatePicker._({
-    Key? key,
+    super.key,
     this.labelText,
     this.prefixIcon,
     this.suffixIcon,
@@ -44,7 +44,7 @@ class TextFieldDatePicker extends StatefulWidget {
     required this.firstDate,
     required this.initialDate,
     required this.onDateChanged,
-  }) : super(key: key);
+  });
 
   final ValueChanged<DateTime> onDateChanged;
   final DateTime initialDate;
@@ -57,7 +57,7 @@ class TextFieldDatePicker extends StatefulWidget {
   final Icon? suffixIcon;
 
   @override
-  _TextFieldDatePicker createState() => _TextFieldDatePicker();
+  State<TextFieldDatePicker> createState() => _TextFieldDatePicker();
 }
 
 class _TextFieldDatePicker extends State<TextFieldDatePicker> {

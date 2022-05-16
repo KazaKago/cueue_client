@@ -13,7 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TagPage extends HookConsumerWidget {
-  const TagPage({Key? key}) : super(key: key);
+  const TagPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

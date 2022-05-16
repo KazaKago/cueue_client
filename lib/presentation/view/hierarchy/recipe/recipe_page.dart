@@ -13,7 +13,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class RecipePage extends HookConsumerWidget {
-  const RecipePage({Key? key}) : super(key: key);
+  const RecipePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

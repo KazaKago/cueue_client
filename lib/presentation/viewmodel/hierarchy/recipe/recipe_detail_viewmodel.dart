@@ -36,7 +36,7 @@ class RecipeDetailViewModel with ChangeNotifier {
         this.state = state.when(
           loading: (content) => (content != null) ? RecipeDetailState.completed(content) : const RecipeDetailState.loading(),
           completed: (content, next, prev) => RecipeDetailState.completed(content),
-          error: (exception) => RecipeDetailState.error(exception),
+          error: RecipeDetailState.error,
         );
       }),
     );

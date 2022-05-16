@@ -3,7 +3,14 @@ import 'package:cueue/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
 class RecipeItemBig extends StatelessWidget {
-  const RecipeItemBig({required this.title, required this.description, required this.thumbnail, this.isCheck, this.onTap, Key? key}) : super(key: key);
+  const RecipeItemBig({
+    required this.title,
+    required this.description,
+    required this.thumbnail,
+    this.isCheck,
+    this.onTap,
+    super.key,
+  });
 
   final String title;
   final String description;

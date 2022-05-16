@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RecipeLoadingItem extends StatelessWidget {
-  const RecipeLoadingItem({Key? key}) : super(key: key);
+  const RecipeLoadingItem({super.key});
 
   @override
   Widget build(BuildContext context) {

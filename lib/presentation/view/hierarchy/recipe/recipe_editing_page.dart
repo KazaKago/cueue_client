@@ -20,7 +20,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 class RecipeEditingPage extends HookConsumerWidget {
-  const RecipeEditingPage({this.recipe, Key? key}) : super(key: key);
+  const RecipeEditingPage({this.recipe, super.key});
 
   final Recipe? recipe;
 

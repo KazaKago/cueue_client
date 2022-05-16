@@ -2,7 +2,14 @@ import 'package:cueue/presentation/view/hierarchy/auth/authentication_type.dart'
 import 'package:flutter/material.dart';
 
 abstract class AbstractSignInButton extends StatelessWidget {
-  const AbstractSignInButton({Key? key, required this.authenticationType, required this.enabled, required this.onSignUp, required this.onSignIn, required this.onReauth}) : super(key: key);
+  const AbstractSignInButton({
+    super.key,
+    required this.authenticationType,
+    required this.enabled,
+    required this.onSignUp,
+    required this.onSignIn,
+    required this.onReauth,
+  });
 
   final AuthenticationType authenticationType;
   final bool enabled;

@@ -88,7 +88,7 @@ class SettingsViewModel with ChangeNotifier {
         this.state = state.when(
           loading: (user) => (user != null) ? SettingsState.completed(user) : const SettingsState.loading(),
           completed: (user, next, prev) => SettingsState.completed(user),
-          error: (exception) => SettingsState.error(exception),
+          error: SettingsState.error,
         );
       }),
     );

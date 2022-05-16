@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SearchResultPage extends HookConsumerWidget {
-  const SearchResultPage(this.keyword, this.tagIds, {Key? key}) : super(key: key);
+  const SearchResultPage(this.keyword, this.tagIds, {super.key});
 
   final String keyword;
   final List<TagId> tagIds;

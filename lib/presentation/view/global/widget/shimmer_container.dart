@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerContainer extends StatelessWidget {
-  const ShimmerContainer({required this.child, Key? key}) : super(key: key);
+  const ShimmerContainer({required this.child, super.key});
 
   final Widget child;
 

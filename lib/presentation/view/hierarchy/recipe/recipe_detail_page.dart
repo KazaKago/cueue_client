@@ -21,7 +21,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RecipeDetailPage extends HookConsumerWidget {
-  const RecipeDetailPage(this.recipe, {Key? key}) : super(key: key);
+  const RecipeDetailPage(this.recipe, {super.key});
 
   final RecipeSummary recipe;
 
@@ -181,7 +181,7 @@ class RecipeDetailPage extends HookConsumerWidget {
         ),
       );
     } else {
-      return Container(
+      return ColoredBox(
         color: Theme.of(context).dividerColor,
         child: Padding(
           padding: const EdgeInsets.all(48),

@@ -18,7 +18,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class AuthenticationPage extends HookConsumerWidget {
-  const AuthenticationPage(this.authenticationType, {Key? key}) : super(key: key);
+  const AuthenticationPage(this.authenticationType, {super.key});
 
   final AuthenticationType authenticationType;
 

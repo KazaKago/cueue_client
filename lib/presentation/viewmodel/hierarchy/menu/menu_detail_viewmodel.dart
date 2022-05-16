@@ -36,7 +36,7 @@ class MenuDetailViewModel with ChangeNotifier {
         this.state = state.when(
           loading: (content) => (content != null) ? MenuDetailState.completed(content) : const MenuDetailState.loading(),
           completed: (content, next, prev) => MenuDetailState.completed(content),
-          error: (exception) => MenuDetailState.error(exception),
+          error: MenuDetailState.error,
         );
       }),
     );

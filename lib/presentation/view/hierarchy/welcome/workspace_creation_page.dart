@@ -9,7 +9,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class WorkspaceCreationPage extends HookConsumerWidget {
-  const WorkspaceCreationPage({Key? key}) : super(key: key);
+  const WorkspaceCreationPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

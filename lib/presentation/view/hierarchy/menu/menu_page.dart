@@ -20,7 +20,7 @@ import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MenuPage extends HookConsumerWidget {
-  const MenuPage({Key? key}) : super(key: key);
+  const MenuPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -105,7 +105,7 @@ class MenuPage extends HookConsumerWidget {
   List<SliverStickyHeader> _buildSliverList(BuildContext context, WidgetRef ref, List<DateSplitMenuList> menus) {
     return menus.map((dateSplitMenus) {
       return SliverStickyHeader(
-        header: Container(
+        header: ColoredBox(
           color: _backgroundColor(context, dateSplitMenus.date),
           child: ListTile(
             title: Row(

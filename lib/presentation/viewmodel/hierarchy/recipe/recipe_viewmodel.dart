@@ -42,7 +42,7 @@ class RecipeViewModel with ChangeNotifier {
             loading: () => RecipeState.additionalLoading(content),
             error: (exception) => RecipeState.additionalError(content, exception),
           ),
-          error: (exception) => RecipeState.error(exception),
+          error: RecipeState.error,
         );
       }),
     );

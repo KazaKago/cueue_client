@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TagLoadingItem extends StatelessWidget {
-  const TagLoadingItem({Key? key}) : super(key: key);
+  const TagLoadingItem({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -40,7 +40,7 @@ class MenuViewModel with ChangeNotifier {
             loading: () => MenuState.additionalLoading(content.createDateSplit()),
             error: (exception) => MenuState.additionalError(content.createDateSplit(), exception),
           ),
-          error: (exception) => MenuState.error(exception),
+          error: MenuState.error,
         );
       }),
     );

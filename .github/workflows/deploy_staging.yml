@@ -57,7 +57,7 @@ jobs:
         uses: ./.github/actions/build_ios
         with:
           flavor: staging
-          exportOptionsPlistBase64: ${{ secrets.EXPORT_OPTIONS_PLIST_ADHOC__STAGING }}
+          exportMethod: ad-hoc
       - name: Deploy
         uses: ./.github/actions/deploy
         with:

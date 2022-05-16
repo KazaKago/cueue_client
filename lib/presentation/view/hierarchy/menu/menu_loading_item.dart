@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MenuLoadingItem extends StatelessWidget {
-  const MenuLoadingItem({Key? key}) : super(key: key);
+  const MenuLoadingItem({super.key});
 
   @override
   Widget build(BuildContext context) {

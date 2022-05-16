@@ -46,7 +46,7 @@ class TagViewModel with ChangeNotifier {
         this.state = state.when(
           loading: (tags) => (tags != null) ? TagState.completed(tags) : const TagState.loading(),
           completed: (tags, next, prev) => (tags.isNotEmpty) ? TagState.completed(tags) : const TagState.empty(),
-          error: (exception) => TagState.error(exception),
+          error: TagState.error,
         );
       }),
     );

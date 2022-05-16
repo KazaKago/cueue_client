@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 
 class TitledCard extends StatelessWidget {
-  const TitledCard({Key? key, required this.child, this.title, this.margin, this.contentPadding})
-      : children = null,
-        super(key: key);
+  const TitledCard({
+    super.key,
+    required this.child,
+    this.title,
+    this.margin,
+    this.contentPadding,
+  }) : children = null;
 
-  const TitledCard.list({Key? key, required this.children, this.title, this.margin, this.contentPadding})
-      : child = null,
-        super(key: key);
+  const TitledCard.list({
+    super.key,
+    required this.children,
+    this.title,
+    this.margin,
+    this.contentPadding,
+  }) : child = null;
 
   final String? title;
   final Widget? child;

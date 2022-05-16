@@ -34,7 +34,7 @@ class SearchViewModel with ChangeNotifier {
         this.state = state.when(
           loading: (content) => const SearchState.loading(),
           completed: (content, next, prev) => SearchState.completed(content),
-          error: (exception) => SearchState.error(exception),
+          error: SearchState.error,
         );
       }),
     );

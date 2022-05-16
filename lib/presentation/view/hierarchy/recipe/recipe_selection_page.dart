@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class RecipeSelectionPage extends HookConsumerWidget {
-  const RecipeSelectionPage(this.recipes, {Key? key}) : super(key: key);
+  const RecipeSelectionPage(this.recipes, {super.key});
 
   final List<RecipeSummary> recipes;
 

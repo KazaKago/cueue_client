@@ -4,7 +4,7 @@ class MenuBottomSheetDialog {
   const MenuBottomSheetDialog(this._context, this._menuItems);
 
   final BuildContext _context;
-  final List<MenuItem> _menuItems;
+  final List<MenuValue> _menuItems;
 
   Future<MenuItemResult?> show() {
     return showModalBottomSheet(
@@ -25,8 +25,8 @@ class MenuBottomSheetDialog {
   }
 }
 
-class MenuItem {
-  const MenuItem(this.icon, this.title);
+class MenuValue {
+  const MenuValue(this.icon, this.title);
 
   final IconData icon;
   final String title;
@@ -36,5 +36,5 @@ class MenuItemResult {
   const MenuItemResult(this.index, this.menuItem);
 
   final int index;
-  final MenuItem menuItem;
+  final MenuValue menuItem;
 }

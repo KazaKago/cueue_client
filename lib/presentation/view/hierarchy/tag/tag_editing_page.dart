@@ -11,7 +11,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TagEditingPage extends HookConsumerWidget {
-  const TagEditingPage({Key? key, this.tag}) : super(key: key);
+  const TagEditingPage({super.key, this.tag});
 
   final Tag? tag;
 

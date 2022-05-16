@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ErrorListItem extends ConsumerWidget {
-  const ErrorListItem(this._exception, {required void Function() onClickRetry, Key? key})
-      : _onClickRetry = onClickRetry,
-        super(key: key);
+  const ErrorListItem(
+    this._exception, {
+    required void Function() onClickRetry,
+    super.key,
+  }) : _onClickRetry = onClickRetry;
 
   final Exception _exception;
   final void Function() _onClickRetry;
