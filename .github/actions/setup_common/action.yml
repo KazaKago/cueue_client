@@ -19,6 +19,9 @@ runs:
       uses: subosito/flutter-action@v2
       with:
         channel: stable
+    - name: Check Flutter version
+      run: flutter --version
+      shell: bash
     - name: Mkdir env folder
       run: mkdir -p assets/env
       shell: bash
