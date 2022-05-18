@@ -7,12 +7,13 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class CueueApp extends StatelessWidget {
+class CueueApp extends HookConsumerWidget {
   const CueueApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final lightBrandColor = Colors.lightGreen.shade500;
     final darkBrandColor = Colors.lightGreen.shade700;
     return DynamicColorBuilder(

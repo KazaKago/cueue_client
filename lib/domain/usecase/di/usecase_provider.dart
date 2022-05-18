@@ -101,7 +101,7 @@ import 'package:cueue/domain/usecase/hierarchy/workspace/create_workspace_usecas
 import 'package:cueue/domain/usecase/hierarchy/workspace/create_workspace_usecase_impl.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final checkAtLaunchUseCaseProvider = Provider<CheckAtLaunchUseCase>((ref) => CheckAtLaunchUseCaseImpl(ref.read(userRepositoryProvider)));
+final checkAtLaunchUseCaseProvider = Provider<CheckAtLaunchUseCase>((ref) => CheckAtLaunchUseCaseImpl(ref.read(userRepositoryProvider), ref.read(authorizeRepositoryProvider)));
 final signUpWithPasswordUseCaseProvider = Provider<SignUpWithPasswordUseCase>((ref) => SignUpWithPasswordUseCaseImpl(ref.read(authorizeRepositoryProvider), ref.read(userRepositoryProvider)));
 final signInWithPasswordUseCaseProvider = Provider<SignInWithPasswordUseCase>((ref) => SignInWithPasswordUseCaseImpl(ref.read(authorizeRepositoryProvider), ref.read(userRepositoryProvider)));
 final authenticateWithGoogleUseCaseProvider = Provider<AuthenticateWithGoogleUseCase>((ref) => AuthenticateWithGoogleUseCaseImpl(ref.read(authorizeRepositoryProvider), ref.read(userRepositoryProvider)));
