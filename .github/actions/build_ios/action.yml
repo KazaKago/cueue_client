@@ -5,8 +5,8 @@ inputs:
   flavor:
     description: flavor argument.
     required: true
-  exportMethod:
-    description: ad-hoc, develop, enterprise or app-store.
+  exportOptionsPlistBase64:
+    description: base64 encoded ExportOptions.plist
     required: true
 
 outputs:
@@ -17,8 +17,11 @@ outputs:
 runs:
   using: composite
   steps:
+    - name: Put ExportOptions.plist
+      run: echo ${{ inputs.exportOptionsPlistBase64 }} | base64 -d > ExportOptions.plist
+      shell: bash
     - name: Build
-      run: flutter build ipa --flavor ${{ inputs.flavor }} --export-method ${{ inputs.exportMethod }}
+      run: flutter build ipa --flavor ${{ inputs.flavor }} --export-options-plist=ExportOptions.plist
       shell: bash
     - name: Output IPA
       id: output-ipa
