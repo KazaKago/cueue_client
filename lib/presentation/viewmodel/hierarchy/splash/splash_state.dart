@@ -1,5 +1,3 @@
-import 'package:cueue/domain/model/hierarchy/info/app_info.dart';
-import 'package:cueue/domain/model/hierarchy/info/developer_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'splash_state.freezed.dart';

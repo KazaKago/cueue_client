@@ -8,7 +8,6 @@ import 'package:cueue/domain/model/hierarchy/auth/google_auth_info.dart';
 import 'package:cueue/domain/model/hierarchy/auth/password_auth_info.dart';
 import 'package:cueue/domain/repository/hierarchy/auth/authorize_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:store_flowable/store_flowable.dart';
 
 class AuthorizeRepositoryImpl implements AuthorizeRepository {
@@ -25,6 +24,7 @@ class AuthorizeRepositoryImpl implements AuthorizeRepository {
     final user = FirebaseAuth.instance.currentUser;
     return user != null;
   }
+
   @override
   Future<void> signUpWithPassword(PasswordAuthInfo authInfo) async {
     await _passwordSignaturer.signUp(authInfo);

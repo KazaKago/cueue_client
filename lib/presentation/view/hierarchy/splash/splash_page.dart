@@ -1,12 +1,10 @@
 import 'package:cueue/domain/model/hierarchy/auth/launch_check_result.dart';
-import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
 import 'package:cueue/presentation/view/hierarchy/main/main_page.dart';
 import 'package:cueue/presentation/view/hierarchy/welcome/welcome_page.dart';
 import 'package:cueue/presentation/view/hierarchy/welcome/workspace_creation_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
-import 'package:cueue/presentation/viewmodel/hierarchy/splash/splash_state.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
