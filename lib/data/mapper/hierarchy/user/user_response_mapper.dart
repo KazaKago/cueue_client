@@ -21,6 +21,8 @@ class UserResponseMapper {
   User map(auth.User firebaseUser, UserResponse userResponse) {
     return User(
       id: UserId(firebaseUser.uid),
+      displayName: firebaseUser.displayName ?? '',
+      photoUrl: (firebaseUser.photoURL != null) ? Uri.parse(firebaseUser.photoURL!) : null,
       email: Email(firebaseUser.email!),
       isEmailVerified: firebaseUser.emailVerified,
       passwordProvider: _getLoginProvider(firebaseUser, const PasswordProviderId(), (userId, displayName) => PasswordProvider(uid: userId, displayName: displayName)),

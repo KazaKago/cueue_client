@@ -17,6 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$User {
   UserId get id => throw _privateConstructorUsedError;
+  String get displayName => throw _privateConstructorUsedError;
+  Uri? get photoUrl => throw _privateConstructorUsedError;
   Email get email => throw _privateConstructorUsedError;
   bool get isEmailVerified => throw _privateConstructorUsedError;
   PasswordProvider? get passwordProvider => throw _privateConstructorUsedError;
@@ -34,6 +36,8 @@ abstract class $UserCopyWith<$Res> {
       _$UserCopyWithImpl<$Res>;
   $Res call(
       {UserId id,
+      String displayName,
+      Uri? photoUrl,
       Email email,
       bool isEmailVerified,
       PasswordProvider? passwordProvider,
@@ -59,6 +63,8 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
+    Object? displayName = freezed,
+    Object? photoUrl = freezed,
     Object? email = freezed,
     Object? isEmailVerified = freezed,
     Object? passwordProvider = freezed,
@@ -71,6 +77,14 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as UserId,
+      displayName: displayName == freezed
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String,
+      photoUrl: photoUrl == freezed
+          ? _value.photoUrl
+          : photoUrl // ignore: cast_nullable_to_non_nullable
+              as Uri?,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -153,6 +167,8 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   @override
   $Res call(
       {UserId id,
+      String displayName,
+      Uri? photoUrl,
       Email email,
       bool isEmailVerified,
       PasswordProvider? passwordProvider,
@@ -184,6 +200,8 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? displayName = freezed,
+    Object? photoUrl = freezed,
     Object? email = freezed,
     Object? isEmailVerified = freezed,
     Object? passwordProvider = freezed,
@@ -196,6 +214,14 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as UserId,
+      displayName: displayName == freezed
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String,
+      photoUrl: photoUrl == freezed
+          ? _value.photoUrl
+          : photoUrl // ignore: cast_nullable_to_non_nullable
+              as Uri?,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -229,6 +255,8 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 class _$_User extends _User {
   const _$_User(
       {required this.id,
+      required this.displayName,
+      required this.photoUrl,
       required this.email,
       required this.isEmailVerified,
       required this.passwordProvider,
@@ -240,6 +268,10 @@ class _$_User extends _User {
 
   @override
   final UserId id;
+  @override
+  final String displayName;
+  @override
+  final Uri? photoUrl;
   @override
   final Email email;
   @override
@@ -259,7 +291,7 @@ class _$_User extends _User {
 
   @override
   String toString() {
-    return 'User(id: $id, email: $email, isEmailVerified: $isEmailVerified, passwordProvider: $passwordProvider, googleProvider: $googleProvider, appleProvider: $appleProvider, workspaces: $workspaces)';
+    return 'User(id: $id, displayName: $displayName, photoUrl: $photoUrl, email: $email, isEmailVerified: $isEmailVerified, passwordProvider: $passwordProvider, googleProvider: $googleProvider, appleProvider: $appleProvider, workspaces: $workspaces)';
   }
 
   @override
@@ -268,6 +300,9 @@ class _$_User extends _User {
         (other.runtimeType == runtimeType &&
             other is _$_User &&
             const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.displayName, displayName) &&
+            const DeepCollectionEquality().equals(other.photoUrl, photoUrl) &&
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality()
                 .equals(other.isEmailVerified, isEmailVerified) &&
@@ -285,6 +320,8 @@ class _$_User extends _User {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(displayName),
+      const DeepCollectionEquality().hash(photoUrl),
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(isEmailVerified),
       const DeepCollectionEquality().hash(passwordProvider),
@@ -301,6 +338,8 @@ class _$_User extends _User {
 abstract class _User extends User {
   const factory _User(
       {required final UserId id,
+      required final String displayName,
+      required final Uri? photoUrl,
       required final Email email,
       required final bool isEmailVerified,
       required final PasswordProvider? passwordProvider,
@@ -311,6 +350,10 @@ abstract class _User extends User {
 
   @override
   UserId get id => throw _privateConstructorUsedError;
+  @override
+  String get displayName => throw _privateConstructorUsedError;
+  @override
+  Uri? get photoUrl => throw _privateConstructorUsedError;
   @override
   Email get email => throw _privateConstructorUsedError;
   @override

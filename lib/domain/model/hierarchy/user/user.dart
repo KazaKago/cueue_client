@@ -12,6 +12,8 @@ part 'user.freezed.dart';
 class User with _$User {
   const factory User({
     required UserId id,
+    required String displayName,
+    required Uri? photoUrl,
     required Email email,
     required bool isEmailVerified,
     required PasswordProvider? passwordProvider,
