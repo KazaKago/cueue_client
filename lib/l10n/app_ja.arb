@@ -8,6 +8,7 @@
   "cookingMenu": "こんだて",
   "recipe": "レシピ",
   "tag": "タグ",
+  "mypage": "マイページ",
   "settings": "設定",
   "allRecipes": "すべてのレシピ",
   "addCookingMenu": "こんだて追加",
@@ -257,8 +258,9 @@
     }
   },
   "accountDeletion": "アカウント削除",
-  "cautionOperation": "注意が必要な操作",
+  "other": "その他",
   "approveAndDeletionAccount": "すべて理解した上でアカウントを削除する",
   "accountDeletionConfirmation": "本当にアカウントを削除してよろしいですか？",
-  "warning": "警告"
+  "warning": "警告",
+  "nickname": "ニックネーム"
 }

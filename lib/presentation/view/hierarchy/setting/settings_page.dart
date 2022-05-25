@@ -279,7 +279,7 @@ class SettingsPage extends HookConsumerWidget {
 
   Widget _buildCautionOperationTitle(BuildContext context, WidgetRef ref) {
     return ListTile(
-      title: Text(intl(context).cautionOperation, style: Theme.of(context).textTheme.caption),
+      title: Text(intl(context).other, style: Theme.of(context).textTheme.caption),
     );
   }
 

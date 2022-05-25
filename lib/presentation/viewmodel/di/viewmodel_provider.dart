@@ -8,6 +8,7 @@ import 'package:cueue/presentation/viewmodel/hierarchy/auth/password_reset_viewm
 import 'package:cueue/presentation/viewmodel/hierarchy/menu/menu_detail_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/menu/menu_editing_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/menu/menu_viewmodel.dart';
+import 'package:cueue/presentation/viewmodel/hierarchy/mypage/my_page_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/recipe/recipe_detail_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/recipe/recipe_editing_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/recipe/recipe_selection_viewmodel.dart';
@@ -39,3 +40,4 @@ final recipeDetailViewModelProvider = ChangeNotifierProvider.autoDispose.family<
 final menuDetailViewModelProvider = ChangeNotifierProvider.autoDispose.family<MenuDetailViewModel, MenuId>((ref, menuId) => MenuDetailViewModel(ref.read(followMenuUseCaseProvider), ref.read(refreshMenuUseCaseProvider), menuId));
 final accountDeletionViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => AccountDeletionViewModel(ref.read(deleteAccountUseCaseProvider)));
 final workspaceCreationViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => WorkspaceCreationViewModel(ref.read(createWorkspaceUseCaseProvider)));
+final myPageViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => MyPageViewModel(ref.read(followUserUseCaseProvider), ref.read(refreshUserUseCaseProvider)));
