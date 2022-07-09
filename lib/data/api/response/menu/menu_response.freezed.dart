@@ -257,19 +257,19 @@ abstract class _MenuResponse implements MenuResponse {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'memo')
-  String get memo => throw _privateConstructorUsedError;
+  String get memo;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'date')
-  String get date => throw _privateConstructorUsedError;
+  String get date;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'time_frame')
-  String get timeFrame => throw _privateConstructorUsedError;
+  String get timeFrame;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'recipes')
-  List<RecipeSummaryResponse> get recipes => throw _privateConstructorUsedError;
+  List<RecipeSummaryResponse> get recipes;
   @override
   @JsonKey(ignore: true)
   _$$_MenuResponseCopyWith<_$_MenuResponse> get copyWith =>

@@ -153,9 +153,9 @@ abstract class _AppleProvider implements AppleProvider {
       required final String displayName}) = _$_AppleProvider;
 
   @override
-  UserId get uid => throw _privateConstructorUsedError;
+  UserId get uid;
   @override
-  String get displayName => throw _privateConstructorUsedError;
+  String get displayName;
   @override
   @JsonKey(ignore: true)
   _$$_AppleProviderCopyWith<_$_AppleProvider> get copyWith =>

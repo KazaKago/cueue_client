@@ -171,11 +171,11 @@ abstract class _DeveloperInfo extends DeveloperInfo {
   const _DeveloperInfo._() : super._();
 
   @override
-  String get developer => throw _privateConstructorUsedError;
+  String get developer;
   @override
-  Uri get webSite => throw _privateConstructorUsedError;
+  Uri get webSite;
   @override
-  Email get email => throw _privateConstructorUsedError;
+  Email get email;
   @override
   @JsonKey(ignore: true)
   _$$_DeveloperInfoCopyWith<_$_DeveloperInfo> get copyWith =>

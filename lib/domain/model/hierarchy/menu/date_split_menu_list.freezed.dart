@@ -147,9 +147,9 @@ abstract class _DateSplitMenuList implements DateSplitMenuList {
       required final List<MenuSummary> menus}) = _$_DateSplitMenuList;
 
   @override
-  DateTime get date => throw _privateConstructorUsedError;
+  DateTime get date;
   @override
-  List<MenuSummary> get menus => throw _privateConstructorUsedError;
+  List<MenuSummary> get menus;
   @override
   @JsonKey(ignore: true)
   _$$_DateSplitMenuListCopyWith<_$_DateSplitMenuList> get copyWith =>

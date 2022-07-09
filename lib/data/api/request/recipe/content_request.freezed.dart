@@ -145,7 +145,7 @@ abstract class _ContentRequest implements ContentRequest {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'data')
-  String get data => throw _privateConstructorUsedError;
+  String get data;
   @override
   @JsonKey(ignore: true)
   _$$_ContentRequestCopyWith<_$_ContentRequest> get copyWith =>

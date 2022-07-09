@@ -153,9 +153,9 @@ abstract class _GoogleProvider implements GoogleProvider {
       required final String displayName}) = _$_GoogleProvider;
 
   @override
-  UserId get uid => throw _privateConstructorUsedError;
+  UserId get uid;
   @override
-  String get displayName => throw _privateConstructorUsedError;
+  String get displayName;
   @override
   @JsonKey(ignore: true)
   _$$_GoogleProviderCopyWith<_$_GoogleProvider> get copyWith =>

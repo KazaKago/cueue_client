@@ -162,9 +162,9 @@ abstract class _PasswordAuthInfo implements PasswordAuthInfo {
       required final Password password}) = _$_PasswordAuthInfo;
 
   @override
-  Email get email => throw _privateConstructorUsedError;
+  Email get email;
   @override
-  Password get password => throw _privateConstructorUsedError;
+  Password get password;
   @override
   @JsonKey(ignore: true)
   _$$_PasswordAuthInfoCopyWith<_$_PasswordAuthInfo> get copyWith =>

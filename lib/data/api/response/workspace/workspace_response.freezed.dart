@@ -170,10 +170,10 @@ abstract class _WorkspaceResponse implements WorkspaceResponse {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$$_WorkspaceResponseCopyWith<_$_WorkspaceResponse> get copyWith =>

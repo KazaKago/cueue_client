@@ -120,7 +120,7 @@ abstract class _ContentKey implements ContentKey {
   const factory _ContentKey(final String value) = _$_ContentKey;
 
   @override
-  String get value => throw _privateConstructorUsedError;
+  String get value;
   @override
   @JsonKey(ignore: true)
   _$$_ContentKeyCopyWith<_$_ContentKey> get copyWith =>

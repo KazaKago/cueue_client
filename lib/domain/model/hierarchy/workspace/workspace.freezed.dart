@@ -148,9 +148,9 @@ abstract class _Workspace implements Workspace {
       required final String name}) = _$_Workspace;
 
   @override
-  WorkspaceId get id => throw _privateConstructorUsedError;
+  WorkspaceId get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$$_WorkspaceCopyWith<_$_Workspace> get copyWith =>

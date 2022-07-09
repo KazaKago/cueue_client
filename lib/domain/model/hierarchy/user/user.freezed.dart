@@ -349,23 +349,23 @@ abstract class _User extends User {
   const _User._() : super._();
 
   @override
-  UserId get id => throw _privateConstructorUsedError;
+  UserId get id;
   @override
-  String get displayName => throw _privateConstructorUsedError;
+  String get displayName;
   @override
-  Uri? get photoUrl => throw _privateConstructorUsedError;
+  Uri? get photoUrl;
   @override
-  Email get email => throw _privateConstructorUsedError;
+  Email get email;
   @override
-  bool get isEmailVerified => throw _privateConstructorUsedError;
+  bool get isEmailVerified;
   @override
-  PasswordProvider? get passwordProvider => throw _privateConstructorUsedError;
+  PasswordProvider? get passwordProvider;
   @override
-  GoogleProvider? get googleProvider => throw _privateConstructorUsedError;
+  GoogleProvider? get googleProvider;
   @override
-  AppleProvider? get appleProvider => throw _privateConstructorUsedError;
+  AppleProvider? get appleProvider;
   @override
-  List<Workspace> get workspaces => throw _privateConstructorUsedError;
+  List<Workspace> get workspaces;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

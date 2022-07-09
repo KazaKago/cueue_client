@@ -115,7 +115,7 @@ abstract class _UserId implements UserId {
   const factory _UserId(final String value) = _$_UserId;
 
   @override
-  String get value => throw _privateConstructorUsedError;
+  String get value;
   @override
   @JsonKey(ignore: true)
   _$$_UserIdCopyWith<_$_UserId> get copyWith =>

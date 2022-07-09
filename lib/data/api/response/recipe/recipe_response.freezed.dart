@@ -400,34 +400,34 @@ abstract class _RecipeResponse implements RecipeResponse {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'title')
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'description')
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'url')
-  String? get url => throw _privateConstructorUsedError;
+  String? get url;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'images')
-  List<ContentResponse> get images => throw _privateConstructorUsedError;
+  List<ContentResponse> get images;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'tags')
-  List<TagResponse> get tags => throw _privateConstructorUsedError;
+  List<TagResponse> get tags;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'cooking_histories')
-  List<String> get cookingHistories => throw _privateConstructorUsedError;
+  List<String> get cookingHistories;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'cooking_count')
-  int get cookingCount => throw _privateConstructorUsedError;
+  int get cookingCount;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'created_at')
-  String get createdAt => throw _privateConstructorUsedError;
+  String get createdAt;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'updated_at')
-  String get updatedAt => throw _privateConstructorUsedError;
+  String get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_RecipeResponseCopyWith<_$_RecipeResponse> get copyWith =>

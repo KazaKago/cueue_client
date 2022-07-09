@@ -257,19 +257,19 @@ abstract class _RecipeRequest implements RecipeRequest {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'title')
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'description')
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'url')
-  String? get url => throw _privateConstructorUsedError;
+  String? get url;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'image_keys')
-  List<String> get imageKeys => throw _privateConstructorUsedError;
+  List<String> get imageKeys;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'tag_ids')
-  List<int> get tagIds => throw _privateConstructorUsedError;
+  List<int> get tagIds;
   @override
   @JsonKey(ignore: true)
   _$$_RecipeRequestCopyWith<_$_RecipeRequest> get copyWith =>

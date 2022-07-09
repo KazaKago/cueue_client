@@ -170,10 +170,10 @@ abstract class _ContentResponse implements ContentResponse {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'key')
-  String get key => throw _privateConstructorUsedError;
+  String get key;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'url')
-  String get url => throw _privateConstructorUsedError;
+  String get url;
   @override
   @JsonKey(ignore: true)
   _$$_ContentResponseCopyWith<_$_ContentResponse> get copyWith =>

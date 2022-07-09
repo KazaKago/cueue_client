@@ -257,9 +257,9 @@ abstract class _Positive implements TextFieldDialogEvent {
       {final String? originalText}) = _$_Positive;
 
   @override
-  String get currentText => throw _privateConstructorUsedError;
+  String get currentText;
   @override
-  String? get originalText => throw _privateConstructorUsedError;
+  String? get originalText;
   @override
   @JsonKey(ignore: true)
   _$$_PositiveCopyWith<_$_Positive> get copyWith =>
@@ -417,9 +417,9 @@ abstract class _Neutral implements TextFieldDialogEvent {
       {final String? originalText}) = _$_Neutral;
 
   @override
-  String get currentText => throw _privateConstructorUsedError;
+  String get currentText;
   @override
-  String? get originalText => throw _privateConstructorUsedError;
+  String? get originalText;
   @override
   @JsonKey(ignore: true)
   _$$_NeutralCopyWith<_$_Neutral> get copyWith =>
@@ -578,9 +578,9 @@ abstract class _Negative implements TextFieldDialogEvent {
       {final String? originalText}) = _$_Negative;
 
   @override
-  String get currentText => throw _privateConstructorUsedError;
+  String get currentText;
   @override
-  String? get originalText => throw _privateConstructorUsedError;
+  String? get originalText;
   @override
   @JsonKey(ignore: true)
   _$$_NegativeCopyWith<_$_Negative> get copyWith =>

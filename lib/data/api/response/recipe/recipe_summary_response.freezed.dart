@@ -242,16 +242,16 @@ abstract class _RecipeSummaryResponse implements RecipeSummaryResponse {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'title')
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'image')
-  ContentResponse? get image => throw _privateConstructorUsedError;
+  ContentResponse? get image;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'last_cooking_at')
-  String? get lastCookingAt => throw _privateConstructorUsedError;
+  String? get lastCookingAt;
   @override
   @JsonKey(ignore: true)
   _$$_RecipeSummaryResponseCopyWith<_$_RecipeSummaryResponse> get copyWith =>

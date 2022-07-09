@@ -134,9 +134,9 @@ abstract class _AppInfo implements AppInfo {
       required final String version}) = _$_AppInfo;
 
   @override
-  String get appName => throw _privateConstructorUsedError;
+  String get appName;
   @override
-  String get version => throw _privateConstructorUsedError;
+  String get version;
   @override
   @JsonKey(ignore: true)
   _$$_AppInfoCopyWith<_$_AppInfo> get copyWith =>

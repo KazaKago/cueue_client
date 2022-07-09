@@ -224,16 +224,16 @@ abstract class _MenuRequest implements MenuRequest {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'memo')
-  String get memo => throw _privateConstructorUsedError;
+  String get memo;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'date')
-  String get date => throw _privateConstructorUsedError;
+  String get date;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'time_frame')
-  String get timeFrame => throw _privateConstructorUsedError;
+  String get timeFrame;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'recipe_ids')
-  List<int> get recipeIds => throw _privateConstructorUsedError;
+  List<int> get recipeIds;
   @override
   @JsonKey(ignore: true)
   _$$_MenuRequestCopyWith<_$_MenuRequest> get copyWith =>

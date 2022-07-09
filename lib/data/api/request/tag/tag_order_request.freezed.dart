@@ -153,7 +153,7 @@ abstract class _TagOrderRequest implements TagOrderRequest {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'tag_ids')
-  List<int> get tagIds => throw _privateConstructorUsedError;
+  List<int> get tagIds;
   @override
   @JsonKey(ignore: true)
   _$$_TagOrderRequestCopyWith<_$_TagOrderRequest> get copyWith =>

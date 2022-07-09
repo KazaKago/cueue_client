@@ -217,15 +217,15 @@ abstract class _RecipeRegistration implements RecipeRegistration {
       required final List<TagId> tagIds}) = _$_RecipeRegistration;
 
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
-  Uri? get url => throw _privateConstructorUsedError;
+  Uri? get url;
   @override
-  List<ContentKey> get imageKeys => throw _privateConstructorUsedError;
+  List<ContentKey> get imageKeys;
   @override
-  List<TagId> get tagIds => throw _privateConstructorUsedError;
+  List<TagId> get tagIds;
   @override
   @JsonKey(ignore: true)
   _$$_RecipeRegistrationCopyWith<_$_RecipeRegistration> get copyWith =>

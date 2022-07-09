@@ -141,9 +141,9 @@ abstract class _GoogleAuthInfo implements GoogleAuthInfo {
       required final String idToken}) = _$_GoogleAuthInfo;
 
   @override
-  String get accessToken => throw _privateConstructorUsedError;
+  String get accessToken;
   @override
-  String get idToken => throw _privateConstructorUsedError;
+  String get idToken;
   @override
   @JsonKey(ignore: true)
   _$$_GoogleAuthInfoCopyWith<_$_GoogleAuthInfo> get copyWith =>

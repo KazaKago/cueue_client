@@ -144,9 +144,9 @@ abstract class _Tag implements Tag {
       _$_Tag;
 
   @override
-  TagId get id => throw _privateConstructorUsedError;
+  TagId get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$$_TagCopyWith<_$_Tag> get copyWith => throw _privateConstructorUsedError;

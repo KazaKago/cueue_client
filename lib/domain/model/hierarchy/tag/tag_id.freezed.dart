@@ -116,7 +116,7 @@ abstract class _TagId extends TagId {
   const _TagId._() : super._();
 
   @override
-  int get value => throw _privateConstructorUsedError;
+  int get value;
   @override
   @JsonKey(ignore: true)
   _$$_TagIdCopyWith<_$_TagId> get copyWith =>

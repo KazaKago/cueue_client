@@ -146,7 +146,7 @@ abstract class _WorkspaceRequest implements WorkspaceRequest {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$$_WorkspaceRequestCopyWith<_$_WorkspaceRequest> get copyWith =>

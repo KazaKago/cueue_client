@@ -118,7 +118,7 @@ abstract class _RecipeId implements RecipeId {
   const factory _RecipeId(final int value) = _$_RecipeId;
 
   @override
-  int get value => throw _privateConstructorUsedError;
+  int get value;
   @override
   @JsonKey(ignore: true)
   _$$_RecipeIdCopyWith<_$_RecipeId> get copyWith =>

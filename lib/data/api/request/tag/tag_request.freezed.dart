@@ -143,7 +143,7 @@ abstract class _TagRequest implements TagRequest {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$$_TagRequestCopyWith<_$_TagRequest> get copyWith =>

@@ -153,9 +153,9 @@ abstract class _PasswordProvider implements PasswordProvider {
       required final String displayName}) = _$_PasswordProvider;
 
   @override
-  UserId get uid => throw _privateConstructorUsedError;
+  UserId get uid;
   @override
-  String get displayName => throw _privateConstructorUsedError;
+  String get displayName;
   @override
   @JsonKey(ignore: true)
   _$$_PasswordProviderCopyWith<_$_PasswordProvider> get copyWith =>

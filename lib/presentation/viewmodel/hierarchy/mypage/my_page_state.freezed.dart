@@ -329,7 +329,7 @@ class _$_Completed implements _Completed {
 abstract class _Completed implements MyPageState {
   const factory _Completed(final User user) = _$_Completed;
 
-  User get user => throw _privateConstructorUsedError;
+  User get user;
   @JsonKey(ignore: true)
   _$$_CompletedCopyWith<_$_Completed> get copyWith =>
       throw _privateConstructorUsedError;
@@ -466,7 +466,7 @@ class _$_Error implements _Error {
 abstract class _Error implements MyPageState {
   const factory _Error(final Exception error) = _$_Error;
 
-  Exception get error => throw _privateConstructorUsedError;
+  Exception get error;
   @JsonKey(ignore: true)
   _$$_ErrorCopyWith<_$_Error> get copyWith =>
       throw _privateConstructorUsedError;

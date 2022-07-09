@@ -115,7 +115,7 @@ abstract class _MenuId implements MenuId {
   const factory _MenuId(final int value) = _$_MenuId;
 
   @override
-  int get value => throw _privateConstructorUsedError;
+  int get value;
   @override
   @JsonKey(ignore: true)
   _$$_MenuIdCopyWith<_$_MenuId> get copyWith =>

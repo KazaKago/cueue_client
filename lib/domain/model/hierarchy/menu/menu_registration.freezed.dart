@@ -190,13 +190,13 @@ abstract class _MenuRegistration implements MenuRegistration {
       required final List<RecipeId> recipeIds}) = _$_MenuRegistration;
 
   @override
-  String get memo => throw _privateConstructorUsedError;
+  String get memo;
   @override
-  DateTime get date => throw _privateConstructorUsedError;
+  DateTime get date;
   @override
-  TimeFrame get timeFrame => throw _privateConstructorUsedError;
+  TimeFrame get timeFrame;
   @override
-  List<RecipeId> get recipeIds => throw _privateConstructorUsedError;
+  List<RecipeId> get recipeIds;
   @override
   @JsonKey(ignore: true)
   _$$_MenuRegistrationCopyWith<_$_MenuRegistration> get copyWith =>

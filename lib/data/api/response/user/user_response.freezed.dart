@@ -182,10 +182,10 @@ abstract class _UserResponse implements UserResponse {
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'workspaces')
-  List<WorkspaceResponse> get workspaces => throw _privateConstructorUsedError;
+  List<WorkspaceResponse> get workspaces;
   @override
   @JsonKey(ignore: true)
   _$$_UserResponseCopyWith<_$_UserResponse> get copyWith =>

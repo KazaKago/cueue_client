@@ -327,7 +327,7 @@ class _$_Completed implements _Completed {
 abstract class _Completed implements RecipeEditingState {
   const factory _Completed(final List<Tag> tags) = _$_Completed;
 
-  List<Tag> get tags => throw _privateConstructorUsedError;
+  List<Tag> get tags;
   @JsonKey(ignore: true)
   _$$_CompletedCopyWith<_$_Completed> get copyWith =>
       throw _privateConstructorUsedError;
@@ -465,7 +465,7 @@ class _$_Error implements _Error {
 abstract class _Error implements RecipeEditingState {
   const factory _Error(final Exception error) = _$_Error;
 
-  Exception get error => throw _privateConstructorUsedError;
+  Exception get error;
   @JsonKey(ignore: true)
   _$$_ErrorCopyWith<_$_Error> get copyWith =>
       throw _privateConstructorUsedError;

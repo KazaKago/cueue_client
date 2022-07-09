@@ -405,7 +405,7 @@ class _$_Refreshing implements _Refreshing {
 abstract class _Refreshing implements RecipeState {
   const factory _Refreshing(final List<RecipeSummary> menus) = _$_Refreshing;
 
-  List<RecipeSummary> get menus => throw _privateConstructorUsedError;
+  List<RecipeSummary> get menus;
   @JsonKey(ignore: true)
   _$$_RefreshingCopyWith<_$_Refreshing> get copyWith =>
       throw _privateConstructorUsedError;
@@ -578,7 +578,7 @@ abstract class _AdditionalLoading implements RecipeState {
   const factory _AdditionalLoading(final List<RecipeSummary> menus) =
       _$_AdditionalLoading;
 
-  List<RecipeSummary> get menus => throw _privateConstructorUsedError;
+  List<RecipeSummary> get menus;
   @JsonKey(ignore: true)
   _$$_AdditionalLoadingCopyWith<_$_AdditionalLoading> get copyWith =>
       throw _privateConstructorUsedError;
@@ -883,7 +883,7 @@ class _$_Completed implements _Completed {
 abstract class _Completed implements RecipeState {
   const factory _Completed(final List<RecipeSummary> recipes) = _$_Completed;
 
-  List<RecipeSummary> get recipes => throw _privateConstructorUsedError;
+  List<RecipeSummary> get recipes;
   @JsonKey(ignore: true)
   _$$_CompletedCopyWith<_$_Completed> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1047,7 +1047,7 @@ class _$_Error implements _Error {
 abstract class _Error implements RecipeState {
   const factory _Error(final Exception error) = _$_Error;
 
-  Exception get error => throw _privateConstructorUsedError;
+  Exception get error;
   @JsonKey(ignore: true)
   _$$_ErrorCopyWith<_$_Error> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1232,8 +1232,8 @@ abstract class _AdditionalError implements RecipeState {
           final List<RecipeSummary> recipes, final Exception error) =
       _$_AdditionalError;
 
-  List<RecipeSummary> get recipes => throw _privateConstructorUsedError;
-  Exception get error => throw _privateConstructorUsedError;
+  List<RecipeSummary> get recipes;
+  Exception get error;
   @JsonKey(ignore: true)
   _$$_AdditionalErrorCopyWith<_$_AdditionalError> get copyWith =>
       throw _privateConstructorUsedError;

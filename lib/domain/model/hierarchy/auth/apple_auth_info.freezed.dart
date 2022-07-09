@@ -160,11 +160,11 @@ abstract class _AppleAuthInfo implements AppleAuthInfo {
       required final String rawNonce}) = _$_AppleAuthInfo;
 
   @override
-  String get idToken => throw _privateConstructorUsedError;
+  String get idToken;
   @override
-  String get accessToken => throw _privateConstructorUsedError;
+  String get accessToken;
   @override
-  String get rawNonce => throw _privateConstructorUsedError;
+  String get rawNonce;
   @override
   @JsonKey(ignore: true)
   _$$_AppleAuthInfoCopyWith<_$_AppleAuthInfo> get copyWith =>

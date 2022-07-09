@@ -124,7 +124,7 @@ abstract class _ContentRegistration implements ContentRegistration {
       _$_ContentRegistration;
 
   @override
-  Uint8List get data => throw _privateConstructorUsedError;
+  Uint8List get data;
   @override
   @JsonKey(ignore: true)
   _$$_ContentRegistrationCopyWith<_$_ContentRegistration> get copyWith =>

@@ -120,7 +120,7 @@ abstract class _WorkspaceId implements WorkspaceId {
   const factory _WorkspaceId(final int value) = _$_WorkspaceId;
 
   @override
-  int get value => throw _privateConstructorUsedError;
+  int get value;
   @override
   @JsonKey(ignore: true)
   _$$_WorkspaceIdCopyWith<_$_WorkspaceId> get copyWith =>

@@ -228,7 +228,7 @@ abstract class _Positive implements CheckedMenuDialogEvent {
   const factory _Positive(final List<CheckedMenuItem> menuItems) = _$_Positive;
 
   @override
-  List<CheckedMenuItem> get menuItems => throw _privateConstructorUsedError;
+  List<CheckedMenuItem> get menuItems;
   @override
   @JsonKey(ignore: true)
   _$$_PositiveCopyWith<_$_Positive> get copyWith =>
@@ -372,7 +372,7 @@ abstract class _Negative implements CheckedMenuDialogEvent {
   const factory _Negative(final List<CheckedMenuItem> menuItems) = _$_Negative;
 
   @override
-  List<CheckedMenuItem> get menuItems => throw _privateConstructorUsedError;
+  List<CheckedMenuItem> get menuItems;
   @override
   @JsonKey(ignore: true)
   _$$_NegativeCopyWith<_$_Negative> get copyWith =>

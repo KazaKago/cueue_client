@@ -145,9 +145,9 @@ abstract class _Content implements Content {
       {required final ContentKey key, required final Uri url}) = _$_Content;
 
   @override
-  ContentKey get key => throw _privateConstructorUsedError;
+  ContentKey get key;
   @override
-  Uri get url => throw _privateConstructorUsedError;
+  Uri get url;
   @override
   @JsonKey(ignore: true)
   _$$_ContentCopyWith<_$_Content> get copyWith =>

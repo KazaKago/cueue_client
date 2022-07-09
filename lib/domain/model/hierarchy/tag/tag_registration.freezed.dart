@@ -123,7 +123,7 @@ abstract class _TagRegistration implements TagRegistration {
       _$_TagRegistration;
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$$_TagRegistrationCopyWith<_$_TagRegistration> get copyWith =>

@@ -245,8 +245,7 @@ abstract class _Positive implements MultiTextFieldDialogEvent {
       _$_Positive;
 
   @override
-  List<MultiTextFieldDialogResult> get results =>
-      throw _privateConstructorUsedError;
+  List<MultiTextFieldDialogResult> get results;
   @override
   @JsonKey(ignore: true)
   _$$_PositiveCopyWith<_$_Positive> get copyWith =>
@@ -397,8 +396,7 @@ abstract class _Neutral implements MultiTextFieldDialogEvent {
       _$_Neutral;
 
   @override
-  List<MultiTextFieldDialogResult> get results =>
-      throw _privateConstructorUsedError;
+  List<MultiTextFieldDialogResult> get results;
   @override
   @JsonKey(ignore: true)
   _$$_NeutralCopyWith<_$_Neutral> get copyWith =>
@@ -550,8 +548,7 @@ abstract class _Negative implements MultiTextFieldDialogEvent {
       _$_Negative;
 
   @override
-  List<MultiTextFieldDialogResult> get results =>
-      throw _privateConstructorUsedError;
+  List<MultiTextFieldDialogResult> get results;
   @override
   @JsonKey(ignore: true)
   _$$_NegativeCopyWith<_$_Negative> get copyWith =>

@@ -119,7 +119,7 @@ abstract class _Password extends Password {
   _Password._() : super._();
 
   @override
-  String get value => throw _privateConstructorUsedError;
+  String get value;
   @override
   @JsonKey(ignore: true)
   _$$_PasswordCopyWith<_$_Password> get copyWith =>

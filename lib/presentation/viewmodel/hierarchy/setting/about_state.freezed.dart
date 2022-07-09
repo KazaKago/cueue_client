@@ -334,8 +334,8 @@ abstract class _Completed implements AboutState {
   const factory _Completed(
       final AppInfo appInfo, final DeveloperInfo developerInfo) = _$_Completed;
 
-  AppInfo get appInfo => throw _privateConstructorUsedError;
-  DeveloperInfo get developerInfo => throw _privateConstructorUsedError;
+  AppInfo get appInfo;
+  DeveloperInfo get developerInfo;
   @JsonKey(ignore: true)
   _$$_CompletedCopyWith<_$_Completed> get copyWith =>
       throw _privateConstructorUsedError;

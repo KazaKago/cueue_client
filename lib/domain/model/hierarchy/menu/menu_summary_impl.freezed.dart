@@ -220,15 +220,15 @@ abstract class _MenuSummaryImpl implements MenuSummaryImpl {
       required final List<RecipeSummary> recipes}) = _$_MenuSummaryImpl;
 
   @override
-  MenuId get id => throw _privateConstructorUsedError;
+  MenuId get id;
   @override
-  String get memo => throw _privateConstructorUsedError;
+  String get memo;
   @override
-  DateTime get date => throw _privateConstructorUsedError;
+  DateTime get date;
   @override
-  TimeFrame get timeFrame => throw _privateConstructorUsedError;
+  TimeFrame get timeFrame;
   @override
-  List<RecipeSummary> get recipes => throw _privateConstructorUsedError;
+  List<RecipeSummary> get recipes;
   @override
   @JsonKey(ignore: true)
   _$$_MenuSummaryImplCopyWith<_$_MenuSummaryImpl> get copyWith =>

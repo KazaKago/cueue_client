@@ -326,25 +326,25 @@ abstract class _Recipe extends Recipe {
   const _Recipe._() : super._();
 
   @override
-  RecipeId get id => throw _privateConstructorUsedError;
+  RecipeId get id;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
-  Uri? get url => throw _privateConstructorUsedError;
+  Uri? get url;
   @override
-  List<Content> get images => throw _privateConstructorUsedError;
+  List<Content> get images;
   @override
-  List<Tag> get tags => throw _privateConstructorUsedError;
+  List<Tag> get tags;
   @override
-  List<DateTime> get cookingHistories => throw _privateConstructorUsedError;
+  List<DateTime> get cookingHistories;
   @override
-  int get cookingCount => throw _privateConstructorUsedError;
+  int get cookingCount;
   @override
-  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime get createdAt;
   @override
-  DateTime get updatedAt => throw _privateConstructorUsedError;
+  DateTime get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_RecipeCopyWith<_$_Recipe> get copyWith =>

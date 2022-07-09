@@ -206,13 +206,13 @@ abstract class _RecipeSummaryImpl implements RecipeSummaryImpl {
       required final DateTime? lastCookingAt}) = _$_RecipeSummaryImpl;
 
   @override
-  RecipeId get id => throw _privateConstructorUsedError;
+  RecipeId get id;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  Content? get image => throw _privateConstructorUsedError;
+  Content? get image;
   @override
-  DateTime? get lastCookingAt => throw _privateConstructorUsedError;
+  DateTime? get lastCookingAt;
   @override
   @JsonKey(ignore: true)
   _$$_RecipeSummaryImplCopyWith<_$_RecipeSummaryImpl> get copyWith =>

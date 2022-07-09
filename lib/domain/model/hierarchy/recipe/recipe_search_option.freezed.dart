@@ -148,9 +148,9 @@ abstract class _RecipeSearchOption implements RecipeSearchOption {
       final List<TagId>? tagIds}) = _$_RecipeSearchOption;
 
   @override
-  String? get keyword => throw _privateConstructorUsedError;
+  String? get keyword;
   @override
-  List<TagId>? get tagIds => throw _privateConstructorUsedError;
+  List<TagId>? get tagIds;
   @override
   @JsonKey(ignore: true)
   _$$_RecipeSearchOptionCopyWith<_$_RecipeSearchOption> get copyWith =>
