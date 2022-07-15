@@ -32,7 +32,7 @@ class AppleAuthorizer {
       if (state != credential.state) {
         throw const AuthorizationFailedException();
       }
-      return AppleAuthInfo(idToken: credential.identityToken!, accessToken: credential.authorizationCode, rawNonce: rawNonce);
+      return AppleAuthInfo(idToken: credential.identityToken, accessToken: credential.authorizationCode, rawNonce: rawNonce);
     } on SignInWithAppleAuthorizationException catch (exception) {
       switch (exception.code) {
         case AuthorizationErrorCode.canceled:

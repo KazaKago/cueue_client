@@ -130,7 +130,9 @@ class _$_TagRequest implements _TagRequest {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TagRequestToJson(this);
+    return _$$_TagRequestToJson(
+      this,
+    );
   }
 }
 

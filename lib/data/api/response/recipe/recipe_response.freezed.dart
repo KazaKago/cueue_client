@@ -368,7 +368,9 @@ class _$_RecipeResponse implements _RecipeResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RecipeResponseToJson(this);
+    return _$$_RecipeResponseToJson(
+      this,
+    );
   }
 }
 

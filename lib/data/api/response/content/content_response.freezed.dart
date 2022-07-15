@@ -156,7 +156,9 @@ class _$_ContentResponse implements _ContentResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ContentResponseToJson(this);
+    return _$$_ContentResponseToJson(
+      this,
+    );
   }
 }
 

@@ -132,7 +132,9 @@ class _$_WorkspaceRequest implements _WorkspaceRequest {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WorkspaceRequestToJson(this);
+    return _$$_WorkspaceRequestToJson(
+      this,
+    );
   }
 }
 

@@ -152,7 +152,9 @@ class _$_TagResponse implements _TagResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TagResponseToJson(this);
+    return _$$_TagResponseToJson(
+      this,
+    );
   }
 }
 

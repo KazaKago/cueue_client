@@ -236,7 +236,9 @@ class _$_MenuSummaryResponse implements _MenuSummaryResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MenuSummaryResponseToJson(this);
+    return _$$_MenuSummaryResponseToJson(
+      this,
+    );
   }
 }
 

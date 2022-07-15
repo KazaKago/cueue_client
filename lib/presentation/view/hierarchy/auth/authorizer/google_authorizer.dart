@@ -10,7 +10,7 @@ class GoogleAuthorizer {
     final googleSignInAccount = await GoogleSignIn().signIn();
     if (googleSignInAccount != null) {
       final authResult = await googleSignInAccount.authentication;
-      return GoogleAuthInfo(accessToken: authResult.accessToken!, idToken: authResult.idToken!);
+      return GoogleAuthInfo(accessToken: authResult.accessToken, idToken: authResult.idToken);
     } else {
       throw const AuthorizationCanceledException();
     }

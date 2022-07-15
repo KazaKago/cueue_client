@@ -234,7 +234,9 @@ class _$_MenuResponse implements _MenuResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MenuResponseToJson(this);
+    return _$$_MenuResponseToJson(
+      this,
+    );
   }
 }
 

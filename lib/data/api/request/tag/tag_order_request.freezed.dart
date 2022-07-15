@@ -139,7 +139,9 @@ class _$_TagOrderRequest implements _TagOrderRequest {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TagOrderRequestToJson(this);
+    return _$$_TagOrderRequestToJson(
+      this,
+    );
   }
 }
 

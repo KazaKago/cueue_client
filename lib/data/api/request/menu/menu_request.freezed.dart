@@ -207,7 +207,9 @@ class _$_MenuRequest implements _MenuRequest {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MenuRequestToJson(this);
+    return _$$_MenuRequestToJson(
+      this,
+    );
   }
 }
 

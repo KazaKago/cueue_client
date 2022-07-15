@@ -155,7 +155,9 @@ class _$_WorkspaceResponse implements _WorkspaceResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WorkspaceResponseToJson(this);
+    return _$$_WorkspaceResponseToJson(
+      this,
+    );
   }
 }
 

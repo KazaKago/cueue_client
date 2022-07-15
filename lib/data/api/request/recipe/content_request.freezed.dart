@@ -132,7 +132,9 @@ class _$_ContentRequest implements _ContentRequest {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ContentRequestToJson(this);
+    return _$$_ContentRequestToJson(
+      this,
+    );
   }
 }
 

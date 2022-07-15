@@ -222,7 +222,9 @@ class _$_RecipeSummaryResponse implements _RecipeSummaryResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RecipeSummaryResponseToJson(this);
+    return _$$_RecipeSummaryResponseToJson(
+      this,
+    );
   }
 }
 

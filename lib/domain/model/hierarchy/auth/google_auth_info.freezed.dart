@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$GoogleAuthInfo {
-  String get accessToken => throw _privateConstructorUsedError;
-  String get idToken => throw _privateConstructorUsedError;
+  String? get accessToken => throw _privateConstructorUsedError;
+  String? get idToken => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GoogleAuthInfoCopyWith<GoogleAuthInfo> get copyWith =>
@@ -29,7 +29,7 @@ abstract class $GoogleAuthInfoCopyWith<$Res> {
   factory $GoogleAuthInfoCopyWith(
           GoogleAuthInfo value, $Res Function(GoogleAuthInfo) then) =
       _$GoogleAuthInfoCopyWithImpl<$Res>;
-  $Res call({String accessToken, String idToken});
+  $Res call({String? accessToken, String? idToken});
 }
 
 /// @nodoc
@@ -50,11 +50,11 @@ class _$GoogleAuthInfoCopyWithImpl<$Res>
       accessToken: accessToken == freezed
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       idToken: idToken == freezed
           ? _value.idToken
           : idToken // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -66,7 +66,7 @@ abstract class _$$_GoogleAuthInfoCopyWith<$Res>
           _$_GoogleAuthInfo value, $Res Function(_$_GoogleAuthInfo) then) =
       __$$_GoogleAuthInfoCopyWithImpl<$Res>;
   @override
-  $Res call({String accessToken, String idToken});
+  $Res call({String? accessToken, String? idToken});
 }
 
 /// @nodoc
@@ -89,11 +89,11 @@ class __$$_GoogleAuthInfoCopyWithImpl<$Res>
       accessToken: accessToken == freezed
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       idToken: idToken == freezed
           ? _value.idToken
           : idToken // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -104,9 +104,9 @@ class _$_GoogleAuthInfo implements _GoogleAuthInfo {
   const _$_GoogleAuthInfo({required this.accessToken, required this.idToken});
 
   @override
-  final String accessToken;
+  final String? accessToken;
   @override
-  final String idToken;
+  final String? idToken;
 
   @override
   String toString() {
@@ -137,13 +137,13 @@ class _$_GoogleAuthInfo implements _GoogleAuthInfo {
 
 abstract class _GoogleAuthInfo implements GoogleAuthInfo {
   const factory _GoogleAuthInfo(
-      {required final String accessToken,
-      required final String idToken}) = _$_GoogleAuthInfo;
+      {required final String? accessToken,
+      required final String? idToken}) = _$_GoogleAuthInfo;
 
   @override
-  String get accessToken;
+  String? get accessToken;
   @override
-  String get idToken;
+  String? get idToken;
   @override
   @JsonKey(ignore: true)
   _$$_GoogleAuthInfoCopyWith<_$_GoogleAuthInfo> get copyWith =>

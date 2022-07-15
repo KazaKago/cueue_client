@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AppleAuthInfo {
-  String get idToken => throw _privateConstructorUsedError;
+  String? get idToken => throw _privateConstructorUsedError;
   String get accessToken => throw _privateConstructorUsedError;
   String get rawNonce => throw _privateConstructorUsedError;
 
@@ -30,7 +30,7 @@ abstract class $AppleAuthInfoCopyWith<$Res> {
   factory $AppleAuthInfoCopyWith(
           AppleAuthInfo value, $Res Function(AppleAuthInfo) then) =
       _$AppleAuthInfoCopyWithImpl<$Res>;
-  $Res call({String idToken, String accessToken, String rawNonce});
+  $Res call({String? idToken, String accessToken, String rawNonce});
 }
 
 /// @nodoc
@@ -52,7 +52,7 @@ class _$AppleAuthInfoCopyWithImpl<$Res>
       idToken: idToken == freezed
           ? _value.idToken
           : idToken // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       accessToken: accessToken == freezed
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -72,7 +72,7 @@ abstract class _$$_AppleAuthInfoCopyWith<$Res>
           _$_AppleAuthInfo value, $Res Function(_$_AppleAuthInfo) then) =
       __$$_AppleAuthInfoCopyWithImpl<$Res>;
   @override
-  $Res call({String idToken, String accessToken, String rawNonce});
+  $Res call({String? idToken, String accessToken, String rawNonce});
 }
 
 /// @nodoc
@@ -96,7 +96,7 @@ class __$$_AppleAuthInfoCopyWithImpl<$Res>
       idToken: idToken == freezed
           ? _value.idToken
           : idToken // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       accessToken: accessToken == freezed
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -118,7 +118,7 @@ class _$_AppleAuthInfo implements _AppleAuthInfo {
       required this.rawNonce});
 
   @override
-  final String idToken;
+  final String? idToken;
   @override
   final String accessToken;
   @override
@@ -155,12 +155,12 @@ class _$_AppleAuthInfo implements _AppleAuthInfo {
 
 abstract class _AppleAuthInfo implements AppleAuthInfo {
   const factory _AppleAuthInfo(
-      {required final String idToken,
+      {required final String? idToken,
       required final String accessToken,
       required final String rawNonce}) = _$_AppleAuthInfo;
 
   @override
-  String get idToken;
+  String? get idToken;
   @override
   String get accessToken;
   @override

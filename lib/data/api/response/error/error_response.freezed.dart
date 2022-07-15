@@ -158,7 +158,9 @@ class _$_ErrorResponse implements _ErrorResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ErrorResponseToJson(this);
+    return _$$_ErrorResponseToJson(
+      this,
+    );
   }
 }
 

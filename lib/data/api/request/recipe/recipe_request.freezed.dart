@@ -239,7 +239,9 @@ class _$_RecipeRequest implements _RecipeRequest {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RecipeRequestToJson(this);
+    return _$$_RecipeRequestToJson(
+      this,
+    );
   }
 }
 
