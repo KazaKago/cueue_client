@@ -1,10 +1,9 @@
-import 'dart:io';
-
 import 'package:cueue/data/api/global/entity/api_base_url.dart';
 import 'package:cueue/data/api/global/entity/api_version.dart';
 import 'package:cueue/data/api/global/requester/error_classifier.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
+import 'package:universal_io/io.dart';
 
 abstract class DioCreator {
   Future<String> loadToken();

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cueue/domain/model/hierarchy/content/content.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe.dart';
@@ -18,6 +16,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:universal_io/io.dart';
 
 class RecipeEditingPage extends HookConsumerWidget {
   const RecipeEditingPage({this.recipe, super.key});

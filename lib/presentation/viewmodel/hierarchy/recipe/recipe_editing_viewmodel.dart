@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:cueue/domain/model/hierarchy/content/content.dart';
 import 'package:cueue/domain/model/hierarchy/content/content_registration.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_id.dart';
@@ -16,6 +14,7 @@ import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/recipe/recipe_editing_state.dart';
 import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:universal_io/io.dart';
 
 class RecipeEditingViewModel with ChangeNotifier {
   RecipeEditingViewModel(this._followTagsUseCase, this._refreshTagsUseCase, this._createRecipeUseCase, this._updateRecipeUseCase, this._deleteRecipeUseCase, this._createContentUseCase) {

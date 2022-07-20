@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:cueue/data/api/response/error/error_response.dart';
 import 'package:cueue/domain/model/global/exception/client_error_exception.dart';
 import 'package:cueue/domain/model/global/exception/conflict_exception.dart';
@@ -13,6 +11,7 @@ import 'package:cueue/domain/model/global/exception/server_error_exception.dart'
 import 'package:cueue/domain/model/global/exception/service_unavailable_exception.dart';
 import 'package:cueue/domain/model/global/exception/upgrade_required_exception.dart';
 import 'package:dio/dio.dart';
+import 'package:universal_io/io.dart';
 
 extension ErrorClassifier on DioError {
   Exception parseException() {

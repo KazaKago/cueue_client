@@ -1,7 +1,7 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:universal_io/io.dart';
 
 part 'content_registration.freezed.dart';
 
