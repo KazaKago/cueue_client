@@ -14,9 +14,6 @@ outputs:
 runs:
   using: composite
   steps:
-    - name: Prepare
-      run: bash
-      shell: bash prepare_${{ inputs.flavor }}.sh
     - name: Build
       run: flutter build web
       shell: bash
