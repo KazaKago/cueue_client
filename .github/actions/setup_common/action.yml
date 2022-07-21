@@ -8,8 +8,11 @@ inputs:
   appleClientId:
     description: apple client id.
     required: true
-  appleCallbackUrl:
+  appleRedirectUri:
     description: apple callback url.
+    required: true
+  webRecaptchaSiteKey:
+    description: reCAPTCHA v3 site key.
     required: true
 
 runs:
@@ -28,8 +31,9 @@ runs:
     - name: Create dot env file
       uses: weyheyhey/create-dotenv-action@v1
       with:
-        filename: assets/env/.env
+        filename: assets/env/dotenv
       env:
         ^API_BASE_URL: ${{ inputs.apiBaseUrl }}
         ^APPLE_CLIENT_ID: ${{ inputs.appleClientId }}
-        ^APPLE_CALLBACK_URL: ${{ inputs.appleCallbackUrl }}
+        ^APPLE_REDIRECT_URI: ${{ inputs.appleRedirectUri }}
+        ^WEB_RECAPTCHA_SITE_KEY: ${{ inputs.webRecaptchaSiteKey }}

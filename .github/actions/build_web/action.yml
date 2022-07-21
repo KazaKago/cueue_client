@@ -1,0 +1,26 @@
+name: Build Web
+description: build for web.
+
+inputs:
+  flavor:
+    description: flavor argument.
+    required: true
+
+outputs:
+  path:
+    description: Path.
+    value: ${{ steps.output-path.outputs.path }}
+
+runs:
+  using: composite
+  steps:
+    - name: Prepare
+      run: bash
+      shell: bash prepare_${{ inputs.flavor }}.sh
+    - name: Build
+      run: flutter build web
+      shell: bash
+    - name: Output Path
+      id: output-path
+      run: echo "::set-output name=path::$(echo ./build/web)"
+      shell: bash

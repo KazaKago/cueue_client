@@ -4,8 +4,8 @@ import 'package:crypto/crypto.dart';
 import 'package:cueue/domain/model/global/exception/autorization_cancel_exception.dart';
 import 'package:cueue/domain/model/global/exception/autorization_failed_exception.dart';
 import 'package:cueue/domain/model/hierarchy/auth/apple_auth_info.dart';
-import 'package:cueue/presentation/view/hierarchy/auth/authorizer/apple_callback_url.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authorizer/apple_client_id.dart';
+import 'package:cueue/presentation/view/hierarchy/auth/authorizer/apple_redirect_uri.dart';
 import 'package:flutter/material.dart';
 import 'package:nonce/nonce.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
@@ -24,7 +24,7 @@ class AppleAuthorizer {
         ],
         webAuthenticationOptions: WebAuthenticationOptions(
           clientId: const AppleClientId().value,
-          redirectUri: const AppleCallbackUrl().value,
+          redirectUri: const AppleRedirectUri().value,
         ),
         nonce: sha256.convert(utf8.encode(rawNonce)).toString(),
         state: state,

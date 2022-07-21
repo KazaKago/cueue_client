@@ -50,3 +50,5 @@ app.*.map.json
 !.idea/inspectionProfiles/
 !.idea/runConfigurations/
 assets/env/
+.firebase
+.firebaserc

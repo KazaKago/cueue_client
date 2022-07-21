@@ -59,6 +59,7 @@ dependencies:
   sign_in_with_apple: ^4.0.0
   store_flowable: ^0.4.5
   tuple: ^2.0.0
+  universal_html: ^2.0.8
   universal_io: ^2.0.4
   url_launcher: ^6.0.2
 

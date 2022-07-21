@@ -19,6 +19,7 @@ jobs:
         with:
           apiBaseUrl: ${{ secrets.API_BASE_URL__STAGING }}
           appleClientId: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
-          appleCallbackUrl: ${{ secrets.APPLE_CALLBACK_URL__STAGING }}
+          appleRedirectUri: ${{ secrets.APPLE_REDIRECT_URI__STAGING }}
+          webRecaptchaSiteKey: ${{ secrets.WEB_RECAPTCHA_SITE_KEY }}
       - name: Test
         uses: ./.github/actions/test

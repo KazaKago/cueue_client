@@ -1,0 +1,26 @@
+name: Deploy Web
+description: deploy to firebase hosting.
+
+inputs:
+  projectId:
+    description: Firebase project ID
+    required: true
+  target:
+    description: Firebase target
+    required: true
+  token:
+    description: Upload token - see Firebase CLI Reference.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Install Firebase
+      run: npm install -g firebase-tools
+      shell: bash
+    - name: Apply target
+      run: firebase target:apply hosting default ${{ inputs.target }}
+      shell: bash
+    - name: Upload
+      run: firebase deploy --only hosting:default --project ${{ inputs.projectId }} --token ${{ inputs.token }}
+      shell: bash

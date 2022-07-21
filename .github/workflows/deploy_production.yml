@@ -17,7 +17,8 @@ jobs:
         with:
           apiBaseUrl: ${{ secrets.API_BASE_URL__PRODUCTION }}
           appleClientId: ${{ secrets.APPLE_CLIENT_ID__PRODUCTION }}
-          appleCallbackUrl: ${{ secrets.APPLE_CALLBACK_URL__PRODUCTION }}
+          appleRedirectUri: ${{ secrets.APPLE_REDIRECT_URI__PRODUCTION }}
+          webRecaptchaSiteKey: ${{ secrets.WEB_RECAPTCHA_SITE_KEY }}
       - name: Setup Android
         uses: ./.github/actions/setup_android
         with:
@@ -32,7 +33,7 @@ jobs:
           keystoreAlias: ${{ secrets.ANDROID_SIGNING_KEY__ALIAS }}
           keyPassword: ${{ secrets.ANDROID_SIGNING_KEY__ALIAS_PASSWORD }}
       - name: Deploy
-        uses: ./.github/actions/deploy
+        uses: ./.github/actions/deploy_app
         with:
           appId: ${{ secrets.FIREBASE_APP_ID_ANDROID__PRODUCTION }}
           token: ${{ secrets.FIREBASE_TOKEN }}
@@ -48,7 +49,8 @@ jobs:
         with:
           apiBaseUrl: ${{ secrets.API_BASE_URL__PRODUCTION }}
           appleClientId: ${{ secrets.APPLE_CLIENT_ID__PRODUCTION }}
-          appleCallbackUrl: ${{ secrets.APPLE_CALLBACK_URL__PRODUCTION }}
+          appleRedirectUri: ${{ secrets.APPLE_REDIRECT_URI__PRODUCTION }}
+          webRecaptchaSiteKey: ${{ secrets.WEB_RECAPTCHA_SITE_KEY }}
       - name: Setup iOS
         uses: ./.github/actions/setup_ios
         with:
@@ -62,9 +64,36 @@ jobs:
           flavor: production
           exportOptionsPlistBase64: ${{ secrets.EXPORT_OPTIONS_PLIST_ADHOC__PRODUCTION }}
       - name: Deploy
-        uses: ./.github/actions/deploy
+        uses: ./.github/actions/deploy_app
         with:
           appId: ${{ secrets.FIREBASE_APP_ID_IOS__PRODUCTION }}
           token: ${{ secrets.FIREBASE_TOKEN }}
           groups: ${{ secrets.FIREBASE_APP_DISTRIBUTION_TESTER_GROUP }}
           file: ${{ steps.build.outputs.ipaPath }}
+#  web:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v3
+#      - name: Setup Common
+#        uses: ./.github/actions/setup_common
+#        with:
+#          apiBaseUrl: ${{ secrets.API_BASE_URL__PRODUCTION }}
+#          appleClientId: ${{ secrets.APPLE_CLIENT_ID__PRODUCTION }}
+#          appleRedirectUri: ${{ secrets.APPLE_REDIRECT_URI__PRODUCTION }}
+#          webRecaptchaSiteKey: ${{ secrets.WEB_RECAPTCHA_SITE_KEY }}
+#      - name: Setup Web
+#        uses: ./.github/actions/setup_web
+#        with:
+#          googleServicesJsBase64: ${{ secrets.GOOGLE_SERVICES_JS_BASE64__PRODUCTION }}
+#      - name: Build
+#        id: build
+#        uses: ./.github/actions/build_web
+#        with:
+#          flavor: staging
+#      - name: Deploy
+#        uses: ./.github/actions/deploy_web
+#        with:
+#          projectId: ${{ secrets.FIREBASE_PROJECT_ID_PRODUCTION }}
+#          target: ${{ secrets.FIREBASE_HOSTING_TARGET_PRODUCTION }}
+#          token: ${{ secrets.FIREBASE_TOKEN }}

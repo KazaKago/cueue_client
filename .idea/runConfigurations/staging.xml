@@ -1,8 +1,10 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="staging" type="FlutterRunConfigurationType" factoryName="Flutter">
-    <option name="additionalArgs" value="--dart-define=DOT_ENV=.env.staging" />
+    <option name="additionalArgs" value="--dart-define=DOT_ENV=dotenv.staging --web-port 5000" />
     <option name="buildFlavor" value="staging" />
     <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
-    <method v="2" />
+    <method v="2">
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="prepare web staging" run_configuration_type="ShConfigurationType" />
+    </method>
   </configuration>
 </component>
