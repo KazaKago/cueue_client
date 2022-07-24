@@ -94,6 +94,6 @@ jobs:
       - name: Deploy
         uses: ./.github/actions/deploy_web
         with:
-          projectId: ${{ secrets.FIREBASE_PROJECT_ID_STAGING }}
-          target: ${{ secrets.FIREBASE_HOSTING_TARGET_STAGING }}
+          projectId: ${{ secrets.FIREBASE_PROJECT_ID__STAGING }}
+          siteId: ${{ secrets.FIREBASE_HOSTING_SITE_ID__STAGING }}
           token: ${{ secrets.FIREBASE_TOKEN }}
