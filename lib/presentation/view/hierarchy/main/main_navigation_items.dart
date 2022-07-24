@@ -10,37 +10,18 @@ import 'package:cueue/presentation/view/hierarchy/search/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class MainNavigationItem {
-  const MainNavigationItem(this.page, this.title, this.icon, {this.fabPage, this.fabIcon, this.fabLabel});
-
-  final Widget page;
-  final String title;
-  final IconData icon;
-  final Widget? fabPage;
-  final IconData? fabIcon;
-  final String? fabLabel;
-
-  BottomNavigationBarItem toBottomNavigationBarItem() {
-    return BottomNavigationBarItem(icon: Icon(icon), label: title);
-  }
-
-  bool isVisibleFab() {
-    return fabPage != null;
-  }
-}
-
-class MainNavigationItemList extends ListBase<MainNavigationItem> {
-  factory MainNavigationItemList(BuildContext context) {
+class MainNavigationItems extends ListBase<MainNavigationItem> {
+  factory MainNavigationItems(BuildContext context) {
     final rawList = [
       MainNavigationItem(const MenuPage(), intl(context).cookingMenu, FontAwesomeIcons.calendar, fabPage: MenuEditingPage(), fabIcon: Icons.add, fabLabel: intl(context).addCookingMenu),
       MainNavigationItem(const RecipePage(), intl(context).recipe, FontAwesomeIcons.utensils, fabPage: const RecipeEditingPage(), fabIcon: Icons.add, fabLabel: intl(context).addRecipe),
       MainNavigationItem(const SearchPage(), intl(context).search, FontAwesomeIcons.magnifyingGlass),
       MainNavigationItem(const MyPage(), intl(context).mypage, Icons.account_circle),
     ];
-    return MainNavigationItemList._(rawList);
+    return MainNavigationItems._(rawList);
   }
 
-  MainNavigationItemList._(this.rawList);
+  MainNavigationItems._(this.rawList);
 
   final List<MainNavigationItem> rawList;
 
@@ -64,7 +45,29 @@ class MainNavigationItemList extends ListBase<MainNavigationItem> {
     return map((item) => item.page).toList();
   }
 
-  List<BottomNavigationBarItem> toBottomNavigationBarItemList() {
-    return map((item) => item.toBottomNavigationBarItem()).toList();
+  List<NavigationDestination> toNavigationDestinationList() {
+    return map((item) => item.toNavigationDestination()).toList();
+  }
+}
+
+class MainNavigationItem {
+  const MainNavigationItem(this.page, this.title, this.icon, {this.fabPage, this.fabIcon, this.fabLabel});
+
+  final Widget page;
+  final String title;
+  final IconData icon;
+  final Widget? fabPage;
+  final IconData? fabIcon;
+  final String? fabLabel;
+
+  NavigationDestination toNavigationDestination() {
+    return NavigationDestination(
+      icon: Icon(icon),
+      label: title,
+    );
+  }
+
+  bool isVisibleFab() {
+    return fabPage != null;
   }
 }
