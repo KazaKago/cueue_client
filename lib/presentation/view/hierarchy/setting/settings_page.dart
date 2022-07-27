@@ -49,10 +49,9 @@ class SettingsPage extends HookConsumerWidget {
           child: ListView(
             physics: const AlwaysScrollableScrollPhysics(),
             children: <Widget>[
-              _buildAccountSettingsTitle(context, ref),
+              _buildAccountTitle(context, ref),
               _buildEmailNotVerifiedTile(context, ref),
               _buildEmailChangingTile(context, ref),
-              _buildAccountConnectionTitle(context, ref),
               _buildEmailConnectionTile(context, ref),
               _buildGoogleConnectionTile(context, ref),
               _buildAppleConnectionTile(context, ref),
@@ -69,9 +68,9 @@ class SettingsPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildAccountSettingsTitle(BuildContext context, WidgetRef ref) {
+  Widget _buildAccountTitle(BuildContext context, WidgetRef ref) {
     return ListTile(
-      title: Text(intl(context).accountSettings, style: Theme.of(context).textTheme.caption),
+      title: Text(intl(context).account, style: Theme.of(context).textTheme.caption),
     );
   }
 
@@ -145,12 +144,6 @@ class SettingsPage extends HookConsumerWidget {
         title: Text(intl(context).changeMailAddress),
         subtitle: Text(intl(context).errorLoading),
       ),
-    );
-  }
-
-  Widget _buildAccountConnectionTitle(BuildContext context, WidgetRef ref) {
-    return ListTile(
-      title: Text(intl(context).accountConnection, style: Theme.of(context).textTheme.caption),
     );
   }
 

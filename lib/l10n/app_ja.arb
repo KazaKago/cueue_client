@@ -130,7 +130,7 @@
   "webSite": "Webサイト",
   "mail": "メール",
   "ossLicense": "オープンソースライセンス",
-  "accountSettings": "アカウント設定",
+  "account": "アカウント",
   "unConfirmationMail": "メールアドレスが認証されていません",
   "tapToConfirmMail": "タップして認証メールを送信",
   "refreshInfo": "情報を更新",
@@ -149,7 +149,6 @@
     }
   },
   "doSend": "送信する",
-  "accountConnection": "アカウント連携",
   "takePhoto": "写真を撮る",
   "chooseFromLibrary": "ライブラリから選ぶ",
   "doEdit": "編集する",
