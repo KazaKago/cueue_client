@@ -4,7 +4,6 @@ import 'package:cueue/domain/model/hierarchy/user/email.dart';
 import 'package:cueue/domain/model/hierarchy/user/password.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/link_with_apple_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/link_with_google_usecase.dart';
-import 'package:cueue/domain/usecase/hierarchy/auth/sign_out_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/unlink_with_apple_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/unlink_with_google_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/follow_user_usecase.dart';
@@ -19,7 +18,7 @@ import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
 class SettingsViewModel with ChangeNotifier {
-  SettingsViewModel(this._followUserUseCase, this._refreshUserUseCase, this._updateEmailUseCase, this._updatePasswordUseCase, this._linkWithGoogleUseCase, this._linkWithAppleUseCase, this._unlinkWithGoogleUseCase, this._unlinkWithAppleUseCase, this._signOutUseCase, this._sendEmailVerificationUseCase) {
+  SettingsViewModel(this._followUserUseCase, this._refreshUserUseCase, this._updateEmailUseCase, this._updatePasswordUseCase, this._linkWithGoogleUseCase, this._linkWithAppleUseCase, this._unlinkWithGoogleUseCase, this._unlinkWithAppleUseCase, this._sendEmailVerificationUseCase) {
     _follow();
   }
 
@@ -31,7 +30,6 @@ class SettingsViewModel with ChangeNotifier {
   final LinkWithAppleUseCase _linkWithAppleUseCase;
   final UnlinkWithGoogleUseCase _unlinkWithGoogleUseCase;
   final UnlinkWithAppleUseCase _unlinkWithAppleUseCase;
-  final SignOutUseCase _signOutUseCase;
   final SendEmailVerificationUseCase _sendEmailVerificationUseCase;
   final CompositeSubscription _compositeSubscription = CompositeSubscription();
   SettingsState _state = const SettingsState.loading();
@@ -154,17 +152,6 @@ class SettingsViewModel with ChangeNotifier {
     try {
       await _unlinkWithAppleUseCase();
       completionEvent = Event(SettingResult.unlinkedWithApple);
-    } on Exception catch (exception) {
-      exceptionEvent = Event(exception);
-    }
-    isLoading = false;
-  }
-
-  Future<void> signOut() async {
-    isLoading = true;
-    try {
-      await _signOutUseCase();
-      _replaceWelcomePageEvent = Event(null);
     } on Exception catch (exception) {
       exceptionEvent = Event(exception);
     }

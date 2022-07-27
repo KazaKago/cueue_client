@@ -32,9 +32,6 @@ class SettingsPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.read(settingsViewModelProvider);
     ref
-      ..listen<Event<void>>(settingsViewModelProvider.select((viewModel) => viewModel.replaceWelcomePageEvent), (previous, replaceWelcomePageEvent) {
-        replaceWelcomePageEvent((_) => _replaceWelcomePage(context));
-      })
       ..listen<Event<Exception>>(settingsViewModelProvider.select((viewModel) => viewModel.exceptionEvent), (previous, exceptionEvent) {
         exceptionEvent((exception) => _showErrorDialog(context, ref, exception));
       })
@@ -55,7 +52,6 @@ class SettingsPage extends HookConsumerWidget {
               _buildAccountSettingsTitle(context, ref),
               _buildEmailNotVerifiedTile(context, ref),
               _buildEmailChangingTile(context, ref),
-              _buildSignOutTile(context, ref),
               _buildAccountConnectionTitle(context, ref),
               _buildEmailConnectionTile(context, ref),
               _buildGoogleConnectionTile(context, ref),
@@ -149,14 +145,6 @@ class SettingsPage extends HookConsumerWidget {
         title: Text(intl(context).changeMailAddress),
         subtitle: Text(intl(context).errorLoading),
       ),
-    );
-  }
-
-  Widget _buildSignOutTile(BuildContext context, WidgetRef ref) {
-    return ListTile(
-      title: Text(intl(context).logout),
-      leading: const Icon(Icons.exit_to_app),
-      onTap: () => _showSignOutConfirmationDialog(context, ref),
     );
   }
 
@@ -369,20 +357,6 @@ class SettingsPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _showSignOutConfirmationDialog(BuildContext context, WidgetRef ref) async {
-    final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmLogout, positiveButton: intl(context).logout, negativeButton: intl(context).cancel).show();
-    if (event != null) {
-      await event.when(
-        positive: () async {
-          final viewModel = ref.read(settingsViewModelProvider);
-          await viewModel.signOut();
-        },
-        negative: () {},
-        neutral: () {},
-      );
-    }
-  }
-
   Future<void> _showSendingEmailVerificationConfirmationDialog(BuildContext context, WidgetRef ref, Email email) async {
     final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmSendingMailTo(email.value), positiveButton: intl(context).doSend, negativeButton: intl(context).cancel).show();
     if (event != null) {
@@ -406,10 +380,6 @@ class SettingsPage extends HookConsumerWidget {
     } else if (exception is DoNotMatchPasswordException) {
       await _showPasswordInputDialog(context, ref, defaultText: exception.value);
     }
-  }
-
-  Future<void> _replaceWelcomePage(BuildContext context) {
-    return Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const WelcomePage()), (_) => false);
   }
 
   Future<void> _showAbout(BuildContext context) {

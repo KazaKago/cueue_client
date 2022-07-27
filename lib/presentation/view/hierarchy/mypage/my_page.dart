@@ -1,10 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/l10n/intl.dart';
+import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
+import 'package:cueue/presentation/view/global/modal/simple_message_dialog.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/settings_page.dart';
+import 'package:cueue/presentation/view/hierarchy/welcome/welcome_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
+import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MyPage extends HookConsumerWidget {
@@ -14,11 +19,30 @@ class MyPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.read(myPageViewModelProvider);
     final state = ref.watch(myPageViewModelProvider.select((viewModel) => viewModel.state));
+    ref
+      ..listen<Event<void>>(myPageViewModelProvider.select((viewModel) => viewModel.replaceWelcomePageEvent), (previous, replaceWelcomePageEvent) {
+        replaceWelcomePageEvent((_) => _replaceWelcomePage(context));
+      })
+      ..listen<Event<Exception>>(settingsViewModelProvider.select((viewModel) => viewModel.exceptionEvent), (previous, exceptionEvent) {
+        exceptionEvent((exception) => _showErrorDialog(context, ref, exception));
+      })
+      ..listen<bool>(settingsViewModelProvider.select((viewModel) => viewModel.isLoading), (previous, isLoading) {
+        isLoading ? EasyLoading.show() : EasyLoading.dismiss();
+      });
     return Scaffold(
       appBar: AppBar(
         title: Text(intl(context).mypage),
         actions: [
-          IconButton(onPressed: () => _goSettings(context), icon: const Icon(Icons.settings)),
+          IconButton(
+            onPressed: () => _goSettings(context),
+            icon: const Icon(Icons.settings),
+            tooltip: intl(context).settings,
+          ),
+          IconButton(
+            onPressed: () => _showSignOutConfirmationDialog(context, ref),
+            icon: const Icon(Icons.exit_to_app),
+            tooltip: intl(context).logout,
+          ),
         ],
       ),
       body: RefreshIndicator(
@@ -122,5 +146,27 @@ class MyPage extends HookConsumerWidget {
 
   Future<void> _goSettings(BuildContext context) async {
     await Navigator.push<SettingsPage>(context, MaterialPageRoute(builder: (context) => const SettingsPage()));
+  }
+
+  Future<void> _showSignOutConfirmationDialog(BuildContext context, WidgetRef ref) async {
+    final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmLogout, positiveButton: intl(context).logout, negativeButton: intl(context).cancel).show();
+    if (event != null) {
+      await event.when(
+        positive: () async {
+          final viewModel = ref.read(myPageViewModelProvider);
+          await viewModel.signOut();
+        },
+        negative: () {},
+        neutral: () {},
+      );
+    }
+  }
+
+  Future<void> _replaceWelcomePage(BuildContext context) {
+    return Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const WelcomePage()), (_) => false);
+  }
+
+  Future<void> _showErrorDialog(BuildContext context, WidgetRef ref, Exception exception) async {
+    await const ExceptionHandler().showMessageDialog(context, ref, exception);
   }
 }
