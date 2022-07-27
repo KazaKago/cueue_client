@@ -28,13 +28,13 @@ class AccountDeletionPage extends HookConsumerWidget {
       body: Scrollbar(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(32),
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('[WIP]'),
-                  const SizedBox(height: 16),
+                  SelectableText(intl(context).accountDeletionDescription),
+                  const SizedBox(height: 32),
                   ElevatedButton(
                     style: TextButton.styleFrom(backgroundColor: Theme.of(context).errorColor),
                     onPressed: () => _showAccountDeletionConfirmationDialog(context, ref),

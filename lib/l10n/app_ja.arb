@@ -259,8 +259,11 @@
   },
   "accountDeletion": "アカウント削除",
   "other": "その他",
+  "accountDeletionDescription": "アカウントを削除して本サービスの利用を停止します。\n再登録を行っても現在作成してあるレシピやこんだてにはアクセスできなくなります。\n十分ご注意ください。",
   "approveAndDeletionAccount": "すべて理解した上でアカウントを削除する",
   "accountDeletionConfirmation": "本当にアカウントを削除してよろしいですか？",
   "warning": "警告",
-  "nickname": "ニックネーム"
+  "nickname": "ニックネーム",
+  "thanksForUsingMessage": "アカウントを削除しました\nまたのご利用をお待ちしております。",
+  "backToLoginScreen": "ログイン画面へ戻る"
 }

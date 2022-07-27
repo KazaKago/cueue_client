@@ -10,32 +10,26 @@ class ThanksForUsingPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Assets.images.icAppIcon.image(width: 256, height: 256),
-                    const SizedBox(height: 12),
-                    Text(intl(context).appName, style: const TextStyle(fontSize: 60)),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(32, 32, 32, 0),
-                  child: ElevatedButton(
+      appBar: AppBar(title: Text(intl(context).accountDeletion)),
+      body: Scrollbar(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(32),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Assets.images.icAppIcon.image(width: 128, height: 128),
+                  const SizedBox(height: 32),
+                  SelectableText(textAlign: TextAlign.center, intl(context).thanksForUsingMessage),
+                  const SizedBox(height: 32),
+                  ElevatedButton(
                     onPressed: () => _replaceWelcomePage(context),
-                    child: Text(intl(context).registerAndStart),
+                    child: Text(intl(context).backToLoginScreen),
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
