@@ -12,11 +12,11 @@ import 'package:flutter/widgets.dart';
 class $AssetsEnvGen {
   const $AssetsEnvGen();
 
-  /// File path: assets/env/.env.production
-  String get envProduction => 'assets/env/.env.production';
+  /// File path: assets/env/dotenv.production
+  String get dotenvProduction => 'assets/env/dotenv.production';
 
-  /// File path: assets/env/.env.staging
-  String get envStaging => 'assets/env/.env.staging';
+  /// File path: assets/env/dotenv.staging
+  String get dotenvStaging => 'assets/env/dotenv.staging';
 }
 
 class $AssetsImagesGen {

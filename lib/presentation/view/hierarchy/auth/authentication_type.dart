@@ -1,5 +1,4 @@
 enum AuthenticationType {
-  signUp,
-  signIn,
+  auth,
   reauth,
 }

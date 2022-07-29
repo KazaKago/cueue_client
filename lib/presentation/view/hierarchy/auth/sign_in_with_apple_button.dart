@@ -8,8 +8,7 @@ class SignInWithAppleButton extends AbstractSignInButton {
     super.key,
     required super.authenticationType,
     required super.enabled,
-    required super.onSignUp,
-    required super.onSignIn,
+    required super.onAuth,
     required super.onReauth,
   });
 
@@ -19,8 +18,7 @@ class SignInWithAppleButton extends AbstractSignInButton {
       context,
       iconData: FontAwesomeIcons.apple,
       color: Colors.black,
-      signUpText: intl(context).withAppleAccount(intl(context).auth),
-      signInText: intl(context).withAppleAccount(intl(context).auth),
+      authText: intl(context).withAppleAccount(intl(context).auth),
       reauthText: intl(context).withAppleAccount(intl(context).reAuth),
     );
   }

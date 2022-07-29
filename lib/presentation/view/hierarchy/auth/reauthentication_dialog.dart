@@ -2,7 +2,6 @@ import 'package:cueue/domain/model/global/exception/require_reautentication_exce
 import 'package:cueue/domain/usecase/di/usecase_provider.dart';
 import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
-import 'package:cueue/presentation/view/global/modal/fried_toast.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_page.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_type.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/thanks_for_using_page.dart';
@@ -50,18 +49,6 @@ class ReauthenticationDialog {
     try {
       await EasyLoading.show();
       await _exception.type.when(
-        settingEmail: (email) async {
-          final updateEmailUseCase = _ref.read(updateEmailUseCaseProvider);
-          await updateEmailUseCase(email);
-          await EasyLoading.dismiss();
-          FriedToast(_context, intl(_context).updatedMailAddress).show();
-        },
-        settingPassword: (password) async {
-          final updatePasswordUseCase = _ref.read(updatePasswordUseCaseProvider);
-          await updatePasswordUseCase(password);
-          await EasyLoading.dismiss();
-          FriedToast(_context, intl(_context).updatedPassword).show();
-        },
         deleteAccount: () async {
           final deleteAccountUseCase = _ref.read(deleteAccountUseCaseProvider);
           await deleteAccountUseCase();

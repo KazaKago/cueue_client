@@ -1,16 +1,11 @@
 import 'package:cueue/domain/model/hierarchy/auth/apple_auth_info.dart';
 import 'package:cueue/domain/model/hierarchy/auth/google_auth_info.dart';
-import 'package:cueue/domain/model/hierarchy/user/email.dart';
-import 'package:cueue/domain/model/hierarchy/user/password.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/link_with_apple_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/link_with_google_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/unlink_with_apple_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/unlink_with_google_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/follow_user_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/refresh_user_usecase.dart';
-import 'package:cueue/domain/usecase/hierarchy/user/send_email_verification_usecase.dart';
-import 'package:cueue/domain/usecase/hierarchy/user/update_email_usecase.dart';
-import 'package:cueue/domain/usecase/hierarchy/user/update_password_usecase.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/setting/settings_result.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/setting/settings_state.dart';
@@ -18,19 +13,16 @@ import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
 class SettingsViewModel with ChangeNotifier {
-  SettingsViewModel(this._followUserUseCase, this._refreshUserUseCase, this._updateEmailUseCase, this._updatePasswordUseCase, this._linkWithGoogleUseCase, this._linkWithAppleUseCase, this._unlinkWithGoogleUseCase, this._unlinkWithAppleUseCase, this._sendEmailVerificationUseCase) {
+  SettingsViewModel(this._followUserUseCase, this._refreshUserUseCase, this._linkWithGoogleUseCase, this._linkWithAppleUseCase, this._unlinkWithGoogleUseCase, this._unlinkWithAppleUseCase) {
     _follow();
   }
 
   final FollowUserUseCase _followUserUseCase;
   final RefreshUserUseCase _refreshUserUseCase;
-  final UpdateEmailUseCase _updateEmailUseCase;
-  final UpdatePasswordUseCase _updatePasswordUseCase;
   final LinkWithGoogleUseCase _linkWithGoogleUseCase;
   final LinkWithAppleUseCase _linkWithAppleUseCase;
   final UnlinkWithGoogleUseCase _unlinkWithGoogleUseCase;
   final UnlinkWithAppleUseCase _unlinkWithAppleUseCase;
-  final SendEmailVerificationUseCase _sendEmailVerificationUseCase;
   final CompositeSubscription _compositeSubscription = CompositeSubscription();
   SettingsState _state = const SettingsState.loading();
   Event<SettingResult> _completionEvent = Event.initialize();
@@ -92,28 +84,6 @@ class SettingsViewModel with ChangeNotifier {
     );
   }
 
-  Future<void> updateEmail(String email) async {
-    isLoading = true;
-    try {
-      await _updateEmailUseCase(Email(email));
-      completionEvent = Event(SettingResult.updatedEmail);
-    } on Exception catch (exception) {
-      exceptionEvent = Event(exception);
-    }
-    isLoading = false;
-  }
-
-  Future<void> updatePassword(String password, String reInputPassword) async {
-    isLoading = true;
-    try {
-      await _updatePasswordUseCase(Password.validateMatch(password, reInputPassword));
-      completionEvent = Event(SettingResult.updatedPassword);
-    } on Exception catch (exception) {
-      exceptionEvent = Event(exception);
-    }
-    isLoading = false;
-  }
-
   Future<void> linkWithGoogle(GoogleAuthInfo authInfo) async {
     isLoading = true;
     try {
@@ -160,16 +130,5 @@ class SettingsViewModel with ChangeNotifier {
 
   Future<void> refresh() async {
     return _refreshUserUseCase();
-  }
-
-  Future<void> sendEmailVerification(Email email) async {
-    isLoading = true;
-    try {
-      await _sendEmailVerificationUseCase();
-      completionEvent = Event(SettingResult.sentEmailVerification);
-    } on Exception catch (exception) {
-      exceptionEvent = Event(exception);
-    }
-    isLoading = false;
   }
 }

@@ -1,39 +1,27 @@
 import 'package:cueue/domain/model/hierarchy/auth/apple_auth_info.dart';
 import 'package:cueue/domain/model/hierarchy/auth/google_auth_info.dart';
-import 'package:cueue/domain/model/hierarchy/auth/password_auth_info.dart';
 import 'package:cueue/domain/model/hierarchy/auth/sign_in_check_result.dart';
-import 'package:cueue/domain/model/hierarchy/user/email.dart';
-import 'package:cueue/domain/model/hierarchy/user/password.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/authenticate_with_apple_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/authenticate_with_google_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/reauthenticate_with_apple_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/reauthenticate_with_google_usecase.dart';
-import 'package:cueue/domain/usecase/hierarchy/auth/reauthenticate_with_password_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/should_show_reauthentication_with_apple_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/should_show_reauthentication_with_google_usecase.dart';
-import 'package:cueue/domain/usecase/hierarchy/auth/should_show_reauthentication_with_password_usecase.dart';
-import 'package:cueue/domain/usecase/hierarchy/auth/sign_in_with_password_usecase.dart';
-import 'package:cueue/domain/usecase/hierarchy/auth/sign_up_with_password_usecase.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/foundation.dart';
 
 class AuthenticationViewModel with ChangeNotifier {
-  AuthenticationViewModel(this._shouldShowReauthenticationWithPasswordUseCase, this._shouldShowReauthenticationWithGoogleUseCase, this._shouldShowReauthenticationWithAppleUseCase, this._signUpWithPasswordUseCase, this._signInWithPasswordUseCase, this._authenticateWithGoogleUseCase, this._authenticateWithAppleUseCase, this._reauthenticateWithPasswordUseCase, this._reauthenticateWithGoogleUseCase, this._reauthenticateWithAppleUseCase) {
+  AuthenticationViewModel(this._shouldShowReauthenticationWithGoogleUseCase, this._shouldShowReauthenticationWithAppleUseCase, this._authenticateWithGoogleUseCase, this._authenticateWithAppleUseCase, this._reauthenticateWithGoogleUseCase, this._reauthenticateWithAppleUseCase) {
     _load();
   }
 
-  final ShouldShowReauthenticationWithPasswordUseCase _shouldShowReauthenticationWithPasswordUseCase;
   final ShouldShowReauthenticationWithGoogleUseCase _shouldShowReauthenticationWithGoogleUseCase;
   final ShouldShowReauthenticationWithAppleUseCase _shouldShowReauthenticationWithAppleUseCase;
-  final SignUpWithPasswordUseCase _signUpWithPasswordUseCase;
-  final SignInWithPasswordUseCase _signInWithPasswordUseCase;
   final AuthenticateWithGoogleUseCase _authenticateWithGoogleUseCase;
   final AuthenticateWithAppleUseCase _authenticateWithAppleUseCase;
-  final ReauthenticateWithPasswordUseCase _reauthenticateWithPasswordUseCase;
   final ReauthenticateWithGoogleUseCase _reauthenticateWithGoogleUseCase;
   final ReauthenticateWithAppleUseCase _reauthenticateWithAppleUseCase;
   bool _isLoading = false;
-  bool _shouldShowReauthenticationWithPassword = false;
   bool _shouldShowReauthenticationWithGoogle = false;
   bool _shouldShowReauthenticationWithApple = false;
   Event<SignInCheckResult> _completionAuthenticationEvent = Event.initialize();
@@ -44,13 +32,6 @@ class AuthenticationViewModel with ChangeNotifier {
 
   set isLoading(bool isLoading) {
     _isLoading = isLoading;
-    notifyListeners();
-  }
-
-  bool get shouldShowReauthenticationWithPassword => _shouldShowReauthenticationWithPassword;
-
-  set shouldShowReauthenticationWithPassword(bool shouldShowReauthenticationWithPassword) {
-    _shouldShowReauthenticationWithPassword = shouldShowReauthenticationWithPassword;
     notifyListeners();
   }
 
@@ -91,35 +72,11 @@ class AuthenticationViewModel with ChangeNotifier {
 
   Future<void> _load() async {
     final result = await Future.wait([
-      _shouldShowReauthenticationWithPasswordUseCase(),
       _shouldShowReauthenticationWithGoogleUseCase(),
       _shouldShowReauthenticationWithAppleUseCase(),
     ]);
-    shouldShowReauthenticationWithPassword = result[0];
-    shouldShowReauthenticationWithGoogle = result[1];
-    shouldShowReauthenticationWithApple = result[2];
-  }
-
-  Future<void> signUpWithPassword(String emailStr, String passwordStr, String confirmationPasswordStr) async {
-    isLoading = true;
-    try {
-      final result = await _signUpWithPasswordUseCase(PasswordAuthInfo(email: Email(emailStr), password: Password.validateMatch(passwordStr, confirmationPasswordStr)));
-      completionAuthenticationEvent = Event(result);
-    } on Exception catch (exception) {
-      exceptionEvent = Event(exception);
-    }
-    isLoading = false;
-  }
-
-  Future<void> signInWithPassword(String emailStr, String passwordStr) async {
-    isLoading = true;
-    try {
-      final result = await _signInWithPasswordUseCase(PasswordAuthInfo(email: Email(emailStr), password: Password(passwordStr)));
-      completionAuthenticationEvent = Event(result);
-    } on Exception catch (exception) {
-      exceptionEvent = Event(exception);
-    }
-    isLoading = false;
+    shouldShowReauthenticationWithGoogle = result[0];
+    shouldShowReauthenticationWithApple = result[1];
   }
 
   Future<void> signInWithGoogle(GoogleAuthInfo authInfo) async {
@@ -138,17 +95,6 @@ class AuthenticationViewModel with ChangeNotifier {
     try {
       final result = await _authenticateWithAppleUseCase(authInfo);
       completionAuthenticationEvent = Event(result);
-    } on Exception catch (exception) {
-      exceptionEvent = Event(exception);
-    }
-    isLoading = false;
-  }
-
-  Future<void> reauthorizeWithPassword(String passwordStr) async {
-    isLoading = true;
-    try {
-      await _reauthenticateWithPasswordUseCase(Password(passwordStr));
-      completionReauthenticationEvent = Event(null);
     } on Exception catch (exception) {
       exceptionEvent = Event(exception);
     }

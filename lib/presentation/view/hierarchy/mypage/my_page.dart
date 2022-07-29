@@ -18,7 +18,6 @@ class MyPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.read(myPageViewModelProvider);
-    final state = ref.watch(myPageViewModelProvider.select((viewModel) => viewModel.state));
     ref
       ..listen<Event<void>>(myPageViewModelProvider.select((viewModel) => viewModel.replaceWelcomePageEvent), (previous, replaceWelcomePageEvent) {
         replaceWelcomePageEvent((_) => _replaceWelcomePage(context));
@@ -55,8 +54,6 @@ class MyPage extends HookConsumerWidget {
               _buildProfileImage(context, ref),
               _buildNickNameTitle(context, ref),
               _buildNickname(context, ref),
-              _buildMailAddressTitle(context, ref),
-              _buildEmailChangingTile(context, ref),
               const SizedBox(height: 16),
             ],
           ),
@@ -115,30 +112,6 @@ class MyPage extends HookConsumerWidget {
       ),
       error: (exception) => ListTile(
         leading: const Icon(Icons.account_circle_outlined),
-        title: Text(intl(context).errorLoading),
-      ),
-    );
-  }
-
-  Widget _buildMailAddressTitle(BuildContext context, WidgetRef ref) {
-    return ListTile(
-      title: Text(intl(context).mailAddress, style: Theme.of(context).textTheme.caption),
-    );
-  }
-
-  Widget _buildEmailChangingTile(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(settingsViewModelProvider.select((viewModel) => viewModel.state));
-    return state.when(
-      loading: () => ListTile(
-        leading: const Icon(Icons.mail_outline),
-        title: Text(intl(context).loading),
-      ),
-      completed: (user) => ListTile(
-        leading: const Icon(Icons.mail_outline),
-        title: Text(user.email.value),
-      ),
-      error: (exception) => ListTile(
-        leading: const Icon(Icons.mail_outline),
         title: Text(intl(context).errorLoading),
       ),
     );

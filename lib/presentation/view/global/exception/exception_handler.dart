@@ -42,14 +42,9 @@ class ExceptionHandler {
       networkError: (exception) => intl(context).networkError,
       authorizationFailed: (exception) => intl(context).authorizationFailed,
       authorizationCanceled: (exception) => intl(context).authorizationCanceled,
-      invalidEmail: (exception) => intl(context).invalidEmail,
-      invalidPassword: (exception) => intl(context).invalidPassword,
-      doNotMatchPassword: (exception) => intl(context).doNotMatchPassword,
       reauthenticateRequired: (exception) => intl(context).reauthenticateRequired,
-      wrongPassword: (exception) => intl(context).wrongPassword,
       tooManyRequests: (exception) => intl(context).tooManyRequests,
       userNotFound: (exception) => intl(context).userNotFound,
-      emailAlreadyInUse: (exception) => intl(context).emailAlreadyInUse,
       credentialAlreadyInUse: (exception) => intl(context).credentialAlreadyInUse,
       accountExistsWithDifferentCredential: (exception) => intl(context).accountExistsWithDifferentCredential(exception.existsSignInMethods.join('\n - ')),
       userTokenExpired: (exception) => intl(context).userTokenExpired,
@@ -94,17 +89,12 @@ class ExceptionHandler {
         // do nothing.
         return true;
       },
-      invalidEmail: (exception) async => false,
-      invalidPassword: (exception) async => false,
-      doNotMatchPassword: (exception) async => false,
       reauthenticateRequired: (exception) async {
         await _showReauthenticationDialog(context, ref, exception);
         return true;
       },
-      wrongPassword: (exception) async => false,
       tooManyRequests: (exception) async => false,
       userNotFound: (exception) async => false,
-      emailAlreadyInUse: (exception) async => false,
       credentialAlreadyInUse: (exception) async => false,
       accountExistsWithDifferentCredential: (exception) async => false,
       userTokenExpired: (exception) async {

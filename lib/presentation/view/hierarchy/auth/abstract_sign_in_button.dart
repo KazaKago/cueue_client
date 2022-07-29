@@ -6,40 +6,35 @@ abstract class AbstractSignInButton extends StatelessWidget {
     super.key,
     required this.authenticationType,
     required this.enabled,
-    required this.onSignUp,
-    required this.onSignIn,
+    required this.onAuth,
     required this.onReauth,
   });
 
   final AuthenticationType authenticationType;
   final bool enabled;
-  final void Function() onSignUp;
-  final void Function() onSignIn;
+  final void Function() onAuth;
   final void Function() onReauth;
 
-  Widget buildButton(BuildContext context, {required IconData iconData, required Color color, required String signUpText, required String signInText, required String reauthText}) {
+  Widget buildButton(BuildContext context, {required IconData iconData, required Color color, required String authText, required String reauthText}) {
     return ElevatedButton.icon(
       style: ElevatedButton.styleFrom(primary: color),
       icon: Icon(iconData),
       label: Text(
         _whenType(
-          signUp: () => signUpText,
-          signIn: () => signInText,
-          reauth: () => reauthText,
+          onAuth: () => authText,
+          onReauth: () => reauthText,
         ),
       ),
-      onPressed: enabled ? () => _whenType(signUp: onSignUp, signIn: onSignIn, reauth: onReauth) : null,
+      onPressed: enabled ? () => _whenType(onAuth: onAuth, onReauth: onReauth) : null,
     );
   }
 
-  R _whenType<R>({required R Function() signUp, required R Function() signIn, required R Function() reauth}) {
+  R _whenType<R>({required R Function() onAuth, required R Function() onReauth}) {
     switch (authenticationType) {
-      case AuthenticationType.signUp:
-        return signUp();
-      case AuthenticationType.signIn:
-        return signIn();
+      case AuthenticationType.auth:
+        return onAuth();
       case AuthenticationType.reauth:
-        return reauth();
+        return onReauth();
     }
   }
 }

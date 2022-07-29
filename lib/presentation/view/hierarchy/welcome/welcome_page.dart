@@ -79,11 +79,11 @@ class WelcomePage extends HookConsumerWidget {
   }
 
   Future<void> _goSignUp(BuildContext context) async {
-    await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => const AuthenticationPage(AuthenticationType.signUp)));
+    await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => const AuthenticationPage(AuthenticationType.auth)));
   }
 
   Future<void> _goSignIn(BuildContext context) async {
-    await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => const AuthenticationPage(AuthenticationType.signIn)));
+    await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => const AuthenticationPage(AuthenticationType.auth)));
   }
 
   Future<void> _goTermsOfService() async {

@@ -1,19 +1,16 @@
 import 'package:cueue/data/auth/hierarchy/apple/apple_signaturer.dart';
 import 'package:cueue/data/auth/hierarchy/google/google_signaturer.dart';
-import 'package:cueue/data/auth/hierarchy/password/password_signaturer.dart';
 import 'package:cueue/data/cache/hierarchy/cache.dart';
 import 'package:cueue/data/repository/flowable/user/user_flowable_factory.dart';
 import 'package:cueue/domain/model/hierarchy/auth/apple_auth_info.dart';
 import 'package:cueue/domain/model/hierarchy/auth/google_auth_info.dart';
-import 'package:cueue/domain/model/hierarchy/auth/password_auth_info.dart';
 import 'package:cueue/domain/repository/hierarchy/auth/authorize_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:store_flowable/store_flowable.dart';
 
 class AuthorizeRepositoryImpl implements AuthorizeRepository {
-  const AuthorizeRepositoryImpl(this._passwordSignaturer, this._googleSignaturer, this._appleSignaturer, this._cacheList, this._userFlowableFactory);
+  const AuthorizeRepositoryImpl(this._googleSignaturer, this._appleSignaturer, this._cacheList, this._userFlowableFactory);
 
-  final PasswordSignaturer _passwordSignaturer;
   final GoogleSignaturer _googleSignaturer;
   final AppleSignaturer _appleSignaturer;
   final List<Cache> _cacheList;
@@ -23,16 +20,6 @@ class AuthorizeRepositoryImpl implements AuthorizeRepository {
   Future<bool> isSignIn() async {
     final user = FirebaseAuth.instance.currentUser;
     return user != null;
-  }
-
-  @override
-  Future<void> signUpWithPassword(PasswordAuthInfo authInfo) async {
-    await _passwordSignaturer.signUp(authInfo);
-  }
-
-  @override
-  Future<void> signInWithPassword(PasswordAuthInfo authInfo) async {
-    await _passwordSignaturer.signIn(authInfo);
   }
 
   @override
@@ -46,11 +33,6 @@ class AuthorizeRepositoryImpl implements AuthorizeRepository {
   }
 
   @override
-  Future<void> reauthenticateWithPassword(PasswordAuthInfo authInfo) async {
-    await _passwordSignaturer.reauthenticate(authInfo);
-  }
-
-  @override
   Future<void> reauthenticateWithGoogle(GoogleAuthInfo authInfo) async {
     await _googleSignaturer.reauthenticate(authInfo);
   }
@@ -58,13 +40,6 @@ class AuthorizeRepositoryImpl implements AuthorizeRepository {
   @override
   Future<void> reauthenticateWithApple(AppleAuthInfo authInfo) async {
     await _appleSignaturer.reauthenticate(authInfo);
-  }
-
-  @override
-  Future<void> linkWithPassword(PasswordAuthInfo authInfo) async {
-    await _passwordSignaturer.link(authInfo);
-    final userFlowable = _userFlowableFactory.create(null);
-    await userFlowable.refresh();
   }
 
   @override

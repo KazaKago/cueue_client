@@ -4,7 +4,6 @@ import 'package:cueue/domain/model/hierarchy/recipe/recipe_search_option.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_summary.dart';
 import 'package:cueue/domain/usecase/di/usecase_provider.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/auth/authentication_viewmodel.dart';
-import 'package:cueue/presentation/viewmodel/hierarchy/auth/password_reset_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/menu/menu_detail_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/menu/menu_editing_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/menu/menu_viewmodel.dart';
@@ -24,15 +23,14 @@ import 'package:cueue/presentation/viewmodel/hierarchy/welcome/workspace_creatio
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final splashViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => SplashViewModel(ref.read(checkAtLaunchUseCaseProvider)));
-final authenticationViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => AuthenticationViewModel(ref.read(shouldShowReauthenticationWithPasswordUseCaseProvider), ref.read(shouldShowReauthenticationWithGoogleUseCaseProvider), ref.read(shouldShowReauthenticationWithAppleUseCaseProvider), ref.read(signUpWithPasswordUseCaseProvider), ref.read(signInWithPasswordUseCaseProvider), ref.read(authenticateWithGoogleUseCaseProvider), ref.read(authenticateWithAppleUseCaseProvider), ref.read(reauthenticateWithPasswordUseCaseProvider), ref.read(reauthenticateWithGoogleUseCaseProvider), ref.read(reauthenticateWithAppleUseCaseProvider)));
+final authenticationViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => AuthenticationViewModel(ref.read(shouldShowReauthenticationWithGoogleUseCaseProvider), ref.read(shouldShowReauthenticationWithAppleUseCaseProvider), ref.read(authenticateWithGoogleUseCaseProvider), ref.read(authenticateWithAppleUseCaseProvider), ref.read(reauthenticateWithGoogleUseCaseProvider), ref.read(reauthenticateWithAppleUseCaseProvider)));
 final recipeViewModelProvider = ChangeNotifierProvider.autoDispose.family<RecipeViewModel, RecipeSearchOption?>((ref, searchOption) => RecipeViewModel(ref.read(followAllRecipesUseCaseProvider), ref.read(refreshAllRecipesUseCaseProvider), ref.read(requestAdditionalAllRecipesUseCaseProvider), searchOption ?? RecipeSearchOption()));
 final recipeSelectionViewModelProvider = ChangeNotifierProvider.autoDispose.family<RecipeSelectionViewModel, List<RecipeSummary>>((ref, recipes) => RecipeSelectionViewModel(ref.read(followTagsUseCaseProvider), ref.read(refreshTagsUseCaseProvider), recipes.toList()));
 final tagViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => TagViewModel(ref.read(followTagsUseCaseProvider), ref.read(refreshTagsUseCaseProvider), ref.read(reorderTagUseCaseProvider)));
 final menuViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => MenuViewModel(ref.read(followAllMenusUseCaseProvider), ref.read(refreshAllMenusUseCaseProvider), ref.read(requestAdditionalAllMenusUseCaseProvider)));
 final searchViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => SearchViewModel(ref.read(followTagsUseCaseProvider), ref.read(refreshTagsUseCaseProvider)));
-final settingsViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => SettingsViewModel(ref.read(followUserUseCaseProvider), ref.read(refreshUserUseCaseProvider), ref.read(updateEmailUseCaseProvider), ref.read(updatePasswordUseCaseProvider), ref.read(linkWithGoogleUseCaseProvider), ref.read(linkWithAppleUseCaseProvider), ref.read(unlinkWithGoogleUseCaseProvider), ref.read(unlinkWithAppleUseCaseProvider), ref.read(sendEmailVerificationUseCaseProvider)));
+final settingsViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => SettingsViewModel(ref.read(followUserUseCaseProvider), ref.read(refreshUserUseCaseProvider), ref.read(linkWithGoogleUseCaseProvider), ref.read(linkWithAppleUseCaseProvider), ref.read(unlinkWithGoogleUseCaseProvider), ref.read(unlinkWithAppleUseCaseProvider)));
 final aboutViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => AboutViewModel(ref.read(getAppInfoUseCaseProvider), ref.read(getDeveloperInfoUseCaseProvider)));
-final passwordResetViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => PasswordResetViewModel(ref.read(followUserUseCaseProvider), ref.read(sendPasswordResetMailUseCaseProvider)));
 final tagEditingViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => TagEditingViewModel(ref.read(createTagUseCaseProvider), ref.read(updateTagUseCaseProvider), ref.read(deleteTagUseCaseProvider)));
 final recipeEditingViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => RecipeEditingViewModel(ref.read(followTagsUseCaseProvider), ref.read(refreshTagsUseCaseProvider), ref.read(createRecipeUseCaseProvider), ref.read(updateRecipeUseCaseProvider), ref.read(deleteRecipeUseCaseProvider), ref.read(createContentUseCaseProvider)));
 final menuEditingViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => MenuEditingViewModel(ref.read(createMenuUseCaseProvider), ref.read(updateMenuUseCaseProvider), ref.read(deleteMenuUseCaseProvider)));

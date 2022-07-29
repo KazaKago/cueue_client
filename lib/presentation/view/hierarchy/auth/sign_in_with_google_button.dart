@@ -8,8 +8,7 @@ class SignInWithGoogleButton extends AbstractSignInButton {
     super.key,
     required super.authenticationType,
     required super.enabled,
-    required super.onSignUp,
-    required super.onSignIn,
+    required super.onAuth,
     required super.onReauth,
   });
 
@@ -19,8 +18,7 @@ class SignInWithGoogleButton extends AbstractSignInButton {
       context,
       iconData: FontAwesomeIcons.google,
       color: Colors.blueAccent,
-      signUpText: intl(context).withGoogleAccount(intl(context).auth),
-      signInText: intl(context).withGoogleAccount(intl(context).auth),
+      authText: intl(context).withGoogleAccount(intl(context).auth),
       reauthText: intl(context).withGoogleAccount(intl(context).reAuth),
     );
   }

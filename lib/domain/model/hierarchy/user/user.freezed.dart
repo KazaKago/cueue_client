@@ -19,9 +19,6 @@ mixin _$User {
   UserId get id => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
   Uri? get photoUrl => throw _privateConstructorUsedError;
-  Email get email => throw _privateConstructorUsedError;
-  bool get isEmailVerified => throw _privateConstructorUsedError;
-  PasswordProvider? get passwordProvider => throw _privateConstructorUsedError;
   GoogleProvider? get googleProvider => throw _privateConstructorUsedError;
   AppleProvider? get appleProvider => throw _privateConstructorUsedError;
   List<Workspace> get workspaces => throw _privateConstructorUsedError;
@@ -38,16 +35,11 @@ abstract class $UserCopyWith<$Res> {
       {UserId id,
       String displayName,
       Uri? photoUrl,
-      Email email,
-      bool isEmailVerified,
-      PasswordProvider? passwordProvider,
       GoogleProvider? googleProvider,
       AppleProvider? appleProvider,
       List<Workspace> workspaces});
 
   $UserIdCopyWith<$Res> get id;
-  $EmailCopyWith<$Res> get email;
-  $PasswordProviderCopyWith<$Res>? get passwordProvider;
   $GoogleProviderCopyWith<$Res>? get googleProvider;
   $AppleProviderCopyWith<$Res>? get appleProvider;
 }
@@ -65,9 +57,6 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? id = freezed,
     Object? displayName = freezed,
     Object? photoUrl = freezed,
-    Object? email = freezed,
-    Object? isEmailVerified = freezed,
-    Object? passwordProvider = freezed,
     Object? googleProvider = freezed,
     Object? appleProvider = freezed,
     Object? workspaces = freezed,
@@ -85,18 +74,6 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
               as Uri?,
-      email: email == freezed
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as Email,
-      isEmailVerified: isEmailVerified == freezed
-          ? _value.isEmailVerified
-          : isEmailVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
-      passwordProvider: passwordProvider == freezed
-          ? _value.passwordProvider
-          : passwordProvider // ignore: cast_nullable_to_non_nullable
-              as PasswordProvider?,
       googleProvider: googleProvider == freezed
           ? _value.googleProvider
           : googleProvider // ignore: cast_nullable_to_non_nullable
@@ -116,24 +93,6 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   $UserIdCopyWith<$Res> get id {
     return $UserIdCopyWith<$Res>(_value.id, (value) {
       return _then(_value.copyWith(id: value));
-    });
-  }
-
-  @override
-  $EmailCopyWith<$Res> get email {
-    return $EmailCopyWith<$Res>(_value.email, (value) {
-      return _then(_value.copyWith(email: value));
-    });
-  }
-
-  @override
-  $PasswordProviderCopyWith<$Res>? get passwordProvider {
-    if (_value.passwordProvider == null) {
-      return null;
-    }
-
-    return $PasswordProviderCopyWith<$Res>(_value.passwordProvider!, (value) {
-      return _then(_value.copyWith(passwordProvider: value));
     });
   }
 
@@ -169,19 +128,12 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       {UserId id,
       String displayName,
       Uri? photoUrl,
-      Email email,
-      bool isEmailVerified,
-      PasswordProvider? passwordProvider,
       GoogleProvider? googleProvider,
       AppleProvider? appleProvider,
       List<Workspace> workspaces});
 
   @override
   $UserIdCopyWith<$Res> get id;
-  @override
-  $EmailCopyWith<$Res> get email;
-  @override
-  $PasswordProviderCopyWith<$Res>? get passwordProvider;
   @override
   $GoogleProviderCopyWith<$Res>? get googleProvider;
   @override
@@ -202,9 +154,6 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? id = freezed,
     Object? displayName = freezed,
     Object? photoUrl = freezed,
-    Object? email = freezed,
-    Object? isEmailVerified = freezed,
-    Object? passwordProvider = freezed,
     Object? googleProvider = freezed,
     Object? appleProvider = freezed,
     Object? workspaces = freezed,
@@ -222,18 +171,6 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
               as Uri?,
-      email: email == freezed
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as Email,
-      isEmailVerified: isEmailVerified == freezed
-          ? _value.isEmailVerified
-          : isEmailVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
-      passwordProvider: passwordProvider == freezed
-          ? _value.passwordProvider
-          : passwordProvider // ignore: cast_nullable_to_non_nullable
-              as PasswordProvider?,
       googleProvider: googleProvider == freezed
           ? _value.googleProvider
           : googleProvider // ignore: cast_nullable_to_non_nullable
@@ -257,9 +194,6 @@ class _$_User extends _User {
       {required this.id,
       required this.displayName,
       required this.photoUrl,
-      required this.email,
-      required this.isEmailVerified,
-      required this.passwordProvider,
       required this.googleProvider,
       required this.appleProvider,
       required final List<Workspace> workspaces})
@@ -273,12 +207,6 @@ class _$_User extends _User {
   @override
   final Uri? photoUrl;
   @override
-  final Email email;
-  @override
-  final bool isEmailVerified;
-  @override
-  final PasswordProvider? passwordProvider;
-  @override
   final GoogleProvider? googleProvider;
   @override
   final AppleProvider? appleProvider;
@@ -291,7 +219,7 @@ class _$_User extends _User {
 
   @override
   String toString() {
-    return 'User(id: $id, displayName: $displayName, photoUrl: $photoUrl, email: $email, isEmailVerified: $isEmailVerified, passwordProvider: $passwordProvider, googleProvider: $googleProvider, appleProvider: $appleProvider, workspaces: $workspaces)';
+    return 'User(id: $id, displayName: $displayName, photoUrl: $photoUrl, googleProvider: $googleProvider, appleProvider: $appleProvider, workspaces: $workspaces)';
   }
 
   @override
@@ -303,11 +231,6 @@ class _$_User extends _User {
             const DeepCollectionEquality()
                 .equals(other.displayName, displayName) &&
             const DeepCollectionEquality().equals(other.photoUrl, photoUrl) &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality()
-                .equals(other.isEmailVerified, isEmailVerified) &&
-            const DeepCollectionEquality()
-                .equals(other.passwordProvider, passwordProvider) &&
             const DeepCollectionEquality()
                 .equals(other.googleProvider, googleProvider) &&
             const DeepCollectionEquality()
@@ -322,9 +245,6 @@ class _$_User extends _User {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(displayName),
       const DeepCollectionEquality().hash(photoUrl),
-      const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(isEmailVerified),
-      const DeepCollectionEquality().hash(passwordProvider),
       const DeepCollectionEquality().hash(googleProvider),
       const DeepCollectionEquality().hash(appleProvider),
       const DeepCollectionEquality().hash(_workspaces));
@@ -340,9 +260,6 @@ abstract class _User extends User {
       {required final UserId id,
       required final String displayName,
       required final Uri? photoUrl,
-      required final Email email,
-      required final bool isEmailVerified,
-      required final PasswordProvider? passwordProvider,
       required final GoogleProvider? googleProvider,
       required final AppleProvider? appleProvider,
       required final List<Workspace> workspaces}) = _$_User;
@@ -354,12 +271,6 @@ abstract class _User extends User {
   String get displayName;
   @override
   Uri? get photoUrl;
-  @override
-  Email get email;
-  @override
-  bool get isEmailVerified;
-  @override
-  PasswordProvider? get passwordProvider;
   @override
   GoogleProvider? get googleProvider;
   @override
