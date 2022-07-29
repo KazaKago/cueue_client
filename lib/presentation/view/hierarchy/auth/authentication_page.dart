@@ -40,7 +40,7 @@ class AuthenticationPage extends HookConsumerWidget {
       appBar: AppBar(
         title: Text(
           _whenType(
-            onAuth: () => intl(context).signIn,
+            onAuth: () => intl(context).login,
             onReauth: () => intl(context).reAuth,
           ),
         ),

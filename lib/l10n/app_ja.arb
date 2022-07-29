@@ -14,8 +14,7 @@
   "addCookingMenu": "こんだて追加",
   "addRecipe": "レシピ追加",
   "addTag": "タグ追加",
-  "signUp": "新規登録",
-  "signIn": "ログイン",
+  "login": "ログイン",
   "reAuth": "再認証",
   "withGoogleAccount": "Googleアカウントで{authPattern}",
   "@withGoogleAccount": {
