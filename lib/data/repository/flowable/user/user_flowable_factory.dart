@@ -1,5 +1,6 @@
 import 'package:cueue/data/api/hierarchy/user/get_user_api.dart';
 import 'package:cueue/data/api/response/user/user_response.dart';
+import 'package:cueue/data/auth/hierarchy/signaturer.dart';
 import 'package:cueue/data/cache/hierarchy/user/user_cache.dart';
 import 'package:cueue/data/cache/hierarchy/user/user_state_manager.dart';
 import 'package:cueue/data/mapper/hierarchy/user/user_response_mapper.dart';
@@ -34,12 +35,16 @@ class UserFlowableFactory extends StoreFlowableFactory<void, User> {
   Future<User> fetchDataFromOrigin(void param) async {
     final firebaseUser = auth.FirebaseAuth.instance.currentUser;
     if (firebaseUser != null) {
-      final result = await Future.wait<dynamic>([
-        firebaseUser.reload(),
-        _getUserApi.execute(),
-      ]);
-      final userResponse = result[1] as UserResponse;
-      return _userResponseMapper.map(firebaseUser, userResponse);
+      try {
+        final result = await Future.wait<dynamic>([
+          firebaseUser.reload(),
+          _getUserApi.execute(),
+        ]);
+        final userResponse = result[1] as UserResponse;
+        return _userResponseMapper.map(firebaseUser, userResponse);
+      } on auth.FirebaseAuthException catch (exception) {
+        throw await const SignaturerDelegator().classifyException(exception);
+      }
     } else {
       throw const NoSuchElementException();
     }
