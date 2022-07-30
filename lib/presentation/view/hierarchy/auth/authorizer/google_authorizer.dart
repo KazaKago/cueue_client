@@ -7,9 +7,7 @@ class GoogleAuthorizer {
   const GoogleAuthorizer();
 
   Future<GoogleAuthInfo> authorize(BuildContext context) async {
-    final googleSignIn = GoogleSignIn();
-    if (await googleSignIn.isSignedIn()) await googleSignIn.signOut();
-    final googleSignInAccount = await googleSignIn.signIn();
+    final googleSignInAccount = await GoogleSignIn().signIn();
     if (googleSignInAccount != null) {
       final authResult = await googleSignInAccount.authentication;
       return GoogleAuthInfo(accessToken: authResult.accessToken, idToken: authResult.idToken);
