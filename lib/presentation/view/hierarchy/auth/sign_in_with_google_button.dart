@@ -6,10 +6,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class SignInWithGoogleButton extends AbstractSignInButton {
   const SignInWithGoogleButton({
     super.key,
-    required super.authenticationType,
     required super.enabled,
     required super.onAuth,
-    required super.onReauth,
   });
 
   @override
@@ -19,7 +17,6 @@ class SignInWithGoogleButton extends AbstractSignInButton {
       iconData: FontAwesomeIcons.google,
       color: Colors.blueAccent,
       authText: intl(context).withGoogleAccount(intl(context).auth),
-      reauthText: intl(context).withGoogleAccount(intl(context).reAuth),
     );
   }
 }

@@ -6,6 +6,7 @@ import 'package:cueue/domain/model/hierarchy/auth/apple_auth_info.dart';
 import 'package:cueue/domain/model/hierarchy/auth/google_auth_info.dart';
 import 'package:cueue/domain/repository/hierarchy/auth/authorize_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:store_flowable/store_flowable.dart';
 
 class AuthorizeRepositoryImpl implements AuthorizeRepository {
@@ -59,6 +60,8 @@ class AuthorizeRepositoryImpl implements AuthorizeRepository {
   @override
   Future<void> unlinkWithGoogle() async {
     await _googleSignaturer.unlink();
+    final googleSignIn = GoogleSignIn();
+    if (await googleSignIn.isSignedIn()) await googleSignIn.signOut();
     final userFlowable = _userFlowableFactory.create(null);
     await userFlowable.refresh();
   }
@@ -73,6 +76,8 @@ class AuthorizeRepositoryImpl implements AuthorizeRepository {
   @override
   Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
+    final googleSignIn = GoogleSignIn();
+    if (await googleSignIn.isSignedIn()) await googleSignIn.signOut();
     for (final cache in _cacheList) {
       cache.clearAll();
     }

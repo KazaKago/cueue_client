@@ -6,6 +6,7 @@ import 'package:cueue/domain/model/hierarchy/tag/tag_id.dart';
 import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
 import 'package:cueue/presentation/view/global/modal/simple_message_dialog.dart';
+import 'package:cueue/presentation/view/global/modal/simple_message_dialog_event.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
 import 'package:cueue/presentation/view/hierarchy/photo/photo_pickup_bottom_sheet_dialog.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
@@ -266,7 +267,10 @@ class RecipeEditingPage extends HookConsumerWidget {
   }
 
   Future<void> _showConfirmationDeletingDialog(BuildContext context, WidgetRef ref, Recipe recipe) async {
-    final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmDeletingWith(recipe.title), positiveButton: intl(context).doDelete, negativeButton: intl(context).cancel).show();
+    final event = await showDialog<SimpleMessageDialogEvent>(
+      context: context,
+      builder: (context) => SimpleMessageDialog(title: intl(context).confirm, message: intl(context).confirmDeletingWith(recipe.title), positiveButton: intl(context).doDelete, negativeButton: intl(context).cancel),
+    );
     if (event != null) {
       await event.when(
         positive: () async {

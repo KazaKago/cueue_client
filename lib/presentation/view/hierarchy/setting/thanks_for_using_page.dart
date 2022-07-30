@@ -1,6 +1,6 @@
 import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/l10n/intl.dart';
-import 'package:cueue/presentation/view/hierarchy/welcome/welcome_page.dart';
+import 'package:cueue/presentation/view/hierarchy/auth/authentication_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -37,6 +37,6 @@ class ThanksForUsingPage extends HookConsumerWidget {
   }
 
   Future<void> _replaceWelcomePage(BuildContext context) async {
-    await Navigator.pushAndRemoveUntil<void>(context, MaterialPageRoute(builder: (context) => const WelcomePage()), (route) => false);
+    await Navigator.pushAndRemoveUntil<void>(context, MaterialPageRoute(builder: (context) => const AuthenticationPage()), (route) => false);
   }
 }

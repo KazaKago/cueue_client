@@ -3,9 +3,10 @@ import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
 import 'package:cueue/presentation/view/global/modal/simple_message_dialog.dart';
+import 'package:cueue/presentation/view/global/modal/simple_message_dialog_event.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
+import 'package:cueue/presentation/view/hierarchy/auth/authentication_page.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/settings_page.dart';
-import 'package:cueue/presentation/view/hierarchy/welcome/welcome_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/material.dart';
@@ -122,7 +123,10 @@ class MyPage extends HookConsumerWidget {
   }
 
   Future<void> _showSignOutConfirmationDialog(BuildContext context, WidgetRef ref) async {
-    final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmLogout, positiveButton: intl(context).logout, negativeButton: intl(context).cancel).show();
+    final event = await showDialog<SimpleMessageDialogEvent>(
+      context: context,
+      builder: (context) => SimpleMessageDialog(title: intl(context).confirm, message: intl(context).confirmLogout, positiveButton: intl(context).logout, negativeButton: intl(context).cancel),
+    );
     if (event != null) {
       await event.when(
         positive: () async {
@@ -136,7 +140,7 @@ class MyPage extends HookConsumerWidget {
   }
 
   Future<void> _replaceWelcomePage(BuildContext context) {
-    return Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const WelcomePage()), (_) => false);
+    return Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const AuthenticationPage()), (_) => false);
   }
 
   Future<void> _showErrorDialog(BuildContext context, WidgetRef ref, Exception exception) async {

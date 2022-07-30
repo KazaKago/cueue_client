@@ -1,3 +1,4 @@
+import 'package:cueue/domain/model/global/exception/require_reautentication_exception.dart';
 import 'package:cueue/domain/model/hierarchy/auth/apple_auth_info.dart';
 import 'package:cueue/domain/model/hierarchy/auth/google_auth_info.dart';
 import 'package:cueue/domain/model/hierarchy/auth/sign_in_check_result.dart';
@@ -25,7 +26,7 @@ class AuthenticationViewModel with ChangeNotifier {
   bool _shouldShowReauthenticationWithGoogle = false;
   bool _shouldShowReauthenticationWithApple = false;
   Event<SignInCheckResult> _completionAuthenticationEvent = Event.initialize();
-  Event<void> _completionReauthenticationEvent = Event.initialize();
+  Event<RequireReauthenticationException> _completionReauthenticationEvent = Event.initialize();
   Event<Exception> _exceptionEvent = Event.initialize();
 
   bool get isLoading => _isLoading;
@@ -56,9 +57,9 @@ class AuthenticationViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Event<void> get completionReauthenticationEvent => _completionReauthenticationEvent;
+  Event<RequireReauthenticationException> get completionReauthenticationEvent => _completionReauthenticationEvent;
 
-  set completionReauthenticationEvent(Event<void> completionReauthenticationEvent) {
+  set completionReauthenticationEvent(Event<RequireReauthenticationException> completionReauthenticationEvent) {
     _completionReauthenticationEvent = completionReauthenticationEvent;
     notifyListeners();
   }
@@ -101,22 +102,22 @@ class AuthenticationViewModel with ChangeNotifier {
     isLoading = false;
   }
 
-  Future<void> reauthorizeWithGoogle(GoogleAuthInfo authInfo) async {
+  Future<void> reauthorizeWithGoogle(GoogleAuthInfo authInfo, RequireReauthenticationException exception) async {
     isLoading = true;
     try {
-      await _reauthenticateWithGoogleUseCase(authInfo);
-      completionReauthenticationEvent = Event(null);
+      await _reauthenticateWithGoogleUseCase(authInfo, exception);
+      completionReauthenticationEvent = Event(exception);
     } on Exception catch (exception) {
       exceptionEvent = Event(exception);
     }
     isLoading = false;
   }
 
-  Future<void> reauthorizeWithApple(AppleAuthInfo authInfo) async {
+  Future<void> reauthorizeWithApple(AppleAuthInfo authInfo, RequireReauthenticationException exception) async {
     isLoading = true;
     try {
-      await _reauthenticateWithAppleUseCase(authInfo);
-      completionReauthenticationEvent = Event(null);
+      await _reauthenticateWithAppleUseCase(authInfo, exception);
+      completionReauthenticationEvent = Event(exception);
     } on Exception catch (exception) {
       exceptionEvent = Event(exception);
     }

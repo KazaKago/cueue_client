@@ -2,6 +2,7 @@ import 'package:cueue/domain/model/hierarchy/tag/tag.dart';
 import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
 import 'package:cueue/presentation/view/global/modal/simple_message_dialog.dart';
+import 'package:cueue/presentation/view/global/modal/simple_message_dialog_event.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/editing_result.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
@@ -71,7 +72,10 @@ class TagEditingPage extends HookConsumerWidget {
   }
 
   Future<void> _showConfirmationDeletingDialog(BuildContext context, WidgetRef ref, Tag tag) async {
-    final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmDeletingWith(tag.name), positiveButton: intl(context).doDelete, negativeButton: intl(context).cancel).show();
+    final event = await showDialog<SimpleMessageDialogEvent>(
+      context: context,
+      builder: (context) => SimpleMessageDialog(title: intl(context).confirm, message: intl(context).confirmDeletingWith(tag.name), positiveButton: intl(context).doDelete, negativeButton: intl(context).cancel),
+    );
     if (event != null) {
       await event.when(
         positive: () => ref.read(tagEditingViewModelProvider).delete(tag.id),

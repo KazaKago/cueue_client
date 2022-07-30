@@ -6,10 +6,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class SignInWithAppleButton extends AbstractSignInButton {
   const SignInWithAppleButton({
     super.key,
-    required super.authenticationType,
     required super.enabled,
     required super.onAuth,
-    required super.onReauth,
   });
 
   @override
@@ -19,7 +17,6 @@ class SignInWithAppleButton extends AbstractSignInButton {
       iconData: FontAwesomeIcons.apple,
       color: Colors.black,
       authText: intl(context).withAppleAccount(intl(context).auth),
-      reauthText: intl(context).withAppleAccount(intl(context).reAuth),
     );
   }
 }

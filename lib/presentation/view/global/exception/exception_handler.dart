@@ -3,8 +3,9 @@ import 'package:cueue/domain/usecase/di/usecase_provider.dart';
 import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/extension/exception_extension.dart';
 import 'package:cueue/presentation/view/global/modal/simple_message_dialog.dart';
+import 'package:cueue/presentation/view/global/modal/simple_message_dialog_event.dart';
+import 'package:cueue/presentation/view/hierarchy/auth/authentication_page.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/reauthentication_dialog.dart';
-import 'package:cueue/presentation/view/hierarchy/welcome/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -54,8 +55,10 @@ class ExceptionHandler {
   }
 
   Future<void> _showMessageDialog(BuildContext context, WidgetRef ref, Exception exception) async {
-    final dialog = SimpleMessageDialog(context, title: intl(context).error, message: _getMessage(context, ref, exception), positiveButton: intl(context).close);
-    await dialog.show();
+    await showDialog<SimpleMessageDialogEvent>(
+      context: context,
+      builder: (context) => SimpleMessageDialog(title: intl(context).error, message: _getMessage(context, ref, exception), positiveButton: intl(context).close),
+    );
   }
 
   void _showSnackBar(BuildContext context, WidgetRef ref, Exception exception) {
@@ -107,14 +110,16 @@ class ExceptionHandler {
   }
 
   Future<void> _showReauthenticationDialog(BuildContext context, WidgetRef ref, RequireReauthenticationException exception) async {
-    final dialog = ReauthenticationDialog(context, ref, exception);
-    await dialog.show();
+    await showDialog<void>(
+      context: context,
+      builder: (BuildContext context) => ReauthenticationDialog(exception),
+    );
   }
 
   Future<void> _signOut(BuildContext context, WidgetRef ref) async {
     final signOutUseCase = ref.read(signOutUseCaseProvider);
     await signOutUseCase();
-    await Navigator.pushAndRemoveUntil<void>(context, MaterialPageRoute(builder: (context) => const WelcomePage()), (_) => false);
+    await Navigator.pushAndRemoveUntil<void>(context, MaterialPageRoute(builder: (context) => const AuthenticationPage()), (_) => false);
   }
 
   Future<void> _goStore(BuildContext context, WidgetRef ref) async {

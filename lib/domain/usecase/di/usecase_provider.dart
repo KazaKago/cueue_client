@@ -92,8 +92,8 @@ final linkWithGoogleUseCaseProvider = Provider<LinkWithGoogleUseCase>((ref) => L
 final linkWithAppleUseCaseProvider = Provider<LinkWithAppleUseCase>((ref) => LinkWithAppleUseCaseImpl(ref.read(authorizeRepositoryProvider)));
 final unlinkWithGoogleUseCaseProvider = Provider<UnlinkWithGoogleUseCase>((ref) => UnlinkWithGoogleUseCaseImpl(ref.read(authorizeRepositoryProvider)));
 final unlinkWithAppleUseCaseProvider = Provider<UnlinkWithAppleUseCase>((ref) => UnlinkWithAppleUseCaseImpl(ref.read(authorizeRepositoryProvider)));
-final reauthenticateWithGoogleUseCaseProvider = Provider<ReauthenticateWithGoogleUseCase>((ref) => ReauthenticateWithGoogleUseCaseImpl(ref.read(authorizeRepositoryProvider)));
-final reauthenticateWithAppleUseCaseProvider = Provider<ReauthenticateWithAppleUseCase>((ref) => ReauthenticateWithAppleUseCaseImpl(ref.read(authorizeRepositoryProvider)));
+final reauthenticateWithGoogleUseCaseProvider = Provider<ReauthenticateWithGoogleUseCase>((ref) => ReauthenticateWithGoogleUseCaseImpl(ref.read(authorizeRepositoryProvider), ref.read(userRepositoryProvider)));
+final reauthenticateWithAppleUseCaseProvider = Provider<ReauthenticateWithAppleUseCase>((ref) => ReauthenticateWithAppleUseCaseImpl(ref.read(authorizeRepositoryProvider), ref.read(userRepositoryProvider)));
 final shouldShowReauthenticationWithGoogleUseCaseProvider = Provider<ShouldShowReauthenticationWithGoogleUseCase>((ref) => ShouldShowReauthenticationWithGoogleUseCaseImpl(ref.read(userRepositoryProvider)));
 final shouldShowReauthenticationWithAppleUseCaseProvider = Provider<ShouldShowReauthenticationWithAppleUseCase>((ref) => ShouldShowReauthenticationWithAppleUseCaseImpl(ref.read(userRepositoryProvider)));
 final signOutUseCaseProvider = Provider<SignOutUseCase>((ref) => SignOutUseCaseImpl(ref.read(authorizeRepositoryProvider)));

@@ -1,6 +1,7 @@
 import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
 import 'package:cueue/presentation/view/global/modal/simple_message_dialog.dart';
+import 'package:cueue/presentation/view/global/modal/simple_message_dialog_event.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/thanks_for_using_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
@@ -33,7 +34,7 @@ class AccountDeletionPage extends HookConsumerWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SelectableText(intl(context).accountDeletionDescription),
+                  SelectableText(textAlign: TextAlign.center, intl(context).accountDeletionDescription),
                   const SizedBox(height: 32),
                   ElevatedButton(
                     style: TextButton.styleFrom(backgroundColor: Theme.of(context).errorColor),
@@ -50,7 +51,10 @@ class AccountDeletionPage extends HookConsumerWidget {
   }
 
   Future<void> _showAccountDeletionConfirmationDialog(BuildContext context, WidgetRef ref) async {
-    final event = await SimpleMessageDialog(context, title: intl(context).warning, message: intl(context).accountDeletionConfirmation, positiveButton: intl(context).doDelete, negativeButton: intl(context).cancel).show();
+    final event = await showDialog<SimpleMessageDialogEvent>(
+      context: context,
+      builder: (context) => SimpleMessageDialog(title: intl(context).warning, message: intl(context).accountDeletionConfirmation, positiveButton: intl(context).doDelete, negativeButton: intl(context).cancel),
+    );
     if (event != null) {
       await event.when(
         positive: () async {

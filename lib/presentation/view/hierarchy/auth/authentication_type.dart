@@ -1,4 +1,0 @@
-enum AuthenticationType {
-  auth,
-  reauth,
-}

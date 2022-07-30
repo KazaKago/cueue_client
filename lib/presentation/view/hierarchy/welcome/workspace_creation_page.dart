@@ -46,7 +46,7 @@ class WorkspaceCreationPage extends HookConsumerWidget {
                   padding: const EdgeInsets.fromLTRB(32, 32, 32, 0),
                   child: ElevatedButton(
                     onPressed: viewModel.createWorkspace,
-                    child: Text(intl(context).registerAndStart),
+                    child: Text(intl(context).close),
                   ),
                 ),
               ),

@@ -1,5 +1,4 @@
 import 'package:cueue/data/api/hierarchy/user/create_user_api.dart';
-import 'package:cueue/data/api/hierarchy/user/delete_user_api.dart';
 import 'package:cueue/data/auth/hierarchy/signaturer.dart';
 import 'package:cueue/data/cache/hierarchy/cache.dart';
 import 'package:cueue/data/mapper/hierarchy/user/user_response_mapper.dart';
@@ -8,14 +7,14 @@ import 'package:cueue/domain/model/global/exception/require_reautentication_exce
 import 'package:cueue/domain/model/hierarchy/user/user.dart';
 import 'package:cueue/domain/repository/hierarchy/user/user_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:store_flowable/store_flowable.dart';
 
 class UserRepositoryImpl implements UserRepository {
-  const UserRepositoryImpl(this._cacheList, this._createUserApi, this._deleteUserApi, this._userFlowableFactory, this._userResponseMapper);
+  const UserRepositoryImpl(this._cacheList, this._createUserApi, this._userFlowableFactory, this._userResponseMapper);
 
   final List<Cache> _cacheList;
   final CreateUserApi _createUserApi;
-  final DeleteUserApi _deleteUserApi;
   final UserFlowableFactory _userFlowableFactory;
   final UserResponseMapper _userResponseMapper;
 
@@ -55,8 +54,9 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<void> delete() async {
     try {
-      await _deleteUserApi.execute();
       await auth.FirebaseAuth.instance.currentUser!.delete();
+      final googleSignIn = GoogleSignIn();
+      if (await googleSignIn.isSignedIn()) await googleSignIn.signOut();
       for (final cache in _cacheList) {
         cache.clearAll();
       }

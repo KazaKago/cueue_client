@@ -1,8 +1,8 @@
 import 'package:cueue/presentation/view/global/modal/checkbox_menu_dialog_event.dart';
 import 'package:flutter/material.dart';
 
-class CheckedMenuDialog {
-  const CheckedMenuDialog(this._context, this._menuItems, {this.title, this.positiveButton, this.negativeButton});
+class CheckedMenuDialog extends StatelessWidget {
+  const CheckedMenuDialog(this._context, this._menuItems, {super.key, this.title, this.positiveButton, this.negativeButton});
 
   final BuildContext _context;
   final List<CheckedMenuItem> _menuItems;
@@ -10,7 +10,8 @@ class CheckedMenuDialog {
   final String? positiveButton;
   final String? negativeButton;
 
-  Future<CheckedMenuDialogEvent?> show() {
+  @override
+  Widget build(BuildContext context) {
     final buttons = <Widget>[];
     if (negativeButton != null) {
       buttons.add(
@@ -28,39 +29,34 @@ class CheckedMenuDialog {
         ),
       );
     }
-    return showDialog<CheckedMenuDialogEvent?>(
-      context: _context,
-      builder: (context) {
-        return AlertDialog(
-          title: (title != null) ? Text(title!) : null,
-          contentPadding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
-          actions: buttons,
-          content: SizedBox(
-            width: double.maxFinite,
-            child: StatefulBuilder(
-              builder: (BuildContext context, StateSetter setState) {
-                return Scrollbar(
-                  child: ListView(
-                    shrinkWrap: true,
-                    children: _menuItems.map((menuItem) {
-                      return CheckboxListTile(
-                        title: Text(menuItem.title),
-                        value: menuItem.isChecked,
-                        onChanged: (bool? value) {
-                          if (value == null) return;
-                          setState(() {
-                            menuItem.isChecked = value;
-                          });
-                        },
-                      );
-                    }).toList(),
-                  ),
-                );
-              },
-            ),
-          ),
-        );
-      },
+    return AlertDialog(
+      title: (title != null) ? Text(title!) : null,
+      contentPadding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+      actions: buttons,
+      content: SizedBox(
+        width: double.maxFinite,
+        child: StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return Scrollbar(
+              child: ListView(
+                shrinkWrap: true,
+                children: _menuItems.map((menuItem) {
+                  return CheckboxListTile(
+                    title: Text(menuItem.title),
+                    value: menuItem.isChecked,
+                    onChanged: (bool? value) {
+                      if (value == null) return;
+                      setState(() {
+                        menuItem.isChecked = value;
+                      });
+                    },
+                  );
+                }).toList(),
+              ),
+            );
+          },
+        ),
+      ),
     );
   }
 }

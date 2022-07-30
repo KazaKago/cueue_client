@@ -2,6 +2,7 @@ import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
 import 'package:cueue/presentation/view/global/modal/fried_toast.dart';
 import 'package:cueue/presentation/view/global/modal/simple_message_dialog.dart';
+import 'package:cueue/presentation/view/global/modal/simple_message_dialog_event.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authorizer/apple_authorizer.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authorizer/google_authorizer.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/about_page.dart';
@@ -189,7 +190,10 @@ class SettingsPage extends HookConsumerWidget {
   }
 
   Future<void> _showUnlinkWithGoogleConfirmationDialog(BuildContext context, WidgetRef ref) async {
-    final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmToUnConnectGoogle, positiveButton: intl(context).unConnect, negativeButton: intl(context).cancel).show();
+    final event = await showDialog<SimpleMessageDialogEvent>(
+      context: context,
+      builder: (context) => SimpleMessageDialog(title: intl(context).confirm, message: intl(context).confirmToUnConnectGoogle, positiveButton: intl(context).unConnect, negativeButton: intl(context).cancel),
+    );
     if (event != null) {
       await event.when(
         positive: () async {
@@ -203,7 +207,10 @@ class SettingsPage extends HookConsumerWidget {
   }
 
   Future<void> _showUnlinkWithAppleConfirmationDialog(BuildContext context, WidgetRef ref) async {
-    final event = await SimpleMessageDialog(context, title: intl(context).confirm, message: intl(context).confirmToUnConnectApple, positiveButton: intl(context).unConnect, negativeButton: intl(context).cancel).show();
+    final event = await showDialog<SimpleMessageDialogEvent>(
+      context: context,
+      builder: (context) => SimpleMessageDialog(title: intl(context).confirm, message: intl(context).confirmToUnConnectApple, positiveButton: intl(context).unConnect, negativeButton: intl(context).cancel),
+    );
     if (event != null) {
       await event.when(
         positive: () async {
