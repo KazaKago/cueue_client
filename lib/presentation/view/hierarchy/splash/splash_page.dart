@@ -1,5 +1,7 @@
 import 'package:cueue/domain/model/hierarchy/auth/launch_check_result.dart';
+import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
+import 'package:cueue/presentation/view/global/widget/shimmer_container.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_page.dart';
 import 'package:cueue/presentation/view/hierarchy/main/main_page.dart';
 import 'package:cueue/presentation/view/hierarchy/welcome/workspace_creation_page.dart';
@@ -22,7 +24,9 @@ class SplashPage extends HookConsumerWidget {
       extendBodyBehindAppBar: true,
       body: Center(
         child: state.when(
-          loading: () => const CircularProgressIndicator(),
+          loading: () => ShimmerContainer(
+            child: Assets.images.icAppIcon.image(width: 144, height: 144),
+          ),
           error: (exception) => ErrorHandlingWidget(exception, onClickRetry: viewModel.retry),
         ),
       ),
