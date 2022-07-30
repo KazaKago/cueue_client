@@ -1,5 +1,5 @@
 import 'package:cueue/data/api/hierarchy/user/create_user_api.dart';
-import 'package:cueue/data/auth/hierarchy/signaturer.dart';
+import 'package:cueue/data/auth/hierarchy/firebase_auth_extension.dart';
 import 'package:cueue/data/cache/hierarchy/cache.dart';
 import 'package:cueue/data/mapper/hierarchy/user/user_response_mapper.dart';
 import 'package:cueue/data/repository/flowable/user/user_flowable_factory.dart';
@@ -61,7 +61,7 @@ class UserRepositoryImpl implements UserRepository {
         cache.clearAll();
       }
     } on auth.FirebaseAuthException catch (exception) {
-      throw await const SignaturerDelegator().classifyException(exception, requireReauthenticationType: const RequireReauthenticationType.deleteAccount());
+      throw await exception.parse(requireReauthenticationType: const RequireReauthenticationType.deleteAccount());
     }
   }
 }

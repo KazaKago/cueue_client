@@ -1,6 +1,6 @@
 import 'package:cueue/data/api/hierarchy/user/get_user_api.dart';
 import 'package:cueue/data/api/response/user/user_response.dart';
-import 'package:cueue/data/auth/hierarchy/signaturer.dart';
+import 'package:cueue/data/auth/hierarchy/firebase_auth_extension.dart';
 import 'package:cueue/data/cache/hierarchy/user/user_cache.dart';
 import 'package:cueue/data/cache/hierarchy/user/user_state_manager.dart';
 import 'package:cueue/data/mapper/hierarchy/user/user_response_mapper.dart';
@@ -43,7 +43,7 @@ class UserFlowableFactory extends StoreFlowableFactory<void, User> {
         final userResponse = result[1] as UserResponse;
         return _userResponseMapper.map(firebaseUser, userResponse);
       } on auth.FirebaseAuthException catch (exception) {
-        throw await const SignaturerDelegator().classifyException(exception);
+        throw await exception.parse();
       }
     } else {
       throw const NoSuchElementException();
