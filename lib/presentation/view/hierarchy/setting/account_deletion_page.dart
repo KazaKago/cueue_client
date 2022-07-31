@@ -34,6 +34,8 @@ class AccountDeletionPage extends HookConsumerWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Icon(Icons.warning_amber_rounded, size: 96, color: Theme.of(context).errorColor),
+                  const SizedBox(height: 32),
                   SelectableText(textAlign: TextAlign.center, intl(context).accountDeletionDescription),
                   const SizedBox(height: 32),
                   ElevatedButton(
