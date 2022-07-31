@@ -4,14 +4,19 @@ import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
 import 'package:cueue/presentation/view/global/modal/simple_message_dialog.dart';
 import 'package:cueue/presentation/view/global/modal/simple_message_dialog_event.dart';
+import 'package:cueue/presentation/view/global/modal/text_field_dialog.dart';
+import 'package:cueue/presentation/view/global/modal/text_field_dialog_event.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_page.dart';
+import 'package:cueue/presentation/view/hierarchy/photo/photo_pickup_bottom_sheet_dialog.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/settings_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:universal_io/io.dart';
 
 class MyPage extends HookConsumerWidget {
   const MyPage({super.key});
@@ -23,10 +28,10 @@ class MyPage extends HookConsumerWidget {
       ..listen<Event<void>>(myPageViewModelProvider.select((viewModel) => viewModel.replaceWelcomePageEvent), (previous, replaceWelcomePageEvent) {
         replaceWelcomePageEvent((_) => _replaceWelcomePage(context));
       })
-      ..listen<Event<Exception>>(settingsViewModelProvider.select((viewModel) => viewModel.exceptionEvent), (previous, exceptionEvent) {
+      ..listen<Event<Exception>>(myPageViewModelProvider.select((viewModel) => viewModel.exceptionEvent), (previous, exceptionEvent) {
         exceptionEvent((exception) => _showErrorDialog(context, ref, exception));
       })
-      ..listen<bool>(settingsViewModelProvider.select((viewModel) => viewModel.isLoading), (previous, isLoading) {
+      ..listen<bool>(myPageViewModelProvider.select((viewModel) => viewModel.isLoading), (previous, isLoading) {
         isLoading ? EasyLoading.show() : EasyLoading.dismiss();
       });
     return Scaffold(
@@ -66,29 +71,57 @@ class MyPage extends HookConsumerWidget {
   Widget _buildProfileImage(BuildContext context, WidgetRef ref) {
     final state = ref.watch(myPageViewModelProvider.select((viewModel) => viewModel.state));
     return state.when(
-      loading: CircularProgressIndicator.new,
-      completed: (state) => _buildImage(context, state.photoUrl),
+      loading: () => const SizedBox(
+        width: 196,
+        height: 196,
+        child: Center(child: CircularProgressIndicator()),
+      ),
+      completed: (state) => _buildImage(context, ref, state.photoUrl),
       error: ErrorHandlingWidget.new,
     );
   }
 
-  Widget _buildImage(BuildContext context, Uri? photoUrl) {
+  Widget _buildImage(BuildContext context, WidgetRef ref, Uri? photoUrl) {
     if (photoUrl != null) {
-      return CachedNetworkImage(
-        imageUrl: photoUrl.toString(),
-        fit: BoxFit.fitHeight,
-        width: 120,
-        height: 120,
-        fadeInDuration: const Duration(milliseconds: 300),
+      return Center(
+        child: Stack(
+          alignment: AlignmentDirectional.bottomEnd,
+          children: [
+            GestureDetector(
+              onTap: () => _pickupProfileImage(context, ref),
+              child: SizedBox(
+                width: 196,
+                height: 196,
+                child: CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  backgroundImage: CachedNetworkImageProvider(photoUrl.toString()),
+                ),
+              ),
+            ),
+            FloatingActionButton.small(
+              elevation: 2,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              onPressed: () => _pickupProfileImage(context, ref),
+              child: const Icon(Icons.edit),
+            ),
+          ],
+        ),
       );
     } else {
-      return Container(
-        color: Theme.of(context).colorScheme.secondary,
-        width: 120,
-        height: 120,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Assets.images.icAppIcon.image(color: Theme.of(context).hoverColor),
+      return Center(
+        child: SizedBox(
+          width: 196,
+          height: 196,
+          child: GestureDetector(
+            onTap: () => _pickupProfileImage(context, ref),
+            child: CircleAvatar(
+              backgroundColor: Theme.of(context).dividerColor,
+              child: Padding(
+                padding: const EdgeInsets.all(32),
+                child: Assets.images.icAppIcon.image(color: Theme.of(context).hoverColor),
+              ),
+            ),
+          ),
         ),
       );
     }
@@ -96,7 +129,7 @@ class MyPage extends HookConsumerWidget {
 
   Widget _buildNickNameTitle(BuildContext context, WidgetRef ref) {
     return ListTile(
-      subtitle: Text(intl(context).nickname, style: Theme.of(context).textTheme.caption),
+      subtitle: Text(intl(context).name, style: Theme.of(context).textTheme.caption),
     );
   }
 
@@ -110,6 +143,7 @@ class MyPage extends HookConsumerWidget {
       completed: (user) => ListTile(
         leading: const Icon(Icons.account_circle_outlined),
         title: Text(user.displayName),
+        onTap: () => _showDisplayNameInput(context, ref, user.displayName),
       ),
       error: (exception) => ListTile(
         leading: const Icon(Icons.account_circle_outlined),
@@ -145,5 +179,41 @@ class MyPage extends HookConsumerWidget {
 
   Future<void> _showErrorDialog(BuildContext context, WidgetRef ref, Exception exception) async {
     await const ExceptionHandler().showMessageDialog(context, ref, exception);
+  }
+
+  Future<void> _pickupProfileImage(BuildContext context, WidgetRef ref) async {
+    final imagePicker = ImagePicker();
+    final event = await PhotoPickupBottomSheetDialog(context).show();
+    final pickedImage = await event?.when(
+      fromCamera: () => imagePicker.pickImage(source: ImageSource.camera),
+      fromLibrary: () => imagePicker.pickImage(source: ImageSource.gallery),
+      cancel: () => null,
+    );
+    if (pickedImage != null) {
+      final viewModel = ref.read(myPageViewModelProvider);
+      await viewModel.updatePhoto(File(pickedImage.path));
+    }
+  }
+
+  Future<void> _showDisplayNameInput(BuildContext context, WidgetRef ref, String displayName) async {
+    final event = await showDialog<TextFieldDialogEvent>(
+      context: context,
+      builder: (context) => TextFieldDialog(
+        title: intl(context).changeName,
+        defaultText: displayName,
+        keyboardType: TextInputType.name,
+        positiveButton: intl(context).done,
+        negativeButton: intl(context).cancel,
+      ),
+    );
+    if (event != null) {
+      await event.maybeWhen(
+        positive: (currentText, originalText) async {
+          final viewModel = ref.read(myPageViewModelProvider);
+          await viewModel.updateDisplayName(currentText);
+        },
+        orElse: () {},
+      );
+    }
   }
 }

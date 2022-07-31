@@ -124,7 +124,7 @@ class MenuPage extends HookConsumerWidget {
             (context, i) => Ink(
               color: _backgroundColor(context, dateSplitMenus.date),
               child: ListTile(
-                leading: CircleAvatar(backgroundImage: dateSplitMenus.menus[i].timeFrame.toFormattedImage().image),
+                leading: CircleAvatar(backgroundImage: dateSplitMenus.menus[i].timeFrame.toFormattedImage().image, backgroundColor: Colors.transparent),
                 title: Text(dateSplitMenus.menus[i].recipes.map((e) => e.title).join(',')),
                 subtitle: Text(dateSplitMenus.menus[i].memo.isNotEmpty ? intl(context).withMemo(dateSplitMenus.menus[i].memo) : dateSplitMenus.menus[i].timeFrame.toFormattedString(context), maxLines: 2, overflow: TextOverflow.ellipsis),
                 onTap: () => _goMenuDetail(context, dateSplitMenus.menus[i]),

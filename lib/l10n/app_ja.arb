@@ -226,7 +226,9 @@
   "approveAndDeletionAccount": "理解した上でアカウントを削除する",
   "accountDeletionConfirmation": "本当にアカウントを削除してよろしいですか？",
   "warning": "警告",
-  "nickname": "ニックネーム",
+  "name": "名前",
   "thanksForUsingMessage": "アカウントを削除しました\nまたのご利用をお待ちしております。",
-  "backToLoginScreen": "ログイン画面へ戻る"
+  "backToLoginScreen": "ログイン画面へ戻る",
+  "changeName": "名前の変更",
+  "done": "決定"
 }

@@ -38,4 +38,4 @@ final recipeDetailViewModelProvider = ChangeNotifierProvider.autoDispose.family<
 final menuDetailViewModelProvider = ChangeNotifierProvider.autoDispose.family<MenuDetailViewModel, MenuId>((ref, menuId) => MenuDetailViewModel(ref.read(followMenuUseCaseProvider), ref.read(refreshMenuUseCaseProvider), menuId));
 final accountDeletionViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => AccountDeletionViewModel(ref.read(deleteAccountUseCaseProvider)));
 final workspaceCreationViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => WorkspaceCreationViewModel(ref.read(createWorkspaceUseCaseProvider)));
-final myPageViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => MyPageViewModel(ref.read(followUserUseCaseProvider), ref.read(refreshUserUseCaseProvider), ref.read(signOutUseCaseProvider)));
+final myPageViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => MyPageViewModel(ref.read(followUserUseCaseProvider), ref.read(refreshUserUseCaseProvider), ref.read(updateDisplayNameUseCaseProvider), ref.read(updateAvatarUseCaseProvider), ref.read(signOutUseCaseProvider)));
