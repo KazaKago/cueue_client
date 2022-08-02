@@ -231,5 +231,7 @@
   "backToLoginScreen": "ログイン画面へ戻る",
   "changeName": "名前の変更",
   "done": "決定",
-  "change_photo": "画像を変更する"
+  "change_photo": "画像を変更する",
+  "search_from_keyword": "レシピを\nキーワードから探す",
+  "search_from_list": "レシピを\n一覧から選択する"
 }

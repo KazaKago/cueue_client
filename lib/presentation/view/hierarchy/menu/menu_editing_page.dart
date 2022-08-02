@@ -128,8 +128,8 @@ class MenuEditingPage extends HookConsumerWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        TextButton.icon(onPressed: () => _goRecipeSelection(context, ref, selectedRecipes), icon: const Icon(Icons.list), label: Text("レシピを\n一覧から選択する", textAlign: TextAlign.center)),
-        TextButton.icon(onPressed: () => _goRecipeSearch(context, ref, selectedRecipes), icon: const Icon(Icons.search), label: Text("レシピを\nキーワードから探す", textAlign: TextAlign.center)),
+        TextButton.icon(onPressed: () => _goRecipeSelection(context, ref, selectedRecipes), icon: const Icon(Icons.list), label: Text(intl(context).search_from_list, textAlign: TextAlign.center)),
+        TextButton.icon(onPressed: () => _goRecipeSearch(context, ref, selectedRecipes), icon: const Icon(Icons.search), label: Text(intl(context).search_from_keyword, textAlign: TextAlign.center)),
       ],
     );
   }
@@ -187,7 +187,7 @@ class MenuEditingPage extends HookConsumerWidget {
   }
 
   Future<void> _goRecipeSearch(BuildContext context, WidgetRef ref, ValueNotifier<List<RecipeSummary>> selectedRecipes) async {
-    final result = await Navigator.push<List<RecipeSummary>>(context, MaterialPageRoute(builder: (context) => SearchPage(selectedRecipes: selectedRecipes.value)));
+    final result = await Navigator.push<List<RecipeSummary>>(context, MaterialPageRoute(builder: (context) => SearchPage(initialSelectedRecipes: selectedRecipes.value)));
     if (result != null) {
       selectedRecipes.value = result;
     }
