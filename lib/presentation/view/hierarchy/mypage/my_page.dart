@@ -99,9 +99,11 @@ class MyPage extends HookConsumerWidget {
               ),
             ),
             FloatingActionButton.small(
-              elevation: 2,
+              elevation: 1,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
               onPressed: () => _pickupProfileImage(context, ref),
+              tooltip: intl(context).change_photo,
+              heroTag: intl(context).change_photo,
               child: const Icon(Icons.edit),
             ),
           ],

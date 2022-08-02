@@ -35,6 +35,7 @@ class TagPage extends HookConsumerWidget {
         label: Text(intl(context).addTag),
         onPressed: () => _goTagEditing(context),
         icon: const Icon(Icons.add),
+        heroTag: intl(context).addRecipe,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

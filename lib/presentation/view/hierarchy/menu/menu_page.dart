@@ -56,6 +56,7 @@ class MenuPage extends HookConsumerWidget {
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
       child: Scrollbar(
+        controller: scrollController,
         child: CustomScrollView(
           controller: scrollController,
           physics: const AlwaysScrollableScrollPhysics(),
@@ -74,6 +75,7 @@ class MenuPage extends HookConsumerWidget {
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
       child: Scrollbar(
+        controller: scrollController,
         child: CustomScrollView(
           controller: scrollController,
           physics: const AlwaysScrollableScrollPhysics(),
@@ -93,6 +95,7 @@ class MenuPage extends HookConsumerWidget {
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
       child: Scrollbar(
+        controller: scrollController,
         child: CustomScrollView(
           controller: scrollController,
           physics: const AlwaysScrollableScrollPhysics(),

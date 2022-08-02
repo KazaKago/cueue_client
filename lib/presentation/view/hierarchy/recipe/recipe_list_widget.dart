@@ -65,6 +65,7 @@ class RecipeListWidget extends HookConsumerWidget {
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
       child: Scrollbar(
+        controller: scrollController,
         child: ListView.builder(
           padding: _fabPadding ? const EdgeInsets.only(bottom: 70) : null,
           controller: scrollController,
@@ -101,6 +102,7 @@ class RecipeListWidget extends HookConsumerWidget {
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
       child: Scrollbar(
+        controller: scrollController,
         child: ListView.builder(
           padding: _fabPadding ? const EdgeInsets.only(bottom: 70) : null,
           controller: scrollController,
@@ -136,6 +138,7 @@ class RecipeListWidget extends HookConsumerWidget {
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
       child: Scrollbar(
+        controller: scrollController,
         child: ListView.builder(
           padding: _fabPadding ? const EdgeInsets.only(bottom: 70) : null,
           controller: scrollController,

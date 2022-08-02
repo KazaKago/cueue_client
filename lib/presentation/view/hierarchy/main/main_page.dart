@@ -32,6 +32,7 @@ class MainPage extends HookConsumerWidget {
         label: Text(navigationItem.fabLabel ?? ''),
         onPressed: () => _goFabPage(context, navigationItem.fabPage!),
         icon: Icon(navigationItem.fabIcon),
+        heroTag: navigationItem.fabLabel,
       );
     } else {
       return null;
