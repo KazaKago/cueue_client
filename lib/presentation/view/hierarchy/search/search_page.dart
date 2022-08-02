@@ -1,3 +1,4 @@
+import 'package:cueue/domain/model/hierarchy/recipe/recipe_summary.dart';
 import 'package:cueue/domain/model/hierarchy/tag/tag.dart';
 import 'package:cueue/domain/model/hierarchy/tag/tag_id.dart';
 import 'package:cueue/l10n/intl.dart';
@@ -10,7 +11,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SearchPage extends HookConsumerWidget with RouteAware {
-  const SearchPage({super.key});
+  const SearchPage({super.key, this.initialSelectedRecipes});
+
+  final List<RecipeSummary>? initialSelectedRecipes;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -25,22 +28,29 @@ class SearchPage extends HookConsumerWidget with RouteAware {
     keywordEditingController.addListener(() {
       keyword.value = keywordEditingController.text;
     });
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(intl(context).search),
-      ),
-      body: Scrollbar(
-        child: ListView(
-          padding: const EdgeInsets.fromLTRB(16, 32, 16, 32),
-          children: <Widget>[
-            _buildSearchText(context, ref, keywordEditingController),
-            const SizedBox(height: 16),
-            _buildTagTitle(context),
-            const SizedBox(height: 4),
-            _buildTagChips(context, ref, selectedTagIds),
-            const SizedBox(height: 24),
-            _buildSubmitButton(context, ref, keyword.value, selectedTagIds.value),
-          ],
+    final selectedRecipes = (initialSelectedRecipes != null) ? useState<List<RecipeSummary>>(initialSelectedRecipes!) : null;
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.of(context).pop(selectedRecipes?.value);
+        return false;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(intl(context).search),
+        ),
+        body: Scrollbar(
+          child: ListView(
+            padding: const EdgeInsets.fromLTRB(16, 32, 16, 32),
+            children: <Widget>[
+              _buildSearchText(context, ref, keywordEditingController),
+              const SizedBox(height: 16),
+              _buildTagTitle(context),
+              const SizedBox(height: 4),
+              _buildTagChips(context, ref, selectedTagIds),
+              const SizedBox(height: 24),
+              _buildSubmitButton(context, keyword.value, selectedTagIds.value, selectedRecipes),
+            ],
+          ),
         ),
       ),
     );
@@ -102,18 +112,21 @@ class SearchPage extends HookConsumerWidget with RouteAware {
     return ErrorHandlingWidget(exception, onClickRetry: viewModel.retry);
   }
 
-  Widget _buildSubmitButton(BuildContext context, WidgetRef ref, String keyword, List<TagId> selectedTagIds) {
+  Widget _buildSubmitButton(BuildContext context, String keyword, List<TagId> selectedTagIds, ValueNotifier<List<RecipeSummary>>? selectedRecipes) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
       child: ElevatedButton.icon(
         icon: const Icon(Icons.search),
         label: Text(intl(context).doSearch),
-        onPressed: keyword.isEmpty ? null : () => _goSearchResult(context, keyword, selectedTagIds),
+        onPressed: keyword.isEmpty ? null : () => _goSearchResult(context, keyword, selectedTagIds, selectedRecipes),
       ),
     );
   }
 
-  Future<void> _goSearchResult(BuildContext context, String keyword, List<TagId> selectedTagIds) async {
-    await Navigator.push(context, MaterialPageRoute<void>(builder: (context) => SearchResultPage(keyword, selectedTagIds)));
+  Future<void> _goSearchResult(BuildContext context, String keyword, List<TagId> selectedTagIds, ValueNotifier<List<RecipeSummary>>? selectedRecipes) async {
+    final result = await Navigator.push<List<RecipeSummary>>(context, MaterialPageRoute(builder: (context) => SearchResultPage(keyword, selectedTagIds, initialSelectedRecipes: selectedRecipes?.value)));
+    if (result != null) {
+      selectedRecipes?.value = result;
+    }
   }
 }

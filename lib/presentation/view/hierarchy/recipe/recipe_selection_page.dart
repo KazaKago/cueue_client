@@ -7,25 +7,26 @@ import 'package:cueue/presentation/view/hierarchy/recipe/recipe_list_widget.dart
 import 'package:cueue/presentation/view/hierarchy/recipe/recipe_loading_item.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class RecipeSelectionPage extends HookConsumerWidget {
-  const RecipeSelectionPage(this.recipes, {super.key});
+  const RecipeSelectionPage(this._initialSelectedRecipes, {super.key});
 
-  final List<RecipeSummary> recipes;
+  final List<RecipeSummary> _initialSelectedRecipes;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(recipeSelectionViewModelProvider(recipes).select((viewModel) => viewModel.state));
-    final viewModel = ref.read(recipeSelectionViewModelProvider(recipes));
+    final selectedRecipes = useState<List<RecipeSummary>>(_initialSelectedRecipes);
+    final state = ref.watch(recipeSelectionViewModelProvider.select((viewModel) => viewModel.state));
     return WillPopScope(
       onWillPop: () async {
-        Navigator.of(context).pop(viewModel.selectedRecipes);
+        Navigator.of(context).pop(selectedRecipes.value);
         return false;
       },
       child: state.when(
         loading: () => _buildLoading(context, ref),
-        completed: (recipes) => _buildCompleted(context, ref, recipes),
+        completed: (recipes) => _buildCompleted(context, recipes, selectedRecipes),
         error: (exception) => _buildError(context, ref, exception),
       ),
     );
@@ -44,7 +45,7 @@ class RecipeSelectionPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildCompleted(BuildContext context, WidgetRef ref, List<Tag> tags) {
+  Widget _buildCompleted(BuildContext context, List<Tag> tags, ValueNotifier<List<RecipeSummary>> selectedRecipes) {
     return DefaultTabController(
       length: tags.length + 1,
       child: Scaffold(
@@ -56,9 +57,9 @@ class RecipeSelectionPage extends HookConsumerWidget {
           ),
         ),
         body: TabBarView(
-          children: [RecipeListWidget(key: const PageStorageKey(-1), selectedRecipes: recipes, onTap: (recipe) => _onCheckChanged(ref, recipe))] +
+          children: [RecipeListWidget(key: const PageStorageKey(-1), selectedRecipes: selectedRecipes.value, onTap: (recipe) => _onCheckChanged(selectedRecipes, recipe))] +
               tags.map((tag) {
-                return RecipeListWidget(key: PageStorageKey(tag.id.value), tagIds: List.filled(1, tag.id), selectedRecipes: recipes, onTap: (recipe) => _onCheckChanged(ref, recipe));
+                return RecipeListWidget(key: PageStorageKey(tag.id.value), tagIds: List.filled(1, tag.id), selectedRecipes: selectedRecipes.value, onTap: (recipe) => _onCheckChanged(selectedRecipes, recipe));
               }).toList(),
         ),
       ),
@@ -66,7 +67,7 @@ class RecipeSelectionPage extends HookConsumerWidget {
   }
 
   Widget _buildError(BuildContext context, WidgetRef ref, Exception exception) {
-    final viewModel = ref.read(recipeSelectionViewModelProvider(recipes));
+    final viewModel = ref.read(recipeSelectionViewModelProvider);
     return Scaffold(
       appBar: AppBar(
         title: Text(intl(context).selectRecipes),
@@ -75,14 +76,13 @@ class RecipeSelectionPage extends HookConsumerWidget {
     );
   }
 
-  Future<void> _onCheckChanged(WidgetRef ref, RecipeSummary recipe) async {
-    final viewModel = ref.read(recipeSelectionViewModelProvider(recipes));
-    final selectedRecipes = viewModel.selectedRecipes.toList();
-    if (selectedRecipes.map((e) => e.id).contains(recipe.id)) {
-      selectedRecipes.removeWhere((element) => element.id == recipe.id);
+  Future<void> _onCheckChanged(ValueNotifier<List<RecipeSummary>> selectedRecipes, RecipeSummary recipe) async {
+    final localSelectedRecipes = selectedRecipes.value.toList();
+    if (localSelectedRecipes.map((e) => e.id).contains(recipe.id)) {
+      localSelectedRecipes.removeWhere((element) => element.id == recipe.id);
     } else {
-      selectedRecipes.add(recipe);
+      localSelectedRecipes.add(recipe);
     }
-    viewModel.selectedRecipes = selectedRecipes;
+    selectedRecipes.value = localSelectedRecipes;
   }
 }

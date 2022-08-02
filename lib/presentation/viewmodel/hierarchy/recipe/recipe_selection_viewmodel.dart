@@ -1,4 +1,3 @@
-import 'package:cueue/domain/model/hierarchy/recipe/recipe_summary.dart';
 import 'package:cueue/domain/usecase/hierarchy/tag/follow_tags_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/tag/refresh_tags_usecase.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/recipe/recipe_selection_state.dart';
@@ -6,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
 class RecipeSelectionViewModel with ChangeNotifier {
-  RecipeSelectionViewModel(this._followTagsUseCase, this._refreshTagsUseCase, this._selectedRecipes) {
+  RecipeSelectionViewModel(this._followTagsUseCase, this._refreshTagsUseCase) {
     _follow();
   }
 
@@ -14,7 +13,6 @@ class RecipeSelectionViewModel with ChangeNotifier {
   final RefreshTagsUseCase _refreshTagsUseCase;
   final CompositeSubscription _compositeSubscription = CompositeSubscription();
   RecipeSelectionState _state = const RecipeSelectionState.loading();
-  List<RecipeSummary> _selectedRecipes;
 
   @override
   void dispose() {
@@ -26,13 +24,6 @@ class RecipeSelectionViewModel with ChangeNotifier {
 
   set state(RecipeSelectionState state) {
     _state = state;
-    notifyListeners();
-  }
-
-  List<RecipeSummary> get selectedRecipes => _selectedRecipes;
-
-  set selectedRecipes(List<RecipeSummary> recipes) {
-    _selectedRecipes = recipes;
     notifyListeners();
   }
 

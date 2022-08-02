@@ -61,7 +61,6 @@ class RecipeListWidget extends HookConsumerWidget {
 
   Widget _buildAdditionalLoading(BuildContext context, WidgetRef ref, ScrollController scrollController, List<RecipeSummary> recipes) {
     final viewModel = ref.read(recipeViewModelProvider(_recipeSearchOption));
-    final recipeSelectionViewModel = ref.read(recipeSelectionViewModelProvider(_selectedRecipes ?? []));
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
       child: Scrollbar(
@@ -72,16 +71,12 @@ class RecipeListWidget extends HookConsumerWidget {
           physics: const AlwaysScrollableScrollPhysics(),
           itemCount: recipes.length + 1,
           itemBuilder: (BuildContext context, int index) {
-            var selectedRecipes = _selectedRecipes;
-            if (selectedRecipes != null) {
-              selectedRecipes = recipeSelectionViewModel.selectedRecipes;
-            }
             if (index < recipes.length) {
               return RecipeItem(
                 title: recipes[index].title,
                 description: intl(context).lastCookingAt(recipes[index].lastCookingAt?.toDateString(context) ?? intl(context).notYetCooking),
                 thumbnail: recipes[index].image?.url,
-                isCheck: selectedRecipes?.map((e) => e.id).contains(recipes[index].id),
+                isCheck: _selectedRecipes?.map((e) => e.id).contains(recipes[index].id),
                 onTap: () => _onTap?.call(recipes[index]),
               );
             } else {
@@ -109,11 +104,7 @@ class RecipeListWidget extends HookConsumerWidget {
           physics: const AlwaysScrollableScrollPhysics(),
           itemCount: recipes.length,
           itemBuilder: (BuildContext context, int index) {
-            bool? isCheck;
-            if (_selectedRecipes != null) {
-              final selectedRecipes = ref.watch(recipeSelectionViewModelProvider(_selectedRecipes!).select((viewModel) => viewModel.selectedRecipes));
-              isCheck = selectedRecipes.map((e) => e.id).contains(recipes[index].id);
-            }
+            final isCheck = _selectedRecipes?.map((e) => e.id).contains(recipes[index].id);
             return RecipeItem(
               title: recipes[index].title,
               description: intl(context).lastCookingAt(recipes[index].lastCookingAt?.toDateString(context) ?? intl(context).notYetCooking),
@@ -134,7 +125,6 @@ class RecipeListWidget extends HookConsumerWidget {
 
   Widget _buildAdditionalError(BuildContext context, WidgetRef ref, ScrollController scrollController, List<RecipeSummary> recipes, Exception exception) {
     final viewModel = ref.read(recipeViewModelProvider(_recipeSearchOption));
-    final recipeSelectionViewModel = ref.read(recipeSelectionViewModelProvider(_selectedRecipes ?? []));
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
       child: Scrollbar(
@@ -146,15 +136,11 @@ class RecipeListWidget extends HookConsumerWidget {
           itemCount: recipes.length + 1,
           itemBuilder: (BuildContext context, int index) {
             if (index < recipes.length) {
-              var selectedRecipes = _selectedRecipes;
-              if (selectedRecipes != null) {
-                selectedRecipes = recipeSelectionViewModel.selectedRecipes;
-              }
               return RecipeItem(
                 title: recipes[index].title,
                 description: intl(context).lastCookingAt(recipes[index].lastCookingAt?.toDateString(context) ?? intl(context).notYetCooking),
                 thumbnail: recipes[index].image?.url,
-                isCheck: selectedRecipes?.map((e) => e.id).contains(recipes[index].id),
+                isCheck: _selectedRecipes?.map((e) => e.id).contains(recipes[index].id),
                 onTap: () => _onTap?.call(recipes[index]),
               );
             } else {

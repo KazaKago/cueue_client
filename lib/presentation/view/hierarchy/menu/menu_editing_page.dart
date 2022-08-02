@@ -8,6 +8,7 @@ import 'package:cueue/presentation/view/global/modal/simple_message_dialog_event
 import 'package:cueue/presentation/view/global/widget/text_field_date_picker.dart';
 import 'package:cueue/presentation/view/hierarchy/menu/time_frame_extension.dart';
 import 'package:cueue/presentation/view/hierarchy/recipe/recipe_selection_page.dart';
+import 'package:cueue/presentation/view/hierarchy/search/search_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/editing_result.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
@@ -124,7 +125,13 @@ class MenuEditingPage extends HookConsumerWidget {
   }
 
   Widget _buildAddRecipe(BuildContext context, WidgetRef ref, ValueNotifier<List<RecipeSummary>> selectedRecipes) {
-    return TextButton.icon(onPressed: () => _goRecipeSelection(context, ref, selectedRecipes), icon: const Icon(Icons.add), label: Text(intl(context).doSelectRecipe));
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        TextButton.icon(onPressed: () => _goRecipeSelection(context, ref, selectedRecipes), icon: const Icon(Icons.list), label: Text("レシピを\n一覧から選択する", textAlign: TextAlign.center)),
+        TextButton.icon(onPressed: () => _goRecipeSearch(context, ref, selectedRecipes), icon: const Icon(Icons.search), label: Text("レシピを\nキーワードから探す", textAlign: TextAlign.center)),
+      ],
+    );
   }
 
   Widget _buildMemo(BuildContext context, WidgetRef ref, TextEditingController menuMemoEditingController) {
@@ -174,6 +181,13 @@ class MenuEditingPage extends HookConsumerWidget {
 
   Future<void> _goRecipeSelection(BuildContext context, WidgetRef ref, ValueNotifier<List<RecipeSummary>> selectedRecipes) async {
     final result = await Navigator.push<List<RecipeSummary>>(context, MaterialPageRoute(builder: (context) => RecipeSelectionPage(selectedRecipes.value)));
+    if (result != null) {
+      selectedRecipes.value = result;
+    }
+  }
+
+  Future<void> _goRecipeSearch(BuildContext context, WidgetRef ref, ValueNotifier<List<RecipeSummary>> selectedRecipes) async {
+    final result = await Navigator.push<List<RecipeSummary>>(context, MaterialPageRoute(builder: (context) => SearchPage(selectedRecipes: selectedRecipes.value)));
     if (result != null) {
       selectedRecipes.value = result;
     }

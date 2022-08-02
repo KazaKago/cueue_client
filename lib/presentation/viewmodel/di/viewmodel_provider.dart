@@ -1,7 +1,6 @@
 import 'package:cueue/domain/model/hierarchy/menu/menu_id.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_id.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_search_option.dart';
-import 'package:cueue/domain/model/hierarchy/recipe/recipe_summary.dart';
 import 'package:cueue/domain/usecase/di/usecase_provider.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/auth/authentication_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/menu/menu_detail_viewmodel.dart';
@@ -25,7 +24,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 final splashViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => SplashViewModel(ref.read(checkAtLaunchUseCaseProvider)));
 final authenticationViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => AuthenticationViewModel(ref.read(shouldShowReauthenticationWithGoogleUseCaseProvider), ref.read(shouldShowReauthenticationWithAppleUseCaseProvider), ref.read(authenticateWithGoogleUseCaseProvider), ref.read(authenticateWithAppleUseCaseProvider), ref.read(reauthenticateWithGoogleUseCaseProvider), ref.read(reauthenticateWithAppleUseCaseProvider)));
 final recipeViewModelProvider = ChangeNotifierProvider.autoDispose.family<RecipeViewModel, RecipeSearchOption?>((ref, searchOption) => RecipeViewModel(ref.read(followAllRecipesUseCaseProvider), ref.read(refreshAllRecipesUseCaseProvider), ref.read(requestAdditionalAllRecipesUseCaseProvider), searchOption ?? RecipeSearchOption()));
-final recipeSelectionViewModelProvider = ChangeNotifierProvider.autoDispose.family<RecipeSelectionViewModel, List<RecipeSummary>>((ref, recipes) => RecipeSelectionViewModel(ref.read(followTagsUseCaseProvider), ref.read(refreshTagsUseCaseProvider), recipes.toList()));
+final recipeSelectionViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => RecipeSelectionViewModel(ref.read(followTagsUseCaseProvider), ref.read(refreshTagsUseCaseProvider)));
 final tagViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => TagViewModel(ref.read(followTagsUseCaseProvider), ref.read(refreshTagsUseCaseProvider), ref.read(reorderTagUseCaseProvider)));
 final menuViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => MenuViewModel(ref.read(followAllMenusUseCaseProvider), ref.read(refreshAllMenusUseCaseProvider), ref.read(requestAdditionalAllMenusUseCaseProvider)));
 final searchViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => SearchViewModel(ref.read(followTagsUseCaseProvider), ref.read(refreshTagsUseCaseProvider)));
