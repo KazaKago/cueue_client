@@ -14,7 +14,7 @@ class AuthenticateWithAppleUseCaseImpl implements AuthenticateWithAppleUseCase {
   Future<SignInCheckResult> call(AppleAuthInfo authInfo) async {
     await _authorizeApiRepository.authenticateWithApple(authInfo);
     final user = await _userRepository.create();
-    if (user.workspaces.isEmpty) {
+    if (user.workspace == null) {
       return SignInCheckResult.workspaceCreation;
     } else {
       return SignInCheckResult.afterSignIn;

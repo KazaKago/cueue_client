@@ -9,10 +9,10 @@ class OrderTagApi {
 
   final DioCreator _dioCreator;
 
-  Future<List<TagResponse>> execute(int workspaceId, TagOrderRequest request) async {
+  Future<List<TagResponse>> execute(TagOrderRequest request) async {
     try {
       final dio = await _dioCreator.create();
-      final response = await dio.patch<List<dynamic>>('/$workspaceId/tags/order', data: request);
+      final response = await dio.patch<List<dynamic>>('/tags/order', data: request);
       return response.data!.map<TagResponse>((dynamic json) {
         return TagResponse.fromJson(json as Map<String, dynamic>);
       }).toList();

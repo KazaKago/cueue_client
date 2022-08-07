@@ -7,7 +7,7 @@ part 'google_provider.freezed.dart';
 @freezed
 class GoogleProvider with _$GoogleProvider implements LoginProvider {
   const factory GoogleProvider({
-    required UserId uid,
+    required String uid,
     required String displayName,
   }) = _GoogleProvider;
 }

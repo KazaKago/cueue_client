@@ -9,13 +9,14 @@ part of 'user_response.dart';
 _$_UserResponse _$$_UserResponseFromJson(Map<String, dynamic> json) =>
     _$_UserResponse(
       id: json['id'] as int,
-      workspaces: (json['workspaces'] as List<dynamic>)
-          .map((e) => WorkspaceResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      workspace: json['workspace'] == null
+          ? null
+          : WorkspaceResponse.fromJson(
+              json['workspace'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_UserResponseToJson(_$_UserResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'workspaces': instance.workspaces,
+      'workspace': instance.workspace,
     };

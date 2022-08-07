@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UserId {
-  String get value => throw _privateConstructorUsedError;
+  int get value => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserIdCopyWith<UserId> get copyWith => throw _privateConstructorUsedError;
@@ -26,7 +26,7 @@ mixin _$UserId {
 abstract class $UserIdCopyWith<$Res> {
   factory $UserIdCopyWith(UserId value, $Res Function(UserId) then) =
       _$UserIdCopyWithImpl<$Res>;
-  $Res call({String value});
+  $Res call({int value});
 }
 
 /// @nodoc
@@ -45,7 +45,7 @@ class _$UserIdCopyWithImpl<$Res> implements $UserIdCopyWith<$Res> {
       value: value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ));
   }
 }
@@ -55,7 +55,7 @@ abstract class _$$_UserIdCopyWith<$Res> implements $UserIdCopyWith<$Res> {
   factory _$$_UserIdCopyWith(_$_UserId value, $Res Function(_$_UserId) then) =
       __$$_UserIdCopyWithImpl<$Res>;
   @override
-  $Res call({String value});
+  $Res call({int value});
 }
 
 /// @nodoc
@@ -75,7 +75,7 @@ class __$$_UserIdCopyWithImpl<$Res> extends _$UserIdCopyWithImpl<$Res>
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ));
   }
 }
@@ -86,7 +86,7 @@ class _$_UserId implements _UserId {
   const _$_UserId(this.value);
 
   @override
-  final String value;
+  final int value;
 
   @override
   String toString() {
@@ -112,10 +112,10 @@ class _$_UserId implements _UserId {
 }
 
 abstract class _UserId implements UserId {
-  const factory _UserId(final String value) = _$_UserId;
+  const factory _UserId(final int value) = _$_UserId;
 
   @override
-  String get value;
+  int get value;
   @override
   @JsonKey(ignore: true)
   _$$_UserIdCopyWith<_$_UserId> get copyWith =>

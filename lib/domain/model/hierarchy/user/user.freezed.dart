@@ -21,7 +21,7 @@ mixin _$User {
   Uri? get photoUrl => throw _privateConstructorUsedError;
   GoogleProvider? get googleProvider => throw _privateConstructorUsedError;
   AppleProvider? get appleProvider => throw _privateConstructorUsedError;
-  List<Workspace> get workspaces => throw _privateConstructorUsedError;
+  Workspace? get workspace => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
@@ -37,11 +37,12 @@ abstract class $UserCopyWith<$Res> {
       Uri? photoUrl,
       GoogleProvider? googleProvider,
       AppleProvider? appleProvider,
-      List<Workspace> workspaces});
+      Workspace? workspace});
 
   $UserIdCopyWith<$Res> get id;
   $GoogleProviderCopyWith<$Res>? get googleProvider;
   $AppleProviderCopyWith<$Res>? get appleProvider;
+  $WorkspaceCopyWith<$Res>? get workspace;
 }
 
 /// @nodoc
@@ -59,7 +60,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? photoUrl = freezed,
     Object? googleProvider = freezed,
     Object? appleProvider = freezed,
-    Object? workspaces = freezed,
+    Object? workspace = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -82,10 +83,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.appleProvider
           : appleProvider // ignore: cast_nullable_to_non_nullable
               as AppleProvider?,
-      workspaces: workspaces == freezed
-          ? _value.workspaces
-          : workspaces // ignore: cast_nullable_to_non_nullable
-              as List<Workspace>,
+      workspace: workspace == freezed
+          ? _value.workspace
+          : workspace // ignore: cast_nullable_to_non_nullable
+              as Workspace?,
     ));
   }
 
@@ -117,6 +118,17 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       return _then(_value.copyWith(appleProvider: value));
     });
   }
+
+  @override
+  $WorkspaceCopyWith<$Res>? get workspace {
+    if (_value.workspace == null) {
+      return null;
+    }
+
+    return $WorkspaceCopyWith<$Res>(_value.workspace!, (value) {
+      return _then(_value.copyWith(workspace: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -130,7 +142,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       Uri? photoUrl,
       GoogleProvider? googleProvider,
       AppleProvider? appleProvider,
-      List<Workspace> workspaces});
+      Workspace? workspace});
 
   @override
   $UserIdCopyWith<$Res> get id;
@@ -138,6 +150,8 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   $GoogleProviderCopyWith<$Res>? get googleProvider;
   @override
   $AppleProviderCopyWith<$Res>? get appleProvider;
+  @override
+  $WorkspaceCopyWith<$Res>? get workspace;
 }
 
 /// @nodoc
@@ -156,7 +170,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? photoUrl = freezed,
     Object? googleProvider = freezed,
     Object? appleProvider = freezed,
-    Object? workspaces = freezed,
+    Object? workspace = freezed,
   }) {
     return _then(_$_User(
       id: id == freezed
@@ -179,10 +193,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.appleProvider
           : appleProvider // ignore: cast_nullable_to_non_nullable
               as AppleProvider?,
-      workspaces: workspaces == freezed
-          ? _value._workspaces
-          : workspaces // ignore: cast_nullable_to_non_nullable
-              as List<Workspace>,
+      workspace: workspace == freezed
+          ? _value.workspace
+          : workspace // ignore: cast_nullable_to_non_nullable
+              as Workspace?,
     ));
   }
 }
@@ -196,9 +210,8 @@ class _$_User extends _User {
       required this.photoUrl,
       required this.googleProvider,
       required this.appleProvider,
-      required final List<Workspace> workspaces})
-      : _workspaces = workspaces,
-        super._();
+      required this.workspace})
+      : super._();
 
   @override
   final UserId id;
@@ -210,16 +223,12 @@ class _$_User extends _User {
   final GoogleProvider? googleProvider;
   @override
   final AppleProvider? appleProvider;
-  final List<Workspace> _workspaces;
   @override
-  List<Workspace> get workspaces {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_workspaces);
-  }
+  final Workspace? workspace;
 
   @override
   String toString() {
-    return 'User(id: $id, displayName: $displayName, photoUrl: $photoUrl, googleProvider: $googleProvider, appleProvider: $appleProvider, workspaces: $workspaces)';
+    return 'User(id: $id, displayName: $displayName, photoUrl: $photoUrl, googleProvider: $googleProvider, appleProvider: $appleProvider, workspace: $workspace)';
   }
 
   @override
@@ -235,8 +244,7 @@ class _$_User extends _User {
                 .equals(other.googleProvider, googleProvider) &&
             const DeepCollectionEquality()
                 .equals(other.appleProvider, appleProvider) &&
-            const DeepCollectionEquality()
-                .equals(other._workspaces, _workspaces));
+            const DeepCollectionEquality().equals(other.workspace, workspace));
   }
 
   @override
@@ -247,7 +255,7 @@ class _$_User extends _User {
       const DeepCollectionEquality().hash(photoUrl),
       const DeepCollectionEquality().hash(googleProvider),
       const DeepCollectionEquality().hash(appleProvider),
-      const DeepCollectionEquality().hash(_workspaces));
+      const DeepCollectionEquality().hash(workspace));
 
   @JsonKey(ignore: true)
   @override
@@ -262,7 +270,7 @@ abstract class _User extends User {
       required final Uri? photoUrl,
       required final GoogleProvider? googleProvider,
       required final AppleProvider? appleProvider,
-      required final List<Workspace> workspaces}) = _$_User;
+      required final Workspace? workspace}) = _$_User;
   const _User._() : super._();
 
   @override
@@ -276,7 +284,7 @@ abstract class _User extends User {
   @override
   AppleProvider? get appleProvider;
   @override
-  List<Workspace> get workspaces;
+  Workspace? get workspace;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

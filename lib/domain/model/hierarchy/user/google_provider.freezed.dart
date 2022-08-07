@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$GoogleProvider {
-  UserId get uid => throw _privateConstructorUsedError;
+  String get uid => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,9 +29,7 @@ abstract class $GoogleProviderCopyWith<$Res> {
   factory $GoogleProviderCopyWith(
           GoogleProvider value, $Res Function(GoogleProvider) then) =
       _$GoogleProviderCopyWithImpl<$Res>;
-  $Res call({UserId uid, String displayName});
-
-  $UserIdCopyWith<$Res> get uid;
+  $Res call({String uid, String displayName});
 }
 
 /// @nodoc
@@ -52,19 +50,12 @@ class _$GoogleProviderCopyWithImpl<$Res>
       uid: uid == freezed
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
-              as UserId,
+              as String,
       displayName: displayName == freezed
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String,
     ));
-  }
-
-  @override
-  $UserIdCopyWith<$Res> get uid {
-    return $UserIdCopyWith<$Res>(_value.uid, (value) {
-      return _then(_value.copyWith(uid: value));
-    });
   }
 }
 
@@ -75,10 +66,7 @@ abstract class _$$_GoogleProviderCopyWith<$Res>
           _$_GoogleProvider value, $Res Function(_$_GoogleProvider) then) =
       __$$_GoogleProviderCopyWithImpl<$Res>;
   @override
-  $Res call({UserId uid, String displayName});
-
-  @override
-  $UserIdCopyWith<$Res> get uid;
+  $Res call({String uid, String displayName});
 }
 
 /// @nodoc
@@ -101,7 +89,7 @@ class __$$_GoogleProviderCopyWithImpl<$Res>
       uid: uid == freezed
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
-              as UserId,
+              as String,
       displayName: displayName == freezed
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
@@ -116,7 +104,7 @@ class _$_GoogleProvider implements _GoogleProvider {
   const _$_GoogleProvider({required this.uid, required this.displayName});
 
   @override
-  final UserId uid;
+  final String uid;
   @override
   final String displayName;
 
@@ -149,11 +137,11 @@ class _$_GoogleProvider implements _GoogleProvider {
 
 abstract class _GoogleProvider implements GoogleProvider {
   const factory _GoogleProvider(
-      {required final UserId uid,
+      {required final String uid,
       required final String displayName}) = _$_GoogleProvider;
 
   @override
-  UserId get uid;
+  String get uid;
   @override
   String get displayName;
   @override

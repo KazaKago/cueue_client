@@ -9,10 +9,10 @@ class UpdateMenuApi {
 
   final DioCreator _dioCreator;
 
-  Future<MenuResponse> execute(int workspaceId, int menuId, MenuRequest request) async {
+  Future<MenuResponse> execute(int menuId, MenuRequest request) async {
     try {
       final dio = await _dioCreator.create();
-      final response = await dio.patch<Map<String, dynamic>>('/$workspaceId/menus/$menuId', data: request);
+      final response = await dio.put<Map<String, dynamic>>('/menus/$menuId', data: request);
       return MenuResponse.fromJson(response.data!);
     } on DioError catch (dioError) {
       throw dioError.parseException();

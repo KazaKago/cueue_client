@@ -9,10 +9,10 @@ class CreateMenuApi {
 
   final DioCreator _dioCreator;
 
-  Future<MenuResponse> execute(int workspaceId, MenuRequest request) async {
+  Future<MenuResponse> execute(MenuRequest request) async {
     try {
       final dio = await _dioCreator.create();
-      final response = await dio.post<Map<String, dynamic>>('/$workspaceId/menus', data: request);
+      final response = await dio.post<Map<String, dynamic>>('/menus', data: request);
       return MenuResponse.fromJson(response.data!);
     } on DioError catch (dioError) {
       throw dioError.parseException();

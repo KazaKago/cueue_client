@@ -7,10 +7,10 @@ class DeleteTagApi {
 
   final DioCreator _dioCreator;
 
-  Future<void> execute(int workspaceId, int tagId) async {
+  Future<void> execute(int tagId) async {
     try {
       final dio = await _dioCreator.create();
-      await dio.delete<void>('/$workspaceId/tags/$tagId');
+      await dio.delete<void>('/tags/$tagId');
     } on DioError catch (dioError) {
       throw dioError.parseException();
     }

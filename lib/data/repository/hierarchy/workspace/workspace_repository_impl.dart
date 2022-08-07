@@ -20,7 +20,7 @@ class WorkspaceRepositoryImpl implements WorkspaceRepository {
     final user = await userFlowable.getData(from: GettingFrom.cache);
     if (user != null) {
       final workspace = _workspaceResponseMapper.map(response);
-      final fixedUser = user.copyWith(workspaces: [workspace] + user.workspaces);
+      final fixedUser = user.copyWith(workspace: workspace);
       await userFlowable.update(fixedUser);
     }
   }

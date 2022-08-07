@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Workspace {
-  WorkspaceId get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  List<UserSummary> get users => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $WorkspaceCopyWith<Workspace> get copyWith =>
@@ -28,9 +28,7 @@ mixin _$Workspace {
 abstract class $WorkspaceCopyWith<$Res> {
   factory $WorkspaceCopyWith(Workspace value, $Res Function(Workspace) then) =
       _$WorkspaceCopyWithImpl<$Res>;
-  $Res call({WorkspaceId id, String name});
-
-  $WorkspaceIdCopyWith<$Res> get id;
+  $Res call({String name, List<UserSummary> users});
 }
 
 /// @nodoc
@@ -43,26 +41,19 @@ class _$WorkspaceCopyWithImpl<$Res> implements $WorkspaceCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? id = freezed,
     Object? name = freezed,
+    Object? users = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as WorkspaceId,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      users: users == freezed
+          ? _value.users
+          : users // ignore: cast_nullable_to_non_nullable
+              as List<UserSummary>,
     ));
-  }
-
-  @override
-  $WorkspaceIdCopyWith<$Res> get id {
-    return $WorkspaceIdCopyWith<$Res>(_value.id, (value) {
-      return _then(_value.copyWith(id: value));
-    });
   }
 }
 
@@ -72,10 +63,7 @@ abstract class _$$_WorkspaceCopyWith<$Res> implements $WorkspaceCopyWith<$Res> {
           _$_Workspace value, $Res Function(_$_Workspace) then) =
       __$$_WorkspaceCopyWithImpl<$Res>;
   @override
-  $Res call({WorkspaceId id, String name});
-
-  @override
-  $WorkspaceIdCopyWith<$Res> get id;
+  $Res call({String name, List<UserSummary> users});
 }
 
 /// @nodoc
@@ -90,18 +78,18 @@ class __$$_WorkspaceCopyWithImpl<$Res> extends _$WorkspaceCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? id = freezed,
     Object? name = freezed,
+    Object? users = freezed,
   }) {
     return _then(_$_Workspace(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as WorkspaceId,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      users: users == freezed
+          ? _value._users
+          : users // ignore: cast_nullable_to_non_nullable
+              as List<UserSummary>,
     ));
   }
 }
@@ -109,16 +97,22 @@ class __$$_WorkspaceCopyWithImpl<$Res> extends _$WorkspaceCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Workspace implements _Workspace {
-  const _$_Workspace({required this.id, required this.name});
+  const _$_Workspace(
+      {required this.name, required final List<UserSummary> users})
+      : _users = users;
 
   @override
-  final WorkspaceId id;
-  @override
   final String name;
+  final List<UserSummary> _users;
+  @override
+  List<UserSummary> get users {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_users);
+  }
 
   @override
   String toString() {
-    return 'Workspace(id: $id, name: $name)';
+    return 'Workspace(name: $name, users: $users)';
   }
 
   @override
@@ -126,15 +120,15 @@ class _$_Workspace implements _Workspace {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Workspace &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name));
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other._users, _users));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name));
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(_users));
 
   @JsonKey(ignore: true)
   @override
@@ -144,13 +138,13 @@ class _$_Workspace implements _Workspace {
 
 abstract class _Workspace implements Workspace {
   const factory _Workspace(
-      {required final WorkspaceId id,
-      required final String name}) = _$_Workspace;
+      {required final String name,
+      required final List<UserSummary> users}) = _$_Workspace;
 
   @override
-  WorkspaceId get id;
-  @override
   String get name;
+  @override
+  List<UserSummary> get users;
   @override
   @JsonKey(ignore: true)
   _$$_WorkspaceCopyWith<_$_Workspace> get copyWith =>

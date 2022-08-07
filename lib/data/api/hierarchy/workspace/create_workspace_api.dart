@@ -12,7 +12,7 @@ class CreateWorkspaceApi {
   Future<WorkspaceResponse> execute(WorkspaceRequest request) async {
     try {
       final dio = await _dioCreator.create();
-      final response = await dio.post<Map<String, dynamic>>('/workspaces', data: request);
+      final response = await dio.post<Map<String, dynamic>>('/users/me/workspace', data: request);
       return WorkspaceResponse.fromJson(response.data!);
     } on DioError catch (dioError) {
       throw dioError.parseException();

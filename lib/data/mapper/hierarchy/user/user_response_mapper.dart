@@ -17,20 +17,20 @@ class UserResponseMapper {
 
   User map(auth.User firebaseUser, UserResponse userResponse) {
     return User(
-      id: UserId(firebaseUser.uid),
+      id: UserId(userResponse.id),
       displayName: firebaseUser.displayName ?? '',
       photoUrl: (firebaseUser.photoURL != null) ? Uri.parse(firebaseUser.photoURL!) : null,
-      googleProvider: _getLoginProvider(firebaseUser, const GoogleProviderId(), (userId, displayName) => GoogleProvider(uid: userId, displayName: displayName)),
-      appleProvider: _getLoginProvider(firebaseUser, const AppleProviderId(), (userId, displayName) => AppleProvider(uid: userId, displayName: displayName)),
-      workspaces: userResponse.workspaces.map(_workspaceResponseMapper.map).toList(),
+      googleProvider: _getLoginProvider(firebaseUser, const GoogleProviderId(), (uid, displayName) => GoogleProvider(uid: uid, displayName: displayName)),
+      appleProvider: _getLoginProvider(firebaseUser, const AppleProviderId(), (uid, displayName) => AppleProvider(uid: uid, displayName: displayName)),
+      workspace: (userResponse.workspace != null) ? _workspaceResponseMapper.map(userResponse.workspace!) : null,
     );
   }
 
-  T? _getLoginProvider<T extends LoginProvider>(auth.User firebaseUser, ProviderId providerId, T Function(UserId userId, String displayName) transform) {
+  T? _getLoginProvider<T extends LoginProvider>(auth.User firebaseUser, ProviderId providerId, T Function(String uid, String displayName) transform) {
     final userInfos = firebaseUser.providerData.where((element) => element.providerId == providerId.value).toList();
     if (userInfos.isNotEmpty) {
       final userInfo = userInfos.first;
-      return transform(UserId(userInfo.uid!), userInfo.displayName ?? userInfo.email ?? '');
+      return transform(userInfo.uid!, userInfo.displayName ?? userInfo.email ?? '');
     } else {
       return null;
     }

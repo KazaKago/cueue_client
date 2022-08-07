@@ -5,7 +5,6 @@ import 'package:cueue/data/mapper/hierarchy/menu/menu_request_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/menu/menu_response_mapper.dart';
 import 'package:cueue/data/repository/flowable/menu/menu_flowable_factory.dart';
 import 'package:cueue/data/repository/flowable/menu/menu_summary_flowable_factory.dart';
-import 'package:cueue/data/repository/flowable/user/user_flowable_factory.dart';
 import 'package:cueue/domain/model/hierarchy/menu/menu.dart';
 import 'package:cueue/domain/model/hierarchy/menu/menu_id.dart';
 import 'package:cueue/domain/model/hierarchy/menu/menu_registration.dart';
@@ -15,7 +14,7 @@ import 'package:cueue/domain/repository/hierarchy/menu/menu_repository.dart';
 import 'package:store_flowable/store_flowable.dart';
 
 class MenuRepositoryImpl implements MenuRepository {
-  const MenuRepositoryImpl(this._createMenuApi, this._updateMenuApi, this._deleteMenuApi, this._menuResponseMapper, this._menuRequestMapper, this._menuFlowableFactory, this._menuSummaryFlowableFactory, this._userFlowableFactory);
+  const MenuRepositoryImpl(this._createMenuApi, this._updateMenuApi, this._deleteMenuApi, this._menuResponseMapper, this._menuRequestMapper, this._menuFlowableFactory, this._menuSummaryFlowableFactory);
 
   final CreateMenuApi _createMenuApi;
   final UpdateMenuApi _updateMenuApi;
@@ -24,7 +23,6 @@ class MenuRepositoryImpl implements MenuRepository {
   final MenuRequestMapper _menuRequestMapper;
   final MenuFlowableFactory _menuFlowableFactory;
   final MenuSummaryFlowableFactory _menuSummaryFlowableFactory;
-  final UserFlowableFactory _userFlowableFactory;
 
   @override
   LoadingStateStream<Menu> followData(MenuId menuId) {
@@ -58,8 +56,7 @@ class MenuRepositoryImpl implements MenuRepository {
 
   @override
   Future<void> create(MenuRegistration menuRegistration) async {
-    final user = await _userFlowableFactory.create(null).requireData();
-    final response = await _createMenuApi.execute(user.currentWorkspace.id.value, _menuRequestMapper.map(menuRegistration));
+    final response = await _createMenuApi.execute(_menuRequestMapper.map(menuRegistration));
     final menu = _menuResponseMapper.map(response);
 
     final menuFlowable = _menuFlowableFactory.create(menu.id);
@@ -75,8 +72,7 @@ class MenuRepositoryImpl implements MenuRepository {
 
   @override
   Future<void> update(MenuId menuId, MenuRegistration menuRegistration) async {
-    final user = await _userFlowableFactory.create(null).requireData();
-    final response = await _updateMenuApi.execute(user.currentWorkspace.id.value, menuId.value, _menuRequestMapper.map(menuRegistration));
+    final response = await _updateMenuApi.execute(menuId.value, _menuRequestMapper.map(menuRegistration));
     final menu = _menuResponseMapper.map(response);
 
     final menuFlowable = _menuFlowableFactory.create(menu.id);
@@ -92,8 +88,7 @@ class MenuRepositoryImpl implements MenuRepository {
 
   @override
   Future<void> delete(MenuId menuId) async {
-    final user = await _userFlowableFactory.create(null).requireData();
-    await _deleteMenuApi.execute(user.currentWorkspace.id.value, menuId.value);
+    await _deleteMenuApi.execute(menuId.value);
 
     final menuFlowable = _menuFlowableFactory.create(menuId);
     await menuFlowable.update(null);

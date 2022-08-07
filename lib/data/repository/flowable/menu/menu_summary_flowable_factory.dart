@@ -37,8 +37,7 @@ class MenuSummaryFlowableFactory implements PaginationStoreFlowableFactory<void,
 
   @override
   Future<Fetched<List<MenuSummary>>> fetchDataFromOrigin(void param) async {
-    final user = await _userFlowableFactory.create(null).requireData();
-    final response = await _getMenusApi.execute(user.currentWorkspace.id.value);
+    final response = await _getMenusApi.execute();
     final recipes = response.map(_menuSummaryResponseMapper.map).toList();
     return Fetched(
       data: recipes,
@@ -48,8 +47,7 @@ class MenuSummaryFlowableFactory implements PaginationStoreFlowableFactory<void,
 
   @override
   Future<Fetched<List<MenuSummary>>> fetchNextDataFromOrigin(String nextKey, void param) async {
-    final user = await _userFlowableFactory.create(null).requireData();
-    final response = await _getMenusApi.execute(user.currentWorkspace.id.value, afterId: int.parse(nextKey));
+    final response = await _getMenusApi.execute(afterId: int.parse(nextKey));
     final recipes = response.map(_menuSummaryResponseMapper.map).toList();
     return Fetched(
       data: recipes,

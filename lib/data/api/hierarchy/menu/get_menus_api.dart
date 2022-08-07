@@ -8,12 +8,12 @@ class GetMenusApi {
 
   final DioCreator _dioCreator;
 
-  Future<List<MenuSummaryResponse>> execute(int workspaceId, {int? afterId}) async {
+  Future<List<MenuSummaryResponse>> execute({int? afterId}) async {
     try {
       final queryParameters = <String, dynamic>{};
       if (afterId != null) queryParameters.addAll(<String, dynamic>{'after_id': afterId});
       final dio = await _dioCreator.create();
-      final response = await dio.get<List<dynamic>>('/$workspaceId/menus', queryParameters: queryParameters);
+      final response = await dio.get<List<dynamic>>('/menus', queryParameters: queryParameters);
       return response.data!.map<MenuSummaryResponse>((dynamic json) {
         return MenuSummaryResponse.fromJson(json as Map<String, dynamic>);
       }).toList();

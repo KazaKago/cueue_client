@@ -7,10 +7,10 @@ class DeleteMenuApi {
 
   final DioCreator _dioCreator;
 
-  Future<void> execute(int workspaceId, int menuId) async {
+  Future<void> execute(int menuId) async {
     try {
       final dio = await _dioCreator.create();
-      await dio.delete<void>('/$workspaceId/menus/$menuId');
+      await dio.delete<void>('/menus/$menuId');
     } on DioError catch (dioError) {
       throw dioError.parseException();
     }

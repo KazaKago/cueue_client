@@ -8,10 +8,10 @@ class GetTagsApi {
 
   final DioCreator _dioCreator;
 
-  Future<List<TagResponse>> execute(int workspaceId) async {
+  Future<List<TagResponse>> execute() async {
     try {
       final dio = await _dioCreator.create();
-      final response = await dio.get<List<dynamic>>('/$workspaceId/tags');
+      final response = await dio.get<List<dynamic>>('/tags');
       return response.data!.map<TagResponse>((dynamic json) {
         return TagResponse.fromJson(json as Map<String, dynamic>);
       }).toList();

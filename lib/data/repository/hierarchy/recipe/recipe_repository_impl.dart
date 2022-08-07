@@ -9,7 +9,6 @@ import 'package:cueue/data/repository/flowable/menu/menu_flowable_factory.dart';
 import 'package:cueue/data/repository/flowable/menu/menu_summary_flowable_factory.dart';
 import 'package:cueue/data/repository/flowable/recipe/recipe_flowable_factory.dart';
 import 'package:cueue/data/repository/flowable/recipe/recipes_flowable_factory.dart';
-import 'package:cueue/data/repository/flowable/user/user_flowable_factory.dart';
 import 'package:cueue/domain/model/hierarchy/menu/menu_summary_impl.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_id.dart';
@@ -20,7 +19,7 @@ import 'package:cueue/domain/repository/hierarchy/recipe/recipe_repository.dart'
 import 'package:store_flowable/store_flowable.dart';
 
 class RecipeRepositoryImpl implements RecipeRepository {
-  const RecipeRepositoryImpl(this._recipeCache, this._menuCache, this._createRecipeApi, this._updateRecipeApi, this._deleteRecipeApi, this._recipeResponseMapper, this._recipeRequestMapper, this._recipesFlowableFactory, this._recipeFlowableFactory, this._userFlowableFactory, this._menuFlowableFactory, this._menuSummaryFlowableFactory);
+  const RecipeRepositoryImpl(this._recipeCache, this._menuCache, this._createRecipeApi, this._updateRecipeApi, this._deleteRecipeApi, this._recipeResponseMapper, this._recipeRequestMapper, this._recipesFlowableFactory, this._recipeFlowableFactory, this._menuFlowableFactory, this._menuSummaryFlowableFactory);
 
   final RecipeCache _recipeCache;
   final MenuCache _menuCache;
@@ -31,7 +30,6 @@ class RecipeRepositoryImpl implements RecipeRepository {
   final RecipeRequestMapper _recipeRequestMapper;
   final RecipesFlowableFactory _recipesFlowableFactory;
   final RecipeFlowableFactory _recipeFlowableFactory;
-  final UserFlowableFactory _userFlowableFactory;
   final MenuFlowableFactory _menuFlowableFactory;
   final MenuSummaryFlowableFactory _menuSummaryFlowableFactory;
 
@@ -67,8 +65,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
 
   @override
   Future<void> create(RecipeRegistration recipeRegistration) async {
-    final user = await _userFlowableFactory.create(null).requireData();
-    final response = await _createRecipeApi.execute(user.currentWorkspace.id.value, _recipeRequestMapper.map(recipeRegistration));
+    final response = await _createRecipeApi.execute(_recipeRequestMapper.map(recipeRegistration));
     final recipe = _recipeResponseMapper.map(response);
 
     // 1. Add to Recipe cache
@@ -96,8 +93,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
 
   @override
   Future<void> update(RecipeId recipeId, RecipeRegistration recipeRegistration) async {
-    final user = await _userFlowableFactory.create(null).requireData();
-    final response = await _updateRecipeApi.execute(user.currentWorkspace.id.value, recipeId.value, _recipeRequestMapper.map(recipeRegistration));
+    final response = await _updateRecipeApi.execute(recipeId.value, _recipeRequestMapper.map(recipeRegistration));
     final recipe = _recipeResponseMapper.map(response);
 
     // 1. Update for Recipe cache
@@ -170,8 +166,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
 
   @override
   Future<void> delete(RecipeId recipeId) async {
-    final user = await _userFlowableFactory.create(null).requireData();
-    await _deleteRecipeApi.execute(user.currentWorkspace.id.value, recipeId.value);
+    await _deleteRecipeApi.execute(recipeId.value);
 
     // 1. Remove from Recipe cache
     final recipeFlowable = _recipeFlowableFactory.create(recipeId);

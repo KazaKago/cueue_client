@@ -8,10 +8,10 @@ class GetRecipeApi {
 
   final DioCreator _dioCreator;
 
-  Future<RecipeResponse> execute(int workspaceId, {required int recipeId}) async {
+  Future<RecipeResponse> execute({required int recipeId}) async {
     try {
       final dio = await _dioCreator.create();
-      final response = await dio.get<Map<String, dynamic>>('/$workspaceId/recipes/$recipeId');
+      final response = await dio.get<Map<String, dynamic>>('/recipes/$recipeId');
       return RecipeResponse.fromJson(response.data!);
     } on DioError catch (dioError) {
       throw dioError.parseException();

@@ -2,19 +2,17 @@ import 'package:cueue/data/api/hierarchy/menu/get_menu_api.dart';
 import 'package:cueue/data/cache/hierarchy/menu/menu_cache.dart';
 import 'package:cueue/data/cache/hierarchy/menu/menu_state_manager.dart';
 import 'package:cueue/data/mapper/hierarchy/menu/menu_response_mapper.dart';
-import 'package:cueue/data/repository/flowable/user/user_flowable_factory.dart';
 import 'package:cueue/domain/model/hierarchy/menu/menu.dart';
 import 'package:cueue/domain/model/hierarchy/menu/menu_id.dart';
 import 'package:store_flowable/store_flowable.dart';
 
 class MenuFlowableFactory implements StoreFlowableFactory<MenuId, Menu> {
-  MenuFlowableFactory(this._menuCache, this._menuStateManager, this._getMenuApi, this._menuResponseMapper, this._userFlowableFactory) : super();
+  MenuFlowableFactory(this._menuCache, this._menuStateManager, this._getMenuApi, this._menuResponseMapper) : super();
 
   final MenuCache _menuCache;
   final MenuStateManager _menuStateManager;
   final GetMenuApi _getMenuApi;
   final MenuResponseMapper _menuResponseMapper;
-  final UserFlowableFactory _userFlowableFactory;
 
   @override
   FlowableDataStateManager<MenuId> getFlowableDataStateManager() => _menuStateManager;
@@ -33,8 +31,7 @@ class MenuFlowableFactory implements StoreFlowableFactory<MenuId, Menu> {
 
   @override
   Future<Menu> fetchDataFromOrigin(MenuId param) async {
-    final user = await _userFlowableFactory.create(null).requireData();
-    final response = await _getMenuApi.execute(user.currentWorkspace.id.value, menuId: param.value);
+    final response = await _getMenuApi.execute(menuId: param.value);
     return _menuResponseMapper.map(response);
   }
 

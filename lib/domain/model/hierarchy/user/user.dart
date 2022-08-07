@@ -14,7 +14,7 @@ class User with _$User {
     required Uri? photoUrl,
     required GoogleProvider? googleProvider,
     required AppleProvider? appleProvider,
-    required List<Workspace> workspaces,
+    required Workspace? workspace,
   }) = _User;
 
   const User._();
@@ -23,5 +23,7 @@ class User with _$User {
 
   bool isAppleLinked() => appleProvider != null;
 
-  Workspace get currentWorkspace => workspaces.first;
+  Workspace requireWorkspace() {
+    return (workspace != null) ? workspace! : throw StateError('No element');
+  }
 }

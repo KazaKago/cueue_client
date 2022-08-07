@@ -24,8 +24,8 @@ mixin _$UserResponse {
   @JsonKey(name: 'id')
   int get id =>
       throw _privateConstructorUsedError; // ignore: invalid_annotation_target
-  @JsonKey(name: 'workspaces')
-  List<WorkspaceResponse> get workspaces => throw _privateConstructorUsedError;
+  @JsonKey(name: 'workspace')
+  WorkspaceResponse? get workspace => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,7 +40,9 @@ abstract class $UserResponseCopyWith<$Res> {
       _$UserResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') int id,
-      @JsonKey(name: 'workspaces') List<WorkspaceResponse> workspaces});
+      @JsonKey(name: 'workspace') WorkspaceResponse? workspace});
+
+  $WorkspaceResponseCopyWith<$Res>? get workspace;
 }
 
 /// @nodoc
@@ -54,18 +56,29 @@ class _$UserResponseCopyWithImpl<$Res> implements $UserResponseCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
-    Object? workspaces = freezed,
+    Object? workspace = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      workspaces: workspaces == freezed
-          ? _value.workspaces
-          : workspaces // ignore: cast_nullable_to_non_nullable
-              as List<WorkspaceResponse>,
+      workspace: workspace == freezed
+          ? _value.workspace
+          : workspace // ignore: cast_nullable_to_non_nullable
+              as WorkspaceResponse?,
     ));
+  }
+
+  @override
+  $WorkspaceResponseCopyWith<$Res>? get workspace {
+    if (_value.workspace == null) {
+      return null;
+    }
+
+    return $WorkspaceResponseCopyWith<$Res>(_value.workspace!, (value) {
+      return _then(_value.copyWith(workspace: value));
+    });
   }
 }
 
@@ -78,7 +91,10 @@ abstract class _$$_UserResponseCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(name: 'id') int id,
-      @JsonKey(name: 'workspaces') List<WorkspaceResponse> workspaces});
+      @JsonKey(name: 'workspace') WorkspaceResponse? workspace});
+
+  @override
+  $WorkspaceResponseCopyWith<$Res>? get workspace;
 }
 
 /// @nodoc
@@ -95,17 +111,17 @@ class __$$_UserResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? workspaces = freezed,
+    Object? workspace = freezed,
   }) {
     return _then(_$_UserResponse(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      workspaces: workspaces == freezed
-          ? _value._workspaces
-          : workspaces // ignore: cast_nullable_to_non_nullable
-              as List<WorkspaceResponse>,
+      workspace: workspace == freezed
+          ? _value.workspace
+          : workspace // ignore: cast_nullable_to_non_nullable
+              as WorkspaceResponse?,
     ));
   }
 }
@@ -114,11 +130,8 @@ class __$$_UserResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_UserResponse implements _UserResponse {
   const _$_UserResponse(
-      {@JsonKey(name: 'id')
-          required this.id,
-      @JsonKey(name: 'workspaces')
-          required final List<WorkspaceResponse> workspaces})
-      : _workspaces = workspaces;
+      {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'workspace') required this.workspace});
 
   factory _$_UserResponse.fromJson(Map<String, dynamic> json) =>
       _$$_UserResponseFromJson(json);
@@ -128,18 +141,13 @@ class _$_UserResponse implements _UserResponse {
   @JsonKey(name: 'id')
   final int id;
 // ignore: invalid_annotation_target
-  final List<WorkspaceResponse> _workspaces;
-// ignore: invalid_annotation_target
   @override
-  @JsonKey(name: 'workspaces')
-  List<WorkspaceResponse> get workspaces {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_workspaces);
-  }
+  @JsonKey(name: 'workspace')
+  final WorkspaceResponse? workspace;
 
   @override
   String toString() {
-    return 'UserResponse(id: $id, workspaces: $workspaces)';
+    return 'UserResponse(id: $id, workspace: $workspace)';
   }
 
   @override
@@ -148,8 +156,7 @@ class _$_UserResponse implements _UserResponse {
         (other.runtimeType == runtimeType &&
             other is _$_UserResponse &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other._workspaces, _workspaces));
+            const DeepCollectionEquality().equals(other.workspace, workspace));
   }
 
   @JsonKey(ignore: true)
@@ -157,7 +164,7 @@ class _$_UserResponse implements _UserResponse {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(_workspaces));
+      const DeepCollectionEquality().hash(workspace));
 
   @JsonKey(ignore: true)
   @override
@@ -176,8 +183,8 @@ abstract class _UserResponse implements UserResponse {
   const factory _UserResponse(
       {@JsonKey(name: 'id')
           required final int id,
-      @JsonKey(name: 'workspaces')
-          required final List<WorkspaceResponse> workspaces}) = _$_UserResponse;
+      @JsonKey(name: 'workspace')
+          required final WorkspaceResponse? workspace}) = _$_UserResponse;
 
   factory _UserResponse.fromJson(Map<String, dynamic> json) =
       _$_UserResponse.fromJson;
@@ -186,8 +193,8 @@ abstract class _UserResponse implements UserResponse {
   @JsonKey(name: 'id')
   int get id;
   @override // ignore: invalid_annotation_target
-  @JsonKey(name: 'workspaces')
-  List<WorkspaceResponse> get workspaces;
+  @JsonKey(name: 'workspace')
+  WorkspaceResponse? get workspace;
   @override
   @JsonKey(ignore: true)
   _$$_UserResponseCopyWith<_$_UserResponse> get copyWith =>

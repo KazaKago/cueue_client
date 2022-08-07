@@ -7,10 +7,10 @@ class DeleteRecipeApi {
 
   final DioCreator _dioCreator;
 
-  Future<void> execute(int workspaceId, int recipeId) async {
+  Future<void> execute(int recipeId) async {
     try {
       final dio = await _dioCreator.create();
-      await dio.delete<void>('/$workspaceId/recipes/$recipeId');
+      await dio.delete<void>('/recipes/$recipeId');
     } on DioError catch (dioError) {
       throw dioError.parseException();
     }

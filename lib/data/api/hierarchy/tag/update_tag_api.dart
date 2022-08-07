@@ -9,10 +9,10 @@ class UpdateTagApi {
 
   final DioCreator _dioCreator;
 
-  Future<TagResponse> execute(int workspaceId, int tagId, TagRequest request) async {
+  Future<TagResponse> execute(int tagId, TagRequest request) async {
     try {
       final dio = await _dioCreator.create();
-      final response = await dio.patch<Map<String, dynamic>>('/$workspaceId/tags/$tagId', data: request);
+      final response = await dio.put<Map<String, dynamic>>('/tags/$tagId', data: request);
       return TagResponse.fromJson(response.data!);
     } on DioError catch (dioError) {
       throw dioError.parseException();

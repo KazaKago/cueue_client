@@ -45,8 +45,7 @@ class TagRepositoryImpl implements TagRepository {
 
   @override
   Future<void> create(TagRegistration tagRegistration) async {
-    final user = await _userFlowableFactory.create(null).requireData();
-    final response = await _createTagApi.execute(user.currentWorkspace.id.value, _tagRequestMapper.map(tagRegistration));
+    final response = await _createTagApi.execute(_tagRequestMapper.map(tagRegistration));
     final tag = _tagResponseMapper.map(response);
 
     final tagFlowable = _tagFlowableFactory.create(null);
@@ -59,8 +58,7 @@ class TagRepositoryImpl implements TagRepository {
 
   @override
   Future<void> update(TagId tagId, TagRegistration tagRegistration) async {
-    final user = await _userFlowableFactory.create(null).requireData();
-    final response = await _updateTagApi.execute(user.currentWorkspace.id.value, tagId.value, _tagRequestMapper.map(tagRegistration));
+    final response = await _updateTagApi.execute(tagId.value, _tagRequestMapper.map(tagRegistration));
     final tag = _tagResponseMapper.map(response);
 
     final tagFlowable = _tagFlowableFactory.create(null);
@@ -83,8 +81,7 @@ class TagRepositoryImpl implements TagRepository {
 
   @override
   Future<void> delete(TagId tagId) async {
-    final user = await _userFlowableFactory.create(null).requireData();
-    await _deleteTagApi.execute(user.currentWorkspace.id.value, tagId.value);
+    await _deleteTagApi.execute(tagId.value);
 
     final tagFlowable = _tagFlowableFactory.create(null);
     final cachedTags = await tagFlowable.getData(from: GettingFrom.cache);
@@ -114,8 +111,7 @@ class TagRepositoryImpl implements TagRepository {
     }
 
     try {
-      final user = await _userFlowableFactory.create(null).requireData();
-      await _orderTagApi.execute(user.currentWorkspace.id.value, _tagOrderRequestMapper.map(tagIds));
+      await _orderTagApi.execute(_tagOrderRequestMapper.map(tagIds));
     } on Exception {
       await tagFlowable.update(cachedTags);
       rethrow;

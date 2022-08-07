@@ -11,7 +11,7 @@ class GetUserApi {
   Future<UserResponse> execute() async {
     try {
       final dio = await _dioCreator.create();
-      final response = await dio.get<Map<String, dynamic>>('/user');
+      final response = await dio.get<Map<String, dynamic>>('/users/me');
       return UserResponse.fromJson(response.data!);
     } on DioError catch (dioError) {
       throw dioError.parseException();
