@@ -36,7 +36,7 @@ class WorkspaceCreationPage extends HookConsumerWidget {
                   children: <Widget>[
                     Assets.images.icAppIcon.image(width: 256, height: 256),
                     const SizedBox(height: 12),
-                    Text(intl(context).appName, style: const TextStyle(fontSize: 60)),
+                    const Text('Workspace Creation', style: TextStyle(fontSize: 60)),
                   ],
                 ),
               ),

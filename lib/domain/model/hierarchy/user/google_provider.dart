@@ -1,5 +1,4 @@
 import 'package:cueue/domain/model/hierarchy/user/login_provider.dart';
-import 'package:cueue/domain/model/hierarchy/user/user_id.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'google_provider.freezed.dart';

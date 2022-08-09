@@ -18,6 +18,7 @@ import 'package:cueue/presentation/viewmodel/hierarchy/setting/settings_viewmode
 import 'package:cueue/presentation/viewmodel/hierarchy/splash/splash_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/tag/tag_editing_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/tag/tag_viewmodel.dart';
+import 'package:cueue/presentation/viewmodel/hierarchy/welcome/user_creation_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/welcome/workspace_creation_viewmodel.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -37,4 +38,5 @@ final recipeDetailViewModelProvider = ChangeNotifierProvider.autoDispose.family<
 final menuDetailViewModelProvider = ChangeNotifierProvider.autoDispose.family<MenuDetailViewModel, MenuId>((ref, menuId) => MenuDetailViewModel(ref.read(followMenuUseCaseProvider), ref.read(refreshMenuUseCaseProvider), menuId));
 final accountDeletionViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => AccountDeletionViewModel(ref.read(deleteAccountUseCaseProvider)));
 final workspaceCreationViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => WorkspaceCreationViewModel(ref.read(createWorkspaceUseCaseProvider)));
-final myPageViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => MyPageViewModel(ref.read(followUserUseCaseProvider), ref.read(refreshUserUseCaseProvider), ref.read(updateDisplayNameUseCaseProvider), ref.read(updateAvatarUseCaseProvider), ref.read(signOutUseCaseProvider)));
+final myPageViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => MyPageViewModel(ref.read(followUserUseCaseProvider), ref.read(refreshUserUseCaseProvider), ref.read(updateUserDisplayNameUseCaseProvider), ref.read(updateUserPhotoUseCaseProvider), ref.read(signOutUseCaseProvider)));
+final userCreationViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => UserCreationViewModel(ref.read(createUserUseCaseProvider)));

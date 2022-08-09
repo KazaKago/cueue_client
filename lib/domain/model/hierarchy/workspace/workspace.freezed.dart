@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Workspace {
+  WorkspaceId get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   List<UserSummary> get users => throw _privateConstructorUsedError;
 
@@ -28,7 +29,9 @@ mixin _$Workspace {
 abstract class $WorkspaceCopyWith<$Res> {
   factory $WorkspaceCopyWith(Workspace value, $Res Function(Workspace) then) =
       _$WorkspaceCopyWithImpl<$Res>;
-  $Res call({String name, List<UserSummary> users});
+  $Res call({WorkspaceId id, String name, List<UserSummary> users});
+
+  $WorkspaceIdCopyWith<$Res> get id;
 }
 
 /// @nodoc
@@ -41,10 +44,15 @@ class _$WorkspaceCopyWithImpl<$Res> implements $WorkspaceCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? users = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as WorkspaceId,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -55,6 +63,13 @@ class _$WorkspaceCopyWithImpl<$Res> implements $WorkspaceCopyWith<$Res> {
               as List<UserSummary>,
     ));
   }
+
+  @override
+  $WorkspaceIdCopyWith<$Res> get id {
+    return $WorkspaceIdCopyWith<$Res>(_value.id, (value) {
+      return _then(_value.copyWith(id: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -63,7 +78,10 @@ abstract class _$$_WorkspaceCopyWith<$Res> implements $WorkspaceCopyWith<$Res> {
           _$_Workspace value, $Res Function(_$_Workspace) then) =
       __$$_WorkspaceCopyWithImpl<$Res>;
   @override
-  $Res call({String name, List<UserSummary> users});
+  $Res call({WorkspaceId id, String name, List<UserSummary> users});
+
+  @override
+  $WorkspaceIdCopyWith<$Res> get id;
 }
 
 /// @nodoc
@@ -78,10 +96,15 @@ class __$$_WorkspaceCopyWithImpl<$Res> extends _$WorkspaceCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? users = freezed,
   }) {
     return _then(_$_Workspace(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as WorkspaceId,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -98,9 +121,13 @@ class __$$_WorkspaceCopyWithImpl<$Res> extends _$WorkspaceCopyWithImpl<$Res>
 
 class _$_Workspace implements _Workspace {
   const _$_Workspace(
-      {required this.name, required final List<UserSummary> users})
+      {required this.id,
+      required this.name,
+      required final List<UserSummary> users})
       : _users = users;
 
+  @override
+  final WorkspaceId id;
   @override
   final String name;
   final List<UserSummary> _users;
@@ -112,7 +139,7 @@ class _$_Workspace implements _Workspace {
 
   @override
   String toString() {
-    return 'Workspace(name: $name, users: $users)';
+    return 'Workspace(id: $id, name: $name, users: $users)';
   }
 
   @override
@@ -120,6 +147,7 @@ class _$_Workspace implements _Workspace {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Workspace &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other._users, _users));
   }
@@ -127,6 +155,7 @@ class _$_Workspace implements _Workspace {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(_users));
 
@@ -138,9 +167,12 @@ class _$_Workspace implements _Workspace {
 
 abstract class _Workspace implements Workspace {
   const factory _Workspace(
-      {required final String name,
+      {required final WorkspaceId id,
+      required final String name,
       required final List<UserSummary> users}) = _$_Workspace;
 
+  @override
+  WorkspaceId get id;
   @override
   String get name;
   @override

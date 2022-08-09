@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cueue/domain/model/hierarchy/content/content.dart';
 import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/exception/exception_handler.dart';
@@ -76,13 +77,13 @@ class MyPage extends HookConsumerWidget {
         height: 196,
         child: Center(child: CircularProgressIndicator()),
       ),
-      completed: (state) => _buildImage(context, ref, state.photoUrl),
+      completed: (state) => _buildImage(context, ref, state.photo),
       error: ErrorHandlingWidget.new,
     );
   }
 
-  Widget _buildImage(BuildContext context, WidgetRef ref, Uri? photoUrl) {
-    if (photoUrl != null) {
+  Widget _buildImage(BuildContext context, WidgetRef ref, Content? photo) {
+    if (photo != null) {
       return Center(
         child: Stack(
           alignment: AlignmentDirectional.bottomEnd,
@@ -94,7 +95,7 @@ class MyPage extends HookConsumerWidget {
                 height: 196,
                 child: CircleAvatar(
                   backgroundColor: Colors.transparent,
-                  backgroundImage: CachedNetworkImageProvider(photoUrl.toString()),
+                  backgroundImage: CachedNetworkImageProvider(photo.url.toString()),
                 ),
               ),
             ),

@@ -1,3 +1,4 @@
+import 'package:cueue/domain/model/hierarchy/workspace/workspace_registration.dart';
 import 'package:cueue/domain/usecase/hierarchy/workspace/create_workspace_usecase.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/foundation.dart';
@@ -34,7 +35,8 @@ class WorkspaceCreationViewModel with ChangeNotifier {
   Future<void> createWorkspace() async {
     isLoading = true;
     try {
-      await _createWorkspaceUseCase();
+      const registration = WorkspaceRegistration(name: 'personal'); // TODO
+      await _createWorkspaceUseCase(registration);
       completionEvent = Event(null);
     } on Exception catch (exception) {
       exceptionEvent = Event(exception);

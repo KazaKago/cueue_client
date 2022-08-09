@@ -22,7 +22,13 @@ UserSummaryResponse _$UserSummaryResponseFromJson(Map<String, dynamic> json) {
 mixin _$UserSummaryResponse {
 // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
+  int get id =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  @JsonKey(name: 'display_name')
+  String get displayName =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  @JsonKey(name: 'photo')
+  ContentResponse? get photo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +41,12 @@ abstract class $UserSummaryResponseCopyWith<$Res> {
   factory $UserSummaryResponseCopyWith(
           UserSummaryResponse value, $Res Function(UserSummaryResponse) then) =
       _$UserSummaryResponseCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: 'id') int id});
+  $Res call(
+      {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'display_name') String displayName,
+      @JsonKey(name: 'photo') ContentResponse? photo});
+
+  $ContentResponseCopyWith<$Res>? get photo;
 }
 
 /// @nodoc
@@ -50,13 +61,34 @@ class _$UserSummaryResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? displayName = freezed,
+    Object? photo = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      displayName: displayName == freezed
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String,
+      photo: photo == freezed
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as ContentResponse?,
     ));
+  }
+
+  @override
+  $ContentResponseCopyWith<$Res>? get photo {
+    if (_value.photo == null) {
+      return null;
+    }
+
+    return $ContentResponseCopyWith<$Res>(_value.photo!, (value) {
+      return _then(_value.copyWith(photo: value));
+    });
   }
 }
 
@@ -67,7 +99,13 @@ abstract class _$$_UserSummaryResponseCopyWith<$Res>
           $Res Function(_$_UserSummaryResponse) then) =
       __$$_UserSummaryResponseCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: 'id') int id});
+  $Res call(
+      {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'display_name') String displayName,
+      @JsonKey(name: 'photo') ContentResponse? photo});
+
+  @override
+  $ContentResponseCopyWith<$Res>? get photo;
 }
 
 /// @nodoc
@@ -84,12 +122,22 @@ class __$$_UserSummaryResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? displayName = freezed,
+    Object? photo = freezed,
   }) {
     return _then(_$_UserSummaryResponse(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      displayName: displayName == freezed
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String,
+      photo: photo == freezed
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as ContentResponse?,
     ));
   }
 }
@@ -97,7 +145,10 @@ class __$$_UserSummaryResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_UserSummaryResponse implements _UserSummaryResponse {
-  const _$_UserSummaryResponse({@JsonKey(name: 'id') required this.id});
+  const _$_UserSummaryResponse(
+      {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'display_name') required this.displayName,
+      @JsonKey(name: 'photo') required this.photo});
 
   factory _$_UserSummaryResponse.fromJson(Map<String, dynamic> json) =>
       _$$_UserSummaryResponseFromJson(json);
@@ -106,10 +157,18 @@ class _$_UserSummaryResponse implements _UserSummaryResponse {
   @override
   @JsonKey(name: 'id')
   final int id;
+// ignore: invalid_annotation_target
+  @override
+  @JsonKey(name: 'display_name')
+  final String displayName;
+// ignore: invalid_annotation_target
+  @override
+  @JsonKey(name: 'photo')
+  final ContentResponse? photo;
 
   @override
   String toString() {
-    return 'UserSummaryResponse(id: $id)';
+    return 'UserSummaryResponse(id: $id, displayName: $displayName, photo: $photo)';
   }
 
   @override
@@ -117,13 +176,19 @@ class _$_UserSummaryResponse implements _UserSummaryResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UserSummaryResponse &&
-            const DeepCollectionEquality().equals(other.id, id));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.displayName, displayName) &&
+            const DeepCollectionEquality().equals(other.photo, photo));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(displayName),
+      const DeepCollectionEquality().hash(photo));
 
   @JsonKey(ignore: true)
   @override
@@ -141,7 +206,10 @@ class _$_UserSummaryResponse implements _UserSummaryResponse {
 
 abstract class _UserSummaryResponse implements UserSummaryResponse {
   const factory _UserSummaryResponse(
-      {@JsonKey(name: 'id') required final int id}) = _$_UserSummaryResponse;
+          {@JsonKey(name: 'id') required final int id,
+          @JsonKey(name: 'display_name') required final String displayName,
+          @JsonKey(name: 'photo') required final ContentResponse? photo}) =
+      _$_UserSummaryResponse;
 
   factory _UserSummaryResponse.fromJson(Map<String, dynamic> json) =
       _$_UserSummaryResponse.fromJson;
@@ -149,6 +217,12 @@ abstract class _UserSummaryResponse implements UserSummaryResponse {
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
   int get id;
+  @override // ignore: invalid_annotation_target
+  @JsonKey(name: 'display_name')
+  String get displayName;
+  @override // ignore: invalid_annotation_target
+  @JsonKey(name: 'photo')
+  ContentResponse? get photo;
   @override
   @JsonKey(ignore: true)
   _$$_UserSummaryResponseCopyWith<_$_UserSummaryResponse> get copyWith =>

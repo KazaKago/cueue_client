@@ -8,7 +8,6 @@ import 'package:cueue/data/mapper/hierarchy/tag/tag_request_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/tag/tag_response_mapper.dart';
 import 'package:cueue/data/repository/flowable/recipe/recipe_flowable_factory.dart';
 import 'package:cueue/data/repository/flowable/tag/tag_flowable_factory.dart';
-import 'package:cueue/data/repository/flowable/user/user_flowable_factory.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe.dart';
 import 'package:cueue/domain/model/hierarchy/tag/tag.dart';
 import 'package:cueue/domain/model/hierarchy/tag/tag_id.dart';
@@ -17,7 +16,7 @@ import 'package:cueue/domain/repository/hierarchy/tag/tag_repository.dart';
 import 'package:store_flowable/store_flowable.dart';
 
 class TagRepositoryImpl implements TagRepository {
-  const TagRepositoryImpl(this._recipeCache, this._createTagApi, this._updateTagApi, this._deleteTagApi, this._orderTagApi, this._tagResponseMapper, this._tagRequestMapper, this._tagOrderRequestMapper, this._tagFlowableFactory, this._userFlowableFactory, this._recipeFlowableFactory);
+  const TagRepositoryImpl(this._recipeCache, this._createTagApi, this._updateTagApi, this._deleteTagApi, this._orderTagApi, this._tagResponseMapper, this._tagRequestMapper, this._tagOrderRequestMapper, this._tagFlowableFactory, this._recipeFlowableFactory);
 
   final RecipeCache _recipeCache;
   final CreateTagApi _createTagApi;
@@ -28,7 +27,6 @@ class TagRepositoryImpl implements TagRepository {
   final TagRequestMapper _tagRequestMapper;
   final TagOrderRequestMapper _tagOrderRequestMapper;
   final TagFlowableFactory _tagFlowableFactory;
-  final UserFlowableFactory _userFlowableFactory;
   final RecipeFlowableFactory _recipeFlowableFactory;
 
   @override

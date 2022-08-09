@@ -1,6 +1,6 @@
 import 'package:cueue/data/api/global/requester/dio_creator.dart';
 import 'package:cueue/data/api/global/requester/error_classifier.dart';
-import 'package:cueue/data/api/request/recipe/content_request.dart';
+import 'package:cueue/data/api/request/content/content_request.dart';
 import 'package:cueue/data/api/response/content/content_response.dart';
 import 'package:dio/dio.dart';
 

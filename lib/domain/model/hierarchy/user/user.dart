@@ -1,3 +1,4 @@
+import 'package:cueue/domain/model/hierarchy/content/content.dart';
 import 'package:cueue/domain/model/hierarchy/user/apple_provider.dart';
 import 'package:cueue/domain/model/hierarchy/user/google_provider.dart';
 import 'package:cueue/domain/model/hierarchy/user/user_id.dart';
@@ -11,7 +12,7 @@ class User with _$User {
   const factory User({
     required UserId id,
     required String displayName,
-    required Uri? photoUrl,
+    required Content? photo,
     required GoogleProvider? googleProvider,
     required AppleProvider? appleProvider,
     required Workspace? workspace,

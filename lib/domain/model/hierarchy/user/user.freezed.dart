@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$User {
   UserId get id => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
-  Uri? get photoUrl => throw _privateConstructorUsedError;
+  Content? get photo => throw _privateConstructorUsedError;
   GoogleProvider? get googleProvider => throw _privateConstructorUsedError;
   AppleProvider? get appleProvider => throw _privateConstructorUsedError;
   Workspace? get workspace => throw _privateConstructorUsedError;
@@ -34,12 +34,13 @@ abstract class $UserCopyWith<$Res> {
   $Res call(
       {UserId id,
       String displayName,
-      Uri? photoUrl,
+      Content? photo,
       GoogleProvider? googleProvider,
       AppleProvider? appleProvider,
       Workspace? workspace});
 
   $UserIdCopyWith<$Res> get id;
+  $ContentCopyWith<$Res>? get photo;
   $GoogleProviderCopyWith<$Res>? get googleProvider;
   $AppleProviderCopyWith<$Res>? get appleProvider;
   $WorkspaceCopyWith<$Res>? get workspace;
@@ -57,7 +58,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? displayName = freezed,
-    Object? photoUrl = freezed,
+    Object? photo = freezed,
     Object? googleProvider = freezed,
     Object? appleProvider = freezed,
     Object? workspace = freezed,
@@ -71,10 +72,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String,
-      photoUrl: photoUrl == freezed
-          ? _value.photoUrl
-          : photoUrl // ignore: cast_nullable_to_non_nullable
-              as Uri?,
+      photo: photo == freezed
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as Content?,
       googleProvider: googleProvider == freezed
           ? _value.googleProvider
           : googleProvider // ignore: cast_nullable_to_non_nullable
@@ -94,6 +95,17 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   $UserIdCopyWith<$Res> get id {
     return $UserIdCopyWith<$Res>(_value.id, (value) {
       return _then(_value.copyWith(id: value));
+    });
+  }
+
+  @override
+  $ContentCopyWith<$Res>? get photo {
+    if (_value.photo == null) {
+      return null;
+    }
+
+    return $ContentCopyWith<$Res>(_value.photo!, (value) {
+      return _then(_value.copyWith(photo: value));
     });
   }
 
@@ -139,13 +151,15 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   $Res call(
       {UserId id,
       String displayName,
-      Uri? photoUrl,
+      Content? photo,
       GoogleProvider? googleProvider,
       AppleProvider? appleProvider,
       Workspace? workspace});
 
   @override
   $UserIdCopyWith<$Res> get id;
+  @override
+  $ContentCopyWith<$Res>? get photo;
   @override
   $GoogleProviderCopyWith<$Res>? get googleProvider;
   @override
@@ -167,7 +181,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? displayName = freezed,
-    Object? photoUrl = freezed,
+    Object? photo = freezed,
     Object? googleProvider = freezed,
     Object? appleProvider = freezed,
     Object? workspace = freezed,
@@ -181,10 +195,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String,
-      photoUrl: photoUrl == freezed
-          ? _value.photoUrl
-          : photoUrl // ignore: cast_nullable_to_non_nullable
-              as Uri?,
+      photo: photo == freezed
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as Content?,
       googleProvider: googleProvider == freezed
           ? _value.googleProvider
           : googleProvider // ignore: cast_nullable_to_non_nullable
@@ -207,7 +221,7 @@ class _$_User extends _User {
   const _$_User(
       {required this.id,
       required this.displayName,
-      required this.photoUrl,
+      required this.photo,
       required this.googleProvider,
       required this.appleProvider,
       required this.workspace})
@@ -218,7 +232,7 @@ class _$_User extends _User {
   @override
   final String displayName;
   @override
-  final Uri? photoUrl;
+  final Content? photo;
   @override
   final GoogleProvider? googleProvider;
   @override
@@ -228,7 +242,7 @@ class _$_User extends _User {
 
   @override
   String toString() {
-    return 'User(id: $id, displayName: $displayName, photoUrl: $photoUrl, googleProvider: $googleProvider, appleProvider: $appleProvider, workspace: $workspace)';
+    return 'User(id: $id, displayName: $displayName, photo: $photo, googleProvider: $googleProvider, appleProvider: $appleProvider, workspace: $workspace)';
   }
 
   @override
@@ -239,7 +253,7 @@ class _$_User extends _User {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.displayName, displayName) &&
-            const DeepCollectionEquality().equals(other.photoUrl, photoUrl) &&
+            const DeepCollectionEquality().equals(other.photo, photo) &&
             const DeepCollectionEquality()
                 .equals(other.googleProvider, googleProvider) &&
             const DeepCollectionEquality()
@@ -252,7 +266,7 @@ class _$_User extends _User {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(displayName),
-      const DeepCollectionEquality().hash(photoUrl),
+      const DeepCollectionEquality().hash(photo),
       const DeepCollectionEquality().hash(googleProvider),
       const DeepCollectionEquality().hash(appleProvider),
       const DeepCollectionEquality().hash(workspace));
@@ -267,7 +281,7 @@ abstract class _User extends User {
   const factory _User(
       {required final UserId id,
       required final String displayName,
-      required final Uri? photoUrl,
+      required final Content? photo,
       required final GoogleProvider? googleProvider,
       required final AppleProvider? appleProvider,
       required final Workspace? workspace}) = _$_User;
@@ -278,7 +292,7 @@ abstract class _User extends User {
   @override
   String get displayName;
   @override
-  Uri? get photoUrl;
+  Content? get photo;
   @override
   GoogleProvider? get googleProvider;
   @override

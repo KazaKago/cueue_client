@@ -9,6 +9,8 @@ part 'workspace_response.g.dart';
 class WorkspaceResponse with _$WorkspaceResponse {
   const factory WorkspaceResponse({
     // ignore: invalid_annotation_target
+    @JsonKey(name: 'id') required int id,
+    // ignore: invalid_annotation_target
     @JsonKey(name: 'name') required String name,
     // ignore: invalid_annotation_target
     @JsonKey(name: 'users') required List<UserSummaryResponse> users,

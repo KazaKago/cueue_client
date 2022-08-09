@@ -10,6 +10,7 @@ import 'package:cueue/presentation/view/hierarchy/main/main_page.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/about_page.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/privacy_policy_url.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/terms_of_service_url.dart';
+import 'package:cueue/presentation/view/hierarchy/welcome/user_creation_page.dart';
 import 'package:cueue/presentation/view/hierarchy/welcome/workspace_creation_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
@@ -120,6 +121,9 @@ class AuthenticationPage extends HookConsumerWidget {
   Future<void> _goNextRoute(BuildContext context, SignInCheckResult signInCheckResult) async {
     Widget page;
     switch (signInCheckResult) {
+      case SignInCheckResult.userCreation:
+        page = const UserCreationPage();
+        break;
       case SignInCheckResult.workspaceCreation:
         page = const WorkspaceCreationPage();
         break;

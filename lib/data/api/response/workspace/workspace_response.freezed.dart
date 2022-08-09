@@ -21,6 +21,9 @@ WorkspaceResponse _$WorkspaceResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$WorkspaceResponse {
 // ignore: invalid_annotation_target
+  @JsonKey(name: 'id')
+  int get id =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
   String get name =>
       throw _privateConstructorUsedError; // ignore: invalid_annotation_target
@@ -39,7 +42,8 @@ abstract class $WorkspaceResponseCopyWith<$Res> {
           WorkspaceResponse value, $Res Function(WorkspaceResponse) then) =
       _$WorkspaceResponseCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'name') String name,
+      {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'name') String name,
       @JsonKey(name: 'users') List<UserSummaryResponse> users});
 }
 
@@ -54,10 +58,15 @@ class _$WorkspaceResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? users = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -78,7 +87,8 @@ abstract class _$$_WorkspaceResponseCopyWith<$Res>
       __$$_WorkspaceResponseCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'name') String name,
+      {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'name') String name,
       @JsonKey(name: 'users') List<UserSummaryResponse> users});
 }
 
@@ -95,10 +105,15 @@ class __$$_WorkspaceResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? users = freezed,
   }) {
     return _then(_$_WorkspaceResponse(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -115,13 +130,18 @@ class __$$_WorkspaceResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_WorkspaceResponse implements _WorkspaceResponse {
   const _$_WorkspaceResponse(
-      {@JsonKey(name: 'name') required this.name,
+      {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'name') required this.name,
       @JsonKey(name: 'users') required final List<UserSummaryResponse> users})
       : _users = users;
 
   factory _$_WorkspaceResponse.fromJson(Map<String, dynamic> json) =>
       _$$_WorkspaceResponseFromJson(json);
 
+// ignore: invalid_annotation_target
+  @override
+  @JsonKey(name: 'id')
+  final int id;
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'name')
@@ -138,7 +158,7 @@ class _$_WorkspaceResponse implements _WorkspaceResponse {
 
   @override
   String toString() {
-    return 'WorkspaceResponse(name: $name, users: $users)';
+    return 'WorkspaceResponse(id: $id, name: $name, users: $users)';
   }
 
   @override
@@ -146,6 +166,7 @@ class _$_WorkspaceResponse implements _WorkspaceResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_WorkspaceResponse &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other._users, _users));
   }
@@ -154,6 +175,7 @@ class _$_WorkspaceResponse implements _WorkspaceResponse {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(_users));
 
@@ -173,7 +195,9 @@ class _$_WorkspaceResponse implements _WorkspaceResponse {
 
 abstract class _WorkspaceResponse implements WorkspaceResponse {
   const factory _WorkspaceResponse(
-          {@JsonKey(name: 'name')
+          {@JsonKey(name: 'id')
+              required final int id,
+          @JsonKey(name: 'name')
               required final String name,
           @JsonKey(name: 'users')
               required final List<UserSummaryResponse> users}) =
@@ -182,6 +206,9 @@ abstract class _WorkspaceResponse implements WorkspaceResponse {
   factory _WorkspaceResponse.fromJson(Map<String, dynamic> json) =
       _$_WorkspaceResponse.fromJson;
 
+  @override // ignore: invalid_annotation_target
+  @JsonKey(name: 'id')
+  int get id;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
   String get name;

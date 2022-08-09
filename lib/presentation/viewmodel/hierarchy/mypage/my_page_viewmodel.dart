@@ -2,8 +2,8 @@ import 'package:cueue/domain/model/hierarchy/content/content_registration.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/sign_out_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/follow_user_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/refresh_user_usecase.dart';
-import 'package:cueue/domain/usecase/hierarchy/user/update_avatar_usecase.dart';
-import 'package:cueue/domain/usecase/hierarchy/user/update_display_name_usecase.dart';
+import 'package:cueue/domain/usecase/hierarchy/user/update_user_display_name_usecase.dart';
+import 'package:cueue/domain/usecase/hierarchy/user/update_user_photo_usecase.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/mypage/my_page_state.dart';
 import 'package:flutter/foundation.dart';
@@ -11,14 +11,14 @@ import 'package:rxdart/rxdart.dart';
 import 'package:universal_io/io.dart';
 
 class MyPageViewModel with ChangeNotifier {
-  MyPageViewModel(this._followUserUseCase, this._refreshUserUseCase, this._updateDisplayNameUseCase, this._updateAvatarUseCase, this._signOutUseCase) {
+  MyPageViewModel(this._followUserUseCase, this._refreshUserUseCase, this._updateUserDisplayNameUseCase, this._updateUserPhotoUseCase, this._signOutUseCase) {
     _follow();
   }
 
   final FollowUserUseCase _followUserUseCase;
   final RefreshUserUseCase _refreshUserUseCase;
-  final UpdateDisplayNameUseCase _updateDisplayNameUseCase;
-  final UpdateAvatarUseCase _updateAvatarUseCase;
+  final UpdateUserDisplayNameUseCase _updateUserDisplayNameUseCase;
+  final UpdateUserPhotoUseCase _updateUserPhotoUseCase;
   final SignOutUseCase _signOutUseCase;
   final CompositeSubscription _compositeSubscription = CompositeSubscription();
   MyPageState _state = const MyPageState.loading();
@@ -94,7 +94,7 @@ class MyPageViewModel with ChangeNotifier {
   Future<void> updateDisplayName(String displayName) async {
     isLoading = true;
     try {
-      await _updateDisplayNameUseCase.call(displayName);
+      await _updateUserDisplayNameUseCase.call(displayName);
     } on Exception catch (exception) {
       exceptionEvent = Event(exception);
     }
@@ -104,7 +104,7 @@ class MyPageViewModel with ChangeNotifier {
   Future<void> updatePhoto(File imageFile) async {
     isLoading = true;
     try {
-      await _updateAvatarUseCase.call(ContentRegistration.fromFile(imageFile));
+      await _updateUserPhotoUseCase.call(ContentRegistration.fromFile(imageFile));
     } on Exception catch (exception) {
       exceptionEvent = Event(exception);
     }

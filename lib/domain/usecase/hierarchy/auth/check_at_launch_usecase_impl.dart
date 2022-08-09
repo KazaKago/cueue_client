@@ -15,8 +15,10 @@ class CheckAtLaunchUseCaseImpl implements CheckAtLaunchUseCase {
     if (!isSignIn) {
       return LaunchCheckResult.beforeSignIn;
     } else {
-      final user = await _userRepository.get();
-      if (user.workspace == null) {
+      final user = await _userRepository.getOrNull();
+      if (user == null) {
+        return LaunchCheckResult.userCreation;
+      } else if (user.workspace == null) {
         return LaunchCheckResult.workspaceCreation;
       } else {
         return LaunchCheckResult.afterSignIn;

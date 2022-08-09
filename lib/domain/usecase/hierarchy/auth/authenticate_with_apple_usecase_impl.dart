@@ -13,8 +13,10 @@ class AuthenticateWithAppleUseCaseImpl implements AuthenticateWithAppleUseCase {
   @override
   Future<SignInCheckResult> call(AppleAuthInfo authInfo) async {
     await _authorizeApiRepository.authenticateWithApple(authInfo);
-    final user = await _userRepository.create();
-    if (user.workspace == null) {
+    final user = await _userRepository.getOrNull();
+    if (user == null) {
+      return SignInCheckResult.userCreation;
+    } else if (user.workspace == null) {
       return SignInCheckResult.workspaceCreation;
     } else {
       return SignInCheckResult.afterSignIn;

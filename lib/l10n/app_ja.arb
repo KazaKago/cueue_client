@@ -222,7 +222,7 @@
   },
   "accountDeletion": "アカウント削除",
   "other": "その他",
-  "accountDeletionDescription": "アカウントを削除して利用を停止します。\n再登録は可能ですが現在作成してあるレシピやこんだてにはアクセスできなくなります。\n十分ご注意ください。",
+  "accountDeletionDescription": "アカウントを削除して利用を停止します。\n現在作成してあるレシピやこんだてにはアクセスできなくなります。\n十分ご注意ください。",
   "approveAndDeletionAccount": "理解した上でアカウントを削除する",
   "accountDeletionConfirmation": "本当にアカウントを削除してよろしいですか？",
   "warning": "警告",

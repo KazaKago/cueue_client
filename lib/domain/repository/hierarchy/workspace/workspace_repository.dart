@@ -1,3 +1,5 @@
+import 'package:cueue/domain/model/hierarchy/workspace/workspace_registration.dart';
+
 abstract class WorkspaceRepository {
-  Future<void> create(String name);
+  Future<void> create(WorkspaceRegistration workspaceRegistration);
 }

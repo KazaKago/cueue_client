@@ -8,6 +8,7 @@ part of 'workspace_response.dart';
 
 _$_WorkspaceResponse _$$_WorkspaceResponseFromJson(Map<String, dynamic> json) =>
     _$_WorkspaceResponse(
+      id: json['id'] as int,
       name: json['name'] as String,
       users: (json['users'] as List<dynamic>)
           .map((e) => UserSummaryResponse.fromJson(e as Map<String, dynamic>))
@@ -17,6 +18,7 @@ _$_WorkspaceResponse _$$_WorkspaceResponseFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_WorkspaceResponseToJson(
         _$_WorkspaceResponse instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
       'users': instance.users,
     };

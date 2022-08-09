@@ -4,6 +4,7 @@ import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart
 import 'package:cueue/presentation/view/global/widget/shimmer_container.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_page.dart';
 import 'package:cueue/presentation/view/hierarchy/main/main_page.dart';
+import 'package:cueue/presentation/view/hierarchy/welcome/user_creation_page.dart';
 import 'package:cueue/presentation/view/hierarchy/welcome/workspace_creation_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
@@ -38,6 +39,9 @@ class SplashPage extends HookConsumerWidget {
     switch (nextRoute) {
       case LaunchCheckResult.beforeSignIn:
         page = const AuthenticationPage();
+        break;
+      case LaunchCheckResult.userCreation:
+        page = const UserCreationPage();
         break;
       case LaunchCheckResult.workspaceCreation:
         page = const WorkspaceCreationPage();

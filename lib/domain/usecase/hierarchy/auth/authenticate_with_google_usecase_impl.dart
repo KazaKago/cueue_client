@@ -13,8 +13,10 @@ class AuthenticateWithGoogleUseCaseImpl implements AuthenticateWithGoogleUseCase
   @override
   Future<SignInCheckResult> call(GoogleAuthInfo authInfo) async {
     await _authorizeApiRepository.authenticateWithGoogle(authInfo);
-    final user = await _userRepository.create();
-    if (user.workspace == null) {
+    final user = await _userRepository.getOrNull();
+    if (user == null) {
+      return SignInCheckResult.userCreation;
+    } else if (user.workspace == null) {
       return SignInCheckResult.workspaceCreation;
     } else {
       return SignInCheckResult.afterSignIn;

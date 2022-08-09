@@ -24,6 +24,12 @@ mixin _$UserResponse {
   @JsonKey(name: 'id')
   int get id =>
       throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  @JsonKey(name: 'display_name')
+  String get displayName =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  @JsonKey(name: 'photo')
+  ContentResponse? get photo =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'workspace')
   WorkspaceResponse? get workspace => throw _privateConstructorUsedError;
 
@@ -40,8 +46,11 @@ abstract class $UserResponseCopyWith<$Res> {
       _$UserResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'display_name') String displayName,
+      @JsonKey(name: 'photo') ContentResponse? photo,
       @JsonKey(name: 'workspace') WorkspaceResponse? workspace});
 
+  $ContentResponseCopyWith<$Res>? get photo;
   $WorkspaceResponseCopyWith<$Res>? get workspace;
 }
 
@@ -56,6 +65,8 @@ class _$UserResponseCopyWithImpl<$Res> implements $UserResponseCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
+    Object? displayName = freezed,
+    Object? photo = freezed,
     Object? workspace = freezed,
   }) {
     return _then(_value.copyWith(
@@ -63,11 +74,30 @@ class _$UserResponseCopyWithImpl<$Res> implements $UserResponseCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      displayName: displayName == freezed
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String,
+      photo: photo == freezed
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as ContentResponse?,
       workspace: workspace == freezed
           ? _value.workspace
           : workspace // ignore: cast_nullable_to_non_nullable
               as WorkspaceResponse?,
     ));
+  }
+
+  @override
+  $ContentResponseCopyWith<$Res>? get photo {
+    if (_value.photo == null) {
+      return null;
+    }
+
+    return $ContentResponseCopyWith<$Res>(_value.photo!, (value) {
+      return _then(_value.copyWith(photo: value));
+    });
   }
 
   @override
@@ -91,8 +121,12 @@ abstract class _$$_UserResponseCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'display_name') String displayName,
+      @JsonKey(name: 'photo') ContentResponse? photo,
       @JsonKey(name: 'workspace') WorkspaceResponse? workspace});
 
+  @override
+  $ContentResponseCopyWith<$Res>? get photo;
   @override
   $WorkspaceResponseCopyWith<$Res>? get workspace;
 }
@@ -111,6 +145,8 @@ class __$$_UserResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? displayName = freezed,
+    Object? photo = freezed,
     Object? workspace = freezed,
   }) {
     return _then(_$_UserResponse(
@@ -118,6 +154,14 @@ class __$$_UserResponseCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      displayName: displayName == freezed
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String,
+      photo: photo == freezed
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as ContentResponse?,
       workspace: workspace == freezed
           ? _value.workspace
           : workspace // ignore: cast_nullable_to_non_nullable
@@ -131,6 +175,8 @@ class __$$_UserResponseCopyWithImpl<$Res>
 class _$_UserResponse implements _UserResponse {
   const _$_UserResponse(
       {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'display_name') required this.displayName,
+      @JsonKey(name: 'photo') required this.photo,
       @JsonKey(name: 'workspace') required this.workspace});
 
   factory _$_UserResponse.fromJson(Map<String, dynamic> json) =>
@@ -142,12 +188,20 @@ class _$_UserResponse implements _UserResponse {
   final int id;
 // ignore: invalid_annotation_target
   @override
+  @JsonKey(name: 'display_name')
+  final String displayName;
+// ignore: invalid_annotation_target
+  @override
+  @JsonKey(name: 'photo')
+  final ContentResponse? photo;
+// ignore: invalid_annotation_target
+  @override
   @JsonKey(name: 'workspace')
   final WorkspaceResponse? workspace;
 
   @override
   String toString() {
-    return 'UserResponse(id: $id, workspace: $workspace)';
+    return 'UserResponse(id: $id, displayName: $displayName, photo: $photo, workspace: $workspace)';
   }
 
   @override
@@ -156,6 +210,9 @@ class _$_UserResponse implements _UserResponse {
         (other.runtimeType == runtimeType &&
             other is _$_UserResponse &&
             const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.displayName, displayName) &&
+            const DeepCollectionEquality().equals(other.photo, photo) &&
             const DeepCollectionEquality().equals(other.workspace, workspace));
   }
 
@@ -164,6 +221,8 @@ class _$_UserResponse implements _UserResponse {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(displayName),
+      const DeepCollectionEquality().hash(photo),
       const DeepCollectionEquality().hash(workspace));
 
   @JsonKey(ignore: true)
@@ -183,6 +242,10 @@ abstract class _UserResponse implements UserResponse {
   const factory _UserResponse(
       {@JsonKey(name: 'id')
           required final int id,
+      @JsonKey(name: 'display_name')
+          required final String displayName,
+      @JsonKey(name: 'photo')
+          required final ContentResponse? photo,
       @JsonKey(name: 'workspace')
           required final WorkspaceResponse? workspace}) = _$_UserResponse;
 
@@ -192,6 +255,12 @@ abstract class _UserResponse implements UserResponse {
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
   int get id;
+  @override // ignore: invalid_annotation_target
+  @JsonKey(name: 'display_name')
+  String get displayName;
+  @override // ignore: invalid_annotation_target
+  @JsonKey(name: 'photo')
+  ContentResponse? get photo;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'workspace')
   WorkspaceResponse? get workspace;
