@@ -1,9 +1,11 @@
 import 'package:cueue/domain/model/hierarchy/content/content_registration.dart';
+import 'package:cueue/domain/model/hierarchy/workspace/workspace_registration.dart';
 import 'package:cueue/domain/usecase/hierarchy/auth/sign_out_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/follow_user_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/refresh_user_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/update_user_display_name_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/update_user_photo_usecase.dart';
+import 'package:cueue/domain/usecase/hierarchy/workspace/update_workspace_usecase.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/mypage/my_page_state.dart';
 import 'package:flutter/foundation.dart';
@@ -11,7 +13,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:universal_io/io.dart';
 
 class MyPageViewModel with ChangeNotifier {
-  MyPageViewModel(this._followUserUseCase, this._refreshUserUseCase, this._updateUserDisplayNameUseCase, this._updateUserPhotoUseCase, this._signOutUseCase) {
+  MyPageViewModel(this._followUserUseCase, this._refreshUserUseCase, this._updateUserDisplayNameUseCase, this._updateUserPhotoUseCase, this._updateWorkspaceUseCase, this._signOutUseCase) {
     _follow();
   }
 
@@ -19,6 +21,7 @@ class MyPageViewModel with ChangeNotifier {
   final RefreshUserUseCase _refreshUserUseCase;
   final UpdateUserDisplayNameUseCase _updateUserDisplayNameUseCase;
   final UpdateUserPhotoUseCase _updateUserPhotoUseCase;
+  final UpdateWorkspaceUseCase _updateWorkspaceUseCase;
   final SignOutUseCase _signOutUseCase;
   final CompositeSubscription _compositeSubscription = CompositeSubscription();
   MyPageState _state = const MyPageState.loading();
@@ -105,6 +108,17 @@ class MyPageViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _updateUserPhotoUseCase.call(ContentRegistration.fromFile(imageFile));
+    } on Exception catch (exception) {
+      exceptionEvent = Event(exception);
+    }
+    isLoading = false;
+  }
+
+  Future<void> updateWorkspaceName(String workspaceName) async {
+    isLoading = true;
+    try {
+      final registration = WorkspaceRegistration(name: workspaceName);
+      await _updateWorkspaceUseCase.call(registration);
     } on Exception catch (exception) {
       exceptionEvent = Event(exception);
     }

@@ -18,6 +18,7 @@ import 'package:cueue/data/api/hierarchy/user/create_user_api.dart';
 import 'package:cueue/data/api/hierarchy/user/get_user_api.dart';
 import 'package:cueue/data/api/hierarchy/user/update_user_api.dart';
 import 'package:cueue/data/api/hierarchy/workspace/create_workspace_api.dart';
+import 'package:cueue/data/api/hierarchy/workspace/update_workspace_api.dart';
 import 'package:cueue/data/repository/di/repository_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -41,3 +42,4 @@ final deleteMenuApiProvider = Provider((ref) => DeleteMenuApi(ref.read(dioCreato
 final createContentApiProvider = Provider((ref) => CreateContentApi(ref.read(dioCreatorProvider)));
 final orderTagApiProvider = Provider((ref) => OrderTagApi(ref.read(dioCreatorProvider)));
 final createWorkspaceApiProvider = Provider((ref) => CreateWorkspaceApi(ref.read(dioCreatorProvider)));
+final updateWorkspaceApiProvider = Provider((ref) => UpdateWorkspaceApi(ref.read(dioCreatorProvider)));

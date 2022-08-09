@@ -128,8 +128,8 @@ class MenuEditingPage extends HookConsumerWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        TextButton.icon(onPressed: () => _goRecipeSelection(context, ref, selectedRecipes), icon: const Icon(Icons.list), label: Text(intl(context).search_from_list, textAlign: TextAlign.center)),
-        TextButton.icon(onPressed: () => _goRecipeSearch(context, ref, selectedRecipes), icon: const Icon(Icons.search), label: Text(intl(context).search_from_keyword, textAlign: TextAlign.center)),
+        TextButton.icon(onPressed: () => _goRecipeSelection(context, ref, selectedRecipes), icon: const Icon(Icons.list), label: Text(intl(context).searchFromList, textAlign: TextAlign.center)),
+        TextButton.icon(onPressed: () => _goRecipeSearch(context, ref, selectedRecipes), icon: const Icon(Icons.search), label: Text(intl(context).searchFromKeyword, textAlign: TextAlign.center)),
       ],
     );
   }

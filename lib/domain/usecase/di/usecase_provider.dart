@@ -89,6 +89,8 @@ import 'package:cueue/domain/usecase/hierarchy/user/update_user_photo_usecase.da
 import 'package:cueue/domain/usecase/hierarchy/user/update_user_photo_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/workspace/create_workspace_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/workspace/create_workspace_usecase_impl.dart';
+import 'package:cueue/domain/usecase/hierarchy/workspace/update_workspace_usecase.dart';
+import 'package:cueue/domain/usecase/hierarchy/workspace/update_workspace_usecase_impl.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final checkAtLaunchUseCaseProvider = Provider<CheckAtLaunchUseCase>((ref) => CheckAtLaunchUseCaseImpl(ref.read(userRepositoryProvider), ref.read(authorizeRepositoryProvider)));
@@ -133,6 +135,7 @@ final refreshMenuUseCaseProvider = Provider<RefreshMenuUseCase>((ref) => Refresh
 final reorderTagUseCaseProvider = Provider<ReorderTagUseCase>((ref) => ReorderTagUseCaseImpl(ref.read(tagRepositoryProvider)));
 final deleteAccountUseCaseProvider = Provider<DeleteAccountUseCase>((ref) => DeleteAccountUseCaseImpl(ref.read(userRepositoryProvider)));
 final createWorkspaceUseCaseProvider = Provider<CreateWorkspaceUseCase>((ref) => CreateWorkspaceUseCaseImpl(ref.read(workspaceRepositoryProvider)));
+final updateWorkspaceUseCaseProvider = Provider<UpdateWorkspaceUseCase>((ref) => UpdateWorkspaceUseCaseImpl(ref.read(workspaceRepositoryProvider)));
 final updateUserDisplayNameUseCaseProvider = Provider<UpdateUserDisplayNameUseCase>((ref) => UpdateUserDisplayNameUseCaseImpl(ref.read(userRepositoryProvider)));
 final updateUserPhotoUseCaseProvider = Provider<UpdateUserPhotoUseCase>((ref) => UpdateUserPhotoUseCaseImpl(ref.read(userRepositoryProvider), ref.read(contentRepositoryProvider)));
 final createUserUseCaseProvider = Provider<CreateUserUseCase>((ref) => CreateUserUseCaseImpl(ref.read(userRepositoryProvider)));

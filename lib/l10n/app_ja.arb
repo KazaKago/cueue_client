@@ -205,7 +205,7 @@
   "unlinkedWithGoogle": "Googleとの\nアカウント連携を解除しました",
   "unlinkedWithApple": "Appleとの\nアカウント連携を解除しました",
   "sentEmailVerification": "入力されたアドレスへ\nへ認証メールを送信しました",
-  "noMenuMessage": "こんだての記録がまだ無いようです\n今日のこんだてを追加してみましょう！",
+  "noMenuMessage": "こんだての予定・記録がまだ無いようです\n今日のこんだてを追加してみましょう！",
   "noRecipeMessage": "レシピがまだ無いようです\n作りたい料理を登録してみましょう！",
   "noTagMessage": "タグがまだ無いようです\n「中華」「和食」など分類分けできるよう\nタグ登録をしてみましょう！",
   "search": "検索",
@@ -226,12 +226,23 @@
   "approveAndDeletionAccount": "理解した上でアカウントを削除する",
   "accountDeletionConfirmation": "本当にアカウントを削除してよろしいですか？",
   "warning": "警告",
-  "name": "名前",
+  "displayName": "表示名",
   "thanksForUsingMessage": "アカウントを削除しました\nまたのご利用をお待ちしております。",
   "backToLoginScreen": "ログイン画面へ戻る",
-  "changeName": "名前の変更",
+  "changeDisplayName": "表示名の変更",
   "done": "決定",
   "change_photo": "画像を変更する",
-  "search_from_keyword": "レシピを\nキーワードから探す",
-  "search_from_list": "レシピを\n一覧から選択する"
+  "searchFromKeyword": "レシピを\nキーワードから探す",
+  "searchFromList": "レシピを\n一覧から選択する",
+  "workspaceName": "参加中のワークスペース",
+  "changeWorkspaceName": "ワークスペース名の変更",
+  "joiningWorkspaceMember": "ワークスペースのメンバー",
+  "joiningWorkspaceMemberWithCount": "ワークスペースのメンバー ({count})",
+  "@joiningWorkspaceMemberWithCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }
