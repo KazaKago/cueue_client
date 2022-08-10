@@ -1,5 +1,6 @@
 import 'package:cueue/data/mapper/hierarchy/content/content_request_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/content/content_response_mapper.dart';
+import 'package:cueue/data/mapper/hierarchy/invitation/invitation_response_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/menu/menu_request_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/menu/menu_response_mapper.dart';
 import 'package:cueue/data/mapper/hierarchy/menu/menu_summary_response_mapper.dart';
@@ -36,3 +37,4 @@ final timeFrameResponseMapperProvider = Provider((ref) => const TimeFrameRespons
 final timeFrameRequestMapperProvider = Provider((ref) => const TimeFrameRequestMapper());
 final tagOrderRequestMapperProvider = Provider((ref) => const TagOrderRequestMapper());
 final workspaceRequestMapperProvider = Provider((ref) => const WorkspaceRequestMapper());
+final invitationResponseMapperProvider = Provider((ref) => InvitationResponseMapper(ref.read(workspaceResponseMapperProvider)));

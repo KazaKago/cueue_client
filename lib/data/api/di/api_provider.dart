@@ -1,4 +1,7 @@
 import 'package:cueue/data/api/hierarchy/content/create_content_api.dart';
+import 'package:cueue/data/api/hierarchy/invitation/accept_invitation_api.dart';
+import 'package:cueue/data/api/hierarchy/invitation/create_invitation_api.dart';
+import 'package:cueue/data/api/hierarchy/invitation/get_invitation_api.dart';
 import 'package:cueue/data/api/hierarchy/menu/create_menu_api.dart';
 import 'package:cueue/data/api/hierarchy/menu/delete_menu_api.dart';
 import 'package:cueue/data/api/hierarchy/menu/get_menu_api.dart';
@@ -43,3 +46,6 @@ final createContentApiProvider = Provider((ref) => CreateContentApi(ref.read(dio
 final orderTagApiProvider = Provider((ref) => OrderTagApi(ref.read(dioCreatorProvider)));
 final createWorkspaceApiProvider = Provider((ref) => CreateWorkspaceApi(ref.read(dioCreatorProvider)));
 final updateWorkspaceApiProvider = Provider((ref) => UpdateWorkspaceApi(ref.read(dioCreatorProvider)));
+final createInvitationApiProvider = Provider((ref) => CreateInvitationApi(ref.read(dioCreatorProvider)));
+final getInvitationApiProvider = Provider((ref) => GetInvitationApi(ref.read(dioCreatorProvider)));
+final acceptInvitationApiProvider = Provider((ref) => AcceptInvitationApi(ref.read(dioCreatorProvider)));
