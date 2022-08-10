@@ -22,17 +22,17 @@ class UserResponseMapper {
       id: UserId(userResponse.id),
       displayName: userResponse.displayName,
       photo: userResponse.photo != null ? _contentResponseMapper.map(userResponse.photo!) : null,
-      googleProvider: _getLoginProvider(firebaseUser, const GoogleProviderId(), (uid, displayName) => GoogleProvider(uid: uid, displayName: displayName)),
-      appleProvider: _getLoginProvider(firebaseUser, const AppleProviderId(), (uid, displayName) => AppleProvider(uid: uid, displayName: displayName)),
+      googleProvider: _getLoginProvider(firebaseUser, const GoogleProviderId(), (uid, email, displayName) => GoogleProvider(uid: uid, email: email, displayName: displayName)),
+      appleProvider: _getLoginProvider(firebaseUser, const AppleProviderId(), (uid, email, displayName) => AppleProvider(uid: uid, email: email, displayName: displayName)),
       workspace: (userResponse.workspace != null) ? _workspaceResponseMapper.map(userResponse.workspace!) : null,
     );
   }
 
-  T? _getLoginProvider<T extends LoginProvider>(auth.User firebaseUser, ProviderId providerId, T Function(String uid, String displayName) transform) {
+  T? _getLoginProvider<T extends LoginProvider>(auth.User firebaseUser, ProviderId providerId, T Function(String uid, String? email, String displayName) transform) {
     final userInfos = firebaseUser.providerData.where((element) => element.providerId == providerId.value).toList();
     if (userInfos.isNotEmpty) {
       final userInfo = userInfos.first;
-      return transform(userInfo.uid!, userInfo.displayName ?? userInfo.email ?? '');
+      return transform(userInfo.uid!, userInfo.email, userInfo.displayName ?? '');
     } else {
       return null;
     }

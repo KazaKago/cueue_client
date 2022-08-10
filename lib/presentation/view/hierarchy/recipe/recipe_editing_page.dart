@@ -9,6 +9,7 @@ import 'package:cueue/presentation/view/global/modal/simple_message_dialog.dart'
 import 'package:cueue/presentation/view/global/modal/simple_message_dialog_event.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
 import 'package:cueue/presentation/view/hierarchy/photo/photo_pickup_bottom_sheet_dialog.dart';
+import 'package:cueue/presentation/view/hierarchy/photo/photo_pickup_bottom_sheet_event.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/editing_result.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
@@ -41,6 +42,7 @@ class RecipeEditingPage extends HookConsumerWidget {
       ..listen<Event<Exception>>(recipeEditingViewModelProvider.select((viewModel) => viewModel.exceptionEvent), (previous, exceptionEvent) {
         exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
       });
+    final scrollController = useScrollController();
     return Scaffold(
       appBar: AppBar(
         title: Text(recipe != null ? intl(context).editWith(recipe!.title) : intl(context).addRecipe),
@@ -54,7 +56,9 @@ class RecipeEditingPage extends HookConsumerWidget {
         ],
       ),
       body: Scrollbar(
+        controller: scrollController,
         child: ListView(
+          controller: scrollController,
           padding: const EdgeInsets.fromLTRB(16, 32, 16, 32),
           children: <Widget>[
             _buildTitle(context, ref, recipeTitleEditingController),
@@ -285,7 +289,10 @@ class RecipeEditingPage extends HookConsumerWidget {
 
   Future<void> _pickupProfileImage(BuildContext context, WidgetRef ref, ValueNotifier<List<Content>> images) async {
     final imagePicker = ImagePicker();
-    final event = await PhotoPickupBottomSheetDialog(context).show();
+    final event = await showModalBottomSheet<PhotoPickupBottomSheetEvent>(
+      context: context,
+      builder: PhotoPickupBottomSheetDialog.new,
+    );
     final pickedImage = await event?.when(
       fromCamera: () => imagePicker.pickImage(source: ImageSource.camera),
       fromLibrary: () => imagePicker.pickImage(source: ImageSource.gallery),

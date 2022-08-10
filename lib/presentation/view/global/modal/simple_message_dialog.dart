@@ -1,7 +1,8 @@
 import 'package:cueue/presentation/view/global/modal/simple_message_dialog_event.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SimpleMessageDialog extends StatelessWidget {
+class SimpleMessageDialog extends HookConsumerWidget {
   const SimpleMessageDialog({super.key, this.title, this.message, this.positiveButton, this.neutralButton, this.negativeButton});
 
   final String? title;
@@ -11,7 +12,7 @@ class SimpleMessageDialog extends StatelessWidget {
   final String? negativeButton;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final buttons = <Widget>[];
     if (negativeButton != null) {
       buttons.add(

@@ -56,6 +56,7 @@ class MenuEditingPage extends HookConsumerWidget {
       ..listen<bool>(menuEditingViewModelProvider.select((viewModel) => viewModel.isLoading), (previous, isLoading) {
         isLoading ? EasyLoading.show() : EasyLoading.dismiss();
       });
+    final scrollController = useScrollController();
     return Scaffold(
       appBar: AppBar(
         title: Text(menu != null ? intl(context).editCookingMenu : intl(context).addCookingMenu),
@@ -69,7 +70,9 @@ class MenuEditingPage extends HookConsumerWidget {
         ],
       ),
       body: Scrollbar(
+        controller: scrollController,
         child: ListView(
+          controller: scrollController,
           padding: const EdgeInsets.fromLTRB(16, 32, 16, 32),
           children: <Widget>[
             _buildDatePicker(context, ref, selectedDateTime),

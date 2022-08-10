@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$GoogleProvider {
   String get uid => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +30,7 @@ abstract class $GoogleProviderCopyWith<$Res> {
   factory $GoogleProviderCopyWith(
           GoogleProvider value, $Res Function(GoogleProvider) then) =
       _$GoogleProviderCopyWithImpl<$Res>;
-  $Res call({String uid, String displayName});
+  $Res call({String uid, String? email, String displayName});
 }
 
 /// @nodoc
@@ -44,6 +45,7 @@ class _$GoogleProviderCopyWithImpl<$Res>
   @override
   $Res call({
     Object? uid = freezed,
+    Object? email = freezed,
     Object? displayName = freezed,
   }) {
     return _then(_value.copyWith(
@@ -51,6 +53,10 @@ class _$GoogleProviderCopyWithImpl<$Res>
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
       displayName: displayName == freezed
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
@@ -66,7 +72,7 @@ abstract class _$$_GoogleProviderCopyWith<$Res>
           _$_GoogleProvider value, $Res Function(_$_GoogleProvider) then) =
       __$$_GoogleProviderCopyWithImpl<$Res>;
   @override
-  $Res call({String uid, String displayName});
+  $Res call({String uid, String? email, String displayName});
 }
 
 /// @nodoc
@@ -83,6 +89,7 @@ class __$$_GoogleProviderCopyWithImpl<$Res>
   @override
   $Res call({
     Object? uid = freezed,
+    Object? email = freezed,
     Object? displayName = freezed,
   }) {
     return _then(_$_GoogleProvider(
@@ -90,6 +97,10 @@ class __$$_GoogleProviderCopyWithImpl<$Res>
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
       displayName: displayName == freezed
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
@@ -101,16 +112,19 @@ class __$$_GoogleProviderCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_GoogleProvider implements _GoogleProvider {
-  const _$_GoogleProvider({required this.uid, required this.displayName});
+  const _$_GoogleProvider(
+      {required this.uid, required this.email, required this.displayName});
 
   @override
   final String uid;
+  @override
+  final String? email;
   @override
   final String displayName;
 
   @override
   String toString() {
-    return 'GoogleProvider(uid: $uid, displayName: $displayName)';
+    return 'GoogleProvider(uid: $uid, email: $email, displayName: $displayName)';
   }
 
   @override
@@ -119,6 +133,7 @@ class _$_GoogleProvider implements _GoogleProvider {
         (other.runtimeType == runtimeType &&
             other is _$_GoogleProvider &&
             const DeepCollectionEquality().equals(other.uid, uid) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality()
                 .equals(other.displayName, displayName));
   }
@@ -127,6 +142,7 @@ class _$_GoogleProvider implements _GoogleProvider {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(uid),
+      const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(displayName));
 
   @JsonKey(ignore: true)
@@ -138,10 +154,13 @@ class _$_GoogleProvider implements _GoogleProvider {
 abstract class _GoogleProvider implements GoogleProvider {
   const factory _GoogleProvider(
       {required final String uid,
+      required final String? email,
       required final String displayName}) = _$_GoogleProvider;
 
   @override
   String get uid;
+  @override
+  String? get email;
   @override
   String get displayName;
   @override

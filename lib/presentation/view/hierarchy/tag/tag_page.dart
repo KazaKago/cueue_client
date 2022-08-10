@@ -10,6 +10,7 @@ import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/editing_result.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TagPage extends HookConsumerWidget {
@@ -55,10 +56,13 @@ class TagPage extends HookConsumerWidget {
 
   Widget _buildCompleted(BuildContext context, WidgetRef ref, List<Tag> tags) {
     final viewModel = ref.read(tagViewModelProvider);
+    final scrollController = useScrollController();
     return RefreshIndicator(
       onRefresh: viewModel.refresh,
       child: Scrollbar(
+        controller: scrollController,
         child: ReorderableListView.builder(
+          scrollController: scrollController,
           padding: const EdgeInsets.only(bottom: 70),
           physics: const AlwaysScrollableScrollPhysics(),
           itemCount: tags.length,

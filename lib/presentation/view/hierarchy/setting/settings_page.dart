@@ -15,6 +15,7 @@ import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/setting/settings_result.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -35,14 +36,19 @@ class SettingsPage extends HookConsumerWidget {
       ..listen<bool>(settingsViewModelProvider.select((viewModel) => viewModel.isLoading), (previous, isLoading) {
         isLoading ? EasyLoading.show() : EasyLoading.dismiss();
       });
+    final scrollController = useScrollController();
     return Scaffold(
       appBar: AppBar(title: Text(intl(context).settings)),
       body: RefreshIndicator(
         onRefresh: viewModel.refresh,
         child: Scrollbar(
+          controller: scrollController,
           child: ListView(
+            controller: scrollController,
             physics: const AlwaysScrollableScrollPhysics(),
             children: <Widget>[
+              _buildWorkspaceTitle(context, ref),
+              _buildJoinOtherWorkspace(context, ref),
               _buildAccountTitle(context, ref),
               _buildGoogleConnectionTile(context, ref),
               _buildAppleConnectionTile(context, ref),
@@ -56,6 +62,23 @@ class SettingsPage extends HookConsumerWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildWorkspaceTitle(BuildContext context, WidgetRef ref) {
+    return ListTile(
+      title: Text(intl(context).workspace, style: Theme.of(context).textTheme.caption),
+    );
+  }
+
+  Widget _buildJoinOtherWorkspace(BuildContext context, WidgetRef ref) {
+    return ListTile(
+      leading: const Icon(Icons.workspaces),
+      title: Text(intl(context).inputInvitationCode),
+      subtitle: Text(intl(context).joinOtherWorkspace),
+      onTap: () {
+        // TODO
+      },
     );
   }
 
@@ -77,7 +100,7 @@ class SettingsPage extends HookConsumerWidget {
         leading: const Icon(FontAwesomeIcons.google),
         title: Text(intl(context).google),
         trailing: Text((user.isGoogleLinked()) ? intl(context).alreadyConnect : intl(context).notYetConnect),
-        subtitle: Text((user.isGoogleLinked()) ? intl(context).tapToUnConnectWith(user.googleProvider!.displayName) : intl(context).tapToConnect),
+        subtitle: Text((user.isGoogleLinked()) ? intl(context).tapToUnConnectWith(user.googleProvider?.email ?? '') : intl(context).tapToConnect),
         onTap: () {
           if (user.isGoogleLinked()) {
             _showUnlinkWithGoogleConfirmationDialog(context, ref);
@@ -106,7 +129,7 @@ class SettingsPage extends HookConsumerWidget {
         leading: const Icon(FontAwesomeIcons.apple),
         title: Text(intl(context).apple),
         trailing: Text((user.isAppleLinked()) ? intl(context).alreadyConnect : intl(context).notYetConnect),
-        subtitle: Text((user.isAppleLinked()) ? intl(context).tapToUnConnectWith(user.appleProvider!.displayName) : intl(context).tapToConnect),
+        subtitle: Text((user.isAppleLinked()) ? intl(context).tapToUnConnectWith(user.appleProvider?.email ?? '') : intl(context).tapToConnect),
         onTap: () {
           if (user.isAppleLinked()) {
             _showUnlinkWithAppleConfirmationDialog(context, ref);

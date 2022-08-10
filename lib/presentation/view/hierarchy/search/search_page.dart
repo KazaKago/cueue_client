@@ -29,6 +29,7 @@ class SearchPage extends HookConsumerWidget with RouteAware {
       keyword.value = keywordEditingController.text;
     });
     final selectedRecipes = (initialSelectedRecipes != null) ? useState<List<RecipeSummary>>(initialSelectedRecipes!) : null;
+    final scrollController = useScrollController();
     return WillPopScope(
       onWillPop: () async {
         Navigator.of(context).pop(selectedRecipes?.value);
@@ -39,7 +40,9 @@ class SearchPage extends HookConsumerWidget with RouteAware {
           title: Text(intl(context).search),
         ),
         body: Scrollbar(
+          controller: scrollController,
           child: ListView(
+            controller: scrollController,
             padding: const EdgeInsets.fromLTRB(16, 32, 16, 32),
             children: <Widget>[
               _buildSearchText(context, ref, keywordEditingController),

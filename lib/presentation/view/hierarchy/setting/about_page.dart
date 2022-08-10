@@ -4,6 +4,7 @@ import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -13,12 +14,15 @@ class AboutPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(aboutViewModelProvider.select((viewModel) => viewModel.state));
+    final scrollController = useScrollController();
     return Scaffold(
       appBar: AppBar(
         title: Text(intl(context).aboutApp),
       ),
       body: Scrollbar(
+        controller: scrollController,
         child: SingleChildScrollView(
+          controller: scrollController,
           child: state.when(
             loading: () => _buildLoading(context, ref),
             completed: (appInfo, developerInfo) => _buildCompleted(context, ref, appInfo, developerInfo),

@@ -47,25 +47,21 @@ class TextFieldDialog extends HookConsumerWidget {
     }
     return AlertDialog(
       title: (title != null) ? Text(title!) : null,
-      content: StatefulBuilder(
-        builder: (BuildContext context, StateSetter setState) {
-          return TextField(
-            controller: textEditingController,
-            autofocus: true,
-            keyboardType: keyboardType,
-            obscureText: isObscureText.value,
-            decoration: InputDecoration(
-              labelText: labelText,
-              hintText: hintText,
-              suffixIcon: (keyboardType == TextInputType.visiblePassword)
-                  ? IconButton(
-                      icon: Icon(isObscureText.value ? Icons.visibility_off : Icons.visibility),
-                      onPressed: () => isObscureText.value = !isObscureText.value,
-                    )
-                  : null,
-            ),
-          );
-        },
+      content: TextField(
+        controller: textEditingController,
+        autofocus: true,
+        keyboardType: keyboardType,
+        obscureText: isObscureText.value,
+        decoration: InputDecoration(
+          labelText: labelText,
+          hintText: hintText,
+          suffixIcon: (keyboardType == TextInputType.visiblePassword)
+              ? IconButton(
+                  icon: Icon(isObscureText.value ? Icons.visibility_off : Icons.visibility),
+                  onPressed: () => isObscureText.value = !isObscureText.value,
+                )
+              : null,
+        ),
       ),
       actions: buttons,
     );

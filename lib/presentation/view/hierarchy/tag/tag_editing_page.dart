@@ -29,6 +29,7 @@ class TagEditingPage extends HookConsumerWidget {
         exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
       });
     final tagEditingController = useTextEditingController(text: tag?.name);
+    final scrollController = useScrollController();
     return Scaffold(
       appBar: AppBar(
         title: Text(tag != null ? intl(context).editWith(tag!.name) : intl(context).addTag),
@@ -42,7 +43,9 @@ class TagEditingPage extends HookConsumerWidget {
         ],
       ),
       body: Scrollbar(
+        controller: scrollController,
         child: ListView(
+          controller: scrollController,
           padding: const EdgeInsets.fromLTRB(16, 32, 16, 32),
           children: <Widget>[
             TextField(

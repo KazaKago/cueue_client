@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AppleProvider {
   String get uid => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +30,7 @@ abstract class $AppleProviderCopyWith<$Res> {
   factory $AppleProviderCopyWith(
           AppleProvider value, $Res Function(AppleProvider) then) =
       _$AppleProviderCopyWithImpl<$Res>;
-  $Res call({String uid, String displayName});
+  $Res call({String uid, String? email, String displayName});
 }
 
 /// @nodoc
@@ -44,6 +45,7 @@ class _$AppleProviderCopyWithImpl<$Res>
   @override
   $Res call({
     Object? uid = freezed,
+    Object? email = freezed,
     Object? displayName = freezed,
   }) {
     return _then(_value.copyWith(
@@ -51,6 +53,10 @@ class _$AppleProviderCopyWithImpl<$Res>
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
       displayName: displayName == freezed
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
@@ -66,7 +72,7 @@ abstract class _$$_AppleProviderCopyWith<$Res>
           _$_AppleProvider value, $Res Function(_$_AppleProvider) then) =
       __$$_AppleProviderCopyWithImpl<$Res>;
   @override
-  $Res call({String uid, String displayName});
+  $Res call({String uid, String? email, String displayName});
 }
 
 /// @nodoc
@@ -83,6 +89,7 @@ class __$$_AppleProviderCopyWithImpl<$Res>
   @override
   $Res call({
     Object? uid = freezed,
+    Object? email = freezed,
     Object? displayName = freezed,
   }) {
     return _then(_$_AppleProvider(
@@ -90,6 +97,10 @@ class __$$_AppleProviderCopyWithImpl<$Res>
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
       displayName: displayName == freezed
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
@@ -101,16 +112,19 @@ class __$$_AppleProviderCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AppleProvider implements _AppleProvider {
-  const _$_AppleProvider({required this.uid, required this.displayName});
+  const _$_AppleProvider(
+      {required this.uid, required this.email, required this.displayName});
 
   @override
   final String uid;
+  @override
+  final String? email;
   @override
   final String displayName;
 
   @override
   String toString() {
-    return 'AppleProvider(uid: $uid, displayName: $displayName)';
+    return 'AppleProvider(uid: $uid, email: $email, displayName: $displayName)';
   }
 
   @override
@@ -119,6 +133,7 @@ class _$_AppleProvider implements _AppleProvider {
         (other.runtimeType == runtimeType &&
             other is _$_AppleProvider &&
             const DeepCollectionEquality().equals(other.uid, uid) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality()
                 .equals(other.displayName, displayName));
   }
@@ -127,6 +142,7 @@ class _$_AppleProvider implements _AppleProvider {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(uid),
+      const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(displayName));
 
   @JsonKey(ignore: true)
@@ -138,10 +154,13 @@ class _$_AppleProvider implements _AppleProvider {
 abstract class _AppleProvider implements AppleProvider {
   const factory _AppleProvider(
       {required final String uid,
+      required final String? email,
       required final String displayName}) = _$_AppleProvider;
 
   @override
   String get uid;
+  @override
+  String? get email;
   @override
   String get displayName;
   @override

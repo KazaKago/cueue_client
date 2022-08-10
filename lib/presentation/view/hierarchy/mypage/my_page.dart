@@ -10,11 +10,13 @@ import 'package:cueue/presentation/view/global/modal/text_field_dialog_event.dar
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authentication_page.dart';
 import 'package:cueue/presentation/view/hierarchy/photo/photo_pickup_bottom_sheet_dialog.dart';
+import 'package:cueue/presentation/view/hierarchy/photo/photo_pickup_bottom_sheet_event.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/settings_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:universal_io/io.dart';
@@ -35,6 +37,7 @@ class MyPage extends HookConsumerWidget {
       ..listen<bool>(myPageViewModelProvider.select((viewModel) => viewModel.isLoading), (previous, isLoading) {
         isLoading ? EasyLoading.show() : EasyLoading.dismiss();
       });
+    final scrollController = useScrollController();
     return Scaffold(
       appBar: AppBar(
         title: Text(intl(context).mypage),
@@ -54,7 +57,9 @@ class MyPage extends HookConsumerWidget {
       body: RefreshIndicator(
         onRefresh: viewModel.refresh,
         child: Scrollbar(
+          controller: scrollController,
           child: ListView(
+            controller: scrollController,
             physics: const AlwaysScrollableScrollPhysics(),
             children: <Widget>[
                   const SizedBox(height: 16),
@@ -67,6 +72,8 @@ class MyPage extends HookConsumerWidget {
                 ] +
                 _buildWorkspaceMembers(context, ref) +
                 [
+                  const SizedBox(height: 16),
+                  _buildInviteWorkspace(context, ref),
                   const SizedBox(height: 16),
                 ],
           ),
@@ -109,8 +116,8 @@ class MyPage extends HookConsumerWidget {
               elevation: 1,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
               onPressed: () => _pickupProfileImage(context, ref),
-              tooltip: intl(context).change_photo,
-              heroTag: intl(context).change_photo,
+              tooltip: intl(context).changePhoto,
+              heroTag: intl(context).changePhoto,
               child: const Icon(Icons.edit),
             ),
           ],
@@ -139,8 +146,8 @@ class MyPage extends HookConsumerWidget {
               elevation: 1,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
               onPressed: () => _pickupProfileImage(context, ref),
-              tooltip: intl(context).change_photo,
-              heroTag: intl(context).change_photo,
+              tooltip: intl(context).changePhoto,
+              heroTag: intl(context).changePhoto,
               child: const Icon(Icons.edit),
             ),
           ],
@@ -252,6 +259,18 @@ class MyPage extends HookConsumerWidget {
     );
   }
 
+  Widget _buildInviteWorkspace(BuildContext context, WidgetRef ref) {
+    return ListTile(
+      title: TextButton.icon(
+        icon: const Icon(Icons.add),
+        label: Text(intl(context).inviteCurrentWorkspace),
+        onPressed: () {
+          // TODO
+        },
+      ),
+    );
+  }
+
   Future<void> _goSettings(BuildContext context) async {
     await Navigator.push<SettingsPage>(context, MaterialPageRoute(builder: (context) => const SettingsPage()));
   }
@@ -283,7 +302,10 @@ class MyPage extends HookConsumerWidget {
 
   Future<void> _pickupProfileImage(BuildContext context, WidgetRef ref) async {
     final imagePicker = ImagePicker();
-    final event = await PhotoPickupBottomSheetDialog(context).show();
+    final event = await showModalBottomSheet<PhotoPickupBottomSheetEvent>(
+      context: context,
+      builder: PhotoPickupBottomSheetDialog.new,
+    );
     final pickedImage = await event?.when(
       fromCamera: () => imagePicker.pickImage(source: ImageSource.camera),
       fromLibrary: () => imagePicker.pickImage(source: ImageSource.gallery),

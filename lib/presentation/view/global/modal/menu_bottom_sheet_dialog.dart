@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class MenuBottomSheetDialog {
-  const MenuBottomSheetDialog(this._context, this._menuItems);
+class MenuBottomSheetDialog extends HookConsumerWidget {
+  const MenuBottomSheetDialog(this.menuItems, {super.key});
 
-  final BuildContext _context;
-  final List<MenuValue> _menuItems;
+  final List<MenuValue> menuItems;
 
-  Future<MenuItemResult?> show() {
-    return showModalBottomSheet(
-      context: _context,
-      builder: (BuildContext context) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: _menuItems.map<Widget>((menuItem) {
-            return ListTile(
-              leading: Icon(menuItem.icon),
-              title: Text(menuItem.title),
-              onTap: () => Navigator.of(context).pop(MenuItemResult(_menuItems.indexOf(menuItem), menuItem)),
-            );
-          }).toList(),
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: menuItems.map<Widget>((menuItem) {
+        return ListTile(
+          leading: Icon(menuItem.icon),
+          title: Text(menuItem.title),
+          onTap: () => onTap(context, MenuItemResult(menuItems.indexOf(menuItem), menuItem)),
         );
-      },
+      }).toList(),
     );
+  }
+
+  void onTap(BuildContext context, MenuItemResult result) {
+    Navigator.of(context).pop(result);
   }
 }
 

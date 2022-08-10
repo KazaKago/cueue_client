@@ -231,7 +231,7 @@
   "backToLoginScreen": "ログイン画面へ戻る",
   "changeDisplayName": "表示名の変更",
   "done": "決定",
-  "change_photo": "画像を変更する",
+  "changePhoto": "画像を変更する",
   "searchFromKeyword": "レシピを\nキーワードから探す",
   "searchFromList": "レシピを\n一覧から選択する",
   "workspaceName": "参加中のワークスペース",
@@ -244,5 +244,9 @@
         "type": "int"
       }
     }
-  }
+  },
+  "inviteCurrentWorkspace": "ワークスペースに他の人を招待する",
+  "workspace": "ワークスペース",
+  "inputInvitationCode": "招待コードを入力する",
+  "joinOtherWorkspace": "別のワークスペースに参加します"
 }
