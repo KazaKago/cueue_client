@@ -32,8 +32,12 @@ class SearchPage extends HookConsumerWidget with RouteAware {
     final scrollController = useScrollController();
     return WillPopScope(
       onWillPop: () async {
-        Navigator.of(context).pop(selectedRecipes?.value);
-        return false;
+        if (initialSelectedRecipes != null) {
+          Navigator.of(context).pop(selectedRecipes?.value);
+          return false;
+        } else {
+          return true;
+        }
       },
       child: Scaffold(
         appBar: AppBar(
