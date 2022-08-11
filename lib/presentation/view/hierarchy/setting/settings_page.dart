@@ -5,6 +5,7 @@ import 'package:cueue/presentation/view/global/modal/simple_message_dialog.dart'
 import 'package:cueue/presentation/view/global/modal/simple_message_dialog_event.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authorizer/apple_authorizer.dart';
 import 'package:cueue/presentation/view/hierarchy/auth/authorizer/google_authorizer.dart';
+import 'package:cueue/presentation/view/hierarchy/invitation/invitation_input_page.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/about_page.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/account_deletion_page.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/privacy_policy_url.dart';
@@ -76,9 +77,7 @@ class SettingsPage extends HookConsumerWidget {
       leading: const Icon(Icons.workspaces),
       title: Text(intl(context).inputInvitationCode),
       subtitle: Text(intl(context).joinOtherWorkspace),
-      onTap: () {
-        // TODO
-      },
+      onTap: () => _goInvitationInput(context),
     );
   }
 
@@ -190,6 +189,10 @@ class SettingsPage extends HookConsumerWidget {
       iconColor: Theme.of(context).errorColor,
       onTap: () => _goAccountDeletion(context),
     );
+  }
+
+  Future<void> _goInvitationInput(BuildContext context) async {
+    await Navigator.push<InvitationInputPage>(context, MaterialPageRoute(builder: (context) => const InvitationInputPage()));
   }
 
   Future<void> _linkWithGoogle(BuildContext context, WidgetRef ref) async {

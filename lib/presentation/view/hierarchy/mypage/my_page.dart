@@ -8,10 +8,10 @@ import 'package:cueue/presentation/view/global/modal/simple_message_dialog_event
 import 'package:cueue/presentation/view/global/modal/text_field_dialog.dart';
 import 'package:cueue/presentation/view/global/modal/text_field_dialog_event.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
-import 'package:cueue/presentation/view/hierarchy/auth/authentication_page.dart';
 import 'package:cueue/presentation/view/hierarchy/photo/photo_pickup_bottom_sheet_dialog.dart';
 import 'package:cueue/presentation/view/hierarchy/photo/photo_pickup_bottom_sheet_event.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/settings_page.dart';
+import 'package:cueue/presentation/view/hierarchy/splash/splash_page.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/presentation/viewmodel/global/event.dart';
 import 'package:flutter/material.dart';
@@ -28,8 +28,8 @@ class MyPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.read(myPageViewModelProvider);
     ref
-      ..listen<Event<void>>(myPageViewModelProvider.select((viewModel) => viewModel.replaceWelcomePageEvent), (previous, replaceWelcomePageEvent) {
-        replaceWelcomePageEvent((_) => _replaceWelcomePage(context));
+      ..listen<Event<void>>(myPageViewModelProvider.select((viewModel) => viewModel.signOutCompletionEvent), (previous, signOutCompletionEvent) {
+        signOutCompletionEvent((_) => _replaceSplashPage(context));
       })
       ..listen<Event<Exception>>(myPageViewModelProvider.select((viewModel) => viewModel.exceptionEvent), (previous, exceptionEvent) {
         exceptionEvent((exception) => _showErrorDialog(context, ref, exception));
@@ -62,20 +62,18 @@ class MyPage extends HookConsumerWidget {
             controller: scrollController,
             physics: const AlwaysScrollableScrollPhysics(),
             children: <Widget>[
-                  const SizedBox(height: 16),
-                  _buildProfileImage(context, ref),
-                  _buildNickNameTitle(context, ref),
-                  _buildNickname(context, ref),
-                  _buildWorkspaceTitle(context, ref),
-                  _buildWorkspace(context, ref),
-                  _buildWorkspaceMembersTitle(context, ref),
-                ] +
-                _buildWorkspaceMembers(context, ref) +
-                [
-                  const SizedBox(height: 16),
-                  _buildInviteWorkspace(context, ref),
-                  const SizedBox(height: 16),
-                ],
+              const SizedBox(height: 16),
+              _buildProfileImage(context, ref),
+              _buildNickNameTitle(context, ref),
+              _buildNickname(context, ref),
+              _buildWorkspaceTitle(context, ref),
+              _buildWorkspace(context, ref),
+              _buildWorkspaceMembersTitle(context, ref),
+              for (final workspaceMember in _buildWorkspaceMembers(context, ref)) workspaceMember,
+              const SizedBox(height: 16),
+              _buildInviteWorkspace(context, ref),
+              const SizedBox(height: 16),
+            ],
           ),
         ),
       ),
@@ -184,7 +182,7 @@ class MyPage extends HookConsumerWidget {
 
   Widget _buildWorkspaceTitle(BuildContext context, WidgetRef ref) {
     return ListTile(
-      subtitle: Text(intl(context).workspaceName, style: Theme.of(context).textTheme.caption),
+      subtitle: Text(intl(context).currentWorkspace, style: Theme.of(context).textTheme.caption),
     );
   }
 
@@ -212,13 +210,13 @@ class MyPage extends HookConsumerWidget {
     final state = ref.watch(myPageViewModelProvider.select((viewModel) => viewModel.state));
     return state.when(
       loading: () => ListTile(
-        subtitle: Text(intl(context).joiningWorkspaceMember, style: Theme.of(context).textTheme.caption),
+        subtitle: Text(intl(context).memberOfWorkspace, style: Theme.of(context).textTheme.caption),
       ),
       completed: (user) => ListTile(
-        subtitle: Text(intl(context).joiningWorkspaceMemberWithCount(user.requireWorkspace().users.length), style: Theme.of(context).textTheme.caption),
+        subtitle: Text(intl(context).memberOfWorkspaceWithCount(user.requireWorkspace().users.length), style: Theme.of(context).textTheme.caption),
       ),
       error: (exception) => ListTile(
-        subtitle: Text(intl(context).joiningWorkspaceMember, style: Theme.of(context).textTheme.caption),
+        subtitle: Text(intl(context).memberOfWorkspace, style: Theme.of(context).textTheme.caption),
       ),
     );
   }
@@ -244,7 +242,13 @@ class MyPage extends HookConsumerWidget {
             );
           } else {
             return ListTile(
-              leading: const Icon(Icons.account_circle_outlined),
+              leading: CircleAvatar(
+                backgroundColor: Theme.of(context).dividerColor,
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Assets.images.icAppIcon.image(color: Theme.of(context).hoverColor),
+                ),
+              ),
               title: Text(user.displayName),
             );
           }
@@ -292,8 +296,8 @@ class MyPage extends HookConsumerWidget {
     }
   }
 
-  Future<void> _replaceWelcomePage(BuildContext context) {
-    return Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const AuthenticationPage()), (_) => false);
+  Future<void> _replaceSplashPage(BuildContext context) {
+    return Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const SplashPage()), (_) => false);
   }
 
   Future<void> _showErrorDialog(BuildContext context, WidgetRef ref, Exception exception) async {

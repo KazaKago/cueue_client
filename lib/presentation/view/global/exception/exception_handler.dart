@@ -49,6 +49,7 @@ class ExceptionHandler {
       credentialAlreadyInUse: (exception) => intl(context).credentialAlreadyInUse,
       accountExistsWithDifferentCredential: (exception) => intl(context).accountExistsWithDifferentCredential(exception.existsSignInMethods.join('\n - ')),
       userTokenExpired: (exception) => intl(context).userTokenExpired,
+      notFoundInvitation: (exception) => intl(context).notFoundInvitationMessage,
       otherException: (exception) => intl(context).otherException,
     );
     return withSystemMessage ? '$message\n\n${exception.toString()}' : message;
@@ -105,6 +106,7 @@ class ExceptionHandler {
         await _signOut(context, ref);
         return true;
       },
+      notFoundInvitation: (exception) async => false,
       otherException: (exception) async => false,
     );
   }

@@ -1,8 +1,10 @@
+import 'package:cueue/domain/model/hierarchy/invitation/invitation_code.dart';
 import 'package:cueue/domain/model/hierarchy/menu/menu_id.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_id.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_search_option.dart';
 import 'package:cueue/domain/usecase/di/usecase_provider.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/auth/authentication_viewmodel.dart';
+import 'package:cueue/presentation/viewmodel/hierarchy/invitation/invitation_info_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/menu/menu_detail_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/menu/menu_editing_viewmodel.dart';
 import 'package:cueue/presentation/viewmodel/hierarchy/menu/menu_viewmodel.dart';
@@ -40,3 +42,4 @@ final accountDeletionViewModelProvider = ChangeNotifierProvider.autoDispose((ref
 final workspaceCreationViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => WorkspaceCreationViewModel(ref.read(createWorkspaceUseCaseProvider)));
 final myPageViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => MyPageViewModel(ref.read(followUserUseCaseProvider), ref.read(refreshUserUseCaseProvider), ref.read(updateUserDisplayNameUseCaseProvider), ref.read(updateUserPhotoUseCaseProvider), ref.read(updateWorkspaceUseCaseProvider), ref.read(signOutUseCaseProvider)));
 final userCreationViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => UserCreationViewModel(ref.read(createUserUseCaseProvider)));
+final invitationInfoViewModelProvider = ChangeNotifierProvider.autoDispose.family<InvitationInfoViewModel, InvitationCode>((ref, code) => InvitationInfoViewModel(ref.read(getInvitationUseCaseProvider), ref.read(acceptInvitationUseCaseProvider), code));

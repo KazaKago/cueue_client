@@ -1,5 +1,6 @@
 import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/utils/route_observer.dart';
+import 'package:cueue/presentation/view/global/utils/web_aware_page_transition_theme.dart';
 import 'package:cueue/presentation/view/hierarchy/splash/splash_page.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
@@ -83,6 +84,7 @@ class CueueApp extends HookConsumerWidget {
           padding: const EdgeInsets.all(12),
         ),
       ),
+      pageTransitionsTheme: WebAwareTransitionTheme(),
       textTheme: GoogleFonts.mPlus1pTextTheme(
         ThemeData(brightness: colorScheme.brightness).textTheme,
       ),

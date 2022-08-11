@@ -26,7 +26,7 @@ class MyPageViewModel with ChangeNotifier {
   final CompositeSubscription _compositeSubscription = CompositeSubscription();
   MyPageState _state = const MyPageState.loading();
   bool _isLoading = false;
-  Event<void> _replaceWelcomePageEvent = Event.initialize();
+  Event<void> _signOutCompletionEvent = Event.initialize();
   Event<Exception> _exceptionEvent = Event.initialize();
 
   @override
@@ -49,10 +49,10 @@ class MyPageViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Event<void> get replaceWelcomePageEvent => _replaceWelcomePageEvent;
+  Event<void> get signOutCompletionEvent => _signOutCompletionEvent;
 
-  set replaceWelcomePageEvent(Event<void> replaceWelcomePageEvent) {
-    _replaceWelcomePageEvent = replaceWelcomePageEvent;
+  set signOutCompletionEvent(Event<void> signOutCompletionEvent) {
+    _signOutCompletionEvent = signOutCompletionEvent;
     notifyListeners();
   }
 
@@ -87,7 +87,7 @@ class MyPageViewModel with ChangeNotifier {
     isLoading = true;
     try {
       await _signOutUseCase();
-      _replaceWelcomePageEvent = Event(null);
+      _signOutCompletionEvent = Event(null);
     } on Exception catch (exception) {
       exceptionEvent = Event(exception);
     }

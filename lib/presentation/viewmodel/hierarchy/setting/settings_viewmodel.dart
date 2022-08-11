@@ -27,7 +27,6 @@ class SettingsViewModel with ChangeNotifier {
   SettingsState _state = const SettingsState.loading();
   Event<SettingResult> _completionEvent = Event.initialize();
   bool _isLoading = false;
-  Event<void> _replaceWelcomePageEvent = Event.initialize();
   Event<Exception> _exceptionEvent = Event.initialize();
 
   @override
@@ -54,13 +53,6 @@ class SettingsViewModel with ChangeNotifier {
 
   set isLoading(bool isLoading) {
     _isLoading = isLoading;
-    notifyListeners();
-  }
-
-  Event<void> get replaceWelcomePageEvent => _replaceWelcomePageEvent;
-
-  set replaceWelcomePageEvent(Event<void> replaceWelcomePageEvent) {
-    _replaceWelcomePageEvent = replaceWelcomePageEvent;
     notifyListeners();
   }
 

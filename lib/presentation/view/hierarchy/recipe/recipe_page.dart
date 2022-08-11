@@ -61,14 +61,17 @@ class RecipePage extends HookConsumerWidget {
           ],
           bottom: TabBar(
             isScrollable: true,
-            tabs: [Tab(text: intl(context).allRecipes)] + tags.map((tag) => Tab(text: tag.name)).toList(),
+            tabs: [
+              Tab(text: intl(context).allRecipes),
+              for (final tag in tags) Tab(text: tag.name),
+            ],
           ),
         ),
         body: TabBarView(
-          children: [RecipeListWidget(key: const PageStorageKey(-1), onTap: (recipe) => _goRecipeDetail(context, recipe), fabPadding: true)] +
-              tags.map((tag) {
-                return RecipeListWidget(key: PageStorageKey(tag.id.value), tagIds: List.filled(1, tag.id), onTap: (recipe) => _goRecipeDetail(context, recipe), fabPadding: true);
-              }).toList(),
+          children: [
+            RecipeListWidget(key: const PageStorageKey(-1), onTap: (recipe) => _goRecipeDetail(context, recipe), fabPadding: true),
+            for (final tag in tags) RecipeListWidget(key: PageStorageKey(tag.id.value), tagIds: List.filled(1, tag.id), onTap: (recipe) => _goRecipeDetail(context, recipe), fabPadding: true),
+          ],
         ),
       ),
     );

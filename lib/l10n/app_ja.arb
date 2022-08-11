@@ -234,11 +234,11 @@
   "changePhoto": "画像を変更する",
   "searchFromKeyword": "レシピを\nキーワードから探す",
   "searchFromList": "レシピを\n一覧から選択する",
-  "workspaceName": "参加中のワークスペース",
+  "currentWorkspace": "参加中のワークスペース",
   "changeWorkspaceName": "ワークスペース名の変更",
-  "joiningWorkspaceMember": "ワークスペースのメンバー",
-  "joiningWorkspaceMemberWithCount": "ワークスペースのメンバー ({count})",
-  "@joiningWorkspaceMemberWithCount": {
+  "memberOfWorkspace": "ワークスペースのメンバー",
+  "memberOfWorkspaceWithCount": "ワークスペースのメンバー ({count})",
+  "@memberOfWorkspaceWithCount": {
     "placeholders": {
       "count": {
         "type": "int"
@@ -248,5 +248,15 @@
   "inviteCurrentWorkspace": "ワークスペースに他の人を招待する",
   "workspace": "ワークスペース",
   "inputInvitationCode": "招待コードを入力する",
-  "joinOtherWorkspace": "別のワークスペースに参加します"
+  "joinOtherWorkspace": "別のワークスペースに参加します",
+  "pleaseInputInvitationCode": "別のワークスペースに参加します\n受け取った招待コードを入力してください",
+  "invitationCode": "招待コード",
+  "confirmInvitationCode": "招待コードを確認する",
+  "notFoundInvitationMessage": "招待コードが確認できませんでした。\nコードが間違っているか使用済み、あるいは期限切れです。\n\n招待コードの有効期限は発行から24時間で、1コードにつき1度しか使えません。",
+  "confirmJoinFollowingWorkspace": "下記のワークスペースに参加します。\nよろしいですか？",
+  "warningJoiningWorkspace": "このワークスペースに参加すると現在のワークスペースにはアクセスできなくなります。\nご注意ください。",
+  "joinWorkspace": "ワークスペースに参加する",
+  "workspaceInfo": "ワークスペースの情報",
+  "workspaceName": "ワークスペース名",
+  "successToJoinWorkspace": "ワークスペースに参加しました"
 }

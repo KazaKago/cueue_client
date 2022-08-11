@@ -10,6 +10,7 @@ import 'package:cueue/domain/model/global/exception/network_cancel_exception.dar
 import 'package:cueue/domain/model/global/exception/network_exception.dart';
 import 'package:cueue/domain/model/global/exception/network_timeout_exception.dart';
 import 'package:cueue/domain/model/global/exception/not_found_exception.dart';
+import 'package:cueue/domain/model/global/exception/not_found_invitation_exception.dart';
 import 'package:cueue/domain/model/global/exception/require_reautentication_exception.dart';
 import 'package:cueue/domain/model/global/exception/server_error_exception.dart';
 import 'package:cueue/domain/model/global/exception/service_unavailable_exception.dart';
@@ -39,6 +40,7 @@ extension ExceptionExtension on Exception {
     required R Function(CredentialAlreadyInUseException exception) credentialAlreadyInUse,
     required R Function(AccountExistsWithDifferentCredentialException exception) accountExistsWithDifferentCredential,
     required R Function(UserTokenExpiredException exception) userTokenExpired,
+    required R Function(NotFoundInvitationException exception) notFoundInvitation,
     required R Function(Exception exception) otherException,
   }) {
     if (this is InvalidParamsException) {
@@ -79,6 +81,8 @@ extension ExceptionExtension on Exception {
       return accountExistsWithDifferentCredential(this as AccountExistsWithDifferentCredentialException);
     } else if (this is UserTokenExpiredException) {
       return userTokenExpired(this as UserTokenExpiredException);
+    } else if (this is NotFoundInvitationException) {
+      return notFoundInvitation(this as NotFoundInvitationException);
     } else {
       return otherException(this);
     }

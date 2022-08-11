@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cueue/domain/model/hierarchy/menu/menu.dart';
 import 'package:cueue/domain/model/hierarchy/menu/menu_summary.dart';
 import 'package:cueue/domain/model/hierarchy/recipe/recipe_summary.dart';
+import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/l10n/intl.dart';
 import 'package:cueue/presentation/view/global/extension/date_time_extension.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
@@ -90,7 +91,17 @@ class MenuDetailPage extends HookConsumerWidget {
       children: menu.recipes.map((recipe) {
         final image = recipe.image;
         return ListTile(
-          leading: (image != null) ? CircleAvatar(backgroundImage: CachedNetworkImageProvider(image.url.toString())) : const CircleAvatar(),
+          leading: (image != null)
+              ? CircleAvatar(
+                  backgroundImage: CachedNetworkImageProvider(image.url.toString()),
+                )
+              : CircleAvatar(
+                  backgroundColor: Theme.of(context).dividerColor,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Assets.images.icAppIcon.image(color: Theme.of(context).hoverColor),
+                  ),
+                ),
           title: Text(recipe.title),
           onTap: () => _goRecipeDetail(context, recipe),
         );

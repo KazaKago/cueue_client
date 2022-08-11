@@ -1,6 +1,6 @@
 import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/l10n/intl.dart';
-import 'package:cueue/presentation/view/hierarchy/auth/authentication_page.dart';
+import 'package:cueue/presentation/view/hierarchy/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -28,7 +28,7 @@ class ThanksForUsingPage extends HookConsumerWidget {
                   SelectableText(textAlign: TextAlign.center, intl(context).thanksForUsingMessage),
                   const SizedBox(height: 32),
                   ElevatedButton(
-                    onPressed: () => _replaceWelcomePage(context),
+                    onPressed: () => _replaceSplashPage(context),
                     child: Text(intl(context).backToLoginScreen),
                   ),
                 ],
@@ -40,7 +40,7 @@ class ThanksForUsingPage extends HookConsumerWidget {
     );
   }
 
-  Future<void> _replaceWelcomePage(BuildContext context) async {
-    await Navigator.pushAndRemoveUntil<void>(context, MaterialPageRoute(builder: (context) => const AuthenticationPage()), (route) => false);
+  Future<void> _replaceSplashPage(BuildContext context) async {
+    await Navigator.pushAndRemoveUntil<void>(context, MaterialPageRoute(builder: (context) => const SplashPage()), (route) => false);
   }
 }

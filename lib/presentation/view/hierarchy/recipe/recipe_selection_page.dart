@@ -53,14 +53,17 @@ class RecipeSelectionPage extends HookConsumerWidget {
           title: Text(intl(context).selectRecipes),
           bottom: TabBar(
             isScrollable: true,
-            tabs: [Tab(text: intl(context).allRecipes)] + tags.map((tag) => Tab(text: tag.name)).toList(),
+            tabs: [
+              Tab(text: intl(context).allRecipes),
+              for (final tag in tags) Tab(text: tag.name),
+            ],
           ),
         ),
         body: TabBarView(
-          children: [RecipeListWidget(key: const PageStorageKey(-1), selectedRecipes: selectedRecipes.value, onTap: (recipe) => _onCheckChanged(selectedRecipes, recipe))] +
-              tags.map((tag) {
-                return RecipeListWidget(key: PageStorageKey(tag.id.value), tagIds: List.filled(1, tag.id), selectedRecipes: selectedRecipes.value, onTap: (recipe) => _onCheckChanged(selectedRecipes, recipe));
-              }).toList(),
+          children: [
+            RecipeListWidget(key: const PageStorageKey(-1), selectedRecipes: selectedRecipes.value, onTap: (recipe) => _onCheckChanged(selectedRecipes, recipe)),
+            for (final tag in tags) RecipeListWidget(key: PageStorageKey(tag.id.value), tagIds: List.filled(1, tag.id), selectedRecipes: selectedRecipes.value, onTap: (recipe) => _onCheckChanged(selectedRecipes, recipe)),
+          ],
         ),
       ),
     );
