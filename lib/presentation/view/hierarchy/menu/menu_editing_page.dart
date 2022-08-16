@@ -42,10 +42,15 @@ class MenuEditingPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final viewModel = ref.read(menuEditingViewModelProvider);
     final selectedDateTime = useState(menu?.date ?? DateTime.now());
     final selectedRecipes = useState(menu?.recipes.toList() ?? recipes ?? []);
     final selectedTimeFrame = useState(menu?.timeFrame ?? TimeFrame.dinner);
     final menuMemoEditingController = useTextEditingController(text: menu?.memo ?? '');
+    final isEnableSubmitButton = useState(false)..value = viewModel.validate(selectedRecipes.value.length, menuMemoEditingController.text);
+    menuMemoEditingController.addListener(() {
+      isEnableSubmitButton.value = viewModel.validate(selectedRecipes.value.length, menuMemoEditingController.text);
+    });
     ref
       ..listen<Event<EditingResult>>(menuEditingViewModelProvider.select((viewModel) => viewModel.completionEvent), (previous, completionEvent) {
         completionEvent((completion) => Navigator.of(context).pop(completion));
@@ -84,7 +89,7 @@ class MenuEditingPage extends HookConsumerWidget {
             const SizedBox(height: 8),
             _buildMemo(context, ref, menuMemoEditingController),
             const SizedBox(height: 24),
-            _buildDoneButton(context, ref, menuMemoEditingController, selectedDateTime.value, selectedTimeFrame.value, selectedRecipes.value),
+            _buildDoneButton(context, ref, menuMemoEditingController, selectedDateTime.value, selectedTimeFrame.value, selectedRecipes.value, isEnableSubmitButton.value),
           ],
         ),
       ),
@@ -147,20 +152,22 @@ class MenuEditingPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildDoneButton(BuildContext context, WidgetRef ref, TextEditingController menuMemoEditingController, DateTime selectedDateTime, TimeFrame selectedTimeFrame, List<RecipeSummary> selectedRecipes) {
+  Widget _buildDoneButton(BuildContext context, WidgetRef ref, TextEditingController menuMemoEditingController, DateTime selectedDateTime, TimeFrame selectedTimeFrame, List<RecipeSummary> selectedRecipes, bool isEnableSubmitButton) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
       child: ElevatedButton.icon(
         icon: const Icon(Icons.save),
         label: Text(menu != null ? intl(context).doFix : intl(context).doAdd),
-        onPressed: () {
-          final viewModel = ref.read(menuEditingViewModelProvider);
-          if (menu != null) {
-            viewModel.update(menu!.id, menuMemoEditingController.text, selectedDateTime, selectedTimeFrame, selectedRecipes.map((e) => e.id).toList());
-          } else {
-            viewModel.create(menuMemoEditingController.text, selectedDateTime, selectedTimeFrame, selectedRecipes.map((e) => e.id).toList());
-          }
-        },
+        onPressed: isEnableSubmitButton
+            ? () {
+                final viewModel = ref.read(menuEditingViewModelProvider);
+                if (menu != null) {
+                  viewModel.update(menu!.id, menuMemoEditingController.text, selectedDateTime, selectedTimeFrame, selectedRecipes.map((e) => e.id).toList());
+                } else {
+                  viewModel.create(menuMemoEditingController.text, selectedDateTime, selectedTimeFrame, selectedRecipes.map((e) => e.id).toList());
+                }
+              }
+            : null,
       ),
     );
   }

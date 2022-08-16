@@ -48,6 +48,10 @@ class MenuEditingViewModel with ChangeNotifier {
     notifyListeners();
   }
 
+  bool validate(int recipeCount, String message) {
+    return 0 < recipeCount || message.isNotEmpty;
+  }
+
   Future<void> create(String memo, DateTime dateTime, TimeFrame timeFrame, List<RecipeId> recipeIds) async {
     isLoading = true;
     try {

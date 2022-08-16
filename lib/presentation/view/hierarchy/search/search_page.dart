@@ -23,10 +23,10 @@ class SearchPage extends HookConsumerWidget with RouteAware {
       return () => routeObserver.unsubscribe(this);
     });
     final selectedTagIds = useState(<TagId>[]);
-    final keyword = useState('');
     final keywordEditingController = useTextEditingController();
+    final isEnableSubmitButton = useState(keywordEditingController.text.isNotEmpty);
     keywordEditingController.addListener(() {
-      keyword.value = keywordEditingController.text;
+      isEnableSubmitButton.value = keywordEditingController.text.isNotEmpty;
     });
     final selectedRecipes = (initialSelectedRecipes != null) ? useState<List<RecipeSummary>>(initialSelectedRecipes!) : null;
     final scrollController = useScrollController();
@@ -55,7 +55,7 @@ class SearchPage extends HookConsumerWidget with RouteAware {
               const SizedBox(height: 4),
               _buildTagChips(context, ref, selectedTagIds),
               const SizedBox(height: 24),
-              _buildSubmitButton(context, keyword.value, selectedTagIds.value, selectedRecipes),
+              _buildSubmitButton(context, keywordEditingController.text, selectedTagIds.value, selectedRecipes, isEnableSubmitButton.value),
             ],
           ),
         ),
@@ -119,13 +119,13 @@ class SearchPage extends HookConsumerWidget with RouteAware {
     return ErrorHandlingWidget(exception, onClickRetry: viewModel.retry);
   }
 
-  Widget _buildSubmitButton(BuildContext context, String keyword, List<TagId> selectedTagIds, ValueNotifier<List<RecipeSummary>>? selectedRecipes) {
+  Widget _buildSubmitButton(BuildContext context, String keyword, List<TagId> selectedTagIds, ValueNotifier<List<RecipeSummary>>? selectedRecipes, bool isEnableSubmitButton) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
       child: ElevatedButton.icon(
         icon: const Icon(Icons.search),
         label: Text(intl(context).doSearch),
-        onPressed: keyword.isEmpty ? null : () => _goSearchResult(context, keyword, selectedTagIds, selectedRecipes),
+        onPressed: isEnableSubmitButton ? () => _goSearchResult(context, keyword, selectedTagIds, selectedRecipes) : null,
       ),
     );
   }

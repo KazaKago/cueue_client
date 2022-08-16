@@ -30,6 +30,10 @@ class RecipeEditingPage extends HookConsumerWidget {
     final images = useState(recipe?.images.toList() ?? []);
     final selectedTagIds = useState(recipe?.tags.map((e) => e.id).toList() ?? []);
     final recipeTitleEditingController = useTextEditingController(text: recipe?.title ?? '');
+    final isEnableRegistrationButton = useState(recipeTitleEditingController.text.isNotEmpty);
+    recipeTitleEditingController.addListener(() {
+      isEnableRegistrationButton.value = recipeTitleEditingController.text.isNotEmpty;
+    });
     final recipeUrlEditingController = useTextEditingController(text: recipe?.url?.toString() ?? '');
     final recipeDescriptionEditingController = useTextEditingController(text: recipe?.description ?? '');
     ref
@@ -73,7 +77,7 @@ class RecipeEditingPage extends HookConsumerWidget {
             const SizedBox(height: 24),
             _buildTagChips(context, ref, selectedTagIds),
             const SizedBox(height: 24),
-            _buildRegisterButton(context, ref, recipeTitleEditingController, recipeDescriptionEditingController, recipeUrlEditingController, images.value, selectedTagIds.value),
+            _buildRegisterButton(context, ref, recipeTitleEditingController, recipeDescriptionEditingController, recipeUrlEditingController, images.value, selectedTagIds.value, isEnableRegistrationButton.value),
           ],
         ),
       ),
@@ -252,20 +256,22 @@ class RecipeEditingPage extends HookConsumerWidget {
     return ErrorHandlingWidget(exception, onClickRetry: viewModel.retry);
   }
 
-  Widget _buildRegisterButton(BuildContext context, WidgetRef ref, TextEditingController recipeTitleEditingController, TextEditingController recipeDescriptionEditingController, TextEditingController recipeUrlEditingController, List<Content> images, List<TagId> selectedTagIds) {
+  Widget _buildRegisterButton(BuildContext context, WidgetRef ref, TextEditingController recipeTitleEditingController, TextEditingController recipeDescriptionEditingController, TextEditingController recipeUrlEditingController, List<Content> images, List<TagId> selectedTagIds, bool isEnableRegistrationButton) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
       child: ElevatedButton.icon(
         icon: const Icon(Icons.save),
         label: Text(recipe != null ? intl(context).doFix : intl(context).doAdd),
-        onPressed: () {
-          final viewModel = ref.read(recipeEditingViewModelProvider);
-          if (recipe != null) {
-            viewModel.updateRecipe(recipe!.id, recipeTitleEditingController.text, recipeDescriptionEditingController.text, recipeUrlEditingController.text, images, selectedTagIds);
-          } else {
-            viewModel.createRecipe(recipeTitleEditingController.text, recipeDescriptionEditingController.text, recipeUrlEditingController.text, images, selectedTagIds);
-          }
-        },
+        onPressed: isEnableRegistrationButton
+            ? () {
+                final viewModel = ref.read(recipeEditingViewModelProvider);
+                if (recipe != null) {
+                  viewModel.updateRecipe(recipe!.id, recipeTitleEditingController.text, recipeDescriptionEditingController.text, recipeUrlEditingController.text, images, selectedTagIds);
+                } else {
+                  viewModel.createRecipe(recipeTitleEditingController.text, recipeDescriptionEditingController.text, recipeUrlEditingController.text, images, selectedTagIds);
+                }
+              }
+            : null,
       ),
     );
   }
