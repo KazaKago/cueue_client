@@ -1,6 +1,7 @@
 import 'package:cueue/domain/model/hierarchy/invitation/invitation.dart';
 import 'package:cueue/domain/model/hierarchy/invitation/invitation_code.dart';
 import 'package:cueue/l10n/intl.dart';
+import 'package:cueue/presentation/view/global/extension/date_time_extension.dart';
 import 'package:cueue/presentation/view/global/modal/fried_toast.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
 import 'package:cueue/presentation/viewmodel/di/viewmodel_provider.dart';
@@ -65,6 +66,6 @@ class InvitationCreationPage extends HookConsumerWidget {
   }
 
   Future<void> shareInvitationMessage(BuildContext context, Invitation invitation) async {
-    await Share.share(intl(context).invitationCodeSharingMessage(invitation.workspace.name, invitation.code.value, dotenv.get('LP_BASE_URL')));
+    await Share.share(intl(context).invitationCodeSharingMessage(invitation.workspace.name, invitation.code.value, invitation.expiredAt.toDateTimeString(context), dotenv.get('LP_BASE_URL')));
   }
 }
