@@ -20,6 +20,8 @@ jobs:
           appleClientId: ${{ secrets.APPLE_CLIENT_ID__PRODUCTION }}
           appleRedirectUri: ${{ secrets.APPLE_REDIRECT_URI__PRODUCTION }}
           webRecaptchaSiteKey: ${{ secrets.WEB_RECAPTCHA_SITE_KEY }}
+          appStoreUrl: ${{ secrets.APP_STORE_URL }}
+          playStoreUrl: ${{ secrets.PLAY_STORE_URL }}
       - name: Setup Android
         uses: ./.github/actions/setup_android
         with:
@@ -53,6 +55,8 @@ jobs:
           appleClientId: ${{ secrets.APPLE_CLIENT_ID__PRODUCTION }}
           appleRedirectUri: ${{ secrets.APPLE_REDIRECT_URI__PRODUCTION }}
           webRecaptchaSiteKey: ${{ secrets.WEB_RECAPTCHA_SITE_KEY }}
+          appStoreUrl: ${{ secrets.APP_STORE_URL }}
+          playStoreUrl: ${{ secrets.PLAY_STORE_URL }}
       - name: Setup iOS
         uses: ./.github/actions/setup_ios
         with:
@@ -85,6 +89,8 @@ jobs:
 #          appleClientId: ${{ secrets.APPLE_CLIENT_ID__PRODUCTION }}
 #          appleRedirectUri: ${{ secrets.APPLE_REDIRECT_URI__PRODUCTION }}
 #          webRecaptchaSiteKey: ${{ secrets.WEB_RECAPTCHA_SITE_KEY }}
+#          appStoreUrl: ${{ secrets.APP_STORE_URL }}
+#          playStoreUrl: ${{ secrets.PLAY_STORE_URL }}
 #      - name: Setup Web
 #        uses: ./.github/actions/setup_web
 #        with:

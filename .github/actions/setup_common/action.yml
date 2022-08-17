@@ -17,6 +17,12 @@ inputs:
   webRecaptchaSiteKey:
     description: reCAPTCHA v3 site key.
     required: true
+  appStoreUrl:
+    description: app store url.
+    required: true
+  playStoreUrl:
+    description: play store url.
+    required: true
 
 runs:
   using: composite
@@ -41,3 +47,5 @@ runs:
         ^APPLE_CLIENT_ID: ${{ inputs.appleClientId }}
         ^APPLE_REDIRECT_URI: ${{ inputs.appleRedirectUri }}
         ^WEB_RECAPTCHA_SITE_KEY: ${{ inputs.webRecaptchaSiteKey }}
+        ^APP_STORE_URL: ${{ inputs.appStoreUrl }}
+        ^PLAY_STORE_URL: ${{ inputs.playStoreUrl }}
