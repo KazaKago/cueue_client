@@ -1,3 +1,4 @@
+import 'package:cueue/domain/model/global/exception/not_found_exception.dart';
 import 'package:cueue/domain/model/hierarchy/auth/launch_check_result.dart';
 import 'package:cueue/domain/repository/hierarchy/auth/authorize_repository.dart';
 import 'package:cueue/domain/repository/hierarchy/user/user_repository.dart';
@@ -15,13 +16,15 @@ class CheckAtLaunchUseCaseImpl implements CheckAtLaunchUseCase {
     if (!isSignIn) {
       return LaunchCheckResult.beforeSignIn;
     } else {
-      final user = await _userRepository.getOrNull();
-      if (user == null) {
+      try {
+        final user = await _userRepository.get();
+        if (user.workspace == null) {
+          return LaunchCheckResult.workspaceCreation;
+        } else {
+          return LaunchCheckResult.afterSignIn;
+        }
+      } on NotFoundException catch (_) {
         return LaunchCheckResult.userCreation;
-      } else if (user.workspace == null) {
-        return LaunchCheckResult.workspaceCreation;
-      } else {
-        return LaunchCheckResult.afterSignIn;
       }
     }
   }

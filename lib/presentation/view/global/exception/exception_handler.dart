@@ -125,8 +125,8 @@ class ExceptionHandler {
   }
 
   Future<void> _goStore(BuildContext context, WidgetRef ref) async {
-    final getStoreLinkUseCase = ref.read(getStoreLinkUseCaseProvider);
-    final storeLink = await getStoreLinkUseCase();
-    await launchUrl(storeLink);
+    final getAppInfoUseCase = ref.read(getAppInfoUseCaseProvider);
+    final appInfo = await getAppInfoUseCase();
+    await launchUrl(appInfo.storeLink);
   }
 }

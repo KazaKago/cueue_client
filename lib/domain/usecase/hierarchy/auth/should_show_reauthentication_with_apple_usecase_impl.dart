@@ -8,8 +8,11 @@ class ShouldShowReauthenticationWithAppleUseCaseImpl implements ShouldShowReauth
 
   @override
   Future<bool> call() async {
-    final user = await _userRepository.getOrNull();
-    if (user == null) return false;
-    return user.isAppleLinked();
+    try {
+      final user = await _userRepository.get();
+      return user.isAppleLinked();
+    } on Exception catch (_) {
+      return false;
+    }
   }
 }

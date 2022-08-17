@@ -1,3 +1,4 @@
+import 'package:cueue/domain/model/global/exception/not_found_exception.dart';
 import 'package:cueue/domain/model/hierarchy/auth/google_auth_info.dart';
 import 'package:cueue/domain/model/hierarchy/auth/sign_in_check_result.dart';
 import 'package:cueue/domain/repository/hierarchy/auth/authorize_repository.dart';
@@ -13,13 +14,15 @@ class AuthenticateWithGoogleUseCaseImpl implements AuthenticateWithGoogleUseCase
   @override
   Future<SignInCheckResult> call(GoogleAuthInfo authInfo) async {
     await _authorizeApiRepository.authenticateWithGoogle(authInfo);
-    final user = await _userRepository.getOrNull();
-    if (user == null) {
+    try {
+      final user = await _userRepository.get();
+      if (user.workspace == null) {
+        return SignInCheckResult.workspaceCreation;
+      } else {
+        return SignInCheckResult.afterSignIn;
+      }
+    } on NotFoundException catch (_) {
       return SignInCheckResult.userCreation;
-    } else if (user.workspace == null) {
-      return SignInCheckResult.workspaceCreation;
-    } else {
-      return SignInCheckResult.afterSignIn;
     }
   }
 }

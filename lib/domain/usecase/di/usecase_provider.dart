@@ -27,8 +27,6 @@ import 'package:cueue/domain/usecase/hierarchy/content/create_content_usecase.da
 import 'package:cueue/domain/usecase/hierarchy/content/create_content_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/info/get_app_info_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/info/get_app_info_usecase_impl.dart';
-import 'package:cueue/domain/usecase/hierarchy/info/get_developer_info_usecase.dart';
-import 'package:cueue/domain/usecase/hierarchy/info/get_developer_info_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/invitation/accept_invitation_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/invitation/accept_invitation_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/invitation/create_invitation_usecase.dart';
@@ -67,8 +65,6 @@ import 'package:cueue/domain/usecase/hierarchy/recipe/request_additional_all_rec
 import 'package:cueue/domain/usecase/hierarchy/recipe/request_additional_all_recipes_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/recipe/update_recipe_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/recipe/update_recipe_usecase_impl.dart';
-import 'package:cueue/domain/usecase/hierarchy/store/get_store_link_usecase.dart';
-import 'package:cueue/domain/usecase/hierarchy/store/get_store_link_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/tag/create_tag_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/tag/create_tag_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/tag/delete_tag_usecase.dart';
@@ -111,9 +107,7 @@ final reauthenticateWithAppleUseCaseProvider = Provider<ReauthenticateWithAppleU
 final shouldShowReauthenticationWithGoogleUseCaseProvider = Provider<ShouldShowReauthenticationWithGoogleUseCase>((ref) => ShouldShowReauthenticationWithGoogleUseCaseImpl(ref.read(userRepositoryProvider)));
 final shouldShowReauthenticationWithAppleUseCaseProvider = Provider<ShouldShowReauthenticationWithAppleUseCase>((ref) => ShouldShowReauthenticationWithAppleUseCaseImpl(ref.read(userRepositoryProvider)));
 final signOutUseCaseProvider = Provider<SignOutUseCase>((ref) => SignOutUseCaseImpl(ref.read(authorizeRepositoryProvider)));
-final getStoreLinkUseCaseProvider = Provider<GetStoreLinkUseCase>((ref) => GetStoreLinkUseCaseImpl(ref.read(storeRepositoryProvider)));
 final getAppInfoUseCaseProvider = Provider<GetAppInfoUseCase>((ref) => GetAppInfoUseCaseImpl(ref.read(infoRepositoryProvider)));
-final getDeveloperInfoUseCaseProvider = Provider<GetDeveloperInfoUseCase>((ref) => GetDeveloperInfoUseCaseImpl(ref.read(infoRepositoryProvider)));
 final followUserUseCaseProvider = Provider<FollowUserUseCase>((ref) => FollowUserUseCaseImpl(ref.read(userRepositoryProvider)));
 final refreshUserUseCaseProvider = Provider<RefreshUserUseCase>((ref) => RefreshUserUseCaseImpl(ref.read(userRepositoryProvider)));
 final followTagsUseCaseProvider = Provider<FollowTagsUseCase>((ref) => FollowTagsUseCaseImpl(ref.read(tagRepositoryProvider)));

@@ -30,27 +30,20 @@ class AccountDeletionPage extends HookConsumerWidget {
       appBar: AppBar(title: Text(intl(context).accountDeletion)),
       body: Scrollbar(
         controller: scrollController,
-        child: SingleChildScrollView(
+        child: ListView(
           controller: scrollController,
-          child: Padding(
-            padding: const EdgeInsets.all(32),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.warning_amber_rounded, size: 96, color: Theme.of(context).errorColor),
-                  const SizedBox(height: 32),
-                  SelectableText(textAlign: TextAlign.center, intl(context).accountDeletionDescription),
-                  const SizedBox(height: 32),
-                  ElevatedButton(
-                    style: TextButton.styleFrom(backgroundColor: Theme.of(context).errorColor),
-                    onPressed: () => _showAccountDeletionConfirmationDialog(context, ref),
-                    child: Text(intl(context).approveAndDeletionAccount),
-                  )
-                ],
-              ),
-            ),
-          ),
+          padding: const EdgeInsets.all(32),
+          children: [
+            Icon(Icons.warning_amber_rounded, size: 96, color: Theme.of(context).errorColor),
+            const SizedBox(height: 32),
+            SelectableText(textAlign: TextAlign.center, intl(context).accountDeletionDescription),
+            const SizedBox(height: 32),
+            ElevatedButton(
+              style: TextButton.styleFrom(backgroundColor: Theme.of(context).errorColor),
+              onPressed: () => _showAccountDeletionConfirmationDialog(context, ref),
+              child: Text(intl(context).approveAndDeletionAccount),
+            )
+          ],
         ),
       ),
     );

@@ -7,8 +7,6 @@ abstract class UserRepository {
 
   Future<User> get();
 
-  Future<User?> getOrNull();
-
   Future<void> refresh();
 
   Future<User> create(UserRegistration userRegistration);

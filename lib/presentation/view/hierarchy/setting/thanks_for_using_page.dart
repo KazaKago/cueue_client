@@ -15,26 +15,19 @@ class ThanksForUsingPage extends HookConsumerWidget {
       appBar: AppBar(title: Text(intl(context).accountDeletion)),
       body: Scrollbar(
         controller: scrollController,
-        child: SingleChildScrollView(
+        child: ListView(
           controller: scrollController,
-          child: Padding(
-            padding: const EdgeInsets.all(32),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Assets.images.icAppIcon.image(width: 128, height: 128),
-                  const SizedBox(height: 32),
-                  SelectableText(textAlign: TextAlign.center, intl(context).thanksForUsingMessage),
-                  const SizedBox(height: 32),
-                  ElevatedButton(
-                    onPressed: () => _replaceSplashPage(context),
-                    child: Text(intl(context).backToLoginScreen),
-                  ),
-                ],
-              ),
+          padding: const EdgeInsets.all(32),
+          children: [
+            Assets.images.icAppIcon.image(width: 128, height: 128),
+            const SizedBox(height: 32),
+            SelectableText(textAlign: TextAlign.center, intl(context).thanksForUsingMessage),
+            const SizedBox(height: 32),
+            ElevatedButton(
+              onPressed: () => _replaceSplashPage(context),
+              child: Text(intl(context).backToLoginScreen),
             ),
-          ),
+          ],
         ),
       ),
     );

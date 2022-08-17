@@ -36,12 +36,6 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<User?> getOrNull() {
-    final userFlowable = _userFlowableFactory.create(null);
-    return userFlowable.getData();
-  }
-
-  @override
   Future<void> refresh() async {
     final userFlowable = _userFlowableFactory.create(null);
     await userFlowable.refresh();

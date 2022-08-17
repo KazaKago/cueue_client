@@ -258,11 +258,11 @@ class SettingsPage extends HookConsumerWidget {
   }
 
   Future<void> _goTermsOfService() async {
-    await launchUrl(termsOfServiceUrl);
+    await launchUrl(const TermsOfServiceUrl().value);
   }
 
   Future<void> _goPrivacyPolicy() async {
-    await launchUrl(privacyPolicyUrl);
+    await launchUrl(const PrivacyPolicyUrl().value);
   }
 
   Future<void> _goAccountDeletion(BuildContext context) {

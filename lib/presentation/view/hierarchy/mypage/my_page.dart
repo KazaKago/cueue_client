@@ -8,6 +8,7 @@ import 'package:cueue/presentation/view/global/modal/simple_message_dialog_event
 import 'package:cueue/presentation/view/global/modal/text_field_dialog.dart';
 import 'package:cueue/presentation/view/global/modal/text_field_dialog_event.dart';
 import 'package:cueue/presentation/view/global/widget/error_handling_widget.dart';
+import 'package:cueue/presentation/view/hierarchy/invitation/invitation_creation_page.dart';
 import 'package:cueue/presentation/view/hierarchy/photo/photo_pickup_bottom_sheet_dialog.dart';
 import 'package:cueue/presentation/view/hierarchy/photo/photo_pickup_bottom_sheet_event.dart';
 import 'package:cueue/presentation/view/hierarchy/setting/settings_page.dart';
@@ -264,13 +265,14 @@ class MyPage extends HookConsumerWidget {
   }
 
   Widget _buildInviteWorkspace(BuildContext context, WidgetRef ref) {
-    return ListTile(
-      title: TextButton.icon(
-        icon: const Icon(Icons.add),
-        label: Text(intl(context).inviteCurrentWorkspace),
-        onPressed: () {
-          // TODO
-        },
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 16, right: 16),
+        child: TextButton.icon(
+          icon: const Icon(Icons.add),
+          label: Text(intl(context).inviteCurrentWorkspace),
+          onPressed: () => _goInvitationCreation(context),
+        ),
       ),
     );
   }
@@ -363,5 +365,9 @@ class MyPage extends HookConsumerWidget {
         orElse: () {},
       );
     }
+  }
+
+  Future<void> _goInvitationCreation(BuildContext context) async {
+    await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => const InvitationCreationPage()));
   }
 }

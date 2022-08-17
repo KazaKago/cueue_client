@@ -8,8 +8,11 @@ class ShouldShowReauthenticationWithGoogleUseCaseImpl implements ShouldShowReaut
 
   @override
   Future<bool> call() async {
-    final user = await _userRepository.getOrNull();
-    if (user == null) return false;
-    return user.isGoogleLinked();
+    try {
+      final user = await _userRepository.get();
+      return user.isGoogleLinked();
+    } on Exception catch (_) {
+      return false;
+    }
   }
 }

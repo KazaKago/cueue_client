@@ -66,11 +66,9 @@ class InvitationInfoPage extends HookConsumerWidget {
           const SizedBox(height: 32),
           SelectableText(textAlign: TextAlign.center, intl(context).warningJoiningWorkspace),
           const SizedBox(height: 32),
-          Center(
-            child: ElevatedButton(
-              onPressed: viewModel.acceptInvitation,
-              child: Text(intl(context).joinWorkspace),
-            ),
+          ElevatedButton(
+            onPressed: viewModel.acceptInvitation,
+            child: Text(intl(context).joinWorkspace),
           ),
         ],
       ),

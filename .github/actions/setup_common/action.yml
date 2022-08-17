@@ -2,6 +2,9 @@ name: Setup Common
 description: setup for flutter action.
 
 inputs:
+  lpBaseUrl:
+    description: lp base url.
+    required: true
   apiBaseUrl:
     description: api base url.
     required: true
@@ -33,6 +36,7 @@ runs:
       with:
         filename: assets/env/dotenv
       env:
+        ^LP_BASE_URL: ${{ inputs.lpBaseUrl }}
         ^API_BASE_URL: ${{ inputs.apiBaseUrl }}
         ^APPLE_CLIENT_ID: ${{ inputs.appleClientId }}
         ^APPLE_REDIRECT_URI: ${{ inputs.appleRedirectUri }}

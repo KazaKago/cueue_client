@@ -19,20 +19,19 @@ mixin _$AboutState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(AppInfo appInfo, DeveloperInfo developerInfo)
-        completed,
+    required TResult Function(AppInfo appInfo) completed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(AppInfo appInfo, DeveloperInfo developerInfo)? completed,
+    TResult Function(AppInfo appInfo)? completed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(AppInfo appInfo, DeveloperInfo developerInfo)? completed,
+    TResult Function(AppInfo appInfo)? completed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,8 +112,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(AppInfo appInfo, DeveloperInfo developerInfo)
-        completed,
+    required TResult Function(AppInfo appInfo) completed,
   }) {
     return loading();
   }
@@ -123,7 +121,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(AppInfo appInfo, DeveloperInfo developerInfo)? completed,
+    TResult Function(AppInfo appInfo)? completed,
   }) {
     return loading?.call();
   }
@@ -132,7 +130,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(AppInfo appInfo, DeveloperInfo developerInfo)? completed,
+    TResult Function(AppInfo appInfo)? completed,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -182,10 +180,9 @@ abstract class _$$_CompletedCopyWith<$Res> {
   factory _$$_CompletedCopyWith(
           _$_Completed value, $Res Function(_$_Completed) then) =
       __$$_CompletedCopyWithImpl<$Res>;
-  $Res call({AppInfo appInfo, DeveloperInfo developerInfo});
+  $Res call({AppInfo appInfo});
 
   $AppInfoCopyWith<$Res> get appInfo;
-  $DeveloperInfoCopyWith<$Res> get developerInfo;
 }
 
 /// @nodoc
@@ -201,17 +198,12 @@ class __$$_CompletedCopyWithImpl<$Res> extends _$AboutStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? appInfo = freezed,
-    Object? developerInfo = freezed,
   }) {
     return _then(_$_Completed(
       appInfo == freezed
           ? _value.appInfo
           : appInfo // ignore: cast_nullable_to_non_nullable
               as AppInfo,
-      developerInfo == freezed
-          ? _value.developerInfo
-          : developerInfo // ignore: cast_nullable_to_non_nullable
-              as DeveloperInfo,
     ));
   }
 
@@ -221,28 +213,19 @@ class __$$_CompletedCopyWithImpl<$Res> extends _$AboutStateCopyWithImpl<$Res>
       return _then(_value.copyWith(appInfo: value));
     });
   }
-
-  @override
-  $DeveloperInfoCopyWith<$Res> get developerInfo {
-    return $DeveloperInfoCopyWith<$Res>(_value.developerInfo, (value) {
-      return _then(_value.copyWith(developerInfo: value));
-    });
-  }
 }
 
 /// @nodoc
 
 class _$_Completed implements _Completed {
-  const _$_Completed(this.appInfo, this.developerInfo);
+  const _$_Completed(this.appInfo);
 
   @override
   final AppInfo appInfo;
-  @override
-  final DeveloperInfo developerInfo;
 
   @override
   String toString() {
-    return 'AboutState.completed(appInfo: $appInfo, developerInfo: $developerInfo)';
+    return 'AboutState.completed(appInfo: $appInfo)';
   }
 
   @override
@@ -250,16 +233,12 @@ class _$_Completed implements _Completed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Completed &&
-            const DeepCollectionEquality().equals(other.appInfo, appInfo) &&
-            const DeepCollectionEquality()
-                .equals(other.developerInfo, developerInfo));
+            const DeepCollectionEquality().equals(other.appInfo, appInfo));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(appInfo),
-      const DeepCollectionEquality().hash(developerInfo));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(appInfo));
 
   @JsonKey(ignore: true)
   @override
@@ -270,30 +249,29 @@ class _$_Completed implements _Completed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(AppInfo appInfo, DeveloperInfo developerInfo)
-        completed,
+    required TResult Function(AppInfo appInfo) completed,
   }) {
-    return completed(appInfo, developerInfo);
+    return completed(appInfo);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(AppInfo appInfo, DeveloperInfo developerInfo)? completed,
+    TResult Function(AppInfo appInfo)? completed,
   }) {
-    return completed?.call(appInfo, developerInfo);
+    return completed?.call(appInfo);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(AppInfo appInfo, DeveloperInfo developerInfo)? completed,
+    TResult Function(AppInfo appInfo)? completed,
     required TResult orElse(),
   }) {
     if (completed != null) {
-      return completed(appInfo, developerInfo);
+      return completed(appInfo);
     }
     return orElse();
   }
@@ -331,11 +309,9 @@ class _$_Completed implements _Completed {
 }
 
 abstract class _Completed implements AboutState {
-  const factory _Completed(
-      final AppInfo appInfo, final DeveloperInfo developerInfo) = _$_Completed;
+  const factory _Completed(final AppInfo appInfo) = _$_Completed;
 
   AppInfo get appInfo;
-  DeveloperInfo get developerInfo;
   @JsonKey(ignore: true)
   _$$_CompletedCopyWith<_$_Completed> get copyWith =>
       throw _privateConstructorUsedError;

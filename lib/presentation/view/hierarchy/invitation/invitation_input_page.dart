@@ -10,40 +10,33 @@ class InvitationInputPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final code = useState('');
     final scrollController = useScrollController();
     final textEditingController = useTextEditingController();
+    final isEnableRegistrationButton = useState(false);
     textEditingController.addListener(() {
-      code.value = textEditingController.text;
+      isEnableRegistrationButton.value = textEditingController.text.isNotEmpty;
     });
     return Scaffold(
       appBar: AppBar(title: Text(intl(context).inputInvitationCode)),
       body: Scrollbar(
         controller: scrollController,
-        child: SingleChildScrollView(
+        child: ListView(
           controller: scrollController,
-          child: Padding(
-            padding: const EdgeInsets.all(32),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SelectableText(textAlign: TextAlign.center, intl(context).pleaseInputInvitationCode),
-                  const SizedBox(height: 32),
-                  TextField(
-                    controller: textEditingController,
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(labelText: intl(context).invitationCode, alignLabelWithHint: true, border: const OutlineInputBorder()),
-                  ),
-                  const SizedBox(height: 32),
-                  ElevatedButton(
-                    onPressed: code.value.isNotEmpty ? () => _pushInvitationInfo(context, code.value) : null,
-                    child: Text(intl(context).confirmInvitationCode),
-                  ),
-                ],
-              ),
+          padding: const EdgeInsets.all(32),
+          children: [
+            SelectableText(textAlign: TextAlign.center, intl(context).pleaseInputInvitationCode),
+            const SizedBox(height: 32),
+            TextField(
+              controller: textEditingController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(labelText: intl(context).invitationCode, alignLabelWithHint: true, border: const OutlineInputBorder()),
             ),
-          ),
+            const SizedBox(height: 32),
+            ElevatedButton(
+              onPressed: isEnableRegistrationButton.value ? () => _pushInvitationInfo(context, textEditingController.text) : null,
+              child: Text(intl(context).confirmInvitationCode),
+            ),
+          ],
         ),
       ),
     );

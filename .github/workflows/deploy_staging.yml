@@ -15,6 +15,7 @@ jobs:
       - name: Setup Common
         uses: ./.github/actions/setup_common
         with:
+          lpBaseUrl: ${{ secrets.LP_BASE_URL__STAGING }}
           apiBaseUrl: ${{ secrets.API_BASE_URL__STAGING }}
           appleClientId: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
           appleRedirectUri: ${{ secrets.APPLE_REDIRECT_URI__STAGING }}
@@ -47,6 +48,7 @@ jobs:
       - name: Setup Common
         uses: ./.github/actions/setup_common
         with:
+          lpBaseUrl: ${{ secrets.LP_BASE_URL__STAGING }}
           apiBaseUrl: ${{ secrets.API_BASE_URL__STAGING }}
           appleClientId: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
           appleRedirectUri: ${{ secrets.APPLE_REDIRECT_URI__STAGING }}
@@ -78,6 +80,7 @@ jobs:
       - name: Setup Common
         uses: ./.github/actions/setup_common
         with:
+          lpBaseUrl: ${{ secrets.LP_BASE_URL__STAGING }}
           apiBaseUrl: ${{ secrets.API_BASE_URL__STAGING }}
           appleClientId: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
           appleRedirectUri: ${{ secrets.APPLE_REDIRECT_URI__STAGING }}

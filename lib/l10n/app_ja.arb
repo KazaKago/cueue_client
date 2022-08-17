@@ -258,5 +258,24 @@
   "joinWorkspace": "ワークスペースに参加する",
   "workspaceInfo": "ワークスペースの情報",
   "workspaceName": "ワークスペース名",
-  "successToJoinWorkspace": "ワークスペースに参加しました"
+  "successToJoinWorkspace": "ワークスペースに参加しました",
+  "invitationCodePublishedTitle": "招待コードを発行しました",
+  "invitationCodePublishedMessage": "ワークスペースに招待したい人にこの招待コードを共有してください。\n\n※1つの招待コードにつき1度のみ利用できます。\n※招待コードは発行から24時間有効です。",
+  "copyInvitationCode": "招待コードをコピー",
+  "copiedInvitationCode": "招待コードをコピーしました",
+  "shareInvitationCode": "招待コードを共有する",
+  "invitationCodeSharingMessage": "ワークスペース「{workspaceName}」へ招待されています。\nCueueを開いて招待コード入力画面に下記を入力して下さい。\n\n{invitationCode}\n\n※有効期限は発行後24時間です。\n\nアプリを未インストールの方は下記URLよりインストール下さい。\n{installLink}",
+  "@invitationCodeSharingMessage": {
+    "placeholders": {
+      "workspaceName": {
+        "type": "String"
+      },
+      "invitationCode": {
+        "type": "String"
+      },
+      "installLink": {
+        "type": "String"
+      }
+    }
+  }
 }

@@ -5,7 +5,7 @@ import 'package:cueue/domain/usecase/hierarchy/info/get_app_info_usecase.dart';
 class GetAppInfoUseCaseImpl implements GetAppInfoUseCase {
   const GetAppInfoUseCaseImpl(this._infoRepository);
 
-  final InfoRepository _infoRepository;
+  final AppInfoRepository _infoRepository;
 
   @override
   Future<AppInfo> call() {

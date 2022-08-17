@@ -18,6 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AppInfo {
   String get appName => throw _privateConstructorUsedError;
   String get version => throw _privateConstructorUsedError;
+  Uri get webSite => throw _privateConstructorUsedError;
+  Uri get storeLink => throw _privateConstructorUsedError;
+  String get developer => throw _privateConstructorUsedError;
+  Email get email => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppInfoCopyWith<AppInfo> get copyWith => throw _privateConstructorUsedError;
@@ -27,7 +31,15 @@ mixin _$AppInfo {
 abstract class $AppInfoCopyWith<$Res> {
   factory $AppInfoCopyWith(AppInfo value, $Res Function(AppInfo) then) =
       _$AppInfoCopyWithImpl<$Res>;
-  $Res call({String appName, String version});
+  $Res call(
+      {String appName,
+      String version,
+      Uri webSite,
+      Uri storeLink,
+      String developer,
+      Email email});
+
+  $EmailCopyWith<$Res> get email;
 }
 
 /// @nodoc
@@ -42,6 +54,10 @@ class _$AppInfoCopyWithImpl<$Res> implements $AppInfoCopyWith<$Res> {
   $Res call({
     Object? appName = freezed,
     Object? version = freezed,
+    Object? webSite = freezed,
+    Object? storeLink = freezed,
+    Object? developer = freezed,
+    Object? email = freezed,
   }) {
     return _then(_value.copyWith(
       appName: appName == freezed
@@ -52,7 +68,30 @@ class _$AppInfoCopyWithImpl<$Res> implements $AppInfoCopyWith<$Res> {
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String,
+      webSite: webSite == freezed
+          ? _value.webSite
+          : webSite // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      storeLink: storeLink == freezed
+          ? _value.storeLink
+          : storeLink // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      developer: developer == freezed
+          ? _value.developer
+          : developer // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as Email,
     ));
+  }
+
+  @override
+  $EmailCopyWith<$Res> get email {
+    return $EmailCopyWith<$Res>(_value.email, (value) {
+      return _then(_value.copyWith(email: value));
+    });
   }
 }
 
@@ -62,7 +101,16 @@ abstract class _$$_AppInfoCopyWith<$Res> implements $AppInfoCopyWith<$Res> {
           _$_AppInfo value, $Res Function(_$_AppInfo) then) =
       __$$_AppInfoCopyWithImpl<$Res>;
   @override
-  $Res call({String appName, String version});
+  $Res call(
+      {String appName,
+      String version,
+      Uri webSite,
+      Uri storeLink,
+      String developer,
+      Email email});
+
+  @override
+  $EmailCopyWith<$Res> get email;
 }
 
 /// @nodoc
@@ -78,6 +126,10 @@ class __$$_AppInfoCopyWithImpl<$Res> extends _$AppInfoCopyWithImpl<$Res>
   $Res call({
     Object? appName = freezed,
     Object? version = freezed,
+    Object? webSite = freezed,
+    Object? storeLink = freezed,
+    Object? developer = freezed,
+    Object? email = freezed,
   }) {
     return _then(_$_AppInfo(
       appName: appName == freezed
@@ -88,23 +140,54 @@ class __$$_AppInfoCopyWithImpl<$Res> extends _$AppInfoCopyWithImpl<$Res>
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String,
+      webSite: webSite == freezed
+          ? _value.webSite
+          : webSite // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      storeLink: storeLink == freezed
+          ? _value.storeLink
+          : storeLink // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      developer: developer == freezed
+          ? _value.developer
+          : developer // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as Email,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_AppInfo implements _AppInfo {
-  const _$_AppInfo({required this.appName, required this.version});
+class _$_AppInfo extends _AppInfo {
+  const _$_AppInfo(
+      {required this.appName,
+      required this.version,
+      required this.webSite,
+      required this.storeLink,
+      required this.developer,
+      required this.email})
+      : super._();
 
   @override
   final String appName;
   @override
   final String version;
+  @override
+  final Uri webSite;
+  @override
+  final Uri storeLink;
+  @override
+  final String developer;
+  @override
+  final Email email;
 
   @override
   String toString() {
-    return 'AppInfo(appName: $appName, version: $version)';
+    return 'AppInfo(appName: $appName, version: $version, webSite: $webSite, storeLink: $storeLink, developer: $developer, email: $email)';
   }
 
   @override
@@ -113,14 +196,22 @@ class _$_AppInfo implements _AppInfo {
         (other.runtimeType == runtimeType &&
             other is _$_AppInfo &&
             const DeepCollectionEquality().equals(other.appName, appName) &&
-            const DeepCollectionEquality().equals(other.version, version));
+            const DeepCollectionEquality().equals(other.version, version) &&
+            const DeepCollectionEquality().equals(other.webSite, webSite) &&
+            const DeepCollectionEquality().equals(other.storeLink, storeLink) &&
+            const DeepCollectionEquality().equals(other.developer, developer) &&
+            const DeepCollectionEquality().equals(other.email, email));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(appName),
-      const DeepCollectionEquality().hash(version));
+      const DeepCollectionEquality().hash(version),
+      const DeepCollectionEquality().hash(webSite),
+      const DeepCollectionEquality().hash(storeLink),
+      const DeepCollectionEquality().hash(developer),
+      const DeepCollectionEquality().hash(email));
 
   @JsonKey(ignore: true)
   @override
@@ -128,15 +219,28 @@ class _$_AppInfo implements _AppInfo {
       __$$_AppInfoCopyWithImpl<_$_AppInfo>(this, _$identity);
 }
 
-abstract class _AppInfo implements AppInfo {
+abstract class _AppInfo extends AppInfo {
   const factory _AppInfo(
       {required final String appName,
-      required final String version}) = _$_AppInfo;
+      required final String version,
+      required final Uri webSite,
+      required final Uri storeLink,
+      required final String developer,
+      required final Email email}) = _$_AppInfo;
+  const _AppInfo._() : super._();
 
   @override
   String get appName;
   @override
   String get version;
+  @override
+  Uri get webSite;
+  @override
+  Uri get storeLink;
+  @override
+  String get developer;
+  @override
+  Email get email;
   @override
   @JsonKey(ignore: true)
   _$$_AppInfoCopyWith<_$_AppInfo> get copyWith =>
