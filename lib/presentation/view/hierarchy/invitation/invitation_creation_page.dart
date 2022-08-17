@@ -18,7 +18,7 @@ class InvitationCreationPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(invitationCreationViewModelProvider.select((viewModel) => viewModel.state));
     return Scaffold(
-      appBar: AppBar(title: Text(intl(context).workspaceInfo)),
+      appBar: AppBar(title: Text(intl(context).invitationCode)),
       body: state.when(
         loading: () => _buildLoading(context, ref),
         completed: (invitation) => _buildCompleted(context, ref, invitation),

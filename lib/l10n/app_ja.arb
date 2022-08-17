@@ -29,6 +29,7 @@
     }
   },
   "auth": "認証",
+  "ok": "OK",
   "confirm": "確認",
   "close": "閉じる",
   "needReAuthToContinue": "処理の続行には再度認証が必要です",

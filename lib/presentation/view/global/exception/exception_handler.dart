@@ -58,7 +58,7 @@ class ExceptionHandler {
   Future<void> _showMessageDialog(BuildContext context, WidgetRef ref, Exception exception) async {
     await showDialog<SimpleMessageDialogEvent>(
       context: context,
-      builder: (context) => SimpleMessageDialog(title: intl(context).error, message: _getMessage(context, ref, exception), positiveButton: intl(context).close),
+      builder: (context) => SimpleMessageDialog(title: intl(context).error, message: _getMessage(context, ref, exception), positiveButton: intl(context).ok),
     );
   }
 
