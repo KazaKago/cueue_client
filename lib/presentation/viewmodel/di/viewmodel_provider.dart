@@ -42,6 +42,6 @@ final menuDetailViewModelProvider = ChangeNotifierProvider.autoDispose.family<Me
 final accountDeletionViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => AccountDeletionViewModel(ref.read(deleteAccountUseCaseProvider)));
 final workspaceCreationViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => WorkspaceCreationViewModel(ref.read(createWorkspaceUseCaseProvider)));
 final myPageViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => MyPageViewModel(ref.read(followUserUseCaseProvider), ref.read(refreshUserUseCaseProvider), ref.read(updateUserDisplayNameUseCaseProvider), ref.read(updateUserPhotoUseCaseProvider), ref.read(updateWorkspaceUseCaseProvider), ref.read(signOutUseCaseProvider)));
-final userCreationViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => UserCreationViewModel(ref.read(createUserUseCaseProvider)));
+final userCreationViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => UserCreationViewModel(ref.read(getPreUserInfoUseCaseProvider), ref.read(createContentUseCaseProvider), ref.read(createUserUseCaseProvider)));
 final invitationInfoViewModelProvider = ChangeNotifierProvider.autoDispose.family<InvitationInfoViewModel, InvitationCode>((ref, code) => InvitationInfoViewModel(ref.read(getInvitationUseCaseProvider), ref.read(acceptInvitationUseCaseProvider), code));
 final invitationCreationViewModelProvider = ChangeNotifierProvider.autoDispose((ref) => InvitationCreationViewModel(ref.read(createInvitationUseCaseProvider)));

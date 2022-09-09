@@ -107,7 +107,7 @@ class MyPageViewModel with ChangeNotifier {
   Future<void> updatePhoto(File imageFile) async {
     isLoading = true;
     try {
-      await _updateUserPhotoUseCase.call(ContentRegistration.fromFile(imageFile));
+      await _updateUserPhotoUseCase.call(ContentRegistration.file(file: imageFile));
     } on Exception catch (exception) {
       exceptionEvent = Event(exception);
     }

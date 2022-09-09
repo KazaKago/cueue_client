@@ -83,6 +83,8 @@ import 'package:cueue/domain/usecase/hierarchy/user/delete_account_usecase.dart'
 import 'package:cueue/domain/usecase/hierarchy/user/delete_account_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/follow_user_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/follow_user_usecase_impl.dart';
+import 'package:cueue/domain/usecase/hierarchy/user/get_pre_user_info_usecase.dart';
+import 'package:cueue/domain/usecase/hierarchy/user/get_pre_user_info_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/refresh_user_usecase.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/refresh_user_usecase_impl.dart';
 import 'package:cueue/domain/usecase/hierarchy/user/update_user_display_name_usecase.dart';
@@ -142,3 +144,4 @@ final createUserUseCaseProvider = Provider<CreateUserUseCase>((ref) => CreateUse
 final createInvitationUseCaseProvider = Provider<CreateInvitationUseCase>((ref) => CreateInvitationUseCaseImpl(ref.read(invitationRepositoryProvider)));
 final getInvitationUseCaseProvider = Provider<GetInvitationUseCase>((ref) => GetInvitationUseCaseImpl(ref.read(invitationRepositoryProvider)));
 final acceptInvitationUseCaseProvider = Provider<AcceptInvitationUseCase>((ref) => AcceptInvitationUseCaseImpl(ref.read(invitationRepositoryProvider)));
+final getPreUserInfoUseCaseProvider = Provider<GetPreUserInfoUseCase>((ref) => GetPreUserInfoUseCaseImpl(ref.read(userRepositoryProvider), ref.read(contentRepositoryProvider)));

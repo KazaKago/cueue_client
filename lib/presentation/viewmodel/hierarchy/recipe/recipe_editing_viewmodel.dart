@@ -100,7 +100,7 @@ class RecipeEditingViewModel with ChangeNotifier {
     Content? content;
     isCreatingImage = true;
     try {
-      content = await _createContentUseCase.call(ContentRegistration.fromFile(imageFile));
+      content = await _createContentUseCase.call(ContentRegistration.file(file: imageFile));
     } on Exception catch (exception) {
       exceptionEvent = Event(exception);
     }

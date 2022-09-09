@@ -68,8 +68,8 @@ class CueueApp extends HookConsumerWidget {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          primary: colorScheme.primary,
-          onPrimary: Colors.white,
+          foregroundColor: Colors.white,
+          backgroundColor: colorScheme.primary,
           padding: const EdgeInsets.all(12),
         ),
       ),
@@ -88,6 +88,7 @@ class CueueApp extends HookConsumerWidget {
       textTheme: GoogleFonts.mPlus1pTextTheme(
         ThemeData(brightness: colorScheme.brightness).textTheme,
       ),
+      visualDensity: VisualDensity.standard,
     );
   }
 }

@@ -71,4 +71,9 @@ class UserRepositoryImpl implements UserRepository {
       throw await exception.parse(requireReauthenticationType: const RequireReauthenticationType.deleteAccount());
     }
   }
+
+  @override
+  Future<auth.User> getPreUserInfo() async {
+    return auth.FirebaseAuth.instance.currentUser!;
+  }
 }

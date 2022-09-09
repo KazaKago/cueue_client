@@ -227,10 +227,10 @@
   "approveAndDeletionAccount": "理解した上でアカウントを削除する",
   "accountDeletionConfirmation": "本当にアカウントを削除してよろしいですか？",
   "warning": "警告",
-  "displayName": "表示名",
+  "displayName": "ユーザー名",
   "thanksForUsingMessage": "アカウントを削除しました\nまたのご利用をお待ちしております。",
   "backToLoginScreen": "ログイン画面へ戻る",
-  "changeDisplayName": "表示名の変更",
+  "changeDisplayName": "ユーザー名の変更",
   "done": "決定",
   "changePhoto": "画像を変更する",
   "searchFromKeyword": "レシピを\nキーワードから探す",
@@ -281,5 +281,14 @@
         "type": "String"
       }
     }
-  }
+  },
+  "welcomeToCueue": "Cueueへようこそ",
+  "pleaseTellMeAboutYour": "あなたのことを教えて下さい",
+  "youCanChangeAfter": "あとから変更できます",
+  "toNext": "次へ",
+  "createWorkSpaceOrJoinFamilyWorkspace": "ワークスペースを新しく作成するか、\n家族・パートナーのワークスペースに参加します。",
+  "createNewWorkspace": "新しくワークスペースを作る",
+  "joinInvitedWorkspace": "招待されたワークスペースに参加する",
+  "youCanJoinAnotherWorkspaceAfter": "あとから別のワークスペースに参加できます",
+  "letsStart": "はじめましょう"
 }

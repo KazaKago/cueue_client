@@ -12,7 +12,7 @@ abstract class AbstractSignInButton extends StatelessWidget {
 
   Widget buildButton(BuildContext context, {required IconData iconData, required Color color, required String authText}) {
     return ElevatedButton.icon(
-      style: ElevatedButton.styleFrom(primary: color),
+      style: ElevatedButton.styleFrom(backgroundColor: color),
       icon: Icon(iconData),
       label: Text(authText),
       onPressed: enabled ? onAuth : null,

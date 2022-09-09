@@ -16,10 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ContentRegistration {
-  Uint8List get data => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ContentRegistrationCopyWith<ContentRegistration> get copyWith =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(File file) file,
+    required TResult Function(Uri uri) uri,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(File file)? file,
+    TResult Function(Uri uri)? uri,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(File file)? file,
+    TResult Function(Uri uri)? uri,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_File value) file,
+    required TResult Function(_Uri value) uri,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_File value)? file,
+    TResult Function(_Uri value)? uri,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_File value)? file,
+    TResult Function(_Uri value)? uri,
+    required TResult orElse(),
+  }) =>
       throw _privateConstructorUsedError;
 }
 
@@ -28,7 +61,6 @@ abstract class $ContentRegistrationCopyWith<$Res> {
   factory $ContentRegistrationCopyWith(
           ContentRegistration value, $Res Function(ContentRegistration) then) =
       _$ContentRegistrationCopyWithImpl<$Res>;
-  $Res call({Uint8List data});
 }
 
 /// @nodoc
@@ -39,94 +71,265 @@ class _$ContentRegistrationCopyWithImpl<$Res>
   final ContentRegistration _value;
   // ignore: unused_field
   final $Res Function(ContentRegistration) _then;
-
-  @override
-  $Res call({
-    Object? data = freezed,
-  }) {
-    return _then(_value.copyWith(
-      data: data == freezed
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$$_ContentRegistrationCopyWith<$Res>
-    implements $ContentRegistrationCopyWith<$Res> {
-  factory _$$_ContentRegistrationCopyWith(_$_ContentRegistration value,
-          $Res Function(_$_ContentRegistration) then) =
-      __$$_ContentRegistrationCopyWithImpl<$Res>;
-  @override
-  $Res call({Uint8List data});
+abstract class _$$_FileCopyWith<$Res> {
+  factory _$$_FileCopyWith(_$_File value, $Res Function(_$_File) then) =
+      __$$_FileCopyWithImpl<$Res>;
+  $Res call({File file});
 }
 
 /// @nodoc
-class __$$_ContentRegistrationCopyWithImpl<$Res>
+class __$$_FileCopyWithImpl<$Res>
     extends _$ContentRegistrationCopyWithImpl<$Res>
-    implements _$$_ContentRegistrationCopyWith<$Res> {
-  __$$_ContentRegistrationCopyWithImpl(_$_ContentRegistration _value,
-      $Res Function(_$_ContentRegistration) _then)
-      : super(_value, (v) => _then(v as _$_ContentRegistration));
+    implements _$$_FileCopyWith<$Res> {
+  __$$_FileCopyWithImpl(_$_File _value, $Res Function(_$_File) _then)
+      : super(_value, (v) => _then(v as _$_File));
 
   @override
-  _$_ContentRegistration get _value => super._value as _$_ContentRegistration;
+  _$_File get _value => super._value as _$_File;
 
   @override
   $Res call({
-    Object? data = freezed,
+    Object? file = freezed,
   }) {
-    return _then(_$_ContentRegistration(
-      data: data == freezed
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
+    return _then(_$_File(
+      file: file == freezed
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as File,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_ContentRegistration implements _ContentRegistration {
-  const _$_ContentRegistration({required this.data});
+class _$_File implements _File {
+  const _$_File({required this.file});
 
   @override
-  final Uint8List data;
+  final File file;
 
   @override
   String toString() {
-    return 'ContentRegistration(data: $data)';
+    return 'ContentRegistration.file(file: $file)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ContentRegistration &&
-            const DeepCollectionEquality().equals(other.data, data));
+            other is _$_File &&
+            const DeepCollectionEquality().equals(other.file, file));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(file));
 
   @JsonKey(ignore: true)
   @override
-  _$$_ContentRegistrationCopyWith<_$_ContentRegistration> get copyWith =>
-      __$$_ContentRegistrationCopyWithImpl<_$_ContentRegistration>(
-          this, _$identity);
+  _$$_FileCopyWith<_$_File> get copyWith =>
+      __$$_FileCopyWithImpl<_$_File>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(File file) file,
+    required TResult Function(Uri uri) uri,
+  }) {
+    return file(this.file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(File file)? file,
+    TResult Function(Uri uri)? uri,
+  }) {
+    return file?.call(this.file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(File file)? file,
+    TResult Function(Uri uri)? uri,
+    required TResult orElse(),
+  }) {
+    if (file != null) {
+      return file(this.file);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_File value) file,
+    required TResult Function(_Uri value) uri,
+  }) {
+    return file(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_File value)? file,
+    TResult Function(_Uri value)? uri,
+  }) {
+    return file?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_File value)? file,
+    TResult Function(_Uri value)? uri,
+    required TResult orElse(),
+  }) {
+    if (file != null) {
+      return file(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _ContentRegistration implements ContentRegistration {
-  const factory _ContentRegistration({required final Uint8List data}) =
-      _$_ContentRegistration;
+abstract class _File implements ContentRegistration {
+  const factory _File({required final File file}) = _$_File;
+
+  File get file;
+  @JsonKey(ignore: true)
+  _$$_FileCopyWith<_$_File> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UriCopyWith<$Res> {
+  factory _$$_UriCopyWith(_$_Uri value, $Res Function(_$_Uri) then) =
+      __$$_UriCopyWithImpl<$Res>;
+  $Res call({Uri uri});
+}
+
+/// @nodoc
+class __$$_UriCopyWithImpl<$Res> extends _$ContentRegistrationCopyWithImpl<$Res>
+    implements _$$_UriCopyWith<$Res> {
+  __$$_UriCopyWithImpl(_$_Uri _value, $Res Function(_$_Uri) _then)
+      : super(_value, (v) => _then(v as _$_Uri));
 
   @override
-  Uint8List get data;
+  _$_Uri get _value => super._value as _$_Uri;
+
   @override
+  $Res call({
+    Object? uri = freezed,
+  }) {
+    return _then(_$_Uri(
+      uri: uri == freezed
+          ? _value.uri
+          : uri // ignore: cast_nullable_to_non_nullable
+              as Uri,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Uri implements _Uri {
+  const _$_Uri({required this.uri});
+
+  @override
+  final Uri uri;
+
+  @override
+  String toString() {
+    return 'ContentRegistration.uri(uri: $uri)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Uri &&
+            const DeepCollectionEquality().equals(other.uri, uri));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(uri));
+
   @JsonKey(ignore: true)
-  _$$_ContentRegistrationCopyWith<_$_ContentRegistration> get copyWith =>
-      throw _privateConstructorUsedError;
+  @override
+  _$$_UriCopyWith<_$_Uri> get copyWith =>
+      __$$_UriCopyWithImpl<_$_Uri>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(File file) file,
+    required TResult Function(Uri uri) uri,
+  }) {
+    return uri(this.uri);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(File file)? file,
+    TResult Function(Uri uri)? uri,
+  }) {
+    return uri?.call(this.uri);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(File file)? file,
+    TResult Function(Uri uri)? uri,
+    required TResult orElse(),
+  }) {
+    if (uri != null) {
+      return uri(this.uri);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_File value) file,
+    required TResult Function(_Uri value) uri,
+  }) {
+    return uri(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_File value)? file,
+    TResult Function(_Uri value)? uri,
+  }) {
+    return uri?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_File value)? file,
+    TResult Function(_Uri value)? uri,
+    required TResult orElse(),
+  }) {
+    if (uri != null) {
+      return uri(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Uri implements ContentRegistration {
+  const factory _Uri({required final Uri uri}) = _$_Uri;
+
+  Uri get uri;
+  @JsonKey(ignore: true)
+  _$$_UriCopyWith<_$_Uri> get copyWith => throw _privateConstructorUsedError;
 }

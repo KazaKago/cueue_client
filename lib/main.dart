@@ -19,15 +19,16 @@ Future<void> main() async {
   await FirebaseAppCheck.instance.activate(webRecaptchaSiteKey: dotenv.get('WEB_RECAPTCHA_SITE_KEY'));
 
   if (!kIsWeb) {
-    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
-    await runZonedGuarded<Future<void>>(
-      () async {
-        runApp(const ProviderScope(child: CueueApp()));
-      },
-      FirebaseCrashlytics.instance.recordError,
-    );
+    FlutterError.onError = (details) async {
+      FlutterError.presentError(details);
+      await FirebaseCrashlytics.instance.recordFlutterFatalError(details);
+    };
+    PlatformDispatcher.instance.onError = (error, stack) {
+      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      return true;
+    };
   } else {
     await FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
-    runApp(const ProviderScope(child: CueueApp()));
   }
+  runApp(const ProviderScope(child: CueueApp()));
 }
