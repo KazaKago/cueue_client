@@ -29,10 +29,10 @@ class WorkspaceCreationPage extends ConsumerWidget {
     return _WorkspaceCreationPage(
       onClickSubmit: (selectionState, code) {
         switch (selectionState) {
-          case _SelectionState.CREATE:
+          case _SelectionState.create:
             viewModel.createWorkspace();
             break;
-          case _SelectionState.JOIN:
+          case _SelectionState.join:
             _pushInvitationInfo(context, code);
             break;
         }
@@ -60,7 +60,7 @@ class _WorkspaceCreationPage extends HookWidget {
     final scrollController = useScrollController();
     final codeEditingController = useTextEditingController();
     final code = useState('');
-    final selectedState = useState(_SelectionState.CREATE);
+    final selectedState = useState(_SelectionState.create);
     codeEditingController.addListener(() {
       code.value = codeEditingController.text;
     });
@@ -81,7 +81,7 @@ class _WorkspaceCreationPage extends HookWidget {
                 _buildCreateWorkspaceRadioButton(selectedState),
                 const SizedBox(height: 8),
                 _buildJoinWorkspaceRadioButton(selectedState),
-                if (selectedState.value == _SelectionState.JOIN) _buildInputInvitationCode(codeEditingController),
+                if (selectedState.value == _SelectionState.join) _buildInputInvitationCode(codeEditingController),
                 const SizedBox(height: 48),
                 _buildSubmitButton(selectedState.value, code.value, () => onClickSubmit(selectedState.value, code.value)),
                 const SizedBox(height: 8),
@@ -112,7 +112,7 @@ class _WorkspaceCreationPage extends HookWidget {
   Widget _buildCreateWorkspaceRadioButton(ValueNotifier<_SelectionState> selectedState) {
     return RadioListTile(
       title: Text(intl(useContext()).createNewWorkspace),
-      value: _SelectionState.CREATE,
+      value: _SelectionState.create,
       groupValue: selectedState.value,
       onChanged: (_SelectionState? value) {
         if (value != null) selectedState.value = value;
@@ -123,7 +123,7 @@ class _WorkspaceCreationPage extends HookWidget {
   Widget _buildJoinWorkspaceRadioButton(ValueNotifier<_SelectionState> selectedState) {
     return RadioListTile(
       title: Text(intl(useContext()).joinInvitedWorkspace),
-      value: _SelectionState.JOIN,
+      value: _SelectionState.join,
       groupValue: selectedState.value,
       onChanged: (_SelectionState? value) {
         if (value != null) selectedState.value = value;
@@ -146,7 +146,7 @@ class _WorkspaceCreationPage extends HookWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: ElevatedButton(
-        onPressed: (selectedState == _SelectionState.JOIN && code.isEmpty) ? null : onClick,
+        onPressed: (selectedState == _SelectionState.join && code.isEmpty) ? null : onClick,
         child: Text(intl(useContext()).letsStart),
       ),
     );
@@ -160,4 +160,4 @@ class _WorkspaceCreationPage extends HookWidget {
   }
 }
 
-enum _SelectionState { CREATE, JOIN }
+enum _SelectionState { create, join }

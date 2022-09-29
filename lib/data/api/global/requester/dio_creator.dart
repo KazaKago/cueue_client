@@ -3,6 +3,7 @@ import 'package:cueue/data/api/global/entity/api_version.dart';
 import 'package:cueue/data/api/global/requester/error_classifier.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
+import 'package:firebase_performance_dio/firebase_performance_dio.dart';
 import 'package:universal_io/io.dart';
 
 abstract class DioCreator {
@@ -10,6 +11,7 @@ abstract class DioCreator {
 
   Future<Dio> create() async {
     final dio = Dio()..options = await _createBaseOption();
+    dio.interceptors.add(DioFirebasePerformanceInterceptor());
     dio.interceptors.add(_createInterceptor(dio));
     return dio;
   }
