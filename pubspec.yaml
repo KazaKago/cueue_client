@@ -34,7 +34,7 @@ dependencies:
   crypto: ^3.0.1
   dio: ^4.0.0
   dynamic_color: ^1.2.2
-  firebase_analytics: ^9.0.2
+  firebase_analytics: ^10.0.0
   firebase_app_check: ^0.0.8
   firebase_auth: ^3.0.1
   firebase_core: ^1.0.3
