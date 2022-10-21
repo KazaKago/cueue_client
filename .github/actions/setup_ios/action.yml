@@ -15,7 +15,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - uses: webfactory/ssh-agent@v0.5.4
+    - uses: webfactory/ssh-agent@v0.7.0
       with:
         ssh-private-key: ${{ inputs.appleCertificatesRepositorySshKey }}
     - name: Install Bundler 1.17.2

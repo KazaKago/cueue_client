@@ -46,15 +46,14 @@
 </head>
 <body>
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
-    import { googleSignInClientId, firebaseConfig, } from "./initialize.js"
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+    import { googleSignInClientId, firebaseConfig, } from "./initialize.js";
 
     document
       .querySelector('meta[name="google-signin-client_id"]')
       .setAttribute('content', googleSignInClientId);
 
     const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
   </script>
 
   <script>
