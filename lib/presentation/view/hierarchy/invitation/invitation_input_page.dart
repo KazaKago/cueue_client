@@ -24,7 +24,7 @@ class InvitationInputPage extends HookConsumerWidget {
           controller: scrollController,
           padding: const EdgeInsets.all(32),
           children: [
-            SelectableText(textAlign: TextAlign.center, intl(context).pleaseInputInvitationCode),
+            Text(textAlign: TextAlign.center, intl(context).pleaseInputInvitationCode),
             const SizedBox(height: 32),
             TextField(
               controller: textEditingController,

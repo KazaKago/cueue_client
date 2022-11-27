@@ -58,13 +58,13 @@ class InvitationInfoPage extends HookConsumerWidget {
         controller: scrollController,
         padding: const EdgeInsets.all(32),
         children: [
-          SelectableText(textAlign: TextAlign.center, intl(context).confirmJoinFollowingWorkspace),
-          ListTile(subtitle: SelectableText(intl(context).workspaceName, style: Theme.of(context).textTheme.caption)),
-          ListTile(title: SelectableText(invitation.workspace.name)),
-          ListTile(subtitle: SelectableText(intl(context).memberOfWorkspace, style: Theme.of(context).textTheme.caption)),
+          Text(textAlign: TextAlign.center, intl(context).confirmJoinFollowingWorkspace),
+          ListTile(subtitle: Text(intl(context).workspaceName, style: Theme.of(context).textTheme.caption)),
+          ListTile(title: Text(invitation.workspace.name)),
+          ListTile(subtitle: Text(intl(context).memberOfWorkspace, style: Theme.of(context).textTheme.caption)),
           for (final user in invitation.workspace.users) _buildWorkspaceMember(context, ref, user),
           const SizedBox(height: 32),
-          SelectableText(textAlign: TextAlign.center, intl(context).warningJoiningWorkspace),
+          Text(textAlign: TextAlign.center, intl(context).warningJoiningWorkspace),
           const SizedBox(height: 32),
           ElevatedButton(
             onPressed: viewModel.acceptInvitation,

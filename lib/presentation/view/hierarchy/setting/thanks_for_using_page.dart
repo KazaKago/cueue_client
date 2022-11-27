@@ -21,7 +21,7 @@ class ThanksForUsingPage extends HookConsumerWidget {
           children: [
             Assets.images.icAppIcon.image(width: 128, height: 128),
             const SizedBox(height: 32),
-            SelectableText(textAlign: TextAlign.center, intl(context).thanksForUsingMessage),
+            Text(textAlign: TextAlign.center, intl(context).thanksForUsingMessage),
             const SizedBox(height: 32),
             ElevatedButton(
               onPressed: () => _replaceSplashPage(context),
