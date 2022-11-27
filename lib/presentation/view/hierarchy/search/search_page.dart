@@ -55,7 +55,7 @@ class SearchPage extends HookConsumerWidget with RouteAware {
               const SizedBox(height: 4),
               _buildTagChips(context, ref, selectedTagIds),
               const SizedBox(height: 24),
-              _buildSubmitButton(context, keywordEditingController.text, selectedTagIds.value, selectedRecipes, isEnableSubmitButton.value),
+              _buildSubmitButton(context, keywordEditingController, selectedTagIds.value, selectedRecipes, isEnableSubmitButton.value),
             ],
           ),
         ),
@@ -119,13 +119,13 @@ class SearchPage extends HookConsumerWidget with RouteAware {
     return ErrorHandlingWidget(exception, onClickRetry: viewModel.retry);
   }
 
-  Widget _buildSubmitButton(BuildContext context, String keyword, List<TagId> selectedTagIds, ValueNotifier<List<RecipeSummary>>? selectedRecipes, bool isEnableSubmitButton) {
+  Widget _buildSubmitButton(BuildContext context, TextEditingController keyword, List<TagId> selectedTagIds, ValueNotifier<List<RecipeSummary>>? selectedRecipes, bool isEnableSubmitButton) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
       child: ElevatedButton.icon(
         icon: const Icon(Icons.search),
         label: Text(intl(context).doSearch),
-        onPressed: isEnableSubmitButton ? () => _goSearchResult(context, keyword, selectedTagIds, selectedRecipes) : null,
+        onPressed: isEnableSubmitButton ? () => _goSearchResult(context, keyword.text, selectedTagIds, selectedRecipes) : null,
       ),
     );
   }
