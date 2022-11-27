@@ -63,6 +63,8 @@ class CueueApp extends HookConsumerWidget {
       colorScheme: colorScheme,
       toggleableActiveColor: colorScheme.primary /* Need for Checkbox color on dark theme, Bug of Flutter. https://github.com/flutter/flutter/issues/104446 */,
       tabBarTheme: TabBarTheme(
+        labelStyle: TextStyle(fontFamily: GoogleFonts.mPlus1p().fontFamily) /* Need for TabBar label style, Maybe bug of Flutter */,
+        unselectedLabelStyle: TextStyle(fontFamily: GoogleFonts.mPlus1p().fontFamily) /* Need for TabBar label style, Maybe bug of Flutter */,
         labelColor: colorScheme.onSurface /* Need for TabBar label color, Maybe bug of Flutter */,
         indicator: UnderlineTabIndicator(borderSide: BorderSide(width: 2, color: colorScheme.primary)) /* Need for TabBar indicator color, Maybe bug of Flutter. */,
       ),
