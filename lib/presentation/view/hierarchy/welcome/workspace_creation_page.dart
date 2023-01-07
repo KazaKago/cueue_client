@@ -10,12 +10,13 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class WorkspaceCreationPage extends ConsumerWidget {
+class WorkspaceCreationPage extends HookConsumerWidget {
   const WorkspaceCreationPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.read(workspaceCreationViewModelProvider);
+    final nameEditingController = useTextEditingController();
     ref
       ..listen<bool>(workspaceCreationViewModelProvider.select((viewModel) => viewModel.isLoading), (previous, isLoading) {
         isLoading ? EasyLoading.show() : EasyLoading.dismiss();
@@ -26,11 +27,19 @@ class WorkspaceCreationPage extends ConsumerWidget {
       ..listen<Event<Exception>>(workspaceCreationViewModelProvider.select((viewModel) => viewModel.exceptionEvent), (previous, event) {
         event((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
       });
+    useEffect(() {
+      Future<void>.microtask(() async {
+        final userName = await viewModel.getUserName();
+        nameEditingController.text = intl(context).defaultWorkspaceName(userName);
+      });
+      return null;
+    });
     return _WorkspaceCreationPage(
+      nameEditingController: nameEditingController,
       onClickSubmit: (selectionState, code) {
         switch (selectionState) {
           case _SelectionState.create:
-            viewModel.createWorkspace();
+            viewModel.createWorkspace(nameEditingController.text);
             break;
           case _SelectionState.join:
             _pushInvitationInfo(context, code);
@@ -51,8 +60,9 @@ class WorkspaceCreationPage extends ConsumerWidget {
 }
 
 class _WorkspaceCreationPage extends HookWidget {
-  const _WorkspaceCreationPage({required this.onClickSubmit});
+  const _WorkspaceCreationPage({required this.nameEditingController, required this.onClickSubmit});
 
+  final TextEditingController nameEditingController;
   final void Function(_SelectionState selectionState, String code) onClickSubmit;
 
   @override
@@ -79,6 +89,7 @@ class _WorkspaceCreationPage extends HookWidget {
                 _buildDescription(),
                 const SizedBox(height: 32),
                 _buildCreateWorkspaceRadioButton(selectedState),
+                if (selectedState.value == _SelectionState.create) _buildInputWorkspaceName(nameEditingController),
                 const SizedBox(height: 8),
                 _buildJoinWorkspaceRadioButton(selectedState),
                 if (selectedState.value == _SelectionState.join) _buildInputInvitationCode(codeEditingController),
@@ -128,6 +139,17 @@ class _WorkspaceCreationPage extends HookWidget {
       onChanged: (_SelectionState? value) {
         if (value != null) selectedState.value = value;
       },
+    );
+  }
+
+  Widget _buildInputWorkspaceName(TextEditingController nameEditingController) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 72, right: 32),
+      child: TextField(
+        controller: nameEditingController,
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(labelText: intl(useContext()).inputWorkspaceName),
+      ),
     );
   }
 

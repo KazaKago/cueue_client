@@ -289,6 +289,15 @@
   "createWorkSpaceOrJoinFamilyWorkspace": "ワークスペースを新しく作成するか、\n家族・パートナーのワークスペースに参加します。",
   "createNewWorkspace": "新しくワークスペースを作る",
   "joinInvitedWorkspace": "招待されたワークスペースに参加する",
+  "inputWorkspaceName": "ワークスペース名を入力する",
   "youCanJoinAnotherWorkspaceAfter": "あとから別のワークスペースに参加できます",
-  "letsStart": "はじめましょう"
+  "letsStart": "はじめましょう",
+  "defaultWorkspaceName": "{userName}のワークスペース",
+  "@defaultWorkspaceName": {
+    "placeholders": {
+      "userName": {
+        "type": "String"
+      }
+    }
+  }
 }
