@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="widgetbook" type="FlutterRunConfigurationType" factoryName="Flutter">
+    <option name="additionalArgs" value="--dart-define=DOT_ENV=dotenv.staging --web-port 5000" />
+    <option name="buildFlavor" value="staging" />
+    <option name="filePath" value="$PROJECT_DIR$/widgetbook/main.dart" />
+    <method v="2" />
+  </configuration>
+</component>

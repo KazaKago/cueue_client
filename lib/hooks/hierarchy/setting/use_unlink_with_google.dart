@@ -1,0 +1,55 @@
+import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
+import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
+import 'package:cueue/hooks/global/utils/use_easy_loading.dart';
+import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
+import 'package:cueue/hooks/global/utils/use_handle_error.dart';
+import 'package:cueue/hooks/hierarchy/mypage/use_firebase_user.dart';
+import 'package:cueue/model/auth/firebase_auth_extension.dart';
+import 'package:cueue/model/auth/google_provider_id.dart';
+import 'package:cueue/ui/global/l10n/intl.dart';
+import 'package:cueue/ui/global/modal/fried_toast.dart';
+import 'package:cueue/ui/global/modal/simple_message_dialog.dart';
+import 'package:cueue/ui/global/modal/simple_message_dialog_event.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+SWRTriggerState<void, void> useUnlinkWithGoogle(WidgetRef ref) {
+  final easyLoading = useEasyLoading();
+  final showFriedToast = useShowFriedToast();
+  final showErrorDialog = useShowErrorDialog(ref);
+  final intl = useIntl();
+  final showUnlinkWithGoogleConfirmationDialog = useShowSimpleMessageDialog();
+  final firebaseUserState = useFirebaseUser(ref);
+  final unlinkWithGoogle = useSWRTrigger<void, bool>((_) async {
+    try {
+      const providerId = GoogleProviderId();
+      await firebaseUserState.data?.unlink(providerId.value);
+      return true;
+    } on FirebaseAuthException catch (exception) {
+      throw await exception.parse();
+    }
+  });
+  useEffectSWRData(showUnlinkWithGoogleConfirmationDialog, (event) {
+    if (event != const SimpleMessageDialogEvent.positive()) return;
+    unlinkWithGoogle.trigger(null);
+  });
+  useEffectSWRData(unlinkWithGoogle, (_) {
+    showFriedToast(intl.unlinkedWithGoogle);
+  });
+  useEffectSWRIsMutating(unlinkWithGoogle, (isMutating) {
+    easyLoading.trigger(isMutating);
+  });
+  useEffectSWRError(unlinkWithGoogle, (error) {
+    showErrorDialog.trigger(error);
+  });
+  return useSWRTrigger((key) {
+    return showUnlinkWithGoogleConfirmationDialog.trigger(
+      SimpleMessageDialogData(
+        title: intl.confirm,
+        message: intl.confirmToUnConnectGoogle,
+        positiveButton: intl.unConnect,
+        negativeButton: intl.cancel,
+      ),
+    );
+  });
+}
