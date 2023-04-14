@@ -38,7 +38,7 @@ runs:
       shell: bash
     - name: Sign
       id: sign
-      uses: mukeshsolanki/bundletool-action@v1.0.0
+      uses: mukeshsolanki/bundletool-action@v1.0.1
       with:
         aabFile: ./build/app/outputs/bundle/${{ inputs.flavor }}Release/app-${{ inputs.flavor }}-release.aab
         base64Keystore: ${{ inputs.base64Keystore }}
