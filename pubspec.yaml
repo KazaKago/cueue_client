@@ -33,7 +33,7 @@ dependencies:
   collection: ^1.0.0
   connectivity_plus: ^3.0.0
   crypto: ^3.0.0
-  dio: ^4.0.0
+  dio: ^5.0.0
   dynamic_color: ^1.0.0
   firebase_analytics: ^10.0.0
   firebase_app_check: ^0.1.0

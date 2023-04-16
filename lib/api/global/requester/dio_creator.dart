@@ -37,8 +37,8 @@ abstract class DioCreator {
         }
       },
       onError: (DioError error, ErrorInterceptorHandler handler) {
-        error.error = error.parseException();
-        handler.next(error);
+        final newError = error.copyWith(error: error.parseException());
+        handler.next(newError);
       },
     );
   }

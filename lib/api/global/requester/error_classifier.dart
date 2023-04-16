@@ -16,11 +16,15 @@ import 'package:universal_io/io.dart';
 extension ErrorClassifier on DioError {
   Exception parseException() {
     switch (type) {
-      case DioErrorType.connectTimeout:
+      case DioErrorType.connectionError:
+        return const NetworkException();
+      case DioErrorType.connectionTimeout:
       case DioErrorType.sendTimeout:
       case DioErrorType.receiveTimeout:
         return const NetworkTimeoutException();
-      case DioErrorType.response:
+      case DioErrorType.badCertificate:
+        return const InvalidTokenException();
+      case DioErrorType.badResponse:
         switch (response?.statusCode) {
           case HttpStatus.badRequest:
             final dynamic data = response?.data;
@@ -53,18 +57,8 @@ extension ErrorClassifier on DioError {
         return const ClientErrorException();
       case DioErrorType.cancel:
         return const NetworkCancelException();
-      case DioErrorType.other:
-        return _parseOtherException();
-    }
-  }
-
-  Exception _parseOtherException() {
-    if (error is SocketException) {
-      return const NetworkException();
-    } else if (error is HttpException) {
-      return const NetworkException();
-    } else {
-      return error as Exception;
+      case DioErrorType.unknown:
+        return error! as Exception;
     }
   }
 }
