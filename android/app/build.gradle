@@ -28,6 +28,7 @@ apply plugin: 'com.google.firebase.crashlytics'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+    namespace = "com.kazakago.cueue"
     compileSdkVersion 33
 
     compileOptions {
