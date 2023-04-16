@@ -45,6 +45,7 @@ void revalidateOnReconnect<KEY, DATA>(SWRValidate<KEY, DATA> validate, KEY? key)
           case ConnectivityResult.ethernet:
           case ConnectivityResult.mobile:
           case ConnectivityResult.vpn:
+          case ConnectivityResult.other:
             if (previousResult == ConnectivityResult.none) {
               Future.microtask(() => validate(key));
             }
