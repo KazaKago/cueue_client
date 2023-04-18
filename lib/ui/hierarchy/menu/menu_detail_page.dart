@@ -3,7 +3,7 @@ import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/hooks/global/swr/swr_mutate.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/global/utils/use_theme.dart';
-import 'package:cueue/hooks/hierarchy/menu/use_get_menu.dart';
+import 'package:cueue/hooks/hierarchy/menu/use_menu.dart';
 import 'package:cueue/model/edit/editing_result.dart';
 import 'package:cueue/model/menu/menu.dart';
 import 'package:cueue/model/menu/menu_id.dart';
@@ -26,7 +26,7 @@ class MenuDetailPage extends HookConsumerWidget {
     final intl = useIntl();
     final toDateString = useToDateString();
     final toFormattedString = useToFormattedString();
-    final menuState = useGetMenu(ref, menuSummary.id);
+    final menuState = useMenu(ref, menuSummary.id);
     final menu = menuState.data;
     final pushMenuEditingPage = usePushMenuEditingPage();
     if (pushMenuEditingPage.data == EditingResult.deleted) {

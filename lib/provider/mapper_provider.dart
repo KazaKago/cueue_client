@@ -10,6 +10,7 @@ import 'package:cueue/mapper/recipe/recipe_request_mapper.dart';
 import 'package:cueue/mapper/recipe/recipe_response_mapper.dart';
 import 'package:cueue/mapper/recipe/recipe_summary_response_mapper.dart';
 import 'package:cueue/mapper/tag/tag_order_request_mapper.dart';
+import 'package:cueue/mapper/tag/tag_request_mapper.dart';
 import 'package:cueue/mapper/tag/tag_response_mapper.dart';
 import 'package:cueue/mapper/user/user_response_mapper.dart';
 import 'package:cueue/mapper/user/user_summary_response_mapper.dart';
@@ -22,6 +23,7 @@ final userResponseMapperProvider = Provider((ref) => UserResponseMapper(ref.read
 final userSummaryResponseMapperProvider = Provider((ref) => UserSummaryResponseMapper(ref.read(contentResponseMapperProvider)));
 final workspaceResponseMapperProvider = Provider((ref) => WorkspaceResponseMapper(ref.read(userSummaryResponseMapperProvider)));
 final tagResponseMapperProvider = Provider((ref) => const TagResponseMapper());
+final tagRequestMapperProvider = Provider((ref) => const TagRequestMapper());
 final recipeResponseMapperProvider = Provider((ref) => RecipeResponseMapper(ref.read(tagResponseMapperProvider), ref.read(contentResponseMapperProvider)));
 final recipeSummaryResponseMapperProvider = Provider((ref) => RecipeSummaryResponseMapper(ref.read(contentResponseMapperProvider)));
 final recipeRequestMapperProvider = Provider((ref) => const RecipeRequestMapper());

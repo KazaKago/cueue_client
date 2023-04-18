@@ -5,31 +5,31 @@ import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/model/edit/editing_result.dart';
-import 'package:cueue/model/tag/tag.dart';
-import 'package:cueue/model/tag/tag_registration.dart';
+import 'package:cueue/model/menu/menu.dart';
+import 'package:cueue/model/menu/menu_registration.dart';
 import 'package:cueue/provider/api_provider.dart';
 import 'package:cueue/provider/mapper_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-SWRTriggerState<TagRegistration, Tag> useCreateTag(WidgetRef ref) {
+SWRTriggerState<MenuRegistration, Menu> useCreateMenu(WidgetRef ref) {
   final pop = usePop<EditingResult>();
   final easyLoading = useEasyLoading();
   final showErrorDialog = useShowErrorDialog(ref);
-  final createTagApi = ref.read(createTagApiProvider);
-  final tagResponseMapper = ref.read(tagResponseMapperProvider);
-  final tagRequestMapper = ref.read(tagRequestMapperProvider);
-  final createTag = useSWRTrigger<TagRegistration, Tag>((tagRegistration) async {
-    final response = await createTagApi(tagRequestMapper(tagRegistration));
-    return tagResponseMapper(response);
+  final createMenuApi = ref.read(createMenuApiProvider);
+  final menuRequestMapper = ref.read(menuRequestMapperProvider);
+  final menuResponseMapper = ref.read(menuResponseMapperProvider);
+  final createMenu = useSWRTrigger<MenuRegistration, Menu>((menuRegistration) async {
+    final response = await createMenuApi(menuRequestMapper(menuRegistration));
+    return menuResponseMapper(response);
   });
-  useEffectSWRData(createTag, (data) {
+  useEffectSWRData(createMenu, (tag) {
     pop.trigger(EditingResult.created);
   });
-  useEffectSWRIsMutating(createTag, (isMutating) {
+  useEffectSWRIsMutating(createMenu, (isMutating) {
     easyLoading.trigger(isMutating);
   });
-  useEffectSWRError(createTag, (error) {
+  useEffectSWRError(createMenu, (error) {
     showErrorDialog.trigger(error);
   });
-  return createTag;
+  return createMenu;
 }
