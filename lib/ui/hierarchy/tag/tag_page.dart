@@ -1,12 +1,11 @@
 import 'package:cueue/hooks/global/swr/swr_mutate.dart';
+import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/hierarchy/tag/use_reorder_tags.dart';
 import 'package:cueue/hooks/hierarchy/tag/use_tags.dart';
-import 'package:cueue/model/edit/editing_result.dart';
 import 'package:cueue/model/tag/tag.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/default_state_widget.dart';
 import 'package:cueue/ui/global/widget/empty_widget.dart';
-import 'package:cueue/ui/hierarchy/tag/tag_editing_page.dart';
 import 'package:cueue/ui/hierarchy/tag/tag_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -19,6 +18,7 @@ class TagPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final intl = useIntl();
     final tagsState = useTags(ref);
+    final pushTagEditingPage = usePushTagEditingPage();
     return Scaffold(
       appBar: AppBar(
         title: Text(intl.tag),
@@ -28,7 +28,7 @@ class TagPage extends HookConsumerWidget {
         loadingChild: TagLoading.new,
         child: (tags) {
           if (tags.isNotEmpty) {
-            return _buildCompleted(ref, tags, tagsState.mutate);
+            return _buildContent(ref, tags, tagsState.mutate);
           } else {
             return _buildEmpty();
           }
@@ -36,7 +36,7 @@ class TagPage extends HookConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         label: Text(intl.addTag),
-        onPressed: () => _goTagEditing(context),
+        onPressed: () => pushTagEditingPage.trigger(null),
         icon: const Icon(Icons.add),
         heroTag: intl.addRecipe,
       ),
@@ -49,9 +49,10 @@ class TagPage extends HookConsumerWidget {
     return EmptyWidget(intl.noTagMessage);
   }
 
-  Widget _buildCompleted(WidgetRef ref, List<Tag> tags, SWRMutate<String, List<Tag>> mutateTags) {
+  Widget _buildContent(WidgetRef ref, List<Tag> tags, SWRMutate<String, List<Tag>> mutateTags) {
     final reorderTags = useReOrderTags(ref);
     final scrollController = useScrollController();
+    final pushTagEditingPage = usePushTagEditingPage();
     return RefreshIndicator(
       onRefresh: () => mutateTags(null),
       child: Scrollbar(
@@ -73,16 +74,12 @@ class TagPage extends HookConsumerWidget {
                   child: const Icon(Icons.drag_handle),
                 ),
               ),
-              onTap: () => _goTagEditing(context, tag: tags[index]),
+              onTap: () => pushTagEditingPage.trigger(tags[index]),
             );
           },
           onReorder: (int oldIndex, int newIndex) => reorderTags.trigger(ReOrderTagsData(oldIndex, newIndex)),
         ),
       ),
     );
-  }
-
-  Future<void> _goTagEditing(BuildContext context, {Tag? tag}) async {
-    await Navigator.push<EditingResult>(context, MaterialPageRoute(builder: (context) => TagEditingPage(tag: tag)));
   }
 }

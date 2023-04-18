@@ -4,6 +4,7 @@ import 'package:cueue/model/edit/editing_result.dart';
 import 'package:cueue/model/invitation/invitation_code.dart';
 import 'package:cueue/model/menu/menu.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
+import 'package:cueue/model/tag/tag.dart';
 import 'package:cueue/ui/hierarchy/auth/authentication_page.dart';
 import 'package:cueue/ui/hierarchy/invitation/invitation_creation_page.dart';
 import 'package:cueue/ui/hierarchy/invitation/invitation_info_page.dart';
@@ -16,6 +17,7 @@ import 'package:cueue/ui/hierarchy/setting/account_deletion_page.dart';
 import 'package:cueue/ui/hierarchy/setting/settings_page.dart';
 import 'package:cueue/ui/hierarchy/setting/thanks_for_using_page.dart';
 import 'package:cueue/ui/hierarchy/splash/splash_page.dart';
+import 'package:cueue/ui/hierarchy/tag/tag_editing_page.dart';
 import 'package:cueue/ui/hierarchy/welcome/user_creation_page.dart';
 import 'package:cueue/ui/hierarchy/welcome/workspace_creation_page.dart';
 import 'package:flutter/material.dart';
@@ -107,6 +109,13 @@ SWRTriggerState<RecipeSummary, void> usePushRecipeDetailPage() {
   final pushPage = _usePushPage<void>();
   return useSWRTrigger((recipe) {
     return pushPage.trigger(RecipeDetailPage(recipe));
+  });
+}
+
+SWRTriggerState<Tag?, EditingResult?> usePushTagEditingPage() {
+  final pushPage = _usePushPage<EditingResult>();
+  return useSWRTrigger((tag) {
+    return pushPage.trigger(TagEditingPage(tag: tag));
   });
 }
 

@@ -3,7 +3,7 @@ import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/hooks/global/swr/swr_mutate.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/global/utils/use_theme.dart';
-import 'package:cueue/hooks/hierarchy/menu/use_menu.dart';
+import 'package:cueue/hooks/hierarchy/menu/use_get_menu.dart';
 import 'package:cueue/model/edit/editing_result.dart';
 import 'package:cueue/model/menu/menu.dart';
 import 'package:cueue/model/menu/menu_id.dart';
@@ -26,7 +26,7 @@ class MenuDetailPage extends HookConsumerWidget {
     final intl = useIntl();
     final toDateString = useToDateString();
     final toFormattedString = useToFormattedString();
-    final menuState = useMenu(ref, menuSummary.id);
+    final menuState = useGetMenu(ref, menuSummary.id);
     final menu = menuState.data;
     final pushMenuEditingPage = usePushMenuEditingPage();
     if (pushMenuEditingPage.data == EditingResult.deleted) {
@@ -47,7 +47,7 @@ class MenuDetailPage extends HookConsumerWidget {
       body: DefaultStateWidget<Menu>(
         state: menuState,
         loadingChild: _buildLoading,
-        child: (menu) => _buildCompleted(menu, menuState.mutate),
+        child: (menu) => _buildContent(menu, menuState.mutate),
       ),
     );
   }
@@ -61,7 +61,7 @@ class MenuDetailPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildCompleted(Menu menu, SWRMutate<MenuId, Menu> mutateMenu) {
+  Widget _buildContent(Menu menu, SWRMutate<MenuId, Menu> mutateMenu) {
     return RefreshIndicator(
       onRefresh: () => mutateMenu(null),
       child: ListView(
