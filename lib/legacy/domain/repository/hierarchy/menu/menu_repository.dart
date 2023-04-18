@@ -1,4 +1,3 @@
-import 'package:cueue/model/menu/menu.dart';
 import 'package:cueue/model/menu/menu_id.dart';
 import 'package:cueue/model/menu/menu_registration.dart';
 import 'package:cueue/model/menu/menu_summary.dart';
@@ -7,11 +6,7 @@ import 'package:store_flowable/store_flowable_core.dart';
 abstract class MenuRepository {
   LoadingStateStream<List<MenuSummary>> followAllData();
 
-  LoadingStateStream<Menu> followData(MenuId menuId);
-
   Future<void> refreshAllData();
-
-  Future<void> refreshData(MenuId menuId);
 
   Future<void> requestAdditionalAllData({required bool continueWhenError});
 

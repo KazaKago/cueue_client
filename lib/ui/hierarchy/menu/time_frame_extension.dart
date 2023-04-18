@@ -2,6 +2,16 @@ import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/legacy/presentation/view/global/l10n/intl.dart';
 import 'package:cueue/model/menu/time_frame.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+
+String Function(TimeFrame) useToFormattedString() {
+  final context = useContext();
+  return (timeFrame) => timeFrame.toFormattedString(context);
+}
+
+Image Function(TimeFrame) useToFormattedImage() {
+  return (timeFrame) => timeFrame.toFormattedImage();
+}
 
 extension TimeFrameExtension on TimeFrame {
   String toFormattedString(BuildContext context) {

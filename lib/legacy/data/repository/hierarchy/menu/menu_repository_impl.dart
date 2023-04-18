@@ -6,7 +6,6 @@ import 'package:cueue/legacy/data/repository/flowable/menu/menu_summary_flowable
 import 'package:cueue/legacy/domain/repository/hierarchy/menu/menu_repository.dart';
 import 'package:cueue/mapper/menu/menu_request_mapper.dart';
 import 'package:cueue/mapper/menu/menu_response_mapper.dart';
-import 'package:cueue/model/menu/menu.dart';
 import 'package:cueue/model/menu/menu_id.dart';
 import 'package:cueue/model/menu/menu_registration.dart';
 import 'package:cueue/model/menu/menu_summary.dart';
@@ -25,21 +24,9 @@ class MenuRepositoryImpl implements MenuRepository {
   final MenuSummaryFlowableFactory _menuSummaryFlowableFactory;
 
   @override
-  LoadingStateStream<Menu> followData(MenuId menuId) {
-    final menuFlowable = _menuFlowableFactory.create(menuId);
-    return menuFlowable.publish();
-  }
-
-  @override
   LoadingStateStream<List<MenuSummary>> followAllData() {
     final menuFlowable = _menuSummaryFlowableFactory.create(null);
     return menuFlowable.publish();
-  }
-
-  @override
-  Future<void> refreshData(MenuId menuId) {
-    final menuFlowable = _menuFlowableFactory.create(menuId);
-    return menuFlowable.refresh();
   }
 
   @override

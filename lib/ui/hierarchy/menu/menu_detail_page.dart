@@ -1,92 +1,85 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cueue/gen/assets.gen.dart';
-import 'package:cueue/legacy/presentation/view/global/l10n/intl.dart';
-import 'package:cueue/legacy/presentation/viewmodel/di/viewmodel_provider.dart';
+import 'package:cueue/hooks/global/swr/swr_mutate.dart';
+import 'package:cueue/hooks/global/utils/use_route.dart';
+import 'package:cueue/hooks/global/utils/use_theme.dart';
+import 'package:cueue/hooks/hierarchy/menu/use_menu.dart';
 import 'package:cueue/model/edit/editing_result.dart';
 import 'package:cueue/model/menu/menu.dart';
+import 'package:cueue/model/menu/menu_id.dart';
 import 'package:cueue/model/menu/menu_summary.dart';
-import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:cueue/ui/global/extension/date_time_extension.dart';
-import 'package:cueue/ui/global/widget/error_handling_widget.dart';
+import 'package:cueue/ui/global/l10n/intl.dart';
+import 'package:cueue/ui/global/widget/default_state_widget.dart';
 import 'package:cueue/ui/global/widget/titled_card.dart';
-import 'package:cueue/ui/hierarchy/menu/menu_editing_page.dart';
 import 'package:cueue/ui/hierarchy/menu/time_frame_extension.dart';
-import 'package:cueue/ui/hierarchy/recipe/recipe_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MenuDetailPage extends HookConsumerWidget {
-  const MenuDetailPage(this.menu, {super.key});
+  const MenuDetailPage(this.menuSummary, {super.key});
 
-  final MenuSummary menu;
+  final MenuSummary menuSummary;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(menuDetailViewModelProvider(menu.id).select((viewModel) => viewModel.state));
-    return state.when(
-      loading: () => _buildLoading(context, ref, menu),
-      completed: (menu) => _buildCompleted(context, ref, menu),
-      error: (exception) => _buildError(context, ref, menu, exception),
-    );
-  }
-
-  Widget _buildLoading(BuildContext context, WidgetRef ref, MenuSummary menu) {
-    final viewModel = ref.read(menuDetailViewModelProvider(menu.id));
+    final intl = useIntl();
+    final toDateString = useToDateString();
+    final toFormattedString = useToFormattedString();
+    final menuState = useMenu(ref, menuSummary.id);
+    final menu = menuState.data;
+    final pushMenuEditingPage = usePushMenuEditingPage();
+    if (pushMenuEditingPage.data == EditingResult.deleted) {
+      Navigator.of(context).pop();
+    }
     return Scaffold(
       appBar: AppBar(
-        title: Text('${menu.date.toDateString(context)} ${menu.timeFrame.toFormattedString(context)}'),
-      ),
-      body: RefreshIndicator(
-        onRefresh: viewModel.refresh,
-        child: ListView(
-          children: [
-            _buildMenuItem(context, ref, menu),
-            _buildMemoItem(context, ref, menu),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildCompleted(BuildContext context, WidgetRef ref, Menu menu) {
-    final viewModel = ref.read(menuDetailViewModelProvider(menu.id));
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('${menu.date.toDateString(context)} ${menu.timeFrame.toFormattedString(context)}'),
+        title: Text('${toDateString(menuSummary.date)} ${toFormattedString(menuSummary.timeFrame)}'),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.edit),
-            tooltip: intl(context).doEdit,
-            onPressed: () => _goMenuEditing(context, menu),
-          ),
+          if (menu != null)
+            IconButton(
+              icon: const Icon(Icons.edit),
+              tooltip: intl.doEdit,
+              onPressed: () => pushMenuEditingPage.trigger(menu),
+            ),
         ],
       ),
-      body: RefreshIndicator(
-        onRefresh: viewModel.refresh,
-        child: ListView(
-          children: [
-            _buildMenuItem(context, ref, menu),
-            _buildMemoItem(context, ref, menu),
-          ],
-        ),
+      body: DefaultStateWidget<Menu>(
+        state: menuState,
+        loadingChild: _buildLoading,
+        child: (menu) => _buildCompleted(menu, menuState.mutate),
       ),
     );
   }
 
-  Widget _buildError(BuildContext context, WidgetRef ref, MenuSummary menu, Exception exception) {
-    final viewModel = ref.read(menuDetailViewModelProvider(menu.id));
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(menu.date.toDateString(context)),
-      ),
-      body: ErrorHandlingWidget(exception, onClickRetry: viewModel.retry),
+  Widget _buildLoading() {
+    return ListView(
+      children: [
+        _buildMenuItem(menuSummary),
+        _buildMemoItem(menuSummary),
+      ],
     );
   }
 
-  Widget _buildMenuItem(BuildContext context, WidgetRef ref, MenuSummary menu) {
+  Widget _buildCompleted(Menu menu, SWRMutate<MenuId, Menu> mutateMenu) {
+    return RefreshIndicator(
+      onRefresh: () => mutateMenu(null),
+      child: ListView(
+        children: [
+          _buildMenuItem(menu),
+          _buildMemoItem(menu),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMenuItem(MenuSummary menu) {
+    final intl = useIntl();
+    final theme = useTheme();
+    final pushRecipeDetailPage = usePushRecipeDetailPage();
     return TitledCard.list(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-      title: intl(context).cookingMenu,
+      title: intl.cookingMenu,
       contentPadding: const EdgeInsets.fromLTRB(0, 12, 0, 12),
       children: menu.recipes.map((recipe) {
         final image = recipe.image;
@@ -96,35 +89,25 @@ class MenuDetailPage extends HookConsumerWidget {
                   backgroundImage: CachedNetworkImageProvider(image.url.toString()),
                 )
               : CircleAvatar(
-                  backgroundColor: Theme.of(context).dividerColor,
+                  backgroundColor: theme.dividerColor,
                   child: Padding(
                     padding: const EdgeInsets.all(8),
-                    child: Assets.images.icAppIcon.image(color: Theme.of(context).hoverColor),
+                    child: Assets.images.icAppIcon.image(color: theme.hoverColor),
                   ),
                 ),
           title: Text(recipe.title),
-          onTap: () => _goRecipeDetail(context, recipe),
+          onTap: () => pushRecipeDetailPage.trigger(recipe),
         );
       }).toList(),
     );
   }
 
-  Widget _buildMemoItem(BuildContext context, WidgetRef ref, MenuSummary menu) {
+  Widget _buildMemoItem(MenuSummary menu) {
+    final intl = useIntl();
     return TitledCard(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-      title: intl(context).memo,
+      title: intl.memo,
       child: Text(menu.memo),
     );
-  }
-
-  Future<void> _goMenuEditing(BuildContext context, Menu menu) async {
-    final result = await Navigator.push<EditingResult>(context, MaterialPageRoute(builder: (context) => MenuEditingPage.withMenu(menu: menu)));
-    if (result == EditingResult.deleted) {
-      Navigator.of(context).pop();
-    }
-  }
-
-  Future<void> _goRecipeDetail(BuildContext context, RecipeSummary recipe) async {
-    await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => RecipeDetailPage(recipe)));
   }
 }

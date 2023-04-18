@@ -9,12 +9,8 @@ import 'package:cueue/legacy/domain/usecase/hierarchy/menu/delete_menu_usecase.d
 import 'package:cueue/legacy/domain/usecase/hierarchy/menu/delete_menu_usecase_impl.dart';
 import 'package:cueue/legacy/domain/usecase/hierarchy/menu/follow_all_menus_usecase.dart';
 import 'package:cueue/legacy/domain/usecase/hierarchy/menu/follow_all_menus_usecase_impl.dart';
-import 'package:cueue/legacy/domain/usecase/hierarchy/menu/follow_menu_usecase.dart';
-import 'package:cueue/legacy/domain/usecase/hierarchy/menu/follow_menu_usecase_impl.dart';
 import 'package:cueue/legacy/domain/usecase/hierarchy/menu/refresh_all_menus_usecase.dart';
 import 'package:cueue/legacy/domain/usecase/hierarchy/menu/refresh_all_menus_usecase_impl.dart';
-import 'package:cueue/legacy/domain/usecase/hierarchy/menu/refresh_menu_usecase.dart';
-import 'package:cueue/legacy/domain/usecase/hierarchy/menu/refresh_menu_usecase_impl.dart';
 import 'package:cueue/legacy/domain/usecase/hierarchy/menu/request_additional_all_menus_usecase.dart';
 import 'package:cueue/legacy/domain/usecase/hierarchy/menu/request_additional_all_menus_usecase_impl.dart';
 import 'package:cueue/legacy/domain/usecase/hierarchy/menu/update_menu_usecase.dart';
@@ -61,6 +57,4 @@ final updateMenuUseCaseProvider = Provider<UpdateMenuUseCase>((ref) => UpdateMen
 final deleteMenuUseCaseProvider = Provider<DeleteMenuUseCase>((ref) => DeleteMenuUseCaseImpl(ref.read(menuRepositoryProvider)));
 final createContentUseCaseProvider = Provider<CreateContentUseCase>((ref) => CreateContentUseCaseImpl(ref.read(contentRepositoryProvider)));
 final refreshRecipeUseCaseProvider = Provider<RefreshRecipeUseCase>((ref) => RefreshRecipeUseCaseImpl(ref.read(recipeRepositoryProvider)));
-final followMenuUseCaseProvider = Provider<FollowMenuUseCase>((ref) => FollowMenuUseCaseImpl(ref.read(menuRepositoryProvider)));
-final refreshMenuUseCaseProvider = Provider<RefreshMenuUseCase>((ref) => RefreshMenuUseCaseImpl(ref.read(menuRepositoryProvider)));
 final reorderTagUseCaseProvider = Provider<ReorderTagUseCase>((ref) => ReorderTagUseCaseImpl(ref.read(tagRepositoryProvider)));
