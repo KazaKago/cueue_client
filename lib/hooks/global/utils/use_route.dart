@@ -12,6 +12,8 @@ import 'package:cueue/ui/hierarchy/invitation/invitation_input_page.dart';
 import 'package:cueue/ui/hierarchy/main/main_page.dart';
 import 'package:cueue/ui/hierarchy/menu/menu_editing_page.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_detail_page.dart';
+import 'package:cueue/ui/hierarchy/recipe/recipe_selection_page.dart';
+import 'package:cueue/ui/hierarchy/search/search_page.dart';
 import 'package:cueue/ui/hierarchy/setting/about_page.dart';
 import 'package:cueue/ui/hierarchy/setting/account_deletion_page.dart';
 import 'package:cueue/ui/hierarchy/setting/settings_page.dart';
@@ -116,6 +118,20 @@ SWRTriggerState<Tag?, EditingResult?> usePushTagEditingPage() {
   final pushPage = _usePushPage<EditingResult>();
   return useSWRTrigger((tag) {
     return pushPage.trigger(TagEditingPage(tag: tag));
+  });
+}
+
+SWRTriggerState<List<RecipeSummary>, List<RecipeSummary>?> usePushRecipeSelectionPage() {
+  final pushPage = _usePushPage<List<RecipeSummary>?>();
+  return useSWRTrigger((recipes) {
+    return pushPage.trigger(RecipeSelectionPage(recipes));
+  });
+}
+
+SWRTriggerState<List<RecipeSummary>?, List<RecipeSummary>?> usePushSearchPage() {
+  final pushPage = _usePushPage<List<RecipeSummary>?>();
+  return useSWRTrigger((recipes) {
+    return pushPage.trigger(SearchPage(initialSelectedRecipes: recipes));
   });
 }
 

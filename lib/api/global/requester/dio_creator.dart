@@ -21,6 +21,7 @@ abstract class DioCreator {
       headers: <String, dynamic>{
         'Api-Version': const ApiVersion().value,
         'AppCheck-Token': appCheckToken,
+        HttpHeaders.contentTypeHeader: ContentType.json.value,
       },
     );
   }

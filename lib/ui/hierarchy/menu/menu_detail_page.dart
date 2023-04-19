@@ -1,18 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/hooks/global/swr/swr_mutate.dart';
+import 'package:cueue/hooks/global/utils/use_date_format.dart';
+import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/global/utils/use_theme.dart';
 import 'package:cueue/hooks/hierarchy/menu/use_menu.dart';
+import 'package:cueue/hooks/hierarchy/menu/use_timeframe_formatter.dart';
 import 'package:cueue/model/edit/editing_result.dart';
 import 'package:cueue/model/menu/menu.dart';
 import 'package:cueue/model/menu/menu_id.dart';
 import 'package:cueue/model/menu/menu_summary.dart';
-import 'package:cueue/ui/global/extension/date_time_extension.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/default_state_widget.dart';
 import 'package:cueue/ui/global/widget/titled_card.dart';
-import 'package:cueue/ui/hierarchy/menu/time_frame_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -24,14 +25,17 @@ class MenuDetailPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final intl = useIntl();
+    final pop = usePop<void>();
     final toDateString = useToDateString();
     final toFormattedString = useToFormattedString();
     final menuState = useMenu(ref, menuSummary.id);
     final menu = menuState.data;
     final pushMenuEditingPage = usePushMenuEditingPage();
-    if (pushMenuEditingPage.data == EditingResult.deleted) {
-      Navigator.of(context).pop();
-    }
+    useEffectSWRData<Menu, EditingResult?>(pushMenuEditingPage, (data) {
+      if (pushMenuEditingPage.data == EditingResult.deleted) {
+        pop.trigger(null);
+      }
+    });
     return Scaffold(
       appBar: AppBar(
         title: Text('${toDateString(menuSummary.date)} ${toFormattedString(menuSummary.timeFrame)}'),

@@ -1,5 +1,4 @@
 import 'package:cueue/legacy/data/cache/di/cache_provider.dart';
-import 'package:cueue/legacy/data/repository/flowable/menu/menu_flowable_factory.dart';
 import 'package:cueue/legacy/data/repository/flowable/menu/menu_summary_flowable_factory.dart';
 import 'package:cueue/legacy/data/repository/flowable/recipe/recipe_flowable_factory.dart';
 import 'package:cueue/legacy/data/repository/flowable/recipe/recipes_flowable_factory.dart';
@@ -21,9 +20,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 final authorizeRepositoryProvider = Provider<AuthorizeRepository>((ref) => AuthorizeRepositoryImpl(ref.read(allCacheProvider)));
 final contentRepositoryProvider = Provider<ContentRepository>((ref) => ContentRepositoryImpl(ref.read(createContentApiProvider), ref.read(contentRequestMapperProvider), ref.read(contentResponseMapperProvider)));
 final tagRepositoryProvider = Provider<TagRepository>((ref) => TagRepositoryImpl(ref.read(orderTagApiProvider), ref.read(tagOrderRequestMapperProvider), ref.read(tagFlowableFactoryProvider)));
-final recipeRepositoryProvider = Provider<RecipeRepository>((ref) => RecipeRepositoryImpl(ref.read(recipeCacheProvider), ref.read(menuCacheProvider), ref.read(createRecipeApiProvider), ref.read(updateRecipeApiProvider), ref.read(deleteRecipeApiProvider), ref.read(recipeResponseMapperProvider), ref.read(recipeRequestMapperProvider), ref.read(recipesFlowableFactoryProvider), ref.read(recipeFlowableFactoryProvider), ref.read(menuFlowableFactoryProvider), ref.read(menuSummaryFlowableFactoryProvider)));
-final menuRepositoryProvider = Provider<MenuRepository>((ref) => MenuRepositoryImpl(ref.read(createMenuApiProvider), ref.read(updateMenuApiProvider), ref.read(deleteMenuApiProvider), ref.read(menuResponseMapperProvider), ref.read(menuRequestMapperProvider), ref.read(menuFlowableFactoryProvider), ref.read(menuSummaryFlowableFactoryProvider)));
-final menuFlowableFactoryProvider = Provider<MenuFlowableFactory>((ref) => MenuFlowableFactory(ref.read(menuCacheProvider), ref.read(menuStateManagerProvider), ref.read(getMenuApiProvider), ref.read(menuResponseMapperProvider)));
+final recipeRepositoryProvider = Provider<RecipeRepository>((ref) => RecipeRepositoryImpl(ref.read(recipeCacheProvider), ref.read(createRecipeApiProvider), ref.read(updateRecipeApiProvider), ref.read(deleteRecipeApiProvider), ref.read(recipeResponseMapperProvider), ref.read(recipeRequestMapperProvider), ref.read(recipesFlowableFactoryProvider), ref.read(recipeFlowableFactoryProvider), ref.read(menuSummaryFlowableFactoryProvider)));
+final menuRepositoryProvider = Provider<MenuRepository>((ref) => MenuRepositoryImpl(ref.read(menuSummaryFlowableFactoryProvider)));
 final menuSummaryFlowableFactoryProvider = Provider<MenuSummaryFlowableFactory>((ref) => MenuSummaryFlowableFactory(ref.read(menuCacheProvider), ref.read(menuSummaryStateManagerProvider), ref.read(getMenusApiProvider), ref.read(menuSummaryResponseMapperProvider)));
 final recipesFlowableFactoryProvider = Provider<RecipesFlowableFactory>((ref) => RecipesFlowableFactory(ref.read(recipeCacheProvider), ref.read(recipesStateManagerProvider), ref.read(getRecipesApiProvider), ref.read(recipeSummaryResponseMapperProvider)));
 final recipeFlowableFactoryProvider = Provider<RecipeFlowableFactory>((ref) => RecipeFlowableFactory(ref.read(recipeCacheProvider), ref.read(recipeStateManagerProvider), ref.read(getRecipeApiProvider), ref.read(recipeResponseMapperProvider)));

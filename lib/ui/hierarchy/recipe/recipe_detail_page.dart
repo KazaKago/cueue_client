@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cueue/gen/assets.gen.dart';
+import 'package:cueue/legacy/presentation/view/global/extension/date_time_extension.dart';
 import 'package:cueue/legacy/presentation/view/global/l10n/intl.dart';
 import 'package:cueue/legacy/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/model/content/content.dart';
@@ -7,7 +8,6 @@ import 'package:cueue/model/edit/editing_result.dart';
 import 'package:cueue/model/recipe/recipe.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:cueue/model/tag/tag.dart';
-import 'package:cueue/ui/global/extension/date_time_extension.dart';
 import 'package:cueue/ui/global/widget/error_handling_widget.dart';
 import 'package:cueue/ui/global/widget/loading_list_item.dart';
 import 'package:cueue/ui/global/widget/titled_card.dart';

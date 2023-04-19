@@ -1,9 +1,7 @@
 import 'package:cueue/api/hierarchy/recipe/create_recipe_api.dart';
 import 'package:cueue/api/hierarchy/recipe/delete_recipe_api.dart';
 import 'package:cueue/api/hierarchy/recipe/update_recipe_api.dart';
-import 'package:cueue/legacy/data/cache/hierarchy/menu/menu_cache.dart';
 import 'package:cueue/legacy/data/cache/hierarchy/recipe/recipe_cache.dart';
-import 'package:cueue/legacy/data/repository/flowable/menu/menu_flowable_factory.dart';
 import 'package:cueue/legacy/data/repository/flowable/menu/menu_summary_flowable_factory.dart';
 import 'package:cueue/legacy/data/repository/flowable/recipe/recipe_flowable_factory.dart';
 import 'package:cueue/legacy/data/repository/flowable/recipe/recipes_flowable_factory.dart';
@@ -19,10 +17,9 @@ import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:store_flowable/store_flowable.dart';
 
 class RecipeRepositoryImpl implements RecipeRepository {
-  const RecipeRepositoryImpl(this._recipeCache, this._menuCache, this._createRecipeApi, this._updateRecipeApi, this._deleteRecipeApi, this._recipeResponseMapper, this._recipeRequestMapper, this._recipesFlowableFactory, this._recipeFlowableFactory, this._menuFlowableFactory, this._menuSummaryFlowableFactory);
+  const RecipeRepositoryImpl(this._recipeCache, this._createRecipeApi, this._updateRecipeApi, this._deleteRecipeApi, this._recipeResponseMapper, this._recipeRequestMapper, this._recipesFlowableFactory, this._recipeFlowableFactory, this._menuSummaryFlowableFactory);
 
   final RecipeCache _recipeCache;
-  final MenuCache _menuCache;
   final CreateRecipeApi _createRecipeApi;
   final UpdateRecipeApi _updateRecipeApi;
   final DeleteRecipeApi _deleteRecipeApi;
@@ -30,7 +27,6 @@ class RecipeRepositoryImpl implements RecipeRepository {
   final RecipeRequestMapper _recipeRequestMapper;
   final RecipesFlowableFactory _recipesFlowableFactory;
   final RecipeFlowableFactory _recipeFlowableFactory;
-  final MenuFlowableFactory _menuFlowableFactory;
   final MenuSummaryFlowableFactory _menuSummaryFlowableFactory;
 
   @override
@@ -137,17 +133,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
       }
     }
 
-    // 4. Update for Menu cache
-    _menuCache.menuMap.forEach((menuId, menu) async {
-      final menuFlowable = _menuFlowableFactory.create(menuId);
-      final cachedMenus = await menuFlowable.getData(from: GettingFrom.cache);
-      if (cachedMenus != null) {
-        final menu = cachedMenus.copyWith(recipes: cachedMenus.recipes.map((e) => (e.id == recipe.id) ? recipe : e).toList());
-        await menuFlowable.update(menu);
-      }
-    });
-
-    // 5. Update for MenuSummaries cache
+    // 4. Update for MenuSummaries cache
     final menuSummariesFlowable = _menuSummaryFlowableFactory.create(null);
     final cachedMenuSummaries = await menuSummariesFlowable.getData(from: GettingFrom.cache);
     if (cachedMenuSummaries != null) {
@@ -182,17 +168,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
       }
     });
 
-    // 3. Remove from Menu cache
-    _menuCache.menuMap.forEach((menuId, menu) async {
-      final menuFlowable = _menuFlowableFactory.create(menuId);
-      final cachedMenus = await menuFlowable.getData(from: GettingFrom.cache);
-      if (cachedMenus != null) {
-        final menu = cachedMenus.copyWith(recipes: cachedMenus.recipes.where((e) => e.id != recipeId).toList());
-        await menuFlowable.update(menu);
-      }
-    });
-
-    // 4. Remove from MenuSummaries cache
+    // 3. Remove from MenuSummaries cache
     final menuSummaryFlowable = _menuSummaryFlowableFactory.create(null);
     final cachedMenuSummaries = await menuSummaryFlowable.getData(from: GettingFrom.cache);
     if (cachedMenuSummaries != null) {
