@@ -47,7 +47,7 @@ SWRTriggerState<MenuId, void> useDeleteMenu(WidgetRef ref) {
     );
   });
   useEffectSWRData(deleteMenu, (data) {
-    pop.trigger(EditingResult.updated);
+    pop.trigger(EditingResult.deleted);
   });
   useEffectSWRIsMutating(deleteMenu, (isMutating) {
     easyLoading.trigger(isMutating);

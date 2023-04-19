@@ -48,7 +48,7 @@ SWRTriggerState<Tag, void> useDeleteTag(WidgetRef ref) {
     );
   });
   useEffectSWRData(deleteTag, (data) {
-    pop.trigger(EditingResult.updated);
+    pop.trigger(EditingResult.deleted);
   });
   useEffectSWRIsMutating(deleteTag, (isMutating) {
     easyLoading.trigger(isMutating);
