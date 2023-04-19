@@ -14,6 +14,7 @@ import 'package:cueue/ui/hierarchy/menu/menu_editing_page.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_detail_page.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_selection_page.dart';
 import 'package:cueue/ui/hierarchy/search/search_page.dart';
+import 'package:cueue/ui/hierarchy/search/search_result_page.dart';
 import 'package:cueue/ui/hierarchy/setting/about_page.dart';
 import 'package:cueue/ui/hierarchy/setting/account_deletion_page.dart';
 import 'package:cueue/ui/hierarchy/setting/settings_page.dart';
@@ -132,6 +133,13 @@ SWRTriggerState<List<RecipeSummary>?, List<RecipeSummary>?> usePushSearchPage() 
   final pushPage = _usePushPage<List<RecipeSummary>?>();
   return useSWRTrigger((recipes) {
     return pushPage.trigger(SearchPage(initialSelectedRecipes: recipes));
+  });
+}
+
+SWRTriggerState<SearchResultPageParam, List<RecipeSummary>?> usePushSearchResultPage() {
+  final pushPage = _usePushPage<List<RecipeSummary>?>();
+  return useSWRTrigger((param) {
+    return pushPage.trigger(SearchResultPage(param));
   });
 }
 

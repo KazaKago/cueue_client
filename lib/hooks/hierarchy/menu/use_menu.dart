@@ -11,7 +11,7 @@ SWRState<MenuId, Menu> useMenu(WidgetRef ref, MenuId menuId) {
   final menuResponseMapper = ref.read(menuResponseMapperProvider);
   final state = useSWR<MenuId, Menu>(menuId, (menuId) async {
     final response = await getMenuApi(menuId: menuId.value);
-    return menuResponseMapper.call(response);
+    return menuResponseMapper(response);
   });
   return state;
 }
