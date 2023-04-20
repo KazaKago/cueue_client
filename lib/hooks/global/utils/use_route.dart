@@ -3,6 +3,7 @@ import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
 import 'package:cueue/model/edit/editing_result.dart';
 import 'package:cueue/model/invitation/invitation_code.dart';
 import 'package:cueue/model/menu/menu.dart';
+import 'package:cueue/model/recipe/recipe.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:cueue/model/tag/tag.dart';
 import 'package:cueue/ui/hierarchy/auth/authentication_page.dart';
@@ -12,6 +13,7 @@ import 'package:cueue/ui/hierarchy/invitation/invitation_input_page.dart';
 import 'package:cueue/ui/hierarchy/main/main_page.dart';
 import 'package:cueue/ui/hierarchy/menu/menu_editing_page.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_detail_page.dart';
+import 'package:cueue/ui/hierarchy/recipe/recipe_editing_page.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_selection_page.dart';
 import 'package:cueue/ui/hierarchy/search/search_page.dart';
 import 'package:cueue/ui/hierarchy/search/search_result_page.dart';
@@ -25,6 +27,15 @@ import 'package:cueue/ui/hierarchy/welcome/user_creation_page.dart';
 import 'package:cueue/ui/hierarchy/welcome/workspace_creation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+
+SWRTriggerState<Widget, T?> usePushPage<T>() {
+  final context = useContext();
+  return useSWRTrigger((page) {
+    return Future.microtask(() {
+      return Navigator.push<T>(context, MaterialPageRoute(builder: (context) => page));
+    });
+  });
+}
 
 SWRTriggerState<Widget, T?> _usePushPage<T>() {
   final context = useContext();
@@ -140,6 +151,20 @@ SWRTriggerState<SearchResultPageParam, List<RecipeSummary>?> usePushSearchResult
   final pushPage = _usePushPage<List<RecipeSummary>?>();
   return useSWRTrigger((param) {
     return pushPage.trigger(SearchResultPage(param));
+  });
+}
+
+SWRTriggerState<Recipe?, EditingResult?> usePushRecipeEditingPage() {
+  final pushPage = _usePushPage<EditingResult?>();
+  return useSWRTrigger((recipe) {
+    return pushPage.trigger(RecipeEditingPage(recipe: recipe));
+  });
+}
+
+SWRTriggerState<Recipe?, EditingResult?> usePushPhotoPage() {
+  final pushPage = _usePushPage<EditingResult?>();
+  return useSWRTrigger((recipe) {
+    return pushPage.trigger(RecipeEditingPage(recipe: recipe));
   });
 }
 

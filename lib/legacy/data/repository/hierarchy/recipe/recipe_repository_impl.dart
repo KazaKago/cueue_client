@@ -9,7 +9,6 @@ import 'package:cueue/legacy/domain/repository/hierarchy/recipe/recipe_repositor
 import 'package:cueue/mapper/recipe/recipe_request_mapper.dart';
 import 'package:cueue/mapper/recipe/recipe_response_mapper.dart';
 import 'package:cueue/model/menu/menu_summary_impl.dart';
-import 'package:cueue/model/recipe/recipe.dart';
 import 'package:cueue/model/recipe/recipe_id.dart';
 import 'package:cueue/model/recipe/recipe_registration.dart';
 import 'package:cueue/model/recipe/recipe_search_option.dart';
@@ -36,21 +35,9 @@ class RecipeRepositoryImpl implements RecipeRepository {
   }
 
   @override
-  LoadingStateStream<Recipe> followData(RecipeId recipeId) {
-    final recipeFlowable = _recipeFlowableFactory.create(recipeId);
-    return recipeFlowable.publish();
-  }
-
-  @override
   Future<void> refreshAllData(RecipeSearchOption searchOption) async {
     final recipesFlowable = _recipesFlowableFactory.create(searchOption);
     await recipesFlowable.refresh();
-  }
-
-  @override
-  Future<void> refreshData(RecipeId recipeId) async {
-    final recipeFlowable = _recipeFlowableFactory.create(recipeId);
-    return recipeFlowable.refresh();
   }
 
   @override
@@ -62,7 +49,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
   @override
   Future<void> create(RecipeRegistration recipeRegistration) async {
     final response = await _createRecipeApi(_recipeRequestMapper(recipeRegistration));
-    final recipe = _recipeResponseMapper.map(response);
+    final recipe = _recipeResponseMapper(response);
 
     // 1. Add to Recipe cache
     final recipeFlowable = _recipeFlowableFactory.create(recipe.id);
@@ -90,7 +77,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
   @override
   Future<void> update(RecipeId recipeId, RecipeRegistration recipeRegistration) async {
     final response = await _updateRecipeApi(recipeId.value, _recipeRequestMapper(recipeRegistration));
-    final recipe = _recipeResponseMapper.map(response);
+    final recipe = _recipeResponseMapper(response);
 
     // 1. Update for Recipe cache
     final recipeFlowable = _recipeFlowableFactory.create(recipeId);

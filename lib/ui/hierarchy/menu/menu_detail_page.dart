@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cueue/gen/assets.gen.dart';
-import 'package:cueue/hooks/global/swr/swr_mutate.dart';
 import 'package:cueue/hooks/global/utils/use_date_format.dart';
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
@@ -9,7 +8,6 @@ import 'package:cueue/hooks/hierarchy/menu/use_menu.dart';
 import 'package:cueue/hooks/hierarchy/menu/use_timeframe_formatter.dart';
 import 'package:cueue/model/edit/editing_result.dart';
 import 'package:cueue/model/menu/menu.dart';
-import 'package:cueue/model/menu/menu_id.dart';
 import 'package:cueue/model/menu/menu_summary.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/default_state_widget.dart';
@@ -50,24 +48,17 @@ class MenuDetailPage extends HookConsumerWidget {
       ),
       body: DefaultStateWidget<Menu>(
         state: menuState,
-        loadingChild: _buildLoading,
-        child: (menu) => _buildContent(menu, menuState.mutate),
+        loadingChild: () => _buildContent(ref, menuSummary),
+        errorChild: (_) => _buildContent(ref, menuSummary),
+        child: (menu) => _buildContent(ref, menu),
       ),
     );
   }
 
-  Widget _buildLoading() {
-    return ListView(
-      children: [
-        _buildMenuItem(menuSummary),
-        _buildMemoItem(menuSummary),
-      ],
-    );
-  }
-
-  Widget _buildContent(Menu menu, SWRMutate<MenuId, Menu> mutateMenu) {
+  Widget _buildContent(WidgetRef ref, MenuSummary menu) {
+    final menuState = useMenu(ref, menu.id);
     return RefreshIndicator(
-      onRefresh: () => mutateMenu(null),
+      onRefresh: () => menuState.mutate(null),
       child: ListView(
         children: [
           _buildMenuItem(menu),

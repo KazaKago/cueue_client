@@ -1,19 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cueue/gen/assets.gen.dart';
-import 'package:cueue/legacy/presentation/view/global/extension/date_time_extension.dart';
-import 'package:cueue/legacy/presentation/view/global/l10n/intl.dart';
-import 'package:cueue/legacy/presentation/viewmodel/di/viewmodel_provider.dart';
+import 'package:cueue/hooks/global/utils/use_date_format.dart';
+import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
+import 'package:cueue/hooks/global/utils/use_route.dart';
+import 'package:cueue/hooks/global/utils/use_theme.dart';
+import 'package:cueue/hooks/hierarchy/recipe/use_recipe.dart';
 import 'package:cueue/model/content/content.dart';
 import 'package:cueue/model/edit/editing_result.dart';
 import 'package:cueue/model/recipe/recipe.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:cueue/model/tag/tag.dart';
+import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/error_handling_widget.dart';
 import 'package:cueue/ui/global/widget/loading_list_item.dart';
 import 'package:cueue/ui/global/widget/titled_card.dart';
 import 'package:cueue/ui/hierarchy/menu/menu_editing_page.dart';
 import 'package:cueue/ui/hierarchy/photo/photo_page.dart';
-import 'package:cueue/ui/hierarchy/recipe/recipe_editing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -21,132 +23,119 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RecipeDetailPage extends HookConsumerWidget {
-  const RecipeDetailPage(this.recipe, {super.key});
+  const RecipeDetailPage(this.recipeSummary, {super.key});
 
-  final RecipeSummary recipe;
+  final RecipeSummary recipeSummary;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final intl = useIntl();
+    final pop = usePop<void>();
     final selectedPhotoIndex = useState(0);
-    final state = ref.watch(recipeDetailViewModelProvider(recipe.id).select((viewModel) => viewModel.state));
+    final recipeState = useRecipe(ref, recipeSummary.id);
+    final recipe = recipeState.data;
+    final error = recipeState.error;
+    final pushRecipeEditingPage = usePushRecipeEditingPage();
+    useEffectSWRData(pushRecipeEditingPage, (data) {
+      if (data == EditingResult.deleted) {
+        pop.trigger(null);
+      }
+    });
+    final Widget sliverList;
+    if (recipe != null) {
+      sliverList = _buildSliverContent(recipe, selectedPhotoIndex);
+    } else if (error != null) {
+      sliverList = _buildSliverError(error);
+    } else {
+      sliverList = _buildSliverLoading();
+    }
+    final List<Content> photos;
+    if (recipe != null) {
+      photos = recipe.images;
+    } else if (recipeSummary.image != null) {
+      photos = [recipeSummary.image!];
+    } else {
+      photos = [];
+    }
     return Scaffold(
-      body: state.when(
-        loading: () => _buildLoading(context, ref, selectedPhotoIndex.value, recipe),
-        completed: (recipe) => _buildCompleted(context, ref, selectedPhotoIndex, recipe),
-        error: (exception) => _buildError(context, ref, selectedPhotoIndex.value, recipe, exception),
-      ),
-    );
-  }
-
-  Widget _buildLoading(BuildContext context, WidgetRef ref, int selectedPhotoIndex, RecipeSummary recipe) {
-    final viewModel = ref.read(recipeDetailViewModelProvider(recipe.id));
-    return RefreshIndicator(
-      onRefresh: viewModel.refresh,
-      child: CustomScrollView(
-        physics: const AlwaysScrollableScrollPhysics(),
-        slivers: [
-          SliverAppBar(
-            systemOverlayStyle: SystemUiOverlayStyle.light,
-            iconTheme: ThemeData.dark().iconTheme,
-            stretch: true,
-            expandedHeight: MediaQuery.of(context).size.width,
-            flexibleSpace: FlexibleSpaceBar(
-              background: _buildMainImageFrame(context, ref, selectedPhotoIndex, (recipe.image != null) ? [recipe.image!] : []),
-            ),
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate([
-              const LoadingListItem(),
-              const SizedBox(height: 32),
-            ]),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildError(BuildContext context, WidgetRef ref, int selectedPhotoIndex, RecipeSummary recipe, Exception exception) {
-    final viewModel = ref.read(recipeDetailViewModelProvider(recipe.id));
-    return RefreshIndicator(
-      onRefresh: viewModel.refresh,
-      child: CustomScrollView(
-        physics: const AlwaysScrollableScrollPhysics(),
-        slivers: [
-          SliverAppBar(
-            systemOverlayStyle: SystemUiOverlayStyle.light,
-            iconTheme: ThemeData.dark().iconTheme,
-            stretch: true,
-            expandedHeight: MediaQuery.of(context).size.width,
-            flexibleSpace: FlexibleSpaceBar(
-              background: _buildMainImageFrame(context, ref, selectedPhotoIndex, (recipe.image != null) ? [recipe.image!] : []),
-            ),
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate([
-              ErrorHandlingWidget(exception, onClickRetry: viewModel.retry),
-              const SizedBox(height: 32),
-            ]),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildCompleted(BuildContext context, WidgetRef ref, ValueNotifier<int> selectedPhotoIndex, Recipe recipe) {
-    final viewModel = ref.read(recipeDetailViewModelProvider(recipe.id));
-    return RefreshIndicator(
-      onRefresh: viewModel.refresh,
-      child: CustomScrollView(
-        physics: const AlwaysScrollableScrollPhysics(),
-        slivers: [
-          SliverAppBar(
-            systemOverlayStyle: SystemUiOverlayStyle.light,
-            iconTheme: ThemeData.dark().iconTheme,
-            stretch: true,
-            expandedHeight: MediaQuery.of(context).size.width,
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.edit),
-                tooltip: intl(context).doEdit,
-                onPressed: () => _goRecipeEditing(context, recipe),
+      body: RefreshIndicator(
+        onRefresh: () => recipeState.mutate(null),
+        child: CustomScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          slivers: [
+            SliverAppBar(
+              systemOverlayStyle: SystemUiOverlayStyle.light,
+              iconTheme: ThemeData.dark().iconTheme,
+              stretch: true,
+              expandedHeight: MediaQuery.of(context).size.width,
+              actions: [
+                if (recipe != null)
+                  IconButton(
+                    icon: const Icon(Icons.edit),
+                    tooltip: intl.doEdit,
+                    onPressed: () => pushRecipeEditingPage.trigger(recipe),
+                  ),
+              ],
+              flexibleSpace: FlexibleSpaceBar(
+                background: _buildMainImageFrame(selectedPhotoIndex.value, photos),
               ),
-            ],
-            flexibleSpace: FlexibleSpaceBar(
-              background: _buildMainImageFrame(context, ref, selectedPhotoIndex.value, recipe.images),
             ),
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate([
-              _buildImageList(context, ref, selectedPhotoIndex, recipe.images),
-              _buildTitle(context, ref, recipe.title),
-              _buildTagChips(context, ref, recipe.tags),
-              _buildUrl(context, ref, recipe.url),
-              _buildDescription(context, ref, recipe.description),
-              _buildCount(context, ref, recipe.cookingCount),
-              _buildHistory(context, ref, recipe.cookingHistories),
-              _buildCreatedAt(context, ref, recipe.createdAt),
-              _buildUpdatedAt(context, ref, recipe.updatedAt),
-              _buildRegistrationMenuButton(context, ref, recipe),
-              const SizedBox(height: 32),
-            ]),
-          ),
-        ],
+            sliverList,
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildTitle(BuildContext context, WidgetRef ref, String title) {
+  Widget _buildSliverContent(Recipe recipe, ValueNotifier<int> selectedPhotoIndex) {
+    return SliverList(
+      delegate: SliverChildListDelegate([
+        _buildImageList(selectedPhotoIndex, recipe.images),
+        _buildTitle(recipe.title),
+        _buildTagChips(recipe.tags),
+        _buildUrl(recipe.url),
+        _buildDescription(recipe.description),
+        _buildCount(recipe.cookingCount),
+        _buildHistory(recipe.cookingHistories),
+        _buildCreatedAt(recipe.createdAt),
+        _buildUpdatedAt(recipe.updatedAt),
+        _buildRegistrationMenuButton(recipe),
+        const SizedBox(height: 32),
+      ]),
+    );
+  }
+
+  Widget _buildSliverError(Exception exception) {
+    return SliverList(
+      delegate: SliverChildListDelegate([
+        ErrorHandlingWidget(exception),
+        const SizedBox(height: 32),
+      ]),
+    );
+  }
+
+  Widget _buildSliverLoading() {
+    return SliverList(
+      delegate: SliverChildListDelegate([
+        const LoadingListItem(),
+        const SizedBox(height: 32),
+      ]),
+    );
+  }
+
+  Widget _buildTitle(String title) {
+    final theme = useTheme();
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-      child: Text(title, style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.bold)),
+      child: Text(title, style: theme.textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.bold)),
     );
   }
 
-  Widget _buildMainImageFrame(BuildContext context, WidgetRef ref, int selectedPhotoIndex, List<Content> images) {
+  Widget _buildMainImageFrame(int selectedPhotoIndex, List<Content> images) {
     return Stack(
       fit: StackFit.expand,
       children: <Widget>[
-        _buildMainImage(context, ref, selectedPhotoIndex, images),
+        _buildMainImage(selectedPhotoIndex, images),
         IgnorePointer(
           child: DecoratedBox(
             decoration: BoxDecoration(
@@ -166,7 +155,9 @@ class RecipeDetailPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildMainImage(BuildContext context, WidgetRef ref, int selectedPhotoIndex, List<Content> images) {
+  Widget _buildMainImage(int selectedPhotoIndex, List<Content> images) {
+    final theme = useTheme();
+    final pushPage = usePushPage<void>();
     if (images.isNotEmpty) {
       final image = images[_fixedSelectedIndex(selectedPhotoIndex, images.length)];
       return Ink.image(
@@ -175,25 +166,30 @@ class RecipeDetailPage extends HookConsumerWidget {
         image: CachedNetworkImageProvider(image.url.toString()),
         child: InkWell(
           onTap: () {
-            _goPhoto(context, images.map((e) => e.url).toList(), _fixedSelectedIndex(selectedPhotoIndex, images.length));
+            pushPage.trigger(
+              PhotoPage(
+                imageUris: images.map((e) => e.url).toList(),
+                initialIndex: _fixedSelectedIndex(selectedPhotoIndex, images.length),
+              ),
+            );
           },
           child: Container(),
         ),
       );
     } else {
       return ColoredBox(
-        color: Theme.of(context).dividerColor,
+        color: theme.dividerColor,
         child: Padding(
           padding: const EdgeInsets.all(48),
           child: Assets.images.icAppIcon.image(
-            color: Theme.of(context).hoverColor,
+            color: theme.hoverColor,
           ),
         ),
       );
     }
   }
 
-  Widget _buildImageList(BuildContext context, WidgetRef ref, ValueNotifier<int> selectedPhotoIndex, List<Content> images) {
+  Widget _buildImageList(ValueNotifier<int> selectedPhotoIndex, List<Content> images) {
     if (1 < images.length) {
       return SizedBox(
         height: 80,
@@ -234,7 +230,8 @@ class RecipeDetailPage extends HookConsumerWidget {
     }
   }
 
-  Widget _buildUrl(BuildContext context, WidgetRef ref, Uri? url) {
+  Widget _buildUrl(Uri? url) {
+    final intl = useIntl();
     if (url != null) {
       return Wrap(
         children: [
@@ -242,7 +239,7 @@ class RecipeDetailPage extends HookConsumerWidget {
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
             child: TextButton.icon(
               icon: const Icon(Icons.link),
-              label: Text(intl(context).referenceLink),
+              label: Text(intl.referenceLink),
               onPressed: () => launchUrl(url),
             ),
           )
@@ -253,7 +250,7 @@ class RecipeDetailPage extends HookConsumerWidget {
     }
   }
 
-  Widget _buildTagChips(BuildContext context, WidgetRef ref, List<Tag> tags) {
+  Widget _buildTagChips(List<Tag> tags) {
     if (tags.isNotEmpty) {
       return Padding(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
@@ -267,84 +264,79 @@ class RecipeDetailPage extends HookConsumerWidget {
     }
   }
 
-  Widget _buildDescription(BuildContext context, WidgetRef ref, String description) {
+  Widget _buildDescription(String description) {
+    final intl = useIntl();
     return TitledCard(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-      title: intl(context).description,
+      title: intl.description,
       child: Text(description),
     );
   }
 
-  Widget _buildCount(BuildContext context, WidgetRef ref, int cookingCount) {
+  Widget _buildCount(int cookingCount) {
+    final intl = useIntl();
     return TitledCard(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-      title: intl(context).cookingCount,
-      child: Text(intl(context).countWith(cookingCount.toString())),
+      title: intl.cookingCount,
+      child: Text(intl.countWith(cookingCount.toString())),
     );
   }
 
-  Widget _buildHistory(BuildContext context, WidgetRef ref, List<DateTime> cookingHistories) {
+  Widget _buildHistory(List<DateTime> cookingHistories) {
+    final intl = useIntl();
+    final toDateString = useToDateString();
     if (cookingHistories.isNotEmpty) {
       var index = 0;
       return TitledCard.list(
         margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-        title: intl(context).cookingHistory,
+        title: intl.cookingHistory,
         children: cookingHistories.map((date) {
           index++;
-          return Text('$index. ${date.toDateString(context)}');
+          return Text('$index. ${toDateString(date)}');
         }).toList(),
       );
     } else {
       return TitledCard(
         margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-        title: intl(context).cookingHistory,
-        child: Text(intl(context).notYetCooking),
+        title: intl.cookingHistory,
+        child: Text(intl.notYetCooking),
       );
     }
   }
 
-  Widget _buildCreatedAt(BuildContext context, WidgetRef ref, DateTime createdAt) {
+  Widget _buildCreatedAt(DateTime createdAt) {
+    final intl = useIntl();
+    final toDateTimeString = useToDateTimeString();
     return TitledCard(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-      title: intl(context).recipeCreatedAt,
-      child: Text(createdAt.toDateTimeString(context)),
+      title: intl.recipeCreatedAt,
+      child: Text(toDateTimeString(createdAt)),
     );
   }
 
-  Widget _buildUpdatedAt(BuildContext context, WidgetRef ref, DateTime updatedAt) {
+  Widget _buildUpdatedAt(DateTime updatedAt) {
+    final intl = useIntl();
+    final toDateTimeString = useToDateTimeString();
     return TitledCard(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-      title: intl(context).recipeUpdatedAt,
-      child: Text(updatedAt.toDateTimeString(context)),
+      title: intl.recipeUpdatedAt,
+      child: Text(toDateTimeString(updatedAt)),
     );
   }
 
-  Widget _buildRegistrationMenuButton(BuildContext context, WidgetRef ref, RecipeSummary recipe) {
+  Widget _buildRegistrationMenuButton(RecipeSummary recipe) {
+    final intl = useIntl();
+    final pushPage = usePushPage<void>();
     return SizedBox(
       width: double.infinity,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(32, 32, 32, 0),
         child: OutlinedButton(
-          onPressed: () => _goMenuEditing(context, recipe),
-          child: Text(intl(context).useRecipeToMenu),
+          onPressed: () => pushPage.trigger(MenuEditingPage.withRecipe(recipe: recipe)),
+          child: Text(intl.useRecipeToMenu),
         ),
       ),
     );
-  }
-
-  Future<void> _goRecipeEditing(BuildContext context, Recipe recipe) async {
-    final result = await Navigator.push<EditingResult>(context, MaterialPageRoute(builder: (context) => RecipeEditingPage(recipe: recipe)));
-    if (result == EditingResult.deleted) {
-      Navigator.of(context).pop();
-    }
-  }
-
-  Future<void> _goPhoto(BuildContext context, List<Uri> imageUris, int index) async {
-    await Navigator.push<EditingResult>(context, MaterialPageRoute(builder: (context) => PhotoPage(imageUris: imageUris, initialIndex: index)));
-  }
-
-  Future<void> _goMenuEditing(BuildContext context, RecipeSummary recipe) async {
-    await Navigator.push<EditingResult>(context, MaterialPageRoute(builder: (context) => MenuEditingPage.withRecipe(recipe: recipe)));
   }
 
   int _fixedSelectedIndex(int selectedPhotoIndex, int imageLength) {

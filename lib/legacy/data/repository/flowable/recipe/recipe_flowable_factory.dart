@@ -32,7 +32,7 @@ class RecipeFlowableFactory extends StoreFlowableFactory<RecipeId, Recipe> {
   @override
   Future<Recipe> fetchDataFromOrigin(RecipeId param) async {
     final response = await _getRecipeApi(recipeId: param.value);
-    return _recipeResponseMapper.map(response);
+    return _recipeResponseMapper(response);
   }
 
   @override
