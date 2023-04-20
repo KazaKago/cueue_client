@@ -11,18 +11,15 @@ part of 'menu.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Menu {
   MenuId get id => throw _privateConstructorUsedError;
-
   String get memo => throw _privateConstructorUsedError;
-
   DateTime get date => throw _privateConstructorUsedError;
-
   TimeFrame get timeFrame => throw _privateConstructorUsedError;
-
   List<RecipeSummary> get recipes => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,21 +28,26 @@ mixin _$Menu {
 
 /// @nodoc
 abstract class $MenuCopyWith<$Res> {
-  factory $MenuCopyWith(Menu value, $Res Function(Menu) then) = _$MenuCopyWithImpl<$Res, Menu>;
-
+  factory $MenuCopyWith(Menu value, $Res Function(Menu) then) =
+      _$MenuCopyWithImpl<$Res, Menu>;
   @useResult
-  $Res call({MenuId id, String memo, DateTime date, TimeFrame timeFrame, List<RecipeSummary> recipes});
+  $Res call(
+      {MenuId id,
+      String memo,
+      DateTime date,
+      TimeFrame timeFrame,
+      List<RecipeSummary> recipes});
 
   $MenuIdCopyWith<$Res> get id;
 }
 
 /// @nodoc
-class _$MenuCopyWithImpl<$Res, $Val extends Menu> implements $MenuCopyWith<$Res> {
+class _$MenuCopyWithImpl<$Res, $Val extends Menu>
+    implements $MenuCopyWith<$Res> {
   _$MenuCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -93,19 +95,26 @@ class _$MenuCopyWithImpl<$Res, $Val extends Menu> implements $MenuCopyWith<$Res>
 
 /// @nodoc
 abstract class _$$_MenuCopyWith<$Res> implements $MenuCopyWith<$Res> {
-  factory _$$_MenuCopyWith(_$_Menu value, $Res Function(_$_Menu) then) = __$$_MenuCopyWithImpl<$Res>;
-
+  factory _$$_MenuCopyWith(_$_Menu value, $Res Function(_$_Menu) then) =
+      __$$_MenuCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({MenuId id, String memo, DateTime date, TimeFrame timeFrame, List<RecipeSummary> recipes});
+  $Res call(
+      {MenuId id,
+      String memo,
+      DateTime date,
+      TimeFrame timeFrame,
+      List<RecipeSummary> recipes});
 
   @override
   $MenuIdCopyWith<$Res> get id;
 }
 
 /// @nodoc
-class __$$_MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res, _$_Menu> implements _$$_MenuCopyWith<$Res> {
-  __$$_MenuCopyWithImpl(_$_Menu _value, $Res Function(_$_Menu) _then) : super(_value, _then);
+class __$$_MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res, _$_Menu>
+    implements _$$_MenuCopyWith<$Res> {
+  __$$_MenuCopyWithImpl(_$_Menu _value, $Res Function(_$_Menu) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -144,7 +153,13 @@ class __$$_MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res, _$_Menu> impl
 /// @nodoc
 
 class _$_Menu implements _Menu {
-  const _$_Menu({required this.id, required this.memo, required this.date, required this.timeFrame, required final List<RecipeSummary> recipes}) : _recipes = recipes;
+  const _$_Menu(
+      {required this.id,
+      required this.memo,
+      required this.date,
+      required this.timeFrame,
+      required final List<RecipeSummary> recipes})
+      : _recipes = recipes;
 
   @override
   final MenuId id;
@@ -155,7 +170,6 @@ class _$_Menu implements _Menu {
   @override
   final TimeFrame timeFrame;
   final List<RecipeSummary> _recipes;
-
   @override
   List<RecipeSummary> get recipes {
     if (_recipes is EqualUnmodifiableListView) return _recipes;
@@ -170,36 +184,46 @@ class _$_Menu implements _Menu {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Menu && (identical(other.id, id) || other.id == id) && (identical(other.memo, memo) || other.memo == memo) && (identical(other.date, date) || other.date == date) && (identical(other.timeFrame, timeFrame) || other.timeFrame == timeFrame) && const DeepCollectionEquality().equals(other._recipes, _recipes));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Menu &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.memo, memo) || other.memo == memo) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.timeFrame, timeFrame) ||
+                other.timeFrame == timeFrame) &&
+            const DeepCollectionEquality().equals(other._recipes, _recipes));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, memo, date, timeFrame, const DeepCollectionEquality().hash(_recipes));
+  int get hashCode => Object.hash(runtimeType, id, memo, date, timeFrame,
+      const DeepCollectionEquality().hash(_recipes));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MenuCopyWith<_$_Menu> get copyWith => __$$_MenuCopyWithImpl<_$_Menu>(this, _$identity);
+  _$$_MenuCopyWith<_$_Menu> get copyWith =>
+      __$$_MenuCopyWithImpl<_$_Menu>(this, _$identity);
 }
 
 abstract class _Menu implements Menu {
-  const factory _Menu({required final MenuId id, required final String memo, required final DateTime date, required final TimeFrame timeFrame, required final List<RecipeSummary> recipes}) = _$_Menu;
+  const factory _Menu(
+      {required final MenuId id,
+      required final String memo,
+      required final DateTime date,
+      required final TimeFrame timeFrame,
+      required final List<RecipeSummary> recipes}) = _$_Menu;
 
   @override
   MenuId get id;
-
   @override
   String get memo;
-
   @override
   DateTime get date;
-
   @override
   TimeFrame get timeFrame;
-
   @override
   List<RecipeSummary> get recipes;
-
   @override
   @JsonKey(ignore: true)
   _$$_MenuCopyWith<_$_Menu> get copyWith => throw _privateConstructorUsedError;

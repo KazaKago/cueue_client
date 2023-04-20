@@ -11,7 +11,8 @@ part of 'menu_state.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$MenuState {
@@ -23,10 +24,10 @@ mixin _$MenuState {
     required TResult Function() empty,
     required TResult Function(List<DateSplitMenuList> menus) completed,
     required TResult Function(Exception error) error,
-    required TResult Function(List<DateSplitMenuList> menus, Exception error) additionalError,
+    required TResult Function(List<DateSplitMenuList> menus, Exception error)
+        additionalError,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
@@ -35,7 +36,8 @@ mixin _$MenuState {
     TResult? Function()? empty,
     TResult? Function(List<DateSplitMenuList> menus)? completed,
     TResult? Function(Exception error)? error,
-    TResult? Function(List<DateSplitMenuList> menus, Exception error)? additionalError,
+    TResult? Function(List<DateSplitMenuList> menus, Exception error)?
+        additionalError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,11 +48,11 @@ mixin _$MenuState {
     TResult Function()? empty,
     TResult Function(List<DateSplitMenuList> menus)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<DateSplitMenuList> menus, Exception error)? additionalError,
+    TResult Function(List<DateSplitMenuList> menus, Exception error)?
+        additionalError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
@@ -62,7 +64,6 @@ mixin _$MenuState {
     required TResult Function(_AdditionalError value) additionalError,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
@@ -90,27 +91,34 @@ mixin _$MenuState {
 
 /// @nodoc
 abstract class $MenuStateCopyWith<$Res> {
-  factory $MenuStateCopyWith(MenuState value, $Res Function(MenuState) then) = _$MenuStateCopyWithImpl<$Res, MenuState>;
+  factory $MenuStateCopyWith(MenuState value, $Res Function(MenuState) then) =
+      _$MenuStateCopyWithImpl<$Res, MenuState>;
 }
 
 /// @nodoc
-class _$MenuStateCopyWithImpl<$Res, $Val extends MenuState> implements $MenuStateCopyWith<$Res> {
+class _$MenuStateCopyWithImpl<$Res, $Val extends MenuState>
+    implements $MenuStateCopyWith<$Res> {
   _$MenuStateCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
 }
 
 /// @nodoc
 abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(_$_Loading value, $Res Function(_$_Loading) then) = __$$_LoadingCopyWithImpl<$Res>;
+  factory _$$_LoadingCopyWith(
+          _$_Loading value, $Res Function(_$_Loading) then) =
+      __$$_LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res, _$_Loading> implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then) : super(_value, _then);
+class __$$_LoadingCopyWithImpl<$Res>
+    extends _$MenuStateCopyWithImpl<$Res, _$_Loading>
+    implements _$$_LoadingCopyWith<$Res> {
+  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -125,7 +133,8 @@ class _$_Loading implements _Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Loading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Loading);
   }
 
   @override
@@ -140,7 +149,8 @@ class _$_Loading implements _Loading {
     required TResult Function() empty,
     required TResult Function(List<DateSplitMenuList> menus) completed,
     required TResult Function(Exception error) error,
-    required TResult Function(List<DateSplitMenuList> menus, Exception error) additionalError,
+    required TResult Function(List<DateSplitMenuList> menus, Exception error)
+        additionalError,
   }) {
     return loading();
   }
@@ -154,7 +164,8 @@ class _$_Loading implements _Loading {
     TResult? Function()? empty,
     TResult? Function(List<DateSplitMenuList> menus)? completed,
     TResult? Function(Exception error)? error,
-    TResult? Function(List<DateSplitMenuList> menus, Exception error)? additionalError,
+    TResult? Function(List<DateSplitMenuList> menus, Exception error)?
+        additionalError,
   }) {
     return loading?.call();
   }
@@ -168,7 +179,8 @@ class _$_Loading implements _Loading {
     TResult Function()? empty,
     TResult Function(List<DateSplitMenuList> menus)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<DateSplitMenuList> menus, Exception error)? additionalError,
+    TResult Function(List<DateSplitMenuList> menus, Exception error)?
+        additionalError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -230,14 +242,20 @@ abstract class _Loading implements MenuState {
 
 /// @nodoc
 abstract class _$$_RefreshingCopyWith<$Res> {
-  factory _$$_RefreshingCopyWith(_$_Refreshing value, $Res Function(_$_Refreshing) then) = __$$_RefreshingCopyWithImpl<$Res>;
+  factory _$$_RefreshingCopyWith(
+          _$_Refreshing value, $Res Function(_$_Refreshing) then) =
+      __$$_RefreshingCopyWithImpl<$Res>;
   @useResult
   $Res call({List<DateSplitMenuList> menus});
 }
 
 /// @nodoc
-class __$$_RefreshingCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res, _$_Refreshing> implements _$$_RefreshingCopyWith<$Res> {
-  __$$_RefreshingCopyWithImpl(_$_Refreshing _value, $Res Function(_$_Refreshing) _then) : super(_value, _then);
+class __$$_RefreshingCopyWithImpl<$Res>
+    extends _$MenuStateCopyWithImpl<$Res, _$_Refreshing>
+    implements _$$_RefreshingCopyWith<$Res> {
+  __$$_RefreshingCopyWithImpl(
+      _$_Refreshing _value, $Res Function(_$_Refreshing) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -262,7 +280,7 @@ class _$_Refreshing implements _Refreshing {
   @override
   List<DateSplitMenuList> get menus {
     if (_menus is EqualUnmodifiableListView) return _menus;
-// ignore: implicit_dynamic_type
+    // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_menus);
   }
 
@@ -273,16 +291,21 @@ class _$_Refreshing implements _Refreshing {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Refreshing && const DeepCollectionEquality().equals(other._menus, _menus));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Refreshing &&
+            const DeepCollectionEquality().equals(other._menus, _menus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_menus));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_menus));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RefreshingCopyWith<_$_Refreshing> get copyWith => __$$_RefreshingCopyWithImpl<_$_Refreshing>(this, _$identity);
+  _$$_RefreshingCopyWith<_$_Refreshing> get copyWith =>
+      __$$_RefreshingCopyWithImpl<_$_Refreshing>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -293,7 +316,8 @@ class _$_Refreshing implements _Refreshing {
     required TResult Function() empty,
     required TResult Function(List<DateSplitMenuList> menus) completed,
     required TResult Function(Exception error) error,
-    required TResult Function(List<DateSplitMenuList> menus, Exception error) additionalError,
+    required TResult Function(List<DateSplitMenuList> menus, Exception error)
+        additionalError,
   }) {
     return refreshing(menus);
   }
@@ -307,7 +331,8 @@ class _$_Refreshing implements _Refreshing {
     TResult? Function()? empty,
     TResult? Function(List<DateSplitMenuList> menus)? completed,
     TResult? Function(Exception error)? error,
-    TResult? Function(List<DateSplitMenuList> menus, Exception error)? additionalError,
+    TResult? Function(List<DateSplitMenuList> menus, Exception error)?
+        additionalError,
   }) {
     return refreshing?.call(menus);
   }
@@ -321,7 +346,8 @@ class _$_Refreshing implements _Refreshing {
     TResult Function()? empty,
     TResult Function(List<DateSplitMenuList> menus)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<DateSplitMenuList> menus, Exception error)? additionalError,
+    TResult Function(List<DateSplitMenuList> menus, Exception error)?
+        additionalError,
     required TResult orElse(),
   }) {
     if (refreshing != null) {
@@ -378,23 +404,31 @@ class _$_Refreshing implements _Refreshing {
 }
 
 abstract class _Refreshing implements MenuState {
-  const factory _Refreshing(final List<DateSplitMenuList> menus) = _$_Refreshing;
+  const factory _Refreshing(final List<DateSplitMenuList> menus) =
+      _$_Refreshing;
 
   List<DateSplitMenuList> get menus;
   @JsonKey(ignore: true)
-  _$$_RefreshingCopyWith<_$_Refreshing> get copyWith => throw _privateConstructorUsedError;
+  _$$_RefreshingCopyWith<_$_Refreshing> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_AdditionalLoadingCopyWith<$Res> {
-  factory _$$_AdditionalLoadingCopyWith(_$_AdditionalLoading value, $Res Function(_$_AdditionalLoading) then) = __$$_AdditionalLoadingCopyWithImpl<$Res>;
+  factory _$$_AdditionalLoadingCopyWith(_$_AdditionalLoading value,
+          $Res Function(_$_AdditionalLoading) then) =
+      __$$_AdditionalLoadingCopyWithImpl<$Res>;
   @useResult
   $Res call({List<DateSplitMenuList> menus});
 }
 
 /// @nodoc
-class __$$_AdditionalLoadingCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res, _$_AdditionalLoading> implements _$$_AdditionalLoadingCopyWith<$Res> {
-  __$$_AdditionalLoadingCopyWithImpl(_$_AdditionalLoading _value, $Res Function(_$_AdditionalLoading) _then) : super(_value, _then);
+class __$$_AdditionalLoadingCopyWithImpl<$Res>
+    extends _$MenuStateCopyWithImpl<$Res, _$_AdditionalLoading>
+    implements _$$_AdditionalLoadingCopyWith<$Res> {
+  __$$_AdditionalLoadingCopyWithImpl(
+      _$_AdditionalLoading _value, $Res Function(_$_AdditionalLoading) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -413,13 +447,14 @@ class __$$_AdditionalLoadingCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$
 /// @nodoc
 
 class _$_AdditionalLoading implements _AdditionalLoading {
-  const _$_AdditionalLoading(final List<DateSplitMenuList> menus) : _menus = menus;
+  const _$_AdditionalLoading(final List<DateSplitMenuList> menus)
+      : _menus = menus;
 
   final List<DateSplitMenuList> _menus;
   @override
   List<DateSplitMenuList> get menus {
     if (_menus is EqualUnmodifiableListView) return _menus;
-// ignore: implicit_dynamic_type
+    // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_menus);
   }
 
@@ -430,16 +465,22 @@ class _$_AdditionalLoading implements _AdditionalLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AdditionalLoading && const DeepCollectionEquality().equals(other._menus, _menus));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AdditionalLoading &&
+            const DeepCollectionEquality().equals(other._menus, _menus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_menus));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_menus));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AdditionalLoadingCopyWith<_$_AdditionalLoading> get copyWith => __$$_AdditionalLoadingCopyWithImpl<_$_AdditionalLoading>(this, _$identity);
+  _$$_AdditionalLoadingCopyWith<_$_AdditionalLoading> get copyWith =>
+      __$$_AdditionalLoadingCopyWithImpl<_$_AdditionalLoading>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -450,7 +491,8 @@ class _$_AdditionalLoading implements _AdditionalLoading {
     required TResult Function() empty,
     required TResult Function(List<DateSplitMenuList> menus) completed,
     required TResult Function(Exception error) error,
-    required TResult Function(List<DateSplitMenuList> menus, Exception error) additionalError,
+    required TResult Function(List<DateSplitMenuList> menus, Exception error)
+        additionalError,
   }) {
     return additionalLoading(menus);
   }
@@ -464,7 +506,8 @@ class _$_AdditionalLoading implements _AdditionalLoading {
     TResult? Function()? empty,
     TResult? Function(List<DateSplitMenuList> menus)? completed,
     TResult? Function(Exception error)? error,
-    TResult? Function(List<DateSplitMenuList> menus, Exception error)? additionalError,
+    TResult? Function(List<DateSplitMenuList> menus, Exception error)?
+        additionalError,
   }) {
     return additionalLoading?.call(menus);
   }
@@ -478,7 +521,8 @@ class _$_AdditionalLoading implements _AdditionalLoading {
     TResult Function()? empty,
     TResult Function(List<DateSplitMenuList> menus)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<DateSplitMenuList> menus, Exception error)? additionalError,
+    TResult Function(List<DateSplitMenuList> menus, Exception error)?
+        additionalError,
     required TResult orElse(),
   }) {
     if (additionalLoading != null) {
@@ -535,21 +579,27 @@ class _$_AdditionalLoading implements _AdditionalLoading {
 }
 
 abstract class _AdditionalLoading implements MenuState {
-  const factory _AdditionalLoading(final List<DateSplitMenuList> menus) = _$_AdditionalLoading;
+  const factory _AdditionalLoading(final List<DateSplitMenuList> menus) =
+      _$_AdditionalLoading;
 
   List<DateSplitMenuList> get menus;
   @JsonKey(ignore: true)
-  _$$_AdditionalLoadingCopyWith<_$_AdditionalLoading> get copyWith => throw _privateConstructorUsedError;
+  _$$_AdditionalLoadingCopyWith<_$_AdditionalLoading> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_EmptyCopyWith<$Res> {
-  factory _$$_EmptyCopyWith(_$_Empty value, $Res Function(_$_Empty) then) = __$$_EmptyCopyWithImpl<$Res>;
+  factory _$$_EmptyCopyWith(_$_Empty value, $Res Function(_$_Empty) then) =
+      __$$_EmptyCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_EmptyCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res, _$_Empty> implements _$$_EmptyCopyWith<$Res> {
-  __$$_EmptyCopyWithImpl(_$_Empty _value, $Res Function(_$_Empty) _then) : super(_value, _then);
+class __$$_EmptyCopyWithImpl<$Res>
+    extends _$MenuStateCopyWithImpl<$Res, _$_Empty>
+    implements _$$_EmptyCopyWith<$Res> {
+  __$$_EmptyCopyWithImpl(_$_Empty _value, $Res Function(_$_Empty) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -564,7 +614,8 @@ class _$_Empty implements _Empty {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Empty);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Empty);
   }
 
   @override
@@ -579,7 +630,8 @@ class _$_Empty implements _Empty {
     required TResult Function() empty,
     required TResult Function(List<DateSplitMenuList> menus) completed,
     required TResult Function(Exception error) error,
-    required TResult Function(List<DateSplitMenuList> menus, Exception error) additionalError,
+    required TResult Function(List<DateSplitMenuList> menus, Exception error)
+        additionalError,
   }) {
     return empty();
   }
@@ -593,7 +645,8 @@ class _$_Empty implements _Empty {
     TResult? Function()? empty,
     TResult? Function(List<DateSplitMenuList> menus)? completed,
     TResult? Function(Exception error)? error,
-    TResult? Function(List<DateSplitMenuList> menus, Exception error)? additionalError,
+    TResult? Function(List<DateSplitMenuList> menus, Exception error)?
+        additionalError,
   }) {
     return empty?.call();
   }
@@ -607,7 +660,8 @@ class _$_Empty implements _Empty {
     TResult Function()? empty,
     TResult Function(List<DateSplitMenuList> menus)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<DateSplitMenuList> menus, Exception error)? additionalError,
+    TResult Function(List<DateSplitMenuList> menus, Exception error)?
+        additionalError,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -669,14 +723,20 @@ abstract class _Empty implements MenuState {
 
 /// @nodoc
 abstract class _$$_CompletedCopyWith<$Res> {
-  factory _$$_CompletedCopyWith(_$_Completed value, $Res Function(_$_Completed) then) = __$$_CompletedCopyWithImpl<$Res>;
+  factory _$$_CompletedCopyWith(
+          _$_Completed value, $Res Function(_$_Completed) then) =
+      __$$_CompletedCopyWithImpl<$Res>;
   @useResult
   $Res call({List<DateSplitMenuList> menus});
 }
 
 /// @nodoc
-class __$$_CompletedCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res, _$_Completed> implements _$$_CompletedCopyWith<$Res> {
-  __$$_CompletedCopyWithImpl(_$_Completed _value, $Res Function(_$_Completed) _then) : super(_value, _then);
+class __$$_CompletedCopyWithImpl<$Res>
+    extends _$MenuStateCopyWithImpl<$Res, _$_Completed>
+    implements _$$_CompletedCopyWith<$Res> {
+  __$$_CompletedCopyWithImpl(
+      _$_Completed _value, $Res Function(_$_Completed) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -701,7 +761,7 @@ class _$_Completed implements _Completed {
   @override
   List<DateSplitMenuList> get menus {
     if (_menus is EqualUnmodifiableListView) return _menus;
-// ignore: implicit_dynamic_type
+    // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_menus);
   }
 
@@ -712,16 +772,21 @@ class _$_Completed implements _Completed {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Completed && const DeepCollectionEquality().equals(other._menus, _menus));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Completed &&
+            const DeepCollectionEquality().equals(other._menus, _menus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_menus));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_menus));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CompletedCopyWith<_$_Completed> get copyWith => __$$_CompletedCopyWithImpl<_$_Completed>(this, _$identity);
+  _$$_CompletedCopyWith<_$_Completed> get copyWith =>
+      __$$_CompletedCopyWithImpl<_$_Completed>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -732,7 +797,8 @@ class _$_Completed implements _Completed {
     required TResult Function() empty,
     required TResult Function(List<DateSplitMenuList> menus) completed,
     required TResult Function(Exception error) error,
-    required TResult Function(List<DateSplitMenuList> menus, Exception error) additionalError,
+    required TResult Function(List<DateSplitMenuList> menus, Exception error)
+        additionalError,
   }) {
     return completed(menus);
   }
@@ -746,7 +812,8 @@ class _$_Completed implements _Completed {
     TResult? Function()? empty,
     TResult? Function(List<DateSplitMenuList> menus)? completed,
     TResult? Function(Exception error)? error,
-    TResult? Function(List<DateSplitMenuList> menus, Exception error)? additionalError,
+    TResult? Function(List<DateSplitMenuList> menus, Exception error)?
+        additionalError,
   }) {
     return completed?.call(menus);
   }
@@ -760,7 +827,8 @@ class _$_Completed implements _Completed {
     TResult Function()? empty,
     TResult Function(List<DateSplitMenuList> menus)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<DateSplitMenuList> menus, Exception error)? additionalError,
+    TResult Function(List<DateSplitMenuList> menus, Exception error)?
+        additionalError,
     required TResult orElse(),
   }) {
     if (completed != null) {
@@ -821,19 +889,24 @@ abstract class _Completed implements MenuState {
 
   List<DateSplitMenuList> get menus;
   @JsonKey(ignore: true)
-  _$$_CompletedCopyWith<_$_Completed> get copyWith => throw _privateConstructorUsedError;
+  _$$_CompletedCopyWith<_$_Completed> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) = __$$_ErrorCopyWithImpl<$Res>;
+  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
+      __$$_ErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({Exception error});
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res, _$_Error> implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then) : super(_value, _then);
+class __$$_ErrorCopyWithImpl<$Res>
+    extends _$MenuStateCopyWithImpl<$Res, _$_Error>
+    implements _$$_ErrorCopyWith<$Res> {
+  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -864,7 +937,10 @@ class _$_Error implements _Error {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Error && (identical(other.error, error) || other.error == error));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Error &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
@@ -873,7 +949,8 @@ class _$_Error implements _Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorCopyWith<_$_Error> get copyWith => __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -884,7 +961,8 @@ class _$_Error implements _Error {
     required TResult Function() empty,
     required TResult Function(List<DateSplitMenuList> menus) completed,
     required TResult Function(Exception error) error,
-    required TResult Function(List<DateSplitMenuList> menus, Exception error) additionalError,
+    required TResult Function(List<DateSplitMenuList> menus, Exception error)
+        additionalError,
   }) {
     return error(this.error);
   }
@@ -898,7 +976,8 @@ class _$_Error implements _Error {
     TResult? Function()? empty,
     TResult? Function(List<DateSplitMenuList> menus)? completed,
     TResult? Function(Exception error)? error,
-    TResult? Function(List<DateSplitMenuList> menus, Exception error)? additionalError,
+    TResult? Function(List<DateSplitMenuList> menus, Exception error)?
+        additionalError,
   }) {
     return error?.call(this.error);
   }
@@ -912,7 +991,8 @@ class _$_Error implements _Error {
     TResult Function()? empty,
     TResult Function(List<DateSplitMenuList> menus)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<DateSplitMenuList> menus, Exception error)? additionalError,
+    TResult Function(List<DateSplitMenuList> menus, Exception error)?
+        additionalError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -973,19 +1053,26 @@ abstract class _Error implements MenuState {
 
   Exception get error;
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith => throw _privateConstructorUsedError;
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_AdditionalErrorCopyWith<$Res> {
-  factory _$$_AdditionalErrorCopyWith(_$_AdditionalError value, $Res Function(_$_AdditionalError) then) = __$$_AdditionalErrorCopyWithImpl<$Res>;
+  factory _$$_AdditionalErrorCopyWith(
+          _$_AdditionalError value, $Res Function(_$_AdditionalError) then) =
+      __$$_AdditionalErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({List<DateSplitMenuList> menus, Exception error});
 }
 
 /// @nodoc
-class __$$_AdditionalErrorCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res, _$_AdditionalError> implements _$$_AdditionalErrorCopyWith<$Res> {
-  __$$_AdditionalErrorCopyWithImpl(_$_AdditionalError _value, $Res Function(_$_AdditionalError) _then) : super(_value, _then);
+class __$$_AdditionalErrorCopyWithImpl<$Res>
+    extends _$MenuStateCopyWithImpl<$Res, _$_AdditionalError>
+    implements _$$_AdditionalErrorCopyWith<$Res> {
+  __$$_AdditionalErrorCopyWithImpl(
+      _$_AdditionalError _value, $Res Function(_$_AdditionalError) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -1009,13 +1096,14 @@ class __$$_AdditionalErrorCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Re
 /// @nodoc
 
 class _$_AdditionalError implements _AdditionalError {
-  const _$_AdditionalError(final List<DateSplitMenuList> menus, this.error) : _menus = menus;
+  const _$_AdditionalError(final List<DateSplitMenuList> menus, this.error)
+      : _menus = menus;
 
   final List<DateSplitMenuList> _menus;
   @override
   List<DateSplitMenuList> get menus {
     if (_menus is EqualUnmodifiableListView) return _menus;
-// ignore: implicit_dynamic_type
+    // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_menus);
   }
 
@@ -1029,16 +1117,22 @@ class _$_AdditionalError implements _AdditionalError {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AdditionalError && const DeepCollectionEquality().equals(other._menus, _menus) && (identical(other.error, error) || other.error == error));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AdditionalError &&
+            const DeepCollectionEquality().equals(other._menus, _menus) &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_menus), error);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_menus), error);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AdditionalErrorCopyWith<_$_AdditionalError> get copyWith => __$$_AdditionalErrorCopyWithImpl<_$_AdditionalError>(this, _$identity);
+  _$$_AdditionalErrorCopyWith<_$_AdditionalError> get copyWith =>
+      __$$_AdditionalErrorCopyWithImpl<_$_AdditionalError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1049,7 +1143,8 @@ class _$_AdditionalError implements _AdditionalError {
     required TResult Function() empty,
     required TResult Function(List<DateSplitMenuList> menus) completed,
     required TResult Function(Exception error) error,
-    required TResult Function(List<DateSplitMenuList> menus, Exception error) additionalError,
+    required TResult Function(List<DateSplitMenuList> menus, Exception error)
+        additionalError,
   }) {
     return additionalError(menus, this.error);
   }
@@ -1063,7 +1158,8 @@ class _$_AdditionalError implements _AdditionalError {
     TResult? Function()? empty,
     TResult? Function(List<DateSplitMenuList> menus)? completed,
     TResult? Function(Exception error)? error,
-    TResult? Function(List<DateSplitMenuList> menus, Exception error)? additionalError,
+    TResult? Function(List<DateSplitMenuList> menus, Exception error)?
+        additionalError,
   }) {
     return additionalError?.call(menus, this.error);
   }
@@ -1077,7 +1173,8 @@ class _$_AdditionalError implements _AdditionalError {
     TResult Function()? empty,
     TResult Function(List<DateSplitMenuList> menus)? completed,
     TResult Function(Exception error)? error,
-    TResult Function(List<DateSplitMenuList> menus, Exception error)? additionalError,
+    TResult Function(List<DateSplitMenuList> menus, Exception error)?
+        additionalError,
     required TResult orElse(),
   }) {
     if (additionalError != null) {
@@ -1134,10 +1231,13 @@ class _$_AdditionalError implements _AdditionalError {
 }
 
 abstract class _AdditionalError implements MenuState {
-  const factory _AdditionalError(final List<DateSplitMenuList> menus, final Exception error) = _$_AdditionalError;
+  const factory _AdditionalError(
+          final List<DateSplitMenuList> menus, final Exception error) =
+      _$_AdditionalError;
 
   List<DateSplitMenuList> get menus;
   Exception get error;
   @JsonKey(ignore: true)
-  _$$_AdditionalErrorCopyWith<_$_AdditionalError> get copyWith => throw _privateConstructorUsedError;
+  _$$_AdditionalErrorCopyWith<_$_AdditionalError> get copyWith =>
+      throw _privateConstructorUsedError;
 }

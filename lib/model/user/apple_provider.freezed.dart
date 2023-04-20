@@ -11,35 +11,36 @@ part of 'apple_provider.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AppleProvider {
   String get uid => throw _privateConstructorUsedError;
-
   String? get email => throw _privateConstructorUsedError;
-
   String get displayName => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AppleProviderCopyWith<AppleProvider> get copyWith => throw _privateConstructorUsedError;
+  $AppleProviderCopyWith<AppleProvider> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AppleProviderCopyWith<$Res> {
-  factory $AppleProviderCopyWith(AppleProvider value, $Res Function(AppleProvider) then) = _$AppleProviderCopyWithImpl<$Res, AppleProvider>;
-
+  factory $AppleProviderCopyWith(
+          AppleProvider value, $Res Function(AppleProvider) then) =
+      _$AppleProviderCopyWithImpl<$Res, AppleProvider>;
   @useResult
   $Res call({String uid, String? email, String displayName});
 }
 
 /// @nodoc
-class _$AppleProviderCopyWithImpl<$Res, $Val extends AppleProvider> implements $AppleProviderCopyWith<$Res> {
+class _$AppleProviderCopyWithImpl<$Res, $Val extends AppleProvider>
+    implements $AppleProviderCopyWith<$Res> {
   _$AppleProviderCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -68,17 +69,23 @@ class _$AppleProviderCopyWithImpl<$Res, $Val extends AppleProvider> implements $
 }
 
 /// @nodoc
-abstract class _$$_AppleProviderCopyWith<$Res> implements $AppleProviderCopyWith<$Res> {
-  factory _$$_AppleProviderCopyWith(_$_AppleProvider value, $Res Function(_$_AppleProvider) then) = __$$_AppleProviderCopyWithImpl<$Res>;
-
+abstract class _$$_AppleProviderCopyWith<$Res>
+    implements $AppleProviderCopyWith<$Res> {
+  factory _$$_AppleProviderCopyWith(
+          _$_AppleProvider value, $Res Function(_$_AppleProvider) then) =
+      __$$_AppleProviderCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String uid, String? email, String displayName});
 }
 
 /// @nodoc
-class __$$_AppleProviderCopyWithImpl<$Res> extends _$AppleProviderCopyWithImpl<$Res, _$_AppleProvider> implements _$$_AppleProviderCopyWith<$Res> {
-  __$$_AppleProviderCopyWithImpl(_$_AppleProvider _value, $Res Function(_$_AppleProvider) _then) : super(_value, _then);
+class __$$_AppleProviderCopyWithImpl<$Res>
+    extends _$AppleProviderCopyWithImpl<$Res, _$_AppleProvider>
+    implements _$$_AppleProviderCopyWith<$Res> {
+  __$$_AppleProviderCopyWithImpl(
+      _$_AppleProvider _value, $Res Function(_$_AppleProvider) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -107,7 +114,8 @@ class __$$_AppleProviderCopyWithImpl<$Res> extends _$AppleProviderCopyWithImpl<$
 /// @nodoc
 
 class _$_AppleProvider implements _AppleProvider {
-  const _$_AppleProvider({required this.uid, required this.email, required this.displayName});
+  const _$_AppleProvider(
+      {required this.uid, required this.email, required this.displayName});
 
   @override
   final String uid;
@@ -123,7 +131,13 @@ class _$_AppleProvider implements _AppleProvider {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AppleProvider && (identical(other.uid, uid) || other.uid == uid) && (identical(other.email, email) || other.email == email) && (identical(other.displayName, displayName) || other.displayName == displayName));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AppleProvider &&
+            (identical(other.uid, uid) || other.uid == uid) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.displayName, displayName) ||
+                other.displayName == displayName));
   }
 
   @override
@@ -132,22 +146,24 @@ class _$_AppleProvider implements _AppleProvider {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppleProviderCopyWith<_$_AppleProvider> get copyWith => __$$_AppleProviderCopyWithImpl<_$_AppleProvider>(this, _$identity);
+  _$$_AppleProviderCopyWith<_$_AppleProvider> get copyWith =>
+      __$$_AppleProviderCopyWithImpl<_$_AppleProvider>(this, _$identity);
 }
 
 abstract class _AppleProvider implements AppleProvider {
-  const factory _AppleProvider({required final String uid, required final String? email, required final String displayName}) = _$_AppleProvider;
+  const factory _AppleProvider(
+      {required final String uid,
+      required final String? email,
+      required final String displayName}) = _$_AppleProvider;
 
   @override
   String get uid;
-
   @override
   String? get email;
-
   @override
   String get displayName;
-
   @override
   @JsonKey(ignore: true)
-  _$$_AppleProviderCopyWith<_$_AppleProvider> get copyWith => throw _privateConstructorUsedError;
+  _$$_AppleProviderCopyWith<_$_AppleProvider> get copyWith =>
+      throw _privateConstructorUsedError;
 }

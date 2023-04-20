@@ -11,7 +11,8 @@ part of 'tag_id.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$TagId {
@@ -23,19 +24,19 @@ mixin _$TagId {
 
 /// @nodoc
 abstract class $TagIdCopyWith<$Res> {
-  factory $TagIdCopyWith(TagId value, $Res Function(TagId) then) = _$TagIdCopyWithImpl<$Res, TagId>;
-
+  factory $TagIdCopyWith(TagId value, $Res Function(TagId) then) =
+      _$TagIdCopyWithImpl<$Res, TagId>;
   @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class _$TagIdCopyWithImpl<$Res, $Val extends TagId> implements $TagIdCopyWith<$Res> {
+class _$TagIdCopyWithImpl<$Res, $Val extends TagId>
+    implements $TagIdCopyWith<$Res> {
   _$TagIdCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -55,16 +56,18 @@ class _$TagIdCopyWithImpl<$Res, $Val extends TagId> implements $TagIdCopyWith<$R
 
 /// @nodoc
 abstract class _$$_TagIdCopyWith<$Res> implements $TagIdCopyWith<$Res> {
-  factory _$$_TagIdCopyWith(_$_TagId value, $Res Function(_$_TagId) then) = __$$_TagIdCopyWithImpl<$Res>;
-
+  factory _$$_TagIdCopyWith(_$_TagId value, $Res Function(_$_TagId) then) =
+      __$$_TagIdCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class __$$_TagIdCopyWithImpl<$Res> extends _$TagIdCopyWithImpl<$Res, _$_TagId> implements _$$_TagIdCopyWith<$Res> {
-  __$$_TagIdCopyWithImpl(_$_TagId _value, $Res Function(_$_TagId) _then) : super(_value, _then);
+class __$$_TagIdCopyWithImpl<$Res> extends _$TagIdCopyWithImpl<$Res, _$_TagId>
+    implements _$$_TagIdCopyWith<$Res> {
+  __$$_TagIdCopyWithImpl(_$_TagId _value, $Res Function(_$_TagId) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -95,7 +98,10 @@ class _$_TagId extends _TagId {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_TagId && (identical(other.value, value) || other.value == value));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TagId &&
+            (identical(other.value, value) || other.value == value));
   }
 
   @override
@@ -104,18 +110,18 @@ class _$_TagId extends _TagId {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TagIdCopyWith<_$_TagId> get copyWith => __$$_TagIdCopyWithImpl<_$_TagId>(this, _$identity);
+  _$$_TagIdCopyWith<_$_TagId> get copyWith =>
+      __$$_TagIdCopyWithImpl<_$_TagId>(this, _$identity);
 }
 
 abstract class _TagId extends TagId {
   const factory _TagId(final int value) = _$_TagId;
-
   const _TagId._() : super._();
 
   @override
   int get value;
-
   @override
   @JsonKey(ignore: true)
-  _$$_TagIdCopyWith<_$_TagId> get copyWith => throw _privateConstructorUsedError;
+  _$$_TagIdCopyWith<_$_TagId> get copyWith =>
+      throw _privateConstructorUsedError;
 }

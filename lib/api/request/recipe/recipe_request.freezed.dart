@@ -11,7 +11,8 @@ part of 'recipe_request.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 RecipeRequest _$RecipeRequestFromJson(Map<String, dynamic> json) {
   return _RecipeRequest.fromJson(json);
@@ -21,37 +22,47 @@ RecipeRequest _$RecipeRequestFromJson(Map<String, dynamic> json) {
 mixin _$RecipeRequest {
 // ignore: invalid_annotation_target
   @JsonKey(name: 'title')
-  String get title => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  String get title =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'description')
-  String get description => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  String get description =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'url')
-  String? get url => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  String? get url =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'image_keys')
-  List<String> get imageKeys => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  List<String> get imageKeys =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'tag_ids')
   List<int> get tagIds => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
-  $RecipeRequestCopyWith<RecipeRequest> get copyWith => throw _privateConstructorUsedError;
+  $RecipeRequestCopyWith<RecipeRequest> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $RecipeRequestCopyWith<$Res> {
-  factory $RecipeRequestCopyWith(RecipeRequest value, $Res Function(RecipeRequest) then) = _$RecipeRequestCopyWithImpl<$Res, RecipeRequest>;
-
+  factory $RecipeRequestCopyWith(
+          RecipeRequest value, $Res Function(RecipeRequest) then) =
+      _$RecipeRequestCopyWithImpl<$Res, RecipeRequest>;
   @useResult
-  $Res call({@JsonKey(name: 'title') String title, @JsonKey(name: 'description') String description, @JsonKey(name: 'url') String? url, @JsonKey(name: 'image_keys') List<String> imageKeys, @JsonKey(name: 'tag_ids') List<int> tagIds});
+  $Res call(
+      {@JsonKey(name: 'title') String title,
+      @JsonKey(name: 'description') String description,
+      @JsonKey(name: 'url') String? url,
+      @JsonKey(name: 'image_keys') List<String> imageKeys,
+      @JsonKey(name: 'tag_ids') List<int> tagIds});
 }
 
 /// @nodoc
-class _$RecipeRequestCopyWithImpl<$Res, $Val extends RecipeRequest> implements $RecipeRequestCopyWith<$Res> {
+class _$RecipeRequestCopyWithImpl<$Res, $Val extends RecipeRequest>
+    implements $RecipeRequestCopyWith<$Res> {
   _$RecipeRequestCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -90,17 +101,28 @@ class _$RecipeRequestCopyWithImpl<$Res, $Val extends RecipeRequest> implements $
 }
 
 /// @nodoc
-abstract class _$$_RecipeRequestCopyWith<$Res> implements $RecipeRequestCopyWith<$Res> {
-  factory _$$_RecipeRequestCopyWith(_$_RecipeRequest value, $Res Function(_$_RecipeRequest) then) = __$$_RecipeRequestCopyWithImpl<$Res>;
-
+abstract class _$$_RecipeRequestCopyWith<$Res>
+    implements $RecipeRequestCopyWith<$Res> {
+  factory _$$_RecipeRequestCopyWith(
+          _$_RecipeRequest value, $Res Function(_$_RecipeRequest) then) =
+      __$$_RecipeRequestCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'title') String title, @JsonKey(name: 'description') String description, @JsonKey(name: 'url') String? url, @JsonKey(name: 'image_keys') List<String> imageKeys, @JsonKey(name: 'tag_ids') List<int> tagIds});
+  $Res call(
+      {@JsonKey(name: 'title') String title,
+      @JsonKey(name: 'description') String description,
+      @JsonKey(name: 'url') String? url,
+      @JsonKey(name: 'image_keys') List<String> imageKeys,
+      @JsonKey(name: 'tag_ids') List<int> tagIds});
 }
 
 /// @nodoc
-class __$$_RecipeRequestCopyWithImpl<$Res> extends _$RecipeRequestCopyWithImpl<$Res, _$_RecipeRequest> implements _$$_RecipeRequestCopyWith<$Res> {
-  __$$_RecipeRequestCopyWithImpl(_$_RecipeRequest _value, $Res Function(_$_RecipeRequest) _then) : super(_value, _then);
+class __$$_RecipeRequestCopyWithImpl<$Res>
+    extends _$RecipeRequestCopyWithImpl<$Res, _$_RecipeRequest>
+    implements _$$_RecipeRequestCopyWith<$Res> {
+  __$$_RecipeRequestCopyWithImpl(
+      _$_RecipeRequest _value, $Res Function(_$_RecipeRequest) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -139,30 +161,32 @@ class __$$_RecipeRequestCopyWithImpl<$Res> extends _$RecipeRequestCopyWithImpl<$
 /// @nodoc
 @JsonSerializable()
 class _$_RecipeRequest implements _RecipeRequest {
-  const _$_RecipeRequest({@JsonKey(name: 'title') required this.title, @JsonKey(name: 'description') required this.description, @JsonKey(name: 'url') required this.url, @JsonKey(name: 'image_keys') required final List<String> imageKeys, @JsonKey(name: 'tag_ids') required final List<int> tagIds})
+  const _$_RecipeRequest(
+      {@JsonKey(name: 'title') required this.title,
+      @JsonKey(name: 'description') required this.description,
+      @JsonKey(name: 'url') required this.url,
+      @JsonKey(name: 'image_keys') required final List<String> imageKeys,
+      @JsonKey(name: 'tag_ids') required final List<int> tagIds})
       : _imageKeys = imageKeys,
         _tagIds = tagIds;
 
-  factory _$_RecipeRequest.fromJson(Map<String, dynamic> json) => _$$_RecipeRequestFromJson(json);
+  factory _$_RecipeRequest.fromJson(Map<String, dynamic> json) =>
+      _$$_RecipeRequestFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'title')
   final String title;
-
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'description')
   final String description;
-
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'url')
   final String? url;
-
 // ignore: invalid_annotation_target
   final List<String> _imageKeys;
-
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'image_keys')
@@ -174,7 +198,6 @@ class _$_RecipeRequest implements _RecipeRequest {
 
 // ignore: invalid_annotation_target
   final List<int> _tagIds;
-
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'tag_ids')
@@ -191,17 +214,33 @@ class _$_RecipeRequest implements _RecipeRequest {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_RecipeRequest && (identical(other.title, title) || other.title == title) && (identical(other.description, description) || other.description == description) && (identical(other.url, url) || other.url == url) && const DeepCollectionEquality().equals(other._imageKeys, _imageKeys) && const DeepCollectionEquality().equals(other._tagIds, _tagIds));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RecipeRequest &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.url, url) || other.url == url) &&
+            const DeepCollectionEquality()
+                .equals(other._imageKeys, _imageKeys) &&
+            const DeepCollectionEquality().equals(other._tagIds, _tagIds));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, description, url, const DeepCollectionEquality().hash(_imageKeys), const DeepCollectionEquality().hash(_tagIds));
+  int get hashCode => Object.hash(
+      runtimeType,
+      title,
+      description,
+      url,
+      const DeepCollectionEquality().hash(_imageKeys),
+      const DeepCollectionEquality().hash(_tagIds));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RecipeRequestCopyWith<_$_RecipeRequest> get copyWith => __$$_RecipeRequestCopyWithImpl<_$_RecipeRequest>(this, _$identity);
+  _$$_RecipeRequestCopyWith<_$_RecipeRequest> get copyWith =>
+      __$$_RecipeRequestCopyWithImpl<_$_RecipeRequest>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -212,31 +251,34 @@ class _$_RecipeRequest implements _RecipeRequest {
 }
 
 abstract class _RecipeRequest implements RecipeRequest {
-  const factory _RecipeRequest({@JsonKey(name: 'title') required final String title, @JsonKey(name: 'description') required final String description, @JsonKey(name: 'url') required final String? url, @JsonKey(name: 'image_keys') required final List<String> imageKeys, @JsonKey(name: 'tag_ids') required final List<int> tagIds}) = _$_RecipeRequest;
+  const factory _RecipeRequest(
+          {@JsonKey(name: 'title') required final String title,
+          @JsonKey(name: 'description') required final String description,
+          @JsonKey(name: 'url') required final String? url,
+          @JsonKey(name: 'image_keys') required final List<String> imageKeys,
+          @JsonKey(name: 'tag_ids') required final List<int> tagIds}) =
+      _$_RecipeRequest;
 
-  factory _RecipeRequest.fromJson(Map<String, dynamic> json) = _$_RecipeRequest.fromJson;
+  factory _RecipeRequest.fromJson(Map<String, dynamic> json) =
+      _$_RecipeRequest.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'title')
   String get title;
-
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'description')
   String get description;
-
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'url')
   String? get url;
-
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'image_keys')
   List<String> get imageKeys;
-
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'tag_ids')
   List<int> get tagIds;
-
   @override
   @JsonKey(ignore: true)
-  _$$_RecipeRequestCopyWith<_$_RecipeRequest> get copyWith => throw _privateConstructorUsedError;
+  _$$_RecipeRequestCopyWith<_$_RecipeRequest> get copyWith =>
+      throw _privateConstructorUsedError;
 }

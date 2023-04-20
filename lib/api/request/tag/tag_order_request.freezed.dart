@@ -11,7 +11,8 @@ part of 'tag_order_request.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 TagOrderRequest _$TagOrderRequestFromJson(Map<String, dynamic> json) {
   return _TagOrderRequest.fromJson(json);
@@ -24,26 +25,27 @@ mixin _$TagOrderRequest {
   List<int> get tagIds => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
-  $TagOrderRequestCopyWith<TagOrderRequest> get copyWith => throw _privateConstructorUsedError;
+  $TagOrderRequestCopyWith<TagOrderRequest> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TagOrderRequestCopyWith<$Res> {
-  factory $TagOrderRequestCopyWith(TagOrderRequest value, $Res Function(TagOrderRequest) then) = _$TagOrderRequestCopyWithImpl<$Res, TagOrderRequest>;
-
+  factory $TagOrderRequestCopyWith(
+          TagOrderRequest value, $Res Function(TagOrderRequest) then) =
+      _$TagOrderRequestCopyWithImpl<$Res, TagOrderRequest>;
   @useResult
   $Res call({@JsonKey(name: 'tag_ids') List<int> tagIds});
 }
 
 /// @nodoc
-class _$TagOrderRequestCopyWithImpl<$Res, $Val extends TagOrderRequest> implements $TagOrderRequestCopyWith<$Res> {
+class _$TagOrderRequestCopyWithImpl<$Res, $Val extends TagOrderRequest>
+    implements $TagOrderRequestCopyWith<$Res> {
   _$TagOrderRequestCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -62,17 +64,23 @@ class _$TagOrderRequestCopyWithImpl<$Res, $Val extends TagOrderRequest> implemen
 }
 
 /// @nodoc
-abstract class _$$_TagOrderRequestCopyWith<$Res> implements $TagOrderRequestCopyWith<$Res> {
-  factory _$$_TagOrderRequestCopyWith(_$_TagOrderRequest value, $Res Function(_$_TagOrderRequest) then) = __$$_TagOrderRequestCopyWithImpl<$Res>;
-
+abstract class _$$_TagOrderRequestCopyWith<$Res>
+    implements $TagOrderRequestCopyWith<$Res> {
+  factory _$$_TagOrderRequestCopyWith(
+          _$_TagOrderRequest value, $Res Function(_$_TagOrderRequest) then) =
+      __$$_TagOrderRequestCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'tag_ids') List<int> tagIds});
 }
 
 /// @nodoc
-class __$$_TagOrderRequestCopyWithImpl<$Res> extends _$TagOrderRequestCopyWithImpl<$Res, _$_TagOrderRequest> implements _$$_TagOrderRequestCopyWith<$Res> {
-  __$$_TagOrderRequestCopyWithImpl(_$_TagOrderRequest _value, $Res Function(_$_TagOrderRequest) _then) : super(_value, _then);
+class __$$_TagOrderRequestCopyWithImpl<$Res>
+    extends _$TagOrderRequestCopyWithImpl<$Res, _$_TagOrderRequest>
+    implements _$$_TagOrderRequestCopyWith<$Res> {
+  __$$_TagOrderRequestCopyWithImpl(
+      _$_TagOrderRequest _value, $Res Function(_$_TagOrderRequest) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -91,13 +99,15 @@ class __$$_TagOrderRequestCopyWithImpl<$Res> extends _$TagOrderRequestCopyWithIm
 /// @nodoc
 @JsonSerializable()
 class _$_TagOrderRequest implements _TagOrderRequest {
-  const _$_TagOrderRequest({@JsonKey(name: 'tag_ids') required final List<int> tagIds}) : _tagIds = tagIds;
+  const _$_TagOrderRequest(
+      {@JsonKey(name: 'tag_ids') required final List<int> tagIds})
+      : _tagIds = tagIds;
 
-  factory _$_TagOrderRequest.fromJson(Map<String, dynamic> json) => _$$_TagOrderRequestFromJson(json);
+  factory _$_TagOrderRequest.fromJson(Map<String, dynamic> json) =>
+      _$$_TagOrderRequestFromJson(json);
 
 // ignore: invalid_annotation_target
   final List<int> _tagIds;
-
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'tag_ids')
@@ -114,17 +124,22 @@ class _$_TagOrderRequest implements _TagOrderRequest {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_TagOrderRequest && const DeepCollectionEquality().equals(other._tagIds, _tagIds));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TagOrderRequest &&
+            const DeepCollectionEquality().equals(other._tagIds, _tagIds));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_tagIds));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tagIds));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TagOrderRequestCopyWith<_$_TagOrderRequest> get copyWith => __$$_TagOrderRequestCopyWithImpl<_$_TagOrderRequest>(this, _$identity);
+  _$$_TagOrderRequestCopyWith<_$_TagOrderRequest> get copyWith =>
+      __$$_TagOrderRequestCopyWithImpl<_$_TagOrderRequest>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -135,15 +150,18 @@ class _$_TagOrderRequest implements _TagOrderRequest {
 }
 
 abstract class _TagOrderRequest implements TagOrderRequest {
-  const factory _TagOrderRequest({@JsonKey(name: 'tag_ids') required final List<int> tagIds}) = _$_TagOrderRequest;
+  const factory _TagOrderRequest(
+          {@JsonKey(name: 'tag_ids') required final List<int> tagIds}) =
+      _$_TagOrderRequest;
 
-  factory _TagOrderRequest.fromJson(Map<String, dynamic> json) = _$_TagOrderRequest.fromJson;
+  factory _TagOrderRequest.fromJson(Map<String, dynamic> json) =
+      _$_TagOrderRequest.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'tag_ids')
   List<int> get tagIds;
-
   @override
   @JsonKey(ignore: true)
-  _$$_TagOrderRequestCopyWith<_$_TagOrderRequest> get copyWith => throw _privateConstructorUsedError;
+  _$$_TagOrderRequestCopyWith<_$_TagOrderRequest> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -11,31 +11,34 @@ part of 'content_key.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ContentKey {
   String get value => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ContentKeyCopyWith<ContentKey> get copyWith => throw _privateConstructorUsedError;
+  $ContentKeyCopyWith<ContentKey> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ContentKeyCopyWith<$Res> {
-  factory $ContentKeyCopyWith(ContentKey value, $Res Function(ContentKey) then) = _$ContentKeyCopyWithImpl<$Res, ContentKey>;
-
+  factory $ContentKeyCopyWith(
+          ContentKey value, $Res Function(ContentKey) then) =
+      _$ContentKeyCopyWithImpl<$Res, ContentKey>;
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class _$ContentKeyCopyWithImpl<$Res, $Val extends ContentKey> implements $ContentKeyCopyWith<$Res> {
+class _$ContentKeyCopyWithImpl<$Res, $Val extends ContentKey>
+    implements $ContentKeyCopyWith<$Res> {
   _$ContentKeyCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -54,17 +57,23 @@ class _$ContentKeyCopyWithImpl<$Res, $Val extends ContentKey> implements $Conten
 }
 
 /// @nodoc
-abstract class _$$_ContentKeyCopyWith<$Res> implements $ContentKeyCopyWith<$Res> {
-  factory _$$_ContentKeyCopyWith(_$_ContentKey value, $Res Function(_$_ContentKey) then) = __$$_ContentKeyCopyWithImpl<$Res>;
-
+abstract class _$$_ContentKeyCopyWith<$Res>
+    implements $ContentKeyCopyWith<$Res> {
+  factory _$$_ContentKeyCopyWith(
+          _$_ContentKey value, $Res Function(_$_ContentKey) then) =
+      __$$_ContentKeyCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class __$$_ContentKeyCopyWithImpl<$Res> extends _$ContentKeyCopyWithImpl<$Res, _$_ContentKey> implements _$$_ContentKeyCopyWith<$Res> {
-  __$$_ContentKeyCopyWithImpl(_$_ContentKey _value, $Res Function(_$_ContentKey) _then) : super(_value, _then);
+class __$$_ContentKeyCopyWithImpl<$Res>
+    extends _$ContentKeyCopyWithImpl<$Res, _$_ContentKey>
+    implements _$$_ContentKeyCopyWith<$Res> {
+  __$$_ContentKeyCopyWithImpl(
+      _$_ContentKey _value, $Res Function(_$_ContentKey) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -95,7 +104,10 @@ class _$_ContentKey implements _ContentKey {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_ContentKey && (identical(other.value, value) || other.value == value));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ContentKey &&
+            (identical(other.value, value) || other.value == value));
   }
 
   @override
@@ -104,7 +116,8 @@ class _$_ContentKey implements _ContentKey {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ContentKeyCopyWith<_$_ContentKey> get copyWith => __$$_ContentKeyCopyWithImpl<_$_ContentKey>(this, _$identity);
+  _$$_ContentKeyCopyWith<_$_ContentKey> get copyWith =>
+      __$$_ContentKeyCopyWithImpl<_$_ContentKey>(this, _$identity);
 }
 
 abstract class _ContentKey implements ContentKey {
@@ -112,8 +125,8 @@ abstract class _ContentKey implements ContentKey {
 
   @override
   String get value;
-
   @override
   @JsonKey(ignore: true)
-  _$$_ContentKeyCopyWith<_$_ContentKey> get copyWith => throw _privateConstructorUsedError;
+  _$$_ContentKeyCopyWith<_$_ContentKey> get copyWith =>
+      throw _privateConstructorUsedError;
 }

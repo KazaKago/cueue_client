@@ -11,7 +11,8 @@ part of 'photo_pickup_bottom_sheet_event.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PhotoPickupBottomSheetEvent {
@@ -22,7 +23,6 @@ mixin _$PhotoPickupBottomSheetEvent {
     required TResult Function() cancel,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fromCamera,
@@ -38,7 +38,6 @@ mixin _$PhotoPickupBottomSheetEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FromCamera value) fromCamera,
@@ -46,7 +45,6 @@ mixin _$PhotoPickupBottomSheetEvent {
     required TResult Function(_Cancel value) cancel,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FromCamera value)? fromCamera,
@@ -66,27 +64,39 @@ mixin _$PhotoPickupBottomSheetEvent {
 
 /// @nodoc
 abstract class $PhotoPickupBottomSheetEventCopyWith<$Res> {
-  factory $PhotoPickupBottomSheetEventCopyWith(PhotoPickupBottomSheetEvent value, $Res Function(PhotoPickupBottomSheetEvent) then) = _$PhotoPickupBottomSheetEventCopyWithImpl<$Res, PhotoPickupBottomSheetEvent>;
+  factory $PhotoPickupBottomSheetEventCopyWith(
+          PhotoPickupBottomSheetEvent value,
+          $Res Function(PhotoPickupBottomSheetEvent) then) =
+      _$PhotoPickupBottomSheetEventCopyWithImpl<$Res,
+          PhotoPickupBottomSheetEvent>;
 }
 
 /// @nodoc
-class _$PhotoPickupBottomSheetEventCopyWithImpl<$Res, $Val extends PhotoPickupBottomSheetEvent> implements $PhotoPickupBottomSheetEventCopyWith<$Res> {
+class _$PhotoPickupBottomSheetEventCopyWithImpl<$Res,
+        $Val extends PhotoPickupBottomSheetEvent>
+    implements $PhotoPickupBottomSheetEventCopyWith<$Res> {
   _$PhotoPickupBottomSheetEventCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
 }
 
 /// @nodoc
 abstract class _$$_FromCameraCopyWith<$Res> {
-  factory _$$_FromCameraCopyWith(_$_FromCamera value, $Res Function(_$_FromCamera) then) = __$$_FromCameraCopyWithImpl<$Res>;
+  factory _$$_FromCameraCopyWith(
+          _$_FromCamera value, $Res Function(_$_FromCamera) then) =
+      __$$_FromCameraCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FromCameraCopyWithImpl<$Res> extends _$PhotoPickupBottomSheetEventCopyWithImpl<$Res, _$_FromCamera> implements _$$_FromCameraCopyWith<$Res> {
-  __$$_FromCameraCopyWithImpl(_$_FromCamera _value, $Res Function(_$_FromCamera) _then) : super(_value, _then);
+class __$$_FromCameraCopyWithImpl<$Res>
+    extends _$PhotoPickupBottomSheetEventCopyWithImpl<$Res, _$_FromCamera>
+    implements _$$_FromCameraCopyWith<$Res> {
+  __$$_FromCameraCopyWithImpl(
+      _$_FromCamera _value, $Res Function(_$_FromCamera) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -101,7 +111,8 @@ class _$_FromCamera implements _FromCamera {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_FromCamera);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_FromCamera);
   }
 
   @override
@@ -182,12 +193,18 @@ abstract class _FromCamera implements PhotoPickupBottomSheetEvent {
 
 /// @nodoc
 abstract class _$$_FromLibraryCopyWith<$Res> {
-  factory _$$_FromLibraryCopyWith(_$_FromLibrary value, $Res Function(_$_FromLibrary) then) = __$$_FromLibraryCopyWithImpl<$Res>;
+  factory _$$_FromLibraryCopyWith(
+          _$_FromLibrary value, $Res Function(_$_FromLibrary) then) =
+      __$$_FromLibraryCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FromLibraryCopyWithImpl<$Res> extends _$PhotoPickupBottomSheetEventCopyWithImpl<$Res, _$_FromLibrary> implements _$$_FromLibraryCopyWith<$Res> {
-  __$$_FromLibraryCopyWithImpl(_$_FromLibrary _value, $Res Function(_$_FromLibrary) _then) : super(_value, _then);
+class __$$_FromLibraryCopyWithImpl<$Res>
+    extends _$PhotoPickupBottomSheetEventCopyWithImpl<$Res, _$_FromLibrary>
+    implements _$$_FromLibraryCopyWith<$Res> {
+  __$$_FromLibraryCopyWithImpl(
+      _$_FromLibrary _value, $Res Function(_$_FromLibrary) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -202,7 +219,8 @@ class _$_FromLibrary implements _FromLibrary {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_FromLibrary);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_FromLibrary);
   }
 
   @override
@@ -283,12 +301,16 @@ abstract class _FromLibrary implements PhotoPickupBottomSheetEvent {
 
 /// @nodoc
 abstract class _$$_CancelCopyWith<$Res> {
-  factory _$$_CancelCopyWith(_$_Cancel value, $Res Function(_$_Cancel) then) = __$$_CancelCopyWithImpl<$Res>;
+  factory _$$_CancelCopyWith(_$_Cancel value, $Res Function(_$_Cancel) then) =
+      __$$_CancelCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_CancelCopyWithImpl<$Res> extends _$PhotoPickupBottomSheetEventCopyWithImpl<$Res, _$_Cancel> implements _$$_CancelCopyWith<$Res> {
-  __$$_CancelCopyWithImpl(_$_Cancel _value, $Res Function(_$_Cancel) _then) : super(_value, _then);
+class __$$_CancelCopyWithImpl<$Res>
+    extends _$PhotoPickupBottomSheetEventCopyWithImpl<$Res, _$_Cancel>
+    implements _$$_CancelCopyWith<$Res> {
+  __$$_CancelCopyWithImpl(_$_Cancel _value, $Res Function(_$_Cancel) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -303,7 +325,8 @@ class _$_Cancel implements _Cancel {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Cancel);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Cancel);
   }
 
   @override

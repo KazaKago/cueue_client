@@ -11,7 +11,8 @@ part of 'content_registration.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ContentRegistration {
@@ -21,7 +22,6 @@ mixin _$ContentRegistration {
     required TResult Function(Uri uri) uri,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(File file)? file,
@@ -35,14 +35,12 @@ mixin _$ContentRegistration {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_File value) file,
     required TResult Function(_Uri value) uri,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_File value)? file,
@@ -60,29 +58,36 @@ mixin _$ContentRegistration {
 
 /// @nodoc
 abstract class $ContentRegistrationCopyWith<$Res> {
-  factory $ContentRegistrationCopyWith(ContentRegistration value, $Res Function(ContentRegistration) then) = _$ContentRegistrationCopyWithImpl<$Res, ContentRegistration>;
+  factory $ContentRegistrationCopyWith(
+          ContentRegistration value, $Res Function(ContentRegistration) then) =
+      _$ContentRegistrationCopyWithImpl<$Res, ContentRegistration>;
 }
 
 /// @nodoc
-class _$ContentRegistrationCopyWithImpl<$Res, $Val extends ContentRegistration> implements $ContentRegistrationCopyWith<$Res> {
+class _$ContentRegistrationCopyWithImpl<$Res, $Val extends ContentRegistration>
+    implements $ContentRegistrationCopyWith<$Res> {
   _$ContentRegistrationCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
 }
 
 /// @nodoc
 abstract class _$$_FileCopyWith<$Res> {
-  factory _$$_FileCopyWith(_$_File value, $Res Function(_$_File) then) = __$$_FileCopyWithImpl<$Res>;
+  factory _$$_FileCopyWith(_$_File value, $Res Function(_$_File) then) =
+      __$$_FileCopyWithImpl<$Res>;
   @useResult
   $Res call({File file});
 }
 
 /// @nodoc
-class __$$_FileCopyWithImpl<$Res> extends _$ContentRegistrationCopyWithImpl<$Res, _$_File> implements _$$_FileCopyWith<$Res> {
-  __$$_FileCopyWithImpl(_$_File _value, $Res Function(_$_File) _then) : super(_value, _then);
+class __$$_FileCopyWithImpl<$Res>
+    extends _$ContentRegistrationCopyWithImpl<$Res, _$_File>
+    implements _$$_FileCopyWith<$Res> {
+  __$$_FileCopyWithImpl(_$_File _value, $Res Function(_$_File) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -113,7 +118,10 @@ class _$_File implements _File {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_File && (identical(other.file, file) || other.file == file));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_File &&
+            (identical(other.file, file) || other.file == file));
   }
 
   @override
@@ -122,7 +130,8 @@ class _$_File implements _File {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FileCopyWith<_$_File> get copyWith => __$$_FileCopyWithImpl<_$_File>(this, _$identity);
+  _$$_FileCopyWith<_$_File> get copyWith =>
+      __$$_FileCopyWithImpl<_$_File>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -197,14 +206,18 @@ abstract class _File implements ContentRegistration {
 
 /// @nodoc
 abstract class _$$_UriCopyWith<$Res> {
-  factory _$$_UriCopyWith(_$_Uri value, $Res Function(_$_Uri) then) = __$$_UriCopyWithImpl<$Res>;
+  factory _$$_UriCopyWith(_$_Uri value, $Res Function(_$_Uri) then) =
+      __$$_UriCopyWithImpl<$Res>;
   @useResult
   $Res call({Uri uri});
 }
 
 /// @nodoc
-class __$$_UriCopyWithImpl<$Res> extends _$ContentRegistrationCopyWithImpl<$Res, _$_Uri> implements _$$_UriCopyWith<$Res> {
-  __$$_UriCopyWithImpl(_$_Uri _value, $Res Function(_$_Uri) _then) : super(_value, _then);
+class __$$_UriCopyWithImpl<$Res>
+    extends _$ContentRegistrationCopyWithImpl<$Res, _$_Uri>
+    implements _$$_UriCopyWith<$Res> {
+  __$$_UriCopyWithImpl(_$_Uri _value, $Res Function(_$_Uri) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -235,7 +248,10 @@ class _$_Uri implements _Uri {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Uri && (identical(other.uri, uri) || other.uri == uri));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Uri &&
+            (identical(other.uri, uri) || other.uri == uri));
   }
 
   @override
@@ -244,7 +260,8 @@ class _$_Uri implements _Uri {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UriCopyWith<_$_Uri> get copyWith => __$$_UriCopyWithImpl<_$_Uri>(this, _$identity);
+  _$$_UriCopyWith<_$_Uri> get copyWith =>
+      __$$_UriCopyWithImpl<_$_Uri>(this, _$identity);
 
   @override
   @optionalTypeArgs

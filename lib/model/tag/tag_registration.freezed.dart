@@ -11,31 +11,34 @@ part of 'tag_registration.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$TagRegistration {
   String get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $TagRegistrationCopyWith<TagRegistration> get copyWith => throw _privateConstructorUsedError;
+  $TagRegistrationCopyWith<TagRegistration> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TagRegistrationCopyWith<$Res> {
-  factory $TagRegistrationCopyWith(TagRegistration value, $Res Function(TagRegistration) then) = _$TagRegistrationCopyWithImpl<$Res, TagRegistration>;
-
+  factory $TagRegistrationCopyWith(
+          TagRegistration value, $Res Function(TagRegistration) then) =
+      _$TagRegistrationCopyWithImpl<$Res, TagRegistration>;
   @useResult
   $Res call({String name});
 }
 
 /// @nodoc
-class _$TagRegistrationCopyWithImpl<$Res, $Val extends TagRegistration> implements $TagRegistrationCopyWith<$Res> {
+class _$TagRegistrationCopyWithImpl<$Res, $Val extends TagRegistration>
+    implements $TagRegistrationCopyWith<$Res> {
   _$TagRegistrationCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -54,17 +57,23 @@ class _$TagRegistrationCopyWithImpl<$Res, $Val extends TagRegistration> implemen
 }
 
 /// @nodoc
-abstract class _$$_TagRegistrationCopyWith<$Res> implements $TagRegistrationCopyWith<$Res> {
-  factory _$$_TagRegistrationCopyWith(_$_TagRegistration value, $Res Function(_$_TagRegistration) then) = __$$_TagRegistrationCopyWithImpl<$Res>;
-
+abstract class _$$_TagRegistrationCopyWith<$Res>
+    implements $TagRegistrationCopyWith<$Res> {
+  factory _$$_TagRegistrationCopyWith(
+          _$_TagRegistration value, $Res Function(_$_TagRegistration) then) =
+      __$$_TagRegistrationCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name});
 }
 
 /// @nodoc
-class __$$_TagRegistrationCopyWithImpl<$Res> extends _$TagRegistrationCopyWithImpl<$Res, _$_TagRegistration> implements _$$_TagRegistrationCopyWith<$Res> {
-  __$$_TagRegistrationCopyWithImpl(_$_TagRegistration _value, $Res Function(_$_TagRegistration) _then) : super(_value, _then);
+class __$$_TagRegistrationCopyWithImpl<$Res>
+    extends _$TagRegistrationCopyWithImpl<$Res, _$_TagRegistration>
+    implements _$$_TagRegistrationCopyWith<$Res> {
+  __$$_TagRegistrationCopyWithImpl(
+      _$_TagRegistration _value, $Res Function(_$_TagRegistration) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -95,7 +104,10 @@ class _$_TagRegistration implements _TagRegistration {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_TagRegistration && (identical(other.name, name) || other.name == name));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TagRegistration &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @override
@@ -104,16 +116,18 @@ class _$_TagRegistration implements _TagRegistration {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TagRegistrationCopyWith<_$_TagRegistration> get copyWith => __$$_TagRegistrationCopyWithImpl<_$_TagRegistration>(this, _$identity);
+  _$$_TagRegistrationCopyWith<_$_TagRegistration> get copyWith =>
+      __$$_TagRegistrationCopyWithImpl<_$_TagRegistration>(this, _$identity);
 }
 
 abstract class _TagRegistration implements TagRegistration {
-  const factory _TagRegistration({required final String name}) = _$_TagRegistration;
+  const factory _TagRegistration({required final String name}) =
+      _$_TagRegistration;
 
   @override
   String get name;
-
   @override
   @JsonKey(ignore: true)
-  _$$_TagRegistrationCopyWith<_$_TagRegistration> get copyWith => throw _privateConstructorUsedError;
+  _$$_TagRegistrationCopyWith<_$_TagRegistration> get copyWith =>
+      throw _privateConstructorUsedError;
 }

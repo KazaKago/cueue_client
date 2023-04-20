@@ -5,7 +5,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
 
@@ -26,22 +26,28 @@ class $AssetsImagesGen {
   const $AssetsImagesGen();
 
   /// File path: assets/images/ic_app_icon.png
-  AssetGenImage get icAppIcon => const AssetGenImage('assets/images/ic_app_icon.png');
+  AssetGenImage get icAppIcon =>
+      const AssetGenImage('assets/images/ic_app_icon.png');
 
   /// File path: assets/images/time1_asa.png
-  AssetGenImage get time1Asa => const AssetGenImage('assets/images/time1_asa.png');
+  AssetGenImage get time1Asa =>
+      const AssetGenImage('assets/images/time1_asa.png');
 
   /// File path: assets/images/time2_hiru.png
-  AssetGenImage get time2Hiru => const AssetGenImage('assets/images/time2_hiru.png');
+  AssetGenImage get time2Hiru =>
+      const AssetGenImage('assets/images/time2_hiru.png');
 
   /// File path: assets/images/time3_yuu.png
-  AssetGenImage get time3Yuu => const AssetGenImage('assets/images/time3_yuu.png');
+  AssetGenImage get time3Yuu =>
+      const AssetGenImage('assets/images/time3_yuu.png');
 
   /// File path: assets/images/time4_yoru.png
-  AssetGenImage get time4Yoru => const AssetGenImage('assets/images/time4_yoru.png');
+  AssetGenImage get time4Yoru =>
+      const AssetGenImage('assets/images/time4_yoru.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [icAppIcon, time1Asa, time2Hiru, time3Yuu, time4Yoru];
+  List<AssetGenImage> get values =>
+      [icAppIcon, time1Asa, time2Hiru, time3Yuu, time4Yoru];
 }
 
 class Assets {
@@ -109,7 +115,16 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider() => AssetImage(_assetName);
+  ImageProvider provider({
+    AssetBundle? bundle,
+    String? package,
+  }) {
+    return AssetImage(
+      _assetName,
+      bundle: bundle,
+      package: package,
+    );
+  }
 
   String get path => _assetName;
 

@@ -11,7 +11,8 @@ part of 'workspace_request.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 WorkspaceRequest _$WorkspaceRequestFromJson(Map<String, dynamic> json) {
   return _WorkspaceRequest.fromJson(json);
@@ -24,26 +25,27 @@ mixin _$WorkspaceRequest {
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
-  $WorkspaceRequestCopyWith<WorkspaceRequest> get copyWith => throw _privateConstructorUsedError;
+  $WorkspaceRequestCopyWith<WorkspaceRequest> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $WorkspaceRequestCopyWith<$Res> {
-  factory $WorkspaceRequestCopyWith(WorkspaceRequest value, $Res Function(WorkspaceRequest) then) = _$WorkspaceRequestCopyWithImpl<$Res, WorkspaceRequest>;
-
+  factory $WorkspaceRequestCopyWith(
+          WorkspaceRequest value, $Res Function(WorkspaceRequest) then) =
+      _$WorkspaceRequestCopyWithImpl<$Res, WorkspaceRequest>;
   @useResult
   $Res call({@JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
-class _$WorkspaceRequestCopyWithImpl<$Res, $Val extends WorkspaceRequest> implements $WorkspaceRequestCopyWith<$Res> {
+class _$WorkspaceRequestCopyWithImpl<$Res, $Val extends WorkspaceRequest>
+    implements $WorkspaceRequestCopyWith<$Res> {
   _$WorkspaceRequestCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -62,17 +64,23 @@ class _$WorkspaceRequestCopyWithImpl<$Res, $Val extends WorkspaceRequest> implem
 }
 
 /// @nodoc
-abstract class _$$_WorkspaceRequestCopyWith<$Res> implements $WorkspaceRequestCopyWith<$Res> {
-  factory _$$_WorkspaceRequestCopyWith(_$_WorkspaceRequest value, $Res Function(_$_WorkspaceRequest) then) = __$$_WorkspaceRequestCopyWithImpl<$Res>;
-
+abstract class _$$_WorkspaceRequestCopyWith<$Res>
+    implements $WorkspaceRequestCopyWith<$Res> {
+  factory _$$_WorkspaceRequestCopyWith(
+          _$_WorkspaceRequest value, $Res Function(_$_WorkspaceRequest) then) =
+      __$$_WorkspaceRequestCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
-class __$$_WorkspaceRequestCopyWithImpl<$Res> extends _$WorkspaceRequestCopyWithImpl<$Res, _$_WorkspaceRequest> implements _$$_WorkspaceRequestCopyWith<$Res> {
-  __$$_WorkspaceRequestCopyWithImpl(_$_WorkspaceRequest _value, $Res Function(_$_WorkspaceRequest) _then) : super(_value, _then);
+class __$$_WorkspaceRequestCopyWithImpl<$Res>
+    extends _$WorkspaceRequestCopyWithImpl<$Res, _$_WorkspaceRequest>
+    implements _$$_WorkspaceRequestCopyWith<$Res> {
+  __$$_WorkspaceRequestCopyWithImpl(
+      _$_WorkspaceRequest _value, $Res Function(_$_WorkspaceRequest) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -93,7 +101,8 @@ class __$$_WorkspaceRequestCopyWithImpl<$Res> extends _$WorkspaceRequestCopyWith
 class _$_WorkspaceRequest implements _WorkspaceRequest {
   const _$_WorkspaceRequest({@JsonKey(name: 'name') required this.name});
 
-  factory _$_WorkspaceRequest.fromJson(Map<String, dynamic> json) => _$$_WorkspaceRequestFromJson(json);
+  factory _$_WorkspaceRequest.fromJson(Map<String, dynamic> json) =>
+      _$$_WorkspaceRequestFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
@@ -107,7 +116,10 @@ class _$_WorkspaceRequest implements _WorkspaceRequest {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_WorkspaceRequest && (identical(other.name, name) || other.name == name));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_WorkspaceRequest &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
@@ -117,7 +129,8 @@ class _$_WorkspaceRequest implements _WorkspaceRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WorkspaceRequestCopyWith<_$_WorkspaceRequest> get copyWith => __$$_WorkspaceRequestCopyWithImpl<_$_WorkspaceRequest>(this, _$identity);
+  _$$_WorkspaceRequestCopyWith<_$_WorkspaceRequest> get copyWith =>
+      __$$_WorkspaceRequestCopyWithImpl<_$_WorkspaceRequest>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -128,15 +141,18 @@ class _$_WorkspaceRequest implements _WorkspaceRequest {
 }
 
 abstract class _WorkspaceRequest implements WorkspaceRequest {
-  const factory _WorkspaceRequest({@JsonKey(name: 'name') required final String name}) = _$_WorkspaceRequest;
+  const factory _WorkspaceRequest(
+          {@JsonKey(name: 'name') required final String name}) =
+      _$_WorkspaceRequest;
 
-  factory _WorkspaceRequest.fromJson(Map<String, dynamic> json) = _$_WorkspaceRequest.fromJson;
+  factory _WorkspaceRequest.fromJson(Map<String, dynamic> json) =
+      _$_WorkspaceRequest.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
   String get name;
-
   @override
   @JsonKey(ignore: true)
-  _$$_WorkspaceRequestCopyWith<_$_WorkspaceRequest> get copyWith => throw _privateConstructorUsedError;
+  _$$_WorkspaceRequestCopyWith<_$_WorkspaceRequest> get copyWith =>
+      throw _privateConstructorUsedError;
 }

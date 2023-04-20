@@ -11,7 +11,8 @@ part of 'simple_message_dialog_event.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$SimpleMessageDialogEvent {
@@ -22,7 +23,6 @@ mixin _$SimpleMessageDialogEvent {
     required TResult Function() negative,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? positive,
@@ -38,7 +38,6 @@ mixin _$SimpleMessageDialogEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Positive value) positive,
@@ -46,7 +45,6 @@ mixin _$SimpleMessageDialogEvent {
     required TResult Function(_Negative value) negative,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Positive value)? positive,
@@ -66,27 +64,37 @@ mixin _$SimpleMessageDialogEvent {
 
 /// @nodoc
 abstract class $SimpleMessageDialogEventCopyWith<$Res> {
-  factory $SimpleMessageDialogEventCopyWith(SimpleMessageDialogEvent value, $Res Function(SimpleMessageDialogEvent) then) = _$SimpleMessageDialogEventCopyWithImpl<$Res, SimpleMessageDialogEvent>;
+  factory $SimpleMessageDialogEventCopyWith(SimpleMessageDialogEvent value,
+          $Res Function(SimpleMessageDialogEvent) then) =
+      _$SimpleMessageDialogEventCopyWithImpl<$Res, SimpleMessageDialogEvent>;
 }
 
 /// @nodoc
-class _$SimpleMessageDialogEventCopyWithImpl<$Res, $Val extends SimpleMessageDialogEvent> implements $SimpleMessageDialogEventCopyWith<$Res> {
+class _$SimpleMessageDialogEventCopyWithImpl<$Res,
+        $Val extends SimpleMessageDialogEvent>
+    implements $SimpleMessageDialogEventCopyWith<$Res> {
   _$SimpleMessageDialogEventCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
 }
 
 /// @nodoc
 abstract class _$$_PositiveCopyWith<$Res> {
-  factory _$$_PositiveCopyWith(_$_Positive value, $Res Function(_$_Positive) then) = __$$_PositiveCopyWithImpl<$Res>;
+  factory _$$_PositiveCopyWith(
+          _$_Positive value, $Res Function(_$_Positive) then) =
+      __$$_PositiveCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PositiveCopyWithImpl<$Res> extends _$SimpleMessageDialogEventCopyWithImpl<$Res, _$_Positive> implements _$$_PositiveCopyWith<$Res> {
-  __$$_PositiveCopyWithImpl(_$_Positive _value, $Res Function(_$_Positive) _then) : super(_value, _then);
+class __$$_PositiveCopyWithImpl<$Res>
+    extends _$SimpleMessageDialogEventCopyWithImpl<$Res, _$_Positive>
+    implements _$$_PositiveCopyWith<$Res> {
+  __$$_PositiveCopyWithImpl(
+      _$_Positive _value, $Res Function(_$_Positive) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -101,7 +109,8 @@ class _$_Positive implements _Positive {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Positive);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Positive);
   }
 
   @override
@@ -182,12 +191,17 @@ abstract class _Positive implements SimpleMessageDialogEvent {
 
 /// @nodoc
 abstract class _$$_NeutralCopyWith<$Res> {
-  factory _$$_NeutralCopyWith(_$_Neutral value, $Res Function(_$_Neutral) then) = __$$_NeutralCopyWithImpl<$Res>;
+  factory _$$_NeutralCopyWith(
+          _$_Neutral value, $Res Function(_$_Neutral) then) =
+      __$$_NeutralCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NeutralCopyWithImpl<$Res> extends _$SimpleMessageDialogEventCopyWithImpl<$Res, _$_Neutral> implements _$$_NeutralCopyWith<$Res> {
-  __$$_NeutralCopyWithImpl(_$_Neutral _value, $Res Function(_$_Neutral) _then) : super(_value, _then);
+class __$$_NeutralCopyWithImpl<$Res>
+    extends _$SimpleMessageDialogEventCopyWithImpl<$Res, _$_Neutral>
+    implements _$$_NeutralCopyWith<$Res> {
+  __$$_NeutralCopyWithImpl(_$_Neutral _value, $Res Function(_$_Neutral) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -202,7 +216,8 @@ class _$_Neutral implements _Neutral {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Neutral);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Neutral);
   }
 
   @override
@@ -283,12 +298,18 @@ abstract class _Neutral implements SimpleMessageDialogEvent {
 
 /// @nodoc
 abstract class _$$_NegativeCopyWith<$Res> {
-  factory _$$_NegativeCopyWith(_$_Negative value, $Res Function(_$_Negative) then) = __$$_NegativeCopyWithImpl<$Res>;
+  factory _$$_NegativeCopyWith(
+          _$_Negative value, $Res Function(_$_Negative) then) =
+      __$$_NegativeCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NegativeCopyWithImpl<$Res> extends _$SimpleMessageDialogEventCopyWithImpl<$Res, _$_Negative> implements _$$_NegativeCopyWith<$Res> {
-  __$$_NegativeCopyWithImpl(_$_Negative _value, $Res Function(_$_Negative) _then) : super(_value, _then);
+class __$$_NegativeCopyWithImpl<$Res>
+    extends _$SimpleMessageDialogEventCopyWithImpl<$Res, _$_Negative>
+    implements _$$_NegativeCopyWith<$Res> {
+  __$$_NegativeCopyWithImpl(
+      _$_Negative _value, $Res Function(_$_Negative) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -303,7 +324,8 @@ class _$_Negative implements _Negative {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Negative);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Negative);
   }
 
   @override

@@ -11,20 +11,16 @@ part of 'app_info.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AppInfo {
   String get appName => throw _privateConstructorUsedError;
-
   String get version => throw _privateConstructorUsedError;
-
   Uri get webSite => throw _privateConstructorUsedError;
-
   Uri get storeLink => throw _privateConstructorUsedError;
-
   String get developer => throw _privateConstructorUsedError;
-
   Email get email => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -33,21 +29,27 @@ mixin _$AppInfo {
 
 /// @nodoc
 abstract class $AppInfoCopyWith<$Res> {
-  factory $AppInfoCopyWith(AppInfo value, $Res Function(AppInfo) then) = _$AppInfoCopyWithImpl<$Res, AppInfo>;
-
+  factory $AppInfoCopyWith(AppInfo value, $Res Function(AppInfo) then) =
+      _$AppInfoCopyWithImpl<$Res, AppInfo>;
   @useResult
-  $Res call({String appName, String version, Uri webSite, Uri storeLink, String developer, Email email});
+  $Res call(
+      {String appName,
+      String version,
+      Uri webSite,
+      Uri storeLink,
+      String developer,
+      Email email});
 
   $EmailCopyWith<$Res> get email;
 }
 
 /// @nodoc
-class _$AppInfoCopyWithImpl<$Res, $Val extends AppInfo> implements $AppInfoCopyWith<$Res> {
+class _$AppInfoCopyWithImpl<$Res, $Val extends AppInfo>
+    implements $AppInfoCopyWith<$Res> {
   _$AppInfoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -100,19 +102,29 @@ class _$AppInfoCopyWithImpl<$Res, $Val extends AppInfo> implements $AppInfoCopyW
 
 /// @nodoc
 abstract class _$$_AppInfoCopyWith<$Res> implements $AppInfoCopyWith<$Res> {
-  factory _$$_AppInfoCopyWith(_$_AppInfo value, $Res Function(_$_AppInfo) then) = __$$_AppInfoCopyWithImpl<$Res>;
-
+  factory _$$_AppInfoCopyWith(
+          _$_AppInfo value, $Res Function(_$_AppInfo) then) =
+      __$$_AppInfoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String appName, String version, Uri webSite, Uri storeLink, String developer, Email email});
+  $Res call(
+      {String appName,
+      String version,
+      Uri webSite,
+      Uri storeLink,
+      String developer,
+      Email email});
 
   @override
   $EmailCopyWith<$Res> get email;
 }
 
 /// @nodoc
-class __$$_AppInfoCopyWithImpl<$Res> extends _$AppInfoCopyWithImpl<$Res, _$_AppInfo> implements _$$_AppInfoCopyWith<$Res> {
-  __$$_AppInfoCopyWithImpl(_$_AppInfo _value, $Res Function(_$_AppInfo) _then) : super(_value, _then);
+class __$$_AppInfoCopyWithImpl<$Res>
+    extends _$AppInfoCopyWithImpl<$Res, _$_AppInfo>
+    implements _$$_AppInfoCopyWith<$Res> {
+  __$$_AppInfoCopyWithImpl(_$_AppInfo _value, $Res Function(_$_AppInfo) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -156,7 +168,14 @@ class __$$_AppInfoCopyWithImpl<$Res> extends _$AppInfoCopyWithImpl<$Res, _$_AppI
 /// @nodoc
 
 class _$_AppInfo extends _AppInfo {
-  const _$_AppInfo({required this.appName, required this.version, required this.webSite, required this.storeLink, required this.developer, required this.email}) : super._();
+  const _$_AppInfo(
+      {required this.appName,
+      required this.version,
+      required this.webSite,
+      required this.storeLink,
+      required this.developer,
+      required this.email})
+      : super._();
 
   @override
   final String appName;
@@ -178,42 +197,54 @@ class _$_AppInfo extends _AppInfo {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AppInfo && (identical(other.appName, appName) || other.appName == appName) && (identical(other.version, version) || other.version == version) && (identical(other.webSite, webSite) || other.webSite == webSite) && (identical(other.storeLink, storeLink) || other.storeLink == storeLink) && (identical(other.developer, developer) || other.developer == developer) && (identical(other.email, email) || other.email == email));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AppInfo &&
+            (identical(other.appName, appName) || other.appName == appName) &&
+            (identical(other.version, version) || other.version == version) &&
+            (identical(other.webSite, webSite) || other.webSite == webSite) &&
+            (identical(other.storeLink, storeLink) ||
+                other.storeLink == storeLink) &&
+            (identical(other.developer, developer) ||
+                other.developer == developer) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, appName, version, webSite, storeLink, developer, email);
+  int get hashCode => Object.hash(
+      runtimeType, appName, version, webSite, storeLink, developer, email);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppInfoCopyWith<_$_AppInfo> get copyWith => __$$_AppInfoCopyWithImpl<_$_AppInfo>(this, _$identity);
+  _$$_AppInfoCopyWith<_$_AppInfo> get copyWith =>
+      __$$_AppInfoCopyWithImpl<_$_AppInfo>(this, _$identity);
 }
 
 abstract class _AppInfo extends AppInfo {
-  const factory _AppInfo({required final String appName, required final String version, required final Uri webSite, required final Uri storeLink, required final String developer, required final Email email}) = _$_AppInfo;
-
+  const factory _AppInfo(
+      {required final String appName,
+      required final String version,
+      required final Uri webSite,
+      required final Uri storeLink,
+      required final String developer,
+      required final Email email}) = _$_AppInfo;
   const _AppInfo._() : super._();
 
   @override
   String get appName;
-
   @override
   String get version;
-
   @override
   Uri get webSite;
-
   @override
   Uri get storeLink;
-
   @override
   String get developer;
-
   @override
   Email get email;
-
   @override
   @JsonKey(ignore: true)
-  _$$_AppInfoCopyWith<_$_AppInfo> get copyWith => throw _privateConstructorUsedError;
+  _$$_AppInfoCopyWith<_$_AppInfo> get copyWith =>
+      throw _privateConstructorUsedError;
 }

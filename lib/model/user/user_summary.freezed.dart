@@ -11,39 +11,39 @@ part of 'user_summary.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$UserSummary {
   UserId get id => throw _privateConstructorUsedError;
-
   String get displayName => throw _privateConstructorUsedError;
-
   Content? get photo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $UserSummaryCopyWith<UserSummary> get copyWith => throw _privateConstructorUsedError;
+  $UserSummaryCopyWith<UserSummary> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $UserSummaryCopyWith<$Res> {
-  factory $UserSummaryCopyWith(UserSummary value, $Res Function(UserSummary) then) = _$UserSummaryCopyWithImpl<$Res, UserSummary>;
-
+  factory $UserSummaryCopyWith(
+          UserSummary value, $Res Function(UserSummary) then) =
+      _$UserSummaryCopyWithImpl<$Res, UserSummary>;
   @useResult
   $Res call({UserId id, String displayName, Content? photo});
 
   $UserIdCopyWith<$Res> get id;
-
   $ContentCopyWith<$Res>? get photo;
 }
 
 /// @nodoc
-class _$UserSummaryCopyWithImpl<$Res, $Val extends UserSummary> implements $UserSummaryCopyWith<$Res> {
+class _$UserSummaryCopyWithImpl<$Res, $Val extends UserSummary>
+    implements $UserSummaryCopyWith<$Res> {
   _$UserSummaryCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -92,23 +92,28 @@ class _$UserSummaryCopyWithImpl<$Res, $Val extends UserSummary> implements $User
 }
 
 /// @nodoc
-abstract class _$$_UserSummaryCopyWith<$Res> implements $UserSummaryCopyWith<$Res> {
-  factory _$$_UserSummaryCopyWith(_$_UserSummary value, $Res Function(_$_UserSummary) then) = __$$_UserSummaryCopyWithImpl<$Res>;
-
+abstract class _$$_UserSummaryCopyWith<$Res>
+    implements $UserSummaryCopyWith<$Res> {
+  factory _$$_UserSummaryCopyWith(
+          _$_UserSummary value, $Res Function(_$_UserSummary) then) =
+      __$$_UserSummaryCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({UserId id, String displayName, Content? photo});
 
   @override
   $UserIdCopyWith<$Res> get id;
-
   @override
   $ContentCopyWith<$Res>? get photo;
 }
 
 /// @nodoc
-class __$$_UserSummaryCopyWithImpl<$Res> extends _$UserSummaryCopyWithImpl<$Res, _$_UserSummary> implements _$$_UserSummaryCopyWith<$Res> {
-  __$$_UserSummaryCopyWithImpl(_$_UserSummary _value, $Res Function(_$_UserSummary) _then) : super(_value, _then);
+class __$$_UserSummaryCopyWithImpl<$Res>
+    extends _$UserSummaryCopyWithImpl<$Res, _$_UserSummary>
+    implements _$$_UserSummaryCopyWith<$Res> {
+  __$$_UserSummaryCopyWithImpl(
+      _$_UserSummary _value, $Res Function(_$_UserSummary) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -137,7 +142,8 @@ class __$$_UserSummaryCopyWithImpl<$Res> extends _$UserSummaryCopyWithImpl<$Res,
 /// @nodoc
 
 class _$_UserSummary implements _UserSummary {
-  const _$_UserSummary({required this.id, required this.displayName, required this.photo});
+  const _$_UserSummary(
+      {required this.id, required this.displayName, required this.photo});
 
   @override
   final UserId id;
@@ -153,7 +159,13 @@ class _$_UserSummary implements _UserSummary {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_UserSummary && (identical(other.id, id) || other.id == id) && (identical(other.displayName, displayName) || other.displayName == displayName) && (identical(other.photo, photo) || other.photo == photo));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UserSummary &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.displayName, displayName) ||
+                other.displayName == displayName) &&
+            (identical(other.photo, photo) || other.photo == photo));
   }
 
   @override
@@ -162,22 +174,24 @@ class _$_UserSummary implements _UserSummary {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserSummaryCopyWith<_$_UserSummary> get copyWith => __$$_UserSummaryCopyWithImpl<_$_UserSummary>(this, _$identity);
+  _$$_UserSummaryCopyWith<_$_UserSummary> get copyWith =>
+      __$$_UserSummaryCopyWithImpl<_$_UserSummary>(this, _$identity);
 }
 
 abstract class _UserSummary implements UserSummary {
-  const factory _UserSummary({required final UserId id, required final String displayName, required final Content? photo}) = _$_UserSummary;
+  const factory _UserSummary(
+      {required final UserId id,
+      required final String displayName,
+      required final Content? photo}) = _$_UserSummary;
 
   @override
   UserId get id;
-
   @override
   String get displayName;
-
   @override
   Content? get photo;
-
   @override
   @JsonKey(ignore: true)
-  _$$_UserSummaryCopyWith<_$_UserSummary> get copyWith => throw _privateConstructorUsedError;
+  _$$_UserSummaryCopyWith<_$_UserSummary> get copyWith =>
+      throw _privateConstructorUsedError;
 }

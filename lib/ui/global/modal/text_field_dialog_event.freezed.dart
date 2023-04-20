@@ -11,22 +11,22 @@ part of 'text_field_dialog_event.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$TextFieldDialogEvent {
   String get currentText => throw _privateConstructorUsedError;
-
   String? get originalText => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String currentText, String? originalText) positive,
+    required TResult Function(String currentText, String? originalText)
+        positive,
     required TResult Function(String currentText, String? originalText) neutral,
-    required TResult Function(String currentText, String? originalText) negative,
+    required TResult Function(String currentText, String? originalText)
+        negative,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String currentText, String? originalText)? positive,
@@ -42,7 +42,6 @@ mixin _$TextFieldDialogEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Positive value) positive,
@@ -50,7 +49,6 @@ mixin _$TextFieldDialogEvent {
     required TResult Function(_Negative value) negative,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Positive value)? positive,
@@ -68,23 +66,28 @@ mixin _$TextFieldDialogEvent {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $TextFieldDialogEventCopyWith<TextFieldDialogEvent> get copyWith => throw _privateConstructorUsedError;
+  $TextFieldDialogEventCopyWith<TextFieldDialogEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TextFieldDialogEventCopyWith<$Res> {
-  factory $TextFieldDialogEventCopyWith(TextFieldDialogEvent value, $Res Function(TextFieldDialogEvent) then) = _$TextFieldDialogEventCopyWithImpl<$Res, TextFieldDialogEvent>;
+  factory $TextFieldDialogEventCopyWith(TextFieldDialogEvent value,
+          $Res Function(TextFieldDialogEvent) then) =
+      _$TextFieldDialogEventCopyWithImpl<$Res, TextFieldDialogEvent>;
   @useResult
   $Res call({String currentText, String? originalText});
 }
 
 /// @nodoc
-class _$TextFieldDialogEventCopyWithImpl<$Res, $Val extends TextFieldDialogEvent> implements $TextFieldDialogEventCopyWith<$Res> {
+class _$TextFieldDialogEventCopyWithImpl<$Res,
+        $Val extends TextFieldDialogEvent>
+    implements $TextFieldDialogEventCopyWith<$Res> {
   _$TextFieldDialogEventCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
 
   @pragma('vm:prefer-inline')
@@ -107,16 +110,23 @@ class _$TextFieldDialogEventCopyWithImpl<$Res, $Val extends TextFieldDialogEvent
 }
 
 /// @nodoc
-abstract class _$$_PositiveCopyWith<$Res> implements $TextFieldDialogEventCopyWith<$Res> {
-  factory _$$_PositiveCopyWith(_$_Positive value, $Res Function(_$_Positive) then) = __$$_PositiveCopyWithImpl<$Res>;
+abstract class _$$_PositiveCopyWith<$Res>
+    implements $TextFieldDialogEventCopyWith<$Res> {
+  factory _$$_PositiveCopyWith(
+          _$_Positive value, $Res Function(_$_Positive) then) =
+      __$$_PositiveCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String currentText, String? originalText});
 }
 
 /// @nodoc
-class __$$_PositiveCopyWithImpl<$Res> extends _$TextFieldDialogEventCopyWithImpl<$Res, _$_Positive> implements _$$_PositiveCopyWith<$Res> {
-  __$$_PositiveCopyWithImpl(_$_Positive _value, $Res Function(_$_Positive) _then) : super(_value, _then);
+class __$$_PositiveCopyWithImpl<$Res>
+    extends _$TextFieldDialogEventCopyWithImpl<$Res, _$_Positive>
+    implements _$$_PositiveCopyWith<$Res> {
+  __$$_PositiveCopyWithImpl(
+      _$_Positive _value, $Res Function(_$_Positive) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -154,7 +164,13 @@ class _$_Positive implements _Positive {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Positive && (identical(other.currentText, currentText) || other.currentText == currentText) && (identical(other.originalText, originalText) || other.originalText == originalText));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Positive &&
+            (identical(other.currentText, currentText) ||
+                other.currentText == currentText) &&
+            (identical(other.originalText, originalText) ||
+                other.originalText == originalText));
   }
 
   @override
@@ -163,14 +179,17 @@ class _$_Positive implements _Positive {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PositiveCopyWith<_$_Positive> get copyWith => __$$_PositiveCopyWithImpl<_$_Positive>(this, _$identity);
+  _$$_PositiveCopyWith<_$_Positive> get copyWith =>
+      __$$_PositiveCopyWithImpl<_$_Positive>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String currentText, String? originalText) positive,
+    required TResult Function(String currentText, String? originalText)
+        positive,
     required TResult Function(String currentText, String? originalText) neutral,
-    required TResult Function(String currentText, String? originalText) negative,
+    required TResult Function(String currentText, String? originalText)
+        negative,
   }) {
     return positive(currentText, originalText);
   }
@@ -235,7 +254,8 @@ class _$_Positive implements _Positive {
 }
 
 abstract class _Positive implements TextFieldDialogEvent {
-  const factory _Positive(final String currentText, {final String? originalText}) = _$_Positive;
+  const factory _Positive(final String currentText,
+      {final String? originalText}) = _$_Positive;
 
   @override
   String get currentText;
@@ -243,20 +263,27 @@ abstract class _Positive implements TextFieldDialogEvent {
   String? get originalText;
   @override
   @JsonKey(ignore: true)
-  _$$_PositiveCopyWith<_$_Positive> get copyWith => throw _privateConstructorUsedError;
+  _$$_PositiveCopyWith<_$_Positive> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_NeutralCopyWith<$Res> implements $TextFieldDialogEventCopyWith<$Res> {
-  factory _$$_NeutralCopyWith(_$_Neutral value, $Res Function(_$_Neutral) then) = __$$_NeutralCopyWithImpl<$Res>;
+abstract class _$$_NeutralCopyWith<$Res>
+    implements $TextFieldDialogEventCopyWith<$Res> {
+  factory _$$_NeutralCopyWith(
+          _$_Neutral value, $Res Function(_$_Neutral) then) =
+      __$$_NeutralCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String currentText, String? originalText});
 }
 
 /// @nodoc
-class __$$_NeutralCopyWithImpl<$Res> extends _$TextFieldDialogEventCopyWithImpl<$Res, _$_Neutral> implements _$$_NeutralCopyWith<$Res> {
-  __$$_NeutralCopyWithImpl(_$_Neutral _value, $Res Function(_$_Neutral) _then) : super(_value, _then);
+class __$$_NeutralCopyWithImpl<$Res>
+    extends _$TextFieldDialogEventCopyWithImpl<$Res, _$_Neutral>
+    implements _$$_NeutralCopyWith<$Res> {
+  __$$_NeutralCopyWithImpl(_$_Neutral _value, $Res Function(_$_Neutral) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -294,7 +321,13 @@ class _$_Neutral implements _Neutral {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Neutral && (identical(other.currentText, currentText) || other.currentText == currentText) && (identical(other.originalText, originalText) || other.originalText == originalText));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Neutral &&
+            (identical(other.currentText, currentText) ||
+                other.currentText == currentText) &&
+            (identical(other.originalText, originalText) ||
+                other.originalText == originalText));
   }
 
   @override
@@ -303,14 +336,17 @@ class _$_Neutral implements _Neutral {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NeutralCopyWith<_$_Neutral> get copyWith => __$$_NeutralCopyWithImpl<_$_Neutral>(this, _$identity);
+  _$$_NeutralCopyWith<_$_Neutral> get copyWith =>
+      __$$_NeutralCopyWithImpl<_$_Neutral>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String currentText, String? originalText) positive,
+    required TResult Function(String currentText, String? originalText)
+        positive,
     required TResult Function(String currentText, String? originalText) neutral,
-    required TResult Function(String currentText, String? originalText) negative,
+    required TResult Function(String currentText, String? originalText)
+        negative,
   }) {
     return neutral(currentText, originalText);
   }
@@ -375,7 +411,8 @@ class _$_Neutral implements _Neutral {
 }
 
 abstract class _Neutral implements TextFieldDialogEvent {
-  const factory _Neutral(final String currentText, {final String? originalText}) = _$_Neutral;
+  const factory _Neutral(final String currentText,
+      {final String? originalText}) = _$_Neutral;
 
   @override
   String get currentText;
@@ -383,20 +420,28 @@ abstract class _Neutral implements TextFieldDialogEvent {
   String? get originalText;
   @override
   @JsonKey(ignore: true)
-  _$$_NeutralCopyWith<_$_Neutral> get copyWith => throw _privateConstructorUsedError;
+  _$$_NeutralCopyWith<_$_Neutral> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_NegativeCopyWith<$Res> implements $TextFieldDialogEventCopyWith<$Res> {
-  factory _$$_NegativeCopyWith(_$_Negative value, $Res Function(_$_Negative) then) = __$$_NegativeCopyWithImpl<$Res>;
+abstract class _$$_NegativeCopyWith<$Res>
+    implements $TextFieldDialogEventCopyWith<$Res> {
+  factory _$$_NegativeCopyWith(
+          _$_Negative value, $Res Function(_$_Negative) then) =
+      __$$_NegativeCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String currentText, String? originalText});
 }
 
 /// @nodoc
-class __$$_NegativeCopyWithImpl<$Res> extends _$TextFieldDialogEventCopyWithImpl<$Res, _$_Negative> implements _$$_NegativeCopyWith<$Res> {
-  __$$_NegativeCopyWithImpl(_$_Negative _value, $Res Function(_$_Negative) _then) : super(_value, _then);
+class __$$_NegativeCopyWithImpl<$Res>
+    extends _$TextFieldDialogEventCopyWithImpl<$Res, _$_Negative>
+    implements _$$_NegativeCopyWith<$Res> {
+  __$$_NegativeCopyWithImpl(
+      _$_Negative _value, $Res Function(_$_Negative) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -434,7 +479,13 @@ class _$_Negative implements _Negative {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Negative && (identical(other.currentText, currentText) || other.currentText == currentText) && (identical(other.originalText, originalText) || other.originalText == originalText));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Negative &&
+            (identical(other.currentText, currentText) ||
+                other.currentText == currentText) &&
+            (identical(other.originalText, originalText) ||
+                other.originalText == originalText));
   }
 
   @override
@@ -443,14 +494,17 @@ class _$_Negative implements _Negative {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NegativeCopyWith<_$_Negative> get copyWith => __$$_NegativeCopyWithImpl<_$_Negative>(this, _$identity);
+  _$$_NegativeCopyWith<_$_Negative> get copyWith =>
+      __$$_NegativeCopyWithImpl<_$_Negative>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String currentText, String? originalText) positive,
+    required TResult Function(String currentText, String? originalText)
+        positive,
     required TResult Function(String currentText, String? originalText) neutral,
-    required TResult Function(String currentText, String? originalText) negative,
+    required TResult Function(String currentText, String? originalText)
+        negative,
   }) {
     return negative(currentText, originalText);
   }
@@ -515,7 +569,8 @@ class _$_Negative implements _Negative {
 }
 
 abstract class _Negative implements TextFieldDialogEvent {
-  const factory _Negative(final String currentText, {final String? originalText}) = _$_Negative;
+  const factory _Negative(final String currentText,
+      {final String? originalText}) = _$_Negative;
 
   @override
   String get currentText;
@@ -523,5 +578,6 @@ abstract class _Negative implements TextFieldDialogEvent {
   String? get originalText;
   @override
   @JsonKey(ignore: true)
-  _$$_NegativeCopyWith<_$_Negative> get copyWith => throw _privateConstructorUsedError;
+  _$$_NegativeCopyWith<_$_Negative> get copyWith =>
+      throw _privateConstructorUsedError;
 }

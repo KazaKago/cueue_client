@@ -11,7 +11,8 @@ part of 'email.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Email {
@@ -23,19 +24,19 @@ mixin _$Email {
 
 /// @nodoc
 abstract class $EmailCopyWith<$Res> {
-  factory $EmailCopyWith(Email value, $Res Function(Email) then) = _$EmailCopyWithImpl<$Res, Email>;
-
+  factory $EmailCopyWith(Email value, $Res Function(Email) then) =
+      _$EmailCopyWithImpl<$Res, Email>;
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class _$EmailCopyWithImpl<$Res, $Val extends Email> implements $EmailCopyWith<$Res> {
+class _$EmailCopyWithImpl<$Res, $Val extends Email>
+    implements $EmailCopyWith<$Res> {
   _$EmailCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -55,16 +56,18 @@ class _$EmailCopyWithImpl<$Res, $Val extends Email> implements $EmailCopyWith<$R
 
 /// @nodoc
 abstract class _$$_EmailCopyWith<$Res> implements $EmailCopyWith<$Res> {
-  factory _$$_EmailCopyWith(_$_Email value, $Res Function(_$_Email) then) = __$$_EmailCopyWithImpl<$Res>;
-
+  factory _$$_EmailCopyWith(_$_Email value, $Res Function(_$_Email) then) =
+      __$$_EmailCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class __$$_EmailCopyWithImpl<$Res> extends _$EmailCopyWithImpl<$Res, _$_Email> implements _$$_EmailCopyWith<$Res> {
-  __$$_EmailCopyWithImpl(_$_Email _value, $Res Function(_$_Email) _then) : super(_value, _then);
+class __$$_EmailCopyWithImpl<$Res> extends _$EmailCopyWithImpl<$Res, _$_Email>
+    implements _$$_EmailCopyWith<$Res> {
+  __$$_EmailCopyWithImpl(_$_Email _value, $Res Function(_$_Email) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -95,7 +98,10 @@ class _$_Email extends _Email {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Email && (identical(other.value, value) || other.value == value));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Email &&
+            (identical(other.value, value) || other.value == value));
   }
 
   @override
@@ -104,18 +110,18 @@ class _$_Email extends _Email {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EmailCopyWith<_$_Email> get copyWith => __$$_EmailCopyWithImpl<_$_Email>(this, _$identity);
+  _$$_EmailCopyWith<_$_Email> get copyWith =>
+      __$$_EmailCopyWithImpl<_$_Email>(this, _$identity);
 }
 
 abstract class _Email extends Email {
   factory _Email(final String value) = _$_Email;
-
   _Email._() : super._();
 
   @override
   String get value;
-
   @override
   @JsonKey(ignore: true)
-  _$$_EmailCopyWith<_$_Email> get copyWith => throw _privateConstructorUsedError;
+  _$$_EmailCopyWith<_$_Email> get copyWith =>
+      throw _privateConstructorUsedError;
 }

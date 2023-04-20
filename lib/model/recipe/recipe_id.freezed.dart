@@ -11,31 +11,33 @@ part of 'recipe_id.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$RecipeId {
   int get value => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RecipeIdCopyWith<RecipeId> get copyWith => throw _privateConstructorUsedError;
+  $RecipeIdCopyWith<RecipeId> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $RecipeIdCopyWith<$Res> {
-  factory $RecipeIdCopyWith(RecipeId value, $Res Function(RecipeId) then) = _$RecipeIdCopyWithImpl<$Res, RecipeId>;
-
+  factory $RecipeIdCopyWith(RecipeId value, $Res Function(RecipeId) then) =
+      _$RecipeIdCopyWithImpl<$Res, RecipeId>;
   @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class _$RecipeIdCopyWithImpl<$Res, $Val extends RecipeId> implements $RecipeIdCopyWith<$Res> {
+class _$RecipeIdCopyWithImpl<$Res, $Val extends RecipeId>
+    implements $RecipeIdCopyWith<$Res> {
   _$RecipeIdCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -55,16 +57,21 @@ class _$RecipeIdCopyWithImpl<$Res, $Val extends RecipeId> implements $RecipeIdCo
 
 /// @nodoc
 abstract class _$$_RecipeIdCopyWith<$Res> implements $RecipeIdCopyWith<$Res> {
-  factory _$$_RecipeIdCopyWith(_$_RecipeId value, $Res Function(_$_RecipeId) then) = __$$_RecipeIdCopyWithImpl<$Res>;
-
+  factory _$$_RecipeIdCopyWith(
+          _$_RecipeId value, $Res Function(_$_RecipeId) then) =
+      __$$_RecipeIdCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class __$$_RecipeIdCopyWithImpl<$Res> extends _$RecipeIdCopyWithImpl<$Res, _$_RecipeId> implements _$$_RecipeIdCopyWith<$Res> {
-  __$$_RecipeIdCopyWithImpl(_$_RecipeId _value, $Res Function(_$_RecipeId) _then) : super(_value, _then);
+class __$$_RecipeIdCopyWithImpl<$Res>
+    extends _$RecipeIdCopyWithImpl<$Res, _$_RecipeId>
+    implements _$$_RecipeIdCopyWith<$Res> {
+  __$$_RecipeIdCopyWithImpl(
+      _$_RecipeId _value, $Res Function(_$_RecipeId) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -95,7 +102,10 @@ class _$_RecipeId implements _RecipeId {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_RecipeId && (identical(other.value, value) || other.value == value));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RecipeId &&
+            (identical(other.value, value) || other.value == value));
   }
 
   @override
@@ -104,7 +114,8 @@ class _$_RecipeId implements _RecipeId {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RecipeIdCopyWith<_$_RecipeId> get copyWith => __$$_RecipeIdCopyWithImpl<_$_RecipeId>(this, _$identity);
+  _$$_RecipeIdCopyWith<_$_RecipeId> get copyWith =>
+      __$$_RecipeIdCopyWithImpl<_$_RecipeId>(this, _$identity);
 }
 
 abstract class _RecipeId implements RecipeId {
@@ -112,8 +123,8 @@ abstract class _RecipeId implements RecipeId {
 
   @override
   int get value;
-
   @override
   @JsonKey(ignore: true)
-  _$$_RecipeIdCopyWith<_$_RecipeId> get copyWith => throw _privateConstructorUsedError;
+  _$$_RecipeIdCopyWith<_$_RecipeId> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -11,7 +11,8 @@ part of 'recipe_response.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 RecipeResponse _$RecipeResponseFromJson(Map<String, dynamic> json) {
   return _RecipeResponse.fromJson(json);
@@ -21,47 +22,67 @@ RecipeResponse _$RecipeResponseFromJson(Map<String, dynamic> json) {
 mixin _$RecipeResponse {
 // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  int get id =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'title')
-  String get title => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  String get title =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'description')
-  String get description => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  String get description =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'url')
-  String? get url => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  String? get url =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'images')
-  List<ContentResponse> get images => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  List<ContentResponse> get images =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'tags')
-  List<TagResponse> get tags => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  List<TagResponse> get tags =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'cooking_histories')
-  List<String> get cookingHistories => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  List<String> get cookingHistories =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'cooking_count')
-  int get cookingCount => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  int get cookingCount =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'created_at')
-  String get createdAt => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  String get createdAt =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'updated_at')
   String get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
-  $RecipeResponseCopyWith<RecipeResponse> get copyWith => throw _privateConstructorUsedError;
+  $RecipeResponseCopyWith<RecipeResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $RecipeResponseCopyWith<$Res> {
-  factory $RecipeResponseCopyWith(RecipeResponse value, $Res Function(RecipeResponse) then) = _$RecipeResponseCopyWithImpl<$Res, RecipeResponse>;
-
+  factory $RecipeResponseCopyWith(
+          RecipeResponse value, $Res Function(RecipeResponse) then) =
+      _$RecipeResponseCopyWithImpl<$Res, RecipeResponse>;
   @useResult
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'title') String title, @JsonKey(name: 'description') String description, @JsonKey(name: 'url') String? url, @JsonKey(name: 'images') List<ContentResponse> images, @JsonKey(name: 'tags') List<TagResponse> tags, @JsonKey(name: 'cooking_histories') List<String> cookingHistories, @JsonKey(name: 'cooking_count') int cookingCount, @JsonKey(name: 'created_at') String createdAt, @JsonKey(name: 'updated_at') String updatedAt});
+  $Res call(
+      {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'title') String title,
+      @JsonKey(name: 'description') String description,
+      @JsonKey(name: 'url') String? url,
+      @JsonKey(name: 'images') List<ContentResponse> images,
+      @JsonKey(name: 'tags') List<TagResponse> tags,
+      @JsonKey(name: 'cooking_histories') List<String> cookingHistories,
+      @JsonKey(name: 'cooking_count') int cookingCount,
+      @JsonKey(name: 'created_at') String createdAt,
+      @JsonKey(name: 'updated_at') String updatedAt});
 }
 
 /// @nodoc
-class _$RecipeResponseCopyWithImpl<$Res, $Val extends RecipeResponse> implements $RecipeResponseCopyWith<$Res> {
+class _$RecipeResponseCopyWithImpl<$Res, $Val extends RecipeResponse>
+    implements $RecipeResponseCopyWith<$Res> {
   _$RecipeResponseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -125,17 +146,33 @@ class _$RecipeResponseCopyWithImpl<$Res, $Val extends RecipeResponse> implements
 }
 
 /// @nodoc
-abstract class _$$_RecipeResponseCopyWith<$Res> implements $RecipeResponseCopyWith<$Res> {
-  factory _$$_RecipeResponseCopyWith(_$_RecipeResponse value, $Res Function(_$_RecipeResponse) then) = __$$_RecipeResponseCopyWithImpl<$Res>;
-
+abstract class _$$_RecipeResponseCopyWith<$Res>
+    implements $RecipeResponseCopyWith<$Res> {
+  factory _$$_RecipeResponseCopyWith(
+          _$_RecipeResponse value, $Res Function(_$_RecipeResponse) then) =
+      __$$_RecipeResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'title') String title, @JsonKey(name: 'description') String description, @JsonKey(name: 'url') String? url, @JsonKey(name: 'images') List<ContentResponse> images, @JsonKey(name: 'tags') List<TagResponse> tags, @JsonKey(name: 'cooking_histories') List<String> cookingHistories, @JsonKey(name: 'cooking_count') int cookingCount, @JsonKey(name: 'created_at') String createdAt, @JsonKey(name: 'updated_at') String updatedAt});
+  $Res call(
+      {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'title') String title,
+      @JsonKey(name: 'description') String description,
+      @JsonKey(name: 'url') String? url,
+      @JsonKey(name: 'images') List<ContentResponse> images,
+      @JsonKey(name: 'tags') List<TagResponse> tags,
+      @JsonKey(name: 'cooking_histories') List<String> cookingHistories,
+      @JsonKey(name: 'cooking_count') int cookingCount,
+      @JsonKey(name: 'created_at') String createdAt,
+      @JsonKey(name: 'updated_at') String updatedAt});
 }
 
 /// @nodoc
-class __$$_RecipeResponseCopyWithImpl<$Res> extends _$RecipeResponseCopyWithImpl<$Res, _$_RecipeResponse> implements _$$_RecipeResponseCopyWith<$Res> {
-  __$$_RecipeResponseCopyWithImpl(_$_RecipeResponse _value, $Res Function(_$_RecipeResponse) _then) : super(_value, _then);
+class __$$_RecipeResponseCopyWithImpl<$Res>
+    extends _$RecipeResponseCopyWithImpl<$Res, _$_RecipeResponse>
+    implements _$$_RecipeResponseCopyWith<$Res> {
+  __$$_RecipeResponseCopyWithImpl(
+      _$_RecipeResponse _value, $Res Function(_$_RecipeResponse) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -199,36 +236,52 @@ class __$$_RecipeResponseCopyWithImpl<$Res> extends _$RecipeResponseCopyWithImpl
 /// @nodoc
 @JsonSerializable()
 class _$_RecipeResponse implements _RecipeResponse {
-  const _$_RecipeResponse({@JsonKey(name: 'id') required this.id, @JsonKey(name: 'title') required this.title, @JsonKey(name: 'description') required this.description, @JsonKey(name: 'url') required this.url, @JsonKey(name: 'images') required final List<ContentResponse> images, @JsonKey(name: 'tags') required final List<TagResponse> tags, @JsonKey(name: 'cooking_histories') required final List<String> cookingHistories, @JsonKey(name: 'cooking_count') required this.cookingCount, @JsonKey(name: 'created_at') required this.createdAt, @JsonKey(name: 'updated_at') required this.updatedAt})
+  const _$_RecipeResponse(
+      {@JsonKey(name: 'id')
+          required this.id,
+      @JsonKey(name: 'title')
+          required this.title,
+      @JsonKey(name: 'description')
+          required this.description,
+      @JsonKey(name: 'url')
+          required this.url,
+      @JsonKey(name: 'images')
+          required final List<ContentResponse> images,
+      @JsonKey(name: 'tags')
+          required final List<TagResponse> tags,
+      @JsonKey(name: 'cooking_histories')
+          required final List<String> cookingHistories,
+      @JsonKey(name: 'cooking_count')
+          required this.cookingCount,
+      @JsonKey(name: 'created_at')
+          required this.createdAt,
+      @JsonKey(name: 'updated_at')
+          required this.updatedAt})
       : _images = images,
         _tags = tags,
         _cookingHistories = cookingHistories;
 
-  factory _$_RecipeResponse.fromJson(Map<String, dynamic> json) => _$$_RecipeResponseFromJson(json);
+  factory _$_RecipeResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_RecipeResponseFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'id')
   final int id;
-
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'title')
   final String title;
-
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'description')
   final String description;
-
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'url')
   final String? url;
-
 // ignore: invalid_annotation_target
   final List<ContentResponse> _images;
-
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'images')
@@ -240,7 +293,6 @@ class _$_RecipeResponse implements _RecipeResponse {
 
 // ignore: invalid_annotation_target
   final List<TagResponse> _tags;
-
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'tags')
@@ -252,12 +304,12 @@ class _$_RecipeResponse implements _RecipeResponse {
 
 // ignore: invalid_annotation_target
   final List<String> _cookingHistories;
-
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'cooking_histories')
   List<String> get cookingHistories {
-    if (_cookingHistories is EqualUnmodifiableListView) return _cookingHistories;
+    if (_cookingHistories is EqualUnmodifiableListView)
+      return _cookingHistories;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_cookingHistories);
   }
@@ -266,12 +318,10 @@ class _$_RecipeResponse implements _RecipeResponse {
   @override
   @JsonKey(name: 'cooking_count')
   final int cookingCount;
-
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'created_at')
   final String createdAt;
-
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'updated_at')
@@ -284,17 +334,46 @@ class _$_RecipeResponse implements _RecipeResponse {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_RecipeResponse && (identical(other.id, id) || other.id == id) && (identical(other.title, title) || other.title == title) && (identical(other.description, description) || other.description == description) && (identical(other.url, url) || other.url == url) && const DeepCollectionEquality().equals(other._images, _images) && const DeepCollectionEquality().equals(other._tags, _tags) && const DeepCollectionEquality().equals(other._cookingHistories, _cookingHistories) && (identical(other.cookingCount, cookingCount) || other.cookingCount == cookingCount) && (identical(other.createdAt, createdAt) || other.createdAt == createdAt) && (identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RecipeResponse &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.url, url) || other.url == url) &&
+            const DeepCollectionEquality().equals(other._images, _images) &&
+            const DeepCollectionEquality().equals(other._tags, _tags) &&
+            const DeepCollectionEquality()
+                .equals(other._cookingHistories, _cookingHistories) &&
+            (identical(other.cookingCount, cookingCount) ||
+                other.cookingCount == cookingCount) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, description, url, const DeepCollectionEquality().hash(_images), const DeepCollectionEquality().hash(_tags), const DeepCollectionEquality().hash(_cookingHistories), cookingCount, createdAt, updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      description,
+      url,
+      const DeepCollectionEquality().hash(_images),
+      const DeepCollectionEquality().hash(_tags),
+      const DeepCollectionEquality().hash(_cookingHistories),
+      cookingCount,
+      createdAt,
+      updatedAt);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RecipeResponseCopyWith<_$_RecipeResponse> get copyWith => __$$_RecipeResponseCopyWithImpl<_$_RecipeResponse>(this, _$identity);
+  _$$_RecipeResponseCopyWith<_$_RecipeResponse> get copyWith =>
+      __$$_RecipeResponseCopyWithImpl<_$_RecipeResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -305,51 +384,63 @@ class _$_RecipeResponse implements _RecipeResponse {
 }
 
 abstract class _RecipeResponse implements RecipeResponse {
-  const factory _RecipeResponse({@JsonKey(name: 'id') required final int id, @JsonKey(name: 'title') required final String title, @JsonKey(name: 'description') required final String description, @JsonKey(name: 'url') required final String? url, @JsonKey(name: 'images') required final List<ContentResponse> images, @JsonKey(name: 'tags') required final List<TagResponse> tags, @JsonKey(name: 'cooking_histories') required final List<String> cookingHistories, @JsonKey(name: 'cooking_count') required final int cookingCount, @JsonKey(name: 'created_at') required final String createdAt, @JsonKey(name: 'updated_at') required final String updatedAt}) = _$_RecipeResponse;
+  const factory _RecipeResponse(
+      {@JsonKey(name: 'id')
+          required final int id,
+      @JsonKey(name: 'title')
+          required final String title,
+      @JsonKey(name: 'description')
+          required final String description,
+      @JsonKey(name: 'url')
+          required final String? url,
+      @JsonKey(name: 'images')
+          required final List<ContentResponse> images,
+      @JsonKey(name: 'tags')
+          required final List<TagResponse> tags,
+      @JsonKey(name: 'cooking_histories')
+          required final List<String> cookingHistories,
+      @JsonKey(name: 'cooking_count')
+          required final int cookingCount,
+      @JsonKey(name: 'created_at')
+          required final String createdAt,
+      @JsonKey(name: 'updated_at')
+          required final String updatedAt}) = _$_RecipeResponse;
 
-  factory _RecipeResponse.fromJson(Map<String, dynamic> json) = _$_RecipeResponse.fromJson;
+  factory _RecipeResponse.fromJson(Map<String, dynamic> json) =
+      _$_RecipeResponse.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
   int get id;
-
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'title')
   String get title;
-
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'description')
   String get description;
-
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'url')
   String? get url;
-
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'images')
   List<ContentResponse> get images;
-
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'tags')
   List<TagResponse> get tags;
-
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'cooking_histories')
   List<String> get cookingHistories;
-
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'cooking_count')
   int get cookingCount;
-
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'created_at')
   String get createdAt;
-
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'updated_at')
   String get updatedAt;
-
   @override
   @JsonKey(ignore: true)
-  _$$_RecipeResponseCopyWith<_$_RecipeResponse> get copyWith => throw _privateConstructorUsedError;
+  _$$_RecipeResponseCopyWith<_$_RecipeResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -11,12 +11,12 @@ part of 'content.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Content {
   ContentKey get key => throw _privateConstructorUsedError;
-
   Uri get url => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -25,8 +25,8 @@ mixin _$Content {
 
 /// @nodoc
 abstract class $ContentCopyWith<$Res> {
-  factory $ContentCopyWith(Content value, $Res Function(Content) then) = _$ContentCopyWithImpl<$Res, Content>;
-
+  factory $ContentCopyWith(Content value, $Res Function(Content) then) =
+      _$ContentCopyWithImpl<$Res, Content>;
   @useResult
   $Res call({ContentKey key, Uri url});
 
@@ -34,12 +34,12 @@ abstract class $ContentCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ContentCopyWithImpl<$Res, $Val extends Content> implements $ContentCopyWith<$Res> {
+class _$ContentCopyWithImpl<$Res, $Val extends Content>
+    implements $ContentCopyWith<$Res> {
   _$ContentCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -72,8 +72,9 @@ class _$ContentCopyWithImpl<$Res, $Val extends Content> implements $ContentCopyW
 
 /// @nodoc
 abstract class _$$_ContentCopyWith<$Res> implements $ContentCopyWith<$Res> {
-  factory _$$_ContentCopyWith(_$_Content value, $Res Function(_$_Content) then) = __$$_ContentCopyWithImpl<$Res>;
-
+  factory _$$_ContentCopyWith(
+          _$_Content value, $Res Function(_$_Content) then) =
+      __$$_ContentCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ContentKey key, Uri url});
@@ -83,8 +84,11 @@ abstract class _$$_ContentCopyWith<$Res> implements $ContentCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ContentCopyWithImpl<$Res> extends _$ContentCopyWithImpl<$Res, _$_Content> implements _$$_ContentCopyWith<$Res> {
-  __$$_ContentCopyWithImpl(_$_Content _value, $Res Function(_$_Content) _then) : super(_value, _then);
+class __$$_ContentCopyWithImpl<$Res>
+    extends _$ContentCopyWithImpl<$Res, _$_Content>
+    implements _$$_ContentCopyWith<$Res> {
+  __$$_ContentCopyWithImpl(_$_Content _value, $Res Function(_$_Content) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -122,7 +126,11 @@ class _$_Content implements _Content {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Content && (identical(other.key, key) || other.key == key) && (identical(other.url, url) || other.url == url));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Content &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.url, url) || other.url == url));
   }
 
   @override
@@ -131,19 +139,20 @@ class _$_Content implements _Content {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ContentCopyWith<_$_Content> get copyWith => __$$_ContentCopyWithImpl<_$_Content>(this, _$identity);
+  _$$_ContentCopyWith<_$_Content> get copyWith =>
+      __$$_ContentCopyWithImpl<_$_Content>(this, _$identity);
 }
 
 abstract class _Content implements Content {
-  const factory _Content({required final ContentKey key, required final Uri url}) = _$_Content;
+  const factory _Content(
+      {required final ContentKey key, required final Uri url}) = _$_Content;
 
   @override
   ContentKey get key;
-
   @override
   Uri get url;
-
   @override
   @JsonKey(ignore: true)
-  _$$_ContentCopyWith<_$_Content> get copyWith => throw _privateConstructorUsedError;
+  _$$_ContentCopyWith<_$_Content> get copyWith =>
+      throw _privateConstructorUsedError;
 }

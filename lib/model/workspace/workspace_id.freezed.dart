@@ -11,31 +11,34 @@ part of 'workspace_id.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$WorkspaceId {
   int get value => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $WorkspaceIdCopyWith<WorkspaceId> get copyWith => throw _privateConstructorUsedError;
+  $WorkspaceIdCopyWith<WorkspaceId> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $WorkspaceIdCopyWith<$Res> {
-  factory $WorkspaceIdCopyWith(WorkspaceId value, $Res Function(WorkspaceId) then) = _$WorkspaceIdCopyWithImpl<$Res, WorkspaceId>;
-
+  factory $WorkspaceIdCopyWith(
+          WorkspaceId value, $Res Function(WorkspaceId) then) =
+      _$WorkspaceIdCopyWithImpl<$Res, WorkspaceId>;
   @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class _$WorkspaceIdCopyWithImpl<$Res, $Val extends WorkspaceId> implements $WorkspaceIdCopyWith<$Res> {
+class _$WorkspaceIdCopyWithImpl<$Res, $Val extends WorkspaceId>
+    implements $WorkspaceIdCopyWith<$Res> {
   _$WorkspaceIdCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -54,17 +57,23 @@ class _$WorkspaceIdCopyWithImpl<$Res, $Val extends WorkspaceId> implements $Work
 }
 
 /// @nodoc
-abstract class _$$_WorkspaceIdCopyWith<$Res> implements $WorkspaceIdCopyWith<$Res> {
-  factory _$$_WorkspaceIdCopyWith(_$_WorkspaceId value, $Res Function(_$_WorkspaceId) then) = __$$_WorkspaceIdCopyWithImpl<$Res>;
-
+abstract class _$$_WorkspaceIdCopyWith<$Res>
+    implements $WorkspaceIdCopyWith<$Res> {
+  factory _$$_WorkspaceIdCopyWith(
+          _$_WorkspaceId value, $Res Function(_$_WorkspaceId) then) =
+      __$$_WorkspaceIdCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class __$$_WorkspaceIdCopyWithImpl<$Res> extends _$WorkspaceIdCopyWithImpl<$Res, _$_WorkspaceId> implements _$$_WorkspaceIdCopyWith<$Res> {
-  __$$_WorkspaceIdCopyWithImpl(_$_WorkspaceId _value, $Res Function(_$_WorkspaceId) _then) : super(_value, _then);
+class __$$_WorkspaceIdCopyWithImpl<$Res>
+    extends _$WorkspaceIdCopyWithImpl<$Res, _$_WorkspaceId>
+    implements _$$_WorkspaceIdCopyWith<$Res> {
+  __$$_WorkspaceIdCopyWithImpl(
+      _$_WorkspaceId _value, $Res Function(_$_WorkspaceId) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -95,7 +104,10 @@ class _$_WorkspaceId implements _WorkspaceId {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_WorkspaceId && (identical(other.value, value) || other.value == value));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_WorkspaceId &&
+            (identical(other.value, value) || other.value == value));
   }
 
   @override
@@ -104,7 +116,8 @@ class _$_WorkspaceId implements _WorkspaceId {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WorkspaceIdCopyWith<_$_WorkspaceId> get copyWith => __$$_WorkspaceIdCopyWithImpl<_$_WorkspaceId>(this, _$identity);
+  _$$_WorkspaceIdCopyWith<_$_WorkspaceId> get copyWith =>
+      __$$_WorkspaceIdCopyWithImpl<_$_WorkspaceId>(this, _$identity);
 }
 
 abstract class _WorkspaceId implements WorkspaceId {
@@ -112,8 +125,8 @@ abstract class _WorkspaceId implements WorkspaceId {
 
   @override
   int get value;
-
   @override
   @JsonKey(ignore: true)
-  _$$_WorkspaceIdCopyWith<_$_WorkspaceId> get copyWith => throw _privateConstructorUsedError;
+  _$$_WorkspaceIdCopyWith<_$_WorkspaceId> get copyWith =>
+      throw _privateConstructorUsedError;
 }

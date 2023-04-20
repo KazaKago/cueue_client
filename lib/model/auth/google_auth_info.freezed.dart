@@ -11,33 +11,35 @@ part of 'google_auth_info.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$GoogleAuthInfo {
   String? get accessToken => throw _privateConstructorUsedError;
-
   String? get idToken => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $GoogleAuthInfoCopyWith<GoogleAuthInfo> get copyWith => throw _privateConstructorUsedError;
+  $GoogleAuthInfoCopyWith<GoogleAuthInfo> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $GoogleAuthInfoCopyWith<$Res> {
-  factory $GoogleAuthInfoCopyWith(GoogleAuthInfo value, $Res Function(GoogleAuthInfo) then) = _$GoogleAuthInfoCopyWithImpl<$Res, GoogleAuthInfo>;
-
+  factory $GoogleAuthInfoCopyWith(
+          GoogleAuthInfo value, $Res Function(GoogleAuthInfo) then) =
+      _$GoogleAuthInfoCopyWithImpl<$Res, GoogleAuthInfo>;
   @useResult
   $Res call({String? accessToken, String? idToken});
 }
 
 /// @nodoc
-class _$GoogleAuthInfoCopyWithImpl<$Res, $Val extends GoogleAuthInfo> implements $GoogleAuthInfoCopyWith<$Res> {
+class _$GoogleAuthInfoCopyWithImpl<$Res, $Val extends GoogleAuthInfo>
+    implements $GoogleAuthInfoCopyWith<$Res> {
   _$GoogleAuthInfoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -61,17 +63,23 @@ class _$GoogleAuthInfoCopyWithImpl<$Res, $Val extends GoogleAuthInfo> implements
 }
 
 /// @nodoc
-abstract class _$$_GoogleAuthInfoCopyWith<$Res> implements $GoogleAuthInfoCopyWith<$Res> {
-  factory _$$_GoogleAuthInfoCopyWith(_$_GoogleAuthInfo value, $Res Function(_$_GoogleAuthInfo) then) = __$$_GoogleAuthInfoCopyWithImpl<$Res>;
-
+abstract class _$$_GoogleAuthInfoCopyWith<$Res>
+    implements $GoogleAuthInfoCopyWith<$Res> {
+  factory _$$_GoogleAuthInfoCopyWith(
+          _$_GoogleAuthInfo value, $Res Function(_$_GoogleAuthInfo) then) =
+      __$$_GoogleAuthInfoCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? accessToken, String? idToken});
 }
 
 /// @nodoc
-class __$$_GoogleAuthInfoCopyWithImpl<$Res> extends _$GoogleAuthInfoCopyWithImpl<$Res, _$_GoogleAuthInfo> implements _$$_GoogleAuthInfoCopyWith<$Res> {
-  __$$_GoogleAuthInfoCopyWithImpl(_$_GoogleAuthInfo _value, $Res Function(_$_GoogleAuthInfo) _then) : super(_value, _then);
+class __$$_GoogleAuthInfoCopyWithImpl<$Res>
+    extends _$GoogleAuthInfoCopyWithImpl<$Res, _$_GoogleAuthInfo>
+    implements _$$_GoogleAuthInfoCopyWith<$Res> {
+  __$$_GoogleAuthInfoCopyWithImpl(
+      _$_GoogleAuthInfo _value, $Res Function(_$_GoogleAuthInfo) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -109,7 +117,12 @@ class _$_GoogleAuthInfo implements _GoogleAuthInfo {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_GoogleAuthInfo && (identical(other.accessToken, accessToken) || other.accessToken == accessToken) && (identical(other.idToken, idToken) || other.idToken == idToken));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_GoogleAuthInfo &&
+            (identical(other.accessToken, accessToken) ||
+                other.accessToken == accessToken) &&
+            (identical(other.idToken, idToken) || other.idToken == idToken));
   }
 
   @override
@@ -118,19 +131,21 @@ class _$_GoogleAuthInfo implements _GoogleAuthInfo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GoogleAuthInfoCopyWith<_$_GoogleAuthInfo> get copyWith => __$$_GoogleAuthInfoCopyWithImpl<_$_GoogleAuthInfo>(this, _$identity);
+  _$$_GoogleAuthInfoCopyWith<_$_GoogleAuthInfo> get copyWith =>
+      __$$_GoogleAuthInfoCopyWithImpl<_$_GoogleAuthInfo>(this, _$identity);
 }
 
 abstract class _GoogleAuthInfo implements GoogleAuthInfo {
-  const factory _GoogleAuthInfo({required final String? accessToken, required final String? idToken}) = _$_GoogleAuthInfo;
+  const factory _GoogleAuthInfo(
+      {required final String? accessToken,
+      required final String? idToken}) = _$_GoogleAuthInfo;
 
   @override
   String? get accessToken;
-
   @override
   String? get idToken;
-
   @override
   @JsonKey(ignore: true)
-  _$$_GoogleAuthInfoCopyWith<_$_GoogleAuthInfo> get copyWith => throw _privateConstructorUsedError;
+  _$$_GoogleAuthInfoCopyWith<_$_GoogleAuthInfo> get copyWith =>
+      throw _privateConstructorUsedError;
 }

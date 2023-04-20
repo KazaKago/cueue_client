@@ -11,33 +11,35 @@ part of 'date_split_menu_list.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$DateSplitMenuList {
   DateTime get date => throw _privateConstructorUsedError;
-
   List<MenuSummary> get menus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $DateSplitMenuListCopyWith<DateSplitMenuList> get copyWith => throw _privateConstructorUsedError;
+  $DateSplitMenuListCopyWith<DateSplitMenuList> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DateSplitMenuListCopyWith<$Res> {
-  factory $DateSplitMenuListCopyWith(DateSplitMenuList value, $Res Function(DateSplitMenuList) then) = _$DateSplitMenuListCopyWithImpl<$Res, DateSplitMenuList>;
-
+  factory $DateSplitMenuListCopyWith(
+          DateSplitMenuList value, $Res Function(DateSplitMenuList) then) =
+      _$DateSplitMenuListCopyWithImpl<$Res, DateSplitMenuList>;
   @useResult
   $Res call({DateTime date, List<MenuSummary> menus});
 }
 
 /// @nodoc
-class _$DateSplitMenuListCopyWithImpl<$Res, $Val extends DateSplitMenuList> implements $DateSplitMenuListCopyWith<$Res> {
+class _$DateSplitMenuListCopyWithImpl<$Res, $Val extends DateSplitMenuList>
+    implements $DateSplitMenuListCopyWith<$Res> {
   _$DateSplitMenuListCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -61,17 +63,23 @@ class _$DateSplitMenuListCopyWithImpl<$Res, $Val extends DateSplitMenuList> impl
 }
 
 /// @nodoc
-abstract class _$$_DateSplitMenuListCopyWith<$Res> implements $DateSplitMenuListCopyWith<$Res> {
-  factory _$$_DateSplitMenuListCopyWith(_$_DateSplitMenuList value, $Res Function(_$_DateSplitMenuList) then) = __$$_DateSplitMenuListCopyWithImpl<$Res>;
-
+abstract class _$$_DateSplitMenuListCopyWith<$Res>
+    implements $DateSplitMenuListCopyWith<$Res> {
+  factory _$$_DateSplitMenuListCopyWith(_$_DateSplitMenuList value,
+          $Res Function(_$_DateSplitMenuList) then) =
+      __$$_DateSplitMenuListCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({DateTime date, List<MenuSummary> menus});
 }
 
 /// @nodoc
-class __$$_DateSplitMenuListCopyWithImpl<$Res> extends _$DateSplitMenuListCopyWithImpl<$Res, _$_DateSplitMenuList> implements _$$_DateSplitMenuListCopyWith<$Res> {
-  __$$_DateSplitMenuListCopyWithImpl(_$_DateSplitMenuList _value, $Res Function(_$_DateSplitMenuList) _then) : super(_value, _then);
+class __$$_DateSplitMenuListCopyWithImpl<$Res>
+    extends _$DateSplitMenuListCopyWithImpl<$Res, _$_DateSplitMenuList>
+    implements _$$_DateSplitMenuListCopyWith<$Res> {
+  __$$_DateSplitMenuListCopyWithImpl(
+      _$_DateSplitMenuList _value, $Res Function(_$_DateSplitMenuList) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -95,12 +103,13 @@ class __$$_DateSplitMenuListCopyWithImpl<$Res> extends _$DateSplitMenuListCopyWi
 /// @nodoc
 
 class _$_DateSplitMenuList implements _DateSplitMenuList {
-  const _$_DateSplitMenuList({required this.date, required final List<MenuSummary> menus}) : _menus = menus;
+  const _$_DateSplitMenuList(
+      {required this.date, required final List<MenuSummary> menus})
+      : _menus = menus;
 
   @override
   final DateTime date;
   final List<MenuSummary> _menus;
-
   @override
   List<MenuSummary> get menus {
     if (_menus is EqualUnmodifiableListView) return _menus;
@@ -115,28 +124,36 @@ class _$_DateSplitMenuList implements _DateSplitMenuList {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_DateSplitMenuList && (identical(other.date, date) || other.date == date) && const DeepCollectionEquality().equals(other._menus, _menus));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DateSplitMenuList &&
+            (identical(other.date, date) || other.date == date) &&
+            const DeepCollectionEquality().equals(other._menus, _menus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, date, const DeepCollectionEquality().hash(_menus));
+  int get hashCode => Object.hash(
+      runtimeType, date, const DeepCollectionEquality().hash(_menus));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DateSplitMenuListCopyWith<_$_DateSplitMenuList> get copyWith => __$$_DateSplitMenuListCopyWithImpl<_$_DateSplitMenuList>(this, _$identity);
+  _$$_DateSplitMenuListCopyWith<_$_DateSplitMenuList> get copyWith =>
+      __$$_DateSplitMenuListCopyWithImpl<_$_DateSplitMenuList>(
+          this, _$identity);
 }
 
 abstract class _DateSplitMenuList implements DateSplitMenuList {
-  const factory _DateSplitMenuList({required final DateTime date, required final List<MenuSummary> menus}) = _$_DateSplitMenuList;
+  const factory _DateSplitMenuList(
+      {required final DateTime date,
+      required final List<MenuSummary> menus}) = _$_DateSplitMenuList;
 
   @override
   DateTime get date;
-
   @override
   List<MenuSummary> get menus;
-
   @override
   @JsonKey(ignore: true)
-  _$$_DateSplitMenuListCopyWith<_$_DateSplitMenuList> get copyWith => throw _privateConstructorUsedError;
+  _$$_DateSplitMenuListCopyWith<_$_DateSplitMenuList> get copyWith =>
+      throw _privateConstructorUsedError;
 }

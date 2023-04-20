@@ -11,12 +11,12 @@ part of 'pre_user.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PreUser {
   String get displayName => throw _privateConstructorUsedError;
-
   Content? get photo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -25,8 +25,8 @@ mixin _$PreUser {
 
 /// @nodoc
 abstract class $PreUserCopyWith<$Res> {
-  factory $PreUserCopyWith(PreUser value, $Res Function(PreUser) then) = _$PreUserCopyWithImpl<$Res, PreUser>;
-
+  factory $PreUserCopyWith(PreUser value, $Res Function(PreUser) then) =
+      _$PreUserCopyWithImpl<$Res, PreUser>;
   @useResult
   $Res call({String displayName, Content? photo});
 
@@ -34,12 +34,12 @@ abstract class $PreUserCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PreUserCopyWithImpl<$Res, $Val extends PreUser> implements $PreUserCopyWith<$Res> {
+class _$PreUserCopyWithImpl<$Res, $Val extends PreUser>
+    implements $PreUserCopyWith<$Res> {
   _$PreUserCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -76,8 +76,9 @@ class _$PreUserCopyWithImpl<$Res, $Val extends PreUser> implements $PreUserCopyW
 
 /// @nodoc
 abstract class _$$_PreUserCopyWith<$Res> implements $PreUserCopyWith<$Res> {
-  factory _$$_PreUserCopyWith(_$_PreUser value, $Res Function(_$_PreUser) then) = __$$_PreUserCopyWithImpl<$Res>;
-
+  factory _$$_PreUserCopyWith(
+          _$_PreUser value, $Res Function(_$_PreUser) then) =
+      __$$_PreUserCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String displayName, Content? photo});
@@ -87,8 +88,11 @@ abstract class _$$_PreUserCopyWith<$Res> implements $PreUserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PreUserCopyWithImpl<$Res> extends _$PreUserCopyWithImpl<$Res, _$_PreUser> implements _$$_PreUserCopyWith<$Res> {
-  __$$_PreUserCopyWithImpl(_$_PreUser _value, $Res Function(_$_PreUser) _then) : super(_value, _then);
+class __$$_PreUserCopyWithImpl<$Res>
+    extends _$PreUserCopyWithImpl<$Res, _$_PreUser>
+    implements _$$_PreUserCopyWith<$Res> {
+  __$$_PreUserCopyWithImpl(_$_PreUser _value, $Res Function(_$_PreUser) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -126,7 +130,12 @@ class _$_PreUser implements _PreUser {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_PreUser && (identical(other.displayName, displayName) || other.displayName == displayName) && (identical(other.photo, photo) || other.photo == photo));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PreUser &&
+            (identical(other.displayName, displayName) ||
+                other.displayName == displayName) &&
+            (identical(other.photo, photo) || other.photo == photo));
   }
 
   @override
@@ -135,19 +144,21 @@ class _$_PreUser implements _PreUser {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PreUserCopyWith<_$_PreUser> get copyWith => __$$_PreUserCopyWithImpl<_$_PreUser>(this, _$identity);
+  _$$_PreUserCopyWith<_$_PreUser> get copyWith =>
+      __$$_PreUserCopyWithImpl<_$_PreUser>(this, _$identity);
 }
 
 abstract class _PreUser implements PreUser {
-  const factory _PreUser({required final String displayName, required final Content? photo}) = _$_PreUser;
+  const factory _PreUser(
+      {required final String displayName,
+      required final Content? photo}) = _$_PreUser;
 
   @override
   String get displayName;
-
   @override
   Content? get photo;
-
   @override
   @JsonKey(ignore: true)
-  _$$_PreUserCopyWith<_$_PreUser> get copyWith => throw _privateConstructorUsedError;
+  _$$_PreUserCopyWith<_$_PreUser> get copyWith =>
+      throw _privateConstructorUsedError;
 }

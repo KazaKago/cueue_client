@@ -11,39 +11,39 @@ part of 'invitation.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Invitation {
   InvitationCode get code => throw _privateConstructorUsedError;
-
   Workspace get workspace => throw _privateConstructorUsedError;
-
   DateTime get expiredAt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $InvitationCopyWith<Invitation> get copyWith => throw _privateConstructorUsedError;
+  $InvitationCopyWith<Invitation> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $InvitationCopyWith<$Res> {
-  factory $InvitationCopyWith(Invitation value, $Res Function(Invitation) then) = _$InvitationCopyWithImpl<$Res, Invitation>;
-
+  factory $InvitationCopyWith(
+          Invitation value, $Res Function(Invitation) then) =
+      _$InvitationCopyWithImpl<$Res, Invitation>;
   @useResult
   $Res call({InvitationCode code, Workspace workspace, DateTime expiredAt});
 
   $InvitationCodeCopyWith<$Res> get code;
-
   $WorkspaceCopyWith<$Res> get workspace;
 }
 
 /// @nodoc
-class _$InvitationCopyWithImpl<$Res, $Val extends Invitation> implements $InvitationCopyWith<$Res> {
+class _$InvitationCopyWithImpl<$Res, $Val extends Invitation>
+    implements $InvitationCopyWith<$Res> {
   _$InvitationCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -88,23 +88,28 @@ class _$InvitationCopyWithImpl<$Res, $Val extends Invitation> implements $Invita
 }
 
 /// @nodoc
-abstract class _$$_InvitationCopyWith<$Res> implements $InvitationCopyWith<$Res> {
-  factory _$$_InvitationCopyWith(_$_Invitation value, $Res Function(_$_Invitation) then) = __$$_InvitationCopyWithImpl<$Res>;
-
+abstract class _$$_InvitationCopyWith<$Res>
+    implements $InvitationCopyWith<$Res> {
+  factory _$$_InvitationCopyWith(
+          _$_Invitation value, $Res Function(_$_Invitation) then) =
+      __$$_InvitationCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({InvitationCode code, Workspace workspace, DateTime expiredAt});
 
   @override
   $InvitationCodeCopyWith<$Res> get code;
-
   @override
   $WorkspaceCopyWith<$Res> get workspace;
 }
 
 /// @nodoc
-class __$$_InvitationCopyWithImpl<$Res> extends _$InvitationCopyWithImpl<$Res, _$_Invitation> implements _$$_InvitationCopyWith<$Res> {
-  __$$_InvitationCopyWithImpl(_$_Invitation _value, $Res Function(_$_Invitation) _then) : super(_value, _then);
+class __$$_InvitationCopyWithImpl<$Res>
+    extends _$InvitationCopyWithImpl<$Res, _$_Invitation>
+    implements _$$_InvitationCopyWith<$Res> {
+  __$$_InvitationCopyWithImpl(
+      _$_Invitation _value, $Res Function(_$_Invitation) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -133,7 +138,8 @@ class __$$_InvitationCopyWithImpl<$Res> extends _$InvitationCopyWithImpl<$Res, _
 /// @nodoc
 
 class _$_Invitation implements _Invitation {
-  const _$_Invitation({required this.code, required this.workspace, required this.expiredAt});
+  const _$_Invitation(
+      {required this.code, required this.workspace, required this.expiredAt});
 
   @override
   final InvitationCode code;
@@ -149,7 +155,14 @@ class _$_Invitation implements _Invitation {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Invitation && (identical(other.code, code) || other.code == code) && (identical(other.workspace, workspace) || other.workspace == workspace) && (identical(other.expiredAt, expiredAt) || other.expiredAt == expiredAt));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Invitation &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.workspace, workspace) ||
+                other.workspace == workspace) &&
+            (identical(other.expiredAt, expiredAt) ||
+                other.expiredAt == expiredAt));
   }
 
   @override
@@ -158,22 +171,24 @@ class _$_Invitation implements _Invitation {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InvitationCopyWith<_$_Invitation> get copyWith => __$$_InvitationCopyWithImpl<_$_Invitation>(this, _$identity);
+  _$$_InvitationCopyWith<_$_Invitation> get copyWith =>
+      __$$_InvitationCopyWithImpl<_$_Invitation>(this, _$identity);
 }
 
 abstract class _Invitation implements Invitation {
-  const factory _Invitation({required final InvitationCode code, required final Workspace workspace, required final DateTime expiredAt}) = _$_Invitation;
+  const factory _Invitation(
+      {required final InvitationCode code,
+      required final Workspace workspace,
+      required final DateTime expiredAt}) = _$_Invitation;
 
   @override
   InvitationCode get code;
-
   @override
   Workspace get workspace;
-
   @override
   DateTime get expiredAt;
-
   @override
   @JsonKey(ignore: true)
-  _$$_InvitationCopyWith<_$_Invitation> get copyWith => throw _privateConstructorUsedError;
+  _$$_InvitationCopyWith<_$_Invitation> get copyWith =>
+      throw _privateConstructorUsedError;
 }

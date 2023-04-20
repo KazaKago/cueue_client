@@ -11,24 +11,24 @@ part of 'workspace.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Workspace {
   WorkspaceId get id => throw _privateConstructorUsedError;
-
   String get name => throw _privateConstructorUsedError;
-
   List<UserSummary> get users => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $WorkspaceCopyWith<Workspace> get copyWith => throw _privateConstructorUsedError;
+  $WorkspaceCopyWith<Workspace> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $WorkspaceCopyWith<$Res> {
-  factory $WorkspaceCopyWith(Workspace value, $Res Function(Workspace) then) = _$WorkspaceCopyWithImpl<$Res, Workspace>;
-
+  factory $WorkspaceCopyWith(Workspace value, $Res Function(Workspace) then) =
+      _$WorkspaceCopyWithImpl<$Res, Workspace>;
   @useResult
   $Res call({WorkspaceId id, String name, List<UserSummary> users});
 
@@ -36,12 +36,12 @@ abstract class $WorkspaceCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WorkspaceCopyWithImpl<$Res, $Val extends Workspace> implements $WorkspaceCopyWith<$Res> {
+class _$WorkspaceCopyWithImpl<$Res, $Val extends Workspace>
+    implements $WorkspaceCopyWith<$Res> {
   _$WorkspaceCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -79,8 +79,9 @@ class _$WorkspaceCopyWithImpl<$Res, $Val extends Workspace> implements $Workspac
 
 /// @nodoc
 abstract class _$$_WorkspaceCopyWith<$Res> implements $WorkspaceCopyWith<$Res> {
-  factory _$$_WorkspaceCopyWith(_$_Workspace value, $Res Function(_$_Workspace) then) = __$$_WorkspaceCopyWithImpl<$Res>;
-
+  factory _$$_WorkspaceCopyWith(
+          _$_Workspace value, $Res Function(_$_Workspace) then) =
+      __$$_WorkspaceCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({WorkspaceId id, String name, List<UserSummary> users});
@@ -90,8 +91,12 @@ abstract class _$$_WorkspaceCopyWith<$Res> implements $WorkspaceCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_WorkspaceCopyWithImpl<$Res> extends _$WorkspaceCopyWithImpl<$Res, _$_Workspace> implements _$$_WorkspaceCopyWith<$Res> {
-  __$$_WorkspaceCopyWithImpl(_$_Workspace _value, $Res Function(_$_Workspace) _then) : super(_value, _then);
+class __$$_WorkspaceCopyWithImpl<$Res>
+    extends _$WorkspaceCopyWithImpl<$Res, _$_Workspace>
+    implements _$$_WorkspaceCopyWith<$Res> {
+  __$$_WorkspaceCopyWithImpl(
+      _$_Workspace _value, $Res Function(_$_Workspace) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -120,14 +125,17 @@ class __$$_WorkspaceCopyWithImpl<$Res> extends _$WorkspaceCopyWithImpl<$Res, _$_
 /// @nodoc
 
 class _$_Workspace implements _Workspace {
-  const _$_Workspace({required this.id, required this.name, required final List<UserSummary> users}) : _users = users;
+  const _$_Workspace(
+      {required this.id,
+      required this.name,
+      required final List<UserSummary> users})
+      : _users = users;
 
   @override
   final WorkspaceId id;
   @override
   final String name;
   final List<UserSummary> _users;
-
   @override
   List<UserSummary> get users {
     if (_users is EqualUnmodifiableListView) return _users;
@@ -142,31 +150,39 @@ class _$_Workspace implements _Workspace {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Workspace && (identical(other.id, id) || other.id == id) && (identical(other.name, name) || other.name == name) && const DeepCollectionEquality().equals(other._users, _users));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Workspace &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality().equals(other._users, _users));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, const DeepCollectionEquality().hash(_users));
+  int get hashCode => Object.hash(
+      runtimeType, id, name, const DeepCollectionEquality().hash(_users));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WorkspaceCopyWith<_$_Workspace> get copyWith => __$$_WorkspaceCopyWithImpl<_$_Workspace>(this, _$identity);
+  _$$_WorkspaceCopyWith<_$_Workspace> get copyWith =>
+      __$$_WorkspaceCopyWithImpl<_$_Workspace>(this, _$identity);
 }
 
 abstract class _Workspace implements Workspace {
-  const factory _Workspace({required final WorkspaceId id, required final String name, required final List<UserSummary> users}) = _$_Workspace;
+  const factory _Workspace(
+      {required final WorkspaceId id,
+      required final String name,
+      required final List<UserSummary> users}) = _$_Workspace;
 
   @override
   WorkspaceId get id;
-
   @override
   String get name;
-
   @override
   List<UserSummary> get users;
-
   @override
   @JsonKey(ignore: true)
-  _$$_WorkspaceCopyWith<_$_Workspace> get copyWith => throw _privateConstructorUsedError;
+  _$$_WorkspaceCopyWith<_$_Workspace> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -11,41 +11,45 @@ part of 'menu_summary_impl.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError('It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$MenuSummaryImpl {
   MenuId get id => throw _privateConstructorUsedError;
-
   String get memo => throw _privateConstructorUsedError;
-
   DateTime get date => throw _privateConstructorUsedError;
-
   TimeFrame get timeFrame => throw _privateConstructorUsedError;
-
   List<RecipeSummary> get recipes => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MenuSummaryImplCopyWith<MenuSummaryImpl> get copyWith => throw _privateConstructorUsedError;
+  $MenuSummaryImplCopyWith<MenuSummaryImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MenuSummaryImplCopyWith<$Res> {
-  factory $MenuSummaryImplCopyWith(MenuSummaryImpl value, $Res Function(MenuSummaryImpl) then) = _$MenuSummaryImplCopyWithImpl<$Res, MenuSummaryImpl>;
-
+  factory $MenuSummaryImplCopyWith(
+          MenuSummaryImpl value, $Res Function(MenuSummaryImpl) then) =
+      _$MenuSummaryImplCopyWithImpl<$Res, MenuSummaryImpl>;
   @useResult
-  $Res call({MenuId id, String memo, DateTime date, TimeFrame timeFrame, List<RecipeSummary> recipes});
+  $Res call(
+      {MenuId id,
+      String memo,
+      DateTime date,
+      TimeFrame timeFrame,
+      List<RecipeSummary> recipes});
 
   $MenuIdCopyWith<$Res> get id;
 }
 
 /// @nodoc
-class _$MenuSummaryImplCopyWithImpl<$Res, $Val extends MenuSummaryImpl> implements $MenuSummaryImplCopyWith<$Res> {
+class _$MenuSummaryImplCopyWithImpl<$Res, $Val extends MenuSummaryImpl>
+    implements $MenuSummaryImplCopyWith<$Res> {
   _$MenuSummaryImplCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -92,20 +96,31 @@ class _$MenuSummaryImplCopyWithImpl<$Res, $Val extends MenuSummaryImpl> implemen
 }
 
 /// @nodoc
-abstract class _$$_MenuSummaryImplCopyWith<$Res> implements $MenuSummaryImplCopyWith<$Res> {
-  factory _$$_MenuSummaryImplCopyWith(_$_MenuSummaryImpl value, $Res Function(_$_MenuSummaryImpl) then) = __$$_MenuSummaryImplCopyWithImpl<$Res>;
-
+abstract class _$$_MenuSummaryImplCopyWith<$Res>
+    implements $MenuSummaryImplCopyWith<$Res> {
+  factory _$$_MenuSummaryImplCopyWith(
+          _$_MenuSummaryImpl value, $Res Function(_$_MenuSummaryImpl) then) =
+      __$$_MenuSummaryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({MenuId id, String memo, DateTime date, TimeFrame timeFrame, List<RecipeSummary> recipes});
+  $Res call(
+      {MenuId id,
+      String memo,
+      DateTime date,
+      TimeFrame timeFrame,
+      List<RecipeSummary> recipes});
 
   @override
   $MenuIdCopyWith<$Res> get id;
 }
 
 /// @nodoc
-class __$$_MenuSummaryImplCopyWithImpl<$Res> extends _$MenuSummaryImplCopyWithImpl<$Res, _$_MenuSummaryImpl> implements _$$_MenuSummaryImplCopyWith<$Res> {
-  __$$_MenuSummaryImplCopyWithImpl(_$_MenuSummaryImpl _value, $Res Function(_$_MenuSummaryImpl) _then) : super(_value, _then);
+class __$$_MenuSummaryImplCopyWithImpl<$Res>
+    extends _$MenuSummaryImplCopyWithImpl<$Res, _$_MenuSummaryImpl>
+    implements _$$_MenuSummaryImplCopyWith<$Res> {
+  __$$_MenuSummaryImplCopyWithImpl(
+      _$_MenuSummaryImpl _value, $Res Function(_$_MenuSummaryImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -144,7 +159,13 @@ class __$$_MenuSummaryImplCopyWithImpl<$Res> extends _$MenuSummaryImplCopyWithIm
 /// @nodoc
 
 class _$_MenuSummaryImpl implements _MenuSummaryImpl {
-  const _$_MenuSummaryImpl({required this.id, required this.memo, required this.date, required this.timeFrame, required final List<RecipeSummary> recipes}) : _recipes = recipes;
+  const _$_MenuSummaryImpl(
+      {required this.id,
+      required this.memo,
+      required this.date,
+      required this.timeFrame,
+      required final List<RecipeSummary> recipes})
+      : _recipes = recipes;
 
   @override
   final MenuId id;
@@ -155,7 +176,6 @@ class _$_MenuSummaryImpl implements _MenuSummaryImpl {
   @override
   final TimeFrame timeFrame;
   final List<RecipeSummary> _recipes;
-
   @override
   List<RecipeSummary> get recipes {
     if (_recipes is EqualUnmodifiableListView) return _recipes;
@@ -170,37 +190,48 @@ class _$_MenuSummaryImpl implements _MenuSummaryImpl {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_MenuSummaryImpl && (identical(other.id, id) || other.id == id) && (identical(other.memo, memo) || other.memo == memo) && (identical(other.date, date) || other.date == date) && (identical(other.timeFrame, timeFrame) || other.timeFrame == timeFrame) && const DeepCollectionEquality().equals(other._recipes, _recipes));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MenuSummaryImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.memo, memo) || other.memo == memo) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.timeFrame, timeFrame) ||
+                other.timeFrame == timeFrame) &&
+            const DeepCollectionEquality().equals(other._recipes, _recipes));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, memo, date, timeFrame, const DeepCollectionEquality().hash(_recipes));
+  int get hashCode => Object.hash(runtimeType, id, memo, date, timeFrame,
+      const DeepCollectionEquality().hash(_recipes));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MenuSummaryImplCopyWith<_$_MenuSummaryImpl> get copyWith => __$$_MenuSummaryImplCopyWithImpl<_$_MenuSummaryImpl>(this, _$identity);
+  _$$_MenuSummaryImplCopyWith<_$_MenuSummaryImpl> get copyWith =>
+      __$$_MenuSummaryImplCopyWithImpl<_$_MenuSummaryImpl>(this, _$identity);
 }
 
 abstract class _MenuSummaryImpl implements MenuSummaryImpl {
-  const factory _MenuSummaryImpl({required final MenuId id, required final String memo, required final DateTime date, required final TimeFrame timeFrame, required final List<RecipeSummary> recipes}) = _$_MenuSummaryImpl;
+  const factory _MenuSummaryImpl(
+      {required final MenuId id,
+      required final String memo,
+      required final DateTime date,
+      required final TimeFrame timeFrame,
+      required final List<RecipeSummary> recipes}) = _$_MenuSummaryImpl;
 
   @override
   MenuId get id;
-
   @override
   String get memo;
-
   @override
   DateTime get date;
-
   @override
   TimeFrame get timeFrame;
-
   @override
   List<RecipeSummary> get recipes;
-
   @override
   @JsonKey(ignore: true)
-  _$$_MenuSummaryImplCopyWith<_$_MenuSummaryImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$_MenuSummaryImplCopyWith<_$_MenuSummaryImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
