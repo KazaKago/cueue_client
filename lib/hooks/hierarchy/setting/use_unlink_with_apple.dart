@@ -30,8 +30,7 @@ SWRTriggerState<void, void> useUnlinkWithApple(WidgetRef ref) {
     }
   });
   useEffectSWRData(showUnlinkWithAppleConfirmationDialog, (event) {
-    if (event != const SimpleMessageDialogEvent.positive()) return;
-    unlinkWithApple.trigger(null);
+    if (event == const SimpleMessageDialogEvent.positive()) unlinkWithApple.trigger(null);
   });
   useEffectSWRData(unlinkWithApple, (_) {
     showFriedToast(intl.unlinkedWithApple);

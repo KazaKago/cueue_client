@@ -30,8 +30,7 @@ SWRTriggerState<void, void> useUnlinkWithGoogle(WidgetRef ref) {
     }
   });
   useEffectSWRData(showUnlinkWithGoogleConfirmationDialog, (event) {
-    if (event != const SimpleMessageDialogEvent.positive()) return;
-    unlinkWithGoogle.trigger(null);
+    if (event == const SimpleMessageDialogEvent.positive()) unlinkWithGoogle.trigger(null);
   });
   useEffectSWRData(unlinkWithGoogle, (_) {
     showFriedToast(intl.unlinkedWithGoogle);

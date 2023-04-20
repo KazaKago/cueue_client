@@ -32,9 +32,7 @@ class MenuDetailPage extends HookConsumerWidget {
     final menu = menuState.data;
     final pushPage = usePushPage<EditingResult>();
     useEffectSWRData<EditingResult?>(pushPage, (data) {
-      if (data == EditingResult.deleted) {
-        popPage.trigger(null);
-      }
+      if (data == EditingResult.deleted) popPage.trigger(null);
     });
     return Scaffold(
       appBar: AppBar(

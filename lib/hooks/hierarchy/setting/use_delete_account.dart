@@ -63,8 +63,7 @@ SWRTriggerState<void, void> useDeleteAccountWithConfirmation(WidgetRef ref) {
   final showSimpleMessageDialog = useShowSimpleMessageDialog();
   final deleteAccount = useDeleteAccount(ref);
   useEffectSWRData(showSimpleMessageDialog, (data) {
-    if (showSimpleMessageDialog.data != const SimpleMessageDialogEvent.positive()) return;
-    deleteAccount.trigger(null);
+    if (showSimpleMessageDialog.data == const SimpleMessageDialogEvent.positive()) deleteAccount.trigger(null);
   });
   return useSWRTrigger((_) {
     return showSimpleMessageDialog.trigger(
