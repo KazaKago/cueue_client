@@ -20,7 +20,7 @@ class UpdateMenuData {
 }
 
 SWRTriggerState<UpdateMenuData, Menu> useUpdateMenu(WidgetRef ref) {
-  final pop = usePop<EditingResult>();
+  final popPage = usePopPage<EditingResult>();
   final easyLoading = useEasyLoading();
   final showErrorDialog = useShowErrorDialog(ref);
   final updateMenuApi = ref.read(updateMenuApiProvider);
@@ -31,7 +31,7 @@ SWRTriggerState<UpdateMenuData, Menu> useUpdateMenu(WidgetRef ref) {
     return menuResponseMapper(response);
   });
   useEffectSWRData(updateMenu, (data) {
-    pop.trigger(EditingResult.updated);
+    popPage.trigger(EditingResult.updated);
   });
   useEffectSWRIsMutating(updateMenu, (isMutating) {
     easyLoading.trigger(isMutating);

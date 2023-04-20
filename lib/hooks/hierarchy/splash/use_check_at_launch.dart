@@ -4,31 +4,32 @@ import 'package:cueue/hooks/hierarchy/mypage/use_firebase_user.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_user.dart';
 import 'package:cueue/model/exception/not_found_exception.dart';
 import 'package:cueue/model/user/user.dart';
+import 'package:cueue/ui/hierarchy/auth/authentication_page.dart';
+import 'package:cueue/ui/hierarchy/main/main_page.dart';
+import 'package:cueue/ui/hierarchy/welcome/user_creation_page.dart';
+import 'package:cueue/ui/hierarchy/welcome/workspace_creation_page.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 SWRState<String, User> useCheckAtLaunch(WidgetRef ref) {
   final firebaseUserState = useFirebaseUser(ref);
   final userState = useUser(ref);
-  final replaceAuthenticationPage = useReplaceAuthenticationPage();
-  final replaceUserCreationPage = useReplaceUserCreationPage();
-  final replaceWorkspaceCreationPage = useReplaceWorkspaceCreationPage();
-  final replaceMainPage = useReplaceMainPage();
+  final replacePage = useReplacePage();
   useEffect(
     () {
       final user = userState.data;
       final error = userState.error;
       if (firebaseUserState.data == null) {
-        replaceAuthenticationPage.trigger(null);
+        replacePage.trigger(const AuthenticationPage());
       } else if (user != null) {
         if (user.workspace != null) {
-          replaceMainPage.trigger(null);
+          replacePage.trigger(const MainPage());
         } else {
-          replaceWorkspaceCreationPage.trigger(null);
+          replacePage.trigger(const WorkspaceCreationPage());
         }
       } else if (error != null) {
         if (error is NotFoundException) {
-          replaceUserCreationPage.trigger(null);
+          replacePage.trigger(const UserCreationPage());
         }
       }
       return null;

@@ -12,7 +12,7 @@ import 'package:cueue/provider/mapper_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 SWRTriggerState<TagRegistration, Tag> useCreateTag(WidgetRef ref) {
-  final pop = usePop<EditingResult>();
+  final popPage = usePopPage<EditingResult>();
   final easyLoading = useEasyLoading();
   final showErrorDialog = useShowErrorDialog(ref);
   final createTagApi = ref.read(createTagApiProvider);
@@ -23,7 +23,7 @@ SWRTriggerState<TagRegistration, Tag> useCreateTag(WidgetRef ref) {
     return tagResponseMapper(response);
   });
   useEffectSWRData(createTag, (data) {
-    pop.trigger(EditingResult.created);
+    popPage.trigger(EditingResult.created);
   });
   useEffectSWRIsMutating(createTag, (isMutating) {
     easyLoading.trigger(isMutating);

@@ -42,7 +42,7 @@ SWRTriggerState<void, void> useUpdateDisplayName(WidgetRef ref) {
   useEffectSWRError(updateUser, (error) {
     showErrorDialog.trigger(error);
   });
-  useEffectSWRData<TextFieldDialogData, TextFieldDialogEvent?>(showDisplayNameInputDialog, (event) {
+  useEffectSWRData<TextFieldDialogEvent?>(showDisplayNameInputDialog, (event) {
     event?.maybeWhen(
       positive: (currentText, originalText) => updateUser.trigger(currentText),
       orElse: () {},

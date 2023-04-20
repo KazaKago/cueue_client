@@ -20,7 +20,7 @@ class UpdateTagData {
 }
 
 SWRTriggerState<UpdateTagData, Tag> useUpdateTag(WidgetRef ref) {
-  final pop = usePop<EditingResult>();
+  final popPage = usePopPage<EditingResult>();
   final easyLoading = useEasyLoading();
   final showErrorDialog = useShowErrorDialog(ref);
   final updateTagApi = ref.read(updateTagApiProvider);
@@ -31,7 +31,7 @@ SWRTriggerState<UpdateTagData, Tag> useUpdateTag(WidgetRef ref) {
     return tagResponseMapper(response);
   });
   useEffectSWRData(updateTag, (data) {
-    pop.trigger(EditingResult.updated);
+    popPage.trigger(EditingResult.updated);
   });
   useEffectSWRIsMutating(updateTag, (isMutating) {
     easyLoading.trigger(isMutating);

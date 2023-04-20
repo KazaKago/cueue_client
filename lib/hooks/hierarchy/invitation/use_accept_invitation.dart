@@ -13,6 +13,7 @@ import 'package:cueue/provider/api_provider.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/modal/simple_message_dialog.dart';
 import 'package:cueue/ui/global/modal/simple_message_dialog_event.dart';
+import 'package:cueue/ui/hierarchy/splash/splash_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 SWRTriggerState<InvitationCode, UserResponse> useAcceptInvitation(WidgetRef ref) {
@@ -21,18 +22,18 @@ SWRTriggerState<InvitationCode, UserResponse> useAcceptInvitation(WidgetRef ref)
   final intl = useIntl();
   final showErrorDialog = useShowErrorDialog(ref);
   final showSimpleMessageDialog = useShowSimpleMessageDialog();
-  final replaceSplashPage = useReplaceSplashPage();
+  final replacePage = useReplacePage();
   final easyLoading = useEasyLoading();
   final acceptInvitation = useSWRTrigger<InvitationCode, UserResponse>((code) async {
     return acceptInvitationApi(code.value);
   });
-  useEffectSWRData<SimpleMessageDialogData, SimpleMessageDialogEvent?>(showSimpleMessageDialog, (_) {
+  useEffectSWRData<SimpleMessageDialogEvent?>(showSimpleMessageDialog, (_) {
     swrCache.clear();
     swrSystemCache.clear();
     for (final cache in cacheList) {
       cache.clearAll();
     }
-    replaceSplashPage.trigger(null);
+    replacePage.trigger(const SplashPage());
   });
   useEffectSWRData(acceptInvitation, (_) {
     showSimpleMessageDialog.trigger(

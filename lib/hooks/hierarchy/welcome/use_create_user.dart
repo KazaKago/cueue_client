@@ -10,6 +10,7 @@ import 'package:cueue/model/user/pre_user.dart';
 import 'package:cueue/model/user/user.dart';
 import 'package:cueue/provider/api_provider.dart';
 import 'package:cueue/provider/mapper_provider.dart';
+import 'package:cueue/ui/hierarchy/welcome/workspace_creation_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:store_flowable/store_flowable.dart';
 
@@ -17,7 +18,7 @@ SWRTriggerState<PreUser, User> useCreateUser(WidgetRef ref) {
   final firebaseUserState = useFirebaseUser(ref);
   final createUserApi = ref.read(createUserApiProvider);
   final userResponseMapper = ref.read(userResponseMapperProvider);
-  final replaceWorkspaceCreationPage = useReplaceWorkspaceCreationPage();
+  final replacePage = useReplacePage();
   final showErrorDialog = useShowErrorDialog(ref);
   final easyLoading = useEasyLoading();
   final createUser = useSWRTrigger<PreUser, User>((preUser) async {
@@ -34,7 +35,7 @@ SWRTriggerState<PreUser, User> useCreateUser(WidgetRef ref) {
     }
   });
   useEffectSWRData(createUser, (_) {
-    replaceWorkspaceCreationPage.trigger(null);
+    replacePage.trigger(const WorkspaceCreationPage());
   });
   useEffectSWRIsMutating(createUser, (isMutating) {
     easyLoading.trigger(isMutating);

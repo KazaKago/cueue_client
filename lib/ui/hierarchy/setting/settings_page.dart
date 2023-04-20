@@ -6,6 +6,9 @@ import 'package:cueue/hooks/hierarchy/setting/use_go_terms_of_service.dart';
 import 'package:cueue/hooks/hierarchy/setting/use_toggle_with_apple.dart';
 import 'package:cueue/hooks/hierarchy/setting/use_toggle_with_google.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
+import 'package:cueue/ui/hierarchy/invitation/invitation_input_page.dart';
+import 'package:cueue/ui/hierarchy/setting/about_page.dart';
+import 'package:cueue/ui/hierarchy/setting/account_deletion_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -57,12 +60,12 @@ class SettingsPage extends HookConsumerWidget {
 
   Widget _buildJoinOtherWorkspace(WidgetRef ref) {
     final intl = useIntl();
-    final pushInvitationInput = usePushInvitationInputPage();
+    final pushPage = usePushPage<void>();
     return ListTile(
       leading: const Icon(Icons.workspaces),
       title: Text(intl.inputInvitationCode),
       subtitle: Text(intl.joinOtherWorkspace),
-      onTap: () => pushInvitationInput.trigger(null),
+      onTap: () => pushPage.trigger(const InvitationInputPage()),
     );
   }
 
@@ -142,11 +145,11 @@ class SettingsPage extends HookConsumerWidget {
 
   Widget _buildAboutAppTile(WidgetRef ref) {
     final intl = useIntl();
-    final pushAbout = usePushAboutPage();
+    final pushPage = usePushPage<void>();
     return ListTile(
       title: Text(intl.aboutApp),
       leading: const Icon(Icons.info_outline),
-      onTap: () => pushAbout.trigger(null),
+      onTap: () => pushPage.trigger(const AboutPage()),
     );
   }
 
@@ -181,13 +184,13 @@ class SettingsPage extends HookConsumerWidget {
   Widget _buildAccountDeletionTile(WidgetRef ref) {
     final intl = useIntl();
     final theme = useTheme();
-    final pushAccountDeletion = usePushAccountDeletionPage();
+    final pushPage = usePushPage<void>();
     return ListTile(
       title: Text(intl.accountDeletion),
       textColor: theme.colorScheme.error,
       leading: const Icon(Icons.delete_forever),
       iconColor: theme.colorScheme.error,
-      onTap: () => pushAccountDeletion.trigger(null),
+      onTap: () => pushPage.trigger(const AccountDeletionPage()),
     );
   }
 }

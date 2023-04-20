@@ -12,7 +12,7 @@ import 'package:cueue/provider/mapper_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 SWRTriggerState<MenuRegistration, Menu> useCreateMenu(WidgetRef ref) {
-  final pop = usePop<EditingResult>();
+  final popPage = usePopPage<EditingResult>();
   final easyLoading = useEasyLoading();
   final showErrorDialog = useShowErrorDialog(ref);
   final createMenuApi = ref.read(createMenuApiProvider);
@@ -23,7 +23,7 @@ SWRTriggerState<MenuRegistration, Menu> useCreateMenu(WidgetRef ref) {
     return menuResponseMapper(response);
   });
   useEffectSWRData(createMenu, (tag) {
-    pop.trigger(EditingResult.created);
+    popPage.trigger(EditingResult.created);
   });
   useEffectSWRIsMutating(createMenu, (isMutating) {
     easyLoading.trigger(isMutating);

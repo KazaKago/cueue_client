@@ -12,6 +12,8 @@ import 'package:cueue/model/menu/menu_summary.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/default_state_widget.dart';
 import 'package:cueue/ui/global/widget/titled_card.dart';
+import 'package:cueue/ui/hierarchy/menu/menu_editing_page.dart';
+import 'package:cueue/ui/hierarchy/recipe/recipe_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -23,15 +25,15 @@ class MenuDetailPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final intl = useIntl();
-    final pop = usePop<void>();
+    final popPage = usePopPage<void>();
     final toDateString = useToDateString();
     final toFormattedString = useToFormattedString();
     final menuState = useMenu(ref, menuSummary.id);
     final menu = menuState.data;
-    final pushMenuEditingPage = usePushMenuEditingPage();
-    useEffectSWRData<Menu, EditingResult?>(pushMenuEditingPage, (data) {
-      if (pushMenuEditingPage.data == EditingResult.deleted) {
-        pop.trigger(null);
+    final pushPage = usePushPage<EditingResult>();
+    useEffectSWRData<EditingResult?>(pushPage, (data) {
+      if (data == EditingResult.deleted) {
+        popPage.trigger(null);
       }
     });
     return Scaffold(
@@ -42,7 +44,7 @@ class MenuDetailPage extends HookConsumerWidget {
             IconButton(
               icon: const Icon(Icons.edit),
               tooltip: intl.doEdit,
-              onPressed: () => pushMenuEditingPage.trigger(menu),
+              onPressed: () => pushPage.trigger(MenuEditingPage.withMenu(menu: menu)),
             ),
         ],
       ),
@@ -71,7 +73,7 @@ class MenuDetailPage extends HookConsumerWidget {
   Widget _buildMenuItem(MenuSummary menu) {
     final intl = useIntl();
     final theme = useTheme();
-    final pushRecipeDetailPage = usePushRecipeDetailPage();
+    final pushPage = usePushPage<void>();
     return TitledCard.list(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
       title: intl.cookingMenu,
@@ -91,7 +93,7 @@ class MenuDetailPage extends HookConsumerWidget {
                   ),
                 ),
           title: Text(recipe.title),
-          onTap: () => pushRecipeDetailPage.trigger(recipe),
+          onTap: () => pushPage.trigger(RecipeDetailPage(recipe)),
         );
       }).toList(),
     );

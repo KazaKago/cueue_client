@@ -7,23 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SearchResultPageParam {
-  const SearchResultPageParam(this.keyword, this.tagIds, {this.initialSelectedRecipes});
+class SearchResultPage extends HookConsumerWidget {
+  const SearchResultPage(this.keyword, this.tagIds, {super.key, this.initialSelectedRecipes});
 
   final String keyword;
   final List<TagId> tagIds;
   final List<RecipeSummary>? initialSelectedRecipes;
-}
-
-
-class SearchResultPage extends HookConsumerWidget {
-  const SearchResultPage(this.param, {super.key});
-
-  final SearchResultPageParam param;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedRecipes = (param.initialSelectedRecipes != null) ? useState<List<RecipeSummary>>(param.initialSelectedRecipes!) : null;
+    final selectedRecipes = (initialSelectedRecipes != null) ? useState<List<RecipeSummary>>(initialSelectedRecipes!) : null;
     return WillPopScope(
       onWillPop: () async {
         Navigator.of(context).pop(selectedRecipes?.value);
@@ -31,11 +24,11 @@ class SearchResultPage extends HookConsumerWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(intl(context).searchResultOf(param.keyword)),
+          title: Text(intl(context).searchResultOf(keyword)),
         ),
         body: RecipeList(
-          keyword: param.keyword,
-          tagIds: param.tagIds,
+          keyword: keyword,
+          tagIds: tagIds,
           selectedRecipes: selectedRecipes?.value,
           onTap: (recipe) {
             if (selectedRecipes != null) {

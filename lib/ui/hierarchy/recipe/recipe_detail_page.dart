@@ -16,6 +16,7 @@ import 'package:cueue/ui/global/widget/loading_list_item.dart';
 import 'package:cueue/ui/global/widget/titled_card.dart';
 import 'package:cueue/ui/hierarchy/menu/menu_editing_page.dart';
 import 'package:cueue/ui/hierarchy/photo/photo_page.dart';
+import 'package:cueue/ui/hierarchy/recipe/recipe_editing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -30,16 +31,14 @@ class RecipeDetailPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final intl = useIntl();
-    final pop = usePop<void>();
+    final popPage = usePopPage<void>();
     final selectedPhotoIndex = useState(0);
     final recipeState = useRecipe(ref, recipeSummary.id);
     final recipe = recipeState.data;
     final error = recipeState.error;
-    final pushRecipeEditingPage = usePushRecipeEditingPage();
-    useEffectSWRData(pushRecipeEditingPage, (data) {
-      if (data == EditingResult.deleted) {
-        pop.trigger(null);
-      }
+    final pushPage = usePushPage<EditingResult>();
+    useEffectSWRData<EditingResult?>(pushPage, (data) {
+      if (data == EditingResult.deleted) popPage.trigger(null);
     });
     final Widget sliverList;
     if (recipe != null) {
@@ -73,7 +72,7 @@ class RecipeDetailPage extends HookConsumerWidget {
                   IconButton(
                     icon: const Icon(Icons.edit),
                     tooltip: intl.doEdit,
-                    onPressed: () => pushRecipeEditingPage.trigger(recipe),
+                    onPressed: () => pushPage.trigger(RecipeEditingPage(recipe: recipe)),
                   ),
               ],
               flexibleSpace: FlexibleSpaceBar(

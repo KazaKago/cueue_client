@@ -21,7 +21,7 @@ class DeleteMenuData {
 
 SWRTriggerState<MenuId, void> useDeleteMenu(WidgetRef ref) {
   final intl = useIntl();
-  final pop = usePop<EditingResult>();
+  final popPage = usePopPage<EditingResult>();
   final easyLoading = useEasyLoading();
   final showErrorDialog = useShowErrorDialog(ref);
   final deleteMenuApi = ref.read(deleteMenuApiProvider);
@@ -41,13 +41,13 @@ SWRTriggerState<MenuId, void> useDeleteMenu(WidgetRef ref) {
     );
     return DeleteMenuData(event, menuId);
   });
-  useEffectSWRData<MenuId, DeleteMenuData>(confirmDeleteMenu, (data) {
+  useEffectSWRData<DeleteMenuData>(confirmDeleteMenu, (data) {
     data.event?.whenOrNull(
       positive: () => deleteMenu.trigger(data.menuId),
     );
   });
   useEffectSWRData(deleteMenu, (data) {
-    pop.trigger(EditingResult.deleted);
+    popPage.trigger(EditingResult.deleted);
   });
   useEffectSWRIsMutating(deleteMenu, (isMutating) {
     easyLoading.trigger(isMutating);

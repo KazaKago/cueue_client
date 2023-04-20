@@ -22,7 +22,7 @@ class DeleteTagData {
 
 SWRTriggerState<Tag, void> useDeleteTag(WidgetRef ref) {
   final intl = useIntl();
-  final pop = usePop<EditingResult>();
+  final popPage = usePopPage<EditingResult>();
   final easyLoading = useEasyLoading();
   final showErrorDialog = useShowErrorDialog(ref);
   final deleteTagApi = ref.read(deleteTagApiProvider);
@@ -42,13 +42,13 @@ SWRTriggerState<Tag, void> useDeleteTag(WidgetRef ref) {
     );
     return DeleteTagData(event, tag.id);
   });
-  useEffectSWRData<Tag, DeleteTagData>(confirmDeleteTag, (data) {
+  useEffectSWRData<DeleteTagData>(confirmDeleteTag, (data) {
     data.event?.whenOrNull(
       positive: () => deleteTag.trigger(data.tagId),
     );
   });
   useEffectSWRData(deleteTag, (data) {
-    pop.trigger(EditingResult.deleted);
+    popPage.trigger(EditingResult.deleted);
   });
   useEffectSWRIsMutating(deleteTag, (isMutating) {
     easyLoading.trigger(isMutating);

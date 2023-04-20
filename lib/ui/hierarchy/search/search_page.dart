@@ -20,7 +20,7 @@ class SearchPage extends HookConsumerWidget with RouteAware {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final pop = usePop<List<RecipeSummary>?>();
+    final popPage = usePopPage<List<RecipeSummary>?>();
     final modalRoute = ModalRoute.of(context)!;
     useEffect(() {
       routeObserver.subscribe(this, modalRoute);
@@ -37,7 +37,7 @@ class SearchPage extends HookConsumerWidget with RouteAware {
     return WillPopScope(
       onWillPop: () async {
         if (initialSelectedRecipes != null) {
-          await pop.trigger(selectedRecipes?.value);
+          await popPage.trigger(selectedRecipes?.value);
           return false;
         } else {
           return true;
@@ -114,18 +114,16 @@ class SearchPage extends HookConsumerWidget with RouteAware {
   }
 
   Widget _buildSubmitButton(BuildContext context, TextEditingController keyword, List<TagId> selectedTagIds, ValueNotifier<List<RecipeSummary>>? selectedRecipes, bool isEnableSubmitButton) {
-    final pushSearchResultPage = usePushSearchResultPage();
-    useEffectSWRData<SearchResultPageParam, List<RecipeSummary>?>(pushSearchResultPage, (data) {
-      if (data != null) {
-        selectedRecipes?.value = data;
-      }
+    final pushPage = usePushPage<List<RecipeSummary>>();
+    useEffectSWRData<List<RecipeSummary>?>(pushPage, (data) {
+      if (data != null) selectedRecipes?.value = data;
     });
     return Padding(
       padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
       child: ElevatedButton.icon(
         icon: const Icon(Icons.search),
         label: Text(intl(context).doSearch),
-        onPressed: isEnableSubmitButton ? () => pushSearchResultPage.trigger(SearchResultPageParam(keyword.text, selectedTagIds, initialSelectedRecipes: selectedRecipes?.value)) : null,
+        onPressed: isEnableSubmitButton ? () => pushPage.trigger(SearchResultPage(keyword.text, selectedTagIds, initialSelectedRecipes: selectedRecipes?.value)) : null,
       ),
     );
   }

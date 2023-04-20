@@ -44,10 +44,10 @@ SWRTriggerState<void, PhotoPickupBottomSheetEvent?> useUpdatePreUserImage(Widget
   useEffectSWRError(updatePreUser, (error) {
     showErrorDialog.trigger(error);
   });
-  useEffectSWRData<PhotoPickupBottomSheetEvent, File?>(pickupPhoto, (file) {
+  useEffectSWRData<File?>(pickupPhoto, (file) {
     if (file != null) updatePreUser.trigger(file);
   });
-  useEffectSWRData<void, PhotoPickupBottomSheetEvent?>(photoPickupBottomSheetDialog, (event) {
+  useEffectSWRData<PhotoPickupBottomSheetEvent?>(photoPickupBottomSheetDialog, (event) {
     if (event != null) pickupPhoto.trigger(event);
   });
   return photoPickupBottomSheetDialog;

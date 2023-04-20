@@ -24,7 +24,7 @@ SWRTriggerState<void, GoogleAuthInfo> useSignInWithGoogle(WidgetRef ref) {
       throw await exception.parse();
     }
   });
-  useEffectSWRData<void, GoogleAuthInfo>(authorizeWithGoogle, (authInfo) {
+  useEffectSWRData<GoogleAuthInfo>(authorizeWithGoogle, (authInfo) {
     signInWithGoogle.trigger(authInfo);
   });
   useEffectSWRData(signInWithGoogle, (_) {

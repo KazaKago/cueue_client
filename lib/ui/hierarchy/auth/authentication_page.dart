@@ -7,6 +7,7 @@ import 'package:cueue/hooks/hierarchy/setting/use_go_terms_of_service.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/hierarchy/auth/sign_in_with_apple_button.dart';
 import 'package:cueue/ui/hierarchy/auth/sign_in_with_google_button.dart';
+import 'package:cueue/ui/hierarchy/setting/about_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -20,7 +21,7 @@ class AuthenticationPage extends HookConsumerWidget {
     final goTermsOfService = useGoTermsOfService();
     final signInWithApple = useSignInWithApple(ref);
     final signInWithGoogle = useSignInWithGoogle(ref);
-    final pushAbout = usePushAboutPage();
+    final pushPage = usePushPage<void>();
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: SafeArea(
@@ -30,7 +31,7 @@ class AuthenticationPage extends HookConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  IconButton(icon: const Icon(Icons.info_outline), onPressed: () => pushAbout.trigger(null)),
+                  IconButton(icon: const Icon(Icons.info_outline), onPressed: () => pushPage.trigger(const AboutPage())),
                 ],
               ),
               Expanded(

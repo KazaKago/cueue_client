@@ -29,7 +29,7 @@ SWRTriggerState<void, AppleAuthInfo> useLinkWithApple(WidgetRef ref) {
       throw await exception.parse();
     }
   });
-  useEffectSWRData<void, AppleAuthInfo>(authorizeWithApple, (authInfo) {
+  useEffectSWRData<AppleAuthInfo>(authorizeWithApple, (authInfo) {
     linkWithApple.trigger(authInfo);
   });
   useEffectSWRData(linkWithApple, (_) {

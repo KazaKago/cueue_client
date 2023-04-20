@@ -28,7 +28,7 @@ SWRTriggerState<void, AppleAuthInfo> useReauthenticationWithApple(WidgetRef ref,
       throw await exception.parse();
     }
   });
-  useEffectSWRData<void, AppleAuthInfo>(authorizeWithApple, (authInfo) {
+  useEffectSWRData<AppleAuthInfo>(authorizeWithApple, (authInfo) {
     reauthenticationWithApple.trigger(authInfo);
   });
   useEffectSWRData(reauthenticationWithApple, (_) {

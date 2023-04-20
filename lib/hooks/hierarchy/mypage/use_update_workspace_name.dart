@@ -34,7 +34,7 @@ SWRTriggerState<void, void> useUpdateWorkspaceName(WidgetRef ref) {
   useEffectSWRError(updateWorkspace, (error) {
     showErrorDialog.trigger(error);
   });
-  useEffectSWRData<TextFieldDialogData, TextFieldDialogEvent?>(showDisplayNameInputDialog, (event) {
+  useEffectSWRData<TextFieldDialogEvent?>(showDisplayNameInputDialog, (event) {
     event?.maybeWhen(
       positive: (currentText, originalText) {
         updateWorkspace.trigger(currentText);

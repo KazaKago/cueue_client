@@ -13,6 +13,7 @@ import 'package:cueue/model/exception/require_reautentication_exception.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/modal/simple_message_dialog.dart';
 import 'package:cueue/ui/global/modal/simple_message_dialog_event.dart';
+import 'package:cueue/ui/hierarchy/setting/thanks_for_using_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -20,7 +21,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 SWRTriggerState<void, void> useDeleteAccount(WidgetRef ref) {
   final cacheList = ref.read(allCacheProvider);
   final showSimpleMessageDialog = useShowSimpleMessageDialog();
-  final replaceThanksForUsingPage = useReplaceThanksForUsingPage();
+  final replacePage = useReplacePage();
   final showErrorDialog = useShowErrorDialog(ref);
   final easyLoading = useEasyLoading();
   final firebaseUserState = useFirebaseUser(ref);
@@ -49,7 +50,7 @@ SWRTriggerState<void, void> useDeleteAccount(WidgetRef ref) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRData(deleteAccount, (_) {
-    replaceThanksForUsingPage.trigger(null);
+    replacePage.trigger(const ThanksForUsingPage());
   });
   useEffectSWRError(deleteAccount, (error) {
     showErrorDialog.trigger(error);

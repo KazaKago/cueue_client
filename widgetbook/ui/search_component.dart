@@ -13,16 +13,7 @@ final searchComponent = WidgetbookComponent(
     ),
     WidgetbookUseCase(
       name: 'SearchResultPage',
-      builder: (_) => const SearchResultPage(
-        SearchResultPageParam(
-          'search keyword',
-          [
-            TagId(0),
-            TagId(1),
-            TagId(2),
-          ],
-        ),
-      ),
+      builder: (_) => const SearchResultPage('search keyword', [TagId(0), TagId(1), TagId(2)]),
     ),
   ],
 );

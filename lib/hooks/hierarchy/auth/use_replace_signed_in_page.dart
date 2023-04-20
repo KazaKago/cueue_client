@@ -2,13 +2,14 @@ import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_user.dart';
+import 'package:cueue/ui/hierarchy/main/main_page.dart';
+import 'package:cueue/ui/hierarchy/welcome/user_creation_page.dart';
+import 'package:cueue/ui/hierarchy/welcome/workspace_creation_page.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 SWRTriggerState<void, void> useReplaceSignedInPage(WidgetRef ref) {
-  final replaceUserCreationPage = useReplaceUserCreationPage();
-  final replaceWorkspaceCreationPage = useReplaceWorkspaceCreationPage();
-  final replaceMainPage = useReplaceMainPage();
+  final replacePage = useReplacePage();
   final userState = useUser(ref);
   final fireState = useState(false);
   useEffect(
@@ -16,11 +17,11 @@ SWRTriggerState<void, void> useReplaceSignedInPage(WidgetRef ref) {
       if (!fireState.value || userState.isValidating) return null;
       final user = userState.data;
       if (user == null) {
-        replaceUserCreationPage.trigger(null);
+        replacePage.trigger(const UserCreationPage());
       } else if (user.workspace == null) {
-        replaceWorkspaceCreationPage.trigger(null);
+        replacePage.trigger(const WorkspaceCreationPage());
       } else {
-        replaceMainPage.trigger(null);
+        replacePage.trigger(const MainPage());
       }
       fireState.value = false;
       return null;

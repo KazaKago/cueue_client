@@ -6,6 +6,7 @@ import 'package:cueue/model/tag/tag.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/default_state_widget.dart';
 import 'package:cueue/ui/global/widget/empty_widget.dart';
+import 'package:cueue/ui/hierarchy/tag/tag_editing_page.dart';
 import 'package:cueue/ui/hierarchy/tag/tag_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -18,7 +19,7 @@ class TagPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final intl = useIntl();
     final tagsState = useTags(ref);
-    final pushTagEditingPage = usePushTagEditingPage();
+    final pushPage = usePushPage<void>();
     return Scaffold(
       appBar: AppBar(
         title: Text(intl.tag),
@@ -36,7 +37,7 @@ class TagPage extends HookConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         label: Text(intl.addTag),
-        onPressed: () => pushTagEditingPage.trigger(null),
+        onPressed: () => pushPage.trigger(const TagEditingPage()),
         icon: const Icon(Icons.add),
         heroTag: intl.addRecipe,
       ),
@@ -52,7 +53,7 @@ class TagPage extends HookConsumerWidget {
   Widget _buildContent(WidgetRef ref, List<Tag> tags, SWRMutate<String, List<Tag>> mutateTags) {
     final reorderTags = useReOrderTags(ref);
     final scrollController = useScrollController();
-    final pushTagEditingPage = usePushTagEditingPage();
+    final pushPage = usePushPage<void>();
     return RefreshIndicator(
       onRefresh: () => mutateTags(null),
       child: Scrollbar(
@@ -74,7 +75,7 @@ class TagPage extends HookConsumerWidget {
                   child: const Icon(Icons.drag_handle),
                 ),
               ),
-              onTap: () => pushTagEditingPage.trigger(tags[index]),
+              onTap: () => pushPage.trigger(TagEditingPage(tag: tags[index])),
             );
           },
           onReorder: (int oldIndex, int newIndex) => reorderTags.trigger(ReOrderTagsData(oldIndex, newIndex)),

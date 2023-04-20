@@ -12,6 +12,8 @@ import 'package:cueue/model/menu/time_frame.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/text_field_date_picker.dart';
+import 'package:cueue/ui/hierarchy/recipe/recipe_selection_page.dart';
+import 'package:cueue/ui/hierarchy/search/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -132,23 +134,15 @@ class MenuEditingPage extends HookConsumerWidget {
 
   Widget _buildAddRecipe(WidgetRef ref, ValueNotifier<List<RecipeSummary>> selectedRecipes) {
     final intl = useIntl();
-    final pushRecipeSelectionPage = usePushRecipeSelectionPage();
-    final pushSearchPage = usePushSearchPage();
-    useEffectSWRData<List<RecipeSummary>, List<RecipeSummary>?>(pushRecipeSelectionPage, (data) {
-      if (data != null) {
-        selectedRecipes.value = data;
-      }
-    });
-    useEffectSWRData<List<RecipeSummary>?, List<RecipeSummary>?>(pushSearchPage, (data) {
-      if (data != null) {
-        selectedRecipes.value = data;
-      }
+    final pushPage = usePushPage<List<RecipeSummary>>();
+    useEffectSWRData<List<RecipeSummary>?>(pushPage, (data) {
+      if (data != null) selectedRecipes.value = data;
     });
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        TextButton.icon(onPressed: () => pushRecipeSelectionPage.trigger(selectedRecipes.value), icon: const Icon(Icons.list), label: Text(intl.searchFromList, textAlign: TextAlign.center)),
-        TextButton.icon(onPressed: () => pushSearchPage.trigger(selectedRecipes.value), icon: const Icon(Icons.search), label: Text(intl.searchFromKeyword, textAlign: TextAlign.center)),
+        TextButton.icon(onPressed: () => pushPage.trigger(RecipeSelectionPage(selectedRecipes.value)), icon: const Icon(Icons.list), label: Text(intl.searchFromList, textAlign: TextAlign.center)),
+        TextButton.icon(onPressed: () => pushPage.trigger(SearchPage(initialSelectedRecipes: selectedRecipes.value)), icon: const Icon(Icons.search), label: Text(intl.searchFromKeyword, textAlign: TextAlign.center)),
       ],
     );
   }

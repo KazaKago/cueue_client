@@ -10,6 +10,8 @@ import 'package:cueue/hooks/hierarchy/mypage/use_user.dart';
 import 'package:cueue/legacy/presentation/view/global/l10n/intl.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/error_handling_widget.dart';
+import 'package:cueue/ui/hierarchy/invitation/invitation_creation_page.dart';
+import 'package:cueue/ui/hierarchy/setting/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -20,7 +22,7 @@ class MyPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userState = useUser(ref);
-    final pushSettingsPage = usePushSettingsPage();
+    final pushPage = usePushPage<void>();
     final signOut = useSignOutWithConfirmation(ref);
     final scrollController = useScrollController();
     return Scaffold(
@@ -28,7 +30,7 @@ class MyPage extends HookConsumerWidget {
         title: Text(intl(context).mypage),
         actions: [
           IconButton(
-            onPressed: () => pushSettingsPage.trigger(null),
+            onPressed: () => pushPage.trigger(const SettingsPage()),
             icon: const Icon(Icons.settings),
             tooltip: intl(context).settings,
           ),
@@ -282,14 +284,14 @@ class MyPage extends HookConsumerWidget {
 
   Widget _buildInviteWorkspace(WidgetRef ref) {
     final intl = useIntl();
-    final pushInvitationCreation = usePushInvitationCreationPage();
+    final pushPage = usePushPage<void>();
     return Center(
       child: Padding(
         padding: const EdgeInsets.only(left: 16, right: 16),
         child: TextButton.icon(
           icon: const Icon(Icons.add),
           label: Text(intl.inviteCurrentWorkspace),
-          onPressed: () => pushInvitationCreation.trigger(null),
+          onPressed: () => pushPage.trigger(const InvitationCreationPage()),
         ),
       ),
     );
