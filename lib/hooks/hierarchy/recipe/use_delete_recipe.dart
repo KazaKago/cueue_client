@@ -5,55 +5,55 @@ import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/model/edit/editing_result.dart';
-import 'package:cueue/model/tag/tag_id.dart';
+import 'package:cueue/model/recipe/recipe_id.dart';
 import 'package:cueue/provider/api_provider.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/modal/simple_message_dialog.dart';
 import 'package:cueue/ui/global/modal/simple_message_dialog_event.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class _DeleteTagData {
-  const _DeleteTagData(this.event, this.tagId);
+class _DeleteRecipeData {
+  const _DeleteRecipeData(this.event, this.recipeId);
 
   final SimpleMessageDialogEvent? event;
-  final TagId tagId;
+  final RecipeId recipeId;
 }
 
-SWRTriggerState<TagId, void> useDeleteTag(WidgetRef ref) {
+SWRTriggerState<RecipeId, void> useDeleteRecipe(WidgetRef ref) {
   final intl = useIntl();
   final popPage = usePopPage<EditingResult>();
   final easyLoading = useEasyLoading();
   final showErrorDialog = useShowErrorDialog(ref);
-  final deleteTagApi = ref.read(deleteTagApiProvider);
-  final showConfirmDeleteTagDialog = useShowSimpleMessageDialog();
-  final deleteTag = useSWRTrigger<TagId, bool>((tagId) async {
-    await deleteTagApi(tagId.value);
+  final deleteRecipeApi = ref.read(deleteRecipeApiProvider);
+  final showConfirmDeleteRecipeDialog = useShowSimpleMessageDialog();
+  final deleteRecipe = useSWRTrigger<RecipeId, bool>((recipeId) async {
+    await deleteRecipeApi(recipeId.value);
     return true;
   });
-  final confirmDeleteTag = useSWRTrigger<TagId, _DeleteTagData>((tagId) async {
-    final event = await showConfirmDeleteTagDialog.trigger(
+  final confirmDeleteRecipe = useSWRTrigger<RecipeId, _DeleteRecipeData>((recipeId) async {
+    final event = await showConfirmDeleteRecipeDialog.trigger(
       SimpleMessageDialogData(
         title: intl.confirm,
-        message: intl.confirmDeletingTag,
+        message: intl.confirmDeletingRecipe,
         positiveButton: intl.doDelete,
         negativeButton: intl.cancel,
       ),
     );
-    return _DeleteTagData(event, tagId);
+    return _DeleteRecipeData(event, recipeId);
   });
-  useEffectSWRData<_DeleteTagData>(confirmDeleteTag, (data) {
+  useEffectSWRData<_DeleteRecipeData>(confirmDeleteRecipe, (data) {
     data.event?.whenOrNull(
-      positive: () => deleteTag.trigger(data.tagId),
+      positive: () => deleteRecipe.trigger(data.recipeId),
     );
   });
-  useEffectSWRData(deleteTag, (data) {
+  useEffectSWRData(deleteRecipe, (data) {
     popPage.trigger(EditingResult.deleted);
   });
-  useEffectSWRIsMutating(deleteTag, (isMutating) {
+  useEffectSWRIsMutating(deleteRecipe, (isMutating) {
     easyLoading.trigger(isMutating);
   });
-  useEffectSWRError(deleteTag, (error) {
+  useEffectSWRError(deleteRecipe, (error) {
     showErrorDialog.trigger(error);
   });
-  return confirmDeleteTag;
+  return confirmDeleteRecipe;
 }

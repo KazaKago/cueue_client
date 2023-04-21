@@ -1,8 +1,10 @@
 import 'package:cueue/model/tag/tag.dart';
 import 'package:cueue/model/tag/tag_id.dart';
+import 'package:cueue/ui/hierarchy/tag/tag_chips.dart';
 import 'package:cueue/ui/hierarchy/tag/tag_editing_page.dart';
 import 'package:cueue/ui/hierarchy/tag/tag_loading.dart';
 import 'package:cueue/ui/hierarchy/tag/tag_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 final tagComponent = WidgetbookComponent(
@@ -25,6 +27,10 @@ final tagComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'TagLoading',
       builder: (_) => const TagLoading(),
+    ),
+    WidgetbookUseCase(
+      name: 'TagChips',
+      builder: (_) => TagChips(ValueNotifier([])),
     ),
   ],
 );

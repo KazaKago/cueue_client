@@ -34,7 +34,7 @@ class TagEditingPage extends HookConsumerWidget {
             IconButton(
               icon: const Icon(Icons.delete),
               tooltip: intl.doDelete,
-              onPressed: () => deleteTag.trigger(tag),
+              onPressed: () => deleteTag.trigger(tag.id),
             ),
         ],
       ),

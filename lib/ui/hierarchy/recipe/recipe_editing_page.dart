@@ -1,24 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cueue/legacy/presentation/view/global/exception/exception_handler.dart';
-import 'package:cueue/legacy/presentation/view/global/l10n/intl.dart';
-import 'package:cueue/legacy/presentation/viewmodel/di/viewmodel_provider.dart';
-import 'package:cueue/legacy/presentation/viewmodel/global/event.dart';
+import 'package:cueue/hooks/global/utils/use_theme.dart';
+import 'package:cueue/hooks/hierarchy/photo/use_pickup_recipe_image.dart';
+import 'package:cueue/hooks/hierarchy/recipe/use_create_recipe.dart';
+import 'package:cueue/hooks/hierarchy/recipe/use_delete_recipe.dart';
+import 'package:cueue/hooks/hierarchy/recipe/use_update_recipe.dart';
 import 'package:cueue/model/content/content.dart';
-import 'package:cueue/model/edit/editing_result.dart';
-import 'package:cueue/model/photo/photo_pickup_bottom_sheet_event.dart';
 import 'package:cueue/model/recipe/recipe.dart';
-import 'package:cueue/model/tag/tag.dart';
+import 'package:cueue/model/recipe/recipe_registration.dart';
 import 'package:cueue/model/tag/tag_id.dart';
-import 'package:cueue/ui/global/modal/simple_message_dialog.dart';
-import 'package:cueue/ui/global/modal/simple_message_dialog_event.dart';
-import 'package:cueue/ui/global/widget/error_handling_widget.dart';
-import 'package:cueue/ui/hierarchy/photo/photo_pickup_bottom_sheet_dialog.dart';
+import 'package:cueue/ui/global/l10n/intl.dart';
+import 'package:cueue/ui/hierarchy/tag/tag_chips.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:universal_io/io.dart';
 
 class RecipeEditingPage extends HookConsumerWidget {
   const RecipeEditingPage({this.recipe, super.key});
@@ -27,7 +21,12 @@ class RecipeEditingPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final recipe = this.recipe;
+    final intl = useIntl();
+    final deleteRecipe = useDeleteRecipe(ref);
+
     final images = useState(recipe?.images.toList() ?? []);
+    final isPostingImage = useState(false);
     final selectedTagIds = useState(recipe?.tags.map((e) => e.id).toList() ?? []);
     final recipeTitleEditingController = useTextEditingController(text: recipe?.title ?? '');
     final isEnableRegistrationButton = useState(recipeTitleEditingController.text.isNotEmpty);
@@ -36,26 +35,16 @@ class RecipeEditingPage extends HookConsumerWidget {
     });
     final recipeUrlEditingController = useTextEditingController(text: recipe?.url?.toString() ?? '');
     final recipeDescriptionEditingController = useTextEditingController(text: recipe?.description ?? '');
-    ref
-      ..listen<bool>(recipeEditingViewModelProvider.select((viewModel) => viewModel.isLoading), (previous, isLoading) {
-        isLoading ? EasyLoading.show() : EasyLoading.dismiss();
-      })
-      ..listen<Event<EditingResult>>(recipeEditingViewModelProvider.select((viewModel) => viewModel.completionEvent), (previous, completionEvent) {
-        completionEvent((completion) => Navigator.of(context).pop(completion));
-      })
-      ..listen<Event<Exception>>(recipeEditingViewModelProvider.select((viewModel) => viewModel.exceptionEvent), (previous, exceptionEvent) {
-        exceptionEvent((exception) => const ExceptionHandler().showMessageDialog(context, ref, exception));
-      });
     final scrollController = useScrollController();
     return Scaffold(
       appBar: AppBar(
-        title: Text(recipe != null ? intl(context).editWith(recipe!.title) : intl(context).addRecipe),
+        title: Text(recipe != null ? intl.editWith(recipe.title) : intl.addRecipe),
         actions: [
           if (recipe != null)
             IconButton(
               icon: const Icon(Icons.delete),
-              tooltip: intl(context).doDelete,
-              onPressed: () => _showConfirmationDeletingDialog(context, ref, recipe!),
+              tooltip: intl.doDelete,
+              onPressed: () => deleteRecipe.trigger(recipe.id),
             ),
         ],
       ),
@@ -65,37 +54,39 @@ class RecipeEditingPage extends HookConsumerWidget {
           controller: scrollController,
           padding: const EdgeInsets.fromLTRB(16, 32, 16, 32),
           children: <Widget>[
-            _buildTitle(context, ref, recipeTitleEditingController),
+            _buildTitle(recipeTitleEditingController),
             const SizedBox(height: 16),
-            ..._buildImages(context, ref, images),
-            ..._buildLoadingImage(context, ref),
-            _buildImageAdding(context, ref, images),
+            ..._buildImages(images),
+            ..._buildLoadingImage(ref, isPostingImage),
+            _buildImageAdding(ref, images, isPostingImage),
             const SizedBox(height: 16),
-            _buildUrl(context, ref, recipeUrlEditingController),
+            _buildUrl(recipeUrlEditingController),
             const SizedBox(height: 24),
-            _buildDescription(context, ref, recipeDescriptionEditingController),
+            _buildDescription(recipeDescriptionEditingController),
             const SizedBox(height: 24),
-            _buildTagChips(context, ref, selectedTagIds),
+            TagChips(selectedTagIds),
             const SizedBox(height: 24),
-            _buildRegisterButton(context, ref, recipeTitleEditingController, recipeDescriptionEditingController, recipeUrlEditingController, images.value, selectedTagIds.value, isEnableRegistrationButton.value),
+            _buildRegisterButton(ref, recipeTitleEditingController, recipeDescriptionEditingController, recipeUrlEditingController, images.value, selectedTagIds.value, isEnableRegistrationButton.value),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildTitle(BuildContext context, WidgetRef ref, TextEditingController recipeTitleEditingController) {
+  Widget _buildTitle(TextEditingController recipeTitleEditingController) {
+    final intl = useIntl();
     return TextField(
       controller: recipeTitleEditingController,
       keyboardType: TextInputType.text,
-      decoration: InputDecoration(labelText: intl(context).recipeName, alignLabelWithHint: true, border: const OutlineInputBorder()),
+      decoration: InputDecoration(labelText: intl.recipeName, alignLabelWithHint: true, border: const OutlineInputBorder()),
     );
   }
 
-  List<Widget> _buildLoadingImage(BuildContext context, WidgetRef ref) {
+  List<Widget> _buildLoadingImage(WidgetRef ref, ValueNotifier<bool> isPostingImage) {
+    final intl = useIntl();
+    final theme = useTheme();
     final widgetList = <Widget>[];
-    final isCreatingImage = ref.watch(recipeEditingViewModelProvider.select((viewModel) => viewModel.isCreatingImage));
-    if (isCreatingImage) {
+    if (isPostingImage.value) {
       widgetList
         ..add(
           Row(
@@ -109,7 +100,7 @@ class RecipeEditingPage extends HookConsumerWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Container(
-                        color: Theme.of(context).dividerColor,
+                        color: theme.dividerColor,
                         width: 96,
                         height: 96,
                       ),
@@ -121,7 +112,7 @@ class RecipeEditingPage extends HookConsumerWidget {
                 ),
               ),
               const SizedBox(width: 16),
-              Text(intl(context).uploading, style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).textTheme.bodySmall?.color)),
+              Text(intl.uploading, style: theme.textTheme.bodyLarge?.copyWith(color: theme.textTheme.bodySmall?.color)),
             ],
           ),
         )
@@ -130,7 +121,8 @@ class RecipeEditingPage extends HookConsumerWidget {
     return widgetList;
   }
 
-  List<Widget> _buildImages(BuildContext context, WidgetRef ref, ValueNotifier<List<Content>> images) {
+  List<Widget> _buildImages(ValueNotifier<List<Content>> images) {
+    final intl = useIntl();
     final widgetList = <Widget>[];
     images.value.asMap().forEach((index, image) {
       widgetList
@@ -156,12 +148,12 @@ class RecipeEditingPage extends HookConsumerWidget {
                   children: [
                     Column(
                       children: [
-                        TextButton.icon(onPressed: (0 < index) ? () => _upImage(image, images) : null, icon: const Icon(Icons.keyboard_arrow_up), label: Text(intl(context).toUp)),
-                        TextButton.icon(onPressed: (index < (images.value.length - 1)) ? () => _downImage(image, images) : null, icon: const Icon(Icons.keyboard_arrow_down), label: Text(intl(context).toDown)),
+                        TextButton.icon(onPressed: (0 < index) ? () => _upImage(image, images) : null, icon: const Icon(Icons.keyboard_arrow_up), label: Text(intl.toUp)),
+                        TextButton.icon(onPressed: (index < (images.value.length - 1)) ? () => _downImage(image, images) : null, icon: const Icon(Icons.keyboard_arrow_down), label: Text(intl.toDown)),
                       ],
                     ),
                     const SizedBox(width: 32),
-                    TextButton.icon(onPressed: () => _deleteImage(image, images), icon: const Icon(Icons.clear), label: Text(intl(context).delete)),
+                    TextButton.icon(onPressed: () => _deleteImage(image, images), icon: const Icon(Icons.clear), label: Text(intl.delete)),
                   ],
                 ),
               ),
@@ -173,9 +165,12 @@ class RecipeEditingPage extends HookConsumerWidget {
     return widgetList;
   }
 
-  Widget _buildImageAdding(BuildContext context, WidgetRef ref, ValueNotifier<List<Content>> images) {
+  Widget _buildImageAdding(WidgetRef ref, ValueNotifier<List<Content>> images, ValueNotifier<bool> isPostingImage) {
+    final intl = useIntl();
+    final theme = useTheme();
+    final pickupRecipeImage = usePickupRecipeImage(ref, images, isPostingImage);
     return InkWell(
-      onTap: () => _pickupProfileImage(context, ref, images),
+      onTap: () => pickupRecipeImage.trigger(null),
       child: Row(
         children: [
           Padding(
@@ -186,129 +181,67 @@ class RecipeEditingPage extends HookConsumerWidget {
                 alignment: Alignment.center,
                 fit: StackFit.passthrough,
                 children: [
-                  Container(color: Theme.of(context).dividerColor, width: 96, height: 96),
-                  Icon(Icons.add, size: 48, color: Theme.of(context).scaffoldBackgroundColor),
+                  Container(color: theme.dividerColor, width: 96, height: 96),
+                  Icon(Icons.add, size: 48, color: theme.scaffoldBackgroundColor),
                 ],
               ),
             ),
           ),
           const SizedBox(width: 16),
-          Text(intl(context).addRecipeImage, style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.primary)),
+          Text(intl.addRecipeImage, style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.primary)),
         ],
       ),
     );
   }
 
-  Widget _buildUrl(BuildContext context, WidgetRef ref, TextEditingController recipeUrlEditingController) {
+  Widget _buildUrl(TextEditingController recipeUrlEditingController) {
+    final intl = useIntl();
     return TextField(
       controller: recipeUrlEditingController,
       keyboardType: TextInputType.url,
-      decoration: InputDecoration(labelText: intl(context).referenceLink, alignLabelWithHint: true, border: const OutlineInputBorder()),
+      decoration: InputDecoration(labelText: intl.referenceLink, alignLabelWithHint: true, border: const OutlineInputBorder()),
     );
   }
 
-  Widget _buildDescription(BuildContext context, WidgetRef ref, TextEditingController recipeDescriptionEditingController) {
+  Widget _buildDescription(TextEditingController recipeDescriptionEditingController) {
+    final intl = useIntl();
     return TextField(
       controller: recipeDescriptionEditingController,
       keyboardType: TextInputType.multiline,
       minLines: 8,
       maxLines: null,
-      decoration: InputDecoration(labelText: intl(context).description, alignLabelWithHint: true, border: const OutlineInputBorder()),
+      decoration: InputDecoration(labelText: intl.description, alignLabelWithHint: true, border: const OutlineInputBorder()),
     );
   }
 
-  Widget _buildTagChips(BuildContext context, WidgetRef ref, ValueNotifier<List<TagId>> selectedTagIds) {
-    final state = ref.watch(recipeEditingViewModelProvider.select((viewModel) => viewModel.state));
-    return state.when(
-      loading: () => _buildTagChipsLoading(context, ref),
-      completed: (tags) => _buildTagChipsCompleted(context, ref, tags, selectedTagIds),
-      error: (exception) => _buildTagChipsError(context, ref, exception),
-    );
-  }
-
-  Widget _buildTagChipsLoading(BuildContext context, WidgetRef ref) {
-    return const Center(
-      child: CircularProgressIndicator(),
-    );
-  }
-
-  Widget _buildTagChipsCompleted(BuildContext context, WidgetRef ref, List<Tag> tags, ValueNotifier<List<TagId>> selectedTagIds) {
-    return Wrap(
-      spacing: 12,
-      children: tags.map((e) {
-        return FilterChip(
-          label: Text(e.name),
-          selected: selectedTagIds.value.contains(e.id),
-          onSelected: (bool value) {
-            if (value) {
-              selectedTagIds.value = List.from(selectedTagIds.value..add(e.id));
-            } else {
-              selectedTagIds.value = List.from(selectedTagIds.value..remove(e.id));
-            }
-          },
-        );
-      }).toList(),
-    );
-  }
-
-  Widget _buildTagChipsError(BuildContext context, WidgetRef ref, Exception exception) {
-    final viewModel = ref.read(recipeEditingViewModelProvider);
-    return ErrorHandlingWidget(exception, onClickRetry: viewModel.retry);
-  }
-
-  Widget _buildRegisterButton(BuildContext context, WidgetRef ref, TextEditingController recipeTitleEditingController, TextEditingController recipeDescriptionEditingController, TextEditingController recipeUrlEditingController, List<Content> images, List<TagId> selectedTagIds, bool isEnableRegistrationButton) {
+  Widget _buildRegisterButton(WidgetRef ref, TextEditingController recipeTitleEditingController, TextEditingController recipeDescriptionEditingController, TextEditingController recipeUrlEditingController, List<Content> images, List<TagId> selectedTagIds, bool isEnableRegistrationButton) {
+    final intl = useIntl();
+    final updateRecipe = useUpdateRecipe(ref);
+    final createRecipe = useCreateRecipe(ref);
+    final recipe = this.recipe;
     return Padding(
       padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
       child: ElevatedButton.icon(
         icon: const Icon(Icons.save),
-        label: Text(recipe != null ? intl(context).doFix : intl(context).doAdd),
+        label: Text(recipe != null ? intl.doFix : intl.doAdd),
         onPressed: isEnableRegistrationButton
             ? () {
-                final viewModel = ref.read(recipeEditingViewModelProvider);
+                final recipeRegistration = RecipeRegistration(
+                  title: recipeTitleEditingController.text,
+                  description: recipeDescriptionEditingController.text,
+                  url: recipeUrlEditingController.text.isNotEmpty ? Uri.parse(recipeUrlEditingController.text) : null,
+                  imageKeys: images.map((e) => e.key).toList(),
+                  tagIds: selectedTagIds,
+                );
                 if (recipe != null) {
-                  viewModel.updateRecipe(recipe!.id, recipeTitleEditingController.text, recipeDescriptionEditingController.text, recipeUrlEditingController.text, images, selectedTagIds);
+                  updateRecipe.trigger(UpdateRecipeData(recipe.id, recipeRegistration));
                 } else {
-                  viewModel.createRecipe(recipeTitleEditingController.text, recipeDescriptionEditingController.text, recipeUrlEditingController.text, images, selectedTagIds);
+                  createRecipe.trigger(recipeRegistration);
                 }
               }
             : null,
       ),
     );
-  }
-
-  Future<void> _showConfirmationDeletingDialog(BuildContext context, WidgetRef ref, Recipe recipe) async {
-    final event = await showDialog<SimpleMessageDialogEvent>(
-      context: context,
-      builder: (context) => SimpleMessageDialog(title: intl(context).confirm, message: intl(context).confirmDeletingWith(recipe.title), positiveButton: intl(context).doDelete, negativeButton: intl(context).cancel),
-    );
-    if (event != null) {
-      await event.when(
-        positive: () async {
-          final viewModel = ref.read(recipeEditingViewModelProvider);
-          await viewModel.deleteRecipe(recipe.id);
-        },
-        neutral: () {},
-        negative: () {},
-      );
-    }
-  }
-
-  Future<void> _pickupProfileImage(BuildContext context, WidgetRef ref, ValueNotifier<List<Content>> images) async {
-    final imagePicker = ImagePicker();
-    final event = await showModalBottomSheet<PhotoPickupBottomSheetEvent>(
-      context: context,
-      builder: PhotoPickupBottomSheetDialog.new,
-    );
-    final pickedImage = await event?.when(
-      fromCamera: () => imagePicker.pickImage(source: ImageSource.camera),
-      fromLibrary: () => imagePicker.pickImage(source: ImageSource.gallery),
-      cancel: () => null,
-    );
-    if (pickedImage != null) {
-      final viewModel = ref.read(recipeEditingViewModelProvider);
-      final image = await viewModel.createImage(File(pickedImage.path));
-      if (image != null) images.value = List.from(images.value..add(image));
-    }
   }
 
   Future<void> _deleteImage(Content image, ValueNotifier<List<Content>> images) async {

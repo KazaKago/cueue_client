@@ -12,8 +12,8 @@ import 'package:cueue/ui/global/modal/simple_message_dialog.dart';
 import 'package:cueue/ui/global/modal/simple_message_dialog_event.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class DeleteMenuData {
-  const DeleteMenuData(this.event, this.menuId);
+class _DeleteMenuData {
+  const _DeleteMenuData(this.event, this.menuId);
 
   final SimpleMessageDialogEvent? event;
   final MenuId menuId;
@@ -30,18 +30,18 @@ SWRTriggerState<MenuId, void> useDeleteMenu(WidgetRef ref) {
     await deleteMenuApi(menuId.value);
     return true;
   });
-  final confirmDeleteMenu = useSWRTrigger<MenuId, DeleteMenuData>((menuId) async {
+  final confirmDeleteMenu = useSWRTrigger<MenuId, _DeleteMenuData>((menuId) async {
     final event = await showConfirmDeleteMenuDialog.trigger(
       SimpleMessageDialogData(
         title: intl.confirm,
-        message: intl.confirmDeleteCookingMenu,
+        message: intl.confirmDeletingCookingMenu,
         positiveButton: intl.doDelete,
         negativeButton: intl.cancel,
       ),
     );
-    return DeleteMenuData(event, menuId);
+    return _DeleteMenuData(event, menuId);
   });
-  useEffectSWRData<DeleteMenuData>(confirmDeleteMenu, (data) {
+  useEffectSWRData<_DeleteMenuData>(confirmDeleteMenu, (data) {
     data.event?.whenOrNull(
       positive: () => deleteMenu.trigger(data.menuId),
     );

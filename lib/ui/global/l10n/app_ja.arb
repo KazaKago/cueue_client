@@ -62,7 +62,6 @@
   "doFix": "修正する",
   "doAdd": "追加する",
   "doChange": "変更する",
-  "confirmDeleteCookingMenu": "こんだてを削除します。よろしいですか？",
   "withMemo": "メモ: {content}",
   "@withMemo": {
     "placeholders": {
@@ -84,14 +83,9 @@
     }
   },
   "tagName": "タグ名",
-  "confirmDeletingWith": "「{content}」を削除します。よろしいですか？",
-  "@confirmDeletingWith": {
-    "placeholders": {
-      "content": {
-        "type": "String"
-      }
-    }
-  },
+  "confirmDeletingCookingMenu": "こんだてを削除します。よろしいですか？",
+  "confirmDeletingRecipe": "レシピを削除します。よろしいですか？",
+  "confirmDeletingTag": "タグを削除します。よろしいですか？",
   "aboutApp": "アプリについて",
   "versionWith": "Version {version}",
   "@versionWith": {

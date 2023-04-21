@@ -1,4 +1,3 @@
-import 'package:cueue/mapper/content/content_request_mapper.dart';
 import 'package:cueue/mapper/content/content_response_mapper.dart';
 import 'package:cueue/mapper/invitation/invitation_response_mapper.dart';
 import 'package:cueue/mapper/menu/menu_request_mapper.dart';
@@ -18,7 +17,6 @@ import 'package:cueue/mapper/workspace/workspace_response_mapper.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final contentResponseMapperProvider = Provider((ref) => const ContentResponseMapper());
-final contentRequestMapperProvider = Provider((ref) => const ContentRequestMapper());
 final userResponseMapperProvider = Provider((ref) => UserResponseMapper(ref.read(workspaceResponseMapperProvider), ref.read(contentResponseMapperProvider)));
 final userSummaryResponseMapperProvider = Provider((ref) => UserSummaryResponseMapper(ref.read(contentResponseMapperProvider)));
 final workspaceResponseMapperProvider = Provider((ref) => WorkspaceResponseMapper(ref.read(userSummaryResponseMapperProvider)));
