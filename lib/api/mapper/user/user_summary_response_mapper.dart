@@ -1,5 +1,5 @@
+import 'package:cueue/api/mapper/content/content_response_mapper.dart';
 import 'package:cueue/api/response/user/user_summary_response.dart';
-import 'package:cueue/mapper/content/content_response_mapper.dart';
 import 'package:cueue/model/user/user_id.dart';
 import 'package:cueue/model/user/user_summary.dart';
 

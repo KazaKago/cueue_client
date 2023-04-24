@@ -1,5 +1,5 @@
+import 'package:cueue/api/mapper/content/content_response_mapper.dart';
 import 'package:cueue/api/response/recipe/recipe_summary_response.dart';
-import 'package:cueue/mapper/content/content_response_mapper.dart';
 import 'package:cueue/model/recipe/recipe_id.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:cueue/model/recipe/recipe_summary_impl.dart';

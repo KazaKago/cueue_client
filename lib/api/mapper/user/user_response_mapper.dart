@@ -1,6 +1,6 @@
+import 'package:cueue/api/mapper/content/content_response_mapper.dart';
+import 'package:cueue/api/mapper/workspace/workspace_response_mapper.dart';
 import 'package:cueue/api/response/user/user_response.dart';
-import 'package:cueue/mapper/content/content_response_mapper.dart';
-import 'package:cueue/mapper/workspace/workspace_response_mapper.dart';
 import 'package:cueue/model/auth/apple_provider_id.dart';
 import 'package:cueue/model/auth/firebase_user.dart';
 import 'package:cueue/model/auth/google_provider_id.dart';

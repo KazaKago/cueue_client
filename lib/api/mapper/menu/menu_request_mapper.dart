@@ -1,5 +1,5 @@
+import 'package:cueue/api/mapper/menu/time_frame_request_mapper.dart';
 import 'package:cueue/api/request/menu/menu_request.dart';
-import 'package:cueue/mapper/menu/time_frame_request_mapper.dart';
 import 'package:cueue/model/menu/menu_registration.dart';
 import 'package:intl/intl.dart';
 

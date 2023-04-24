@@ -1,7 +1,7 @@
 import 'package:cueue/api/hierarchy/tag/get_tags_api.dart';
+import 'package:cueue/api/mapper/tag/tag_response_mapper.dart';
 import 'package:cueue/legacy/data/cache/hierarchy/tag/tag_cache.dart';
 import 'package:cueue/legacy/data/cache/hierarchy/tag/tag_state_manager.dart';
-import 'package:cueue/mapper/tag/tag_response_mapper.dart';
 import 'package:cueue/model/tag/tag.dart';
 import 'package:store_flowable/store_flowable.dart';
 

@@ -1,7 +1,7 @@
 import 'package:cueue/api/hierarchy/recipe/get_recipes_api.dart';
+import 'package:cueue/api/mapper/recipe/recipe_summary_response_mapper.dart';
 import 'package:cueue/legacy/data/cache/hierarchy/recipe/recipe_cache.dart';
 import 'package:cueue/legacy/data/cache/hierarchy/recipe/recipes_state_manager.dart';
-import 'package:cueue/mapper/recipe/recipe_summary_response_mapper.dart';
 import 'package:cueue/model/recipe/recipe_search_option.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:store_flowable/store_flowable.dart';

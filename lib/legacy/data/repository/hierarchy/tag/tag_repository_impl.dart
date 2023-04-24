@@ -1,7 +1,7 @@
 import 'package:cueue/api/hierarchy/tag/order_tag_api.dart';
+import 'package:cueue/api/mapper/tag/tag_order_request_mapper.dart';
 import 'package:cueue/legacy/data/repository/flowable/tag/tag_flowable_factory.dart';
 import 'package:cueue/legacy/domain/repository/hierarchy/tag/tag_repository.dart';
-import 'package:cueue/mapper/tag/tag_order_request_mapper.dart';
 import 'package:cueue/model/tag/tag.dart';
 import 'package:cueue/model/tag/tag_id.dart';
 import 'package:store_flowable/store_flowable.dart';

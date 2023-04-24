@@ -1,5 +1,5 @@
+import 'package:cueue/api/mapper/workspace/workspace_response_mapper.dart';
 import 'package:cueue/api/response/invitation/invitation_response.dart';
-import 'package:cueue/mapper/workspace/workspace_response_mapper.dart';
 import 'package:cueue/model/invitation/invitation.dart';
 import 'package:cueue/model/invitation/invitation_code.dart';
 

@@ -1,7 +1,7 @@
 import 'package:cueue/api/hierarchy/menu/get_menus_api.dart';
+import 'package:cueue/api/mapper/menu/menu_summary_response_mapper.dart';
 import 'package:cueue/legacy/data/cache/hierarchy/menu/menu_cache.dart';
 import 'package:cueue/legacy/data/cache/hierarchy/menu/menu_summary_state_manager.dart';
-import 'package:cueue/mapper/menu/menu_summary_response_mapper.dart';
 import 'package:cueue/model/menu/menu_summary.dart';
 import 'package:store_flowable/store_flowable.dart';
 

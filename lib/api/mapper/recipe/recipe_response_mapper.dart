@@ -1,6 +1,6 @@
+import 'package:cueue/api/mapper/content/content_response_mapper.dart';
+import 'package:cueue/api/mapper/tag/tag_response_mapper.dart';
 import 'package:cueue/api/response/recipe/recipe_response.dart';
-import 'package:cueue/mapper/content/content_response_mapper.dart';
-import 'package:cueue/mapper/tag/tag_response_mapper.dart';
 import 'package:cueue/model/recipe/recipe.dart';
 import 'package:cueue/model/recipe/recipe_id.dart';
 
