@@ -1,6 +1,4 @@
 import 'package:cueue/legacy/data/repository/di/repository_provider.dart';
-import 'package:cueue/legacy/domain/usecase/hierarchy/auth/sign_out_usecase.dart';
-import 'package:cueue/legacy/domain/usecase/hierarchy/auth/sign_out_usecase_impl.dart';
 import 'package:cueue/legacy/domain/usecase/hierarchy/menu/follow_all_menus_usecase.dart';
 import 'package:cueue/legacy/domain/usecase/hierarchy/menu/follow_all_menus_usecase_impl.dart';
 import 'package:cueue/legacy/domain/usecase/hierarchy/menu/refresh_all_menus_usecase.dart';
@@ -21,7 +19,6 @@ import 'package:cueue/legacy/domain/usecase/hierarchy/tag/reorder_tag_usecase.da
 import 'package:cueue/legacy/domain/usecase/hierarchy/tag/reorder_tag_usecase_impl.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final signOutUseCaseProvider = Provider<SignOutUseCase>((ref) => SignOutUseCaseImpl(ref.read(authorizeRepositoryProvider)));
 final followTagsUseCaseProvider = Provider<FollowTagsUseCase>((ref) => FollowTagsUseCaseImpl(ref.read(tagRepositoryProvider)));
 final refreshTagsUseCaseProvider = Provider<RefreshTagsUseCase>((ref) => RefreshTagsUseCaseImpl(ref.read(tagRepositoryProvider)));
 final followAllRecipesUseCaseProvider = Provider<FollowAllRecipesUseCase>((ref) => FollowAllRecipesUseCaseImpl(ref.read(recipeRepositoryProvider)));

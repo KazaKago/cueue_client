@@ -12,9 +12,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-String Function(Exception) useGetErrorMessage({bool withSystemMessage = true}) {
+String Function(Exception) useGetErrorMessage(WidgetRef ref, {bool withSystemMessage = true}) {
   final intl = useIntl();
+  final errorCheck = _useErrorCheck(ref);
   return (error) {
+    errorCheck(error);
     final message = error.when(
       invalidParams: (error) => intl.invalidParams(error.message),
       invalidToken: (error) => intl.invalidToken,
@@ -45,10 +47,8 @@ String Function(Exception) useGetErrorMessage({bool withSystemMessage = true}) {
 SWRTriggerState<Exception, void> useShowErrorDialog(WidgetRef ref) {
   final context = useContext();
   final intl = useIntl();
-  final errorCheck = useErrorCheck(ref);
-  final getErrorMessage = useGetErrorMessage();
+  final getErrorMessage = useGetErrorMessage(ref);
   return useSWRTrigger((error) async {
-    if (errorCheck(error)) return;
     return showDialog(
       context: context,
       builder: (context) {
@@ -63,20 +63,17 @@ SWRTriggerState<Exception, void> useShowErrorDialog(WidgetRef ref) {
 }
 
 SWRTriggerState<Exception, void> useShowErrorSnackbar(WidgetRef ref) {
-  final errorCheck = useErrorCheck(ref);
   final showSnackbar = useShowSnackbar();
-  final getErrorMessage = useGetErrorMessage(withSystemMessage: false);
+  final getErrorMessage = useGetErrorMessage(ref, withSystemMessage: false);
   return useSWRTrigger((error) async {
-    if (errorCheck(error)) return;
     showSnackbar(getErrorMessage(error));
   });
 }
 
-bool Function(Exception) useErrorCheck(WidgetRef ref) {
+bool Function(Exception) _useErrorCheck(WidgetRef ref) {
   final intl = useIntl();
   final signOut = useSignOut(ref);
   final goStore = useGoStore();
-  final getErrorMessage = useGetErrorMessage();
   final showSimpleMessageDialogWithSignOut = useShowSimpleMessageDialog();
   final showSimpleMessageDialogWithGoStore = useShowSimpleMessageDialog();
   final reauthenticationDialog = useReauthenticationDialog();
@@ -93,7 +90,7 @@ bool Function(Exception) useErrorCheck(WidgetRef ref) {
         showSimpleMessageDialogWithSignOut.trigger(
           SimpleMessageDialogData(
             title: intl.error,
-            message: getErrorMessage(error),
+            message: intl.invalidToken,
             positiveButton: intl.ok,
           ),
         );
@@ -103,7 +100,7 @@ bool Function(Exception) useErrorCheck(WidgetRef ref) {
         showSimpleMessageDialogWithGoStore.trigger(
           SimpleMessageDialogData(
             title: intl.error,
-            message: getErrorMessage(error),
+            message: intl.upgradeRequired,
             positiveButton: intl.ok,
           ),
         );
@@ -134,7 +131,7 @@ bool Function(Exception) useErrorCheck(WidgetRef ref) {
         showSimpleMessageDialogWithSignOut.trigger(
           SimpleMessageDialogData(
             title: intl.error,
-            message: getErrorMessage(error),
+            message: intl.userTokenExpired,
             positiveButton: intl.ok,
           ),
         );
