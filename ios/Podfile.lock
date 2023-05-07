@@ -21,23 +21,23 @@ PODS:
   - Firebase/Crashlytics (10.7.0):
     - Firebase/CoreOnly
     - FirebaseCrashlytics (~> 10.7.0)
-  - firebase_analytics (10.2.0):
+  - firebase_analytics (10.3.0):
     - Firebase/Analytics (= 10.7.0)
     - firebase_core
     - Flutter
-  - firebase_app_check (0.1.2-1):
+  - firebase_app_check (0.1.3):
     - Firebase/CoreOnly (~> 10.7.0)
     - firebase_core
     - FirebaseAppCheck (~> 10.7.0-beta)
     - Flutter
-  - firebase_auth (4.4.1):
+  - firebase_auth (4.5.0):
     - Firebase/Auth (= 10.7.0)
     - firebase_core
     - Flutter
-  - firebase_core (2.9.0):
+  - firebase_core (2.11.0):
     - Firebase/CoreOnly (= 10.7.0)
     - Flutter
-  - firebase_crashlytics (3.1.0):
+  - firebase_crashlytics (3.2.0):
     - Firebase/Crashlytics (= 10.7.0)
     - firebase_core
     - Flutter
@@ -267,11 +267,11 @@ SPEC CHECKSUMS:
   AppAuth: e48b432bb4ba88b10cb2bcc50d7f3af21e78b9c2
   connectivity_plus: 413a8857dd5d9f1c399a39130850d02fe0feaf7e
   Firebase: 0219acf760880eeec8ce479895bd7767466d9f81
-  firebase_analytics: 8954db5c9b63075214fa1b3ad2cdced9646f45a0
-  firebase_app_check: e1b58a9d2ac67b961c1c2ac0ea1631ce0bdee997
-  firebase_auth: 5a84572b7f5315a3aff5b07c62bb0cd5a28cade5
-  firebase_core: d85432877e814811e040e7659f9c82faeab66e04
-  firebase_crashlytics: 4c90334dc536ffa73b92f3e978426a0d1e339c74
+  firebase_analytics: 216977fc8c05f54c2c4935181e3f1a368949c5cd
+  firebase_app_check: 9121cdbfc66c0981a59b449918ae66f43c42f16b
+  firebase_auth: 1eb69de8f57040c5c78bb3267412e9cb395fd08c
+  firebase_core: dee76ded6c693fdb38b8ea39aef7129e32e587a3
+  firebase_crashlytics: 450dc80dcb167d04714c147336dd04a7230d20e4
   FirebaseAnalytics: f8133442ee6f8512e28ff19e62ce15398bfaeace
   FirebaseAppCheck: 81143f6f973d277962b71e16c63068a8f4a755dc
   FirebaseAuth: dd64c01631df724b09f33e584625775c52f7d71f
@@ -306,4 +306,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: ebe868d89c2fc3a856a1b79950a99c5ad467d2a9
 
-COCOAPODS: 1.12.0
+COCOAPODS: 1.12.1
