@@ -35,7 +35,7 @@ SWRTriggerState<void, void> useUnlinkWithGoogle(WidgetRef ref) {
   useEffectSWRData(unlinkWithGoogle, (_) {
     showFriedToast(intl.unlinkedWithGoogle);
   });
-  useEffectSWRIsMutating(unlinkWithGoogle, (isMutating) {
+  useEffectSWRIsMutating(unlinkWithGoogle, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(unlinkWithGoogle, (error) {

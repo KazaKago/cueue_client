@@ -25,7 +25,7 @@ SWRTriggerState<RecipeRegistration, Recipe> useCreateRecipe(WidgetRef ref) {
   useEffectSWRData(createRecipe, (tag) {
     popPage.trigger(EditingResult.created);
   });
-  useEffectSWRIsMutating(createRecipe, (isMutating) {
+  useEffectSWRIsMutating(createRecipe, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(createRecipe, (error) {

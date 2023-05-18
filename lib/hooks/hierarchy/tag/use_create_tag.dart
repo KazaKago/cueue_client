@@ -25,7 +25,7 @@ SWRTriggerState<TagRegistration, Tag> useCreateTag(WidgetRef ref) {
   useEffectSWRData(createTag, (data) {
     popPage.trigger(EditingResult.created);
   });
-  useEffectSWRIsMutating(createTag, (isMutating) {
+  useEffectSWRIsMutating(createTag, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(createTag, (error) {

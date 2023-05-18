@@ -30,7 +30,7 @@ SWRTriggerState<void, GoogleAuthInfo> useSignInWithGoogle(WidgetRef ref) {
   useEffectSWRData(signInWithGoogle, (_) {
     replaceSignedInPage.trigger(null);
   });
-  useEffectSWRIsMutating(signInWithGoogle, (isMutating) {
+  useEffectSWRIsMutating(signInWithGoogle, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(signInWithGoogle, (error) {

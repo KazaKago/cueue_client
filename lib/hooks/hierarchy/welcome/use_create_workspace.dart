@@ -21,7 +21,7 @@ SWRTriggerState<String, WorkspaceResponse> useCreateWorkspace(WidgetRef ref) {
   useEffectSWRData(createWorkspace, (_) {
     replacePage.trigger(const MainPage());
   });
-  useEffectSWRIsMutating(createWorkspace, (isMutating) {
+  useEffectSWRIsMutating(createWorkspace, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(createWorkspace, (error) {

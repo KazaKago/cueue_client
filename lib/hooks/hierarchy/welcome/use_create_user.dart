@@ -37,7 +37,7 @@ SWRTriggerState<PreUser, User> useCreateUser(WidgetRef ref) {
   useEffectSWRData(createUser, (_) {
     replacePage.trigger(const WorkspaceCreationPage());
   });
-  useEffectSWRIsMutating(createUser, (isMutating) {
+  useEffectSWRIsMutating(createUser, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(createUser, (error) {

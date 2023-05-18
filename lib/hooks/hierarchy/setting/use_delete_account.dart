@@ -46,7 +46,7 @@ SWRTriggerState<void, void> useDeleteAccount(WidgetRef ref) {
     if (showSimpleMessageDialog.data != const SimpleMessageDialogEvent.positive()) return;
     deleteAccount.trigger(null);
   });
-  useEffectSWRIsMutating(deleteAccount, (isMutating) {
+  useEffectSWRIsMutating(deleteAccount, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRData(deleteAccount, (_) {

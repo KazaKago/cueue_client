@@ -27,11 +27,11 @@ void useEffectSWRData<DATA>(SWRTriggerState<void, DATA> state, void Function(DAT
   );
 }
 
-void useEffectSWRIsMutating<DATA>(SWRTriggerState<void, DATA> state, void Function(bool) effect) {
+void useEffectSWRIsMutating<DATA>(SWRTriggerState<void, DATA> state, void Function({required bool isMutating}) effect) {
   useEffect(
     () {
       final isMutating = state.isMutating;
-      Future.microtask(() => effect(isMutating));
+      Future.microtask(() => effect(isMutating: isMutating));
       return null;
     },
     [state.isMutating],

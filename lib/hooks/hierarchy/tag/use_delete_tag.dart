@@ -49,7 +49,7 @@ SWRTriggerState<TagId, void> useDeleteTag(WidgetRef ref) {
   useEffectSWRData(deleteTag, (data) {
     popPage.trigger(EditingResult.deleted);
   });
-  useEffectSWRIsMutating(deleteTag, (isMutating) {
+  useEffectSWRIsMutating(deleteTag, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(deleteTag, (error) {

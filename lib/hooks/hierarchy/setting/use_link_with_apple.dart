@@ -35,7 +35,7 @@ SWRTriggerState<void, AppleAuthInfo> useLinkWithApple(WidgetRef ref) {
   useEffectSWRData(linkWithApple, (_) {
     showFriedToast(intl.linkedWithApple);
   });
-  useEffectSWRIsMutating(linkWithApple, (isMutating) {
+  useEffectSWRIsMutating(linkWithApple, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(linkWithApple, (error) {

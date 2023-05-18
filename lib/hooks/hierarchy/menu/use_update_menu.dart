@@ -33,7 +33,7 @@ SWRTriggerState<UpdateMenuData, Menu> useUpdateMenu(WidgetRef ref) {
   useEffectSWRData(updateMenu, (data) {
     popPage.trigger(EditingResult.updated);
   });
-  useEffectSWRIsMutating(updateMenu, (isMutating) {
+  useEffectSWRIsMutating(updateMenu, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(updateMenu, (error) {

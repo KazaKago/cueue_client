@@ -20,7 +20,6 @@ void revalidateOnFocus<KEY, DATA>(SWRValidate<KEY, DATA> validate, KEY? key) {
         switch (event) {
           case NavigatorEvent.resume:
             Future.microtask(() => validate(key));
-            break;
           case NavigatorEvent.pause:
             // do nothing.
             break;
@@ -49,7 +48,6 @@ void revalidateOnReconnect<KEY, DATA>(SWRValidate<KEY, DATA> validate, KEY? key)
             if (previousResult == ConnectivityResult.none) {
               Future.microtask(() => validate(key));
             }
-            break;
           case ConnectivityResult.none:
             break;
         }

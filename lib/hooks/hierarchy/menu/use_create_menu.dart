@@ -25,7 +25,7 @@ SWRTriggerState<MenuRegistration, Menu> useCreateMenu(WidgetRef ref) {
   useEffectSWRData(createMenu, (tag) {
     popPage.trigger(EditingResult.created);
   });
-  useEffectSWRIsMutating(createMenu, (isMutating) {
+  useEffectSWRIsMutating(createMenu, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(createMenu, (error) {

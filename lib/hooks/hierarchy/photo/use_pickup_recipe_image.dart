@@ -37,7 +37,7 @@ SWRTriggerState<void, PhotoPickupBottomSheetEvent?> usePickupRecipeImage(WidgetR
   useEffectSWRData<Content>(createContent, (content) {
     images.value = List.from(images.value..add(content));
   });
-  useEffectSWRIsMutating(createContent, (isMutating) {
+  useEffectSWRIsMutating(createContent, ({required isMutating}) {
     isPosting.value = isMutating;
   });
   useEffectSWRError(createContent, (error) {

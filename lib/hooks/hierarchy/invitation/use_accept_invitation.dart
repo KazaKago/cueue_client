@@ -44,7 +44,7 @@ SWRTriggerState<InvitationCode, UserResponse> useAcceptInvitation(WidgetRef ref)
       ),
     );
   });
-  useEffectSWRIsMutating(acceptInvitation, (isMutating) {
+  useEffectSWRIsMutating(acceptInvitation, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(acceptInvitation, (error) {

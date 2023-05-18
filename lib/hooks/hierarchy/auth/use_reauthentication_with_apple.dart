@@ -36,7 +36,7 @@ SWRTriggerState<void, AppleAuthInfo> useReauthenticationWithApple(WidgetRef ref,
       deleteAccount: () => deleteAccount.trigger(null),
     );
   });
-  useEffectSWRIsMutating(reauthenticationWithApple, (isMutating) {
+  useEffectSWRIsMutating(reauthenticationWithApple, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(reauthenticationWithApple, (error) {

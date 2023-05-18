@@ -49,7 +49,7 @@ SWRTriggerState<RecipeId, void> useDeleteRecipe(WidgetRef ref) {
   useEffectSWRData(deleteRecipe, (data) {
     popPage.trigger(EditingResult.deleted);
   });
-  useEffectSWRIsMutating(deleteRecipe, (isMutating) {
+  useEffectSWRIsMutating(deleteRecipe, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(deleteRecipe, (error) {

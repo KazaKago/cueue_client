@@ -19,10 +19,8 @@ SWRTriggerState<void, void> useStartWorkspace(
     switch (selectionState.value) {
       case StartWorkspaceState.create:
         await createWorkspace.trigger(nameEditingController.text);
-        break;
       case StartWorkspaceState.join:
         await pushPage.trigger(InvitationInfoPage(InvitationCode(codeEditingController.text)));
-        break;
     }
   });
   return startWorkspace;

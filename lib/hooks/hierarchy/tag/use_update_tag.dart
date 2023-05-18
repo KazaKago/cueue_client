@@ -33,7 +33,7 @@ SWRTriggerState<UpdateTagData, Tag> useUpdateTag(WidgetRef ref) {
   useEffectSWRData(updateTag, (data) {
     popPage.trigger(EditingResult.updated);
   });
-  useEffectSWRIsMutating(updateTag, (isMutating) {
+  useEffectSWRIsMutating(updateTag, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(updateTag, (error) {

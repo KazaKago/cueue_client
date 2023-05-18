@@ -31,7 +31,7 @@ SWRTriggerState<void, AppleAuthInfo> useSignInWithApple(WidgetRef ref) {
   useEffectSWRData(signInWithApple, (_) {
     replaceSignedInPage.trigger(null);
   });
-  useEffectSWRIsMutating(signInWithApple, (isMutating) {
+  useEffectSWRIsMutating(signInWithApple, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(signInWithApple, (error) {

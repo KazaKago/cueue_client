@@ -34,7 +34,7 @@ SWRTriggerState<void, GoogleAuthInfo> useLinkWithGoogle(WidgetRef ref) {
   useEffectSWRData(linkWithGoogle, (_) {
     showFriedToast(intl.linkedWithGoogle);
   });
-  useEffectSWRIsMutating(linkWithGoogle, (isMutating) {
+  useEffectSWRIsMutating(linkWithGoogle, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(linkWithGoogle, (error) {

@@ -35,7 +35,7 @@ SWRTriggerState<void, void> useUnlinkWithApple(WidgetRef ref) {
   useEffectSWRData(unlinkWithApple, (_) {
     showFriedToast(intl.unlinkedWithApple);
   });
-  useEffectSWRIsMutating(unlinkWithApple, (isMutating) {
+  useEffectSWRIsMutating(unlinkWithApple, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(unlinkWithApple, (error) {

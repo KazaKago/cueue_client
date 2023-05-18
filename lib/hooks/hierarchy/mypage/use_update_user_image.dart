@@ -57,7 +57,7 @@ SWRTriggerState<void, PhotoPickupBottomSheetEvent?> useUpdateUserImage(WidgetRef
     );
     return (xfile != null) ? File(xfile.path) : null;
   });
-  useEffectSWRIsMutating(updateUser, (isMutating) {
+  useEffectSWRIsMutating(updateUser, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(updateUser, (error) {

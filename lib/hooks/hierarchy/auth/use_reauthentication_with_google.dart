@@ -35,7 +35,7 @@ SWRTriggerState<void, GoogleAuthInfo> useReauthenticationWithGoogle(WidgetRef re
       deleteAccount: () => deleteAccount.trigger(null),
     );
   });
-  useEffectSWRIsMutating(reauthenticationWithGoogle, (isMutating) {
+  useEffectSWRIsMutating(reauthenticationWithGoogle, ({required isMutating}) {
     easyLoading.trigger(isMutating);
   });
   useEffectSWRError(reauthenticationWithGoogle, (error) {
