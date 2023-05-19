@@ -1,6 +1,6 @@
+import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/legacy/presentation/view/global/l10n/intl.dart';
 import 'package:cueue/legacy/presentation/viewmodel/di/viewmodel_provider.dart';
-import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:cueue/model/tag/tag.dart';
 import 'package:cueue/ui/global/widget/error_handling_widget.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_detail_page.dart';
@@ -26,6 +26,7 @@ class RecipePage extends HookConsumerWidget {
   }
 
   Widget _buildLoading(BuildContext context, WidgetRef ref) {
+    final pushPage = usePushPage<void>();
     return Scaffold(
       appBar: AppBar(
         title: Text(intl(context).recipe),
@@ -33,7 +34,7 @@ class RecipePage extends HookConsumerWidget {
           IconButton(
             icon: const Icon(FontAwesomeIcons.tag),
             tooltip: intl(context).tag,
-            onPressed: () => _goTag(context),
+            onPressed: () => pushPage.trigger(const TagPage()),
           ),
         ],
       ),
@@ -42,6 +43,7 @@ class RecipePage extends HookConsumerWidget {
   }
 
   Widget _buildCompleted(BuildContext context, WidgetRef ref, List<Tag> tags) {
+    final pushPage = usePushPage<void>();
     return DefaultTabController(
       length: tags.length + 1,
       child: Scaffold(
@@ -51,7 +53,7 @@ class RecipePage extends HookConsumerWidget {
             IconButton(
               icon: const Icon(FontAwesomeIcons.tag),
               tooltip: intl(context).tag,
-              onPressed: () => _goTag(context),
+              onPressed: () => pushPage.trigger(const TagPage()),
             ),
           ],
           bottom: TabBar(
@@ -64,8 +66,8 @@ class RecipePage extends HookConsumerWidget {
         ),
         body: TabBarView(
           children: [
-            RecipeList(key: const PageStorageKey(-1), onTap: (recipe) => _goRecipeDetail(context, recipe), fabPadding: true),
-            for (final tag in tags) RecipeList(key: PageStorageKey(tag.id.value), tagIds: List.filled(1, tag.id), onTap: (recipe) => _goRecipeDetail(context, recipe), fabPadding: true),
+            RecipeList(key: const PageStorageKey(-1), onTap: (recipe) => pushPage.trigger(RecipeDetailPage(recipe)), fabPadding: true),
+            for (final tag in tags) RecipeList(key: PageStorageKey(tag.id.value), tagIds: List.filled(1, tag.id), onTap: (recipe) => pushPage.trigger(RecipeDetailPage(recipe)), fabPadding: true),
           ],
         ),
       ),
@@ -74,6 +76,7 @@ class RecipePage extends HookConsumerWidget {
 
   Widget _buildError(BuildContext context, WidgetRef ref, Exception exception) {
     final viewModel = ref.read(tagViewModelProvider);
+    final pushPage = usePushPage<void>();
     return Scaffold(
       appBar: AppBar(
         title: Text(intl(context).recipe),
@@ -81,19 +84,11 @@ class RecipePage extends HookConsumerWidget {
           IconButton(
             icon: const Icon(FontAwesomeIcons.tag),
             tooltip: intl(context).tag,
-            onPressed: () => _goTag(context),
+            onPressed: () => pushPage.trigger(const TagPage()),
           ),
         ],
       ),
       body: ErrorHandlingWidget(exception, onClickRetry: viewModel.retry),
     );
-  }
-
-  Future<void> _goRecipeDetail(BuildContext context, RecipeSummary recipe) async {
-    await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => RecipeDetailPage(recipe)));
-  }
-
-  Future<void> _goTag(BuildContext context) async {
-    await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => const TagPage()));
   }
 }

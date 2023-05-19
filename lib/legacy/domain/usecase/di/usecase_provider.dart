@@ -1,10 +1,4 @@
 import 'package:cueue/legacy/data/repository/di/repository_provider.dart';
-import 'package:cueue/legacy/domain/usecase/hierarchy/menu/follow_all_menus_usecase.dart';
-import 'package:cueue/legacy/domain/usecase/hierarchy/menu/follow_all_menus_usecase_impl.dart';
-import 'package:cueue/legacy/domain/usecase/hierarchy/menu/refresh_all_menus_usecase.dart';
-import 'package:cueue/legacy/domain/usecase/hierarchy/menu/refresh_all_menus_usecase_impl.dart';
-import 'package:cueue/legacy/domain/usecase/hierarchy/menu/request_additional_all_menus_usecase.dart';
-import 'package:cueue/legacy/domain/usecase/hierarchy/menu/request_additional_all_menus_usecase_impl.dart';
 import 'package:cueue/legacy/domain/usecase/hierarchy/recipe/follow_all_recipes_usecase.dart';
 import 'package:cueue/legacy/domain/usecase/hierarchy/recipe/follow_all_recipes_usecase_impl.dart';
 import 'package:cueue/legacy/domain/usecase/hierarchy/recipe/refresh_all_recipes_usecase.dart';
@@ -24,7 +18,4 @@ final refreshTagsUseCaseProvider = Provider<RefreshTagsUseCase>((ref) => Refresh
 final followAllRecipesUseCaseProvider = Provider<FollowAllRecipesUseCase>((ref) => FollowAllRecipesUseCaseImpl(ref.read(recipeRepositoryProvider)));
 final refreshAllRecipesUseCaseProvider = Provider<RefreshAllRecipesUseCase>((ref) => RefreshAllRecipesUseCaseImpl(ref.read(recipeRepositoryProvider)));
 final requestAdditionalAllRecipesUseCaseProvider = Provider<RequestAdditionalAllRecipesUseCase>((ref) => RequestAdditionalAllRecipesUseCaseImpl(ref.read(recipeRepositoryProvider)));
-final followAllMenusUseCaseProvider = Provider<FollowAllMenusUseCase>((ref) => FollowAllMenusUseCaseImpl(ref.read(menuRepositoryProvider)));
-final refreshAllMenusUseCaseProvider = Provider<RefreshAllMenusUseCase>((ref) => RefreshAllMenusUseCaseImpl(ref.read(menuRepositoryProvider)));
-final requestAdditionalAllMenusUseCaseProvider = Provider<RequestAdditionalAllMenusUseCase>((ref) => RequestAdditionalAllMenusUseCaseImpl(ref.read(menuRepositoryProvider)));
 final reorderTagUseCaseProvider = Provider<ReorderTagUseCase>((ref) => ReorderTagUseCaseImpl(ref.read(tagRepositoryProvider)));

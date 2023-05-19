@@ -3,28 +3,40 @@ import 'package:cueue/model/date/date_time_extension.dart';
 import 'package:cueue/model/menu/date_split_menu_list.dart';
 import 'package:cueue/model/menu/menu_summary.dart';
 
-class MenuList extends DelegatingList<MenuSummary> {
+class MenuList extends DelegatingList<MenuSummary?> {
   MenuList(super.base);
 
-  List<DateSplitMenuList> createDateSplit() {
-    final dateSplitDateMenuList = <DateSplitMenuList>[];
-    DateTime? menuDate;
+  factory MenuList.from(List<List<MenuSummary>?> nestedMenuSummaries) {
+    final mergedMenuSummaries = MenuList([]);
+    for (final menuSummaries in nestedMenuSummaries) {
+      if (menuSummaries != null) {
+        mergedMenuSummaries.addAll(menuSummaries);
+      } else {
+        mergedMenuSummaries.add(null);
+      }
+    }
+    return mergedMenuSummaries;
+  }
+
+  List<DateSplitMenuList?> createDateSplit() {
+    final dateSplitDateMenuList = <DateSplitMenuList?>[];
+    DateTime? previousMenuDate;
     var menus = const <MenuSummary>[];
     forEachIndexed((index, menu) {
-      final date = menuDate;
-      if (date == null) {
-        menuDate = menu.date;
-        menus = [menu];
-      } else if (date.isSameDay(menu.date)) {
+      if (menu == null) {
+        dateSplitDateMenuList.add(null);
+      } else if (previousMenuDate?.isSameDay(menu.date) == true) {
         menus = menus + [menu];
       } else {
-        dateSplitDateMenuList.add(DateSplitMenuList(date: date, menus: menus));
-        menuDate = menu.date;
+        if (previousMenuDate != null) {
+          dateSplitDateMenuList.add(DateSplitMenuList(date: previousMenuDate!, menus: menus));
+        }
+        previousMenuDate = menu.date;
         menus = [menu];
       }
     });
-    if (menuDate != null) {
-      dateSplitDateMenuList.add(DateSplitMenuList(date: menuDate!, menus: menus));
+    if (previousMenuDate != null) {
+      dateSplitDateMenuList.add(DateSplitMenuList(date: previousMenuDate!, menus: menus));
     }
     return dateSplitDateMenuList;
   }

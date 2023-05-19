@@ -1,3 +1,4 @@
+import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/legacy/presentation/view/global/l10n/intl.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:cueue/model/tag/tag_id.dart';
@@ -17,6 +18,7 @@ class SearchResultPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedRecipes = (initialSelectedRecipes != null) ? useState<List<RecipeSummary>>(initialSelectedRecipes!) : null;
+    final pushPage = usePushPage<void>();
     return WillPopScope(
       onWillPop: () async {
         Navigator.of(context).pop(selectedRecipes?.value);
@@ -34,16 +36,12 @@ class SearchResultPage extends HookConsumerWidget {
             if (selectedRecipes != null) {
               _onCheckChanged(selectedRecipes, recipe);
             } else {
-              _goRecipeDetail(context, recipe);
+              pushPage.trigger(RecipeDetailPage(recipe));
             }
           },
         ),
       ),
     );
-  }
-
-  Future<void> _goRecipeDetail(BuildContext context, RecipeSummary recipe) async {
-    await Navigator.push<void>(context, MaterialPageRoute(builder: (context) => RecipeDetailPage(recipe)));
   }
 
   Future<void> _onCheckChanged(ValueNotifier<List<RecipeSummary>> selectedRecipes, RecipeSummary recipe) async {

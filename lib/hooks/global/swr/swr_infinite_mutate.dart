@@ -12,12 +12,14 @@ class SWRInfiniteMutate<KEY, DATA> {
     bool revalidate = true,
   }) async {
     final dataList = await data?.call();
-    pageStateList.mapIndexed((index, swrState) {
-      swrState.mutate.call(
-        (dataList != null && index < dataList.length) ? () async => dataList[index] : null,
-        optimisticData: (optimisticData != null && index < optimisticData.length) ? optimisticData[index] : null,
-        revalidate: revalidate,
-      );
-    });
+    await Future.wait(
+      pageStateList.mapIndexed((index, swrState) {
+        return swrState.mutate.call(
+          (dataList != null && index < dataList.length) ? () async => dataList[index] : null,
+          optimisticData: (optimisticData != null && index < optimisticData.length) ? optimisticData[index] : null,
+          revalidate: revalidate,
+        );
+      }),
+    );
   }
 }
