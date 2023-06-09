@@ -30,7 +30,7 @@ runs:
       run: xcodebuild archive CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO -workspace ./ios/Runner.xcworkspace -scheme Runner -configuration Release -archivePath ./build/ios/Runner.xcarchive
       shell: bash
     - name: Export by xcodebuild
-      run: xcodebuild -exportArchive -archivePath ./build/ios/Runner.xcarchive -exportPath ./build/ios/ipa -exportOptionsPlist ./ios/ExportOptions.plist -allowProvisioningUpdates -authenticationKeyIssuerID ${{ inputs.APPLE_API_ISSUER_ID }} -authenticationKeyID ${{ inputs.APPLE_API_KEY_ID }} -authenticationKeyPath ./private_keys/AuthKey_${{ inputs.APPLE_API_KEY_ID }}.p8
+      run: xcodebuild -exportArchive -archivePath ./build/ios/Runner.xcarchive -exportPath ./build/ios/ipa -exportOptionsPlist ./ios/ExportOptions.plist -allowProvisioningUpdates -authenticationKeyIssuerID ${{ inputs.appleApiIssuerId }} -authenticationKeyID ${{ inputs.appleApiKeyId }} -authenticationKeyPath ./private_keys/AuthKey_${{ inputs.APPLE_API_KEY_ID }}.p8
       shell: bash
     - name: Output IPA
       id: output-ipa
