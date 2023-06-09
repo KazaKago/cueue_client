@@ -2,26 +2,8 @@ name: Setup Common
 description: setup for flutter action.
 
 inputs:
-  lpBaseUrl:
-    description: lp base url.
-    required: true
-  apiBaseUrl:
-    description: api base url.
-    required: true
-  appleClientId:
-    description: apple client id.
-    required: true
-  appleRedirectUri:
-    description: apple callback url.
-    required: true
-  webRecaptchaSiteKey:
-    description: reCAPTCHA v3 site key.
-    required: true
-  appStoreUrl:
-    description: app store url.
-    required: true
-  playStoreUrl:
-    description: play store url.
+  dartDefineJsonBase64:
+    description: base64 encoded dart_define.json.
     required: true
 
 runs:
@@ -34,18 +16,6 @@ runs:
     - name: Check Flutter version
       run: flutter --version
       shell: bash
-    - name: Mkdir env folder
-      run: mkdir -p assets/env
+    - name: Put dart_define.json
+      run: echo ${{ inputs.dartDefineJsonBase64 }} | base64 -d > dart_define.json
       shell: bash
-    - name: Create dot env file
-      uses: weyheyhey/create-dotenv-action@v1
-      with:
-        filename: assets/env/dotenv
-      env:
-        ^LP_BASE_URL: ${{ inputs.lpBaseUrl }}
-        ^API_BASE_URL: ${{ inputs.apiBaseUrl }}
-        ^APPLE_CLIENT_ID: ${{ inputs.appleClientId }}
-        ^APPLE_REDIRECT_URI: ${{ inputs.appleRedirectUri }}
-        ^WEB_RECAPTCHA_SITE_KEY: ${{ inputs.webRecaptchaSiteKey }}
-        ^APP_STORE_URL: ${{ inputs.appStoreUrl }}
-        ^PLAY_STORE_URL: ${{ inputs.playStoreUrl }}

@@ -1,0 +1,18 @@
+name: Build APK
+description: build for apk.
+
+outputs:
+  apkPath:
+    description: APK path.
+    value: ${{ steps.output-apk.outputs.apkPath }}
+
+runs:
+  using: composite
+  steps:
+    - name: Build
+      run: flutter build apk --dart-define-from-file=dart_define.json
+      shell: bash
+    - name: Output APK
+      id: output-apk
+      run: echo "apkPath=$(echo ./build/app/outputs/flutter-apk/app-release.apk)" >> $GITHUB_OUTPUT
+      shell: bash

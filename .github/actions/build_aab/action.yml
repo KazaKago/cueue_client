@@ -1,0 +1,18 @@
+name: Build AAB
+description: build for aab.
+
+outputs:
+  aabPath:
+    description: AAB path.
+    value: ${{ steps.output-aab.outputs.aabPath }}
+
+runs:
+  using: composite
+  steps:
+    - name: Build
+      run: flutter build appbundle --dart-define-from-file=dart_define.json
+      shell: bash
+    - name: Output AAB
+      id: output-aab
+      run: echo "aabPath=$(echo ./build/app/outputs/bundle/release/app-release.aab)" >> $GITHUB_OUTPUT
+      shell: bash

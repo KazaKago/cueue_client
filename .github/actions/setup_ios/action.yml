@@ -2,11 +2,11 @@ name: Setup iOS
 description: setup for iOS action.
 
 inputs:
-  appleCertificatesRepositorySshKey:
-    description: ssh key for fastlane match repository.
+  appleApiKeyId:
+    description: AppStoreConnectAPI AuthKey Id
     required: true
-  fastlaneMatchPassword:
-    description: fastlane match password.
+  appleApiAuthkeyP8Base64:
+    description: base64 encoded AppStoreConnectAPI AuthKey
     required: true
   googleServiceInfoPlistBase64:
     description: base64 encoded GoogleServiceInfo.plist.
@@ -15,22 +15,12 @@ inputs:
 runs:
   using: composite
   steps:
-    - uses: webfactory/ssh-agent@v0.8.0
-      with:
-        ssh-private-key: ${{ inputs.appleCertificatesRepositorySshKey }}
-    - name: Install Bundler 1.17.2
-      run: gem install bundler:1.17.2
+    - name: mkdir private_keys
+      run: mkdir private_keys
       shell: bash
-    - name: Bundle Install
-      run: bundle install
+    - name: Put AuthKey.p8
+      run: echo ${{ inputs.appleApiAuthkeyP8Base64 }} | base64 -d > private_keys/AuthKey_${{ inputs.appleApiKeyId }}.p8
       shell: bash
-      working-directory: ./ios
-    - name: Fastlane Match
-      run: bundle exec fastlane get_all_cer
-      shell: bash
-      working-directory: ./ios
-      env:
-        MATCH_PASSWORD: ${{ inputs.fastlaneMatchPassword }}
     - name: Put GoogleService-Info.plist
       run: echo ${{ inputs.googleServiceInfoPlistBase64 }} | base64 -d > ios/Runner/GoogleService-Info.plist
       shell: bash

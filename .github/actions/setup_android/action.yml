@@ -5,6 +5,9 @@ inputs:
   googleServicesJsonBase64:
     description: base64 encoded google-services.json.
     required: true
+  keystoreBase64:
+    description: base64 encoded signing key.
+    required: true
 
 runs:
   using: composite
@@ -15,6 +18,9 @@ runs:
         java-version: 17
         distribution: temurin
         cache: gradle
+    - name: Put keystore.p12
+      run: echo ${{ inputs.keystoreBase64 }} | base64 -d > android/app/keystore.p12
+      shell: bash
     - name: Put google-services.json
       run: echo ${{ inputs.googleServicesJsonBase64 }} | base64 -d > android/app/google-services.json
       shell: bash

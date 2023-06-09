@@ -1,11 +1,6 @@
 name: Build Web
 description: build for web.
 
-inputs:
-  flavor:
-    description: flavor argument.
-    required: true
-
 outputs:
   path:
     description: Path.
@@ -15,9 +10,9 @@ runs:
   using: composite
   steps:
     - name: Build
-      run: flutter build web
+      run: flutter build web --dart-define-from-file=dart_define.json
       shell: bash
     - name: Output Path
       id: output-path
-      run: echo "::set-output name=path::$(echo ./build/web)"
+      run: echo "path=$(echo ./build/web)" >> $GITHUB_OUTPUT
       shell: bash
