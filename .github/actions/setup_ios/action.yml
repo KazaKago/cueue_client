@@ -11,6 +11,9 @@ inputs:
   googleServiceInfoPlistBase64:
     description: base64 encoded GoogleServiceInfo.plist.
     required: true
+  firebaseAppIdJsonBase64:
+    description: base64 encoded firebase_app_id_file.json
+    required: true
 
 runs:
   using: composite
@@ -23,4 +26,7 @@ runs:
       shell: bash
     - name: Put GoogleService-Info.plist
       run: echo ${{ inputs.googleServiceInfoPlistBase64 }} | base64 -d > ios/Runner/GoogleService-Info.plist
+      shell: bash
+    - name: Put firebase_app_id_file.json
+      run: echo ${{ inputs.firebaseAppIdJsonBase64 }} | base64 -d > ios/firebase_app_id_file.json
       shell: bash

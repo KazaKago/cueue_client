@@ -30,9 +30,9 @@ runs:
       run: xcodebuild archive CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO -workspace ./ios/Runner.xcworkspace -scheme Runner -configuration Release -archivePath ./build/ios/Runner.xcarchive
       shell: bash
     - name: Export by xcodebuild
-      run: xcodebuild -exportArchive -archivePath ./build/ios/Runner.xcarchive -exportPath ./build/ios/ipa -exportOptionsPlist ./ios/ExportOptions.plist -allowProvisioningUpdates -authenticationKeyIssuerID ${{ inputs.appleApiIssuerId }} -authenticationKeyID ${{ inputs.appleApiKeyId }} -authenticationKeyPath ./private_keys/AuthKey_${{ inputs.APPLE_API_KEY_ID }}.p8
+      run: xcodebuild -exportArchive -archivePath ./build/ios/Runner.xcarchive -exportPath ./build/ios/ipa -exportOptionsPlist ./ios/ExportOptions.plist -allowProvisioningUpdates -authenticationKeyIssuerID ${{ inputs.appleApiIssuerId }} -authenticationKeyID ${{ inputs.appleApiKeyId }} -authenticationKeyPath `pwd`/private_keys/AuthKey_${{ inputs.appleApiKeyId }}.p8
       shell: bash
     - name: Output IPA
       id: output-ipa
-      run: echo "ipaPath=$(echo ./build/ios/ipa/cueue.ipa)" >> $GITHUB_OUTPUT
+      run: echo "ipaPath=$(find ./build/ios/ipa -type f -name '*.ipa')" >> $GITHUB_OUTPUT
       shell: bash
