@@ -14,7 +14,7 @@ class UpdateWorkspaceApi {
       final dio = await _dioCreator.create();
       final response = await dio.put<Map<String, dynamic>>('/users/me/workspace', data: request);
       return WorkspaceResponse.fromJson(response.data!);
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       throw dioError.parseException();
     }
   }

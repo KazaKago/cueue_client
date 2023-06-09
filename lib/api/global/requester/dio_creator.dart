@@ -34,10 +34,10 @@ abstract class DioCreator {
           options.headers.addAll(<String, dynamic>{HttpHeaders.authorizationHeader: 'Bearer $accessToken'});
           handler.next(options);
         } on Exception catch (exception) {
-          handler.reject(DioError(requestOptions: options, error: exception));
+          handler.reject(DioException(requestOptions: options, error: exception));
         }
       },
-      onError: (DioError error, ErrorInterceptorHandler handler) {
+      onError: (DioException error, ErrorInterceptorHandler handler) {
         final newError = error.copyWith(error: error.parseException());
         handler.next(newError);
       },

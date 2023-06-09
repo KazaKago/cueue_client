@@ -13,7 +13,7 @@ class GetMenuApi {
       final dio = await _dioCreator.create();
       final response = await dio.get<Map<String, dynamic>>('/menus/$menuId');
       return MenuResponse.fromJson(response.data!);
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       throw dioError.parseException();
     }
   }

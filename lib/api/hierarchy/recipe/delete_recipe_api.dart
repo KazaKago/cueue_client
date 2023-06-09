@@ -11,7 +11,7 @@ class DeleteRecipeApi {
     try {
       final dio = await _dioCreator.create();
       await dio.delete<void>('/recipes/$recipeId');
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       throw dioError.parseException();
     }
   }

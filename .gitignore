@@ -49,6 +49,4 @@ app.*.map.json
 !.idea/codeStyles/
 !.idea/inspectionProfiles/
 !.idea/runConfigurations/
-assets/env/
-.firebase
-.firebaserc
+dart_define.json

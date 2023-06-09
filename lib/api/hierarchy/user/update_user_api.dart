@@ -14,7 +14,7 @@ class UpdateUserApi {
       final dio = await _dioCreator.create();
       final response = await dio.put<Map<String, dynamic>>('/users/me', data: request);
       return UserResponse.fromJson(response.data!);
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       throw dioError.parseException();
     }
   }

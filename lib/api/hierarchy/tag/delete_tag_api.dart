@@ -11,7 +11,7 @@ class DeleteTagApi {
     try {
       final dio = await _dioCreator.create();
       await dio.delete<void>('/tags/$tagId');
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       throw dioError.parseException();
     }
   }

@@ -9,19 +9,6 @@
 
 import 'package:flutter/widgets.dart';
 
-class $AssetsEnvGen {
-  const $AssetsEnvGen();
-
-  /// File path: assets/env/dotenv.production
-  String get dotenvProduction => 'assets/env/dotenv.production';
-
-  /// File path: assets/env/dotenv.staging
-  String get dotenvStaging => 'assets/env/dotenv.staging';
-
-  /// List of all assets
-  List<String> get values => [dotenvProduction, dotenvStaging];
-}
-
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -53,7 +40,6 @@ class $AssetsImagesGen {
 class Assets {
   Assets._();
 
-  static const $AssetsEnvGen env = $AssetsEnvGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 

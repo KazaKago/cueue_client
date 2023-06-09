@@ -17,7 +17,7 @@ class GetMenusApi {
       return response.data!.map<MenuSummaryResponse>((dynamic json) {
         return MenuSummaryResponse.fromJson(json as Map<String, dynamic>);
       }).toList();
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       throw dioError.parseException();
     }
   }

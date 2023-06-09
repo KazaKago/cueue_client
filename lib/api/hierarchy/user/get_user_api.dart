@@ -13,7 +13,7 @@ class GetUserApi {
       final dio = await _dioCreator.create();
       final response = await dio.get<Map<String, dynamic>>('/users/me');
       return UserResponse.fromJson(response.data!);
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       throw dioError.parseException();
     }
   }

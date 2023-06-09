@@ -14,7 +14,7 @@ class UpdateRecipeApi {
       final dio = await _dioCreator.create();
       final response = await dio.put<Map<String, dynamic>>('/recipes/$recipeId', data: request);
       return RecipeResponse.fromJson(response.data!);
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       throw dioError.parseException();
     }
   }

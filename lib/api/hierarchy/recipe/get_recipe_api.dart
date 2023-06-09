@@ -13,7 +13,7 @@ class GetRecipeApi {
       final dio = await _dioCreator.create();
       final response = await dio.get<Map<String, dynamic>>('/recipes/$recipeId');
       return RecipeResponse.fromJson(response.data!);
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       throw dioError.parseException();
     }
   }

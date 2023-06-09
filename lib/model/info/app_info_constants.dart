@@ -1,25 +1,24 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:universal_io/io.dart';
 
 class AppInfoConstants {
   factory AppInfoConstants() {
     final String storeLink;
     if (kIsWeb) {
-      storeLink = dotenv.get('LP_BASE_URL');
+      storeLink = const String.fromEnvironment('lpBaseUrl');
     } else if (Platform.isAndroid) {
-      storeLink = dotenv.get('PLAY_STORE_URL');
+      storeLink = const String.fromEnvironment('playStoreUrl');
     } else if (Platform.isIOS) {
-      storeLink = dotenv.get('APP_STORE_URL');
+      storeLink = const String.fromEnvironment('appleStoreUrl');
     } else {
-      storeLink = dotenv.get('LP_BASE_URL');
+      storeLink = const String.fromEnvironment('lpBaseUrl');
     }
     return AppInfoConstants._(storeLink);
   }
 
   AppInfoConstants._(this.storeLink);
 
-  final webSite = dotenv.get('LP_BASE_URL');
+  final webSite = const String.fromEnvironment('lpBaseUrl');
   final email = 'kazakago@gmail.com';
   final developer = 'KazaKago';
   final String storeLink;

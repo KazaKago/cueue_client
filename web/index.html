@@ -32,8 +32,6 @@
   <title>Cueue</title>
   <link rel="manifest" href="manifest.json">
 
-  <!-- Google Sign in -->
-  <meta name="google-signin-client_id" content="[GOOGLE_SIGNIN_CLIENT_ID]">
   <!-- Apple Sign in -->
   <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
 
@@ -45,28 +43,18 @@
   <script src="flutter.js" defer></script>
 </head>
 <body>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-    import { googleSignInClientId, firebaseConfig, } from "./initialize.js";
-
-    document
-      .querySelector('meta[name="google-signin-client_id"]')
-      .setAttribute('content', googleSignInClientId);
-
-    const app = initializeApp(firebaseConfig);
-  </script>
-
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
         }
-      }).then(function(engineInitializer) {
-        return engineInitializer.initializeEngine();
-      }).then(function(appRunner) {
-        return appRunner.runApp();
       });
     });
   </script>

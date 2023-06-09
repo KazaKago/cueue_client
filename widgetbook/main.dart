@@ -1,7 +1,6 @@
 import 'package:cueue/provider/api_provider.dart';
 import 'package:cueue/provider/firebase_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'api/content/fake_create_content_api.dart';
@@ -32,8 +31,7 @@ import 'api/workspace/fake_create_workspace_api.dart';
 import 'api/workspace/fake_update_workspace_api.dart';
 import 'widget_book.dart';
 
-Future<void> main() async {
-  await dotenv.load(fileName: "assets/env/${const String.fromEnvironment('DOT_ENV', defaultValue: 'dotenv')}");
+void main() {
   runApp(
     ProviderScope(
       overrides: [

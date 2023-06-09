@@ -19,7 +19,7 @@ class GetRecipesApi {
       return response.data!.map<RecipeSummaryResponse>((dynamic json) {
         return RecipeSummaryResponse.fromJson(json as Map<String, dynamic>);
       }).toList();
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       throw dioError.parseException();
     }
   }

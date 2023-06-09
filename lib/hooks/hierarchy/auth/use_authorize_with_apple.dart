@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:crypto/crypto.dart';
 import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
-import 'package:cueue/hooks/global/utils/use_dotenv.dart';
 import 'package:cueue/model/auth/apple_auth_info.dart';
 import 'package:cueue/model/exception/autorization_cancel_exception.dart';
 import 'package:cueue/model/exception/autorization_failed_exception.dart';
@@ -13,8 +12,8 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:universal_html/html.dart';
 
 SWRTriggerState<void, AppleAuthInfo> useAuthorizeWithApple() {
-  final appleClientId = useDotEnv('APPLE_CLIENT_ID');
-  final appleRedirectUri = useDotEnv('APPLE_REDIRECT_URI');
+  const appleClientId = String.fromEnvironment('appleClientId');
+  const appleRedirectUri = String.fromEnvironment('appleRedirectUri');
   return useSWRTrigger<void, AppleAuthInfo>((_) async {
     try {
       final rawNonce = Nonce.generate();

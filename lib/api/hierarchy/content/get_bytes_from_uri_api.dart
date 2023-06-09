@@ -11,7 +11,7 @@ class GetBytesFromUriApi {
       final dio = Dio();
       final response = await dio.getUri<List<int>>(uri, options: Options(responseType: ResponseType.bytes));
       return Uint8List.fromList(response.data!);
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       throw dioError.parseException();
     }
   }

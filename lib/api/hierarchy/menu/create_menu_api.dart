@@ -14,7 +14,7 @@ class CreateMenuApi {
       final dio = await _dioCreator.create();
       final response = await dio.post<Map<String, dynamic>>('/menus', data: request);
       return MenuResponse.fromJson(response.data!);
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       throw dioError.parseException();
     }
   }

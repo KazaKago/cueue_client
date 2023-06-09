@@ -16,7 +16,7 @@ class OrderTagApi {
       return response.data!.map<TagResponse>((dynamic json) {
         return TagResponse.fromJson(json as Map<String, dynamic>);
       }).toList();
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       throw dioError.parseException();
     }
   }

@@ -14,7 +14,7 @@ class UpdateTagApi {
       final dio = await _dioCreator.create();
       final response = await dio.put<Map<String, dynamic>>('/tags/$tagId', data: request);
       return TagResponse.fromJson(response.data!);
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       throw dioError.parseException();
     }
   }

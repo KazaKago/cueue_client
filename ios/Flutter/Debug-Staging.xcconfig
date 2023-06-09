@@ -1,4 +1,0 @@
-#include "Debug.xcconfig"
-#include "Staging.xcconfig"
-
-PROVISIONING_PROFILE_SPECIFIER=match Development com.kazakago.cueue.staging

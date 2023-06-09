@@ -13,7 +13,7 @@ class AcceptInvitationApi {
       final dio = await _dioCreator.create();
       final response = await dio.patch<Map<String, dynamic>>('/invitations/$code/accept');
       return UserResponse.fromJson(response.data!);
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       throw dioError.parseException();
     }
   }

@@ -1,4 +1,3 @@
-import 'package:cueue/ui/global/utils/web_aware_page_transition_theme.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -62,7 +61,6 @@ class AppTheme extends StatelessWidget {
           padding: const EdgeInsets.all(12),
         ),
       ),
-      pageTransitionsTheme: WebAwareTransitionTheme(),
       textTheme: GoogleFonts.mPlus1pTextTheme(
         ThemeData(brightness: colorScheme.brightness).textTheme,
       ),

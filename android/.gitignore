@@ -13,5 +13,5 @@ key.properties
 **/*.jks
 
 # Manual rules.
-app/src/staging/google-services.json
-app/src/production/google-services.json
+app/google-services.json
+app/keystore.p12

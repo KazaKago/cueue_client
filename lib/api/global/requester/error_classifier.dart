@@ -13,18 +13,18 @@ import 'package:cueue/model/exception/upgrade_required_exception.dart';
 import 'package:dio/dio.dart';
 import 'package:universal_io/io.dart';
 
-extension ErrorClassifier on DioError {
+extension ErrorClassifier on DioException {
   Exception parseException() {
     switch (type) {
-      case DioErrorType.connectionError:
+      case DioExceptionType.connectionError:
         return const NetworkException();
-      case DioErrorType.connectionTimeout:
-      case DioErrorType.sendTimeout:
-      case DioErrorType.receiveTimeout:
+      case DioExceptionType.connectionTimeout:
+      case DioExceptionType.sendTimeout:
+      case DioExceptionType.receiveTimeout:
         return const NetworkTimeoutException();
-      case DioErrorType.badCertificate:
+      case DioExceptionType.badCertificate:
         return const InvalidTokenException();
-      case DioErrorType.badResponse:
+      case DioExceptionType.badResponse:
         switch (response?.statusCode) {
           case HttpStatus.badRequest:
             final dynamic data = response?.data;
@@ -55,9 +55,9 @@ extension ErrorClassifier on DioError {
           return const ServerErrorException();
         }
         return const ClientErrorException();
-      case DioErrorType.cancel:
+      case DioExceptionType.cancel:
         return const NetworkCancelException();
-      case DioErrorType.unknown:
+      case DioExceptionType.unknown:
         return error! as Exception;
     }
   }
