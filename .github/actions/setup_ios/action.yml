@@ -2,9 +2,6 @@ name: Setup iOS
 description: setup for iOS action.
 
 inputs:
-  appleApiKeyId:
-    description: AppStoreConnectAPI AuthKey Id
-    required: true
   appleApiAuthkeyP8Base64:
     description: base64 encoded AppStoreConnectAPI AuthKey
     required: true
@@ -22,7 +19,7 @@ runs:
       run: mkdir private_keys
       shell: bash
     - name: Put AuthKey.p8
-      run: echo ${{ inputs.appleApiAuthkeyP8Base64 }} | base64 -d > private_keys/AuthKey_${{ inputs.appleApiKeyId }}.p8
+      run: echo ${{ inputs.appleApiAuthkeyP8Base64 }} | base64 -d > ios/AuthKey.p8
       shell: bash
     - name: Put GoogleService-Info.plist
       run: echo ${{ inputs.googleServiceInfoPlistBase64 }} | base64 -d > ios/Runner/GoogleService-Info.plist

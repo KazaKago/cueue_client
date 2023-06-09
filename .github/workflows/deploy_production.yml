@@ -43,7 +43,6 @@ jobs:
       - name: Setup iOS
         uses: ./.github/actions/setup_ios
         with:
-          appleApiKeyId: ${{ secrets.APPLE_API_KEY_ID }}
           appleApiAuthkeyP8Base64: ${{ secrets.APPLE_API_AUTHKEY_P8_BASE64 }}
           googleServiceInfoPlistBase64: ${{ secrets.GOOGLE_SERVICE_INFO_PLIST_BASE64__PRODUCTION }}
           firebaseAppIdJsonBase64: ${{ secrets.FIREBASE_APP_ID_FILE_JSON_BASE64__PRODUCTION }}
