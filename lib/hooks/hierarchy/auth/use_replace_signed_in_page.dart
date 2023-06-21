@@ -29,6 +29,7 @@ SWRTriggerState<void, void> useReplaceSignedInPage(WidgetRef ref) {
     [userState.data, userState.isValidating, fireState.value],
   );
   return useSWRTrigger((key) async {
+    await userState.mutate(null);
     fireState.value = true;
   });
 }
