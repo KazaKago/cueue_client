@@ -45,15 +45,6 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
-    signingConfigs {
-        'default' {
-            storeFile file('keystore.p12')
-            storePassword androidStorePassword
-            keyAlias androidKeyAlias
-            keyPassword androidKeyPassword
-        }
-    }
-
     defaultConfig {
         applicationId "com.kazakago.cueue"
         // You can update the following values to match your application needs.
@@ -63,10 +54,27 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
 
-        signingConfig signingConfigs.default
         applicationIdSuffix appIdSuffix
         manifestPlaceholders["label"] = appName
         manifestPlaceholders["icon"] = "@mipmap/ic_launcher_$flavor"
+    }
+
+    signingConfigs {
+        'default' {
+            storeFile file('keystore.p12')
+            storePassword androidStorePassword
+            keyAlias androidKeyAlias
+            keyPassword androidKeyPassword
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.default
+        }
+        release {
+            signingConfig signingConfigs.default
+        }
     }
 }
 
