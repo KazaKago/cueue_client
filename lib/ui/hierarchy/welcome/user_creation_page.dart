@@ -6,7 +6,6 @@ import 'package:cueue/hooks/hierarchy/welcome/use_create_user.dart';
 import 'package:cueue/hooks/hierarchy/welcome/use_display_name_editing_controller.dart';
 import 'package:cueue/hooks/hierarchy/welcome/use_pre_user.dart';
 import 'package:cueue/hooks/hierarchy/welcome/use_update_pre_user_image.dart';
-import 'package:cueue/legacy/presentation/view/global/l10n/intl.dart';
 import 'package:cueue/model/photo/photo_pickup_bottom_sheet_event.dart';
 import 'package:cueue/model/user/pre_user.dart';
 import 'package:cueue/model/user/user.dart';
@@ -36,6 +35,7 @@ class UserCreationPage extends HookConsumerWidget {
   }
 
   Widget _buildContent(WidgetRef ref, TextEditingController displayNameEditingController, PreUser preUser, SWRTrigger<void, PhotoPickupBottomSheetEvent?> pickupProfileImage) {
+    final intl = useIntl();
     final scrollController = useScrollController();
     final createUser = useCreateUser(ref);
     return Scrollbar(
@@ -44,9 +44,9 @@ class UserCreationPage extends HookConsumerWidget {
         padding: const EdgeInsets.all(32),
         controller: scrollController,
         children: <Widget>[
-          Text(intl(useContext()).welcomeToCueue, textAlign: TextAlign.center, style: Theme.of(useContext()).textTheme.displaySmall),
+          Text(intl.welcomeToCueue, textAlign: TextAlign.center, style: Theme.of(useContext()).textTheme.displaySmall),
           const SizedBox(height: 8),
-          Text(intl(useContext()).pleaseTellMeAboutYour, textAlign: TextAlign.center, style: Theme.of(useContext()).textTheme.titleMedium),
+          Text(intl.pleaseTellMeAboutYour, textAlign: TextAlign.center, style: Theme.of(useContext()).textTheme.titleMedium),
           const SizedBox(height: 48),
           _buildProfileImage(ref, preUser, pickupProfileImage),
           const SizedBox(height: 48),

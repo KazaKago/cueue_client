@@ -1,6 +1,6 @@
 import 'dart:collection';
 
-import 'package:cueue/legacy/presentation/view/global/l10n/intl.dart';
+import 'package:cueue/ui/global/utils/intl.dart';
 import 'package:cueue/ui/hierarchy/menu/menu_editing_page.dart';
 import 'package:cueue/ui/hierarchy/menu/menu_page.dart';
 import 'package:cueue/ui/hierarchy/mypage/my_page.dart';

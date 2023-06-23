@@ -1,8 +1,8 @@
 import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
-import 'package:cueue/legacy/presentation/view/global/l10n/intl.dart';
 import 'package:cueue/model/photo/photo_pickup_bottom_sheet_event.dart';
 import 'package:cueue/ui/global/modal/menu_bottom_sheet_dialog.dart';
+import 'package:cueue/ui/global/utils/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 

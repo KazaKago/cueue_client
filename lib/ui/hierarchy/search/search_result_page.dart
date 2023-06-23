@@ -1,7 +1,7 @@
 import 'package:cueue/hooks/global/utils/use_route.dart';
-import 'package:cueue/legacy/presentation/view/global/l10n/intl.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:cueue/model/tag/tag_id.dart';
+import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_detail_page.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_list.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +17,7 @@ class SearchResultPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final intl = useIntl();
     final selectedRecipes = (initialSelectedRecipes != null) ? useState<List<RecipeSummary>>(initialSelectedRecipes!) : null;
     final pushPage = usePushPage<void>();
     return WillPopScope(
@@ -26,7 +27,7 @@ class SearchResultPage extends HookConsumerWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(intl(context).searchResultOf(keyword)),
+          title: Text(intl.searchResultOf(keyword)),
         ),
         body: RecipeList(
           keyword: keyword,

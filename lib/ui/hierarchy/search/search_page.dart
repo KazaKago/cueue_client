@@ -1,6 +1,5 @@
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
-import 'package:cueue/legacy/presentation/view/global/l10n/intl.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:cueue/model/tag/tag_id.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
@@ -18,6 +17,7 @@ class SearchPage extends HookConsumerWidget with RouteAware {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final intl = useIntl();
     final popPage = usePopPage<List<RecipeSummary>?>();
     final modalRoute = ModalRoute.of(context)!;
     useEffect(() {
@@ -43,7 +43,7 @@ class SearchPage extends HookConsumerWidget with RouteAware {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(intl(context).search),
+          title: Text(intl.search),
         ),
         body: Scrollbar(
           controller: scrollController,
@@ -57,7 +57,7 @@ class SearchPage extends HookConsumerWidget with RouteAware {
               const SizedBox(height: 4),
               TagChips(selectedTagIds),
               const SizedBox(height: 24),
-              _buildSubmitButton(context, keywordEditingController, selectedTagIds.value, selectedRecipes, isEnableSubmitButton.value),
+              _buildSubmitButton(keywordEditingController, selectedTagIds.value, selectedRecipes, isEnableSubmitButton.value),
             ],
           ),
         ),
@@ -84,7 +84,8 @@ class SearchPage extends HookConsumerWidget with RouteAware {
     return Text(intl.filterByTags);
   }
 
-  Widget _buildSubmitButton(BuildContext context, TextEditingController keyword, List<TagId> selectedTagIds, ValueNotifier<List<RecipeSummary>>? selectedRecipes, bool isEnableSubmitButton) {
+  Widget _buildSubmitButton(TextEditingController keyword, List<TagId> selectedTagIds, ValueNotifier<List<RecipeSummary>>? selectedRecipes, bool isEnableSubmitButton) {
+    final intl = useIntl();
     final pushPage = usePushPage<List<RecipeSummary>>();
     useEffectSWRData<List<RecipeSummary>?>(pushPage, (data) {
       if (data != null) selectedRecipes?.value = data;
@@ -93,7 +94,7 @@ class SearchPage extends HookConsumerWidget with RouteAware {
       padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
       child: ElevatedButton.icon(
         icon: const Icon(Icons.search),
-        label: Text(intl(context).doSearch),
+        label: Text(intl.doSearch),
         onPressed: isEnableSubmitButton ? () => pushPage.trigger(SearchResultPage(keyword.text, selectedTagIds, initialSelectedRecipes: selectedRecipes?.value)) : null,
       ),
     );

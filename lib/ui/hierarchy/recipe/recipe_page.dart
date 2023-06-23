@@ -1,7 +1,7 @@
 import 'package:cueue/hooks/global/utils/use_route.dart';
-import 'package:cueue/legacy/presentation/view/global/l10n/intl.dart';
 import 'package:cueue/legacy/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/model/tag/tag.dart';
+import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/error_handling_widget.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_detail_page.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_list.dart';
@@ -18,22 +18,23 @@ class RecipePage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(tagViewModelProvider.select((viewModel) => viewModel.state));
     return state.when(
-      loading: () => _buildLoading(context, ref),
-      empty: () => _buildCompleted(context, ref, List.empty()),
-      completed: (tags) => _buildCompleted(context, ref, tags),
-      error: (exception) => _buildError(context, ref, exception),
+      loading: _buildLoading,
+      empty: () => _buildCompleted(List.empty()),
+      completed: _buildCompleted,
+      error: (exception) => _buildError(ref, exception),
     );
   }
 
-  Widget _buildLoading(BuildContext context, WidgetRef ref) {
+  Widget _buildLoading() {
+    final intl = useIntl();
     final pushPage = usePushPage<void>();
     return Scaffold(
       appBar: AppBar(
-        title: Text(intl(context).recipe),
+        title: Text(intl.recipe),
         actions: <Widget>[
           IconButton(
             icon: const Icon(FontAwesomeIcons.tag),
-            tooltip: intl(context).tag,
+            tooltip: intl.tag,
             onPressed: () => pushPage.trigger(const TagPage()),
           ),
         ],
@@ -42,24 +43,25 @@ class RecipePage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildCompleted(BuildContext context, WidgetRef ref, List<Tag> tags) {
+  Widget _buildCompleted(List<Tag> tags) {
+    final intl = useIntl();
     final pushPage = usePushPage<void>();
     return DefaultTabController(
       length: tags.length + 1,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(intl(context).recipe),
+          title: Text(intl.recipe),
           actions: <Widget>[
             IconButton(
               icon: const Icon(FontAwesomeIcons.tag),
-              tooltip: intl(context).tag,
+              tooltip: intl.tag,
               onPressed: () => pushPage.trigger(const TagPage()),
             ),
           ],
           bottom: TabBar(
             isScrollable: true,
             tabs: [
-              Tab(text: intl(context).allRecipes),
+              Tab(text: intl.allRecipes),
               for (final tag in tags) Tab(text: tag.name),
             ],
           ),
@@ -74,16 +76,17 @@ class RecipePage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildError(BuildContext context, WidgetRef ref, Exception exception) {
+  Widget _buildError(WidgetRef ref, Exception exception) {
+    final intl = useIntl();
     final viewModel = ref.read(tagViewModelProvider);
     final pushPage = usePushPage<void>();
     return Scaffold(
       appBar: AppBar(
-        title: Text(intl(context).recipe),
+        title: Text(intl.recipe),
         actions: <Widget>[
           IconButton(
             icon: const Icon(FontAwesomeIcons.tag),
-            tooltip: intl(context).tag,
+            tooltip: intl.tag,
             onPressed: () => pushPage.trigger(const TagPage()),
           ),
         ],

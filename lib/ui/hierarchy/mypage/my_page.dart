@@ -7,7 +7,6 @@ import 'package:cueue/hooks/hierarchy/mypage/use_update_display_name.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_update_user_image.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_update_workspace_name.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_user.dart';
-import 'package:cueue/legacy/presentation/view/global/l10n/intl.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/error_handling_widget.dart';
 import 'package:cueue/ui/hierarchy/invitation/invitation_creation_page.dart';
@@ -21,23 +20,24 @@ class MyPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final intl = useIntl();
     final userState = useUser(ref);
     final pushPage = usePushPage<void>();
     final signOut = useSignOutWithConfirmation(ref);
     final scrollController = useScrollController();
     return Scaffold(
       appBar: AppBar(
-        title: Text(intl(context).mypage),
+        title: Text(intl.mypage),
         actions: [
           IconButton(
             onPressed: () => pushPage.trigger(const SettingsPage()),
             icon: const Icon(Icons.settings),
-            tooltip: intl(context).settings,
+            tooltip: intl.settings,
           ),
           IconButton(
             onPressed: () => signOut.trigger(null),
             icon: const Icon(Icons.exit_to_app),
-            tooltip: intl(context).logout,
+            tooltip: intl.logout,
           ),
         ],
       ),

@@ -3,7 +3,6 @@ import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/global/utils/use_theme.dart';
 import 'package:cueue/hooks/hierarchy/menu/use_menus.dart';
 import 'package:cueue/hooks/hierarchy/menu/use_timeframe_formatter.dart';
-import 'package:cueue/legacy/presentation/view/hierarchy/menu/time_frame_extension.dart';
 import 'package:cueue/model/color/color_extension.dart';
 import 'package:cueue/model/date/date_time_extension.dart';
 import 'package:cueue/model/menu/date_split_menu_list.dart';
@@ -64,6 +63,7 @@ class MenuPage extends HookConsumerWidget {
     final pushPage = usePushPage<void>();
     final toDateString = useToDateString();
     final toFormattedString = useToFormattedString();
+    final toFormattedImage = useToFormattedImage();
     return menus.map((dateSplitMenus) {
       if (dateSplitMenus != null) {
         return SliverStickyHeader(
@@ -86,7 +86,7 @@ class MenuPage extends HookConsumerWidget {
               (context, i) => Ink(
                 color: _backgroundColor(theme, dateSplitMenus.date),
                 child: ListTile(
-                  leading: CircleAvatar(backgroundImage: dateSplitMenus.menus[i].timeFrame.toFormattedImage().image, backgroundColor: Colors.transparent),
+                  leading: CircleAvatar(backgroundImage: toFormattedImage(dateSplitMenus.menus[i].timeFrame).image, backgroundColor: Colors.transparent),
                   title: Text(dateSplitMenus.menus[i].recipes.map((e) => e.title).join(',')),
                   subtitle: Text(dateSplitMenus.menus[i].memo.isNotEmpty ? intl.withMemo(dateSplitMenus.menus[i].memo) : toFormattedString(dateSplitMenus.menus[i].timeFrame), maxLines: 2, overflow: TextOverflow.ellipsis),
                   onTap: () => pushPage.trigger(MenuDetailPage(dateSplitMenus.menus[i])),

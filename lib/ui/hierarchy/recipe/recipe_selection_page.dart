@@ -1,7 +1,7 @@
-import 'package:cueue/legacy/presentation/view/global/l10n/intl.dart';
 import 'package:cueue/legacy/presentation/viewmodel/di/viewmodel_provider.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:cueue/model/tag/tag.dart';
+import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/error_handling_widget.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_list.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_loading.dart';
@@ -24,32 +24,34 @@ class RecipeSelectionPage extends HookConsumerWidget {
         return false;
       },
       child: state.when(
-        loading: () => _buildLoading(context, ref),
-        completed: (recipes) => _buildCompleted(context, recipes, selectedRecipes),
-        error: (exception) => _buildError(context, ref, exception),
+        loading: _buildLoading,
+        completed: (recipes) => _buildCompleted(recipes, selectedRecipes),
+        error: (exception) => _buildError(ref, exception),
       ),
     );
   }
 
-  Widget _buildLoading(BuildContext context, WidgetRef ref) {
+  Widget _buildLoading() {
+    final intl = useIntl();
     return Scaffold(
       appBar: AppBar(
-        title: Text(intl(context).selectRecipes),
+        title: Text(intl.selectRecipes),
       ),
       body: const RecipeLoading(),
     );
   }
 
-  Widget _buildCompleted(BuildContext context, List<Tag> tags, ValueNotifier<List<RecipeSummary>> selectedRecipes) {
+  Widget _buildCompleted(List<Tag> tags, ValueNotifier<List<RecipeSummary>> selectedRecipes) {
+    final intl = useIntl();
     return DefaultTabController(
       length: tags.length + 1,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(intl(context).selectRecipes),
+          title: Text(intl.selectRecipes),
           bottom: TabBar(
             isScrollable: true,
             tabs: [
-              Tab(text: intl(context).allRecipes),
+              Tab(text: intl.allRecipes),
               for (final tag in tags) Tab(text: tag.name),
             ],
           ),
@@ -64,11 +66,12 @@ class RecipeSelectionPage extends HookConsumerWidget {
     );
   }
 
-  Widget _buildError(BuildContext context, WidgetRef ref, Exception exception) {
+  Widget _buildError(WidgetRef ref, Exception exception) {
+    final intl = useIntl();
     final viewModel = ref.read(recipeSelectionViewModelProvider);
     return Scaffold(
       appBar: AppBar(
-        title: Text(intl(context).selectRecipes),
+        title: Text(intl.selectRecipes),
       ),
       body: ErrorHandlingWidget(exception, onClickRetry: viewModel.retry),
     );

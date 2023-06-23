@@ -1,6 +1,6 @@
 import 'package:cueue/gen/assets.gen.dart';
-import 'package:cueue/legacy/presentation/view/global/l10n/intl.dart';
 import 'package:cueue/model/menu/time_frame.dart';
+import 'package:cueue/ui/global/utils/intl.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
