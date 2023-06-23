@@ -1,13 +1,10 @@
-import 'package:cueue/hooks/global/utils/use_date_format.dart';
-import 'package:cueue/legacy/presentation/viewmodel/di/viewmodel_provider.dart';
+import 'package:cueue/hooks/hierarchy/recipe/use_recipes.dart';
 import 'package:cueue/model/recipe/recipe_search_option.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:cueue/model/tag/tag_id.dart';
 import 'package:cueue/ui/global/extension/scroll_controller_extension.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/empty_widget.dart';
-import 'package:cueue/ui/global/widget/error_handling_widget.dart';
-import 'package:cueue/ui/global/widget/error_list_item.dart';
 import 'package:cueue/ui/global/widget/loading_list_item.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_item.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_loading.dart';
@@ -36,123 +33,57 @@ class RecipeList extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(recipeViewModelProvider(_recipeSearchOption).select((viewModel) => viewModel.state));
-    final viewModel = ref.read(recipeViewModelProvider(_recipeSearchOption));
-    final scrollController = useScrollController()..onReachBottomWithAutoDispose(viewModel.requestAddition);
-    return state.when(
-      loading: RecipeLoading.new,
-      refreshing: (recipes) => _buildCompleted(ref, scrollController, recipes),
-      additionalLoading: (recipes) => _buildAdditionalLoading(ref, scrollController, recipes),
-      empty: () => _buildEmpty(ref),
-      completed: (recipes) => _buildCompleted(ref, scrollController, recipes),
-      error: (exception) => _buildError(ref, exception),
-      additionalError: (recipes, exception) => _buildAdditionalError(ref, scrollController, recipes, exception),
-    );
+    final recipesState = useRecipes(ref, recipeSearchOption: _recipeSearchOption);
+    final scrollController = useScrollController()
+      ..onReachBottomWithAutoDispose(() {
+        if (!recipesState.isValidating) {
+          recipesState.setSize(recipesState.size + 1); // FIXME: fix crash
+        }
+      });
+    final recipesList = recipesState.data;
+    final error = recipesState.error;
+    if (error != null) {
+      final intl = useIntl();
+      return EmptyWidget(intl.noRecipeMessage);
+    } else if (recipesList == null) {
+      return const RecipeLoading();
+    } else {
+      return RefreshIndicator(
+        onRefresh: () => recipesState.mutate(null),
+        child: _buildContent(scrollController, recipesList),
+      );
+    }
   }
 
-  Widget _buildAdditionalLoading(WidgetRef ref, ScrollController scrollController, List<RecipeSummary> recipes) {
-    final viewModel = ref.read(recipeViewModelProvider(_recipeSearchOption));
-    final intl = useIntl();
-    final toDateString = useToDateString();
-    return RefreshIndicator(
-      onRefresh: viewModel.refresh,
-      child: Scrollbar(
+  Widget _buildContent(ScrollController scrollController, List<List<RecipeSummary>?> recipesList) {
+    return Scrollbar(
+      controller: scrollController,
+      child: ListView.builder(
+        padding: _fabPadding ? const EdgeInsets.only(bottom: 70) : null,
         controller: scrollController,
-        child: ListView.builder(
-          padding: _fabPadding ? const EdgeInsets.only(bottom: 70) : null,
-          controller: scrollController,
-          physics: const AlwaysScrollableScrollPhysics(),
-          itemCount: recipes.length + 1,
-          itemBuilder: (BuildContext context, int index) {
-            if (index < recipes.length) {
-              final lastCookingAt = recipes[index].lastCookingAt;
-              final date = (lastCookingAt != null) ? toDateString(lastCookingAt) : intl.notYetCooking;
-              return RecipeItem(
-                title: recipes[index].title,
-                description: intl.lastCookingAt(date),
-                thumbnail: recipes[index].image?.url,
-                isCheck: _selectedRecipes?.map((e) => e.id).contains(recipes[index].id),
-                onTap: () => _onTap?.call(recipes[index]),
-              );
-            } else {
-              return const LoadingListItem();
-            }
-          },
-        ),
+        physics: const AlwaysScrollableScrollPhysics(),
+        itemCount: recipesList.length,
+        itemBuilder: (BuildContext context, int index) {
+          return _buildItem(recipesList[index]);
+        },
       ),
     );
   }
 
-  Widget _buildEmpty(WidgetRef ref) {
-    final intl = useIntl();
-    return EmptyWidget(intl.noRecipeMessage);
-  }
-
-  Widget _buildCompleted(WidgetRef ref, ScrollController scrollController, List<RecipeSummary> recipes) {
-    final viewModel = ref.read(recipeViewModelProvider(_recipeSearchOption));
-    final intl = useIntl();
-    final toDateString = useToDateString();
-    return RefreshIndicator(
-      onRefresh: viewModel.refresh,
-      child: Scrollbar(
-        controller: scrollController,
-        child: ListView.builder(
-          padding: _fabPadding ? const EdgeInsets.only(bottom: 70) : null,
-          controller: scrollController,
-          physics: const AlwaysScrollableScrollPhysics(),
-          itemCount: recipes.length,
-          itemBuilder: (BuildContext context, int index) {
-            final isCheck = _selectedRecipes?.map((e) => e.id).contains(recipes[index].id);
-            final lastCookingAt = recipes[index].lastCookingAt;
-            final date = (lastCookingAt != null) ? toDateString(lastCookingAt) : intl.notYetCooking;
-            return RecipeItem(
-              title: recipes[index].title,
-              description: intl.lastCookingAt(date),
-              thumbnail: recipes[index].image?.url,
-              isCheck: isCheck,
-              onTap: () => _onTap?.call(recipes[index]),
-            );
-          },
-        ),
-      ),
-    );
-  }
-
-  Widget _buildError(WidgetRef ref, Exception exception) {
-    final viewModel = ref.read(recipeViewModelProvider(_recipeSearchOption));
-    return ErrorHandlingWidget(exception, onClickRetry: viewModel.retry);
-  }
-
-  Widget _buildAdditionalError(WidgetRef ref, ScrollController scrollController, List<RecipeSummary> recipes, Exception exception) {
-    final viewModel = ref.read(recipeViewModelProvider(_recipeSearchOption));
-    final intl = useIntl();
-    final toDateString = useToDateString();
-    return RefreshIndicator(
-      onRefresh: viewModel.refresh,
-      child: Scrollbar(
-        controller: scrollController,
-        child: ListView.builder(
-          padding: _fabPadding ? const EdgeInsets.only(bottom: 70) : null,
-          controller: scrollController,
-          physics: const AlwaysScrollableScrollPhysics(),
-          itemCount: recipes.length + 1,
-          itemBuilder: (BuildContext context, int index) {
-            if (index < recipes.length) {
-              final lastCookingAt = recipes[index].lastCookingAt;
-              final date = (lastCookingAt != null) ? toDateString(lastCookingAt) : intl.notYetCooking;
-              return RecipeItem(
-                title: recipes[index].title,
-                description: intl.lastCookingAt(date),
-                thumbnail: recipes[index].image?.url,
-                isCheck: _selectedRecipes?.map((e) => e.id).contains(recipes[index].id),
-                onTap: () => _onTap?.call(recipes[index]),
-              );
-            } else {
-              return ErrorListItem(exception, onClickRetry: viewModel.retryAddition);
-            }
-          },
-        ),
-      ),
-    );
+  Widget _buildItem(List<RecipeSummary>? recipes) {
+    if (recipes == null) {
+      return const LoadingListItem();
+    } else {
+      return Column(
+        children: recipes.map((recipe) {
+          final isCheck = _selectedRecipes?.map((e) => e.id).contains(recipe.id);
+          return RecipeItem(
+            recipe: recipe,
+            isCheck: isCheck,
+            onTap: () => _onTap?.call(recipe),
+          );
+        }).toList(),
+      );
+    }
   }
 }

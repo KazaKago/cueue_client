@@ -1,25 +1,32 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cueue/gen/assets.gen.dart';
+import 'package:cueue/hooks/global/utils/use_date_format.dart';
+import 'package:cueue/hooks/global/utils/use_theme.dart';
+import 'package:cueue/model/recipe/recipe_summary.dart';
+import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class RecipeItem extends StatelessWidget {
+class RecipeItem extends HookWidget {
   const RecipeItem({
-    required this.title,
-    required this.description,
-    required this.thumbnail,
+    required this.recipe,
     this.isCheck,
     this.onTap,
     super.key,
   });
 
-  final String title;
-  final String description;
-  final Uri? thumbnail;
+  final RecipeSummary recipe;
   final bool? isCheck;
   final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
+    final intl = useIntl();
+    final toDateString = useToDateString();
+    final lastCookingAt = recipe.lastCookingAt;
+    final date = (lastCookingAt != null) ? toDateString(lastCookingAt) : intl.notYetCooking;
+    final title = recipe.title;
+    final description = intl.lastCookingAt(date);
     return InkWell(
       onTap: onTap,
       child: Padding(
@@ -29,7 +36,7 @@ class RecipeItem extends StatelessWidget {
           children: <Widget>[
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: _buildImage(context),
+              child: _buildImage(),
             ),
             const SizedBox(width: 16),
             Expanded(
@@ -49,7 +56,9 @@ class RecipeItem extends StatelessWidget {
     );
   }
 
-  Widget _buildImage(BuildContext context) {
+  Widget _buildImage() {
+    final theme = useTheme();
+    final thumbnail = recipe.image?.url;
     if (thumbnail != null) {
       return CachedNetworkImage(
         imageUrl: thumbnail.toString(),
@@ -60,13 +69,13 @@ class RecipeItem extends StatelessWidget {
       );
     } else {
       return Container(
-        color: Theme.of(context).dividerColor,
+        color: theme.dividerColor,
         width: 100,
         height: 100,
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Assets.images.icAppIcon.image(
-            color: Theme.of(context).hoverColor,
+            color: theme.hoverColor,
           ),
         ),
       );

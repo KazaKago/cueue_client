@@ -9,6 +9,7 @@ import 'package:cueue/model/menu/date_split_menu_list.dart';
 import 'package:cueue/model/menu/menu_list.dart';
 import 'package:cueue/ui/global/extension/scroll_controller_extension.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
+import 'package:cueue/ui/global/widget/empty_widget.dart';
 import 'package:cueue/ui/global/widget/loading_list_item.dart';
 import 'package:cueue/ui/hierarchy/menu/menu_detail_page.dart';
 import 'package:cueue/ui/hierarchy/menu/menu_loading.dart';
@@ -36,11 +37,15 @@ class MenuPage extends HookConsumerWidget {
     final scrollController = useScrollController()
       ..onReachBottomWithAutoDispose(() {
         if (!menusState.isValidating) {
-          menusState.setSize(menusState.size + 1); // FIXME fix crash
+          menusState.setSize(menusState.size + 1); // FIXME: fix crash
         }
       });
     final menus = menusState.data;
-    if (menus == null) {
+    final error = menusState.error;
+    if (error != null) {
+      final intl = useIntl();
+      return EmptyWidget(intl.noMenuMessage);
+    } else if (menus == null) {
       return const MenuLoading();
     } else {
       return RefreshIndicator(

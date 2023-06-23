@@ -52,15 +52,15 @@ class RecipePage extends HookConsumerWidget {
     final tags = tagsState.data;
     if (error != null) {
       return ErrorHandlingWidget(error);
-    } else if (tags != null) {
+    } else if (tags == null) {
+      return const RecipeLoading();
+    } else {
       return TabBarView(
         children: [
           RecipeList(key: const PageStorageKey(-1), onTap: (recipe) => pushPage.trigger(RecipeDetailPage(recipe)), fabPadding: true),
           for (final tag in tags) RecipeList(key: PageStorageKey(tag.id.value), tagIds: List.filled(1, tag.id), onTap: (recipe) => pushPage.trigger(RecipeDetailPage(recipe)), fabPadding: true),
         ],
       );
-    } else {
-      return const RecipeLoading();
     }
   }
 }
