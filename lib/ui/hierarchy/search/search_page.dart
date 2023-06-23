@@ -1,8 +1,8 @@
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
+import 'package:cueue/hooks/global/utils/use_intl.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:cueue/model/tag/tag_id.dart';
-import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/utils/route_observer.dart';
 import 'package:cueue/ui/hierarchy/search/search_result_page.dart';
 import 'package:cueue/ui/hierarchy/tag/tag_chips.dart';

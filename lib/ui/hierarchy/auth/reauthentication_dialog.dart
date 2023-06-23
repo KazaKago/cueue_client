@@ -1,11 +1,11 @@
 import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
+import 'package:cueue/hooks/global/utils/use_intl.dart';
 import 'package:cueue/hooks/hierarchy/auth/use_is_apple_linked.dart';
 import 'package:cueue/hooks/hierarchy/auth/use_is_google_linked.dart';
 import 'package:cueue/hooks/hierarchy/auth/use_reauthentication_with_apple.dart';
 import 'package:cueue/hooks/hierarchy/auth/use_reauthentication_with_google.dart';
 import 'package:cueue/model/exception/require_reautentication_exception.dart';
-import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/hierarchy/auth/sign_in_with_apple_button.dart';
 import 'package:cueue/ui/hierarchy/auth/sign_in_with_google_button.dart';
 import 'package:flutter/material.dart';

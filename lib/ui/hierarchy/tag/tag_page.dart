@@ -1,9 +1,9 @@
 import 'package:cueue/hooks/global/swr/swr_mutate.dart';
+import 'package:cueue/hooks/global/utils/use_intl.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/hierarchy/tag/use_reorder_tags.dart';
 import 'package:cueue/hooks/hierarchy/tag/use_tags.dart';
 import 'package:cueue/model/tag/tag.dart';
-import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/default_state_widget.dart';
 import 'package:cueue/ui/global/widget/empty_widget.dart';
 import 'package:cueue/ui/hierarchy/tag/tag_editing_page.dart';

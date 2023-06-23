@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cueue/gen/assets.gen.dart';
+import 'package:cueue/hooks/global/utils/use_intl.dart';
 import 'package:cueue/hooks/global/utils/use_theme.dart';
 import 'package:cueue/hooks/hierarchy/invitation/use_accept_invitation.dart';
 import 'package:cueue/hooks/hierarchy/invitation/use_get_invitation_info.dart';
 import 'package:cueue/model/invitation/invitation.dart';
 import 'package:cueue/model/invitation/invitation_code.dart';
 import 'package:cueue/model/user/user_summary.dart';
-import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/default_state_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';

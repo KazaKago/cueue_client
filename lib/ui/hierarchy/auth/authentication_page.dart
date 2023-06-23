@@ -1,10 +1,10 @@
 import 'package:cueue/gen/assets.gen.dart';
+import 'package:cueue/hooks/global/utils/use_intl.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/hierarchy/auth/use_sign_in_with_apple.dart';
 import 'package:cueue/hooks/hierarchy/auth/use_sign_in_with_google.dart';
 import 'package:cueue/hooks/hierarchy/setting/use_go_privacy_policy.dart';
 import 'package:cueue/hooks/hierarchy/setting/use_go_terms_of_service.dart';
-import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/hierarchy/auth/sign_in_with_apple_button.dart';
 import 'package:cueue/ui/hierarchy/auth/sign_in_with_google_button.dart';
 import 'package:cueue/ui/hierarchy/setting/about_page.dart';

@@ -1,3 +1,4 @@
+import 'package:cueue/hooks/global/utils/use_intl.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/global/utils/use_theme.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_user.dart';
@@ -5,7 +6,6 @@ import 'package:cueue/hooks/hierarchy/setting/use_go_privacy_policy.dart';
 import 'package:cueue/hooks/hierarchy/setting/use_go_terms_of_service.dart';
 import 'package:cueue/hooks/hierarchy/setting/use_toggle_with_apple.dart';
 import 'package:cueue/hooks/hierarchy/setting/use_toggle_with_google.dart';
-import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/hierarchy/invitation/invitation_input_page.dart';
 import 'package:cueue/ui/hierarchy/setting/about_page.dart';
 import 'package:cueue/ui/hierarchy/setting/account_deletion_page.dart';

@@ -1,5 +1,6 @@
 import 'package:cueue/hooks/global/utils/use_date_format.dart';
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
+import 'package:cueue/hooks/global/utils/use_intl.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/hierarchy/menu/use_create_menu.dart';
 import 'package:cueue/hooks/hierarchy/menu/use_delete_menu.dart';
@@ -10,7 +11,6 @@ import 'package:cueue/model/menu/menu.dart';
 import 'package:cueue/model/menu/menu_registration.dart';
 import 'package:cueue/model/menu/time_frame.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
-import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/text_field_date_picker.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_selection_page.dart';
 import 'package:cueue/ui/hierarchy/search/search_page.dart';

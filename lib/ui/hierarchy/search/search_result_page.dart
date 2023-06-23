@@ -1,7 +1,7 @@
+import 'package:cueue/hooks/global/utils/use_intl.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:cueue/model/tag/tag_id.dart';
-import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_detail_page.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_list.dart';
 import 'package:flutter/material.dart';

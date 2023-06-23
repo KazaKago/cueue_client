@@ -1,4 +1,6 @@
 import 'package:cueue/hooks/global/utils/use_date_format.dart';
+import 'package:cueue/hooks/global/utils/use_intl.dart';
+import 'package:cueue/hooks/global/utils/use_reach_bottom.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/global/utils/use_theme.dart';
 import 'package:cueue/hooks/hierarchy/menu/use_menus.dart';
@@ -7,8 +9,6 @@ import 'package:cueue/model/color/color_extension.dart';
 import 'package:cueue/model/date/date_time_extension.dart';
 import 'package:cueue/model/menu/date_split_menu_list.dart';
 import 'package:cueue/model/menu/menu_list.dart';
-import 'package:cueue/ui/global/extension/scroll_controller_extension.dart';
-import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/empty_widget.dart';
 import 'package:cueue/ui/global/widget/loading_list_item.dart';
 import 'package:cueue/ui/hierarchy/menu/menu_detail_page.dart';
@@ -34,12 +34,12 @@ class MenuPage extends HookConsumerWidget {
 
   Widget _buildContent(WidgetRef ref) {
     final menusState = useMenus(ref);
-    final scrollController = useScrollController()
-      ..onReachBottomWithAutoDispose(() {
-        if (!menusState.isValidating) {
-          menusState.setSize(menusState.size + 1); // FIXME: fix crash
-        }
-      });
+    final scrollController = useScrollController();
+    useReachBottom(scrollController, () {
+      if (!menusState.isValidating) {
+        menusState.setSize(menusState.size + 1); // FIXME: fix crash
+      }
+    });
     final menus = menusState.data;
     final error = menusState.error;
     if (error != null) {

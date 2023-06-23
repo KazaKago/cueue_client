@@ -1,5 +1,5 @@
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
-import 'package:cueue/ui/global/l10n/intl.dart';
+import 'package:cueue/hooks/global/utils/use_intl.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

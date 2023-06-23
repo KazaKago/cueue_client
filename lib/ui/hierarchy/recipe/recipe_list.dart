@@ -1,9 +1,9 @@
+import 'package:cueue/hooks/global/utils/use_intl.dart';
+import 'package:cueue/hooks/global/utils/use_reach_bottom.dart';
 import 'package:cueue/hooks/hierarchy/recipe/use_recipes.dart';
 import 'package:cueue/model/recipe/recipe_search_option.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:cueue/model/tag/tag_id.dart';
-import 'package:cueue/ui/global/extension/scroll_controller_extension.dart';
-import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/empty_widget.dart';
 import 'package:cueue/ui/global/widget/loading_list_item.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_item.dart';
@@ -34,12 +34,12 @@ class RecipeList extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final recipesState = useRecipes(ref, recipeSearchOption: _recipeSearchOption);
-    final scrollController = useScrollController()
-      ..onReachBottomWithAutoDispose(() {
-        if (!recipesState.isValidating) {
-          recipesState.setSize(recipesState.size + 1); // FIXME: fix crash
-        }
-      });
+    final scrollController = useScrollController();
+    useReachBottom(scrollController, () {
+      if (!recipesState.isValidating) {
+        recipesState.setSize(recipesState.size + 1); // FIXME: fix crash
+      }
+    });
     final recipesList = recipesState.data;
     final error = recipesState.error;
     if (error != null) {

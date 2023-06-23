@@ -1,6 +1,7 @@
 import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
+import 'package:cueue/hooks/global/utils/use_intl.dart';
 import 'package:cueue/hooks/global/utils/use_snack_bar.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_sign_out.dart';
 import 'package:cueue/hooks/hierarchy/setting/use_go_store.dart';
@@ -24,7 +25,6 @@ import 'package:cueue/model/exception/too_many_requests_exception.dart';
 import 'package:cueue/model/exception/upgrade_required_exception.dart';
 import 'package:cueue/model/exception/user_not_found_exception.dart';
 import 'package:cueue/model/exception/user_token_expired_exception.dart';
-import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/modal/simple_message_dialog.dart';
 import 'package:cueue/ui/hierarchy/auth/reauthentication_dialog.dart';
 import 'package:flutter/material.dart';

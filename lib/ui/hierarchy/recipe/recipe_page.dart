@@ -1,6 +1,6 @@
+import 'package:cueue/hooks/global/utils/use_intl.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/hierarchy/tag/use_tags.dart';
-import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/error_handling_widget.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_detail_page.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_list.dart';

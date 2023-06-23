@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cueue/gen/assets.gen.dart';
+import 'package:cueue/hooks/global/utils/use_intl.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/global/utils/use_theme.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_sign_out.dart';
@@ -7,7 +8,6 @@ import 'package:cueue/hooks/hierarchy/mypage/use_update_display_name.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_update_user_image.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_update_workspace_name.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_user.dart';
-import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/error_handling_widget.dart';
 import 'package:cueue/ui/hierarchy/invitation/invitation_creation_page.dart';
 import 'package:cueue/ui/hierarchy/setting/settings_page.dart';

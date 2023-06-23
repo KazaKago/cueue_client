@@ -1,9 +1,9 @@
+import 'package:cueue/hooks/global/utils/use_intl.dart';
 import 'package:cueue/hooks/global/utils/use_theme.dart';
 import 'package:cueue/hooks/hierarchy/invitation/use_create_invitation.dart';
 import 'package:cueue/hooks/hierarchy/invitation/use_set_invitation_code_to_clipboard.dart';
 import 'package:cueue/hooks/hierarchy/invitation/use_share_invitation_code.dart';
 import 'package:cueue/model/invitation/invitation.dart';
-import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/default_state_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
