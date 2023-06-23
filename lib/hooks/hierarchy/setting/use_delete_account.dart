@@ -7,7 +7,6 @@ import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_firebase_user.dart';
-import 'package:cueue/legacy/data/cache/di/cache_provider.dart';
 import 'package:cueue/model/auth/firebase_auth_extension.dart';
 import 'package:cueue/model/exception/require_reautentication_exception.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
@@ -19,7 +18,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 SWRTriggerState<void, void> useDeleteAccount(WidgetRef ref) {
-  final cacheList = ref.read(allCacheProvider);
   final showSimpleMessageDialog = useShowSimpleMessageDialog();
   final replacePage = useReplacePage();
   final showErrorDialog = useShowErrorDialog(ref);
@@ -34,9 +32,6 @@ SWRTriggerState<void, void> useDeleteAccount(WidgetRef ref) {
       }
       swrCache.clear();
       swrSystemCache.clear();
-      for (final cache in cacheList) {
-        cache.clearAll();
-      }
     } on FirebaseAuthException catch (exception) {
       throw await exception.parse(requireReauthenticationType: const RequireReauthenticationType.deleteAccount());
     }

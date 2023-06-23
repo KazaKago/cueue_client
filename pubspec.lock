@@ -1094,7 +1094,7 @@ packages:
     source: hosted
     version: "2.3.6"
   rxdart:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: rxdart
       sha256: "0c7c0cedd93788d996e33041ffecda924cc54389199cde4e6a34b440f50044cb"
@@ -1226,14 +1226,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.2+1"
-  store_flowable:
-    dependency: "direct main"
-    description:
-      name: store_flowable
-      sha256: ab14492055d9ec4e50f47d648f2ded2cd645b8e5bbaabc4a3316ae9306eec71f
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.4.6"
   stream_channel:
     dependency: transitive
     description:
@@ -1298,14 +1290,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
-  tuple:
-    dependency: "direct main"
-    description:
-      name: tuple
-      sha256: a97ce2013f240b2f3807bcbaf218765b6f301c3eff91092bcfa23a039e7dd151
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.2"
   typed_data:
     dependency: transitive
     description:

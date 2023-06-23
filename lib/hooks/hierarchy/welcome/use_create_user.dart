@@ -6,13 +6,13 @@ import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_firebase_user.dart';
+import 'package:cueue/model/exception/no_such_element_exception.dart';
 import 'package:cueue/model/user/pre_user.dart';
 import 'package:cueue/model/user/user.dart';
 import 'package:cueue/provider/api_provider.dart';
 import 'package:cueue/provider/mapper_provider.dart';
 import 'package:cueue/ui/hierarchy/welcome/workspace_creation_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:store_flowable/store_flowable.dart';
 
 SWRTriggerState<PreUser, User> useCreateUser(WidgetRef ref) {
   final firebaseUserState = useFirebaseUser(ref);

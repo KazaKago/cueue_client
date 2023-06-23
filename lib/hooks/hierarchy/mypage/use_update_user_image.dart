@@ -9,6 +9,7 @@ import 'package:cueue/hooks/global/utils/use_easy_loading.dart';
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_firebase_user.dart';
+import 'package:cueue/model/exception/no_such_element_exception.dart';
 import 'package:cueue/model/photo/photo_pickup_bottom_sheet_event.dart';
 import 'package:cueue/model/user/user.dart';
 import 'package:cueue/provider/api_provider.dart';
@@ -16,7 +17,6 @@ import 'package:cueue/provider/mapper_provider.dart';
 import 'package:cueue/ui/hierarchy/photo/photo_pickup_bottom_sheet_dialog.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:store_flowable/store_flowable.dart';
 import 'package:universal_io/io.dart';
 
 SWRTriggerState<void, PhotoPickupBottomSheetEvent?> useUpdateUserImage(WidgetRef ref, SWRState<String, User> userState) {

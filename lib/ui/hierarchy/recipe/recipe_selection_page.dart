@@ -1,6 +1,5 @@
-import 'package:cueue/legacy/presentation/viewmodel/di/viewmodel_provider.dart';
+import 'package:cueue/hooks/hierarchy/tag/use_tags.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
-import 'package:cueue/model/tag/tag.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
 import 'package:cueue/ui/global/widget/error_handling_widget.dart';
 import 'package:cueue/ui/hierarchy/recipe/recipe_list.dart';
@@ -17,64 +16,50 @@ class RecipeSelectionPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedRecipes = useState<List<RecipeSummary>>(_initialSelectedRecipes);
-    final state = ref.watch(recipeSelectionViewModelProvider.select((viewModel) => viewModel.state));
+    final intl = useIntl();
+    final tagsState = useTags(ref);
+    final tags = tagsState.data;
     return WillPopScope(
       onWillPop: () async {
         Navigator.of(context).pop(selectedRecipes.value);
         return false;
       },
-      child: state.when(
-        loading: _buildLoading,
-        completed: (recipes) => _buildCompleted(recipes, selectedRecipes),
-        error: (exception) => _buildError(ref, exception),
-      ),
-    );
-  }
-
-  Widget _buildLoading() {
-    final intl = useIntl();
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(intl.selectRecipes),
-      ),
-      body: const RecipeLoading(),
-    );
-  }
-
-  Widget _buildCompleted(List<Tag> tags, ValueNotifier<List<RecipeSummary>> selectedRecipes) {
-    final intl = useIntl();
-    return DefaultTabController(
-      length: tags.length + 1,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(intl.selectRecipes),
-          bottom: TabBar(
-            isScrollable: true,
-            tabs: [
-              Tab(text: intl.allRecipes),
-              for (final tag in tags) Tab(text: tag.name),
-            ],
+      child: DefaultTabController(
+        length: (tags != null) ? tags.length + 1 : 0,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(intl.selectRecipes),
+            bottom: TabBar(
+              isScrollable: true,
+              tabs: [
+                if (tags != null) Tab(text: intl.allRecipes),
+                if (tags != null)
+                  for (final tag in tags) Tab(text: tag.name),
+              ],
+            ),
           ),
-        ),
-        body: TabBarView(
-          children: [
-            RecipeList(key: const PageStorageKey(-1), selectedRecipes: selectedRecipes.value, onTap: (recipe) => _onCheckChanged(selectedRecipes, recipe)),
-            for (final tag in tags) RecipeList(key: PageStorageKey(tag.id.value), tagIds: List.filled(1, tag.id), selectedRecipes: selectedRecipes.value, onTap: (recipe) => _onCheckChanged(selectedRecipes, recipe)),
-          ],
+          body: _buildContent(ref, selectedRecipes),
         ),
       ),
     );
   }
 
-  Widget _buildError(WidgetRef ref, Exception exception) {
-    final intl = useIntl();
-    final viewModel = ref.read(recipeSelectionViewModelProvider);
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(intl.selectRecipes),
-      ),
-      body: ErrorHandlingWidget(exception, onClickRetry: viewModel.retry),
-    );
+  Widget _buildContent(WidgetRef ref, ValueNotifier<List<RecipeSummary>> selectedRecipes) {
+    final tagsState = useTags(ref);
+    final error = tagsState.error;
+    final tags = tagsState.data;
+    if (error != null) {
+      return ErrorHandlingWidget(error);
+    } else if (tags == null) {
+      return const RecipeLoading();
+    } else {
+      return TabBarView(
+        children: [
+          RecipeList(key: const PageStorageKey(-1), selectedRecipes: selectedRecipes.value, onTap: (recipe) => _onCheckChanged(selectedRecipes, recipe)),
+          for (final tag in tags) RecipeList(key: PageStorageKey(tag.id.value), tagIds: List.filled(1, tag.id), selectedRecipes: selectedRecipes.value, onTap: (recipe) => _onCheckChanged(selectedRecipes, recipe)),
+        ],
+      );
+    }
   }
 
   Future<void> _onCheckChanged(ValueNotifier<List<RecipeSummary>> selectedRecipes, RecipeSummary recipe) async {

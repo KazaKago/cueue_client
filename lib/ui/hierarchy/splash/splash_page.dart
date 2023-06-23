@@ -1,11 +1,11 @@
 import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/hooks/hierarchy/splash/use_check_at_launch.dart';
+import 'package:cueue/model/exception/no_such_element_exception.dart';
 import 'package:cueue/model/exception/not_found_exception.dart';
 import 'package:cueue/ui/global/widget/error_handling_widget.dart';
 import 'package:cueue/ui/global/widget/shimmer_container.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:store_flowable/store_flowable.dart';
 
 class SplashPage extends HookConsumerWidget {
   const SplashPage({super.key});

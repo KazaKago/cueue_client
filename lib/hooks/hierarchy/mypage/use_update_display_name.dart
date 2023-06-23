@@ -5,6 +5,7 @@ import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_firebase_user.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_user.dart';
+import 'package:cueue/model/exception/no_such_element_exception.dart';
 import 'package:cueue/provider/api_provider.dart';
 import 'package:cueue/provider/mapper_provider.dart';
 import 'package:cueue/ui/global/l10n/intl.dart';
@@ -12,7 +13,6 @@ import 'package:cueue/ui/global/modal/text_field_dialog.dart';
 import 'package:cueue/ui/global/modal/text_field_dialog_event.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:store_flowable/store_flowable.dart';
 
 SWRTriggerState<void, void> useUpdateDisplayName(WidgetRef ref) {
   final intl = useIntl();
