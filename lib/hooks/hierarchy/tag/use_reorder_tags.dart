@@ -1,4 +1,3 @@
-import 'package:cueue/api/request/tag/tag_order_request.dart';
 import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
 import 'package:cueue/hooks/hierarchy/tag/use_tags.dart';
@@ -19,6 +18,7 @@ SWRTriggerState<ReOrderTagsData, void> useReOrderTags(WidgetRef ref) {
   final tagsState = useTags(ref);
   final orderTagApi = ref.read(orderTagApiProvider);
   final tagResponseMapper = ref.read(tagResponseMapperProvider);
+  final tagOrderRequestMapper = ref.read(tagOrderRequestMapperProvider);
   return useSWRTrigger<ReOrderTagsData, void>((data) async {
     final tags = tagsState.data;
     if (tags == null) return;
@@ -33,7 +33,7 @@ SWRTriggerState<ReOrderTagsData, void> useReOrderTags(WidgetRef ref) {
     await tagsState.mutate(
       () async {
         try {
-          final request = TagOrderRequest(tagIds: fixedTags.map((tag) => tag.id.value).toList());
+          final request = tagOrderRequestMapper(fixedTags.map((tag) => tag.id).toList());
           final response = await orderTagApi(request);
           return response.map(tagResponseMapper.call).toList();
         } on FirebaseAuthException catch (exception) {
