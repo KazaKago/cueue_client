@@ -9,7 +9,7 @@ String? _getKey(int pageIndex, List<MenuSummary>? previousPageData) {
   if (previousPageData?.isEmpty == true) {
     return null;
   } else {
-    return 'menus_$pageIndex';
+    return 'menus/${previousPageData?.last.id.value}';
   }
 }
 
@@ -17,7 +17,8 @@ SWRInfiniteState<String, List<MenuSummary>> useMenus(WidgetRef ref) {
   final getMenusApi = ref.read(getMenusApiProvider);
   final menuSummaryResponseMapper = ref.read(menuSummaryResponseMapperProvider);
   final state = useSWRInfinite<String, List<MenuSummary>>(_getKey, (key) async {
-    final response = await getMenusApi();
+    final afterId = int.tryParse(key.split('/').last);
+    final response = await getMenusApi(afterId: afterId);
     return response.map(menuSummaryResponseMapper.call).toList();
   });
   return state;

@@ -10,7 +10,7 @@ String? _getKey(int pageIndex, List<RecipeSummary>? previousPageData, RecipeSear
   if (previousPageData?.isEmpty == true) {
     return null;
   } else {
-    return 'recipes_${recipeSearchOption}_$pageIndex';
+    return 'recipes/$recipeSearchOption/${previousPageData?.last.id.value}';
   }
 }
 
@@ -18,7 +18,8 @@ SWRInfiniteState<String, List<RecipeSummary>> useRecipes(WidgetRef ref, {RecipeS
   final getRecipesApi = ref.read(getRecipesApiProvider);
   final recipeSummaryResponseMapper = ref.read(recipeSummaryResponseMapperProvider);
   final state = useSWRInfinite<String, List<RecipeSummary>>((pageIndex, previousPageData) => _getKey(pageIndex, previousPageData, recipeSearchOption), (key) async {
-    final responses = await getRecipesApi(keyword: recipeSearchOption?.keyword, tagIds: recipeSearchOption?.tagIds?.map((e) => e.value).toList());
+    final afterId = int.tryParse(key.split('/').last);
+    final responses = await getRecipesApi(afterId: afterId, keyword: recipeSearchOption?.keyword, tagIds: recipeSearchOption?.tagIds?.map((e) => e.value).toList());
     return responses.map(recipeSummaryResponseMapper.call).toList();
   });
   return state;
