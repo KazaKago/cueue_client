@@ -15,7 +15,6 @@ import 'package:widgetbook/widgetbook.dart';
 
 final menuComponent = WidgetbookComponent(
   name: 'Menu',
-  isExpanded: true,
   useCases: [
     WidgetbookUseCase(
       name: 'MenuPage',

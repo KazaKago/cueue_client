@@ -3,7 +3,6 @@ import 'package:widgetbook/widgetbook.dart';
 
 final mainComponent = WidgetbookComponent(
   name: 'Main',
-  isExpanded: true,
   useCases: [
     WidgetbookUseCase(
       name: 'MainPage',

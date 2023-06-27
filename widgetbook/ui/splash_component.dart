@@ -3,7 +3,6 @@ import 'package:widgetbook/widgetbook.dart';
 
 final splashComponent = WidgetbookComponent(
   name: 'Splash',
-  isExpanded: true,
   useCases: [
     WidgetbookUseCase(
       name: 'SplashPage',

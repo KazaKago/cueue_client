@@ -6,7 +6,6 @@ import 'package:widgetbook/widgetbook.dart';
 
 final invitationComponent = WidgetbookComponent(
   name: 'Invitation',
-  isExpanded: true,
   useCases: [
     WidgetbookUseCase(
       name: 'InvitationCreationPage',

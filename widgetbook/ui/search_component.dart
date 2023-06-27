@@ -5,7 +5,6 @@ import 'package:widgetbook/widgetbook.dart';
 
 final searchComponent = WidgetbookComponent(
   name: 'Search',
-  isExpanded: true,
   useCases: [
     WidgetbookUseCase(
       name: 'SearchPage',

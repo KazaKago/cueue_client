@@ -6,7 +6,6 @@ import 'package:widgetbook/widgetbook.dart';
 
 final settingComponent = WidgetbookComponent(
   name: 'Setting',
-  isExpanded: true,
   useCases: [
     WidgetbookUseCase(
       name: 'AboutPage',

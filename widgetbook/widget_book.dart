@@ -23,28 +23,32 @@ class WidgetBook extends StatelessWidget {
     return AppTheme(
       child: (lightTheme, darkTheme) {
         return Widgetbook.material(
-          appInfo: AppInfo(name: 'WidgetBook'),
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          devices: const [
-            Apple.iPhone13Mini,
-            Samsung.s21ultra,
-            Desktop.desktop1080p,
-          ],
-          themes: [
-            WidgetbookTheme(
-              name: 'light',
-              data: lightTheme,
+          addons: [
+            MaterialThemeAddon(
+              themes: [
+                WidgetbookTheme(name: 'Light', data: lightTheme),
+                WidgetbookTheme(name: 'Dark', data: darkTheme),
+              ],
             ),
-            WidgetbookTheme(
-              name: 'dark',
-              data: darkTheme,
+            DeviceFrameAddon(
+              devices: [
+                Devices.ios.iPhone13,
+                Devices.android.samsungGalaxyS20,
+                Devices.macOS.macBookPro,
+              ],
+            ),
+            LocalizationAddon(
+              locales: AppLocalizations.supportedLocales,
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+            ),
+            TextScaleAddon(
+              scales: [1.0, 1.5, 2.0],
             ),
           ],
-          categories: [
+          directories: [
             WidgetbookCategory(
               name: 'Screen',
-              widgets: [
+              children: [
                 authComponent,
                 invitationComponent,
                 mainComponent,

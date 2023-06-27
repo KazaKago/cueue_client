@@ -70,7 +70,7 @@ dev_dependencies:
   freezed: ^2.0.2
   json_serializable: ^6.0.0
   pedantic_mono: ^1.0.0
-  widgetbook: ^2.0.0
+  widgetbook: ^3.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

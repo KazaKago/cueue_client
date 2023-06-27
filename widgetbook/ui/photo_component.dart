@@ -5,7 +5,6 @@ import 'package:widgetbook/widgetbook.dart';
 
 final photoComponent = WidgetbookComponent(
   name: 'Photo',
-  isExpanded: true,
   useCases: [
     WidgetbookUseCase(
       name: 'PhotoPage',
@@ -18,7 +17,7 @@ final photoComponent = WidgetbookComponent(
         ],
       ),
     ),
-    WidgetbookUseCase(
+    const WidgetbookUseCase(
       name: 'PhotoPickupBottomSheetDialog',
       builder: PhotoPickupBottomSheetDialog.new,
     ),

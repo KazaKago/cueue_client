@@ -7,7 +7,6 @@ import 'package:widgetbook/widgetbook.dart';
 
 final authComponent = WidgetbookComponent(
   name: 'Auth',
-  isExpanded: true,
   useCases: [
     WidgetbookUseCase(
       name: 'AuthenticationPage',

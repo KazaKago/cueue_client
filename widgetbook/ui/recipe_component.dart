@@ -15,7 +15,6 @@ import 'package:widgetbook/widgetbook.dart';
 
 final recipeComponent = WidgetbookComponent(
   name: 'Recipe',
-  isExpanded: true,
   useCases: [
     WidgetbookUseCase(
       name: 'RecipePage',

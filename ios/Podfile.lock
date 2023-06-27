@@ -25,7 +25,7 @@ PODS:
     - Firebase/Analytics (= 10.10.0)
     - firebase_core
     - Flutter
-  - firebase_app_check (0.1.4-3):
+  - firebase_app_check (0.1.5):
     - Firebase/CoreOnly (~> 10.10.0)
     - firebase_core
     - FirebaseAppCheck (~> 10.10.0-beta)
@@ -271,7 +271,7 @@ SPEC CHECKSUMS:
   connectivity_plus: 07c49e96d7fc92bc9920617b83238c4d178b446a
   Firebase: facd334e557a979bd03a0b58d90fd56b52b8aba0
   firebase_analytics: 1a5ad75876257318ba5fdc6bf7aae73b6e98d0cf
-  firebase_app_check: b15592a792e36a5e777be6a35a32403ea5929b5b
+  firebase_app_check: 655e09d3329467818024f44f330501ff62070274
   firebase_auth: 9905bc3d82328b5050a8b7cb410a959f150b6549
   firebase_core: 85b6664038311940ad60584eaabc73103c61f5de
   firebase_crashlytics: cd12245f604099a4ef6557fb36490abe309a118a

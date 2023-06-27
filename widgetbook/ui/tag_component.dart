@@ -9,7 +9,6 @@ import 'package:widgetbook/widgetbook.dart';
 
 final tagComponent = WidgetbookComponent(
   name: 'Tag',
-  isExpanded: true,
   useCases: [
     WidgetbookUseCase(
       name: 'TagPage',
