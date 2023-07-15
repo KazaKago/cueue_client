@@ -2,14 +2,11 @@ import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_user.dart';
-import 'package:cueue/ui/hierarchy/main/main_page.dart';
-import 'package:cueue/ui/hierarchy/welcome/user_creation_page.dart';
-import 'package:cueue/ui/hierarchy/welcome/workspace_creation_page.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 SWRTriggerState<void, void> useReplaceSignedInPage(WidgetRef ref) {
-  final replacePage = useReplacePage();
+  final goNamed = useGoNamed();
   final userState = useUser(ref);
   final fireState = useState(false);
   useEffect(
@@ -17,11 +14,11 @@ SWRTriggerState<void, void> useReplaceSignedInPage(WidgetRef ref) {
       if (!fireState.value || userState.isValidating) return null;
       final user = userState.data;
       if (user == null) {
-        replacePage.trigger(const UserCreationPage());
+        goNamed.trigger(GoName('user_creation'));
       } else if (user.workspace == null) {
-        replacePage.trigger(const WorkspaceCreationPage());
+        goNamed.trigger(GoName('workspace_creation'));
       } else {
-        replacePage.trigger(const MainPage());
+        goNamed.trigger(GoName('root'));
       }
       fireState.value = false;
       return null;

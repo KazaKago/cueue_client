@@ -4,7 +4,6 @@ import 'package:cueue/hooks/global/utils/use_easy_loading.dart';
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
-import 'package:cueue/model/edit/editing_result.dart';
 import 'package:cueue/model/menu/menu.dart';
 import 'package:cueue/model/menu/menu_registration.dart';
 import 'package:cueue/provider/api_provider.dart';
@@ -12,7 +11,7 @@ import 'package:cueue/provider/mapper_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 SWRTriggerState<MenuRegistration, Menu> useCreateMenu(WidgetRef ref) {
-  final popPage = usePopPage<EditingResult>();
+  final goNamed = useGoNamed();
   final easyLoading = useEasyLoading();
   final showErrorDialog = useShowErrorDialog(ref);
   final createMenuApi = ref.read(createMenuApiProvider);
@@ -23,7 +22,7 @@ SWRTriggerState<MenuRegistration, Menu> useCreateMenu(WidgetRef ref) {
     return menuResponseMapper(response);
   });
   useEffectSWRData(createMenu, (tag) {
-    popPage.trigger(EditingResult.created);
+    goNamed.trigger(GoName('menus'));
   });
   useEffectSWRIsMutating(createMenu, ({required isMutating}) {
     easyLoading.trigger(isMutating);

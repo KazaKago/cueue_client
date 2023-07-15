@@ -1,28 +1,23 @@
 import 'dart:collection';
 
 import 'package:cueue/ui/global/utils/intl.dart';
-import 'package:cueue/ui/hierarchy/menu/menu_editing_page.dart';
-import 'package:cueue/ui/hierarchy/menu/menu_page.dart';
-import 'package:cueue/ui/hierarchy/mypage/my_page.dart';
-import 'package:cueue/ui/hierarchy/recipe/recipe_editing_page.dart';
-import 'package:cueue/ui/hierarchy/recipe/recipe_page.dart';
-import 'package:cueue/ui/hierarchy/search/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainNavigationItems extends ListBase<MainNavigationItem> {
   factory MainNavigationItems(BuildContext context) {
     final rawList = [
-      MainNavigationItem(const MenuPage(), intl(context).cookingMenu, FontAwesomeIcons.calendar, fabPage: MenuEditingPage(), fabIcon: Icons.add, fabLabel: intl(context).addCookingMenu),
-      MainNavigationItem(const RecipePage(), intl(context).recipe, FontAwesomeIcons.utensils, fabPage: const RecipeEditingPage(), fabIcon: Icons.add, fabLabel: intl(context).addRecipe),
-      MainNavigationItem(const SearchPage(), intl(context).search, FontAwesomeIcons.magnifyingGlass),
-      MainNavigationItem(const MyPage(), intl(context).mypage, Icons.account_circle),
+      MainNavigationItem(intl(context).cookingMenu, FontAwesomeIcons.calendar, fabPage: 'menu_new', fabIcon: Icons.add, fabLabel: intl(context).addCookingMenu),
+      MainNavigationItem(intl(context).recipe, FontAwesomeIcons.utensils, fabPage: 'recipe_new', fabIcon: Icons.add, fabLabel: intl(context).addRecipe),
+      MainNavigationItem(intl(context).search, FontAwesomeIcons.magnifyingGlass),
+      MainNavigationItem(intl(context).mypage, Icons.account_circle),
     ];
-    return MainNavigationItems._(rawList);
+    return MainNavigationItems._(context, rawList);
   }
 
-  MainNavigationItems._(this.rawList);
+  MainNavigationItems._(this.context, this.rawList);
 
+  final BuildContext context;
   final List<MainNavigationItem> rawList;
 
   @override
@@ -41,22 +36,17 @@ class MainNavigationItems extends ListBase<MainNavigationItem> {
     rawList[index] = value;
   }
 
-  List<Widget> toPageList() {
-    return map((item) => item.page).toList();
-  }
-
   List<NavigationDestination> toNavigationDestinationList() {
     return map((item) => item.toNavigationDestination()).toList();
   }
 }
 
 class MainNavigationItem {
-  const MainNavigationItem(this.page, this.title, this.icon, {this.fabPage, this.fabIcon, this.fabLabel});
+  const MainNavigationItem(this.title, this.icon, {this.fabPage, this.fabIcon, this.fabLabel});
 
-  final Widget page;
   final String title;
   final IconData icon;
-  final Widget? fabPage;
+  final String? fabPage;
   final IconData? fabIcon;
   final String? fabLabel;
 

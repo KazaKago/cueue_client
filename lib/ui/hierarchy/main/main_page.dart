@@ -5,34 +5,41 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MainPage extends HookConsumerWidget {
-  const MainPage({super.key});
+  const MainPage({
+    super.key,
+    required this.currentIndex,
+    required this.goBranch,
+    required this.child,
+  });
+
+  final int currentIndex;
+  final void Function(int index) goBranch;
+  final Widget child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentIndex = useState(0);
-    final mainNavigationItemList = useState(MainNavigationItems(context)).value;
+    final context = useContext();
+    final mainNavigationItemList = MainNavigationItems(context);
     return Scaffold(
-      body: IndexedStack(
-        index: currentIndex.value,
-        children: mainNavigationItemList.toPageList(),
-      ),
+      body: child,
       bottomNavigationBar: NavigationBar(
-        selectedIndex: currentIndex.value,
+        selectedIndex: currentIndex,
         destinations: mainNavigationItemList.toNavigationDestinationList(),
-        onDestinationSelected: (page) => currentIndex.value = page,
+        onDestinationSelected: goBranch,
       ),
-      floatingActionButton: _buildFloatingActionButton(context, currentIndex.value, mainNavigationItemList),
+      floatingActionButton: _buildFloatingActionButton(context, mainNavigationItemList),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 
-  Widget? _buildFloatingActionButton(BuildContext context, int currentIndex, MainNavigationItems mainNavigationItemList) {
+  Widget? _buildFloatingActionButton(BuildContext context, MainNavigationItems mainNavigationItemList) {
+    final goNamed = useGoNamed();
     final navigationItem = mainNavigationItemList[currentIndex];
-    final pushPage = usePushPage<void>();
-    if (navigationItem.isVisibleFab()) {
+    final fabPage = navigationItem.fabPage;
+    if (fabPage != null) {
       return FloatingActionButton.extended(
         label: Text(navigationItem.fabLabel ?? ''),
-        onPressed: () => pushPage.trigger(navigationItem.fabPage!),
+        onPressed: () => goNamed.trigger(GoName(fabPage)),
         icon: Icon(navigationItem.fabIcon),
         heroTag: navigationItem.fabLabel,
       );

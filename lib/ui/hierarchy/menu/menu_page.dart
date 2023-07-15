@@ -11,7 +11,6 @@ import 'package:cueue/model/menu/date_split_menu_list.dart';
 import 'package:cueue/model/menu/menu_list.dart';
 import 'package:cueue/ui/global/widget/empty_widget.dart';
 import 'package:cueue/ui/global/widget/loading_list_item.dart';
-import 'package:cueue/ui/hierarchy/menu/menu_detail_page.dart';
 import 'package:cueue/ui/hierarchy/menu/menu_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -65,7 +64,7 @@ class MenuPage extends HookConsumerWidget {
   List<SliverStickyHeader> _buildSliverList(WidgetRef ref, List<DateSplitMenuList?> menus) {
     final intl = useIntl();
     final theme = useTheme();
-    final pushPage = usePushPage<void>();
+    final goNamed = useGoNamed();
     final toDateString = useToDateString();
     final toFormattedString = useToFormattedString();
     final toFormattedImage = useToFormattedImage();
@@ -94,7 +93,10 @@ class MenuPage extends HookConsumerWidget {
                   leading: CircleAvatar(backgroundImage: toFormattedImage(dateSplitMenus.menus[i].timeFrame).image, backgroundColor: Colors.transparent),
                   title: Text(dateSplitMenus.menus[i].recipes.map((e) => e.title).join(',')),
                   subtitle: Text(dateSplitMenus.menus[i].memo.isNotEmpty ? intl.withMemo(dateSplitMenus.menus[i].memo) : toFormattedString(dateSplitMenus.menus[i].timeFrame), maxLines: 2, overflow: TextOverflow.ellipsis),
-                  onTap: () => pushPage.trigger(MenuDetailPage(dateSplitMenus.menus[i])),
+                  onTap: () {
+                    final menu = dateSplitMenus.menus[i];
+                    goNamed.trigger(GoName('menu_detail', pathParameters: {'menu_id': menu.id.value.toString()}, extra: menu));
+                  },
                 ),
               ),
               childCount: dateSplitMenus.menus.length,

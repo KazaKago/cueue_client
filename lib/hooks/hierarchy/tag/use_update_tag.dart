@@ -4,7 +4,6 @@ import 'package:cueue/hooks/global/utils/use_easy_loading.dart';
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
-import 'package:cueue/model/edit/editing_result.dart';
 import 'package:cueue/model/tag/tag.dart';
 import 'package:cueue/model/tag/tag_id.dart';
 import 'package:cueue/model/tag/tag_registration.dart';
@@ -20,7 +19,7 @@ class UpdateTagData {
 }
 
 SWRTriggerState<UpdateTagData, Tag> useUpdateTag(WidgetRef ref) {
-  final popPage = usePopPage<EditingResult>();
+  final goNamed = useGoNamed();
   final easyLoading = useEasyLoading();
   final showErrorDialog = useShowErrorDialog(ref);
   final updateTagApi = ref.read(updateTagApiProvider);
@@ -31,7 +30,7 @@ SWRTriggerState<UpdateTagData, Tag> useUpdateTag(WidgetRef ref) {
     return tagResponseMapper(response);
   });
   useEffectSWRData(updateTag, (data) {
-    popPage.trigger(EditingResult.updated);
+    goNamed.trigger(GoName('tags'));
   });
   useEffectSWRIsMutating(updateTag, ({required isMutating}) {
     easyLoading.trigger(isMutating);

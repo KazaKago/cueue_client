@@ -7,13 +7,12 @@ import 'package:cueue/hooks/global/utils/use_intl.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/ui/global/modal/simple_message_dialog.dart';
 import 'package:cueue/ui/global/modal/simple_message_dialog_event.dart';
-import 'package:cueue/ui/hierarchy/auth/authentication_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 SWRTriggerState<void, bool> useSignOut(WidgetRef ref) {
-  final replacePage = useReplacePage();
+  final goNamed = useGoNamed();
   final signOut = useSWRTrigger((_) async {
     await FirebaseAuth.instance.signOut();
     final googleSignIn = GoogleSignIn();
@@ -23,7 +22,7 @@ SWRTriggerState<void, bool> useSignOut(WidgetRef ref) {
     return true;
   });
   useEffectSWRData(signOut, (data) {
-    replacePage.trigger(const AuthenticationPage());
+    goNamed.trigger(GoName('authentication'));
   });
   return signOut;
 }

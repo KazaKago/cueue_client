@@ -23,7 +23,8 @@ final recipeComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'RecipeDetailPage',
       builder: (_) => RecipeDetailPage(
-        RecipeSummaryImpl(
+        recipeId: const RecipeId(0),
+        recipeSummary: RecipeSummaryImpl(
           id: const RecipeId(0),
           title: 'recipe title',
           image: Content(

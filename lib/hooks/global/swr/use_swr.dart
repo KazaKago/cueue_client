@@ -9,6 +9,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 SWRState<KEY, DATA> useSWR<KEY, DATA>(
   KEY? key,
   Future<DATA> Function(KEY key) fetcher, {
+  bool revalidateOnMount = true,
+  bool revalidateOnFocus = true,
+  bool revalidateOnReconnect = true,
   DATA? fallbackData,
 }) {
   final data = useListenable(swrCache.data<KEY?, DATA>(key));
@@ -17,9 +20,9 @@ SWRState<KEY, DATA> useSWR<KEY, DATA>(
   final validate = SWRValidate<KEY, DATA>(data, error, isValidating, fetcher);
   final mutate = SWRMutate<KEY, DATA>(key, data, error, validate);
 
-  revalidateOnMount(validate, key);
-  revalidateOnFocus(validate, key);
-  revalidateOnReconnect(validate, key);
+  revalidateOnMountOption(validate, key, isEnabled: revalidateOnMount, fallbackData: fallbackData);
+  revalidateOnFocusOption(validate, key, isEnabled: revalidateOnFocus);
+  revalidateOnReconnectOption(validate, key, isEnabled: revalidateOnReconnect);
 
   return SWRState(data: data.value ?? fallbackData, error: error.value, isValidating: isValidating.value, mutate: mutate);
 }

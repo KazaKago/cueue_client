@@ -4,9 +4,11 @@ import 'package:cueue/hooks/global/utils/use_theme.dart';
 import 'package:cueue/hooks/hierarchy/photo/use_pickup_recipe_image.dart';
 import 'package:cueue/hooks/hierarchy/recipe/use_create_recipe.dart';
 import 'package:cueue/hooks/hierarchy/recipe/use_delete_recipe.dart';
+import 'package:cueue/hooks/hierarchy/recipe/use_recipe_for_edit.dart';
 import 'package:cueue/hooks/hierarchy/recipe/use_update_recipe.dart';
 import 'package:cueue/model/content/content.dart';
 import 'package:cueue/model/recipe/recipe.dart';
+import 'package:cueue/model/recipe/recipe_id.dart';
 import 'package:cueue/model/recipe/recipe_registration.dart';
 import 'package:cueue/model/tag/tag_id.dart';
 import 'package:cueue/ui/hierarchy/tag/tag_chips.dart';
@@ -15,36 +17,49 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class RecipeEditingPage extends HookConsumerWidget {
-  const RecipeEditingPage({this.recipe, super.key});
+  const RecipeEditingPage({super.key, this.recipeId, this.recipe});
 
+  final RecipeId? recipeId;
   final Recipe? recipe;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final recipe = this.recipe;
+    final recipeState = useRecipeForEdit(ref, this.recipeId, fallbackData: recipe);
+    final recipeId = this.recipeId;
     final intl = useIntl();
     final deleteRecipe = useDeleteRecipe(ref);
 
-    final images = useState(recipe?.images.toList() ?? []);
+    final images = useState(recipeState.data?.images ?? []);
     final isPostingImage = useState(false);
-    final selectedTagIds = useState(recipe?.tags.map((e) => e.id).toList() ?? []);
-    final recipeTitleEditingController = useTextEditingController(text: recipe?.title ?? '');
+    final selectedTagIds = useState(recipeState.data?.tags.map((e) => e.id).toList() ?? []);
+    final recipeTitleEditingController = useTextEditingController(text: recipeState.data?.title, keys: [recipeState.data]);
     final isEnableRegistrationButton = useState(recipeTitleEditingController.text.isNotEmpty);
     recipeTitleEditingController.addListener(() {
       isEnableRegistrationButton.value = recipeTitleEditingController.text.isNotEmpty;
     });
-    final recipeUrlEditingController = useTextEditingController(text: recipe?.url?.toString() ?? '');
-    final recipeDescriptionEditingController = useTextEditingController(text: recipe?.description ?? '');
+    final recipeUrlEditingController = useTextEditingController(text: recipeState.data?.url?.toString(), keys: [recipeState.data]);
+    final recipeDescriptionEditingController = useTextEditingController(text: recipeState.data?.description, keys: [recipeState.data]);
     final scrollController = useScrollController();
+    useEffect(
+      () {
+        final data = recipeState.data;
+        if (data != null) {
+          images.value = data.images;
+          selectedTagIds.value = data.tags.map((e) => e.id).toList();
+        }
+        return null;
+      },
+      [recipeState.data],
+    );
     return Scaffold(
       appBar: AppBar(
-        title: Text(recipe != null ? intl.editWith(recipe.title) : intl.addRecipe),
+        title: Text(recipeState.data != null ? intl.editWith(recipeState.data!.title) : intl.addRecipe),
         actions: [
-          if (recipe != null)
+          if (recipeId != null)
             IconButton(
               icon: const Icon(Icons.delete),
               tooltip: intl.doDelete,
-              onPressed: () => deleteRecipe.trigger(recipe.id),
+              onPressed: () => deleteRecipe.trigger(recipeId),
             ),
         ],
       ),
@@ -218,12 +233,12 @@ class RecipeEditingPage extends HookConsumerWidget {
     final intl = useIntl();
     final updateRecipe = useUpdateRecipe(ref);
     final createRecipe = useCreateRecipe(ref);
-    final recipe = this.recipe;
+    final recipeId = this.recipeId;
     return Padding(
       padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
       child: ElevatedButton.icon(
         icon: const Icon(Icons.save),
-        label: Text(recipe != null ? intl.doFix : intl.doAdd),
+        label: Text(recipeId != null ? intl.doFix : intl.doAdd),
         onPressed: isEnableRegistrationButton
             ? () {
                 final recipeRegistration = RecipeRegistration(
@@ -233,8 +248,8 @@ class RecipeEditingPage extends HookConsumerWidget {
                   imageKeys: images.map((e) => e.key).toList(),
                   tagIds: selectedTagIds,
                 );
-                if (recipe != null) {
-                  updateRecipe.trigger(UpdateRecipeData(recipe.id, recipeRegistration));
+                if (recipeId != null) {
+                  updateRecipe.trigger(UpdateRecipeData(recipeId, recipeRegistration));
                 } else {
                   createRecipe.trigger(recipeRegistration);
                 }
