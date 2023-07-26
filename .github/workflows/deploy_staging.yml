@@ -17,7 +17,7 @@ jobs:
         uses: ./.github/actions/setup_common
         with:
           dartDefineJsonBase64: ${{ secrets.DART_DEFINE_JSON_BASE64 }}
-          serviceAccountJsonBase64: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_BASE64 }}
+          serviceAccountJsonBase64: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON_BASE64 }}
       - name: Setup Android
         uses: ./.github/actions/setup_android
         with:
@@ -42,7 +42,7 @@ jobs:
         uses: ./.github/actions/setup_common
         with:
           dartDefineJsonBase64: ${{ secrets.DART_DEFINE_JSON_BASE64 }}
-          serviceAccountJsonBase64: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_BASE64 }}
+          serviceAccountJsonBase64: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON_BASE64 }}
       - name: Setup iOS
         uses: ./.github/actions/setup_ios
         with:
@@ -72,7 +72,7 @@ jobs:
         uses: ./.github/actions/setup_common
         with:
           dartDefineJsonBase64: ${{ secrets.DART_DEFINE_JSON_BASE64 }}
-          serviceAccountJsonBase64: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_BASE64 }}
+          serviceAccountJsonBase64: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON_BASE64 }}
       - name: Build
         id: build
         uses: ./.github/actions/build_web
