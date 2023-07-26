@@ -1,32 +1,23 @@
-name: Deploy to Firebase Distribution
+name: Deploy Staging
 
 on:
   push:
     branches:
       - main
-      - production
   workflow_dispatch:
-    inputs:
-      flavor:
-        type: choice
-        description: Build Flavor
-        required: true
-        options:
-          - staging
-          - production
 
 jobs:
   android:
     runs-on: ubuntu-latest
-    environment: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.flavor) || (github.event_name == 'push' && github.ref_name == 'production' && 'production') || (github.event_name == 'push' && github.ref_name == 'main' && 'staging') }}
+    environment: staging
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Common
         uses: ./.github/actions/setup_common
         with:
-          serviceAccountJsonBase64: ${{ secrets.FIREBASE_APP_DISTRIBUTION_SERVICE_ACCOUNT_JSON_BASE64 }}
           dartDefineJsonBase64: ${{ secrets.DART_DEFINE_JSON_BASE64 }}
+          serviceAccountJsonBase64: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_BASE64 }}
       - name: Setup Android
         uses: ./.github/actions/setup_android
         with:
@@ -43,15 +34,15 @@ jobs:
           file: ${{ steps.build.outputs.apkPath }}
   ios:
     runs-on: macos-latest
-    environment: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.flavor) || (github.event_name == 'push' && github.ref_name == 'production' && 'production') || (github.event_name == 'push' && github.ref_name == 'main' && 'staging') }}
+    environment: staging
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Common
         uses: ./.github/actions/setup_common
         with:
-          serviceAccountJsonBase64: ${{ secrets.FIREBASE_APP_DISTRIBUTION_SERVICE_ACCOUNT_JSON_BASE64 }}
           dartDefineJsonBase64: ${{ secrets.DART_DEFINE_JSON_BASE64 }}
+          serviceAccountJsonBase64: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_BASE64 }}
       - name: Setup iOS
         uses: ./.github/actions/setup_ios
         with:
@@ -71,22 +62,22 @@ jobs:
           appId: ${{ vars.FIREBASE_APP_ID_IOS }}
           groups: ${{ vars.FIREBASE_APP_DISTRIBUTION_TESTER_GROUP }}
           file: ${{ steps.build.outputs.ipaPath }}
-#  web:
-#    runs-on: ubuntu-latest
-#    environment: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.flavor) || (github.event_name == 'push' && github.ref_name == 'production' && 'production') || (github.event_name == 'push' && github.ref_name == 'main' && 'staging') }}
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v3
-#      - name: Setup Common
-#        uses: ./.github/actions/setup_common
-#        with:
-#          serviceAccountJsonBase64: ${{ secrets.FIREBASE_APP_DISTRIBUTION_SERVICE_ACCOUNT_JSON_BASE64 }}
-#          dartDefineJsonBase64: ${{ secrets.DART_DEFINE_JSON_BASE64 }}
-#      - name: Build
-#        id: build
-#        uses: ./.github/actions/build_web
-#      - name: Deploy
-#        uses: ./.github/actions/upload_web
-#        with:
-#          projectId: ${{ vars.FIREBASE_PROJECT_ID }}
-#          siteId: ${{ vars.FIREBASE_HOSTING_SITE_ID }}
+  web:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Common
+        uses: ./.github/actions/setup_common
+        with:
+          dartDefineJsonBase64: ${{ secrets.DART_DEFINE_JSON_BASE64 }}
+          serviceAccountJsonBase64: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_BASE64 }}
+      - name: Build
+        id: build
+        uses: ./.github/actions/build_web
+      - name: Deploy
+        uses: ./.github/actions/upload_web
+        with:
+          projectId: ${{ vars.FIREBASE_PROJECT_ID }}
+          siteId: ${{ vars.FIREBASE_HOSTING_SITE_ID }}

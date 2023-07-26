@@ -16,8 +16,8 @@ runs:
   using: composite
   steps:
     - name: Install Firebase
+      shell: bash
       run: npm install -g firebase-tools
-      shell: bash
     - name: Upload
-      run: firebase appdistribution:distribute ${{ inputs.file }} --app ${{ inputs.appId }} --groups ${{ inputs.groups }} --release-notes "${{ github.event.head_commit.message }}"
       shell: bash
+      run: firebase appdistribution:distribute ${{ inputs.file }} --app ${{ inputs.appId }} --groups ${{ inputs.groups }} --release-notes "${{ github.event.head_commit.message }}"

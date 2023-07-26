@@ -21,18 +21,18 @@ runs:
   using: composite
   steps:
     - name: Put ExportOptions.plist
+      shell: bash
       run: echo ${{ inputs.appleExportOptionsPlistBase64 }} | base64 -d > ios/ExportOptions.plist
-      shell: bash
     - name: Build
+      shell: bash
       run: flutter build ios --dart-define-from-file=dart_define.json --no-codesign
-      shell: bash
     - name: Archive by xcodebuild
+      shell: bash
       run: xcodebuild archive CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO -workspace ./ios/Runner.xcworkspace -scheme Runner -configuration Release -archivePath ./build/ios/Runner.xcarchive
-      shell: bash
     - name: Export by xcodebuild
-      run: xcodebuild -exportArchive -archivePath ./build/ios/Runner.xcarchive -exportPath ./build/ios/ipa -exportOptionsPlist ./ios/ExportOptions.plist -allowProvisioningUpdates -authenticationKeyIssuerID ${{ inputs.appleApiIssuerId }} -authenticationKeyID ${{ inputs.appleApiKeyId }} -authenticationKeyPath `pwd`/ios/AuthKey.p8
       shell: bash
+      run: xcodebuild -exportArchive -archivePath ./build/ios/Runner.xcarchive -exportPath ./build/ios/ipa -exportOptionsPlist ./ios/ExportOptions.plist -allowProvisioningUpdates -authenticationKeyIssuerID ${{ inputs.appleApiIssuerId }} -authenticationKeyID ${{ inputs.appleApiKeyId }} -authenticationKeyPath `pwd`/ios/AuthKey.p8
     - name: Output IPA
       id: output-ipa
-      run: echo "ipaPath=$(find ./build/ios/ipa -type f -name '*.ipa')" >> $GITHUB_OUTPUT
       shell: bash
+      run: echo "ipaPath=$(find ./build/ios/ipa -type f -name '*.ipa')" >> $GITHUB_OUTPUT

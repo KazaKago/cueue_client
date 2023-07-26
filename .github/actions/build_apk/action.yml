@@ -10,9 +10,9 @@ runs:
   using: composite
   steps:
     - name: Build
-      run: flutter build apk --dart-define-from-file=dart_define.json
       shell: bash
+      run: flutter build apk --dart-define-from-file=dart_define.json
     - name: Output APK
       id: output-apk
-      run: echo "apkPath=$(echo ./build/app/outputs/flutter-apk/app-release.apk)" >> $GITHUB_OUTPUT
       shell: bash
+      run: echo "apkPath=$(echo ./build/app/outputs/flutter-apk/app-release.apk)" >> $GITHUB_OUTPUT
