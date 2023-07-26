@@ -50,7 +50,7 @@ jobs:
       - name: Setup Common
         uses: ./.github/actions/setup_common
         with:
-          serviceAccountJsonBase64: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON_BASE64 }}
+          serviceAccountJsonBase64: ${{ secrets.FIREBASE_APP_DISTRIBUTION_SERVICE_ACCOUNT_JSON_BASE64 }}
           dartDefineJsonBase64: ${{ secrets.DART_DEFINE_JSON_BASE64 }}
       - name: Setup iOS
         uses: ./.github/actions/setup_ios
@@ -80,7 +80,7 @@ jobs:
 #      - name: Setup Common
 #        uses: ./.github/actions/setup_common
 #        with:
-#          serviceAccountJsonBase64: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON_BASE64 }}
+#          serviceAccountJsonBase64: ${{ secrets.FIREBASE_APP_DISTRIBUTION_SERVICE_ACCOUNT_JSON_BASE64 }}
 #          dartDefineJsonBase64: ${{ secrets.DART_DEFINE_JSON_BASE64 }}
 #      - name: Build
 #        id: build
