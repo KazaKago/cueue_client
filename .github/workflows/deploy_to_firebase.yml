@@ -18,15 +18,14 @@ on:
 jobs:
   android:
     runs-on: ubuntu-latest
-    environment:
-      name: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.flavor) || (github.event_name == 'push' && github.ref_name == 'production' && 'production') || (github.event_name == 'push' && github.ref_name == 'main' && 'staging') }}
+    environment: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.flavor) || (github.event_name == 'push' && github.ref_name == 'production' && 'production') || (github.event_name == 'push' && github.ref_name == 'main' && 'staging') }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Common
         uses: ./.github/actions/setup_common
         with:
-          serviceAccountJsonBase64: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON_BASE64 }}
+          serviceAccountJsonBase64: ${{ secrets.FIREBASE_APP_DISTRIBUTION_SERVICE_ACCOUNT_JSON_BASE64 }}
           dartDefineJsonBase64: ${{ secrets.DART_DEFINE_JSON_BASE64 }}
       - name: Setup Android
         uses: ./.github/actions/setup_android
@@ -44,13 +43,7 @@ jobs:
           file: ${{ steps.build.outputs.apkPath }}
   ios:
     runs-on: macos-latest
-    environment:
-      name: |
-        ${{
-          (github.event_name == 'workflow_dispatch' && github.event.inputs.flavor) ||
-          (github.event_name == 'push' && github.ref_name == 'production' && 'production') ||
-          (github.event_name == 'push' && github.ref_name == 'main' && 'staging')
-        }}
+    environment: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.flavor) || (github.event_name == 'push' && github.ref_name == 'production' && 'production') || (github.event_name == 'push' && github.ref_name == 'main' && 'staging') }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -80,13 +73,7 @@ jobs:
           file: ${{ steps.build.outputs.ipaPath }}
 #  web:
 #    runs-on: ubuntu-latest
-#    environment:
-#      name: |
-#        ${{
-#          (github.event_name == 'workflow_dispatch' && github.event.inputs.flavor) ||
-#          (github.event_name == 'push' && github.ref_name == 'production' && 'production') ||
-#          (github.event_name == 'push' && github.ref_name == 'main' && 'staging')
-#        }}
+#    environment: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.flavor) || (github.event_name == 'push' && github.ref_name == 'production' && 'production') || (github.event_name == 'push' && github.ref_name == 'main' && 'staging') }}
 #    steps:
 #      - name: Checkout
 #        uses: actions/checkout@v3
