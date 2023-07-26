@@ -2,6 +2,9 @@ name: Setup Common
 description: setup for flutter action.
 
 inputs:
+  serviceAccountJsonBase64:
+    description: Base64 encoded ServiceAccount json.
+    required: true
   dartDefineJsonBase64:
     description: base64 encoded dart_define.json.
     required: true
@@ -14,9 +17,11 @@ runs:
       with:
         channel: stable
         cache: true
-    - name: Check Flutter version
-      run: flutter --version
+    - name: Put Credential file
       shell: bash
+      run: |
+        echo ${{ inputs.serviceAccountJsonBase64 }} | base64 -d > serviceAccount.json
+        echo "GOOGLE_APPLICATION_CREDENTIALS=serviceAccount.json" >> $GITHUB_ENV
     - name: Put dart_define.json
       run: echo ${{ inputs.dartDefineJsonBase64 }} | base64 -d > dart_define.json
       shell: bash

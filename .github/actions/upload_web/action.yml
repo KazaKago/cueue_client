@@ -1,0 +1,26 @@
+name: Upload Web
+description: upload to firebase hosting.
+
+inputs:
+  projectId:
+    description: Firebase project ID
+    required: true
+  siteId:
+    description: Firebase hosting site id.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Install Firebase
+      run: npm install -g firebase-tools
+      shell: bash
+    - name: Use project
+      run: firebase use --add ${{ inputs.projectId }}
+      shell: bash
+    - name: Apply target
+      run: firebase target:apply hosting default ${{ inputs.siteId }}
+      shell: bash
+    - name: Upload
+      run: firebase deploy --only hosting:default
+      shell: bash
