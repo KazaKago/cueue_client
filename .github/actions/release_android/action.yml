@@ -1,0 +1,25 @@
+name: Release Android
+description: upload to AppStoreConnect
+
+inputs:
+  packageName:
+    description: Android PackageName
+    required: true
+  binaryPath:
+    description: aab or apk path
+    required: true
+  mappingPath:
+    description: mapping.txt path
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Deploy to Google Play
+      uses: r0adkll/upload-google-play@v1.1.1
+      with:
+        serviceAccountJson: android/service_account.json
+        packageName: ${{ inputs.packageName }}
+        releaseFiles: ${{ inputs.binaryPath }}
+        mappingFile: ${{ inputs.mappingPath }}
+        track: internal

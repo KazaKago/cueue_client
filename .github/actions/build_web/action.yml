@@ -15,4 +15,4 @@ runs:
     - name: Output Path
       id: output-path
       shell: bash
-      run: echo "path=$(echo ./build/web)" >> $GITHUB_OUTPUT
+      run: echo "path=./build/web" >> $GITHUB_OUTPUT

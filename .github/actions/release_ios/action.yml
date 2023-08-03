@@ -1,0 +1,20 @@
+name: Release iOS
+description: upload to AppStoreConnect
+
+inputs:
+  binaryPath:
+    description: Artifact to upload (.ipa).
+    required: true
+  appleApiIssuerId:
+    description: AppStoreConnect API Issuer ID
+    required: true
+  appleApiKeyId:
+    description: AppStoreConnect API Key ID
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Deploy to App Store
+      shell: bash
+      run: xcrun altool --upload-app --type ios -f ${{ inputs.binaryPath }} --apiKey ${{ inputs.appleApiKeyId }} --apiIssuer ${{ inputs.appleApiIssuerId }}

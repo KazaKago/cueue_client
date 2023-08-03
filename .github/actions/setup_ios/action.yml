@@ -11,13 +11,13 @@ inputs:
   firebaseAppIdJsonBase64:
     description: base64 encoded firebase_app_id_file.json
     required: true
+  appleExportOptionsPlistBase64:
+    description: base64 encoded ExportOptions.plist
+    required: true
 
 runs:
   using: composite
   steps:
-    - name: mkdir private_keys
-      shell: bash
-      run: mkdir private_keys
     - name: Put AuthKey.p8
       shell: bash
       run: echo ${{ inputs.appleApiAuthkeyP8Base64 }} | base64 -d > ios/AuthKey.p8
@@ -27,3 +27,6 @@ runs:
     - name: Put firebase_app_id_file.json
       shell: bash
       run: echo ${{ inputs.firebaseAppIdJsonBase64 }} | base64 -d > ios/firebase_app_id_file.json
+    - name: Put ExportOptions.plist
+      shell: bash
+      run: echo ${{ inputs.appleExportOptionsPlistBase64 }} | base64 -d > ios/ExportOptions.plist

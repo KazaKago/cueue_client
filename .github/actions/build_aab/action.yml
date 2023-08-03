@@ -2,9 +2,12 @@ name: Build AAB
 description: build for aab.
 
 outputs:
-  aabPath:
+  binaryPath:
     description: AAB path.
-    value: ${{ steps.output-aab.outputs.aabPath }}
+    value: ${{ steps.output-aab.outputs.path }}
+  mappingPath:
+    description: mapping.txt path.
+    value: ${{ steps.output-mapping.outputs.path }}
 
 runs:
   using: composite
@@ -15,4 +18,8 @@ runs:
     - name: Output AAB
       id: output-aab
       shell: bash
-      run: echo "aabPath=$(echo ./build/app/outputs/bundle/release/app-release.aab)" >> $GITHUB_OUTPUT
+      run: echo "path=./build/app/outputs/bundle/release/app-release.aab" >> $GITHUB_OUTPUT
+    - name: Output Mapping
+      id: output-mapping
+      shell: bash
+      run: echo "path=./build/app/outputs/mapping/release/mapping.txt" >> $GITHUB_OUTPUT

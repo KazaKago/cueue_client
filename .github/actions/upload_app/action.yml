@@ -5,7 +5,7 @@ inputs:
   appId:
     description: App id can be found on the General Settings page.
     required: true
-  file:
+  binaryPath:
     description: Artifact to upload (.apk or .ipa).
     required: true
   groups:
@@ -20,4 +20,4 @@ runs:
       run: npm install -g firebase-tools
     - name: Upload
       shell: bash
-      run: firebase appdistribution:distribute ${{ inputs.file }} --app ${{ inputs.appId }} --groups ${{ inputs.groups }} --release-notes "${{ github.event.head_commit.message }}"
+      run: firebase appdistribution:distribute ${{ inputs.binaryPath }} --app ${{ inputs.appId }} --groups ${{ inputs.groups }} --release-notes "${{ github.event.head_commit.message }}"

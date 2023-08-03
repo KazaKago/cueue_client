@@ -2,9 +2,12 @@ name: Build APK
 description: build for apk.
 
 outputs:
-  apkPath:
+  binaryPath:
     description: APK path.
-    value: ${{ steps.output-apk.outputs.apkPath }}
+    value: ${{ steps.output-apk.outputs.path }}
+  mappingPath:
+    description: mapping.txt path.
+    value: ${{ steps.output-mapping.outputs.path }}
 
 runs:
   using: composite
@@ -15,4 +18,8 @@ runs:
     - name: Output APK
       id: output-apk
       shell: bash
-      run: echo "apkPath=$(echo ./build/app/outputs/flutter-apk/app-release.apk)" >> $GITHUB_OUTPUT
+      run: echo "path=./build/app/outputs/apk/release/app-release.apk" >> $GITHUB_OUTPUT
+    - name: Output Mapping
+      id: output-mapping
+      shell: bash
+      run: echo "path=./build/app/outputs/mapping/release/mapping.txt" >> $GITHUB_OUTPUT
