@@ -1,5 +1,5 @@
-name: Release Android
-description: upload to AppStoreConnect
+name: Upload to Store for Android
+description: upload to GooglePlay
 
 inputs:
   packageName:
@@ -15,7 +15,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Deploy to Google Play
+    - name: Upload to GooglePlay
       uses: r0adkll/upload-google-play@v1.1.1
       with:
         serviceAccountJson: android/service_account.json

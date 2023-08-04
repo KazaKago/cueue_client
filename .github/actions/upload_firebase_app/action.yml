@@ -1,4 +1,4 @@
-name: Upload App
+name: Upload to Firebase for iOS/Android
 description: upload to firebase distribution.
 
 inputs:

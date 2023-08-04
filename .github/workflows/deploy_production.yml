@@ -28,7 +28,7 @@ jobs:
         uses: ./.github/actions/build_android
         with:
           apkOrAab: apk
-      - name: Deploy
+      - name: Upload
         uses: ./.github/actions/upload_firebase_app
         with:
           appId: ${{ vars.FIREBASE_APP_ID_ANDROID }}
@@ -58,7 +58,7 @@ jobs:
         with:
           appleApiIssuerId: ${{ vars.APPLE_API_ISSUER_ID }}
           appleApiKeyId: ${{ vars.APPLE_API_KEY_ID }}
-      - name: Deploy
+      - name: Upload
         uses: ./.github/actions/upload_firebase_app
         with:
           appId: ${{ vars.FIREBASE_APP_ID_IOS }}
@@ -78,7 +78,7 @@ jobs:
 #      - name: Build
 #        id: build
 #        uses: ./.github/actions/build_web
-#      - name: Deploy
+#      - name: Upload
 #        uses: ./.github/actions/upload_firebase_web
 #        with:
 #          projectId: ${{ vars.FIREBASE_PROJECT_ID }}

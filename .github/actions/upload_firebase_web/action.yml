@@ -1,4 +1,4 @@
-name: Upload Web
+name: Upload to Firebase for Web
 description: upload to firebase hosting.
 
 inputs:

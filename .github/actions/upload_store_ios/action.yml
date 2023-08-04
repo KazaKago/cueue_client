@@ -1,4 +1,4 @@
-name: Release iOS
+name: Upload to Store for iOS
 description: upload to AppStoreConnect
 
 inputs:
@@ -15,6 +15,6 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Deploy to App Store
+    - name: Upload to AppStoreConnect
       shell: bash
       run: xcrun altool --upload-app --type ios -f ${{ inputs.binaryPath }} --apiKey ${{ inputs.appleApiKeyId }} --apiIssuer ${{ inputs.appleApiIssuerId }}
