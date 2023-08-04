@@ -1,6 +1,11 @@
 name: Build APK
 description: build for apk.
 
+inputs:
+  apkOrAab:
+    description: apk or aab.
+    required: true
+
 outputs:
   binaryPath:
     description: APK path.
@@ -12,11 +17,22 @@ outputs:
 runs:
   using: composite
   steps:
-    - name: Build
+    - name: Build aab
+      if: inputs.apkOrAab == 'aab'
+      shell: bash
+      run: flutter build appbundle --dart-define-from-file=dart_define.json
+    - name: Build apk
+      if: inputs.apkOrAab == 'apk'
       shell: bash
       run: flutter build apk --dart-define-from-file=dart_define.json
+    - name: Output AAB
+      id: output-aab
+      if: inputs.apkOrAab == 'aab'
+      shell: bash
+      run: echo "path=./build/app/outputs/bundle/release/app-release.aab" >> $GITHUB_OUTPUT
     - name: Output APK
       id: output-apk
+      if: inputs.apkOrAab == 'apk'
       shell: bash
       run: echo "path=./build/app/outputs/apk/release/app-release.apk" >> $GITHUB_OUTPUT
     - name: Output Mapping

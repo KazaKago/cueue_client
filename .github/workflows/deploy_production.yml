@@ -25,9 +25,11 @@ jobs:
           serviceAccoutJsonBase64: ${{ secrets.GOOGLE_PLAY_ANDROID_DEVELOPER_SERVICE_ACCOUNT_JSON_BASE64 }}
       - name: Build
         id: build
-        uses: ./.github/actions/build_apk
+        uses: ./.github/actions/build_android
+        with:
+          apkOrAab: apk
       - name: Deploy
-        uses: ./.github/actions/upload_app
+        uses: ./.github/actions/upload_firebase_app
         with:
           appId: ${{ vars.FIREBASE_APP_ID_ANDROID }}
           groups: ${{ vars.FIREBASE_APP_DISTRIBUTION_TESTER_GROUP }}
@@ -52,12 +54,12 @@ jobs:
           appleExportOptionsPlistBase64: ${{ vars.APPLE_EXPORT_OPTIONS_PLIST_ADHOC_BASE64 }}
       - name: Build
         id: build
-        uses: ./.github/actions/build_ipa
+        uses: ./.github/actions/build_ios
         with:
           appleApiIssuerId: ${{ vars.APPLE_API_ISSUER_ID }}
           appleApiKeyId: ${{ vars.APPLE_API_KEY_ID }}
       - name: Deploy
-        uses: ./.github/actions/upload_app
+        uses: ./.github/actions/upload_firebase_app
         with:
           appId: ${{ vars.FIREBASE_APP_ID_IOS }}
           groups: ${{ vars.FIREBASE_APP_DISTRIBUTION_TESTER_GROUP }}
@@ -77,7 +79,7 @@ jobs:
 #        id: build
 #        uses: ./.github/actions/build_web
 #      - name: Deploy
-#        uses: ./.github/actions/upload_web
+#        uses: ./.github/actions/upload_firebase_web
 #        with:
 #          projectId: ${{ vars.FIREBASE_PROJECT_ID }}
 #          siteId: ${{ vars.FIREBASE_HOSTING_SITE_ID }}

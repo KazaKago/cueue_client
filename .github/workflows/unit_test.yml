@@ -17,9 +17,7 @@ jobs:
       - name: Setup Common
         uses: ./.github/actions/setup_common
         with:
-          apiBaseUrl: ${{ secrets.API_BASE_URL__STAGING }}
-          appleClientId: ${{ secrets.APPLE_CLIENT_ID__STAGING }}
-          appleRedirectUri: ${{ secrets.APPLE_REDIRECT_URI__STAGING }}
-          webRecaptchaSiteKey: ${{ secrets.WEB_RECAPTCHA_SITE_KEY }}
+          dartDefineJsonBase64: ${{ secrets.DART_DEFINE_JSON_BASE64 }}
+          serviceAccountJsonBase64: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON_BASE64 }}
       - name: Test
         uses: ./.github/actions/test
