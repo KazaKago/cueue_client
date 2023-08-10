@@ -23,7 +23,7 @@ jobs:
         with:
           keystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           googleServicesJsonBase64: ${{ vars.GOOGLE_SERVICES_JSON_BASE64 }}
-          serviceAccoutJsonBase64: ${{ secrets.GOOGLE_PLAY_ANDROID_DEVELOPER_SERVICE_ACCOUNT_JSON_BASE64 }}
+          serviceAccountJsonBase64: ${{ secrets.GOOGLE_PLAY_ANDROID_DEVELOPER_SERVICE_ACCOUNT_JSON_BASE64 }}
       - name: Build
         id: build
         uses: ./.github/actions/build_android

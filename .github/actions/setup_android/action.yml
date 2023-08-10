@@ -8,7 +8,7 @@ inputs:
   keystoreBase64:
     description: base64 encoded signing key.
     required: true
-  serviceAccoutJsonBase64:
+  serviceAccountJsonBase64:
     description: base64 encoded service-account.json.
     required: true
 
@@ -29,4 +29,4 @@ runs:
       run: echo ${{ inputs.googleServicesJsonBase64 }} | base64 -d > android/app/google-services.json
     - name: Put service-account.json
       shell: bash
-      run: echo ${{ inputs.serviceAccoutJsonBase64 }} | base64 -d > android/service_account.json
+      run: echo ${{ inputs.serviceAccountJsonBase64 }} | base64 -d > android/service_account.json
