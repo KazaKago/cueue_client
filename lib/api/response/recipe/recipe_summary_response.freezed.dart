@@ -229,14 +229,11 @@ class _$_RecipeSummaryResponse implements _RecipeSummaryResponse {
 
 abstract class _RecipeSummaryResponse implements RecipeSummaryResponse {
   const factory _RecipeSummaryResponse(
-      {@JsonKey(name: 'id')
-          required final int id,
-      @JsonKey(name: 'title')
-          required final String title,
-      @JsonKey(name: 'image')
-          required final ContentResponse? image,
+      {@JsonKey(name: 'id') required final int id,
+      @JsonKey(name: 'title') required final String title,
+      @JsonKey(name: 'image') required final ContentResponse? image,
       @JsonKey(name: 'last_cooking_at')
-          required final String? lastCookingAt}) = _$_RecipeSummaryResponse;
+      required final String? lastCookingAt}) = _$_RecipeSummaryResponse;
 
   factory _RecipeSummaryResponse.fromJson(Map<String, dynamic> json) =
       _$_RecipeSummaryResponse.fromJson;

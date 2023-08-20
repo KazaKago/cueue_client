@@ -196,13 +196,10 @@ class _$_WorkspaceResponse implements _WorkspaceResponse {
 
 abstract class _WorkspaceResponse implements WorkspaceResponse {
   const factory _WorkspaceResponse(
-          {@JsonKey(name: 'id')
-              required final int id,
-          @JsonKey(name: 'name')
-              required final String name,
-          @JsonKey(name: 'users')
-              required final List<UserSummaryResponse> users}) =
-      _$_WorkspaceResponse;
+      {@JsonKey(name: 'id') required final int id,
+      @JsonKey(name: 'name') required final String name,
+      @JsonKey(name: 'users')
+      required final List<UserSummaryResponse> users}) = _$_WorkspaceResponse;
 
   factory _WorkspaceResponse.fromJson(Map<String, dynamic> json) =
       _$_WorkspaceResponse.fromJson;

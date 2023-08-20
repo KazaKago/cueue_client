@@ -162,16 +162,12 @@ class __$$_MenuSummaryResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MenuSummaryResponse implements _MenuSummaryResponse {
   const _$_MenuSummaryResponse(
-      {@JsonKey(name: 'id')
-          required this.id,
-      @JsonKey(name: 'memo')
-          required this.memo,
-      @JsonKey(name: 'date')
-          required this.date,
-      @JsonKey(name: 'time_frame')
-          required this.timeFrame,
+      {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'memo') required this.memo,
+      @JsonKey(name: 'date') required this.date,
+      @JsonKey(name: 'time_frame') required this.timeFrame,
       @JsonKey(name: 'recipes')
-          required final List<RecipeSummaryResponse> recipes})
+      required final List<RecipeSummaryResponse> recipes})
       : _recipes = recipes;
 
   factory _$_MenuSummaryResponse.fromJson(Map<String, dynamic> json) =>
@@ -244,16 +240,12 @@ class _$_MenuSummaryResponse implements _MenuSummaryResponse {
 
 abstract class _MenuSummaryResponse implements MenuSummaryResponse {
   const factory _MenuSummaryResponse(
-          {@JsonKey(name: 'id')
-              required final int id,
-          @JsonKey(name: 'memo')
-              required final String memo,
-          @JsonKey(name: 'date')
-              required final String date,
-          @JsonKey(name: 'time_frame')
-              required final String timeFrame,
+          {@JsonKey(name: 'id') required final int id,
+          @JsonKey(name: 'memo') required final String memo,
+          @JsonKey(name: 'date') required final String date,
+          @JsonKey(name: 'time_frame') required final String timeFrame,
           @JsonKey(name: 'recipes')
-              required final List<RecipeSummaryResponse> recipes}) =
+          required final List<RecipeSummaryResponse> recipes}) =
       _$_MenuSummaryResponse;
 
   factory _MenuSummaryResponse.fromJson(Map<String, dynamic> json) =
