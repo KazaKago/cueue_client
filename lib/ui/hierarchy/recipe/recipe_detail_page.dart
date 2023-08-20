@@ -241,7 +241,7 @@ class RecipeDetailPage extends HookConsumerWidget {
               label: Text(intl.referenceLink),
               onPressed: () => launchUrl(url),
             ),
-          )
+          ),
         ],
       );
     } else {

@@ -30,7 +30,7 @@ class AccountDeletionPage extends HookConsumerWidget {
               style: TextButton.styleFrom(backgroundColor: theme.colorScheme.error),
               onPressed: () => deleteAccountWithConfirmation.trigger(true),
               child: Text(intl.approveAndDeletionAccount),
-            )
+            ),
           ],
         ),
       ),

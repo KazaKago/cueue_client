@@ -268,14 +268,14 @@ class MyPage extends HookConsumerWidget {
         ListTile(
           leading: const Icon(Icons.account_circle_outlined),
           title: Text(intl.errorLoading),
-        )
+        ),
       ];
     } else {
       return [
         ListTile(
           leading: const Icon(Icons.account_circle_outlined),
           title: Text(intl.loading),
-        )
+        ),
       ];
     }
   }

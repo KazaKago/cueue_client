@@ -128,30 +128,6 @@ final GoRouter router = GoRouter(
                   },
                 ),
                 GoRoute(
-                  path: ':recipe_id',
-                  name: 'recipe_detail',
-                  parentNavigatorKey: _rootNavigatorKey,
-                  builder: (BuildContext context, GoRouterState state) {
-                    return RecipeDetailPage(
-                      recipeId: RecipeId(int.parse(state.pathParameters['recipe_id']!)),
-                      recipeSummary: state.extra as RecipeSummary?,
-                    );
-                  },
-                  routes: [
-                    GoRoute(
-                      path: 'editing',
-                      name: 'recipe_editing',
-                      parentNavigatorKey: _rootNavigatorKey,
-                      builder: (BuildContext context, GoRouterState state) {
-                        return RecipeEditingPage(
-                          recipeId: RecipeId(int.parse(state.pathParameters['recipe_id']!)),
-                          recipe: state.extra as Recipe?,
-                        );
-                      },
-                    ),
-                  ],
-                ),
-                GoRoute(
                   path: 'tags',
                   name: 'tags',
                   parentNavigatorKey: _rootNavigatorKey,
@@ -175,6 +151,30 @@ final GoRouter router = GoRouter(
                         return TagEditingPage(
                           tagId: TagId(int.parse(state.pathParameters['tag_id']!)),
                           tag: state.extra as Tag?,
+                        );
+                      },
+                    ),
+                  ],
+                ),
+                GoRoute(
+                  path: ':recipe_id',
+                  name: 'recipe_detail',
+                  parentNavigatorKey: _rootNavigatorKey,
+                  builder: (BuildContext context, GoRouterState state) {
+                    return RecipeDetailPage(
+                      recipeId: RecipeId(int.parse(state.pathParameters['recipe_id']!)),
+                      recipeSummary: state.extra as RecipeSummary?,
+                    );
+                  },
+                  routes: [
+                    GoRoute(
+                      path: 'editing',
+                      name: 'recipe_editing',
+                      parentNavigatorKey: _rootNavigatorKey,
+                      builder: (BuildContext context, GoRouterState state) {
+                        return RecipeEditingPage(
+                          recipeId: RecipeId(int.parse(state.pathParameters['recipe_id']!)),
+                          recipe: state.extra as Recipe?,
                         );
                       },
                     ),
@@ -269,7 +269,7 @@ final GoRouter router = GoRouter(
                   ],
                 ),
               ],
-            )
+            ),
           ],
         ),
       ],

@@ -17,7 +17,7 @@ final photoComponent = WidgetbookComponent(
         ],
       ),
     ),
-    const WidgetbookUseCase(
+    WidgetbookUseCase(
       name: 'PhotoPickupBottomSheetDialog',
       builder: PhotoPickupBottomSheetDialog.new,
     ),

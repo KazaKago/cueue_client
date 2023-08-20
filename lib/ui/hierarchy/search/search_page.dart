@@ -3,7 +3,6 @@ import 'package:cueue/hooks/global/utils/use_intl.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:cueue/model/tag/tag_id.dart';
-import 'package:cueue/ui/global/utils/route_observer.dart';
 import 'package:cueue/ui/hierarchy/search/search_result_page.dart';
 import 'package:cueue/ui/hierarchy/tag/tag_chips.dart';
 import 'package:flutter/material.dart';
@@ -19,23 +18,18 @@ class SearchPage extends HookConsumerWidget with RouteAware {
   Widget build(BuildContext context, WidgetRef ref) {
     final intl = useIntl();
     final popPage = usePopPage<List<RecipeSummary>?>();
-    final modalRoute = ModalRoute.of(context)!;
-    useEffect(() {
-      routeObserver.subscribe(this, modalRoute);
-      return () => routeObserver.unsubscribe(this);
-    });
-    final selectedTagIds = useState(<TagId>[]);
+    final selectedTagIds = useState<List<TagId>>([]);
     final keywordEditingController = useTextEditingController();
     final isEnableSubmitButton = useState(keywordEditingController.text.isNotEmpty);
     keywordEditingController.addListener(() {
       isEnableSubmitButton.value = keywordEditingController.text.isNotEmpty;
     });
-    final selectedRecipes = (initialSelectedRecipes != null) ? useState<List<RecipeSummary>>(initialSelectedRecipes!) : null;
+    final selectedRecipes = useState<List<RecipeSummary>?>(initialSelectedRecipes);
     final scrollController = useScrollController();
     return WillPopScope(
       onWillPop: () async {
         if (initialSelectedRecipes != null) {
-          await popPage.trigger(selectedRecipes?.value);
+          await popPage.trigger(selectedRecipes.value);
           return false;
         } else {
           return true;
@@ -84,18 +78,18 @@ class SearchPage extends HookConsumerWidget with RouteAware {
     return Text(intl.filterByTags);
   }
 
-  Widget _buildSubmitButton(TextEditingController keyword, List<TagId> selectedTagIds, ValueNotifier<List<RecipeSummary>>? selectedRecipes, bool isEnableSubmitButton) {
+  Widget _buildSubmitButton(TextEditingController keyword, List<TagId> selectedTagIds, ValueNotifier<List<RecipeSummary>?> selectedRecipes, bool isEnableSubmitButton) {
     final intl = useIntl();
     final pushPage = usePushPage<List<RecipeSummary>>();
     useEffectSWRData<List<RecipeSummary>?>(pushPage, (data) {
-      if (data != null) selectedRecipes?.value = data;
+      if (data != null) selectedRecipes.value = data;
     });
     return Padding(
       padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
       child: ElevatedButton.icon(
         icon: const Icon(Icons.search),
         label: Text(intl.doSearch),
-        onPressed: isEnableSubmitButton ? () => pushPage.trigger(SearchResultPage(keyword.text, selectedTagIds, initialSelectedRecipes: selectedRecipes?.value)) : null,
+        onPressed: isEnableSubmitButton ? () => pushPage.trigger(SearchResultPage(keyword.text, selectedTagIds, initialSelectedRecipes: selectedRecipes.value)) : null,
       ),
     );
   }
