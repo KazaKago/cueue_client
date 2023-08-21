@@ -1,9 +1,9 @@
 import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
-import 'package:cueue/hooks/global/utils/use_easy_loading.dart';
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
 import 'package:cueue/hooks/global/utils/use_intl.dart';
+import 'package:cueue/hooks/global/utils/use_overlay_loading.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/model/recipe/recipe_id.dart';
 import 'package:cueue/provider/api_provider.dart';
@@ -21,7 +21,7 @@ class _DeleteRecipeData {
 SWRTriggerState<RecipeId, void> useDeleteRecipe(WidgetRef ref) {
   final intl = useIntl();
   final goNamed = useGoNamed();
-  final easyLoading = useEasyLoading();
+  final overlayLoading = useOverlayLoading();
   final showErrorDialog = useShowErrorDialog(ref);
   final deleteRecipeApi = ref.read(deleteRecipeApiProvider);
   final showConfirmDeleteRecipeDialog = useShowSimpleMessageDialog();
@@ -49,7 +49,7 @@ SWRTriggerState<RecipeId, void> useDeleteRecipe(WidgetRef ref) {
     goNamed.trigger(GoName('recipes'));
   });
   useEffectSWRIsMutating(deleteRecipe, ({required isMutating}) {
-    easyLoading.trigger(isMutating);
+    overlayLoading.trigger(isMutating);
   });
   useEffectSWRError(deleteRecipe, (error) {
     showErrorDialog.trigger(error);

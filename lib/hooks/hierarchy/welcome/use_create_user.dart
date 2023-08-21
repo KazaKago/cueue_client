@@ -1,9 +1,9 @@
 import 'package:cueue/api/request/user/user_request.dart';
 import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
-import 'package:cueue/hooks/global/utils/use_easy_loading.dart';
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
+import 'package:cueue/hooks/global/utils/use_overlay_loading.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_firebase_user.dart';
 import 'package:cueue/model/exception/no_such_element_exception.dart';
@@ -19,7 +19,7 @@ SWRTriggerState<PreUser, User> useCreateUser(WidgetRef ref) {
   final userResponseMapper = ref.read(userResponseMapperProvider);
   final goNamed = useGoNamed();
   final showErrorDialog = useShowErrorDialog(ref);
-  final easyLoading = useEasyLoading();
+  final overlayLoading = useOverlayLoading();
   final createUser = useSWRTrigger<PreUser, User>((preUser) async {
     final firebaseUser = firebaseUserState.data;
     if (firebaseUser != null) {
@@ -37,7 +37,7 @@ SWRTriggerState<PreUser, User> useCreateUser(WidgetRef ref) {
     goNamed.trigger(GoName('workspace_creation'));
   });
   useEffectSWRIsMutating(createUser, ({required isMutating}) {
-    easyLoading.trigger(isMutating);
+    overlayLoading.trigger(isMutating);
   });
   useEffectSWRError(createUser, (error) {
     showErrorDialog.trigger(error);

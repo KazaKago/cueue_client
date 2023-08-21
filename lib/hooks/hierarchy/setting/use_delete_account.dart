@@ -2,10 +2,10 @@ import 'package:cueue/hooks/global/swr/swr_cache.dart';
 import 'package:cueue/hooks/global/swr/swr_system_cache.dart';
 import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
-import 'package:cueue/hooks/global/utils/use_easy_loading.dart';
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
 import 'package:cueue/hooks/global/utils/use_intl.dart';
+import 'package:cueue/hooks/global/utils/use_overlay_loading.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_firebase_user.dart';
 import 'package:cueue/model/auth/firebase_auth_extension.dart';
@@ -20,7 +20,7 @@ SWRTriggerState<void, void> useDeleteAccount(WidgetRef ref) {
   final showSimpleMessageDialog = useShowSimpleMessageDialog();
   final goNamed = useGoNamed();
   final showErrorDialog = useShowErrorDialog(ref);
-  final easyLoading = useEasyLoading();
+  final overlayLoading = useOverlayLoading();
   final firebaseUserState = useFirebaseUser(ref);
   final deleteAccount = useSWRTrigger<void, bool>((_) async {
     try {
@@ -41,7 +41,7 @@ SWRTriggerState<void, void> useDeleteAccount(WidgetRef ref) {
     deleteAccount.trigger(null);
   });
   useEffectSWRIsMutating(deleteAccount, ({required isMutating}) {
-    easyLoading.trigger(isMutating);
+    overlayLoading.trigger(isMutating);
   });
   useEffectSWRData(deleteAccount, (_) {
     goNamed.trigger(GoName('thanks_for_using'));

@@ -21,11 +21,7 @@ class AppTheme extends StatelessWidget {
         final darkTheme = _buildTheme(darkColorScheme);
         EasyLoading.instance
           ..maskType = EasyLoadingMaskType.black
-          ..indicatorType = EasyLoadingIndicatorType.dualRing
-          ..loadingStyle = EasyLoadingStyle.custom
-          ..indicatorColor = darkTheme.colorScheme.primary
-          ..textColor = Colors.white
-          ..backgroundColor = Colors.transparent;
+          ..indicatorType = EasyLoadingIndicatorType.dualRing;
         return child(lightTheme, darkTheme);
       },
     );

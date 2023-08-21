@@ -3,10 +3,10 @@ import 'package:cueue/hooks/global/swr/swr_cache.dart';
 import 'package:cueue/hooks/global/swr/swr_system_cache.dart';
 import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
-import 'package:cueue/hooks/global/utils/use_easy_loading.dart';
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
 import 'package:cueue/hooks/global/utils/use_intl.dart';
+import 'package:cueue/hooks/global/utils/use_overlay_loading.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/model/invitation/invitation_code.dart';
 import 'package:cueue/provider/api_provider.dart';
@@ -20,7 +20,7 @@ SWRTriggerState<InvitationCode, UserResponse> useAcceptInvitation(WidgetRef ref)
   final showErrorDialog = useShowErrorDialog(ref);
   final showSimpleMessageDialog = useShowSimpleMessageDialog();
   final goNamed = useGoNamed();
-  final easyLoading = useEasyLoading();
+  final overlayLoading = useOverlayLoading();
   final acceptInvitation = useSWRTrigger<InvitationCode, UserResponse>((code) async {
     return acceptInvitationApi(code.value);
   });
@@ -39,7 +39,7 @@ SWRTriggerState<InvitationCode, UserResponse> useAcceptInvitation(WidgetRef ref)
     );
   });
   useEffectSWRIsMutating(acceptInvitation, ({required isMutating}) {
-    easyLoading.trigger(isMutating);
+    overlayLoading.trigger(isMutating);
   });
   useEffectSWRError(acceptInvitation, (error) {
     showErrorDialog.trigger(error);

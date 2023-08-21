@@ -1,21 +1,21 @@
 import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
-import 'package:cueue/hooks/global/utils/use_easy_loading.dart';
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
 import 'package:cueue/hooks/global/utils/use_intl.dart';
+import 'package:cueue/hooks/global/utils/use_overlay_loading.dart';
+import 'package:cueue/hooks/global/utils/use_overlay_toast.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_firebase_user.dart';
 import 'package:cueue/model/auth/apple_provider_id.dart';
 import 'package:cueue/model/auth/firebase_auth_extension.dart';
-import 'package:cueue/ui/global/modal/fried_toast.dart';
 import 'package:cueue/ui/global/modal/simple_message_dialog.dart';
 import 'package:cueue/ui/global/modal/simple_message_dialog_event.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 SWRTriggerState<void, void> useUnlinkWithApple(WidgetRef ref) {
-  final easyLoading = useEasyLoading();
-  final showFriedToast = useShowFriedToast();
+  final overlayLoading = useOverlayLoading();
+  final overlayToast = useOverlayToast();
   final showErrorDialog = useShowErrorDialog(ref);
   final intl = useIntl();
   final showUnlinkWithAppleConfirmationDialog = useShowSimpleMessageDialog();
@@ -33,10 +33,10 @@ SWRTriggerState<void, void> useUnlinkWithApple(WidgetRef ref) {
     if (event == const SimpleMessageDialogEvent.positive()) unlinkWithApple.trigger(null);
   });
   useEffectSWRData(unlinkWithApple, (_) {
-    showFriedToast(intl.unlinkedWithApple);
+    overlayToast(intl.unlinkedWithApple);
   });
   useEffectSWRIsMutating(unlinkWithApple, ({required isMutating}) {
-    easyLoading.trigger(isMutating);
+    overlayLoading.trigger(isMutating);
   });
   useEffectSWRError(unlinkWithApple, (error) {
     showErrorDialog.trigger(error);

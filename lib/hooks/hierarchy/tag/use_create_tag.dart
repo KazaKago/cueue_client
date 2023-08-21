@@ -1,8 +1,8 @@
 import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
-import 'package:cueue/hooks/global/utils/use_easy_loading.dart';
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
+import 'package:cueue/hooks/global/utils/use_overlay_loading.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/model/tag/tag.dart';
 import 'package:cueue/model/tag/tag_registration.dart';
@@ -12,7 +12,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 SWRTriggerState<TagRegistration, Tag> useCreateTag(WidgetRef ref) {
   final goNamed = useGoNamed();
-  final easyLoading = useEasyLoading();
+  final overlayLoading = useOverlayLoading();
   final showErrorDialog = useShowErrorDialog(ref);
   final createTagApi = ref.read(createTagApiProvider);
   final tagResponseMapper = ref.read(tagResponseMapperProvider);
@@ -25,7 +25,7 @@ SWRTriggerState<TagRegistration, Tag> useCreateTag(WidgetRef ref) {
     goNamed.trigger(GoName('tags'));
   });
   useEffectSWRIsMutating(createTag, ({required isMutating}) {
-    easyLoading.trigger(isMutating);
+    overlayLoading.trigger(isMutating);
   });
   useEffectSWRError(createTag, (error) {
     showErrorDialog.trigger(error);

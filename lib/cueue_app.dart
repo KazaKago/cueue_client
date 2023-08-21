@@ -17,12 +17,7 @@ class CueueApp extends StatelessWidget {
           darkTheme: darkTheme,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
-          // navigatorObservers: [
-          //   routeObserver,
-          //   swrLifecycleObserver,
-          // ],
           routerConfig: router,
-          // home: const SplashPage(),
           builder: EasyLoading.init(),
         );
       },

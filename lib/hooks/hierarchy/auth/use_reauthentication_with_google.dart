@@ -1,8 +1,8 @@
 import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
-import 'package:cueue/hooks/global/utils/use_easy_loading.dart';
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
+import 'package:cueue/hooks/global/utils/use_overlay_loading.dart';
 import 'package:cueue/hooks/hierarchy/auth/use_authorize_with_google.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_firebase_user.dart';
 import 'package:cueue/hooks/hierarchy/setting/use_delete_account.dart';
@@ -13,7 +13,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 SWRTriggerState<void, GoogleAuthInfo> useReauthenticationWithGoogle(WidgetRef ref, RequireReauthenticationException error) {
-  final easyLoading = useEasyLoading();
+  final overlayLoading = useOverlayLoading();
   final showErrorDialog = useShowErrorDialog(ref);
   final authorizeWithGoogle = useAuthorizeWithGoogle();
   final firebaseUserState = useFirebaseUser(ref);
@@ -36,7 +36,7 @@ SWRTriggerState<void, GoogleAuthInfo> useReauthenticationWithGoogle(WidgetRef re
     );
   });
   useEffectSWRIsMutating(reauthenticationWithGoogle, ({required isMutating}) {
-    easyLoading.trigger(isMutating);
+    overlayLoading.trigger(isMutating);
   });
   useEffectSWRError(reauthenticationWithGoogle, (error) {
     showErrorDialog.trigger(error);
