@@ -23,7 +23,8 @@ final menuComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'MenuDetailPage',
       builder: (_) => MenuDetailPage(
-        MenuSummaryImpl(
+        menuId: const MenuId(0),
+        menuSummary: MenuSummaryImpl(
           id: const MenuId(0),
           memo: 'memo',
           date: DateTime.now(),

@@ -237,26 +237,17 @@ class __$$_RecipeResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_RecipeResponse implements _RecipeResponse {
   const _$_RecipeResponse(
-      {@JsonKey(name: 'id')
-          required this.id,
-      @JsonKey(name: 'title')
-          required this.title,
-      @JsonKey(name: 'description')
-          required this.description,
-      @JsonKey(name: 'url')
-          required this.url,
-      @JsonKey(name: 'images')
-          required final List<ContentResponse> images,
-      @JsonKey(name: 'tags')
-          required final List<TagResponse> tags,
+      {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'title') required this.title,
+      @JsonKey(name: 'description') required this.description,
+      @JsonKey(name: 'url') required this.url,
+      @JsonKey(name: 'images') required final List<ContentResponse> images,
+      @JsonKey(name: 'tags') required final List<TagResponse> tags,
       @JsonKey(name: 'cooking_histories')
-          required final List<String> cookingHistories,
-      @JsonKey(name: 'cooking_count')
-          required this.cookingCount,
-      @JsonKey(name: 'created_at')
-          required this.createdAt,
-      @JsonKey(name: 'updated_at')
-          required this.updatedAt})
+      required final List<String> cookingHistories,
+      @JsonKey(name: 'cooking_count') required this.cookingCount,
+      @JsonKey(name: 'created_at') required this.createdAt,
+      @JsonKey(name: 'updated_at') required this.updatedAt})
       : _images = images,
         _tags = tags,
         _cookingHistories = cookingHistories;
@@ -385,26 +376,18 @@ class _$_RecipeResponse implements _RecipeResponse {
 
 abstract class _RecipeResponse implements RecipeResponse {
   const factory _RecipeResponse(
-      {@JsonKey(name: 'id')
-          required final int id,
-      @JsonKey(name: 'title')
-          required final String title,
-      @JsonKey(name: 'description')
-          required final String description,
-      @JsonKey(name: 'url')
-          required final String? url,
-      @JsonKey(name: 'images')
-          required final List<ContentResponse> images,
-      @JsonKey(name: 'tags')
-          required final List<TagResponse> tags,
-      @JsonKey(name: 'cooking_histories')
+          {@JsonKey(name: 'id') required final int id,
+          @JsonKey(name: 'title') required final String title,
+          @JsonKey(name: 'description') required final String description,
+          @JsonKey(name: 'url') required final String? url,
+          @JsonKey(name: 'images') required final List<ContentResponse> images,
+          @JsonKey(name: 'tags') required final List<TagResponse> tags,
+          @JsonKey(name: 'cooking_histories')
           required final List<String> cookingHistories,
-      @JsonKey(name: 'cooking_count')
-          required final int cookingCount,
-      @JsonKey(name: 'created_at')
-          required final String createdAt,
-      @JsonKey(name: 'updated_at')
-          required final String updatedAt}) = _$_RecipeResponse;
+          @JsonKey(name: 'cooking_count') required final int cookingCount,
+          @JsonKey(name: 'created_at') required final String createdAt,
+          @JsonKey(name: 'updated_at') required final String updatedAt}) =
+      _$_RecipeResponse;
 
   factory _RecipeResponse.fromJson(Map<String, dynamic> json) =
       _$_RecipeResponse.fromJson;

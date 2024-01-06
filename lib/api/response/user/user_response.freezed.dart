@@ -243,14 +243,11 @@ class _$_UserResponse implements _UserResponse {
 
 abstract class _UserResponse implements UserResponse {
   const factory _UserResponse(
-      {@JsonKey(name: 'id')
-          required final int id,
-      @JsonKey(name: 'display_name')
-          required final String displayName,
-      @JsonKey(name: 'photo')
-          required final ContentResponse? photo,
+      {@JsonKey(name: 'id') required final int id,
+      @JsonKey(name: 'display_name') required final String displayName,
+      @JsonKey(name: 'photo') required final ContentResponse? photo,
       @JsonKey(name: 'workspace')
-          required final WorkspaceResponse? workspace}) = _$_UserResponse;
+      required final WorkspaceResponse? workspace}) = _$_UserResponse;
 
   factory _UserResponse.fromJson(Map<String, dynamic> json) =
       _$_UserResponse.fromJson;

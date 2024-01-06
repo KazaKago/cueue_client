@@ -203,12 +203,10 @@ class _$_InvitationResponse implements _InvitationResponse {
 
 abstract class _InvitationResponse implements InvitationResponse {
   const factory _InvitationResponse(
-      {@JsonKey(name: 'code')
-          required final String code,
-      @JsonKey(name: 'workspace')
-          required final WorkspaceResponse workspace,
+      {@JsonKey(name: 'code') required final String code,
+      @JsonKey(name: 'workspace') required final WorkspaceResponse workspace,
       @JsonKey(name: 'expire_at')
-          required final String expiredAt}) = _$_InvitationResponse;
+      required final String expiredAt}) = _$_InvitationResponse;
 
   factory _InvitationResponse.fromJson(Map<String, dynamic> json) =
       _$_InvitationResponse.fromJson;

@@ -1,22 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/hooks/global/utils/use_date_format.dart';
-import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_intl.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/global/utils/use_theme.dart';
 import 'package:cueue/hooks/hierarchy/recipe/use_recipe.dart';
 import 'package:cueue/model/content/content.dart';
-import 'package:cueue/model/edit/editing_result.dart';
 import 'package:cueue/model/recipe/recipe.dart';
+import 'package:cueue/model/recipe/recipe_id.dart';
 import 'package:cueue/model/recipe/recipe_summary.dart';
 import 'package:cueue/model/tag/tag.dart';
 import 'package:cueue/ui/global/widget/error_handling_widget.dart';
 import 'package:cueue/ui/global/widget/loading_list_item.dart';
 import 'package:cueue/ui/global/widget/titled_card.dart';
-import 'package:cueue/ui/hierarchy/menu/menu_editing_page.dart';
 import 'package:cueue/ui/hierarchy/photo/photo_page.dart';
-import 'package:cueue/ui/hierarchy/recipe/recipe_editing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -24,22 +21,19 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RecipeDetailPage extends HookConsumerWidget {
-  const RecipeDetailPage(this.recipeSummary, {super.key});
+  const RecipeDetailPage({super.key, required this.recipeId, this.recipeSummary});
 
-  final RecipeSummary recipeSummary;
+  final RecipeId recipeId;
+  final RecipeSummary? recipeSummary;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final intl = useIntl();
-    final popPage = usePopPage<void>();
+    final goNamed = useGoNamed();
     final selectedPhotoIndex = useState(0);
-    final recipeState = useRecipe(ref, recipeSummary.id);
+    final recipeState = useRecipe(ref, recipeId);
     final recipe = recipeState.data;
     final error = recipeState.error;
-    final pushPage = usePushPage<EditingResult>();
-    useEffectSWRData<EditingResult?>(pushPage, (data) {
-      if (data == EditingResult.deleted) popPage.trigger(null);
-    });
     final Widget sliverList;
     if (recipe != null) {
       sliverList = _buildSliverContent(recipe, selectedPhotoIndex);
@@ -51,8 +45,8 @@ class RecipeDetailPage extends HookConsumerWidget {
     final List<Content> photos;
     if (recipe != null) {
       photos = recipe.images;
-    } else if (recipeSummary.image != null) {
-      photos = [recipeSummary.image!];
+    } else if (recipeSummary?.image != null) {
+      photos = [recipeSummary!.image!];
     } else {
       photos = [];
     }
@@ -72,7 +66,13 @@ class RecipeDetailPage extends HookConsumerWidget {
                   IconButton(
                     icon: const Icon(Icons.edit),
                     tooltip: intl.doEdit,
-                    onPressed: () => pushPage.trigger(RecipeEditingPage(recipe: recipe)),
+                    onPressed: () => goNamed.trigger(
+                      GoName(
+                        'recipe_editing',
+                        pathParameters: {'recipe_id': recipe.id.value.toString()},
+                        extra: recipe,
+                      ),
+                    ),
                   ),
               ],
               flexibleSpace: FlexibleSpaceBar(
@@ -241,7 +241,7 @@ class RecipeDetailPage extends HookConsumerWidget {
               label: Text(intl.referenceLink),
               onPressed: () => launchUrl(url),
             ),
-          )
+          ),
         ],
       );
     } else {
@@ -325,13 +325,19 @@ class RecipeDetailPage extends HookConsumerWidget {
 
   Widget _buildRegistrationMenuButton(RecipeSummary recipe) {
     final intl = useIntl();
-    final pushPage = usePushPage<void>();
+    final goNamed = useGoNamed();
     return SizedBox(
       width: double.infinity,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(32, 32, 32, 0),
         child: OutlinedButton(
-          onPressed: () => pushPage.trigger(MenuEditingPage.withRecipe(recipe: recipe)),
+          onPressed: () => goNamed.trigger(
+            GoName(
+              'recipe_editing',
+              pathParameters: {'recipe_id': recipe.id.value.toString()},
+              extra: recipe,
+            ),
+          ),
           child: Text(intl.useRecipeToMenu),
         ),
       ),

@@ -6,7 +6,6 @@ import 'package:cueue/hooks/hierarchy/tag/use_tags.dart';
 import 'package:cueue/model/tag/tag.dart';
 import 'package:cueue/ui/global/widget/default_state_widget.dart';
 import 'package:cueue/ui/global/widget/empty_widget.dart';
-import 'package:cueue/ui/hierarchy/tag/tag_editing_page.dart';
 import 'package:cueue/ui/hierarchy/tag/tag_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -19,7 +18,7 @@ class TagPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final intl = useIntl();
     final tagsState = useTags(ref);
-    final pushPage = usePushPage<void>();
+    final goNamed = useGoNamed();
     return Scaffold(
       appBar: AppBar(
         title: Text(intl.tag),
@@ -37,7 +36,7 @@ class TagPage extends HookConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         label: Text(intl.addTag),
-        onPressed: () => pushPage.trigger(const TagEditingPage()),
+        onPressed: () => goNamed.trigger(GoName('tag_new')),
         icon: const Icon(Icons.add),
         heroTag: intl.addRecipe,
       ),
@@ -53,7 +52,7 @@ class TagPage extends HookConsumerWidget {
   Widget _buildContent(WidgetRef ref, List<Tag> tags, SWRMutate<String, List<Tag>> mutateTags) {
     final reorderTags = useReOrderTags(ref);
     final scrollController = useScrollController();
-    final pushPage = usePushPage<void>();
+    final goNamed = useGoNamed();
     return RefreshIndicator(
       onRefresh: () => mutateTags(null),
       child: Scrollbar(
@@ -75,7 +74,10 @@ class TagPage extends HookConsumerWidget {
                   child: const Icon(Icons.drag_handle),
                 ),
               ),
-              onTap: () => pushPage.trigger(TagEditingPage(tag: tags[index])),
+              onTap: () {
+                final tag = tags[index];
+                goNamed.trigger(GoName('tag_editing', pathParameters: {'tag_id': tag.id.value.toString()}, extra: tag));
+              },
             );
           },
           onReorder: (int oldIndex, int newIndex) => reorderTags.trigger(ReOrderTagsData(oldIndex, newIndex)),

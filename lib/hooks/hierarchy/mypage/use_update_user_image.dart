@@ -5,9 +5,9 @@ import 'package:cueue/api/request/user/user_request.dart';
 import 'package:cueue/hooks/global/swr/swr_state.dart';
 import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
-import 'package:cueue/hooks/global/utils/use_easy_loading.dart';
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
+import 'package:cueue/hooks/global/utils/use_overlay_loading.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_firebase_user.dart';
 import 'package:cueue/model/exception/no_such_element_exception.dart';
 import 'package:cueue/model/photo/photo_pickup_bottom_sheet_event.dart';
@@ -27,7 +27,7 @@ SWRTriggerState<void, PhotoPickupBottomSheetEvent?> useUpdateUserImage(WidgetRef
   final userResponseMapper = ref.read(userResponseMapperProvider);
   final photoPickupBottomSheetDialog = usePhotoPickupBottomSheetDialog();
   final showErrorDialog = useShowErrorDialog(ref);
-  final easyLoading = useEasyLoading();
+  final overlayLoading = useOverlayLoading();
   final updateUser = useSWRTrigger<File, void>((file) async {
     final request = ContentRequest(data: base64Encode(file.readAsBytesSync()));
     final photoResponse = await createContentApi(request);
@@ -58,7 +58,7 @@ SWRTriggerState<void, PhotoPickupBottomSheetEvent?> useUpdateUserImage(WidgetRef
     return (xfile != null) ? File(xfile.path) : null;
   });
   useEffectSWRIsMutating(updateUser, ({required isMutating}) {
-    easyLoading.trigger(isMutating);
+    overlayLoading.trigger(isMutating);
   });
   useEffectSWRError(updateUser, (error) {
     showErrorDialog.trigger(error);

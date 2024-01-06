@@ -1,8 +1,8 @@
 import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
-import 'package:cueue/hooks/global/utils/use_easy_loading.dart';
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
+import 'package:cueue/hooks/global/utils/use_overlay_loading.dart';
 import 'package:cueue/hooks/hierarchy/auth/use_authorize_with_google.dart';
 import 'package:cueue/hooks/hierarchy/auth/use_replace_signed_in_page.dart';
 import 'package:cueue/model/auth/firebase_auth_extension.dart';
@@ -11,7 +11,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 SWRTriggerState<void, GoogleAuthInfo> useSignInWithGoogle(WidgetRef ref) {
-  final easyLoading = useEasyLoading();
+  final overlayLoading = useOverlayLoading();
   final showErrorDialog = useShowErrorDialog(ref);
   final authorizeWithGoogle = useAuthorizeWithGoogle();
   final replaceSignedInPage = useReplaceSignedInPage(ref);
@@ -31,7 +31,7 @@ SWRTriggerState<void, GoogleAuthInfo> useSignInWithGoogle(WidgetRef ref) {
     replaceSignedInPage.trigger(null);
   });
   useEffectSWRIsMutating(signInWithGoogle, ({required isMutating}) {
-    easyLoading.trigger(isMutating);
+    overlayLoading.trigger(isMutating);
   });
   useEffectSWRError(signInWithGoogle, (error) {
     showErrorDialog.trigger(error);

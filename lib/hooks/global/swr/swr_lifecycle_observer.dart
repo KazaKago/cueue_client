@@ -26,9 +26,8 @@ class SWRLifecycleObserver extends NavigatorObserver with WidgetsBindingObserver
       case AppLifecycleState.paused:
         _sendLifecycleEvent(_routeStack.lastOrNull, NavigatorEvent.pause);
       case AppLifecycleState.inactive:
-        // do nothing.
-        break;
       case AppLifecycleState.detached:
+      case AppLifecycleState.hidden:
         // do nothing.
         break;
     }

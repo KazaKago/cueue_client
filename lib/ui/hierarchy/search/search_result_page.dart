@@ -37,7 +37,7 @@ class SearchResultPage extends HookConsumerWidget {
             if (selectedRecipes != null) {
               _onCheckChanged(selectedRecipes, recipe);
             } else {
-              pushPage.trigger(RecipeDetailPage(recipe));
+              pushPage.trigger(RecipeDetailPage(recipeId: recipe.id, recipeSummary: recipe));
             }
           },
         ),

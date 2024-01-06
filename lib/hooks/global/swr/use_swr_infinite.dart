@@ -35,7 +35,7 @@ SWRInfiniteState<KEY, DATA> useSWRInfinite<KEY, DATA>(
     pageStateList += [state];
 
     if (index == 0) {
-      revalidateOnReconnect(validate, key);
+      revalidateOnReconnectOption(validate, key, isEnabled: true);
     }
   }
   useListenable(Listenable.merge(pageDataList));

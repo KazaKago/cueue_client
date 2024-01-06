@@ -6,9 +6,6 @@ import 'package:cueue/hooks/hierarchy/setting/use_go_privacy_policy.dart';
 import 'package:cueue/hooks/hierarchy/setting/use_go_terms_of_service.dart';
 import 'package:cueue/hooks/hierarchy/setting/use_toggle_with_apple.dart';
 import 'package:cueue/hooks/hierarchy/setting/use_toggle_with_google.dart';
-import 'package:cueue/ui/hierarchy/invitation/invitation_input_page.dart';
-import 'package:cueue/ui/hierarchy/setting/about_page.dart';
-import 'package:cueue/ui/hierarchy/setting/account_deletion_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -60,12 +57,12 @@ class SettingsPage extends HookConsumerWidget {
 
   Widget _buildJoinOtherWorkspace(WidgetRef ref) {
     final intl = useIntl();
-    final pushPage = usePushPage<void>();
+    final goNamed = useGoNamed();
     return ListTile(
       leading: const Icon(Icons.workspaces),
       title: Text(intl.inputInvitationCode),
       subtitle: Text(intl.joinOtherWorkspace),
-      onTap: () => pushPage.trigger(const InvitationInputPage()),
+      onTap: () => goNamed.trigger(GoName('invitation_input')),
     );
   }
 
@@ -145,11 +142,11 @@ class SettingsPage extends HookConsumerWidget {
 
   Widget _buildAboutAppTile(WidgetRef ref) {
     final intl = useIntl();
-    final pushPage = usePushPage<void>();
+    final goNamed = useGoNamed();
     return ListTile(
       title: Text(intl.aboutApp),
       leading: const Icon(Icons.info_outline),
-      onTap: () => pushPage.trigger(const AboutPage()),
+      onTap: () => goNamed.trigger(GoName('about')),
     );
   }
 
@@ -184,13 +181,13 @@ class SettingsPage extends HookConsumerWidget {
   Widget _buildAccountDeletionTile(WidgetRef ref) {
     final intl = useIntl();
     final theme = useTheme();
-    final pushPage = usePushPage<void>();
+    final goNamed = useGoNamed();
     return ListTile(
       title: Text(intl.accountDeletion),
       textColor: theme.colorScheme.error,
       leading: const Icon(Icons.delete_forever),
       iconColor: theme.colorScheme.error,
-      onTap: () => pushPage.trigger(const AccountDeletionPage()),
+      onTap: () => goNamed.trigger(GoName('account_deletion')),
     );
   }
 }

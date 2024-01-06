@@ -1,11 +1,10 @@
 import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
-import 'package:cueue/hooks/global/utils/use_easy_loading.dart';
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
 import 'package:cueue/hooks/global/utils/use_intl.dart';
+import 'package:cueue/hooks/global/utils/use_overlay_loading.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
-import 'package:cueue/model/edit/editing_result.dart';
 import 'package:cueue/model/menu/menu_id.dart';
 import 'package:cueue/provider/api_provider.dart';
 import 'package:cueue/ui/global/modal/simple_message_dialog.dart';
@@ -21,8 +20,8 @@ class _DeleteMenuData {
 
 SWRTriggerState<MenuId, void> useDeleteMenu(WidgetRef ref) {
   final intl = useIntl();
-  final popPage = usePopPage<EditingResult>();
-  final easyLoading = useEasyLoading();
+  final goNamed = useGoNamed();
+  final overlayLoading = useOverlayLoading();
   final showErrorDialog = useShowErrorDialog(ref);
   final deleteMenuApi = ref.read(deleteMenuApiProvider);
   final showConfirmDeleteMenuDialog = useShowSimpleMessageDialog();
@@ -47,10 +46,10 @@ SWRTriggerState<MenuId, void> useDeleteMenu(WidgetRef ref) {
     );
   });
   useEffectSWRData(deleteMenu, (data) {
-    popPage.trigger(EditingResult.deleted);
+    goNamed.trigger(GoName('root'));
   });
   useEffectSWRIsMutating(deleteMenu, ({required isMutating}) {
-    easyLoading.trigger(isMutating);
+    overlayLoading.trigger(isMutating);
   });
   useEffectSWRError(deleteMenu, (error) {
     showErrorDialog.trigger(error);

@@ -1,20 +1,20 @@
 import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
-import 'package:cueue/hooks/global/utils/use_easy_loading.dart';
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
 import 'package:cueue/hooks/global/utils/use_intl.dart';
+import 'package:cueue/hooks/global/utils/use_overlay_loading.dart';
+import 'package:cueue/hooks/global/utils/use_overlay_toast.dart';
 import 'package:cueue/hooks/hierarchy/auth/use_authorize_with_google.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_firebase_user.dart';
 import 'package:cueue/model/auth/firebase_auth_extension.dart';
 import 'package:cueue/model/auth/google_auth_info.dart';
-import 'package:cueue/ui/global/modal/fried_toast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 SWRTriggerState<void, GoogleAuthInfo> useLinkWithGoogle(WidgetRef ref) {
-  final easyLoading = useEasyLoading();
-  final showFriedToast = useShowFriedToast();
+  final overlayLoading = useOverlayLoading();
+  final overlayToast = useOverlayToast();
   final showErrorDialog = useShowErrorDialog(ref);
   final intl = useIntl();
   final firebaseUserState = useFirebaseUser(ref);
@@ -32,10 +32,10 @@ SWRTriggerState<void, GoogleAuthInfo> useLinkWithGoogle(WidgetRef ref) {
     linkWithGoogle.trigger(authInfo);
   });
   useEffectSWRData(linkWithGoogle, (_) {
-    showFriedToast(intl.linkedWithGoogle);
+    overlayToast(intl.linkedWithGoogle);
   });
   useEffectSWRIsMutating(linkWithGoogle, ({required isMutating}) {
-    easyLoading.trigger(isMutating);
+    overlayLoading.trigger(isMutating);
   });
   useEffectSWRError(linkWithGoogle, (error) {
     showErrorDialog.trigger(error);

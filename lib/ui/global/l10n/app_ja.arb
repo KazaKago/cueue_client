@@ -257,7 +257,7 @@
   "invitationCodePublishedTitle": "招待コードを発行しました",
   "invitationCodePublishedMessage": "ワークスペースに招待したい人にこのコードを共有してください。\n\n※1つのコードにつき1度のみ利用できます。\n※コードの有効期限は発行から24時間です。",
   "copyInvitationCode": "招待コードをコピー",
-  "copiedInvitationCode": "招待コードをコピーしました",
+  "copiedInvitationCode": "招待コードを\nコピーしました",
   "shareInvitationCode": "招待コードを共有する",
   "invitationCodeSharingMessage": "ワークスペース「{workspaceName}」へ招待されています。\nCueueを開いて招待コード入力画面に下記を入力して下さい。\n\n{invitationCode}\n\n※本コードの有効期限は{expireDate}です。\n\nアプリを未インストールの方は下記URLよりインストール下さい。\n{installLink}",
   "@invitationCodeSharingMessage": {

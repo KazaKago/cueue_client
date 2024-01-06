@@ -1,7 +1,5 @@
 import 'package:cueue/hooks/global/utils/use_intl.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
-import 'package:cueue/model/invitation/invitation_code.dart';
-import 'package:cueue/ui/hierarchy/invitation/invitation_info_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -11,7 +9,7 @@ class InvitationInputPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final intl = useIntl();
-    final pushPage = usePushPage<void>();
+    final goNamed = useGoNamed();
     final scrollController = useScrollController();
     final textEditingController = useTextEditingController();
     final isEnableRegistrationButton = useState(false);
@@ -35,7 +33,7 @@ class InvitationInputPage extends HookWidget {
             ),
             const SizedBox(height: 32),
             ElevatedButton(
-              onPressed: isEnableRegistrationButton.value ? () => pushPage.trigger(InvitationInfoPage(InvitationCode(textEditingController.text))) : null,
+              onPressed: isEnableRegistrationButton.value ? () => goNamed.trigger(GoName('invitation_info', pathParameters: {'code': textEditingController.text})) : null,
               child: Text(intl.confirmInvitationCode),
             ),
           ],

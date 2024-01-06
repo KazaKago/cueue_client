@@ -2,26 +2,25 @@ import 'package:cueue/hooks/global/swr/swr_cache.dart';
 import 'package:cueue/hooks/global/swr/swr_system_cache.dart';
 import 'package:cueue/hooks/global/swr/swr_trigger_state.dart';
 import 'package:cueue/hooks/global/swr/use_swr_trigger.dart';
-import 'package:cueue/hooks/global/utils/use_easy_loading.dart';
 import 'package:cueue/hooks/global/utils/use_effect_hooks.dart';
 import 'package:cueue/hooks/global/utils/use_handle_error.dart';
 import 'package:cueue/hooks/global/utils/use_intl.dart';
+import 'package:cueue/hooks/global/utils/use_overlay_loading.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
 import 'package:cueue/hooks/hierarchy/mypage/use_firebase_user.dart';
 import 'package:cueue/model/auth/firebase_auth_extension.dart';
 import 'package:cueue/model/exception/require_reautentication_exception.dart';
 import 'package:cueue/ui/global/modal/simple_message_dialog.dart';
 import 'package:cueue/ui/global/modal/simple_message_dialog_event.dart';
-import 'package:cueue/ui/hierarchy/setting/thanks_for_using_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 SWRTriggerState<void, void> useDeleteAccount(WidgetRef ref) {
   final showSimpleMessageDialog = useShowSimpleMessageDialog();
-  final replacePage = useReplacePage();
+  final goNamed = useGoNamed();
   final showErrorDialog = useShowErrorDialog(ref);
-  final easyLoading = useEasyLoading();
+  final overlayLoading = useOverlayLoading();
   final firebaseUserState = useFirebaseUser(ref);
   final deleteAccount = useSWRTrigger<void, bool>((_) async {
     try {
@@ -42,10 +41,10 @@ SWRTriggerState<void, void> useDeleteAccount(WidgetRef ref) {
     deleteAccount.trigger(null);
   });
   useEffectSWRIsMutating(deleteAccount, ({required isMutating}) {
-    easyLoading.trigger(isMutating);
+    overlayLoading.trigger(isMutating);
   });
   useEffectSWRData(deleteAccount, (_) {
-    replacePage.trigger(const ThanksForUsingPage());
+    goNamed.trigger(GoName('thanks_for_using'));
   });
   useEffectSWRError(deleteAccount, (error) {
     showErrorDialog.trigger(error);

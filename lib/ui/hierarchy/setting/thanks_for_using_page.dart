@@ -1,7 +1,6 @@
 import 'package:cueue/gen/assets.gen.dart';
 import 'package:cueue/hooks/global/utils/use_intl.dart';
 import 'package:cueue/hooks/global/utils/use_route.dart';
-import 'package:cueue/ui/hierarchy/auth/authentication_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -11,7 +10,7 @@ class ThanksForUsingPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final intl = useIntl();
-    final replacePage = useReplacePage();
+    final goNamed = useGoNamed();
     final scrollController = useScrollController();
     return Scaffold(
       appBar: AppBar(title: Text(intl.accountDeletion)),
@@ -26,7 +25,7 @@ class ThanksForUsingPage extends HookWidget {
             Text(textAlign: TextAlign.center, intl.thanksForUsingMessage),
             const SizedBox(height: 32),
             ElevatedButton(
-              onPressed: () => replacePage.trigger(const AuthenticationPage()),
+              onPressed: () => goNamed.trigger(GoName('authentication')),
               child: Text(intl.backToLoginScreen),
             ),
           ],

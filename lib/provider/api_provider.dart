@@ -17,6 +17,7 @@ import 'package:cueue/api/hierarchy/recipe/get_recipes_api.dart';
 import 'package:cueue/api/hierarchy/recipe/update_recipe_api.dart';
 import 'package:cueue/api/hierarchy/tag/create_tag_api.dart';
 import 'package:cueue/api/hierarchy/tag/delete_tag_api.dart';
+import 'package:cueue/api/hierarchy/tag/get_tag_api.dart';
 import 'package:cueue/api/hierarchy/tag/get_tags_api.dart';
 import 'package:cueue/api/hierarchy/tag/order_tag_api.dart';
 import 'package:cueue/api/hierarchy/tag/update_tag_api.dart';
@@ -33,6 +34,7 @@ final createUserApiProvider = Provider((ref) => CreateUserApi(ref.read(dioCreato
 final updateUserApiProvider = Provider((ref) => UpdateUserApi(ref.read(dioCreatorProvider)));
 final getRecipesApiProvider = Provider((ref) => GetRecipesApi(ref.read(dioCreatorProvider)));
 final getRecipeApiProvider = Provider((ref) => GetRecipeApi(ref.read(dioCreatorProvider)));
+final getTagApiProvider = Provider((ref) => GetTagApi(ref.read(dioCreatorProvider)));
 final getTagsApiProvider = Provider((ref) => GetTagsApi(ref.read(dioCreatorProvider)));
 final getMenuApiProvider = Provider((ref) => GetMenuApi(ref.read(dioCreatorProvider)));
 final getMenusApiProvider = Provider((ref) => GetMenusApi(ref.read(dioCreatorProvider)));
