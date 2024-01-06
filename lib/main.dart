@@ -13,7 +13,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await FirebaseAppCheck.instance.activate(webRecaptchaSiteKey: const String.fromEnvironment('webRecaptchaSiteKey'));
+  await FirebaseAppCheck.instance.activate(webProvider: ReCaptchaV3Provider(const String.fromEnvironment('webRecaptchaSiteKey')));
 
   if (!kIsWeb) {
     FlutterError.onError = (details) async {
