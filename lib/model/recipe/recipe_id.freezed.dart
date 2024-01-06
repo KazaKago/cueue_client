@@ -56,21 +56,22 @@ class _$RecipeIdCopyWithImpl<$Res, $Val extends RecipeId>
 }
 
 /// @nodoc
-abstract class _$$_RecipeIdCopyWith<$Res> implements $RecipeIdCopyWith<$Res> {
-  factory _$$_RecipeIdCopyWith(
-          _$_RecipeId value, $Res Function(_$_RecipeId) then) =
-      __$$_RecipeIdCopyWithImpl<$Res>;
+abstract class _$$RecipeIdImplCopyWith<$Res>
+    implements $RecipeIdCopyWith<$Res> {
+  factory _$$RecipeIdImplCopyWith(
+          _$RecipeIdImpl value, $Res Function(_$RecipeIdImpl) then) =
+      __$$RecipeIdImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class __$$_RecipeIdCopyWithImpl<$Res>
-    extends _$RecipeIdCopyWithImpl<$Res, _$_RecipeId>
-    implements _$$_RecipeIdCopyWith<$Res> {
-  __$$_RecipeIdCopyWithImpl(
-      _$_RecipeId _value, $Res Function(_$_RecipeId) _then)
+class __$$RecipeIdImplCopyWithImpl<$Res>
+    extends _$RecipeIdCopyWithImpl<$Res, _$RecipeIdImpl>
+    implements _$$RecipeIdImplCopyWith<$Res> {
+  __$$RecipeIdImplCopyWithImpl(
+      _$RecipeIdImpl _value, $Res Function(_$RecipeIdImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -78,7 +79,7 @@ class __$$_RecipeIdCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$_RecipeId(
+    return _then(_$RecipeIdImpl(
       null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -89,8 +90,8 @@ class __$$_RecipeIdCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RecipeId implements _RecipeId {
-  const _$_RecipeId(this.value);
+class _$RecipeIdImpl implements _RecipeId {
+  const _$RecipeIdImpl(this.value);
 
   @override
   final int value;
@@ -101,10 +102,10 @@ class _$_RecipeId implements _RecipeId {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RecipeId &&
+            other is _$RecipeIdImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -114,17 +115,17 @@ class _$_RecipeId implements _RecipeId {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RecipeIdCopyWith<_$_RecipeId> get copyWith =>
-      __$$_RecipeIdCopyWithImpl<_$_RecipeId>(this, _$identity);
+  _$$RecipeIdImplCopyWith<_$RecipeIdImpl> get copyWith =>
+      __$$RecipeIdImplCopyWithImpl<_$RecipeIdImpl>(this, _$identity);
 }
 
 abstract class _RecipeId implements RecipeId {
-  const factory _RecipeId(final int value) = _$_RecipeId;
+  const factory _RecipeId(final int value) = _$RecipeIdImpl;
 
   @override
   int get value;
   @override
   @JsonKey(ignore: true)
-  _$$_RecipeIdCopyWith<_$_RecipeId> get copyWith =>
+  _$$RecipeIdImplCopyWith<_$RecipeIdImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

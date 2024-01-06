@@ -74,11 +74,11 @@ class _$UserRequestCopyWithImpl<$Res, $Val extends UserRequest>
 }
 
 /// @nodoc
-abstract class _$$_UserRequestCopyWith<$Res>
+abstract class _$$UserRequestImplCopyWith<$Res>
     implements $UserRequestCopyWith<$Res> {
-  factory _$$_UserRequestCopyWith(
-          _$_UserRequest value, $Res Function(_$_UserRequest) then) =
-      __$$_UserRequestCopyWithImpl<$Res>;
+  factory _$$UserRequestImplCopyWith(
+          _$UserRequestImpl value, $Res Function(_$UserRequestImpl) then) =
+      __$$UserRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -87,11 +87,11 @@ abstract class _$$_UserRequestCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UserRequestCopyWithImpl<$Res>
-    extends _$UserRequestCopyWithImpl<$Res, _$_UserRequest>
-    implements _$$_UserRequestCopyWith<$Res> {
-  __$$_UserRequestCopyWithImpl(
-      _$_UserRequest _value, $Res Function(_$_UserRequest) _then)
+class __$$UserRequestImplCopyWithImpl<$Res>
+    extends _$UserRequestCopyWithImpl<$Res, _$UserRequestImpl>
+    implements _$$UserRequestImplCopyWith<$Res> {
+  __$$UserRequestImplCopyWithImpl(
+      _$UserRequestImpl _value, $Res Function(_$UserRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +100,7 @@ class __$$_UserRequestCopyWithImpl<$Res>
     Object? displayName = null,
     Object? photoKey = freezed,
   }) {
-    return _then(_$_UserRequest(
+    return _then(_$UserRequestImpl(
       displayName: null == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
@@ -115,13 +115,13 @@ class __$$_UserRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserRequest implements _UserRequest {
-  const _$_UserRequest(
+class _$UserRequestImpl implements _UserRequest {
+  const _$UserRequestImpl(
       {@JsonKey(name: 'display_name') required this.displayName,
       @JsonKey(name: 'photo_key') required this.photoKey});
 
-  factory _$_UserRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_UserRequestFromJson(json);
+  factory _$UserRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserRequestImplFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
@@ -138,10 +138,10 @@ class _$_UserRequest implements _UserRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserRequest &&
+            other is _$UserRequestImpl &&
             (identical(other.displayName, displayName) ||
                 other.displayName == displayName) &&
             (identical(other.photoKey, photoKey) ||
@@ -155,12 +155,12 @@ class _$_UserRequest implements _UserRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserRequestCopyWith<_$_UserRequest> get copyWith =>
-      __$$_UserRequestCopyWithImpl<_$_UserRequest>(this, _$identity);
+  _$$UserRequestImplCopyWith<_$UserRequestImpl> get copyWith =>
+      __$$UserRequestImplCopyWithImpl<_$UserRequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserRequestToJson(
+    return _$$UserRequestImplToJson(
       this,
     );
   }
@@ -170,10 +170,10 @@ abstract class _UserRequest implements UserRequest {
   const factory _UserRequest(
           {@JsonKey(name: 'display_name') required final String displayName,
           @JsonKey(name: 'photo_key') required final String? photoKey}) =
-      _$_UserRequest;
+      _$UserRequestImpl;
 
   factory _UserRequest.fromJson(Map<String, dynamic> json) =
-      _$_UserRequest.fromJson;
+      _$UserRequestImpl.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'display_name')
@@ -183,6 +183,6 @@ abstract class _UserRequest implements UserRequest {
   String? get photoKey;
   @override
   @JsonKey(ignore: true)
-  _$$_UserRequestCopyWith<_$_UserRequest> get copyWith =>
+  _$$UserRequestImplCopyWith<_$UserRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

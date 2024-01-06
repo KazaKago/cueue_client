@@ -57,22 +57,22 @@ class _$ContentKeyCopyWithImpl<$Res, $Val extends ContentKey>
 }
 
 /// @nodoc
-abstract class _$$_ContentKeyCopyWith<$Res>
+abstract class _$$ContentKeyImplCopyWith<$Res>
     implements $ContentKeyCopyWith<$Res> {
-  factory _$$_ContentKeyCopyWith(
-          _$_ContentKey value, $Res Function(_$_ContentKey) then) =
-      __$$_ContentKeyCopyWithImpl<$Res>;
+  factory _$$ContentKeyImplCopyWith(
+          _$ContentKeyImpl value, $Res Function(_$ContentKeyImpl) then) =
+      __$$ContentKeyImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class __$$_ContentKeyCopyWithImpl<$Res>
-    extends _$ContentKeyCopyWithImpl<$Res, _$_ContentKey>
-    implements _$$_ContentKeyCopyWith<$Res> {
-  __$$_ContentKeyCopyWithImpl(
-      _$_ContentKey _value, $Res Function(_$_ContentKey) _then)
+class __$$ContentKeyImplCopyWithImpl<$Res>
+    extends _$ContentKeyCopyWithImpl<$Res, _$ContentKeyImpl>
+    implements _$$ContentKeyImplCopyWith<$Res> {
+  __$$ContentKeyImplCopyWithImpl(
+      _$ContentKeyImpl _value, $Res Function(_$ContentKeyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_ContentKeyCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$_ContentKey(
+    return _then(_$ContentKeyImpl(
       null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_ContentKeyCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ContentKey implements _ContentKey {
-  const _$_ContentKey(this.value);
+class _$ContentKeyImpl implements _ContentKey {
+  const _$ContentKeyImpl(this.value);
 
   @override
   final String value;
@@ -103,10 +103,10 @@ class _$_ContentKey implements _ContentKey {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ContentKey &&
+            other is _$ContentKeyImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -116,17 +116,17 @@ class _$_ContentKey implements _ContentKey {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ContentKeyCopyWith<_$_ContentKey> get copyWith =>
-      __$$_ContentKeyCopyWithImpl<_$_ContentKey>(this, _$identity);
+  _$$ContentKeyImplCopyWith<_$ContentKeyImpl> get copyWith =>
+      __$$ContentKeyImplCopyWithImpl<_$ContentKeyImpl>(this, _$identity);
 }
 
 abstract class _ContentKey implements ContentKey {
-  const factory _ContentKey(final String value) = _$_ContentKey;
+  const factory _ContentKey(final String value) = _$ContentKeyImpl;
 
   @override
   String get value;
   @override
   @JsonKey(ignore: true)
-  _$$_ContentKeyCopyWith<_$_ContentKey> get copyWith =>
+  _$$ContentKeyImplCopyWith<_$ContentKeyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

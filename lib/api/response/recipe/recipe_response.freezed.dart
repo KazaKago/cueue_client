@@ -146,11 +146,11 @@ class _$RecipeResponseCopyWithImpl<$Res, $Val extends RecipeResponse>
 }
 
 /// @nodoc
-abstract class _$$_RecipeResponseCopyWith<$Res>
+abstract class _$$RecipeResponseImplCopyWith<$Res>
     implements $RecipeResponseCopyWith<$Res> {
-  factory _$$_RecipeResponseCopyWith(
-          _$_RecipeResponse value, $Res Function(_$_RecipeResponse) then) =
-      __$$_RecipeResponseCopyWithImpl<$Res>;
+  factory _$$RecipeResponseImplCopyWith(_$RecipeResponseImpl value,
+          $Res Function(_$RecipeResponseImpl) then) =
+      __$$RecipeResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -167,11 +167,11 @@ abstract class _$$_RecipeResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RecipeResponseCopyWithImpl<$Res>
-    extends _$RecipeResponseCopyWithImpl<$Res, _$_RecipeResponse>
-    implements _$$_RecipeResponseCopyWith<$Res> {
-  __$$_RecipeResponseCopyWithImpl(
-      _$_RecipeResponse _value, $Res Function(_$_RecipeResponse) _then)
+class __$$RecipeResponseImplCopyWithImpl<$Res>
+    extends _$RecipeResponseCopyWithImpl<$Res, _$RecipeResponseImpl>
+    implements _$$RecipeResponseImplCopyWith<$Res> {
+  __$$RecipeResponseImplCopyWithImpl(
+      _$RecipeResponseImpl _value, $Res Function(_$RecipeResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -188,7 +188,7 @@ class __$$_RecipeResponseCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
-    return _then(_$_RecipeResponse(
+    return _then(_$RecipeResponseImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -235,8 +235,8 @@ class __$$_RecipeResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_RecipeResponse implements _RecipeResponse {
-  const _$_RecipeResponse(
+class _$RecipeResponseImpl implements _RecipeResponse {
+  const _$RecipeResponseImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description,
@@ -252,8 +252,8 @@ class _$_RecipeResponse implements _RecipeResponse {
         _tags = tags,
         _cookingHistories = cookingHistories;
 
-  factory _$_RecipeResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_RecipeResponseFromJson(json);
+  factory _$RecipeResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RecipeResponseImplFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
@@ -324,10 +324,10 @@ class _$_RecipeResponse implements _RecipeResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RecipeResponse &&
+            other is _$RecipeResponseImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
@@ -363,12 +363,13 @@ class _$_RecipeResponse implements _RecipeResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RecipeResponseCopyWith<_$_RecipeResponse> get copyWith =>
-      __$$_RecipeResponseCopyWithImpl<_$_RecipeResponse>(this, _$identity);
+  _$$RecipeResponseImplCopyWith<_$RecipeResponseImpl> get copyWith =>
+      __$$RecipeResponseImplCopyWithImpl<_$RecipeResponseImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RecipeResponseToJson(
+    return _$$RecipeResponseImplToJson(
       this,
     );
   }
@@ -387,10 +388,10 @@ abstract class _RecipeResponse implements RecipeResponse {
           @JsonKey(name: 'cooking_count') required final int cookingCount,
           @JsonKey(name: 'created_at') required final String createdAt,
           @JsonKey(name: 'updated_at') required final String updatedAt}) =
-      _$_RecipeResponse;
+      _$RecipeResponseImpl;
 
   factory _RecipeResponse.fromJson(Map<String, dynamic> json) =
-      _$_RecipeResponse.fromJson;
+      _$RecipeResponseImpl.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
@@ -424,6 +425,6 @@ abstract class _RecipeResponse implements RecipeResponse {
   String get updatedAt;
   @override
   @JsonKey(ignore: true)
-  _$$_RecipeResponseCopyWith<_$_RecipeResponse> get copyWith =>
+  _$$RecipeResponseImplCopyWith<_$RecipeResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -55,18 +55,21 @@ class _$EmailCopyWithImpl<$Res, $Val extends Email>
 }
 
 /// @nodoc
-abstract class _$$_EmailCopyWith<$Res> implements $EmailCopyWith<$Res> {
-  factory _$$_EmailCopyWith(_$_Email value, $Res Function(_$_Email) then) =
-      __$$_EmailCopyWithImpl<$Res>;
+abstract class _$$EmailImplCopyWith<$Res> implements $EmailCopyWith<$Res> {
+  factory _$$EmailImplCopyWith(
+          _$EmailImpl value, $Res Function(_$EmailImpl) then) =
+      __$$EmailImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class __$$_EmailCopyWithImpl<$Res> extends _$EmailCopyWithImpl<$Res, _$_Email>
-    implements _$$_EmailCopyWith<$Res> {
-  __$$_EmailCopyWithImpl(_$_Email _value, $Res Function(_$_Email) _then)
+class __$$EmailImplCopyWithImpl<$Res>
+    extends _$EmailCopyWithImpl<$Res, _$EmailImpl>
+    implements _$$EmailImplCopyWith<$Res> {
+  __$$EmailImplCopyWithImpl(
+      _$EmailImpl _value, $Res Function(_$EmailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -74,7 +77,7 @@ class __$$_EmailCopyWithImpl<$Res> extends _$EmailCopyWithImpl<$Res, _$_Email>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$_Email(
+    return _then(_$EmailImpl(
       null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -85,8 +88,8 @@ class __$$_EmailCopyWithImpl<$Res> extends _$EmailCopyWithImpl<$Res, _$_Email>
 
 /// @nodoc
 
-class _$_Email extends _Email {
-  _$_Email(this.value) : super._();
+class _$EmailImpl extends _Email {
+  _$EmailImpl(this.value) : super._();
 
   @override
   final String value;
@@ -97,10 +100,10 @@ class _$_Email extends _Email {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Email &&
+            other is _$EmailImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -110,18 +113,18 @@ class _$_Email extends _Email {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EmailCopyWith<_$_Email> get copyWith =>
-      __$$_EmailCopyWithImpl<_$_Email>(this, _$identity);
+  _$$EmailImplCopyWith<_$EmailImpl> get copyWith =>
+      __$$EmailImplCopyWithImpl<_$EmailImpl>(this, _$identity);
 }
 
 abstract class _Email extends Email {
-  factory _Email(final String value) = _$_Email;
+  factory _Email(final String value) = _$EmailImpl;
   _Email._() : super._();
 
   @override
   String get value;
   @override
   @JsonKey(ignore: true)
-  _$$_EmailCopyWith<_$_Email> get copyWith =>
+  _$$EmailImplCopyWith<_$EmailImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

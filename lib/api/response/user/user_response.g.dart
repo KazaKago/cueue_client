@@ -6,8 +6,8 @@ part of 'user_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UserResponse _$$_UserResponseFromJson(Map<String, dynamic> json) =>
-    _$_UserResponse(
+_$UserResponseImpl _$$UserResponseImplFromJson(Map<String, dynamic> json) =>
+    _$UserResponseImpl(
       id: json['id'] as int,
       displayName: json['display_name'] as String,
       photo: json['photo'] == null
@@ -19,7 +19,7 @@ _$_UserResponse _$$_UserResponseFromJson(Map<String, dynamic> json) =>
               json['workspace'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_UserResponseToJson(_$_UserResponse instance) =>
+Map<String, dynamic> _$$UserResponseImplToJson(_$UserResponseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'display_name': instance.displayName,

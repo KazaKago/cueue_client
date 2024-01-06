@@ -63,22 +63,22 @@ class _$DateSplitMenuListCopyWithImpl<$Res, $Val extends DateSplitMenuList>
 }
 
 /// @nodoc
-abstract class _$$_DateSplitMenuListCopyWith<$Res>
+abstract class _$$DateSplitMenuListImplCopyWith<$Res>
     implements $DateSplitMenuListCopyWith<$Res> {
-  factory _$$_DateSplitMenuListCopyWith(_$_DateSplitMenuList value,
-          $Res Function(_$_DateSplitMenuList) then) =
-      __$$_DateSplitMenuListCopyWithImpl<$Res>;
+  factory _$$DateSplitMenuListImplCopyWith(_$DateSplitMenuListImpl value,
+          $Res Function(_$DateSplitMenuListImpl) then) =
+      __$$DateSplitMenuListImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({DateTime date, List<MenuSummary> menus});
 }
 
 /// @nodoc
-class __$$_DateSplitMenuListCopyWithImpl<$Res>
-    extends _$DateSplitMenuListCopyWithImpl<$Res, _$_DateSplitMenuList>
-    implements _$$_DateSplitMenuListCopyWith<$Res> {
-  __$$_DateSplitMenuListCopyWithImpl(
-      _$_DateSplitMenuList _value, $Res Function(_$_DateSplitMenuList) _then)
+class __$$DateSplitMenuListImplCopyWithImpl<$Res>
+    extends _$DateSplitMenuListCopyWithImpl<$Res, _$DateSplitMenuListImpl>
+    implements _$$DateSplitMenuListImplCopyWith<$Res> {
+  __$$DateSplitMenuListImplCopyWithImpl(_$DateSplitMenuListImpl _value,
+      $Res Function(_$DateSplitMenuListImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_DateSplitMenuListCopyWithImpl<$Res>
     Object? date = null,
     Object? menus = null,
   }) {
-    return _then(_$_DateSplitMenuList(
+    return _then(_$DateSplitMenuListImpl(
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_DateSplitMenuListCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DateSplitMenuList implements _DateSplitMenuList {
-  const _$_DateSplitMenuList(
+class _$DateSplitMenuListImpl implements _DateSplitMenuList {
+  const _$DateSplitMenuListImpl(
       {required this.date, required final List<MenuSummary> menus})
       : _menus = menus;
 
@@ -123,10 +123,10 @@ class _$_DateSplitMenuList implements _DateSplitMenuList {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DateSplitMenuList &&
+            other is _$DateSplitMenuListImpl &&
             (identical(other.date, date) || other.date == date) &&
             const DeepCollectionEquality().equals(other._menus, _menus));
   }
@@ -138,15 +138,15 @@ class _$_DateSplitMenuList implements _DateSplitMenuList {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DateSplitMenuListCopyWith<_$_DateSplitMenuList> get copyWith =>
-      __$$_DateSplitMenuListCopyWithImpl<_$_DateSplitMenuList>(
+  _$$DateSplitMenuListImplCopyWith<_$DateSplitMenuListImpl> get copyWith =>
+      __$$DateSplitMenuListImplCopyWithImpl<_$DateSplitMenuListImpl>(
           this, _$identity);
 }
 
 abstract class _DateSplitMenuList implements DateSplitMenuList {
   const factory _DateSplitMenuList(
       {required final DateTime date,
-      required final List<MenuSummary> menus}) = _$_DateSplitMenuList;
+      required final List<MenuSummary> menus}) = _$DateSplitMenuListImpl;
 
   @override
   DateTime get date;
@@ -154,6 +154,6 @@ abstract class _DateSplitMenuList implements DateSplitMenuList {
   List<MenuSummary> get menus;
   @override
   @JsonKey(ignore: true)
-  _$$_DateSplitMenuListCopyWith<_$_DateSplitMenuList> get copyWith =>
+  _$$DateSplitMenuListImplCopyWith<_$DateSplitMenuListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -55,19 +55,21 @@ class _$MenuIdCopyWithImpl<$Res, $Val extends MenuId>
 }
 
 /// @nodoc
-abstract class _$$_MenuIdCopyWith<$Res> implements $MenuIdCopyWith<$Res> {
-  factory _$$_MenuIdCopyWith(_$_MenuId value, $Res Function(_$_MenuId) then) =
-      __$$_MenuIdCopyWithImpl<$Res>;
+abstract class _$$MenuIdImplCopyWith<$Res> implements $MenuIdCopyWith<$Res> {
+  factory _$$MenuIdImplCopyWith(
+          _$MenuIdImpl value, $Res Function(_$MenuIdImpl) then) =
+      __$$MenuIdImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class __$$_MenuIdCopyWithImpl<$Res>
-    extends _$MenuIdCopyWithImpl<$Res, _$_MenuId>
-    implements _$$_MenuIdCopyWith<$Res> {
-  __$$_MenuIdCopyWithImpl(_$_MenuId _value, $Res Function(_$_MenuId) _then)
+class __$$MenuIdImplCopyWithImpl<$Res>
+    extends _$MenuIdCopyWithImpl<$Res, _$MenuIdImpl>
+    implements _$$MenuIdImplCopyWith<$Res> {
+  __$$MenuIdImplCopyWithImpl(
+      _$MenuIdImpl _value, $Res Function(_$MenuIdImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -75,7 +77,7 @@ class __$$_MenuIdCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$_MenuId(
+    return _then(_$MenuIdImpl(
       null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -86,8 +88,8 @@ class __$$_MenuIdCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MenuId implements _MenuId {
-  const _$_MenuId(this.value);
+class _$MenuIdImpl implements _MenuId {
+  const _$MenuIdImpl(this.value);
 
   @override
   final int value;
@@ -98,10 +100,10 @@ class _$_MenuId implements _MenuId {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MenuId &&
+            other is _$MenuIdImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -111,17 +113,17 @@ class _$_MenuId implements _MenuId {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MenuIdCopyWith<_$_MenuId> get copyWith =>
-      __$$_MenuIdCopyWithImpl<_$_MenuId>(this, _$identity);
+  _$$MenuIdImplCopyWith<_$MenuIdImpl> get copyWith =>
+      __$$MenuIdImplCopyWithImpl<_$MenuIdImpl>(this, _$identity);
 }
 
 abstract class _MenuId implements MenuId {
-  const factory _MenuId(final int value) = _$_MenuId;
+  const factory _MenuId(final int value) = _$MenuIdImpl;
 
   @override
   int get value;
   @override
   @JsonKey(ignore: true)
-  _$$_MenuIdCopyWith<_$_MenuId> get copyWith =>
+  _$$MenuIdImplCopyWith<_$MenuIdImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

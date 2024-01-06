@@ -88,11 +88,11 @@ class _$InvitationCopyWithImpl<$Res, $Val extends Invitation>
 }
 
 /// @nodoc
-abstract class _$$_InvitationCopyWith<$Res>
+abstract class _$$InvitationImplCopyWith<$Res>
     implements $InvitationCopyWith<$Res> {
-  factory _$$_InvitationCopyWith(
-          _$_Invitation value, $Res Function(_$_Invitation) then) =
-      __$$_InvitationCopyWithImpl<$Res>;
+  factory _$$InvitationImplCopyWith(
+          _$InvitationImpl value, $Res Function(_$InvitationImpl) then) =
+      __$$InvitationImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({InvitationCode code, Workspace workspace, DateTime expiredAt});
@@ -104,11 +104,11 @@ abstract class _$$_InvitationCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_InvitationCopyWithImpl<$Res>
-    extends _$InvitationCopyWithImpl<$Res, _$_Invitation>
-    implements _$$_InvitationCopyWith<$Res> {
-  __$$_InvitationCopyWithImpl(
-      _$_Invitation _value, $Res Function(_$_Invitation) _then)
+class __$$InvitationImplCopyWithImpl<$Res>
+    extends _$InvitationCopyWithImpl<$Res, _$InvitationImpl>
+    implements _$$InvitationImplCopyWith<$Res> {
+  __$$InvitationImplCopyWithImpl(
+      _$InvitationImpl _value, $Res Function(_$InvitationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_InvitationCopyWithImpl<$Res>
     Object? workspace = null,
     Object? expiredAt = null,
   }) {
-    return _then(_$_Invitation(
+    return _then(_$InvitationImpl(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -137,8 +137,8 @@ class __$$_InvitationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Invitation implements _Invitation {
-  const _$_Invitation(
+class _$InvitationImpl implements _Invitation {
+  const _$InvitationImpl(
       {required this.code, required this.workspace, required this.expiredAt});
 
   @override
@@ -154,10 +154,10 @@ class _$_Invitation implements _Invitation {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Invitation &&
+            other is _$InvitationImpl &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.workspace, workspace) ||
                 other.workspace == workspace) &&
@@ -171,15 +171,15 @@ class _$_Invitation implements _Invitation {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InvitationCopyWith<_$_Invitation> get copyWith =>
-      __$$_InvitationCopyWithImpl<_$_Invitation>(this, _$identity);
+  _$$InvitationImplCopyWith<_$InvitationImpl> get copyWith =>
+      __$$InvitationImplCopyWithImpl<_$InvitationImpl>(this, _$identity);
 }
 
 abstract class _Invitation implements Invitation {
   const factory _Invitation(
       {required final InvitationCode code,
       required final Workspace workspace,
-      required final DateTime expiredAt}) = _$_Invitation;
+      required final DateTime expiredAt}) = _$InvitationImpl;
 
   @override
   InvitationCode get code;
@@ -189,6 +189,6 @@ abstract class _Invitation implements Invitation {
   DateTime get expiredAt;
   @override
   @JsonKey(ignore: true)
-  _$$_InvitationCopyWith<_$_Invitation> get copyWith =>
+  _$$InvitationImplCopyWith<_$InvitationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

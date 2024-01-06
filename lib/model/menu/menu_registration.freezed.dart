@@ -79,11 +79,11 @@ class _$MenuRegistrationCopyWithImpl<$Res, $Val extends MenuRegistration>
 }
 
 /// @nodoc
-abstract class _$$_MenuRegistrationCopyWith<$Res>
+abstract class _$$MenuRegistrationImplCopyWith<$Res>
     implements $MenuRegistrationCopyWith<$Res> {
-  factory _$$_MenuRegistrationCopyWith(
-          _$_MenuRegistration value, $Res Function(_$_MenuRegistration) then) =
-      __$$_MenuRegistrationCopyWithImpl<$Res>;
+  factory _$$MenuRegistrationImplCopyWith(_$MenuRegistrationImpl value,
+          $Res Function(_$MenuRegistrationImpl) then) =
+      __$$MenuRegistrationImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -94,11 +94,11 @@ abstract class _$$_MenuRegistrationCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MenuRegistrationCopyWithImpl<$Res>
-    extends _$MenuRegistrationCopyWithImpl<$Res, _$_MenuRegistration>
-    implements _$$_MenuRegistrationCopyWith<$Res> {
-  __$$_MenuRegistrationCopyWithImpl(
-      _$_MenuRegistration _value, $Res Function(_$_MenuRegistration) _then)
+class __$$MenuRegistrationImplCopyWithImpl<$Res>
+    extends _$MenuRegistrationCopyWithImpl<$Res, _$MenuRegistrationImpl>
+    implements _$$MenuRegistrationImplCopyWith<$Res> {
+  __$$MenuRegistrationImplCopyWithImpl(_$MenuRegistrationImpl _value,
+      $Res Function(_$MenuRegistrationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -109,7 +109,7 @@ class __$$_MenuRegistrationCopyWithImpl<$Res>
     Object? timeFrame = null,
     Object? recipeIds = null,
   }) {
-    return _then(_$_MenuRegistration(
+    return _then(_$MenuRegistrationImpl(
       memo: null == memo
           ? _value.memo
           : memo // ignore: cast_nullable_to_non_nullable
@@ -132,8 +132,8 @@ class __$$_MenuRegistrationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MenuRegistration implements _MenuRegistration {
-  const _$_MenuRegistration(
+class _$MenuRegistrationImpl implements _MenuRegistration {
+  const _$MenuRegistrationImpl(
       {required this.memo,
       required this.date,
       required this.timeFrame,
@@ -160,10 +160,10 @@ class _$_MenuRegistration implements _MenuRegistration {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MenuRegistration &&
+            other is _$MenuRegistrationImpl &&
             (identical(other.memo, memo) || other.memo == memo) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.timeFrame, timeFrame) ||
@@ -179,8 +179,9 @@ class _$_MenuRegistration implements _MenuRegistration {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MenuRegistrationCopyWith<_$_MenuRegistration> get copyWith =>
-      __$$_MenuRegistrationCopyWithImpl<_$_MenuRegistration>(this, _$identity);
+  _$$MenuRegistrationImplCopyWith<_$MenuRegistrationImpl> get copyWith =>
+      __$$MenuRegistrationImplCopyWithImpl<_$MenuRegistrationImpl>(
+          this, _$identity);
 }
 
 abstract class _MenuRegistration implements MenuRegistration {
@@ -188,7 +189,7 @@ abstract class _MenuRegistration implements MenuRegistration {
       {required final String memo,
       required final DateTime date,
       required final TimeFrame timeFrame,
-      required final List<RecipeId> recipeIds}) = _$_MenuRegistration;
+      required final List<RecipeId> recipeIds}) = _$MenuRegistrationImpl;
 
   @override
   String get memo;
@@ -200,6 +201,6 @@ abstract class _MenuRegistration implements MenuRegistration {
   List<RecipeId> get recipeIds;
   @override
   @JsonKey(ignore: true)
-  _$$_MenuRegistrationCopyWith<_$_MenuRegistration> get copyWith =>
+  _$$MenuRegistrationImplCopyWith<_$MenuRegistrationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

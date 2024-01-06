@@ -75,10 +75,10 @@ class _$PreUserCopyWithImpl<$Res, $Val extends PreUser>
 }
 
 /// @nodoc
-abstract class _$$_PreUserCopyWith<$Res> implements $PreUserCopyWith<$Res> {
-  factory _$$_PreUserCopyWith(
-          _$_PreUser value, $Res Function(_$_PreUser) then) =
-      __$$_PreUserCopyWithImpl<$Res>;
+abstract class _$$PreUserImplCopyWith<$Res> implements $PreUserCopyWith<$Res> {
+  factory _$$PreUserImplCopyWith(
+          _$PreUserImpl value, $Res Function(_$PreUserImpl) then) =
+      __$$PreUserImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String displayName, Content? photo});
@@ -88,10 +88,11 @@ abstract class _$$_PreUserCopyWith<$Res> implements $PreUserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PreUserCopyWithImpl<$Res>
-    extends _$PreUserCopyWithImpl<$Res, _$_PreUser>
-    implements _$$_PreUserCopyWith<$Res> {
-  __$$_PreUserCopyWithImpl(_$_PreUser _value, $Res Function(_$_PreUser) _then)
+class __$$PreUserImplCopyWithImpl<$Res>
+    extends _$PreUserCopyWithImpl<$Res, _$PreUserImpl>
+    implements _$$PreUserImplCopyWith<$Res> {
+  __$$PreUserImplCopyWithImpl(
+      _$PreUserImpl _value, $Res Function(_$PreUserImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +101,7 @@ class __$$_PreUserCopyWithImpl<$Res>
     Object? displayName = null,
     Object? photo = freezed,
   }) {
-    return _then(_$_PreUser(
+    return _then(_$PreUserImpl(
       displayName: null == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
@@ -115,8 +116,8 @@ class __$$_PreUserCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PreUser implements _PreUser {
-  const _$_PreUser({required this.displayName, required this.photo});
+class _$PreUserImpl implements _PreUser {
+  const _$PreUserImpl({required this.displayName, required this.photo});
 
   @override
   final String displayName;
@@ -129,10 +130,10 @@ class _$_PreUser implements _PreUser {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PreUser &&
+            other is _$PreUserImpl &&
             (identical(other.displayName, displayName) ||
                 other.displayName == displayName) &&
             (identical(other.photo, photo) || other.photo == photo));
@@ -144,14 +145,14 @@ class _$_PreUser implements _PreUser {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PreUserCopyWith<_$_PreUser> get copyWith =>
-      __$$_PreUserCopyWithImpl<_$_PreUser>(this, _$identity);
+  _$$PreUserImplCopyWith<_$PreUserImpl> get copyWith =>
+      __$$PreUserImplCopyWithImpl<_$PreUserImpl>(this, _$identity);
 }
 
 abstract class _PreUser implements PreUser {
   const factory _PreUser(
       {required final String displayName,
-      required final Content? photo}) = _$_PreUser;
+      required final Content? photo}) = _$PreUserImpl;
 
   @override
   String get displayName;
@@ -159,6 +160,6 @@ abstract class _PreUser implements PreUser {
   Content? get photo;
   @override
   @JsonKey(ignore: true)
-  _$$_PreUserCopyWith<_$_PreUser> get copyWith =>
+  _$$PreUserImplCopyWith<_$PreUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

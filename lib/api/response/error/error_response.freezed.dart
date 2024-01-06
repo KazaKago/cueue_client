@@ -74,11 +74,11 @@ class _$ErrorResponseCopyWithImpl<$Res, $Val extends ErrorResponse>
 }
 
 /// @nodoc
-abstract class _$$_ErrorResponseCopyWith<$Res>
+abstract class _$$ErrorResponseImplCopyWith<$Res>
     implements $ErrorResponseCopyWith<$Res> {
-  factory _$$_ErrorResponseCopyWith(
-          _$_ErrorResponse value, $Res Function(_$_ErrorResponse) then) =
-      __$$_ErrorResponseCopyWithImpl<$Res>;
+  factory _$$ErrorResponseImplCopyWith(
+          _$ErrorResponseImpl value, $Res Function(_$ErrorResponseImpl) then) =
+      __$$ErrorResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -87,11 +87,11 @@ abstract class _$$_ErrorResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ErrorResponseCopyWithImpl<$Res>
-    extends _$ErrorResponseCopyWithImpl<$Res, _$_ErrorResponse>
-    implements _$$_ErrorResponseCopyWith<$Res> {
-  __$$_ErrorResponseCopyWithImpl(
-      _$_ErrorResponse _value, $Res Function(_$_ErrorResponse) _then)
+class __$$ErrorResponseImplCopyWithImpl<$Res>
+    extends _$ErrorResponseCopyWithImpl<$Res, _$ErrorResponseImpl>
+    implements _$$ErrorResponseImplCopyWith<$Res> {
+  __$$ErrorResponseImplCopyWithImpl(
+      _$ErrorResponseImpl _value, $Res Function(_$ErrorResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +100,7 @@ class __$$_ErrorResponseCopyWithImpl<$Res>
     Object? name = null,
     Object? message = null,
   }) {
-    return _then(_$_ErrorResponse(
+    return _then(_$ErrorResponseImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -115,13 +115,13 @@ class __$$_ErrorResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ErrorResponse implements _ErrorResponse {
-  const _$_ErrorResponse(
+class _$ErrorResponseImpl implements _ErrorResponse {
+  const _$ErrorResponseImpl(
       {@JsonKey(name: 'name') required this.name,
       @JsonKey(name: 'message') required this.message});
 
-  factory _$_ErrorResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_ErrorResponseFromJson(json);
+  factory _$ErrorResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ErrorResponseImplFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
@@ -138,10 +138,10 @@ class _$_ErrorResponse implements _ErrorResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ErrorResponse &&
+            other is _$ErrorResponseImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.message, message) || other.message == message));
   }
@@ -153,12 +153,12 @@ class _$_ErrorResponse implements _ErrorResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorResponseCopyWith<_$_ErrorResponse> get copyWith =>
-      __$$_ErrorResponseCopyWithImpl<_$_ErrorResponse>(this, _$identity);
+  _$$ErrorResponseImplCopyWith<_$ErrorResponseImpl> get copyWith =>
+      __$$ErrorResponseImplCopyWithImpl<_$ErrorResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ErrorResponseToJson(
+    return _$$ErrorResponseImplToJson(
       this,
     );
   }
@@ -168,10 +168,10 @@ abstract class _ErrorResponse implements ErrorResponse {
   const factory _ErrorResponse(
           {@JsonKey(name: 'name') required final String name,
           @JsonKey(name: 'message') required final String message}) =
-      _$_ErrorResponse;
+      _$ErrorResponseImpl;
 
   factory _ErrorResponse.fromJson(Map<String, dynamic> json) =
-      _$_ErrorResponse.fromJson;
+      _$ErrorResponseImpl.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
@@ -181,6 +181,6 @@ abstract class _ErrorResponse implements ErrorResponse {
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$_ErrorResponseCopyWith<_$_ErrorResponse> get copyWith =>
+  _$$ErrorResponseImplCopyWith<_$ErrorResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

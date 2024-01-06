@@ -69,22 +69,22 @@ class _$GoogleProviderCopyWithImpl<$Res, $Val extends GoogleProvider>
 }
 
 /// @nodoc
-abstract class _$$_GoogleProviderCopyWith<$Res>
+abstract class _$$GoogleProviderImplCopyWith<$Res>
     implements $GoogleProviderCopyWith<$Res> {
-  factory _$$_GoogleProviderCopyWith(
-          _$_GoogleProvider value, $Res Function(_$_GoogleProvider) then) =
-      __$$_GoogleProviderCopyWithImpl<$Res>;
+  factory _$$GoogleProviderImplCopyWith(_$GoogleProviderImpl value,
+          $Res Function(_$GoogleProviderImpl) then) =
+      __$$GoogleProviderImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String uid, String? email, String displayName});
 }
 
 /// @nodoc
-class __$$_GoogleProviderCopyWithImpl<$Res>
-    extends _$GoogleProviderCopyWithImpl<$Res, _$_GoogleProvider>
-    implements _$$_GoogleProviderCopyWith<$Res> {
-  __$$_GoogleProviderCopyWithImpl(
-      _$_GoogleProvider _value, $Res Function(_$_GoogleProvider) _then)
+class __$$GoogleProviderImplCopyWithImpl<$Res>
+    extends _$GoogleProviderCopyWithImpl<$Res, _$GoogleProviderImpl>
+    implements _$$GoogleProviderImplCopyWith<$Res> {
+  __$$GoogleProviderImplCopyWithImpl(
+      _$GoogleProviderImpl _value, $Res Function(_$GoogleProviderImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +94,7 @@ class __$$_GoogleProviderCopyWithImpl<$Res>
     Object? email = freezed,
     Object? displayName = null,
   }) {
-    return _then(_$_GoogleProvider(
+    return _then(_$GoogleProviderImpl(
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -113,8 +113,8 @@ class __$$_GoogleProviderCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GoogleProvider implements _GoogleProvider {
-  const _$_GoogleProvider(
+class _$GoogleProviderImpl implements _GoogleProvider {
+  const _$GoogleProviderImpl(
       {required this.uid, required this.email, required this.displayName});
 
   @override
@@ -130,10 +130,10 @@ class _$_GoogleProvider implements _GoogleProvider {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GoogleProvider &&
+            other is _$GoogleProviderImpl &&
             (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.displayName, displayName) ||
@@ -146,15 +146,16 @@ class _$_GoogleProvider implements _GoogleProvider {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GoogleProviderCopyWith<_$_GoogleProvider> get copyWith =>
-      __$$_GoogleProviderCopyWithImpl<_$_GoogleProvider>(this, _$identity);
+  _$$GoogleProviderImplCopyWith<_$GoogleProviderImpl> get copyWith =>
+      __$$GoogleProviderImplCopyWithImpl<_$GoogleProviderImpl>(
+          this, _$identity);
 }
 
 abstract class _GoogleProvider implements GoogleProvider {
   const factory _GoogleProvider(
       {required final String uid,
       required final String? email,
-      required final String displayName}) = _$_GoogleProvider;
+      required final String displayName}) = _$GoogleProviderImpl;
 
   @override
   String get uid;
@@ -164,6 +165,6 @@ abstract class _GoogleProvider implements GoogleProvider {
   String get displayName;
   @override
   @JsonKey(ignore: true)
-  _$$_GoogleProviderCopyWith<_$_GoogleProvider> get copyWith =>
+  _$$GoogleProviderImplCopyWith<_$GoogleProviderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,9 +6,9 @@ part of 'menu_summary_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MenuSummaryResponse _$$_MenuSummaryResponseFromJson(
+_$MenuSummaryResponseImpl _$$MenuSummaryResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_MenuSummaryResponse(
+    _$MenuSummaryResponseImpl(
       id: json['id'] as int,
       memo: json['memo'] as String,
       date: json['date'] as String,
@@ -18,8 +18,8 @@ _$_MenuSummaryResponse _$$_MenuSummaryResponseFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$_MenuSummaryResponseToJson(
-        _$_MenuSummaryResponse instance) =>
+Map<String, dynamic> _$$MenuSummaryResponseImplToJson(
+        _$MenuSummaryResponseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'memo': instance.memo,

@@ -101,11 +101,11 @@ class _$RecipeRequestCopyWithImpl<$Res, $Val extends RecipeRequest>
 }
 
 /// @nodoc
-abstract class _$$_RecipeRequestCopyWith<$Res>
+abstract class _$$RecipeRequestImplCopyWith<$Res>
     implements $RecipeRequestCopyWith<$Res> {
-  factory _$$_RecipeRequestCopyWith(
-          _$_RecipeRequest value, $Res Function(_$_RecipeRequest) then) =
-      __$$_RecipeRequestCopyWithImpl<$Res>;
+  factory _$$RecipeRequestImplCopyWith(
+          _$RecipeRequestImpl value, $Res Function(_$RecipeRequestImpl) then) =
+      __$$RecipeRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -117,11 +117,11 @@ abstract class _$$_RecipeRequestCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RecipeRequestCopyWithImpl<$Res>
-    extends _$RecipeRequestCopyWithImpl<$Res, _$_RecipeRequest>
-    implements _$$_RecipeRequestCopyWith<$Res> {
-  __$$_RecipeRequestCopyWithImpl(
-      _$_RecipeRequest _value, $Res Function(_$_RecipeRequest) _then)
+class __$$RecipeRequestImplCopyWithImpl<$Res>
+    extends _$RecipeRequestCopyWithImpl<$Res, _$RecipeRequestImpl>
+    implements _$$RecipeRequestImplCopyWith<$Res> {
+  __$$RecipeRequestImplCopyWithImpl(
+      _$RecipeRequestImpl _value, $Res Function(_$RecipeRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -133,7 +133,7 @@ class __$$_RecipeRequestCopyWithImpl<$Res>
     Object? imageKeys = null,
     Object? tagIds = null,
   }) {
-    return _then(_$_RecipeRequest(
+    return _then(_$RecipeRequestImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -160,8 +160,8 @@ class __$$_RecipeRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_RecipeRequest implements _RecipeRequest {
-  const _$_RecipeRequest(
+class _$RecipeRequestImpl implements _RecipeRequest {
+  const _$RecipeRequestImpl(
       {@JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description,
       @JsonKey(name: 'url') required this.url,
@@ -170,8 +170,8 @@ class _$_RecipeRequest implements _RecipeRequest {
       : _imageKeys = imageKeys,
         _tagIds = tagIds;
 
-  factory _$_RecipeRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_RecipeRequestFromJson(json);
+  factory _$RecipeRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RecipeRequestImplFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
@@ -213,10 +213,10 @@ class _$_RecipeRequest implements _RecipeRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RecipeRequest &&
+            other is _$RecipeRequestImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -239,12 +239,12 @@ class _$_RecipeRequest implements _RecipeRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RecipeRequestCopyWith<_$_RecipeRequest> get copyWith =>
-      __$$_RecipeRequestCopyWithImpl<_$_RecipeRequest>(this, _$identity);
+  _$$RecipeRequestImplCopyWith<_$RecipeRequestImpl> get copyWith =>
+      __$$RecipeRequestImplCopyWithImpl<_$RecipeRequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RecipeRequestToJson(
+    return _$$RecipeRequestImplToJson(
       this,
     );
   }
@@ -257,10 +257,10 @@ abstract class _RecipeRequest implements RecipeRequest {
           @JsonKey(name: 'url') required final String? url,
           @JsonKey(name: 'image_keys') required final List<String> imageKeys,
           @JsonKey(name: 'tag_ids') required final List<int> tagIds}) =
-      _$_RecipeRequest;
+      _$RecipeRequestImpl;
 
   factory _RecipeRequest.fromJson(Map<String, dynamic> json) =
-      _$_RecipeRequest.fromJson;
+      _$RecipeRequestImpl.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'title')
@@ -279,6 +279,6 @@ abstract class _RecipeRequest implements RecipeRequest {
   List<int> get tagIds;
   @override
   @JsonKey(ignore: true)
-  _$$_RecipeRequestCopyWith<_$_RecipeRequest> get copyWith =>
+  _$$RecipeRequestImplCopyWith<_$RecipeRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

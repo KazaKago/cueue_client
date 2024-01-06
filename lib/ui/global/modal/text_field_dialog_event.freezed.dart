@@ -110,22 +110,22 @@ class _$TextFieldDialogEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PositiveCopyWith<$Res>
+abstract class _$$PositiveImplCopyWith<$Res>
     implements $TextFieldDialogEventCopyWith<$Res> {
-  factory _$$_PositiveCopyWith(
-          _$_Positive value, $Res Function(_$_Positive) then) =
-      __$$_PositiveCopyWithImpl<$Res>;
+  factory _$$PositiveImplCopyWith(
+          _$PositiveImpl value, $Res Function(_$PositiveImpl) then) =
+      __$$PositiveImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String currentText, String? originalText});
 }
 
 /// @nodoc
-class __$$_PositiveCopyWithImpl<$Res>
-    extends _$TextFieldDialogEventCopyWithImpl<$Res, _$_Positive>
-    implements _$$_PositiveCopyWith<$Res> {
-  __$$_PositiveCopyWithImpl(
-      _$_Positive _value, $Res Function(_$_Positive) _then)
+class __$$PositiveImplCopyWithImpl<$Res>
+    extends _$TextFieldDialogEventCopyWithImpl<$Res, _$PositiveImpl>
+    implements _$$PositiveImplCopyWith<$Res> {
+  __$$PositiveImplCopyWithImpl(
+      _$PositiveImpl _value, $Res Function(_$PositiveImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -134,7 +134,7 @@ class __$$_PositiveCopyWithImpl<$Res>
     Object? currentText = null,
     Object? originalText = freezed,
   }) {
-    return _then(_$_Positive(
+    return _then(_$PositiveImpl(
       null == currentText
           ? _value.currentText
           : currentText // ignore: cast_nullable_to_non_nullable
@@ -149,8 +149,8 @@ class __$$_PositiveCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Positive implements _Positive {
-  const _$_Positive(this.currentText, {this.originalText});
+class _$PositiveImpl implements _Positive {
+  const _$PositiveImpl(this.currentText, {this.originalText});
 
   @override
   final String currentText;
@@ -163,10 +163,10 @@ class _$_Positive implements _Positive {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Positive &&
+            other is _$PositiveImpl &&
             (identical(other.currentText, currentText) ||
                 other.currentText == currentText) &&
             (identical(other.originalText, originalText) ||
@@ -179,8 +179,8 @@ class _$_Positive implements _Positive {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PositiveCopyWith<_$_Positive> get copyWith =>
-      __$$_PositiveCopyWithImpl<_$_Positive>(this, _$identity);
+  _$$PositiveImplCopyWith<_$PositiveImpl> get copyWith =>
+      __$$PositiveImplCopyWithImpl<_$PositiveImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -255,7 +255,7 @@ class _$_Positive implements _Positive {
 
 abstract class _Positive implements TextFieldDialogEvent {
   const factory _Positive(final String currentText,
-      {final String? originalText}) = _$_Positive;
+      {final String? originalText}) = _$PositiveImpl;
 
   @override
   String get currentText;
@@ -263,26 +263,27 @@ abstract class _Positive implements TextFieldDialogEvent {
   String? get originalText;
   @override
   @JsonKey(ignore: true)
-  _$$_PositiveCopyWith<_$_Positive> get copyWith =>
+  _$$PositiveImplCopyWith<_$PositiveImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_NeutralCopyWith<$Res>
+abstract class _$$NeutralImplCopyWith<$Res>
     implements $TextFieldDialogEventCopyWith<$Res> {
-  factory _$$_NeutralCopyWith(
-          _$_Neutral value, $Res Function(_$_Neutral) then) =
-      __$$_NeutralCopyWithImpl<$Res>;
+  factory _$$NeutralImplCopyWith(
+          _$NeutralImpl value, $Res Function(_$NeutralImpl) then) =
+      __$$NeutralImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String currentText, String? originalText});
 }
 
 /// @nodoc
-class __$$_NeutralCopyWithImpl<$Res>
-    extends _$TextFieldDialogEventCopyWithImpl<$Res, _$_Neutral>
-    implements _$$_NeutralCopyWith<$Res> {
-  __$$_NeutralCopyWithImpl(_$_Neutral _value, $Res Function(_$_Neutral) _then)
+class __$$NeutralImplCopyWithImpl<$Res>
+    extends _$TextFieldDialogEventCopyWithImpl<$Res, _$NeutralImpl>
+    implements _$$NeutralImplCopyWith<$Res> {
+  __$$NeutralImplCopyWithImpl(
+      _$NeutralImpl _value, $Res Function(_$NeutralImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -291,7 +292,7 @@ class __$$_NeutralCopyWithImpl<$Res>
     Object? currentText = null,
     Object? originalText = freezed,
   }) {
-    return _then(_$_Neutral(
+    return _then(_$NeutralImpl(
       null == currentText
           ? _value.currentText
           : currentText // ignore: cast_nullable_to_non_nullable
@@ -306,8 +307,8 @@ class __$$_NeutralCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Neutral implements _Neutral {
-  const _$_Neutral(this.currentText, {this.originalText});
+class _$NeutralImpl implements _Neutral {
+  const _$NeutralImpl(this.currentText, {this.originalText});
 
   @override
   final String currentText;
@@ -320,10 +321,10 @@ class _$_Neutral implements _Neutral {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Neutral &&
+            other is _$NeutralImpl &&
             (identical(other.currentText, currentText) ||
                 other.currentText == currentText) &&
             (identical(other.originalText, originalText) ||
@@ -336,8 +337,8 @@ class _$_Neutral implements _Neutral {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NeutralCopyWith<_$_Neutral> get copyWith =>
-      __$$_NeutralCopyWithImpl<_$_Neutral>(this, _$identity);
+  _$$NeutralImplCopyWith<_$NeutralImpl> get copyWith =>
+      __$$NeutralImplCopyWithImpl<_$NeutralImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -412,7 +413,7 @@ class _$_Neutral implements _Neutral {
 
 abstract class _Neutral implements TextFieldDialogEvent {
   const factory _Neutral(final String currentText,
-      {final String? originalText}) = _$_Neutral;
+      {final String? originalText}) = _$NeutralImpl;
 
   @override
   String get currentText;
@@ -420,27 +421,27 @@ abstract class _Neutral implements TextFieldDialogEvent {
   String? get originalText;
   @override
   @JsonKey(ignore: true)
-  _$$_NeutralCopyWith<_$_Neutral> get copyWith =>
+  _$$NeutralImplCopyWith<_$NeutralImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_NegativeCopyWith<$Res>
+abstract class _$$NegativeImplCopyWith<$Res>
     implements $TextFieldDialogEventCopyWith<$Res> {
-  factory _$$_NegativeCopyWith(
-          _$_Negative value, $Res Function(_$_Negative) then) =
-      __$$_NegativeCopyWithImpl<$Res>;
+  factory _$$NegativeImplCopyWith(
+          _$NegativeImpl value, $Res Function(_$NegativeImpl) then) =
+      __$$NegativeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String currentText, String? originalText});
 }
 
 /// @nodoc
-class __$$_NegativeCopyWithImpl<$Res>
-    extends _$TextFieldDialogEventCopyWithImpl<$Res, _$_Negative>
-    implements _$$_NegativeCopyWith<$Res> {
-  __$$_NegativeCopyWithImpl(
-      _$_Negative _value, $Res Function(_$_Negative) _then)
+class __$$NegativeImplCopyWithImpl<$Res>
+    extends _$TextFieldDialogEventCopyWithImpl<$Res, _$NegativeImpl>
+    implements _$$NegativeImplCopyWith<$Res> {
+  __$$NegativeImplCopyWithImpl(
+      _$NegativeImpl _value, $Res Function(_$NegativeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -449,7 +450,7 @@ class __$$_NegativeCopyWithImpl<$Res>
     Object? currentText = null,
     Object? originalText = freezed,
   }) {
-    return _then(_$_Negative(
+    return _then(_$NegativeImpl(
       null == currentText
           ? _value.currentText
           : currentText // ignore: cast_nullable_to_non_nullable
@@ -464,8 +465,8 @@ class __$$_NegativeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Negative implements _Negative {
-  const _$_Negative(this.currentText, {this.originalText});
+class _$NegativeImpl implements _Negative {
+  const _$NegativeImpl(this.currentText, {this.originalText});
 
   @override
   final String currentText;
@@ -478,10 +479,10 @@ class _$_Negative implements _Negative {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Negative &&
+            other is _$NegativeImpl &&
             (identical(other.currentText, currentText) ||
                 other.currentText == currentText) &&
             (identical(other.originalText, originalText) ||
@@ -494,8 +495,8 @@ class _$_Negative implements _Negative {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NegativeCopyWith<_$_Negative> get copyWith =>
-      __$$_NegativeCopyWithImpl<_$_Negative>(this, _$identity);
+  _$$NegativeImplCopyWith<_$NegativeImpl> get copyWith =>
+      __$$NegativeImplCopyWithImpl<_$NegativeImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -570,7 +571,7 @@ class _$_Negative implements _Negative {
 
 abstract class _Negative implements TextFieldDialogEvent {
   const factory _Negative(final String currentText,
-      {final String? originalText}) = _$_Negative;
+      {final String? originalText}) = _$NegativeImpl;
 
   @override
   String get currentText;
@@ -578,6 +579,6 @@ abstract class _Negative implements TextFieldDialogEvent {
   String? get originalText;
   @override
   @JsonKey(ignore: true)
-  _$$_NegativeCopyWith<_$_Negative> get copyWith =>
+  _$$NegativeImplCopyWith<_$NegativeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

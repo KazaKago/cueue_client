@@ -69,22 +69,22 @@ class _$AppleProviderCopyWithImpl<$Res, $Val extends AppleProvider>
 }
 
 /// @nodoc
-abstract class _$$_AppleProviderCopyWith<$Res>
+abstract class _$$AppleProviderImplCopyWith<$Res>
     implements $AppleProviderCopyWith<$Res> {
-  factory _$$_AppleProviderCopyWith(
-          _$_AppleProvider value, $Res Function(_$_AppleProvider) then) =
-      __$$_AppleProviderCopyWithImpl<$Res>;
+  factory _$$AppleProviderImplCopyWith(
+          _$AppleProviderImpl value, $Res Function(_$AppleProviderImpl) then) =
+      __$$AppleProviderImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String uid, String? email, String displayName});
 }
 
 /// @nodoc
-class __$$_AppleProviderCopyWithImpl<$Res>
-    extends _$AppleProviderCopyWithImpl<$Res, _$_AppleProvider>
-    implements _$$_AppleProviderCopyWith<$Res> {
-  __$$_AppleProviderCopyWithImpl(
-      _$_AppleProvider _value, $Res Function(_$_AppleProvider) _then)
+class __$$AppleProviderImplCopyWithImpl<$Res>
+    extends _$AppleProviderCopyWithImpl<$Res, _$AppleProviderImpl>
+    implements _$$AppleProviderImplCopyWith<$Res> {
+  __$$AppleProviderImplCopyWithImpl(
+      _$AppleProviderImpl _value, $Res Function(_$AppleProviderImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +94,7 @@ class __$$_AppleProviderCopyWithImpl<$Res>
     Object? email = freezed,
     Object? displayName = null,
   }) {
-    return _then(_$_AppleProvider(
+    return _then(_$AppleProviderImpl(
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -113,8 +113,8 @@ class __$$_AppleProviderCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppleProvider implements _AppleProvider {
-  const _$_AppleProvider(
+class _$AppleProviderImpl implements _AppleProvider {
+  const _$AppleProviderImpl(
       {required this.uid, required this.email, required this.displayName});
 
   @override
@@ -130,10 +130,10 @@ class _$_AppleProvider implements _AppleProvider {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppleProvider &&
+            other is _$AppleProviderImpl &&
             (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.displayName, displayName) ||
@@ -146,15 +146,15 @@ class _$_AppleProvider implements _AppleProvider {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppleProviderCopyWith<_$_AppleProvider> get copyWith =>
-      __$$_AppleProviderCopyWithImpl<_$_AppleProvider>(this, _$identity);
+  _$$AppleProviderImplCopyWith<_$AppleProviderImpl> get copyWith =>
+      __$$AppleProviderImplCopyWithImpl<_$AppleProviderImpl>(this, _$identity);
 }
 
 abstract class _AppleProvider implements AppleProvider {
   const factory _AppleProvider(
       {required final String uid,
       required final String? email,
-      required final String displayName}) = _$_AppleProvider;
+      required final String displayName}) = _$AppleProviderImpl;
 
   @override
   String get uid;
@@ -164,6 +164,6 @@ abstract class _AppleProvider implements AppleProvider {
   String get displayName;
   @override
   @JsonKey(ignore: true)
-  _$$_AppleProviderCopyWith<_$_AppleProvider> get copyWith =>
+  _$$AppleProviderImplCopyWith<_$AppleProviderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

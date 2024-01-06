@@ -64,22 +64,22 @@ class _$ContentRequestCopyWithImpl<$Res, $Val extends ContentRequest>
 }
 
 /// @nodoc
-abstract class _$$_ContentRequestCopyWith<$Res>
+abstract class _$$ContentRequestImplCopyWith<$Res>
     implements $ContentRequestCopyWith<$Res> {
-  factory _$$_ContentRequestCopyWith(
-          _$_ContentRequest value, $Res Function(_$_ContentRequest) then) =
-      __$$_ContentRequestCopyWithImpl<$Res>;
+  factory _$$ContentRequestImplCopyWith(_$ContentRequestImpl value,
+          $Res Function(_$ContentRequestImpl) then) =
+      __$$ContentRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'data') String data});
 }
 
 /// @nodoc
-class __$$_ContentRequestCopyWithImpl<$Res>
-    extends _$ContentRequestCopyWithImpl<$Res, _$_ContentRequest>
-    implements _$$_ContentRequestCopyWith<$Res> {
-  __$$_ContentRequestCopyWithImpl(
-      _$_ContentRequest _value, $Res Function(_$_ContentRequest) _then)
+class __$$ContentRequestImplCopyWithImpl<$Res>
+    extends _$ContentRequestCopyWithImpl<$Res, _$ContentRequestImpl>
+    implements _$$ContentRequestImplCopyWith<$Res> {
+  __$$ContentRequestImplCopyWithImpl(
+      _$ContentRequestImpl _value, $Res Function(_$ContentRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_ContentRequestCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$_ContentRequest(
+    return _then(_$ContentRequestImpl(
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -98,11 +98,11 @@ class __$$_ContentRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ContentRequest implements _ContentRequest {
-  const _$_ContentRequest({@JsonKey(name: 'data') required this.data});
+class _$ContentRequestImpl implements _ContentRequest {
+  const _$ContentRequestImpl({@JsonKey(name: 'data') required this.data});
 
-  factory _$_ContentRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_ContentRequestFromJson(json);
+  factory _$ContentRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ContentRequestImplFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
@@ -115,10 +115,10 @@ class _$_ContentRequest implements _ContentRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ContentRequest &&
+            other is _$ContentRequestImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -129,12 +129,13 @@ class _$_ContentRequest implements _ContentRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ContentRequestCopyWith<_$_ContentRequest> get copyWith =>
-      __$$_ContentRequestCopyWithImpl<_$_ContentRequest>(this, _$identity);
+  _$$ContentRequestImplCopyWith<_$ContentRequestImpl> get copyWith =>
+      __$$ContentRequestImplCopyWithImpl<_$ContentRequestImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ContentRequestToJson(
+    return _$$ContentRequestImplToJson(
       this,
     );
   }
@@ -142,16 +143,17 @@ class _$_ContentRequest implements _ContentRequest {
 
 abstract class _ContentRequest implements ContentRequest {
   const factory _ContentRequest(
-      {@JsonKey(name: 'data') required final String data}) = _$_ContentRequest;
+          {@JsonKey(name: 'data') required final String data}) =
+      _$ContentRequestImpl;
 
   factory _ContentRequest.fromJson(Map<String, dynamic> json) =
-      _$_ContentRequest.fromJson;
+      _$ContentRequestImpl.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'data')
   String get data;
   @override
   @JsonKey(ignore: true)
-  _$$_ContentRequestCopyWith<_$_ContentRequest> get copyWith =>
+  _$$ContentRequestImplCopyWith<_$ContentRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

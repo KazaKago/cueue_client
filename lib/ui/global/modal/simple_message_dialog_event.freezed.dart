@@ -82,25 +82,25 @@ class _$SimpleMessageDialogEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PositiveCopyWith<$Res> {
-  factory _$$_PositiveCopyWith(
-          _$_Positive value, $Res Function(_$_Positive) then) =
-      __$$_PositiveCopyWithImpl<$Res>;
+abstract class _$$PositiveImplCopyWith<$Res> {
+  factory _$$PositiveImplCopyWith(
+          _$PositiveImpl value, $Res Function(_$PositiveImpl) then) =
+      __$$PositiveImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PositiveCopyWithImpl<$Res>
-    extends _$SimpleMessageDialogEventCopyWithImpl<$Res, _$_Positive>
-    implements _$$_PositiveCopyWith<$Res> {
-  __$$_PositiveCopyWithImpl(
-      _$_Positive _value, $Res Function(_$_Positive) _then)
+class __$$PositiveImplCopyWithImpl<$Res>
+    extends _$SimpleMessageDialogEventCopyWithImpl<$Res, _$PositiveImpl>
+    implements _$$PositiveImplCopyWith<$Res> {
+  __$$PositiveImplCopyWithImpl(
+      _$PositiveImpl _value, $Res Function(_$PositiveImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Positive implements _Positive {
-  const _$_Positive();
+class _$PositiveImpl implements _Positive {
+  const _$PositiveImpl();
 
   @override
   String toString() {
@@ -108,9 +108,9 @@ class _$_Positive implements _Positive {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Positive);
+        (other.runtimeType == runtimeType && other is _$PositiveImpl);
   }
 
   @override
@@ -186,28 +186,29 @@ class _$_Positive implements _Positive {
 }
 
 abstract class _Positive implements SimpleMessageDialogEvent {
-  const factory _Positive() = _$_Positive;
+  const factory _Positive() = _$PositiveImpl;
 }
 
 /// @nodoc
-abstract class _$$_NeutralCopyWith<$Res> {
-  factory _$$_NeutralCopyWith(
-          _$_Neutral value, $Res Function(_$_Neutral) then) =
-      __$$_NeutralCopyWithImpl<$Res>;
+abstract class _$$NeutralImplCopyWith<$Res> {
+  factory _$$NeutralImplCopyWith(
+          _$NeutralImpl value, $Res Function(_$NeutralImpl) then) =
+      __$$NeutralImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NeutralCopyWithImpl<$Res>
-    extends _$SimpleMessageDialogEventCopyWithImpl<$Res, _$_Neutral>
-    implements _$$_NeutralCopyWith<$Res> {
-  __$$_NeutralCopyWithImpl(_$_Neutral _value, $Res Function(_$_Neutral) _then)
+class __$$NeutralImplCopyWithImpl<$Res>
+    extends _$SimpleMessageDialogEventCopyWithImpl<$Res, _$NeutralImpl>
+    implements _$$NeutralImplCopyWith<$Res> {
+  __$$NeutralImplCopyWithImpl(
+      _$NeutralImpl _value, $Res Function(_$NeutralImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Neutral implements _Neutral {
-  const _$_Neutral();
+class _$NeutralImpl implements _Neutral {
+  const _$NeutralImpl();
 
   @override
   String toString() {
@@ -215,9 +216,9 @@ class _$_Neutral implements _Neutral {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Neutral);
+        (other.runtimeType == runtimeType && other is _$NeutralImpl);
   }
 
   @override
@@ -293,29 +294,29 @@ class _$_Neutral implements _Neutral {
 }
 
 abstract class _Neutral implements SimpleMessageDialogEvent {
-  const factory _Neutral() = _$_Neutral;
+  const factory _Neutral() = _$NeutralImpl;
 }
 
 /// @nodoc
-abstract class _$$_NegativeCopyWith<$Res> {
-  factory _$$_NegativeCopyWith(
-          _$_Negative value, $Res Function(_$_Negative) then) =
-      __$$_NegativeCopyWithImpl<$Res>;
+abstract class _$$NegativeImplCopyWith<$Res> {
+  factory _$$NegativeImplCopyWith(
+          _$NegativeImpl value, $Res Function(_$NegativeImpl) then) =
+      __$$NegativeImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NegativeCopyWithImpl<$Res>
-    extends _$SimpleMessageDialogEventCopyWithImpl<$Res, _$_Negative>
-    implements _$$_NegativeCopyWith<$Res> {
-  __$$_NegativeCopyWithImpl(
-      _$_Negative _value, $Res Function(_$_Negative) _then)
+class __$$NegativeImplCopyWithImpl<$Res>
+    extends _$SimpleMessageDialogEventCopyWithImpl<$Res, _$NegativeImpl>
+    implements _$$NegativeImplCopyWith<$Res> {
+  __$$NegativeImplCopyWithImpl(
+      _$NegativeImpl _value, $Res Function(_$NegativeImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Negative implements _Negative {
-  const _$_Negative();
+class _$NegativeImpl implements _Negative {
+  const _$NegativeImpl();
 
   @override
   String toString() {
@@ -323,9 +324,9 @@ class _$_Negative implements _Negative {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Negative);
+        (other.runtimeType == runtimeType && other is _$NegativeImpl);
   }
 
   @override
@@ -401,5 +402,5 @@ class _$_Negative implements _Negative {
 }
 
 abstract class _Negative implements SimpleMessageDialogEvent {
-  const factory _Negative() = _$_Negative;
+  const factory _Negative() = _$NegativeImpl;
 }

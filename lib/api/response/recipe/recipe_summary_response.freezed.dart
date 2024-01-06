@@ -108,11 +108,12 @@ class _$RecipeSummaryResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_RecipeSummaryResponseCopyWith<$Res>
+abstract class _$$RecipeSummaryResponseImplCopyWith<$Res>
     implements $RecipeSummaryResponseCopyWith<$Res> {
-  factory _$$_RecipeSummaryResponseCopyWith(_$_RecipeSummaryResponse value,
-          $Res Function(_$_RecipeSummaryResponse) then) =
-      __$$_RecipeSummaryResponseCopyWithImpl<$Res>;
+  factory _$$RecipeSummaryResponseImplCopyWith(
+          _$RecipeSummaryResponseImpl value,
+          $Res Function(_$RecipeSummaryResponseImpl) then) =
+      __$$RecipeSummaryResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -126,11 +127,12 @@ abstract class _$$_RecipeSummaryResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RecipeSummaryResponseCopyWithImpl<$Res>
-    extends _$RecipeSummaryResponseCopyWithImpl<$Res, _$_RecipeSummaryResponse>
-    implements _$$_RecipeSummaryResponseCopyWith<$Res> {
-  __$$_RecipeSummaryResponseCopyWithImpl(_$_RecipeSummaryResponse _value,
-      $Res Function(_$_RecipeSummaryResponse) _then)
+class __$$RecipeSummaryResponseImplCopyWithImpl<$Res>
+    extends _$RecipeSummaryResponseCopyWithImpl<$Res,
+        _$RecipeSummaryResponseImpl>
+    implements _$$RecipeSummaryResponseImplCopyWith<$Res> {
+  __$$RecipeSummaryResponseImplCopyWithImpl(_$RecipeSummaryResponseImpl _value,
+      $Res Function(_$RecipeSummaryResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -141,7 +143,7 @@ class __$$_RecipeSummaryResponseCopyWithImpl<$Res>
     Object? image = freezed,
     Object? lastCookingAt = freezed,
   }) {
-    return _then(_$_RecipeSummaryResponse(
+    return _then(_$RecipeSummaryResponseImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -164,15 +166,15 @@ class __$$_RecipeSummaryResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_RecipeSummaryResponse implements _RecipeSummaryResponse {
-  const _$_RecipeSummaryResponse(
+class _$RecipeSummaryResponseImpl implements _RecipeSummaryResponse {
+  const _$RecipeSummaryResponseImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'image') required this.image,
       @JsonKey(name: 'last_cooking_at') required this.lastCookingAt});
 
-  factory _$_RecipeSummaryResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_RecipeSummaryResponseFromJson(json);
+  factory _$RecipeSummaryResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RecipeSummaryResponseImplFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
@@ -197,10 +199,10 @@ class _$_RecipeSummaryResponse implements _RecipeSummaryResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RecipeSummaryResponse &&
+            other is _$RecipeSummaryResponseImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.image, image) || other.image == image) &&
@@ -215,13 +217,13 @@ class _$_RecipeSummaryResponse implements _RecipeSummaryResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RecipeSummaryResponseCopyWith<_$_RecipeSummaryResponse> get copyWith =>
-      __$$_RecipeSummaryResponseCopyWithImpl<_$_RecipeSummaryResponse>(
-          this, _$identity);
+  _$$RecipeSummaryResponseImplCopyWith<_$RecipeSummaryResponseImpl>
+      get copyWith => __$$RecipeSummaryResponseImplCopyWithImpl<
+          _$RecipeSummaryResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RecipeSummaryResponseToJson(
+    return _$$RecipeSummaryResponseImplToJson(
       this,
     );
   }
@@ -233,10 +235,10 @@ abstract class _RecipeSummaryResponse implements RecipeSummaryResponse {
       @JsonKey(name: 'title') required final String title,
       @JsonKey(name: 'image') required final ContentResponse? image,
       @JsonKey(name: 'last_cooking_at')
-      required final String? lastCookingAt}) = _$_RecipeSummaryResponse;
+      required final String? lastCookingAt}) = _$RecipeSummaryResponseImpl;
 
   factory _RecipeSummaryResponse.fromJson(Map<String, dynamic> json) =
-      _$_RecipeSummaryResponse.fromJson;
+      _$RecipeSummaryResponseImpl.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
@@ -252,6 +254,6 @@ abstract class _RecipeSummaryResponse implements RecipeSummaryResponse {
   String? get lastCookingAt;
   @override
   @JsonKey(ignore: true)
-  _$$_RecipeSummaryResponseCopyWith<_$_RecipeSummaryResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$RecipeSummaryResponseImplCopyWith<_$RecipeSummaryResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

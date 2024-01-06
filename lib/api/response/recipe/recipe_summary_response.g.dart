@@ -6,9 +6,9 @@ part of 'recipe_summary_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_RecipeSummaryResponse _$$_RecipeSummaryResponseFromJson(
+_$RecipeSummaryResponseImpl _$$RecipeSummaryResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_RecipeSummaryResponse(
+    _$RecipeSummaryResponseImpl(
       id: json['id'] as int,
       title: json['title'] as String,
       image: json['image'] == null
@@ -17,8 +17,8 @@ _$_RecipeSummaryResponse _$$_RecipeSummaryResponseFromJson(
       lastCookingAt: json['last_cooking_at'] as String?,
     );
 
-Map<String, dynamic> _$$_RecipeSummaryResponseToJson(
-        _$_RecipeSummaryResponse instance) =>
+Map<String, dynamic> _$$RecipeSummaryResponseImplToJson(
+        _$RecipeSummaryResponseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,

@@ -57,22 +57,22 @@ class _$WorkspaceIdCopyWithImpl<$Res, $Val extends WorkspaceId>
 }
 
 /// @nodoc
-abstract class _$$_WorkspaceIdCopyWith<$Res>
+abstract class _$$WorkspaceIdImplCopyWith<$Res>
     implements $WorkspaceIdCopyWith<$Res> {
-  factory _$$_WorkspaceIdCopyWith(
-          _$_WorkspaceId value, $Res Function(_$_WorkspaceId) then) =
-      __$$_WorkspaceIdCopyWithImpl<$Res>;
+  factory _$$WorkspaceIdImplCopyWith(
+          _$WorkspaceIdImpl value, $Res Function(_$WorkspaceIdImpl) then) =
+      __$$WorkspaceIdImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class __$$_WorkspaceIdCopyWithImpl<$Res>
-    extends _$WorkspaceIdCopyWithImpl<$Res, _$_WorkspaceId>
-    implements _$$_WorkspaceIdCopyWith<$Res> {
-  __$$_WorkspaceIdCopyWithImpl(
-      _$_WorkspaceId _value, $Res Function(_$_WorkspaceId) _then)
+class __$$WorkspaceIdImplCopyWithImpl<$Res>
+    extends _$WorkspaceIdCopyWithImpl<$Res, _$WorkspaceIdImpl>
+    implements _$$WorkspaceIdImplCopyWith<$Res> {
+  __$$WorkspaceIdImplCopyWithImpl(
+      _$WorkspaceIdImpl _value, $Res Function(_$WorkspaceIdImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_WorkspaceIdCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$_WorkspaceId(
+    return _then(_$WorkspaceIdImpl(
       null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_WorkspaceIdCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WorkspaceId implements _WorkspaceId {
-  const _$_WorkspaceId(this.value);
+class _$WorkspaceIdImpl implements _WorkspaceId {
+  const _$WorkspaceIdImpl(this.value);
 
   @override
   final int value;
@@ -103,10 +103,10 @@ class _$_WorkspaceId implements _WorkspaceId {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WorkspaceId &&
+            other is _$WorkspaceIdImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -116,17 +116,17 @@ class _$_WorkspaceId implements _WorkspaceId {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WorkspaceIdCopyWith<_$_WorkspaceId> get copyWith =>
-      __$$_WorkspaceIdCopyWithImpl<_$_WorkspaceId>(this, _$identity);
+  _$$WorkspaceIdImplCopyWith<_$WorkspaceIdImpl> get copyWith =>
+      __$$WorkspaceIdImplCopyWithImpl<_$WorkspaceIdImpl>(this, _$identity);
 }
 
 abstract class _WorkspaceId implements WorkspaceId {
-  const factory _WorkspaceId(final int value) = _$_WorkspaceId;
+  const factory _WorkspaceId(final int value) = _$WorkspaceIdImpl;
 
   @override
   int get value;
   @override
   @JsonKey(ignore: true)
-  _$$_WorkspaceIdCopyWith<_$_WorkspaceId> get copyWith =>
+  _$$WorkspaceIdImplCopyWith<_$WorkspaceIdImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

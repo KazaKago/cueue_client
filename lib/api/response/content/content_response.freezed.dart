@@ -73,11 +73,11 @@ class _$ContentResponseCopyWithImpl<$Res, $Val extends ContentResponse>
 }
 
 /// @nodoc
-abstract class _$$_ContentResponseCopyWith<$Res>
+abstract class _$$ContentResponseImplCopyWith<$Res>
     implements $ContentResponseCopyWith<$Res> {
-  factory _$$_ContentResponseCopyWith(
-          _$_ContentResponse value, $Res Function(_$_ContentResponse) then) =
-      __$$_ContentResponseCopyWithImpl<$Res>;
+  factory _$$ContentResponseImplCopyWith(_$ContentResponseImpl value,
+          $Res Function(_$ContentResponseImpl) then) =
+      __$$ContentResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -85,11 +85,11 @@ abstract class _$$_ContentResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ContentResponseCopyWithImpl<$Res>
-    extends _$ContentResponseCopyWithImpl<$Res, _$_ContentResponse>
-    implements _$$_ContentResponseCopyWith<$Res> {
-  __$$_ContentResponseCopyWithImpl(
-      _$_ContentResponse _value, $Res Function(_$_ContentResponse) _then)
+class __$$ContentResponseImplCopyWithImpl<$Res>
+    extends _$ContentResponseCopyWithImpl<$Res, _$ContentResponseImpl>
+    implements _$$ContentResponseImplCopyWith<$Res> {
+  __$$ContentResponseImplCopyWithImpl(
+      _$ContentResponseImpl _value, $Res Function(_$ContentResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -98,7 +98,7 @@ class __$$_ContentResponseCopyWithImpl<$Res>
     Object? key = null,
     Object? url = null,
   }) {
-    return _then(_$_ContentResponse(
+    return _then(_$ContentResponseImpl(
       key: null == key
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
@@ -113,13 +113,13 @@ class __$$_ContentResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ContentResponse implements _ContentResponse {
-  const _$_ContentResponse(
+class _$ContentResponseImpl implements _ContentResponse {
+  const _$ContentResponseImpl(
       {@JsonKey(name: 'key') required this.key,
       @JsonKey(name: 'url') required this.url});
 
-  factory _$_ContentResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_ContentResponseFromJson(json);
+  factory _$ContentResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ContentResponseImplFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
@@ -136,10 +136,10 @@ class _$_ContentResponse implements _ContentResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ContentResponse &&
+            other is _$ContentResponseImpl &&
             (identical(other.key, key) || other.key == key) &&
             (identical(other.url, url) || other.url == url));
   }
@@ -151,12 +151,13 @@ class _$_ContentResponse implements _ContentResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ContentResponseCopyWith<_$_ContentResponse> get copyWith =>
-      __$$_ContentResponseCopyWithImpl<_$_ContentResponse>(this, _$identity);
+  _$$ContentResponseImplCopyWith<_$ContentResponseImpl> get copyWith =>
+      __$$ContentResponseImplCopyWithImpl<_$ContentResponseImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ContentResponseToJson(
+    return _$$ContentResponseImplToJson(
       this,
     );
   }
@@ -165,10 +166,10 @@ class _$_ContentResponse implements _ContentResponse {
 abstract class _ContentResponse implements ContentResponse {
   const factory _ContentResponse(
       {@JsonKey(name: 'key') required final String key,
-      @JsonKey(name: 'url') required final String url}) = _$_ContentResponse;
+      @JsonKey(name: 'url') required final String url}) = _$ContentResponseImpl;
 
   factory _ContentResponse.fromJson(Map<String, dynamic> json) =
-      _$_ContentResponse.fromJson;
+      _$ContentResponseImpl.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'key')
@@ -178,6 +179,6 @@ abstract class _ContentResponse implements ContentResponse {
   String get url;
   @override
   @JsonKey(ignore: true)
-  _$$_ContentResponseCopyWith<_$_ContentResponse> get copyWith =>
+  _$$ContentResponseImplCopyWith<_$ContentResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

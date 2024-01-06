@@ -6,8 +6,9 @@ part of 'workspace_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_WorkspaceResponse _$$_WorkspaceResponseFromJson(Map<String, dynamic> json) =>
-    _$_WorkspaceResponse(
+_$WorkspaceResponseImpl _$$WorkspaceResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$WorkspaceResponseImpl(
       id: json['id'] as int,
       name: json['name'] as String,
       users: (json['users'] as List<dynamic>)
@@ -15,8 +16,8 @@ _$_WorkspaceResponse _$$_WorkspaceResponseFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_WorkspaceResponseToJson(
-        _$_WorkspaceResponse instance) =>
+Map<String, dynamic> _$$WorkspaceResponseImplToJson(
+        _$WorkspaceResponseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

@@ -101,11 +101,11 @@ class _$MenuResponseCopyWithImpl<$Res, $Val extends MenuResponse>
 }
 
 /// @nodoc
-abstract class _$$_MenuResponseCopyWith<$Res>
+abstract class _$$MenuResponseImplCopyWith<$Res>
     implements $MenuResponseCopyWith<$Res> {
-  factory _$$_MenuResponseCopyWith(
-          _$_MenuResponse value, $Res Function(_$_MenuResponse) then) =
-      __$$_MenuResponseCopyWithImpl<$Res>;
+  factory _$$MenuResponseImplCopyWith(
+          _$MenuResponseImpl value, $Res Function(_$MenuResponseImpl) then) =
+      __$$MenuResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -117,11 +117,11 @@ abstract class _$$_MenuResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MenuResponseCopyWithImpl<$Res>
-    extends _$MenuResponseCopyWithImpl<$Res, _$_MenuResponse>
-    implements _$$_MenuResponseCopyWith<$Res> {
-  __$$_MenuResponseCopyWithImpl(
-      _$_MenuResponse _value, $Res Function(_$_MenuResponse) _then)
+class __$$MenuResponseImplCopyWithImpl<$Res>
+    extends _$MenuResponseCopyWithImpl<$Res, _$MenuResponseImpl>
+    implements _$$MenuResponseImplCopyWith<$Res> {
+  __$$MenuResponseImplCopyWithImpl(
+      _$MenuResponseImpl _value, $Res Function(_$MenuResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -133,7 +133,7 @@ class __$$_MenuResponseCopyWithImpl<$Res>
     Object? timeFrame = null,
     Object? recipes = null,
   }) {
-    return _then(_$_MenuResponse(
+    return _then(_$MenuResponseImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -160,8 +160,8 @@ class __$$_MenuResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MenuResponse implements _MenuResponse {
-  const _$_MenuResponse(
+class _$MenuResponseImpl implements _MenuResponse {
+  const _$MenuResponseImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'memo') required this.memo,
       @JsonKey(name: 'date') required this.date,
@@ -170,8 +170,8 @@ class _$_MenuResponse implements _MenuResponse {
       required final List<RecipeSummaryResponse> recipes})
       : _recipes = recipes;
 
-  factory _$_MenuResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_MenuResponseFromJson(json);
+  factory _$MenuResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MenuResponseImplFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
@@ -206,10 +206,10 @@ class _$_MenuResponse implements _MenuResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MenuResponse &&
+            other is _$MenuResponseImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.memo, memo) || other.memo == memo) &&
             (identical(other.date, date) || other.date == date) &&
@@ -226,12 +226,12 @@ class _$_MenuResponse implements _MenuResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MenuResponseCopyWith<_$_MenuResponse> get copyWith =>
-      __$$_MenuResponseCopyWithImpl<_$_MenuResponse>(this, _$identity);
+  _$$MenuResponseImplCopyWith<_$MenuResponseImpl> get copyWith =>
+      __$$MenuResponseImplCopyWithImpl<_$MenuResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MenuResponseToJson(
+    return _$$MenuResponseImplToJson(
       this,
     );
   }
@@ -244,10 +244,10 @@ abstract class _MenuResponse implements MenuResponse {
       @JsonKey(name: 'date') required final String date,
       @JsonKey(name: 'time_frame') required final String timeFrame,
       @JsonKey(name: 'recipes')
-      required final List<RecipeSummaryResponse> recipes}) = _$_MenuResponse;
+      required final List<RecipeSummaryResponse> recipes}) = _$MenuResponseImpl;
 
   factory _MenuResponse.fromJson(Map<String, dynamic> json) =
-      _$_MenuResponse.fromJson;
+      _$MenuResponseImpl.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
@@ -266,6 +266,6 @@ abstract class _MenuResponse implements MenuResponse {
   List<RecipeSummaryResponse> get recipes;
   @override
   @JsonKey(ignore: true)
-  _$$_MenuResponseCopyWith<_$_MenuResponse> get copyWith =>
+  _$$MenuResponseImplCopyWith<_$MenuResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

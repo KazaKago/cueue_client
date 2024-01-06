@@ -86,11 +86,11 @@ class _$RecipeRegistrationCopyWithImpl<$Res, $Val extends RecipeRegistration>
 }
 
 /// @nodoc
-abstract class _$$_RecipeRegistrationCopyWith<$Res>
+abstract class _$$RecipeRegistrationImplCopyWith<$Res>
     implements $RecipeRegistrationCopyWith<$Res> {
-  factory _$$_RecipeRegistrationCopyWith(_$_RecipeRegistration value,
-          $Res Function(_$_RecipeRegistration) then) =
-      __$$_RecipeRegistrationCopyWithImpl<$Res>;
+  factory _$$RecipeRegistrationImplCopyWith(_$RecipeRegistrationImpl value,
+          $Res Function(_$RecipeRegistrationImpl) then) =
+      __$$RecipeRegistrationImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -102,11 +102,11 @@ abstract class _$$_RecipeRegistrationCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RecipeRegistrationCopyWithImpl<$Res>
-    extends _$RecipeRegistrationCopyWithImpl<$Res, _$_RecipeRegistration>
-    implements _$$_RecipeRegistrationCopyWith<$Res> {
-  __$$_RecipeRegistrationCopyWithImpl(
-      _$_RecipeRegistration _value, $Res Function(_$_RecipeRegistration) _then)
+class __$$RecipeRegistrationImplCopyWithImpl<$Res>
+    extends _$RecipeRegistrationCopyWithImpl<$Res, _$RecipeRegistrationImpl>
+    implements _$$RecipeRegistrationImplCopyWith<$Res> {
+  __$$RecipeRegistrationImplCopyWithImpl(_$RecipeRegistrationImpl _value,
+      $Res Function(_$RecipeRegistrationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_RecipeRegistrationCopyWithImpl<$Res>
     Object? imageKeys = null,
     Object? tagIds = null,
   }) {
-    return _then(_$_RecipeRegistration(
+    return _then(_$RecipeRegistrationImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -145,8 +145,8 @@ class __$$_RecipeRegistrationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RecipeRegistration implements _RecipeRegistration {
-  const _$_RecipeRegistration(
+class _$RecipeRegistrationImpl implements _RecipeRegistration {
+  const _$RecipeRegistrationImpl(
       {required this.title,
       required this.description,
       required this.url,
@@ -183,10 +183,10 @@ class _$_RecipeRegistration implements _RecipeRegistration {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RecipeRegistration &&
+            other is _$RecipeRegistrationImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -208,8 +208,8 @@ class _$_RecipeRegistration implements _RecipeRegistration {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RecipeRegistrationCopyWith<_$_RecipeRegistration> get copyWith =>
-      __$$_RecipeRegistrationCopyWithImpl<_$_RecipeRegistration>(
+  _$$RecipeRegistrationImplCopyWith<_$RecipeRegistrationImpl> get copyWith =>
+      __$$RecipeRegistrationImplCopyWithImpl<_$RecipeRegistrationImpl>(
           this, _$identity);
 }
 
@@ -219,7 +219,7 @@ abstract class _RecipeRegistration implements RecipeRegistration {
       required final String description,
       required final Uri? url,
       required final List<ContentKey> imageKeys,
-      required final List<TagId> tagIds}) = _$_RecipeRegistration;
+      required final List<TagId> tagIds}) = _$RecipeRegistrationImpl;
 
   @override
   String get title;
@@ -233,6 +233,6 @@ abstract class _RecipeRegistration implements RecipeRegistration {
   List<TagId> get tagIds;
   @override
   @JsonKey(ignore: true)
-  _$$_RecipeRegistrationCopyWith<_$_RecipeRegistration> get copyWith =>
+  _$$RecipeRegistrationImplCopyWith<_$RecipeRegistrationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

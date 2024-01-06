@@ -6,8 +6,8 @@ part of 'recipe_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_RecipeRequest _$$_RecipeRequestFromJson(Map<String, dynamic> json) =>
-    _$_RecipeRequest(
+_$RecipeRequestImpl _$$RecipeRequestImplFromJson(Map<String, dynamic> json) =>
+    _$RecipeRequestImpl(
       title: json['title'] as String,
       description: json['description'] as String,
       url: json['url'] as String?,
@@ -17,7 +17,7 @@ _$_RecipeRequest _$$_RecipeRequestFromJson(Map<String, dynamic> json) =>
       tagIds: (json['tag_ids'] as List<dynamic>).map((e) => e as int).toList(),
     );
 
-Map<String, dynamic> _$$_RecipeRequestToJson(_$_RecipeRequest instance) =>
+Map<String, dynamic> _$$RecipeRequestImplToJson(_$RecipeRequestImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'description': instance.description,

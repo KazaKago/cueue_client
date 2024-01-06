@@ -69,22 +69,22 @@ class _$AppleAuthInfoCopyWithImpl<$Res, $Val extends AppleAuthInfo>
 }
 
 /// @nodoc
-abstract class _$$_AppleAuthInfoCopyWith<$Res>
+abstract class _$$AppleAuthInfoImplCopyWith<$Res>
     implements $AppleAuthInfoCopyWith<$Res> {
-  factory _$$_AppleAuthInfoCopyWith(
-          _$_AppleAuthInfo value, $Res Function(_$_AppleAuthInfo) then) =
-      __$$_AppleAuthInfoCopyWithImpl<$Res>;
+  factory _$$AppleAuthInfoImplCopyWith(
+          _$AppleAuthInfoImpl value, $Res Function(_$AppleAuthInfoImpl) then) =
+      __$$AppleAuthInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? idToken, String accessToken, String rawNonce});
 }
 
 /// @nodoc
-class __$$_AppleAuthInfoCopyWithImpl<$Res>
-    extends _$AppleAuthInfoCopyWithImpl<$Res, _$_AppleAuthInfo>
-    implements _$$_AppleAuthInfoCopyWith<$Res> {
-  __$$_AppleAuthInfoCopyWithImpl(
-      _$_AppleAuthInfo _value, $Res Function(_$_AppleAuthInfo) _then)
+class __$$AppleAuthInfoImplCopyWithImpl<$Res>
+    extends _$AppleAuthInfoCopyWithImpl<$Res, _$AppleAuthInfoImpl>
+    implements _$$AppleAuthInfoImplCopyWith<$Res> {
+  __$$AppleAuthInfoImplCopyWithImpl(
+      _$AppleAuthInfoImpl _value, $Res Function(_$AppleAuthInfoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +94,7 @@ class __$$_AppleAuthInfoCopyWithImpl<$Res>
     Object? accessToken = null,
     Object? rawNonce = null,
   }) {
-    return _then(_$_AppleAuthInfo(
+    return _then(_$AppleAuthInfoImpl(
       idToken: freezed == idToken
           ? _value.idToken
           : idToken // ignore: cast_nullable_to_non_nullable
@@ -113,8 +113,8 @@ class __$$_AppleAuthInfoCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppleAuthInfo implements _AppleAuthInfo {
-  const _$_AppleAuthInfo(
+class _$AppleAuthInfoImpl implements _AppleAuthInfo {
+  const _$AppleAuthInfoImpl(
       {required this.idToken,
       required this.accessToken,
       required this.rawNonce});
@@ -132,10 +132,10 @@ class _$_AppleAuthInfo implements _AppleAuthInfo {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppleAuthInfo &&
+            other is _$AppleAuthInfoImpl &&
             (identical(other.idToken, idToken) || other.idToken == idToken) &&
             (identical(other.accessToken, accessToken) ||
                 other.accessToken == accessToken) &&
@@ -149,15 +149,15 @@ class _$_AppleAuthInfo implements _AppleAuthInfo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppleAuthInfoCopyWith<_$_AppleAuthInfo> get copyWith =>
-      __$$_AppleAuthInfoCopyWithImpl<_$_AppleAuthInfo>(this, _$identity);
+  _$$AppleAuthInfoImplCopyWith<_$AppleAuthInfoImpl> get copyWith =>
+      __$$AppleAuthInfoImplCopyWithImpl<_$AppleAuthInfoImpl>(this, _$identity);
 }
 
 abstract class _AppleAuthInfo implements AppleAuthInfo {
   const factory _AppleAuthInfo(
       {required final String? idToken,
       required final String accessToken,
-      required final String rawNonce}) = _$_AppleAuthInfo;
+      required final String rawNonce}) = _$AppleAuthInfoImpl;
 
   @override
   String? get idToken;
@@ -167,6 +167,6 @@ abstract class _AppleAuthInfo implements AppleAuthInfo {
   String get rawNonce;
   @override
   @JsonKey(ignore: true)
-  _$$_AppleAuthInfoCopyWith<_$_AppleAuthInfo> get copyWith =>
+  _$$AppleAuthInfoImplCopyWith<_$AppleAuthInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

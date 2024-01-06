@@ -63,22 +63,22 @@ class _$RecipeSearchOptionCopyWithImpl<$Res, $Val extends RecipeSearchOption>
 }
 
 /// @nodoc
-abstract class _$$_RecipeSearchOptionCopyWith<$Res>
+abstract class _$$RecipeSearchOptionImplCopyWith<$Res>
     implements $RecipeSearchOptionCopyWith<$Res> {
-  factory _$$_RecipeSearchOptionCopyWith(_$_RecipeSearchOption value,
-          $Res Function(_$_RecipeSearchOption) then) =
-      __$$_RecipeSearchOptionCopyWithImpl<$Res>;
+  factory _$$RecipeSearchOptionImplCopyWith(_$RecipeSearchOptionImpl value,
+          $Res Function(_$RecipeSearchOptionImpl) then) =
+      __$$RecipeSearchOptionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? keyword, List<TagId>? tagIds});
 }
 
 /// @nodoc
-class __$$_RecipeSearchOptionCopyWithImpl<$Res>
-    extends _$RecipeSearchOptionCopyWithImpl<$Res, _$_RecipeSearchOption>
-    implements _$$_RecipeSearchOptionCopyWith<$Res> {
-  __$$_RecipeSearchOptionCopyWithImpl(
-      _$_RecipeSearchOption _value, $Res Function(_$_RecipeSearchOption) _then)
+class __$$RecipeSearchOptionImplCopyWithImpl<$Res>
+    extends _$RecipeSearchOptionCopyWithImpl<$Res, _$RecipeSearchOptionImpl>
+    implements _$$RecipeSearchOptionImplCopyWith<$Res> {
+  __$$RecipeSearchOptionImplCopyWithImpl(_$RecipeSearchOptionImpl _value,
+      $Res Function(_$RecipeSearchOptionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_RecipeSearchOptionCopyWithImpl<$Res>
     Object? keyword = freezed,
     Object? tagIds = freezed,
   }) {
-    return _then(_$_RecipeSearchOption(
+    return _then(_$RecipeSearchOptionImpl(
       keyword: freezed == keyword
           ? _value.keyword
           : keyword // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_RecipeSearchOptionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RecipeSearchOption implements _RecipeSearchOption {
-  const _$_RecipeSearchOption({this.keyword, final List<TagId>? tagIds})
+class _$RecipeSearchOptionImpl implements _RecipeSearchOption {
+  const _$RecipeSearchOptionImpl({this.keyword, final List<TagId>? tagIds})
       : _tagIds = tagIds;
 
   @override
@@ -124,10 +124,10 @@ class _$_RecipeSearchOption implements _RecipeSearchOption {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RecipeSearchOption &&
+            other is _$RecipeSearchOptionImpl &&
             (identical(other.keyword, keyword) || other.keyword == keyword) &&
             const DeepCollectionEquality().equals(other._tagIds, _tagIds));
   }
@@ -139,15 +139,15 @@ class _$_RecipeSearchOption implements _RecipeSearchOption {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RecipeSearchOptionCopyWith<_$_RecipeSearchOption> get copyWith =>
-      __$$_RecipeSearchOptionCopyWithImpl<_$_RecipeSearchOption>(
+  _$$RecipeSearchOptionImplCopyWith<_$RecipeSearchOptionImpl> get copyWith =>
+      __$$RecipeSearchOptionImplCopyWithImpl<_$RecipeSearchOptionImpl>(
           this, _$identity);
 }
 
 abstract class _RecipeSearchOption implements RecipeSearchOption {
   const factory _RecipeSearchOption(
       {final String? keyword,
-      final List<TagId>? tagIds}) = _$_RecipeSearchOption;
+      final List<TagId>? tagIds}) = _$RecipeSearchOptionImpl;
 
   @override
   String? get keyword;
@@ -155,6 +155,6 @@ abstract class _RecipeSearchOption implements RecipeSearchOption {
   List<TagId>? get tagIds;
   @override
   @JsonKey(ignore: true)
-  _$$_RecipeSearchOptionCopyWith<_$_RecipeSearchOption> get copyWith =>
+  _$$RecipeSearchOptionImplCopyWith<_$RecipeSearchOptionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

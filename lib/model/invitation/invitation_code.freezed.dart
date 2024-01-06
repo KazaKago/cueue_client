@@ -57,22 +57,22 @@ class _$InvitationCodeCopyWithImpl<$Res, $Val extends InvitationCode>
 }
 
 /// @nodoc
-abstract class _$$_InvitationCodeCopyWith<$Res>
+abstract class _$$InvitationCodeImplCopyWith<$Res>
     implements $InvitationCodeCopyWith<$Res> {
-  factory _$$_InvitationCodeCopyWith(
-          _$_InvitationCode value, $Res Function(_$_InvitationCode) then) =
-      __$$_InvitationCodeCopyWithImpl<$Res>;
+  factory _$$InvitationCodeImplCopyWith(_$InvitationCodeImpl value,
+          $Res Function(_$InvitationCodeImpl) then) =
+      __$$InvitationCodeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class __$$_InvitationCodeCopyWithImpl<$Res>
-    extends _$InvitationCodeCopyWithImpl<$Res, _$_InvitationCode>
-    implements _$$_InvitationCodeCopyWith<$Res> {
-  __$$_InvitationCodeCopyWithImpl(
-      _$_InvitationCode _value, $Res Function(_$_InvitationCode) _then)
+class __$$InvitationCodeImplCopyWithImpl<$Res>
+    extends _$InvitationCodeCopyWithImpl<$Res, _$InvitationCodeImpl>
+    implements _$$InvitationCodeImplCopyWith<$Res> {
+  __$$InvitationCodeImplCopyWithImpl(
+      _$InvitationCodeImpl _value, $Res Function(_$InvitationCodeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_InvitationCodeCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$_InvitationCode(
+    return _then(_$InvitationCodeImpl(
       null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_InvitationCodeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InvitationCode implements _InvitationCode {
-  const _$_InvitationCode(this.value);
+class _$InvitationCodeImpl implements _InvitationCode {
+  const _$InvitationCodeImpl(this.value);
 
   @override
   final String value;
@@ -103,10 +103,10 @@ class _$_InvitationCode implements _InvitationCode {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InvitationCode &&
+            other is _$InvitationCodeImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -116,17 +116,18 @@ class _$_InvitationCode implements _InvitationCode {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InvitationCodeCopyWith<_$_InvitationCode> get copyWith =>
-      __$$_InvitationCodeCopyWithImpl<_$_InvitationCode>(this, _$identity);
+  _$$InvitationCodeImplCopyWith<_$InvitationCodeImpl> get copyWith =>
+      __$$InvitationCodeImplCopyWithImpl<_$InvitationCodeImpl>(
+          this, _$identity);
 }
 
 abstract class _InvitationCode implements InvitationCode {
-  const factory _InvitationCode(final String value) = _$_InvitationCode;
+  const factory _InvitationCode(final String value) = _$InvitationCodeImpl;
 
   @override
   String get value;
   @override
   @JsonKey(ignore: true)
-  _$$_InvitationCodeCopyWith<_$_InvitationCode> get copyWith =>
+  _$$InvitationCodeImplCopyWith<_$InvitationCodeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

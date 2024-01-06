@@ -93,11 +93,11 @@ class _$InvitationResponseCopyWithImpl<$Res, $Val extends InvitationResponse>
 }
 
 /// @nodoc
-abstract class _$$_InvitationResponseCopyWith<$Res>
+abstract class _$$InvitationResponseImplCopyWith<$Res>
     implements $InvitationResponseCopyWith<$Res> {
-  factory _$$_InvitationResponseCopyWith(_$_InvitationResponse value,
-          $Res Function(_$_InvitationResponse) then) =
-      __$$_InvitationResponseCopyWithImpl<$Res>;
+  factory _$$InvitationResponseImplCopyWith(_$InvitationResponseImpl value,
+          $Res Function(_$InvitationResponseImpl) then) =
+      __$$InvitationResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -110,11 +110,11 @@ abstract class _$$_InvitationResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_InvitationResponseCopyWithImpl<$Res>
-    extends _$InvitationResponseCopyWithImpl<$Res, _$_InvitationResponse>
-    implements _$$_InvitationResponseCopyWith<$Res> {
-  __$$_InvitationResponseCopyWithImpl(
-      _$_InvitationResponse _value, $Res Function(_$_InvitationResponse) _then)
+class __$$InvitationResponseImplCopyWithImpl<$Res>
+    extends _$InvitationResponseCopyWithImpl<$Res, _$InvitationResponseImpl>
+    implements _$$InvitationResponseImplCopyWith<$Res> {
+  __$$InvitationResponseImplCopyWithImpl(_$InvitationResponseImpl _value,
+      $Res Function(_$InvitationResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -124,7 +124,7 @@ class __$$_InvitationResponseCopyWithImpl<$Res>
     Object? workspace = null,
     Object? expiredAt = null,
   }) {
-    return _then(_$_InvitationResponse(
+    return _then(_$InvitationResponseImpl(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -143,14 +143,14 @@ class __$$_InvitationResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_InvitationResponse implements _InvitationResponse {
-  const _$_InvitationResponse(
+class _$InvitationResponseImpl implements _InvitationResponse {
+  const _$InvitationResponseImpl(
       {@JsonKey(name: 'code') required this.code,
       @JsonKey(name: 'workspace') required this.workspace,
       @JsonKey(name: 'expire_at') required this.expiredAt});
 
-  factory _$_InvitationResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_InvitationResponseFromJson(json);
+  factory _$InvitationResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$InvitationResponseImplFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
@@ -171,10 +171,10 @@ class _$_InvitationResponse implements _InvitationResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InvitationResponse &&
+            other is _$InvitationResponseImpl &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.workspace, workspace) ||
                 other.workspace == workspace) &&
@@ -189,13 +189,13 @@ class _$_InvitationResponse implements _InvitationResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InvitationResponseCopyWith<_$_InvitationResponse> get copyWith =>
-      __$$_InvitationResponseCopyWithImpl<_$_InvitationResponse>(
+  _$$InvitationResponseImplCopyWith<_$InvitationResponseImpl> get copyWith =>
+      __$$InvitationResponseImplCopyWithImpl<_$InvitationResponseImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_InvitationResponseToJson(
+    return _$$InvitationResponseImplToJson(
       this,
     );
   }
@@ -206,10 +206,10 @@ abstract class _InvitationResponse implements InvitationResponse {
       {@JsonKey(name: 'code') required final String code,
       @JsonKey(name: 'workspace') required final WorkspaceResponse workspace,
       @JsonKey(name: 'expire_at')
-      required final String expiredAt}) = _$_InvitationResponse;
+      required final String expiredAt}) = _$InvitationResponseImpl;
 
   factory _InvitationResponse.fromJson(Map<String, dynamic> json) =
-      _$_InvitationResponse.fromJson;
+      _$InvitationResponseImpl.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'code')
@@ -222,6 +222,6 @@ abstract class _InvitationResponse implements InvitationResponse {
   String get expiredAt;
   @override
   @JsonKey(ignore: true)
-  _$$_InvitationResponseCopyWith<_$_InvitationResponse> get copyWith =>
+  _$$InvitationResponseImplCopyWith<_$InvitationResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

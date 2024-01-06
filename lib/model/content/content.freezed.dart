@@ -71,10 +71,10 @@ class _$ContentCopyWithImpl<$Res, $Val extends Content>
 }
 
 /// @nodoc
-abstract class _$$_ContentCopyWith<$Res> implements $ContentCopyWith<$Res> {
-  factory _$$_ContentCopyWith(
-          _$_Content value, $Res Function(_$_Content) then) =
-      __$$_ContentCopyWithImpl<$Res>;
+abstract class _$$ContentImplCopyWith<$Res> implements $ContentCopyWith<$Res> {
+  factory _$$ContentImplCopyWith(
+          _$ContentImpl value, $Res Function(_$ContentImpl) then) =
+      __$$ContentImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ContentKey key, Uri url});
@@ -84,10 +84,11 @@ abstract class _$$_ContentCopyWith<$Res> implements $ContentCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ContentCopyWithImpl<$Res>
-    extends _$ContentCopyWithImpl<$Res, _$_Content>
-    implements _$$_ContentCopyWith<$Res> {
-  __$$_ContentCopyWithImpl(_$_Content _value, $Res Function(_$_Content) _then)
+class __$$ContentImplCopyWithImpl<$Res>
+    extends _$ContentCopyWithImpl<$Res, _$ContentImpl>
+    implements _$$ContentImplCopyWith<$Res> {
+  __$$ContentImplCopyWithImpl(
+      _$ContentImpl _value, $Res Function(_$ContentImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -96,7 +97,7 @@ class __$$_ContentCopyWithImpl<$Res>
     Object? key = null,
     Object? url = null,
   }) {
-    return _then(_$_Content(
+    return _then(_$ContentImpl(
       key: null == key
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
@@ -111,8 +112,8 @@ class __$$_ContentCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Content implements _Content {
-  const _$_Content({required this.key, required this.url});
+class _$ContentImpl implements _Content {
+  const _$ContentImpl({required this.key, required this.url});
 
   @override
   final ContentKey key;
@@ -125,10 +126,10 @@ class _$_Content implements _Content {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Content &&
+            other is _$ContentImpl &&
             (identical(other.key, key) || other.key == key) &&
             (identical(other.url, url) || other.url == url));
   }
@@ -139,13 +140,13 @@ class _$_Content implements _Content {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ContentCopyWith<_$_Content> get copyWith =>
-      __$$_ContentCopyWithImpl<_$_Content>(this, _$identity);
+  _$$ContentImplCopyWith<_$ContentImpl> get copyWith =>
+      __$$ContentImplCopyWithImpl<_$ContentImpl>(this, _$identity);
 }
 
 abstract class _Content implements Content {
   const factory _Content(
-      {required final ContentKey key, required final Uri url}) = _$_Content;
+      {required final ContentKey key, required final Uri url}) = _$ContentImpl;
 
   @override
   ContentKey get key;
@@ -153,6 +154,6 @@ abstract class _Content implements Content {
   Uri get url;
   @override
   @JsonKey(ignore: true)
-  _$$_ContentCopyWith<_$_Content> get copyWith =>
+  _$$ContentImplCopyWith<_$ContentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

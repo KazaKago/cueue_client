@@ -99,11 +99,11 @@ class _$RecipeSummaryImplCopyWithImpl<$Res, $Val extends RecipeSummaryImpl>
 }
 
 /// @nodoc
-abstract class _$$_RecipeSummaryImplCopyWith<$Res>
+abstract class _$$RecipeSummaryImplImplCopyWith<$Res>
     implements $RecipeSummaryImplCopyWith<$Res> {
-  factory _$$_RecipeSummaryImplCopyWith(_$_RecipeSummaryImpl value,
-          $Res Function(_$_RecipeSummaryImpl) then) =
-      __$$_RecipeSummaryImplCopyWithImpl<$Res>;
+  factory _$$RecipeSummaryImplImplCopyWith(_$RecipeSummaryImplImpl value,
+          $Res Function(_$RecipeSummaryImplImpl) then) =
+      __$$RecipeSummaryImplImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -116,11 +116,11 @@ abstract class _$$_RecipeSummaryImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RecipeSummaryImplCopyWithImpl<$Res>
-    extends _$RecipeSummaryImplCopyWithImpl<$Res, _$_RecipeSummaryImpl>
-    implements _$$_RecipeSummaryImplCopyWith<$Res> {
-  __$$_RecipeSummaryImplCopyWithImpl(
-      _$_RecipeSummaryImpl _value, $Res Function(_$_RecipeSummaryImpl) _then)
+class __$$RecipeSummaryImplImplCopyWithImpl<$Res>
+    extends _$RecipeSummaryImplCopyWithImpl<$Res, _$RecipeSummaryImplImpl>
+    implements _$$RecipeSummaryImplImplCopyWith<$Res> {
+  __$$RecipeSummaryImplImplCopyWithImpl(_$RecipeSummaryImplImpl _value,
+      $Res Function(_$RecipeSummaryImplImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -131,7 +131,7 @@ class __$$_RecipeSummaryImplCopyWithImpl<$Res>
     Object? image = freezed,
     Object? lastCookingAt = freezed,
   }) {
-    return _then(_$_RecipeSummaryImpl(
+    return _then(_$RecipeSummaryImplImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -154,8 +154,8 @@ class __$$_RecipeSummaryImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RecipeSummaryImpl implements _RecipeSummaryImpl {
-  const _$_RecipeSummaryImpl(
+class _$RecipeSummaryImplImpl implements _RecipeSummaryImpl {
+  const _$RecipeSummaryImplImpl(
       {required this.id,
       required this.title,
       required this.image,
@@ -176,10 +176,10 @@ class _$_RecipeSummaryImpl implements _RecipeSummaryImpl {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RecipeSummaryImpl &&
+            other is _$RecipeSummaryImplImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.image, image) || other.image == image) &&
@@ -193,8 +193,8 @@ class _$_RecipeSummaryImpl implements _RecipeSummaryImpl {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RecipeSummaryImplCopyWith<_$_RecipeSummaryImpl> get copyWith =>
-      __$$_RecipeSummaryImplCopyWithImpl<_$_RecipeSummaryImpl>(
+  _$$RecipeSummaryImplImplCopyWith<_$RecipeSummaryImplImpl> get copyWith =>
+      __$$RecipeSummaryImplImplCopyWithImpl<_$RecipeSummaryImplImpl>(
           this, _$identity);
 }
 
@@ -203,7 +203,7 @@ abstract class _RecipeSummaryImpl implements RecipeSummaryImpl {
       {required final RecipeId id,
       required final String title,
       required final Content? image,
-      required final DateTime? lastCookingAt}) = _$_RecipeSummaryImpl;
+      required final DateTime? lastCookingAt}) = _$RecipeSummaryImplImpl;
 
   @override
   RecipeId get id;
@@ -215,6 +215,6 @@ abstract class _RecipeSummaryImpl implements RecipeSummaryImpl {
   DateTime? get lastCookingAt;
   @override
   @JsonKey(ignore: true)
-  _$$_RecipeSummaryImplCopyWith<_$_RecipeSummaryImpl> get copyWith =>
+  _$$RecipeSummaryImplImplCopyWith<_$RecipeSummaryImplImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

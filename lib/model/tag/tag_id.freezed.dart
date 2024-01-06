@@ -55,18 +55,21 @@ class _$TagIdCopyWithImpl<$Res, $Val extends TagId>
 }
 
 /// @nodoc
-abstract class _$$_TagIdCopyWith<$Res> implements $TagIdCopyWith<$Res> {
-  factory _$$_TagIdCopyWith(_$_TagId value, $Res Function(_$_TagId) then) =
-      __$$_TagIdCopyWithImpl<$Res>;
+abstract class _$$TagIdImplCopyWith<$Res> implements $TagIdCopyWith<$Res> {
+  factory _$$TagIdImplCopyWith(
+          _$TagIdImpl value, $Res Function(_$TagIdImpl) then) =
+      __$$TagIdImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class __$$_TagIdCopyWithImpl<$Res> extends _$TagIdCopyWithImpl<$Res, _$_TagId>
-    implements _$$_TagIdCopyWith<$Res> {
-  __$$_TagIdCopyWithImpl(_$_TagId _value, $Res Function(_$_TagId) _then)
+class __$$TagIdImplCopyWithImpl<$Res>
+    extends _$TagIdCopyWithImpl<$Res, _$TagIdImpl>
+    implements _$$TagIdImplCopyWith<$Res> {
+  __$$TagIdImplCopyWithImpl(
+      _$TagIdImpl _value, $Res Function(_$TagIdImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -74,7 +77,7 @@ class __$$_TagIdCopyWithImpl<$Res> extends _$TagIdCopyWithImpl<$Res, _$_TagId>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$_TagId(
+    return _then(_$TagIdImpl(
       null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -85,8 +88,8 @@ class __$$_TagIdCopyWithImpl<$Res> extends _$TagIdCopyWithImpl<$Res, _$_TagId>
 
 /// @nodoc
 
-class _$_TagId extends _TagId {
-  const _$_TagId(this.value) : super._();
+class _$TagIdImpl extends _TagId {
+  const _$TagIdImpl(this.value) : super._();
 
   @override
   final int value;
@@ -97,10 +100,10 @@ class _$_TagId extends _TagId {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TagId &&
+            other is _$TagIdImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -110,18 +113,18 @@ class _$_TagId extends _TagId {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TagIdCopyWith<_$_TagId> get copyWith =>
-      __$$_TagIdCopyWithImpl<_$_TagId>(this, _$identity);
+  _$$TagIdImplCopyWith<_$TagIdImpl> get copyWith =>
+      __$$TagIdImplCopyWithImpl<_$TagIdImpl>(this, _$identity);
 }
 
 abstract class _TagId extends TagId {
-  const factory _TagId(final int value) = _$_TagId;
+  const factory _TagId(final int value) = _$TagIdImpl;
   const _TagId._() : super._();
 
   @override
   int get value;
   @override
   @JsonKey(ignore: true)
-  _$$_TagIdCopyWith<_$_TagId> get copyWith =>
+  _$$TagIdImplCopyWith<_$TagIdImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

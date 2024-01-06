@@ -101,10 +101,10 @@ class _$AppInfoCopyWithImpl<$Res, $Val extends AppInfo>
 }
 
 /// @nodoc
-abstract class _$$_AppInfoCopyWith<$Res> implements $AppInfoCopyWith<$Res> {
-  factory _$$_AppInfoCopyWith(
-          _$_AppInfo value, $Res Function(_$_AppInfo) then) =
-      __$$_AppInfoCopyWithImpl<$Res>;
+abstract class _$$AppInfoImplCopyWith<$Res> implements $AppInfoCopyWith<$Res> {
+  factory _$$AppInfoImplCopyWith(
+          _$AppInfoImpl value, $Res Function(_$AppInfoImpl) then) =
+      __$$AppInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -120,10 +120,11 @@ abstract class _$$_AppInfoCopyWith<$Res> implements $AppInfoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AppInfoCopyWithImpl<$Res>
-    extends _$AppInfoCopyWithImpl<$Res, _$_AppInfo>
-    implements _$$_AppInfoCopyWith<$Res> {
-  __$$_AppInfoCopyWithImpl(_$_AppInfo _value, $Res Function(_$_AppInfo) _then)
+class __$$AppInfoImplCopyWithImpl<$Res>
+    extends _$AppInfoCopyWithImpl<$Res, _$AppInfoImpl>
+    implements _$$AppInfoImplCopyWith<$Res> {
+  __$$AppInfoImplCopyWithImpl(
+      _$AppInfoImpl _value, $Res Function(_$AppInfoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -136,7 +137,7 @@ class __$$_AppInfoCopyWithImpl<$Res>
     Object? developer = null,
     Object? email = null,
   }) {
-    return _then(_$_AppInfo(
+    return _then(_$AppInfoImpl(
       appName: null == appName
           ? _value.appName
           : appName // ignore: cast_nullable_to_non_nullable
@@ -167,8 +168,8 @@ class __$$_AppInfoCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppInfo extends _AppInfo {
-  const _$_AppInfo(
+class _$AppInfoImpl extends _AppInfo {
+  const _$AppInfoImpl(
       {required this.appName,
       required this.version,
       required this.webSite,
@@ -196,10 +197,10 @@ class _$_AppInfo extends _AppInfo {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppInfo &&
+            other is _$AppInfoImpl &&
             (identical(other.appName, appName) || other.appName == appName) &&
             (identical(other.version, version) || other.version == version) &&
             (identical(other.webSite, webSite) || other.webSite == webSite) &&
@@ -217,8 +218,8 @@ class _$_AppInfo extends _AppInfo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppInfoCopyWith<_$_AppInfo> get copyWith =>
-      __$$_AppInfoCopyWithImpl<_$_AppInfo>(this, _$identity);
+  _$$AppInfoImplCopyWith<_$AppInfoImpl> get copyWith =>
+      __$$AppInfoImplCopyWithImpl<_$AppInfoImpl>(this, _$identity);
 }
 
 abstract class _AppInfo extends AppInfo {
@@ -228,7 +229,7 @@ abstract class _AppInfo extends AppInfo {
       required final Uri webSite,
       required final Uri storeLink,
       required final String developer,
-      required final Email email}) = _$_AppInfo;
+      required final Email email}) = _$AppInfoImpl;
   const _AppInfo._() : super._();
 
   @override
@@ -245,6 +246,6 @@ abstract class _AppInfo extends AppInfo {
   Email get email;
   @override
   @JsonKey(ignore: true)
-  _$$_AppInfoCopyWith<_$_AppInfo> get copyWith =>
+  _$$AppInfoImplCopyWith<_$AppInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

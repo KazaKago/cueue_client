@@ -78,10 +78,11 @@ class _$WorkspaceCopyWithImpl<$Res, $Val extends Workspace>
 }
 
 /// @nodoc
-abstract class _$$_WorkspaceCopyWith<$Res> implements $WorkspaceCopyWith<$Res> {
-  factory _$$_WorkspaceCopyWith(
-          _$_Workspace value, $Res Function(_$_Workspace) then) =
-      __$$_WorkspaceCopyWithImpl<$Res>;
+abstract class _$$WorkspaceImplCopyWith<$Res>
+    implements $WorkspaceCopyWith<$Res> {
+  factory _$$WorkspaceImplCopyWith(
+          _$WorkspaceImpl value, $Res Function(_$WorkspaceImpl) then) =
+      __$$WorkspaceImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({WorkspaceId id, String name, List<UserSummary> users});
@@ -91,11 +92,11 @@ abstract class _$$_WorkspaceCopyWith<$Res> implements $WorkspaceCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_WorkspaceCopyWithImpl<$Res>
-    extends _$WorkspaceCopyWithImpl<$Res, _$_Workspace>
-    implements _$$_WorkspaceCopyWith<$Res> {
-  __$$_WorkspaceCopyWithImpl(
-      _$_Workspace _value, $Res Function(_$_Workspace) _then)
+class __$$WorkspaceImplCopyWithImpl<$Res>
+    extends _$WorkspaceCopyWithImpl<$Res, _$WorkspaceImpl>
+    implements _$$WorkspaceImplCopyWith<$Res> {
+  __$$WorkspaceImplCopyWithImpl(
+      _$WorkspaceImpl _value, $Res Function(_$WorkspaceImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -105,7 +106,7 @@ class __$$_WorkspaceCopyWithImpl<$Res>
     Object? name = null,
     Object? users = null,
   }) {
-    return _then(_$_Workspace(
+    return _then(_$WorkspaceImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -124,8 +125,8 @@ class __$$_WorkspaceCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Workspace implements _Workspace {
-  const _$_Workspace(
+class _$WorkspaceImpl implements _Workspace {
+  const _$WorkspaceImpl(
       {required this.id,
       required this.name,
       required final List<UserSummary> users})
@@ -149,10 +150,10 @@ class _$_Workspace implements _Workspace {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Workspace &&
+            other is _$WorkspaceImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._users, _users));
@@ -165,15 +166,15 @@ class _$_Workspace implements _Workspace {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WorkspaceCopyWith<_$_Workspace> get copyWith =>
-      __$$_WorkspaceCopyWithImpl<_$_Workspace>(this, _$identity);
+  _$$WorkspaceImplCopyWith<_$WorkspaceImpl> get copyWith =>
+      __$$WorkspaceImplCopyWithImpl<_$WorkspaceImpl>(this, _$identity);
 }
 
 abstract class _Workspace implements Workspace {
   const factory _Workspace(
       {required final WorkspaceId id,
       required final String name,
-      required final List<UserSummary> users}) = _$_Workspace;
+      required final List<UserSummary> users}) = _$WorkspaceImpl;
 
   @override
   WorkspaceId get id;
@@ -183,6 +184,6 @@ abstract class _Workspace implements Workspace {
   List<UserSummary> get users;
   @override
   @JsonKey(ignore: true)
-  _$$_WorkspaceCopyWith<_$_Workspace> get copyWith =>
+  _$$WorkspaceImplCopyWith<_$WorkspaceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,9 +6,9 @@ part of 'user_summary_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UserSummaryResponse _$$_UserSummaryResponseFromJson(
+_$UserSummaryResponseImpl _$$UserSummaryResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_UserSummaryResponse(
+    _$UserSummaryResponseImpl(
       id: json['id'] as int,
       displayName: json['display_name'] as String,
       photo: json['photo'] == null
@@ -16,8 +16,8 @@ _$_UserSummaryResponse _$$_UserSummaryResponseFromJson(
           : ContentResponse.fromJson(json['photo'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_UserSummaryResponseToJson(
-        _$_UserSummaryResponse instance) =>
+Map<String, dynamic> _$$UserSummaryResponseImplToJson(
+        _$UserSummaryResponseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'display_name': instance.displayName,

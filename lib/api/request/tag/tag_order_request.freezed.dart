@@ -64,22 +64,22 @@ class _$TagOrderRequestCopyWithImpl<$Res, $Val extends TagOrderRequest>
 }
 
 /// @nodoc
-abstract class _$$_TagOrderRequestCopyWith<$Res>
+abstract class _$$TagOrderRequestImplCopyWith<$Res>
     implements $TagOrderRequestCopyWith<$Res> {
-  factory _$$_TagOrderRequestCopyWith(
-          _$_TagOrderRequest value, $Res Function(_$_TagOrderRequest) then) =
-      __$$_TagOrderRequestCopyWithImpl<$Res>;
+  factory _$$TagOrderRequestImplCopyWith(_$TagOrderRequestImpl value,
+          $Res Function(_$TagOrderRequestImpl) then) =
+      __$$TagOrderRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'tag_ids') List<int> tagIds});
 }
 
 /// @nodoc
-class __$$_TagOrderRequestCopyWithImpl<$Res>
-    extends _$TagOrderRequestCopyWithImpl<$Res, _$_TagOrderRequest>
-    implements _$$_TagOrderRequestCopyWith<$Res> {
-  __$$_TagOrderRequestCopyWithImpl(
-      _$_TagOrderRequest _value, $Res Function(_$_TagOrderRequest) _then)
+class __$$TagOrderRequestImplCopyWithImpl<$Res>
+    extends _$TagOrderRequestCopyWithImpl<$Res, _$TagOrderRequestImpl>
+    implements _$$TagOrderRequestImplCopyWith<$Res> {
+  __$$TagOrderRequestImplCopyWithImpl(
+      _$TagOrderRequestImpl _value, $Res Function(_$TagOrderRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_TagOrderRequestCopyWithImpl<$Res>
   $Res call({
     Object? tagIds = null,
   }) {
-    return _then(_$_TagOrderRequest(
+    return _then(_$TagOrderRequestImpl(
       tagIds: null == tagIds
           ? _value._tagIds
           : tagIds // ignore: cast_nullable_to_non_nullable
@@ -98,13 +98,13 @@ class __$$_TagOrderRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TagOrderRequest implements _TagOrderRequest {
-  const _$_TagOrderRequest(
+class _$TagOrderRequestImpl implements _TagOrderRequest {
+  const _$TagOrderRequestImpl(
       {@JsonKey(name: 'tag_ids') required final List<int> tagIds})
       : _tagIds = tagIds;
 
-  factory _$_TagOrderRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_TagOrderRequestFromJson(json);
+  factory _$TagOrderRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TagOrderRequestImplFromJson(json);
 
 // ignore: invalid_annotation_target
   final List<int> _tagIds;
@@ -123,10 +123,10 @@ class _$_TagOrderRequest implements _TagOrderRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TagOrderRequest &&
+            other is _$TagOrderRequestImpl &&
             const DeepCollectionEquality().equals(other._tagIds, _tagIds));
   }
 
@@ -138,12 +138,13 @@ class _$_TagOrderRequest implements _TagOrderRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TagOrderRequestCopyWith<_$_TagOrderRequest> get copyWith =>
-      __$$_TagOrderRequestCopyWithImpl<_$_TagOrderRequest>(this, _$identity);
+  _$$TagOrderRequestImplCopyWith<_$TagOrderRequestImpl> get copyWith =>
+      __$$TagOrderRequestImplCopyWithImpl<_$TagOrderRequestImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TagOrderRequestToJson(
+    return _$$TagOrderRequestImplToJson(
       this,
     );
   }
@@ -152,16 +153,16 @@ class _$_TagOrderRequest implements _TagOrderRequest {
 abstract class _TagOrderRequest implements TagOrderRequest {
   const factory _TagOrderRequest(
           {@JsonKey(name: 'tag_ids') required final List<int> tagIds}) =
-      _$_TagOrderRequest;
+      _$TagOrderRequestImpl;
 
   factory _TagOrderRequest.fromJson(Map<String, dynamic> json) =
-      _$_TagOrderRequest.fromJson;
+      _$TagOrderRequestImpl.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'tag_ids')
   List<int> get tagIds;
   @override
   @JsonKey(ignore: true)
-  _$$_TagOrderRequestCopyWith<_$_TagOrderRequest> get copyWith =>
+  _$$TagOrderRequestImplCopyWith<_$TagOrderRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

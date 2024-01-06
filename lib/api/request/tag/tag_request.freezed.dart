@@ -64,22 +64,22 @@ class _$TagRequestCopyWithImpl<$Res, $Val extends TagRequest>
 }
 
 /// @nodoc
-abstract class _$$_TagRequestCopyWith<$Res>
+abstract class _$$TagRequestImplCopyWith<$Res>
     implements $TagRequestCopyWith<$Res> {
-  factory _$$_TagRequestCopyWith(
-          _$_TagRequest value, $Res Function(_$_TagRequest) then) =
-      __$$_TagRequestCopyWithImpl<$Res>;
+  factory _$$TagRequestImplCopyWith(
+          _$TagRequestImpl value, $Res Function(_$TagRequestImpl) then) =
+      __$$TagRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
-class __$$_TagRequestCopyWithImpl<$Res>
-    extends _$TagRequestCopyWithImpl<$Res, _$_TagRequest>
-    implements _$$_TagRequestCopyWith<$Res> {
-  __$$_TagRequestCopyWithImpl(
-      _$_TagRequest _value, $Res Function(_$_TagRequest) _then)
+class __$$TagRequestImplCopyWithImpl<$Res>
+    extends _$TagRequestCopyWithImpl<$Res, _$TagRequestImpl>
+    implements _$$TagRequestImplCopyWith<$Res> {
+  __$$TagRequestImplCopyWithImpl(
+      _$TagRequestImpl _value, $Res Function(_$TagRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_TagRequestCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
   }) {
-    return _then(_$_TagRequest(
+    return _then(_$TagRequestImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -98,11 +98,11 @@ class __$$_TagRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TagRequest implements _TagRequest {
-  const _$_TagRequest({@JsonKey(name: 'name') required this.name});
+class _$TagRequestImpl implements _TagRequest {
+  const _$TagRequestImpl({@JsonKey(name: 'name') required this.name});
 
-  factory _$_TagRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_TagRequestFromJson(json);
+  factory _$TagRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TagRequestImplFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
@@ -115,10 +115,10 @@ class _$_TagRequest implements _TagRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TagRequest &&
+            other is _$TagRequestImpl &&
             (identical(other.name, name) || other.name == name));
   }
 
@@ -129,12 +129,12 @@ class _$_TagRequest implements _TagRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TagRequestCopyWith<_$_TagRequest> get copyWith =>
-      __$$_TagRequestCopyWithImpl<_$_TagRequest>(this, _$identity);
+  _$$TagRequestImplCopyWith<_$TagRequestImpl> get copyWith =>
+      __$$TagRequestImplCopyWithImpl<_$TagRequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TagRequestToJson(
+    return _$$TagRequestImplToJson(
       this,
     );
   }
@@ -142,16 +142,16 @@ class _$_TagRequest implements _TagRequest {
 
 abstract class _TagRequest implements TagRequest {
   const factory _TagRequest(
-      {@JsonKey(name: 'name') required final String name}) = _$_TagRequest;
+      {@JsonKey(name: 'name') required final String name}) = _$TagRequestImpl;
 
   factory _TagRequest.fromJson(Map<String, dynamic> json) =
-      _$_TagRequest.fromJson;
+      _$TagRequestImpl.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_TagRequestCopyWith<_$_TagRequest> get copyWith =>
+  _$$TagRequestImplCopyWith<_$TagRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

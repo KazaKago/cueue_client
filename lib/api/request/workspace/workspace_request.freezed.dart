@@ -64,22 +64,22 @@ class _$WorkspaceRequestCopyWithImpl<$Res, $Val extends WorkspaceRequest>
 }
 
 /// @nodoc
-abstract class _$$_WorkspaceRequestCopyWith<$Res>
+abstract class _$$WorkspaceRequestImplCopyWith<$Res>
     implements $WorkspaceRequestCopyWith<$Res> {
-  factory _$$_WorkspaceRequestCopyWith(
-          _$_WorkspaceRequest value, $Res Function(_$_WorkspaceRequest) then) =
-      __$$_WorkspaceRequestCopyWithImpl<$Res>;
+  factory _$$WorkspaceRequestImplCopyWith(_$WorkspaceRequestImpl value,
+          $Res Function(_$WorkspaceRequestImpl) then) =
+      __$$WorkspaceRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
-class __$$_WorkspaceRequestCopyWithImpl<$Res>
-    extends _$WorkspaceRequestCopyWithImpl<$Res, _$_WorkspaceRequest>
-    implements _$$_WorkspaceRequestCopyWith<$Res> {
-  __$$_WorkspaceRequestCopyWithImpl(
-      _$_WorkspaceRequest _value, $Res Function(_$_WorkspaceRequest) _then)
+class __$$WorkspaceRequestImplCopyWithImpl<$Res>
+    extends _$WorkspaceRequestCopyWithImpl<$Res, _$WorkspaceRequestImpl>
+    implements _$$WorkspaceRequestImplCopyWith<$Res> {
+  __$$WorkspaceRequestImplCopyWithImpl(_$WorkspaceRequestImpl _value,
+      $Res Function(_$WorkspaceRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_WorkspaceRequestCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
   }) {
-    return _then(_$_WorkspaceRequest(
+    return _then(_$WorkspaceRequestImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -98,11 +98,11 @@ class __$$_WorkspaceRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_WorkspaceRequest implements _WorkspaceRequest {
-  const _$_WorkspaceRequest({@JsonKey(name: 'name') required this.name});
+class _$WorkspaceRequestImpl implements _WorkspaceRequest {
+  const _$WorkspaceRequestImpl({@JsonKey(name: 'name') required this.name});
 
-  factory _$_WorkspaceRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_WorkspaceRequestFromJson(json);
+  factory _$WorkspaceRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WorkspaceRequestImplFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
@@ -115,10 +115,10 @@ class _$_WorkspaceRequest implements _WorkspaceRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WorkspaceRequest &&
+            other is _$WorkspaceRequestImpl &&
             (identical(other.name, name) || other.name == name));
   }
 
@@ -129,12 +129,13 @@ class _$_WorkspaceRequest implements _WorkspaceRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WorkspaceRequestCopyWith<_$_WorkspaceRequest> get copyWith =>
-      __$$_WorkspaceRequestCopyWithImpl<_$_WorkspaceRequest>(this, _$identity);
+  _$$WorkspaceRequestImplCopyWith<_$WorkspaceRequestImpl> get copyWith =>
+      __$$WorkspaceRequestImplCopyWithImpl<_$WorkspaceRequestImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WorkspaceRequestToJson(
+    return _$$WorkspaceRequestImplToJson(
       this,
     );
   }
@@ -143,16 +144,16 @@ class _$_WorkspaceRequest implements _WorkspaceRequest {
 abstract class _WorkspaceRequest implements WorkspaceRequest {
   const factory _WorkspaceRequest(
           {@JsonKey(name: 'name') required final String name}) =
-      _$_WorkspaceRequest;
+      _$WorkspaceRequestImpl;
 
   factory _WorkspaceRequest.fromJson(Map<String, dynamic> json) =
-      _$_WorkspaceRequest.fromJson;
+      _$WorkspaceRequestImpl.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'name')
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_WorkspaceRequestCopyWith<_$_WorkspaceRequest> get copyWith =>
+  _$$WorkspaceRequestImplCopyWith<_$WorkspaceRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

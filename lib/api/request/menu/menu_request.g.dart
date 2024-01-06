@@ -6,8 +6,8 @@ part of 'menu_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MenuRequest _$$_MenuRequestFromJson(Map<String, dynamic> json) =>
-    _$_MenuRequest(
+_$MenuRequestImpl _$$MenuRequestImplFromJson(Map<String, dynamic> json) =>
+    _$MenuRequestImpl(
       memo: json['memo'] as String,
       date: json['date'] as String,
       timeFrame: json['time_frame'] as String,
@@ -15,7 +15,7 @@ _$_MenuRequest _$$_MenuRequestFromJson(Map<String, dynamic> json) =>
           (json['recipe_ids'] as List<dynamic>).map((e) => e as int).toList(),
     );
 
-Map<String, dynamic> _$$_MenuRequestToJson(_$_MenuRequest instance) =>
+Map<String, dynamic> _$$MenuRequestImplToJson(_$MenuRequestImpl instance) =>
     <String, dynamic>{
       'memo': instance.memo,
       'date': instance.date,

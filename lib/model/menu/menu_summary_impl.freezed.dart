@@ -96,11 +96,11 @@ class _$MenuSummaryImplCopyWithImpl<$Res, $Val extends MenuSummaryImpl>
 }
 
 /// @nodoc
-abstract class _$$_MenuSummaryImplCopyWith<$Res>
+abstract class _$$MenuSummaryImplImplCopyWith<$Res>
     implements $MenuSummaryImplCopyWith<$Res> {
-  factory _$$_MenuSummaryImplCopyWith(
-          _$_MenuSummaryImpl value, $Res Function(_$_MenuSummaryImpl) then) =
-      __$$_MenuSummaryImplCopyWithImpl<$Res>;
+  factory _$$MenuSummaryImplImplCopyWith(_$MenuSummaryImplImpl value,
+          $Res Function(_$MenuSummaryImplImpl) then) =
+      __$$MenuSummaryImplImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -115,11 +115,11 @@ abstract class _$$_MenuSummaryImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MenuSummaryImplCopyWithImpl<$Res>
-    extends _$MenuSummaryImplCopyWithImpl<$Res, _$_MenuSummaryImpl>
-    implements _$$_MenuSummaryImplCopyWith<$Res> {
-  __$$_MenuSummaryImplCopyWithImpl(
-      _$_MenuSummaryImpl _value, $Res Function(_$_MenuSummaryImpl) _then)
+class __$$MenuSummaryImplImplCopyWithImpl<$Res>
+    extends _$MenuSummaryImplCopyWithImpl<$Res, _$MenuSummaryImplImpl>
+    implements _$$MenuSummaryImplImplCopyWith<$Res> {
+  __$$MenuSummaryImplImplCopyWithImpl(
+      _$MenuSummaryImplImpl _value, $Res Function(_$MenuSummaryImplImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -131,7 +131,7 @@ class __$$_MenuSummaryImplCopyWithImpl<$Res>
     Object? timeFrame = null,
     Object? recipes = null,
   }) {
-    return _then(_$_MenuSummaryImpl(
+    return _then(_$MenuSummaryImplImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -158,8 +158,8 @@ class __$$_MenuSummaryImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MenuSummaryImpl implements _MenuSummaryImpl {
-  const _$_MenuSummaryImpl(
+class _$MenuSummaryImplImpl implements _MenuSummaryImpl {
+  const _$MenuSummaryImplImpl(
       {required this.id,
       required this.memo,
       required this.date,
@@ -189,10 +189,10 @@ class _$_MenuSummaryImpl implements _MenuSummaryImpl {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MenuSummaryImpl &&
+            other is _$MenuSummaryImplImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.memo, memo) || other.memo == memo) &&
             (identical(other.date, date) || other.date == date) &&
@@ -208,8 +208,9 @@ class _$_MenuSummaryImpl implements _MenuSummaryImpl {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MenuSummaryImplCopyWith<_$_MenuSummaryImpl> get copyWith =>
-      __$$_MenuSummaryImplCopyWithImpl<_$_MenuSummaryImpl>(this, _$identity);
+  _$$MenuSummaryImplImplCopyWith<_$MenuSummaryImplImpl> get copyWith =>
+      __$$MenuSummaryImplImplCopyWithImpl<_$MenuSummaryImplImpl>(
+          this, _$identity);
 }
 
 abstract class _MenuSummaryImpl implements MenuSummaryImpl {
@@ -218,7 +219,7 @@ abstract class _MenuSummaryImpl implements MenuSummaryImpl {
       required final String memo,
       required final DateTime date,
       required final TimeFrame timeFrame,
-      required final List<RecipeSummary> recipes}) = _$_MenuSummaryImpl;
+      required final List<RecipeSummary> recipes}) = _$MenuSummaryImplImpl;
 
   @override
   MenuId get id;
@@ -232,6 +233,6 @@ abstract class _MenuSummaryImpl implements MenuSummaryImpl {
   List<RecipeSummary> get recipes;
   @override
   @JsonKey(ignore: true)
-  _$$_MenuSummaryImplCopyWith<_$_MenuSummaryImpl> get copyWith =>
+  _$$MenuSummaryImplImplCopyWith<_$MenuSummaryImplImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

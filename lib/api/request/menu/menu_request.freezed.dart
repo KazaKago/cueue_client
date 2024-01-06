@@ -92,11 +92,11 @@ class _$MenuRequestCopyWithImpl<$Res, $Val extends MenuRequest>
 }
 
 /// @nodoc
-abstract class _$$_MenuRequestCopyWith<$Res>
+abstract class _$$MenuRequestImplCopyWith<$Res>
     implements $MenuRequestCopyWith<$Res> {
-  factory _$$_MenuRequestCopyWith(
-          _$_MenuRequest value, $Res Function(_$_MenuRequest) then) =
-      __$$_MenuRequestCopyWithImpl<$Res>;
+  factory _$$MenuRequestImplCopyWith(
+          _$MenuRequestImpl value, $Res Function(_$MenuRequestImpl) then) =
+      __$$MenuRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -107,11 +107,11 @@ abstract class _$$_MenuRequestCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MenuRequestCopyWithImpl<$Res>
-    extends _$MenuRequestCopyWithImpl<$Res, _$_MenuRequest>
-    implements _$$_MenuRequestCopyWith<$Res> {
-  __$$_MenuRequestCopyWithImpl(
-      _$_MenuRequest _value, $Res Function(_$_MenuRequest) _then)
+class __$$MenuRequestImplCopyWithImpl<$Res>
+    extends _$MenuRequestCopyWithImpl<$Res, _$MenuRequestImpl>
+    implements _$$MenuRequestImplCopyWith<$Res> {
+  __$$MenuRequestImplCopyWithImpl(
+      _$MenuRequestImpl _value, $Res Function(_$MenuRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -122,7 +122,7 @@ class __$$_MenuRequestCopyWithImpl<$Res>
     Object? timeFrame = null,
     Object? recipeIds = null,
   }) {
-    return _then(_$_MenuRequest(
+    return _then(_$MenuRequestImpl(
       memo: null == memo
           ? _value.memo
           : memo // ignore: cast_nullable_to_non_nullable
@@ -145,16 +145,16 @@ class __$$_MenuRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MenuRequest implements _MenuRequest {
-  const _$_MenuRequest(
+class _$MenuRequestImpl implements _MenuRequest {
+  const _$MenuRequestImpl(
       {@JsonKey(name: 'memo') required this.memo,
       @JsonKey(name: 'date') required this.date,
       @JsonKey(name: 'time_frame') required this.timeFrame,
       @JsonKey(name: 'recipe_ids') required final List<int> recipeIds})
       : _recipeIds = recipeIds;
 
-  factory _$_MenuRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_MenuRequestFromJson(json);
+  factory _$MenuRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MenuRequestImplFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
@@ -185,10 +185,10 @@ class _$_MenuRequest implements _MenuRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MenuRequest &&
+            other is _$MenuRequestImpl &&
             (identical(other.memo, memo) || other.memo == memo) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.timeFrame, timeFrame) ||
@@ -205,12 +205,12 @@ class _$_MenuRequest implements _MenuRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MenuRequestCopyWith<_$_MenuRequest> get copyWith =>
-      __$$_MenuRequestCopyWithImpl<_$_MenuRequest>(this, _$identity);
+  _$$MenuRequestImplCopyWith<_$MenuRequestImpl> get copyWith =>
+      __$$MenuRequestImplCopyWithImpl<_$MenuRequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MenuRequestToJson(
+    return _$$MenuRequestImplToJson(
       this,
     );
   }
@@ -222,10 +222,10 @@ abstract class _MenuRequest implements MenuRequest {
           @JsonKey(name: 'date') required final String date,
           @JsonKey(name: 'time_frame') required final String timeFrame,
           @JsonKey(name: 'recipe_ids') required final List<int> recipeIds}) =
-      _$_MenuRequest;
+      _$MenuRequestImpl;
 
   factory _MenuRequest.fromJson(Map<String, dynamic> json) =
-      _$_MenuRequest.fromJson;
+      _$MenuRequestImpl.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'memo')
@@ -241,6 +241,6 @@ abstract class _MenuRequest implements MenuRequest {
   List<int> get recipeIds;
   @override
   @JsonKey(ignore: true)
-  _$$_MenuRequestCopyWith<_$_MenuRequest> get copyWith =>
+  _$$MenuRequestImplCopyWith<_$MenuRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

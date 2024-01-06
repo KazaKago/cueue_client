@@ -72,22 +72,22 @@ class _$TagResponseCopyWithImpl<$Res, $Val extends TagResponse>
 }
 
 /// @nodoc
-abstract class _$$_TagResponseCopyWith<$Res>
+abstract class _$$TagResponseImplCopyWith<$Res>
     implements $TagResponseCopyWith<$Res> {
-  factory _$$_TagResponseCopyWith(
-          _$_TagResponse value, $Res Function(_$_TagResponse) then) =
-      __$$_TagResponseCopyWithImpl<$Res>;
+  factory _$$TagResponseImplCopyWith(
+          _$TagResponseImpl value, $Res Function(_$TagResponseImpl) then) =
+      __$$TagResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
-class __$$_TagResponseCopyWithImpl<$Res>
-    extends _$TagResponseCopyWithImpl<$Res, _$_TagResponse>
-    implements _$$_TagResponseCopyWith<$Res> {
-  __$$_TagResponseCopyWithImpl(
-      _$_TagResponse _value, $Res Function(_$_TagResponse) _then)
+class __$$TagResponseImplCopyWithImpl<$Res>
+    extends _$TagResponseCopyWithImpl<$Res, _$TagResponseImpl>
+    implements _$$TagResponseImplCopyWith<$Res> {
+  __$$TagResponseImplCopyWithImpl(
+      _$TagResponseImpl _value, $Res Function(_$TagResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -96,7 +96,7 @@ class __$$_TagResponseCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
   }) {
-    return _then(_$_TagResponse(
+    return _then(_$TagResponseImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -111,13 +111,13 @@ class __$$_TagResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TagResponse implements _TagResponse {
-  const _$_TagResponse(
+class _$TagResponseImpl implements _TagResponse {
+  const _$TagResponseImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'name') required this.name});
 
-  factory _$_TagResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_TagResponseFromJson(json);
+  factory _$TagResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TagResponseImplFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
@@ -134,10 +134,10 @@ class _$_TagResponse implements _TagResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TagResponse &&
+            other is _$TagResponseImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
@@ -149,12 +149,12 @@ class _$_TagResponse implements _TagResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TagResponseCopyWith<_$_TagResponse> get copyWith =>
-      __$$_TagResponseCopyWithImpl<_$_TagResponse>(this, _$identity);
+  _$$TagResponseImplCopyWith<_$TagResponseImpl> get copyWith =>
+      __$$TagResponseImplCopyWithImpl<_$TagResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TagResponseToJson(
+    return _$$TagResponseImplToJson(
       this,
     );
   }
@@ -163,10 +163,10 @@ class _$_TagResponse implements _TagResponse {
 abstract class _TagResponse implements TagResponse {
   const factory _TagResponse(
       {@JsonKey(name: 'id') required final int id,
-      @JsonKey(name: 'name') required final String name}) = _$_TagResponse;
+      @JsonKey(name: 'name') required final String name}) = _$TagResponseImpl;
 
   factory _TagResponse.fromJson(Map<String, dynamic> json) =
-      _$_TagResponse.fromJson;
+      _$TagResponseImpl.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
@@ -176,6 +176,6 @@ abstract class _TagResponse implements TagResponse {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_TagResponseCopyWith<_$_TagResponse> get copyWith =>
+  _$$TagResponseImplCopyWith<_$TagResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

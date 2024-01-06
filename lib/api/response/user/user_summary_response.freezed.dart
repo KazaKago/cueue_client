@@ -97,11 +97,11 @@ class _$UserSummaryResponseCopyWithImpl<$Res, $Val extends UserSummaryResponse>
 }
 
 /// @nodoc
-abstract class _$$_UserSummaryResponseCopyWith<$Res>
+abstract class _$$UserSummaryResponseImplCopyWith<$Res>
     implements $UserSummaryResponseCopyWith<$Res> {
-  factory _$$_UserSummaryResponseCopyWith(_$_UserSummaryResponse value,
-          $Res Function(_$_UserSummaryResponse) then) =
-      __$$_UserSummaryResponseCopyWithImpl<$Res>;
+  factory _$$UserSummaryResponseImplCopyWith(_$UserSummaryResponseImpl value,
+          $Res Function(_$UserSummaryResponseImpl) then) =
+      __$$UserSummaryResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -114,11 +114,11 @@ abstract class _$$_UserSummaryResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UserSummaryResponseCopyWithImpl<$Res>
-    extends _$UserSummaryResponseCopyWithImpl<$Res, _$_UserSummaryResponse>
-    implements _$$_UserSummaryResponseCopyWith<$Res> {
-  __$$_UserSummaryResponseCopyWithImpl(_$_UserSummaryResponse _value,
-      $Res Function(_$_UserSummaryResponse) _then)
+class __$$UserSummaryResponseImplCopyWithImpl<$Res>
+    extends _$UserSummaryResponseCopyWithImpl<$Res, _$UserSummaryResponseImpl>
+    implements _$$UserSummaryResponseImplCopyWith<$Res> {
+  __$$UserSummaryResponseImplCopyWithImpl(_$UserSummaryResponseImpl _value,
+      $Res Function(_$UserSummaryResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -128,7 +128,7 @@ class __$$_UserSummaryResponseCopyWithImpl<$Res>
     Object? displayName = null,
     Object? photo = freezed,
   }) {
-    return _then(_$_UserSummaryResponse(
+    return _then(_$UserSummaryResponseImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -147,14 +147,14 @@ class __$$_UserSummaryResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserSummaryResponse implements _UserSummaryResponse {
-  const _$_UserSummaryResponse(
+class _$UserSummaryResponseImpl implements _UserSummaryResponse {
+  const _$UserSummaryResponseImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'display_name') required this.displayName,
       @JsonKey(name: 'photo') required this.photo});
 
-  factory _$_UserSummaryResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_UserSummaryResponseFromJson(json);
+  factory _$UserSummaryResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserSummaryResponseImplFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
@@ -175,10 +175,10 @@ class _$_UserSummaryResponse implements _UserSummaryResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserSummaryResponse &&
+            other is _$UserSummaryResponseImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.displayName, displayName) ||
                 other.displayName == displayName) &&
@@ -192,13 +192,13 @@ class _$_UserSummaryResponse implements _UserSummaryResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserSummaryResponseCopyWith<_$_UserSummaryResponse> get copyWith =>
-      __$$_UserSummaryResponseCopyWithImpl<_$_UserSummaryResponse>(
+  _$$UserSummaryResponseImplCopyWith<_$UserSummaryResponseImpl> get copyWith =>
+      __$$UserSummaryResponseImplCopyWithImpl<_$UserSummaryResponseImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserSummaryResponseToJson(
+    return _$$UserSummaryResponseImplToJson(
       this,
     );
   }
@@ -209,10 +209,10 @@ abstract class _UserSummaryResponse implements UserSummaryResponse {
           {@JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'display_name') required final String displayName,
           @JsonKey(name: 'photo') required final ContentResponse? photo}) =
-      _$_UserSummaryResponse;
+      _$UserSummaryResponseImpl;
 
   factory _UserSummaryResponse.fromJson(Map<String, dynamic> json) =
-      _$_UserSummaryResponse.fromJson;
+      _$UserSummaryResponseImpl.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
@@ -225,6 +225,6 @@ abstract class _UserSummaryResponse implements UserSummaryResponse {
   ContentResponse? get photo;
   @override
   @JsonKey(ignore: true)
-  _$$_UserSummaryResponseCopyWith<_$_UserSummaryResponse> get copyWith =>
+  _$$UserSummaryResponseImplCopyWith<_$UserSummaryResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

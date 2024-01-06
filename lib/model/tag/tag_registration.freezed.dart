@@ -57,22 +57,22 @@ class _$TagRegistrationCopyWithImpl<$Res, $Val extends TagRegistration>
 }
 
 /// @nodoc
-abstract class _$$_TagRegistrationCopyWith<$Res>
+abstract class _$$TagRegistrationImplCopyWith<$Res>
     implements $TagRegistrationCopyWith<$Res> {
-  factory _$$_TagRegistrationCopyWith(
-          _$_TagRegistration value, $Res Function(_$_TagRegistration) then) =
-      __$$_TagRegistrationCopyWithImpl<$Res>;
+  factory _$$TagRegistrationImplCopyWith(_$TagRegistrationImpl value,
+          $Res Function(_$TagRegistrationImpl) then) =
+      __$$TagRegistrationImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name});
 }
 
 /// @nodoc
-class __$$_TagRegistrationCopyWithImpl<$Res>
-    extends _$TagRegistrationCopyWithImpl<$Res, _$_TagRegistration>
-    implements _$$_TagRegistrationCopyWith<$Res> {
-  __$$_TagRegistrationCopyWithImpl(
-      _$_TagRegistration _value, $Res Function(_$_TagRegistration) _then)
+class __$$TagRegistrationImplCopyWithImpl<$Res>
+    extends _$TagRegistrationCopyWithImpl<$Res, _$TagRegistrationImpl>
+    implements _$$TagRegistrationImplCopyWith<$Res> {
+  __$$TagRegistrationImplCopyWithImpl(
+      _$TagRegistrationImpl _value, $Res Function(_$TagRegistrationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_TagRegistrationCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
   }) {
-    return _then(_$_TagRegistration(
+    return _then(_$TagRegistrationImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_TagRegistrationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TagRegistration implements _TagRegistration {
-  const _$_TagRegistration({required this.name});
+class _$TagRegistrationImpl implements _TagRegistration {
+  const _$TagRegistrationImpl({required this.name});
 
   @override
   final String name;
@@ -103,10 +103,10 @@ class _$_TagRegistration implements _TagRegistration {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TagRegistration &&
+            other is _$TagRegistrationImpl &&
             (identical(other.name, name) || other.name == name));
   }
 
@@ -116,18 +116,19 @@ class _$_TagRegistration implements _TagRegistration {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TagRegistrationCopyWith<_$_TagRegistration> get copyWith =>
-      __$$_TagRegistrationCopyWithImpl<_$_TagRegistration>(this, _$identity);
+  _$$TagRegistrationImplCopyWith<_$TagRegistrationImpl> get copyWith =>
+      __$$TagRegistrationImplCopyWithImpl<_$TagRegistrationImpl>(
+          this, _$identity);
 }
 
 abstract class _TagRegistration implements TagRegistration {
   const factory _TagRegistration({required final String name}) =
-      _$_TagRegistration;
+      _$TagRegistrationImpl;
 
   @override
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_TagRegistrationCopyWith<_$_TagRegistration> get copyWith =>
+  _$$TagRegistrationImplCopyWith<_$TagRegistrationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

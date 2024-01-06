@@ -84,25 +84,25 @@ class _$PhotoPickupBottomSheetEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_FromCameraCopyWith<$Res> {
-  factory _$$_FromCameraCopyWith(
-          _$_FromCamera value, $Res Function(_$_FromCamera) then) =
-      __$$_FromCameraCopyWithImpl<$Res>;
+abstract class _$$FromCameraImplCopyWith<$Res> {
+  factory _$$FromCameraImplCopyWith(
+          _$FromCameraImpl value, $Res Function(_$FromCameraImpl) then) =
+      __$$FromCameraImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FromCameraCopyWithImpl<$Res>
-    extends _$PhotoPickupBottomSheetEventCopyWithImpl<$Res, _$_FromCamera>
-    implements _$$_FromCameraCopyWith<$Res> {
-  __$$_FromCameraCopyWithImpl(
-      _$_FromCamera _value, $Res Function(_$_FromCamera) _then)
+class __$$FromCameraImplCopyWithImpl<$Res>
+    extends _$PhotoPickupBottomSheetEventCopyWithImpl<$Res, _$FromCameraImpl>
+    implements _$$FromCameraImplCopyWith<$Res> {
+  __$$FromCameraImplCopyWithImpl(
+      _$FromCameraImpl _value, $Res Function(_$FromCameraImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_FromCamera implements _FromCamera {
-  const _$_FromCamera();
+class _$FromCameraImpl implements _FromCamera {
+  const _$FromCameraImpl();
 
   @override
   String toString() {
@@ -110,9 +110,9 @@ class _$_FromCamera implements _FromCamera {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FromCamera);
+        (other.runtimeType == runtimeType && other is _$FromCameraImpl);
   }
 
   @override
@@ -188,29 +188,29 @@ class _$_FromCamera implements _FromCamera {
 }
 
 abstract class _FromCamera implements PhotoPickupBottomSheetEvent {
-  const factory _FromCamera() = _$_FromCamera;
+  const factory _FromCamera() = _$FromCameraImpl;
 }
 
 /// @nodoc
-abstract class _$$_FromLibraryCopyWith<$Res> {
-  factory _$$_FromLibraryCopyWith(
-          _$_FromLibrary value, $Res Function(_$_FromLibrary) then) =
-      __$$_FromLibraryCopyWithImpl<$Res>;
+abstract class _$$FromLibraryImplCopyWith<$Res> {
+  factory _$$FromLibraryImplCopyWith(
+          _$FromLibraryImpl value, $Res Function(_$FromLibraryImpl) then) =
+      __$$FromLibraryImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FromLibraryCopyWithImpl<$Res>
-    extends _$PhotoPickupBottomSheetEventCopyWithImpl<$Res, _$_FromLibrary>
-    implements _$$_FromLibraryCopyWith<$Res> {
-  __$$_FromLibraryCopyWithImpl(
-      _$_FromLibrary _value, $Res Function(_$_FromLibrary) _then)
+class __$$FromLibraryImplCopyWithImpl<$Res>
+    extends _$PhotoPickupBottomSheetEventCopyWithImpl<$Res, _$FromLibraryImpl>
+    implements _$$FromLibraryImplCopyWith<$Res> {
+  __$$FromLibraryImplCopyWithImpl(
+      _$FromLibraryImpl _value, $Res Function(_$FromLibraryImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_FromLibrary implements _FromLibrary {
-  const _$_FromLibrary();
+class _$FromLibraryImpl implements _FromLibrary {
+  const _$FromLibraryImpl();
 
   @override
   String toString() {
@@ -218,9 +218,9 @@ class _$_FromLibrary implements _FromLibrary {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FromLibrary);
+        (other.runtimeType == runtimeType && other is _$FromLibraryImpl);
   }
 
   @override
@@ -296,27 +296,29 @@ class _$_FromLibrary implements _FromLibrary {
 }
 
 abstract class _FromLibrary implements PhotoPickupBottomSheetEvent {
-  const factory _FromLibrary() = _$_FromLibrary;
+  const factory _FromLibrary() = _$FromLibraryImpl;
 }
 
 /// @nodoc
-abstract class _$$_CancelCopyWith<$Res> {
-  factory _$$_CancelCopyWith(_$_Cancel value, $Res Function(_$_Cancel) then) =
-      __$$_CancelCopyWithImpl<$Res>;
+abstract class _$$CancelImplCopyWith<$Res> {
+  factory _$$CancelImplCopyWith(
+          _$CancelImpl value, $Res Function(_$CancelImpl) then) =
+      __$$CancelImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_CancelCopyWithImpl<$Res>
-    extends _$PhotoPickupBottomSheetEventCopyWithImpl<$Res, _$_Cancel>
-    implements _$$_CancelCopyWith<$Res> {
-  __$$_CancelCopyWithImpl(_$_Cancel _value, $Res Function(_$_Cancel) _then)
+class __$$CancelImplCopyWithImpl<$Res>
+    extends _$PhotoPickupBottomSheetEventCopyWithImpl<$Res, _$CancelImpl>
+    implements _$$CancelImplCopyWith<$Res> {
+  __$$CancelImplCopyWithImpl(
+      _$CancelImpl _value, $Res Function(_$CancelImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Cancel implements _Cancel {
-  const _$_Cancel();
+class _$CancelImpl implements _Cancel {
+  const _$CancelImpl();
 
   @override
   String toString() {
@@ -324,9 +326,9 @@ class _$_Cancel implements _Cancel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Cancel);
+        (other.runtimeType == runtimeType && other is _$CancelImpl);
   }
 
   @override
@@ -402,5 +404,5 @@ class _$_Cancel implements _Cancel {
 }
 
 abstract class _Cancel implements PhotoPickupBottomSheetEvent {
-  const factory _Cancel() = _$_Cancel;
+  const factory _Cancel() = _$CancelImpl;
 }

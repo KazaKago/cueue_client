@@ -6,8 +6,8 @@ part of 'menu_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MenuResponse _$$_MenuResponseFromJson(Map<String, dynamic> json) =>
-    _$_MenuResponse(
+_$MenuResponseImpl _$$MenuResponseImplFromJson(Map<String, dynamic> json) =>
+    _$MenuResponseImpl(
       id: json['id'] as int,
       memo: json['memo'] as String,
       date: json['date'] as String,
@@ -17,7 +17,7 @@ _$_MenuResponse _$$_MenuResponseFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_MenuResponseToJson(_$_MenuResponse instance) =>
+Map<String, dynamic> _$$MenuResponseImplToJson(_$MenuResponseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'memo': instance.memo,

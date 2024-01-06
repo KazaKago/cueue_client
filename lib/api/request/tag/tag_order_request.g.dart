@@ -6,12 +6,14 @@ part of 'tag_order_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TagOrderRequest _$$_TagOrderRequestFromJson(Map<String, dynamic> json) =>
-    _$_TagOrderRequest(
+_$TagOrderRequestImpl _$$TagOrderRequestImplFromJson(
+        Map<String, dynamic> json) =>
+    _$TagOrderRequestImpl(
       tagIds: (json['tag_ids'] as List<dynamic>).map((e) => e as int).toList(),
     );
 
-Map<String, dynamic> _$$_TagOrderRequestToJson(_$_TagOrderRequest instance) =>
+Map<String, dynamic> _$$TagOrderRequestImplToJson(
+        _$TagOrderRequestImpl instance) =>
     <String, dynamic>{
       'tag_ids': instance.tagIds,
     };

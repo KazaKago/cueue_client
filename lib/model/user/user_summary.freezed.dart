@@ -92,11 +92,11 @@ class _$UserSummaryCopyWithImpl<$Res, $Val extends UserSummary>
 }
 
 /// @nodoc
-abstract class _$$_UserSummaryCopyWith<$Res>
+abstract class _$$UserSummaryImplCopyWith<$Res>
     implements $UserSummaryCopyWith<$Res> {
-  factory _$$_UserSummaryCopyWith(
-          _$_UserSummary value, $Res Function(_$_UserSummary) then) =
-      __$$_UserSummaryCopyWithImpl<$Res>;
+  factory _$$UserSummaryImplCopyWith(
+          _$UserSummaryImpl value, $Res Function(_$UserSummaryImpl) then) =
+      __$$UserSummaryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({UserId id, String displayName, Content? photo});
@@ -108,11 +108,11 @@ abstract class _$$_UserSummaryCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UserSummaryCopyWithImpl<$Res>
-    extends _$UserSummaryCopyWithImpl<$Res, _$_UserSummary>
-    implements _$$_UserSummaryCopyWith<$Res> {
-  __$$_UserSummaryCopyWithImpl(
-      _$_UserSummary _value, $Res Function(_$_UserSummary) _then)
+class __$$UserSummaryImplCopyWithImpl<$Res>
+    extends _$UserSummaryCopyWithImpl<$Res, _$UserSummaryImpl>
+    implements _$$UserSummaryImplCopyWith<$Res> {
+  __$$UserSummaryImplCopyWithImpl(
+      _$UserSummaryImpl _value, $Res Function(_$UserSummaryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -122,7 +122,7 @@ class __$$_UserSummaryCopyWithImpl<$Res>
     Object? displayName = null,
     Object? photo = freezed,
   }) {
-    return _then(_$_UserSummary(
+    return _then(_$UserSummaryImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -141,8 +141,8 @@ class __$$_UserSummaryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UserSummary implements _UserSummary {
-  const _$_UserSummary(
+class _$UserSummaryImpl implements _UserSummary {
+  const _$UserSummaryImpl(
       {required this.id, required this.displayName, required this.photo});
 
   @override
@@ -158,10 +158,10 @@ class _$_UserSummary implements _UserSummary {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserSummary &&
+            other is _$UserSummaryImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.displayName, displayName) ||
                 other.displayName == displayName) &&
@@ -174,15 +174,15 @@ class _$_UserSummary implements _UserSummary {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserSummaryCopyWith<_$_UserSummary> get copyWith =>
-      __$$_UserSummaryCopyWithImpl<_$_UserSummary>(this, _$identity);
+  _$$UserSummaryImplCopyWith<_$UserSummaryImpl> get copyWith =>
+      __$$UserSummaryImplCopyWithImpl<_$UserSummaryImpl>(this, _$identity);
 }
 
 abstract class _UserSummary implements UserSummary {
   const factory _UserSummary(
       {required final UserId id,
       required final String displayName,
-      required final Content? photo}) = _$_UserSummary;
+      required final Content? photo}) = _$UserSummaryImpl;
 
   @override
   UserId get id;
@@ -192,6 +192,6 @@ abstract class _UserSummary implements UserSummary {
   Content? get photo;
   @override
   @JsonKey(ignore: true)
-  _$$_UserSummaryCopyWith<_$_UserSummary> get copyWith =>
+  _$$UserSummaryImplCopyWith<_$UserSummaryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

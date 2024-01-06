@@ -6,8 +6,8 @@ part of 'recipe_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_RecipeResponse _$$_RecipeResponseFromJson(Map<String, dynamic> json) =>
-    _$_RecipeResponse(
+_$RecipeResponseImpl _$$RecipeResponseImplFromJson(Map<String, dynamic> json) =>
+    _$RecipeResponseImpl(
       id: json['id'] as int,
       title: json['title'] as String,
       description: json['description'] as String,
@@ -26,7 +26,8 @@ _$_RecipeResponse _$$_RecipeResponseFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updated_at'] as String,
     );
 
-Map<String, dynamic> _$$_RecipeResponseToJson(_$_RecipeResponse instance) =>
+Map<String, dynamic> _$$RecipeResponseImplToJson(
+        _$RecipeResponseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,

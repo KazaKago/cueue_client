@@ -63,22 +63,22 @@ class _$GoogleAuthInfoCopyWithImpl<$Res, $Val extends GoogleAuthInfo>
 }
 
 /// @nodoc
-abstract class _$$_GoogleAuthInfoCopyWith<$Res>
+abstract class _$$GoogleAuthInfoImplCopyWith<$Res>
     implements $GoogleAuthInfoCopyWith<$Res> {
-  factory _$$_GoogleAuthInfoCopyWith(
-          _$_GoogleAuthInfo value, $Res Function(_$_GoogleAuthInfo) then) =
-      __$$_GoogleAuthInfoCopyWithImpl<$Res>;
+  factory _$$GoogleAuthInfoImplCopyWith(_$GoogleAuthInfoImpl value,
+          $Res Function(_$GoogleAuthInfoImpl) then) =
+      __$$GoogleAuthInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? accessToken, String? idToken});
 }
 
 /// @nodoc
-class __$$_GoogleAuthInfoCopyWithImpl<$Res>
-    extends _$GoogleAuthInfoCopyWithImpl<$Res, _$_GoogleAuthInfo>
-    implements _$$_GoogleAuthInfoCopyWith<$Res> {
-  __$$_GoogleAuthInfoCopyWithImpl(
-      _$_GoogleAuthInfo _value, $Res Function(_$_GoogleAuthInfo) _then)
+class __$$GoogleAuthInfoImplCopyWithImpl<$Res>
+    extends _$GoogleAuthInfoCopyWithImpl<$Res, _$GoogleAuthInfoImpl>
+    implements _$$GoogleAuthInfoImplCopyWith<$Res> {
+  __$$GoogleAuthInfoImplCopyWithImpl(
+      _$GoogleAuthInfoImpl _value, $Res Function(_$GoogleAuthInfoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_GoogleAuthInfoCopyWithImpl<$Res>
     Object? accessToken = freezed,
     Object? idToken = freezed,
   }) {
-    return _then(_$_GoogleAuthInfo(
+    return _then(_$GoogleAuthInfoImpl(
       accessToken: freezed == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,9 @@ class __$$_GoogleAuthInfoCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GoogleAuthInfo implements _GoogleAuthInfo {
-  const _$_GoogleAuthInfo({required this.accessToken, required this.idToken});
+class _$GoogleAuthInfoImpl implements _GoogleAuthInfo {
+  const _$GoogleAuthInfoImpl(
+      {required this.accessToken, required this.idToken});
 
   @override
   final String? accessToken;
@@ -116,10 +117,10 @@ class _$_GoogleAuthInfo implements _GoogleAuthInfo {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GoogleAuthInfo &&
+            other is _$GoogleAuthInfoImpl &&
             (identical(other.accessToken, accessToken) ||
                 other.accessToken == accessToken) &&
             (identical(other.idToken, idToken) || other.idToken == idToken));
@@ -131,14 +132,15 @@ class _$_GoogleAuthInfo implements _GoogleAuthInfo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GoogleAuthInfoCopyWith<_$_GoogleAuthInfo> get copyWith =>
-      __$$_GoogleAuthInfoCopyWithImpl<_$_GoogleAuthInfo>(this, _$identity);
+  _$$GoogleAuthInfoImplCopyWith<_$GoogleAuthInfoImpl> get copyWith =>
+      __$$GoogleAuthInfoImplCopyWithImpl<_$GoogleAuthInfoImpl>(
+          this, _$identity);
 }
 
 abstract class _GoogleAuthInfo implements GoogleAuthInfo {
   const factory _GoogleAuthInfo(
       {required final String? accessToken,
-      required final String? idToken}) = _$_GoogleAuthInfo;
+      required final String? idToken}) = _$GoogleAuthInfoImpl;
 
   @override
   String? get accessToken;
@@ -146,6 +148,6 @@ abstract class _GoogleAuthInfo implements GoogleAuthInfo {
   String? get idToken;
   @override
   @JsonKey(ignore: true)
-  _$$_GoogleAuthInfoCopyWith<_$_GoogleAuthInfo> get copyWith =>
+  _$$GoogleAuthInfoImplCopyWith<_$GoogleAuthInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
