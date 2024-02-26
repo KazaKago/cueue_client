@@ -9,9 +9,11 @@ This repository is client.
 
 # Project Repositories
 
+- Infra
+    - https://github.com/kazakago/cueue_infra
 - Server
-    - https://github.com/KazaKago/cueue_server
+    - https://github.com/kazakago/cueue_server
 - Client
-    - https://github.com/KazaKago/cueue_client
+    - https://github.com/kazakago/cueue_client
 - Pages
-    - https://github.com/KazaKago/cueue_pages
+    - https://github.com/kazakago/cueue_pages
