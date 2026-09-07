@@ -50,7 +50,7 @@ dependencies:
   google_sign_in: ^6.0.0
   hooks_riverpod: ^2.0.0
   image_picker: ^1.0.0
-  intl: ^0.18.0
+  intl: ^0.20.0
   json_annotation: ^4.0.0
   nonce: ^1.0.0
   package_info_plus: ^5.0.0
